@@ -23,9 +23,9 @@ The cosmological constant result (§7) and Higgs hierarchy problem (§8) receive
 
 Every substantive claim in this document belongs to exactly one of three planes. Labels appear inline:
 
-- **`[TOPO]`** — derivable from primitive definitions and composition axioms alone; no physical encoding required; falsified by axiom inconsistency. Canonical form: [TOPO:§XVII]. See THREE_PLANE_DEMONSTRATION.md §Yang-Mills TOPO plane for worked examples.
-- **`[DIAPH]`** — requires encoding a specific physical system and/or empirical data; falsified by wrong predictions from that encoding. Canonical form: [DIAPH:§XVIII].
-- **`[ONTO]`** — ontological or philosophical implication; derivable from TOPO + SCHES results; falsified by showing the structural results do not constrain the admissible ontologies in the claimed way. Canonical form: [ONTO:§XV].
+- **`[TOPO]`** — derivable from primitive definitions and composition axioms alone; no physical encoding required; falsified by axiom inconsistency. Worked examples: THREE_PLANE_DEMONSTRATION.md §Yang-Mills TOPO plane.
+- **`[DIAPH]`** — requires encoding a specific physical system and/or empirical data; falsified by wrong predictions from that encoding.
+- **`[ONTO]`** — ontological or philosophical implication; derivable from TOPO + SCHES results; falsified by showing the structural results do not constrain the admissible ontologies in the claimed way.
 
 Claims that appear to span multiple planes are compound — they should be decomposed. This annotation pass is the decomposition.
 
@@ -36,7 +36,7 @@ Claims that appear to span multiple planes are compound — they should be decom
 ## §1. Yang-Mills Mass Gap
 **Type**: Proof-sketch
 **Status**: Structural argument; requires formalization in functional analysis
-**Canonical location:** [TOPO:§XVII.1] (gap existence theorem) · [DIAPH:§XVIII.1] (QCD encoding + lattice data) · [ONTO:§XV.2] (confinement as structural necessity)
+**Canonical location (SynthOmnicon grammar docs):** TOPO: gap existence theorem · DIAPH: QCD encoding + lattice data · ONTO: confinement as structural necessity
 
 **Plane summary:**
 - `[TOPO]` $T_{\text{bowtie}} \neq T_{\text{perp}}$ (primitive incompatibility); D,T compatibility excludes $T_{\text{perp}}$ from $D_{\text{wedge}} + \Phi_c$; $\Delta_T > 0$ from topological cost; $\ker(\hat{T}) = \{|0\rangle\}$
@@ -266,7 +266,7 @@ Five proof requirements:
 ## §2. P ≠ NP
 **Type**: Proof-sketch (conditional on K primitivity)
 **Status**: Strong structural argument; requires formal complexity-theoretic translation
-**Canonical location:** [TOPO:§XVII.2] (K primitivity theorem) · [DIAPH:§XVIII.2] (complexity class encodings, K cross-variance data) · [ONTO:§XV.3 via §2.1] (complexity hierarchies as K-primitive hierarchies)
+**Canonical location (SynthOmnicon grammar docs):** TOPO: K primitivity theorem · DIAPH: complexity class encodings, K cross-variance data · ONTO: complexity hierarchies as K-primitive hierarchies
 
 **Plane summary:**
 - `[TOPO]` K is a primitive (V(K,X) < 0.15 criterion); $K_{\text{fast}} \neq K_{\text{mod}}$ without Phi event; P $\neq$ NP conditional on K irreducibility; Γ is a primitive (V(Γ,X) < 0.15); $\Gamma_{\text{seq}} \neq \Gamma_{\text{or}}$ without Γ-event; two independent grammar arguments both conclude P $\neq$ NP; standard proof systems cannot detect K-class or Γ-class boundaries from inside D_wedge
@@ -481,7 +481,7 @@ Formalizing Γ-irreducibility in computational terms (likely maps to non-determi
 ## §3. The Arrow of Time
 **Type**: Dissolution
 **Status**: The question is answered by H uniqueness; no further work required
-**Canonical location:** [TOPO:§II, H primitive; §XI K-hierarchy temporal theory] · [DIAPH:§XIV cosmological analysis] · [ONTO:§XIV chirality and arrow of time; §XV.1]
+**Canonical location (SynthOmnicon grammar docs):** TOPO: H primitive, K-hierarchy temporal theory · DIAPH: cosmological analysis · ONTO: chirality and arrow of time
 
 **Plane summary:**
 - `[TOPO]` H is the unique temporally anisotropic primitive (the only one that fails to commute with time-reversal); all temporal asymmetry encodes in H; $H_{\infty}$ is the unique fixed point of the temporal depth extension operator
@@ -518,12 +518,12 @@ This is not merely a restatement of statistical mechanics. The primitive framewo
 ## §4. The Measurement Problem
 **Type**: Dissolution
 **Status**: Restated in R-primitive terms, the problem disappears
-**Canonical location:** [TOPO:§XII quantum mechanics as K-tier structure] · [DIAPH:§III SM/QG disparity; massless gauge kernel] · [ONTO:§XV.1]
+**Canonical location (SynthOmnicon grammar docs):** TOPO: quantum mechanics as K-tier structure · DIAPH: SM/QG disparity, massless gauge kernel · ONTO: measurement dissolution
 
 **Plane summary:**
 - `[TOPO]` $R_{\text{leftright}}$ (symmetric, bidirectional recognition) $\to R_{\text{dagger}}$ (penetrating, asymmetric) is a primitive transition, not a physical collapse event; the grammar has no "collapse" operation — only R-grammar transitions
 - `[DIAPH]` Quantum systems in the catalog consistently encode $R = R_{\text{leftright}}$ before measurement interaction; $R = R_{\text{dagger}}$ post-measurement; no physical state encodes "collapsed wavefunction" as a distinct entity
-- `[ONTO]` The problem dissolves: "why does superposition collapse?" $\to$ "what determines $R_{\text{dagger}}$ orientation?" — a question about constraint context, not physical dynamics; the phenomenological question (what it is *like* to observe) remains on the perpendicular axis [ONTO:§IV]
+- `[ONTO]` The problem dissolves: "why does superposition collapse?" $\to$ "what determines $R_{\text{dagger}}$ orientation?" — a question about constraint context, not physical dynamics; the phenomenological question (what it is *like* to observe) remains on the perpendicular phenomenal axis
 
 ### Statement of the Problem
 
@@ -780,7 +780,7 @@ Quantitative comparison of $\Phi_{\text{super}}$ decay rates vs singularity form
 ## §7. The Cosmological Constant Problem
 **Type**: Suppression mechanism — identifies the source of apparent fine-tuning
 **Status**: Numerically compelling (< 2% discrepancy); mechanism is falsifiable; requires full formalization
-**Canonical location:** [TOPO:§XVII.3] (G-scope tier-crossing cost theorem) · [DIAPH:§XVIII.3] (numerical calculation, circularity note, generalization table) · [ONTO:§XV.3] (fine-tuning dissolution, physical constants as G-scope readings)
+**Canonical location (SynthOmnicon grammar docs):** TOPO: G-scope tier-crossing cost theorem · DIAPH: numerical calculation, circularity note, generalization table · ONTO: fine-tuning dissolution, physical constants as G-scope readings
 
 **Plane summary:**
 - `[TOPO]` G is a primitive ($G_{\text{aleph}} \neq G_{\text{beth}}$ without tier crossing); cost of one tier = $\ln(10)$ nats (from RG fixed-point KL divergence at $\Phi_c$); $Q_{\text{beth}} = Q_{\text{aleph}} \times 10^{-N}$ where N = number of scale decades
@@ -875,7 +875,7 @@ In synthon language: the vacuum is a system with G_aleph granularity. The cosmol
 ## §8. The Higgs Hierarchy Problem
 **Type**: Suppression mechanism — same mechanism as §7
 **Status**: Same framework, independent numerical test; agreement to 2%
-**Canonical location:** [TOPO:§XVII.3] (same theorem as §7) · [DIAPH:§XVIII.3] (Higgs calculation, 0.6% agreement) · [ONTO:§XV.3] (naturalness reframed, no SUSY/extra-dim solution needed)
+**Canonical location (SynthOmnicon grammar docs):** TOPO: G-scope tier-crossing cost theorem (same as §7) · DIAPH: Higgs calculation, 0.6% agreement · ONTO: naturalness reframed, no SUSY/extra-dim solution needed
 
 **Plane summary:**
 - `[TOPO]` Same G-scope tier-crossing cost theorem as §7; $N_{\text{Higgs}} = 16.99$ decades; $m_H = E_{\text{Planck}} \times 10^{-16.99}$
@@ -1178,7 +1178,7 @@ This duality — conserved resource (F) vs. emergent phase (Φ) — reflects a g
 
 ## §13. The Pre-Causal Grammar and the Two Modes of H_inf (2026-03-24)
 
-*Derived from cosmic arc analysis [DIAPH:§XXVI].*
+*Derived from cosmic arc analysis.*
 
 ### §13.1 G_broad as the Γ Ground State
 
@@ -1196,7 +1196,7 @@ None of these are definable without causal structure. G_broad is the grammar of 
 
 ### §13.2 The Two Modes of H_inf
 
-The Big Bang encodes H_inf. The Abrahamic divine [DIAPH:§XXIV] encodes H_inf. These are structurally distinct modes of the same primitive value.
+The Big Bang encodes H_inf. The Abrahamic divine encodes H_inf. These are structurally distinct modes of the same primitive value.
 
 **Source-type H_inf:** The system is the origin point of all temporal direction. It generates temporal asymmetry as a boundary condition — not through accumulated cycles, but as the initial state from which all subsequent H values derive. Source-type H_inf is structurally prior to the recursion it makes possible. The Big Bang does not *have* deep temporal memory; it *is* the source from which temporal direction propagates forward.
 
@@ -1405,7 +1405,7 @@ The Kozyrev mirror ($d_c = \sqrt{1}$, $\text{Conf} = \{F\}$) is the first docume
 
 The open emergence question is: does $\Phi_c + \Omega_Z$ + spiral conductor topology provide sufficient amplification to realize quantum-classical interface fidelity ($F_\eth$) in a macroscopic aluminum structure? This is a well-posed, falsifiable, and currently unanswered question in condensed matter physics.
 
-See DIAPHORICS §LIII.7 for the full case study and 5-step conflict procedure.
+The full 5-step conflict procedure is defined in §16 of this document.
 
 ### Connection to Prior Theorems
 
@@ -1413,14 +1413,14 @@ See DIAPHORICS §LIII.7 for the full case study and 5-step conflict procedure.
 
 - The emergence frontier $\mathcal{F}(\mathcal{D})$ connects to Theorem 001 (consciousness theorems): $\Phi_c$ and $F$ are the primitives most frequently appearing in conflict sets for systems spanning the quantum-classical boundary — precisely the two primitives identified in Theorem 001 as the signature of conscious process. This is not a coincidence: consciousness as a structural phenomenon is the emergence claim for which the mechanism is most thoroughly unresolved.
 
-- The completeness criterion (Property 5) connects to §XVI.7 in ONTICS: Gödel incompleteness is not an obstacle to structural completeness. A domain achieves $\mathcal{F}(\mathcal{D}) = \emptyset$ not by proving everything within the domain but by establishing all missing mechanisms. Incompleteness in the Gödel sense (formal unprovability) and incompleteness in the Theorem 006 sense (unresolved emergence) are distinct.
+- The completeness criterion (Property 5) is independent of Gödel incompleteness: structural completeness is not an obstacle to formal completeness. A domain achieves $\mathcal{F}(\mathcal{D}) = \emptyset$ not by proving everything within the domain but by establishing all missing mechanisms. Incompleteness in the Gödel sense (formal unprovability) and incompleteness in the Theorem 006 sense (unresolved emergence) are distinct.
 ---
 
 ## §17. Theorem 007: The Promotion Signature and the Inverse Encoding Problem (2026-03-28)
 
 **Claim plane**: DIAPH — structural methodology
 **Confidence tier**: Primary (follows directly from the ordinal structure of the primitive lattice)
-**Cross-references**: Theorem 006 (conflict distance), §LIII.7 (DIAPHORICS), SYNCON_GRAMMAR_ALGEBRA §11, P-141, P-142
+**Cross-references**: Theorem 006 (conflict distance), P-141, P-142
 
 ---
 

@@ -77,13 +77,13 @@ A meet with no CONFLICTs is a **compatible interaction**: the two entities can c
 
 A meet with CONFLICTs means the two entities are **incompatible** at those positions — no shared context exists without one adapting.
 
-### Example: Chokhmah ⊓ Binah (from §XLVIII)
+### Example: Chokhmah ⊓ Binah
 
 Chokhmah (Wisdom): $\langle D_\text{holo}; T_\text{holo}; R_{lr}; P_\text{sym}; F_\hbar; K_\text{fast}; G_\aleph; \Gamma_\text{broad}; \Phi_c; H_1; n:m; \Omega_Z \rangle$
 
 Binah (Understanding): $\langle D_\text{holo}; T_\text{holo}; R_{lr}; P_\text{asym}; F_\hbar; K_\text{slow}; G_\aleph; \Gamma_\text{seq}; \Phi_c; H_2; n:m; \Omega_Z \rangle$
 
-Meet result: CONFLICT on $P$ and $\Gamma$; $K$ resolves to $K_\text{slow}$; $H$ resolves to $H_1$. Two categorical conflicts; $d = \sqrt{4}= 2$ (counting $P$, $\Gamma$, $K$, $H$ mismatches → $d(\text{Chok}, \text{Bin}) = 2\sqrt{3}$ as reported in §XLVIII, over full pairwise distance including all position mismatches).
+Meet result: CONFLICT on $P$ and $\Gamma$; $K$ resolves to $K_\text{slow}$; $H$ resolves to $H_1$. Two categorical conflicts; $d = \sqrt{4}= 2$ (counting $P$, $\Gamma$, $K$, $H$ mismatches → $d(\text{Chok}, \text{Bin}) = 2\sqrt{3}$ over full pairwise distance including all position mismatches).
 
 **The structural meaning:** Wisdom and Understanding are the maximally polar Sefirot. Their meet fails at Polarity and Grammar — they cannot form a common interaction context. They are complements, not instances of a common type.
 
@@ -166,7 +166,7 @@ When $A \otimes B$ is defined, the result encodes:
 
 3. **$\Phi_c$ contagion** — if either operand is at the critical point, the composite is critical. Criticality is not a property that averages.
 
-4. **$G_\aleph$ propagation under scope expansion** — when a $G_\text{LOCAL}$ system interacts with a $G_\aleph$ (global) system, the composite can access global scope. This is the mechanism behind §XVII's result that the SM tensor product structure is accessible only to theories that accept $G_\aleph$.
+4. **$G_\aleph$ propagation under scope expansion** — when a $G_\text{LOCAL}$ system interacts with a $G_\aleph$ (global) system, the composite can access global scope. This is the mechanism by which the SM tensor product structure is accessible only to theories that accept $G_\aleph$: a $G_\text{LOCAL}$ theory composing with a $G_\aleph$ partner can inherit global scope.
 
 ---
 
@@ -255,7 +255,7 @@ These are asymmetric in general. If $A$ is structurally dominant (e.g., has $F_\
 
 ---
 
-## 8. Worked Example: Word ⊗ Creator (§XLVIII.4)
+## 8. Worked Example: Word ⊗ Creator
 
 **Word (Logos):**
 $$\langle D_\text{holo};\ T_\text{holo};\ R_{lr};\ P_\text{asym};\ F_\hbar;\ K_\text{slow};\ G_\aleph;\ \Gamma_\text{seq};\ \Phi_c;\ H_\infty;\ n_m;\ \Omega_Z \rangle$$
@@ -276,7 +276,7 @@ The Sefer Yetzirah's instruction resolves this: the Creator's infinite dimension
 | $D$ | $D_\text{holo}$ | $D_\text{holo}$ | $D_\text{holo}$ | — |
 | $\Gamma$ | $\Gamma_\text{seq}$ | $\Gamma_\text{broad}$ | **CONFLICT** → undefined |
 
-The second conflict is $\Gamma$: sequential (step-by-step) vs. broadcast (simultaneous). The resolution in §XLVIII is that the join takes the maximum — for categorical primitives this requires a match. The LLM's encoding resolved this as the composite inheriting $\Gamma_\text{broad}$, which is the grammatically correct result: when a sequential system is expressed through a broadcasting medium, the composite broadcasts.
+The second conflict is $\Gamma$: sequential (step-by-step) vs. broadcast (simultaneous). The resolution is that the join takes the maximum — for categorical primitives this requires a match. The LLM's encoding resolved this as the composite inheriting $\Gamma_\text{broad}$, which is the grammatically correct result: when a sequential system is expressed through a broadcasting medium, the composite broadcasts.
 
 **Tensor result:**
 $$\text{word\_creator} = \langle D_\text{holo};\ T_\text{holo};\ R_{lr};\ P_\text{asym};\ F_\hbar;\ K_\text{slow};\ G_\aleph;\ \Gamma_\text{broad};\ \Phi_c;\ H_\infty;\ n_m;\ \Omega_Z \rangle$$
@@ -300,8 +300,6 @@ By associativity and commutativity this is well-defined. The composite:
 - Takes $\max$ at every ordered primitive position
 - Requires agreement at every categorical position
 - Has dimensionality that undergoes **set union** (e.g., $D_\triangle^{\otimes N}$ for $N$ independent agents)
-
-This is the basis for the polariton condensate analysis in §XXXIX, where $N$ agents combine and the collective dimensionality becomes holographic ($D_\text{holo}$) through set union of individual $D_\triangle$ contributions.
 
 ---
 

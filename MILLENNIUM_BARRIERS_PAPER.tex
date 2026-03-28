@@ -203,7 +203,7 @@
 
 The SynthOmnicon Lean library occupies two tracks: \texttt{Primitives/} (the 12-primitive constraint grammar) and \texttt{Millennium/} (the barrier taxonomy library documented here). This paper reports on the \texttt{Millennium/} track and its bridge to \texttt{Primitives/}.
 
-\textbf{Cross-reference notation:} {[}TOPO:\pilcrow{}N{]} $\cdot$ {[}DIAPH:\pilcrow{}N{]} $\cdot$ {[}ONTO:\pilcrow{}N{]} for the three core grammar documents. {[}PRIM:P-N{]} for predictions. Internal references within this paper use \pilcrow{}N.
+\textbf{Internal references} within this paper use \pilcrow{}N.
 
 \textbf{Library location:} \texttt{SynthOmnicon/Millennium/}  --  nine files, approximately 1,524 lines. Build target: \texttt{lake build Millennium}.
 
@@ -321,7 +321,7 @@ The SynthOmnicon framework encodes physical and mathematical systems as 12-tuple
 \end{tabularx}
 \end{table}
 
-All twelve types derive \texttt{DecidableEq}, making structural comparisons computable. The \texttt{primitiveMismatches} function (Hamming distance over twelve fields) is proved bounded by 12 and zero iff tuples are identical  --  all by \texttt{decide} or \texttt{omega}. See {[}TOPO:\pilcrow{}I{]} for the full grammar specification.
+All twelve types derive \texttt{DecidableEq}, making structural comparisons computable. The \texttt{primitiveMismatches} function (Hamming distance over twelve fields) is proved bounded by 12 and zero iff tuples are identical  --  all by \texttt{decide} or \texttt{omega}.
 
 \begin{center}
 \rule{0.5\textwidth}{0.4pt}
@@ -770,7 +770,7 @@ We are not aware of any prior work that formalizes a taxonomy of \emph{why} sorr
 
 \subsubsection{VII.4 The SynthOmnicon framework}
 
-The SynthOmnicon 12-primitive grammar is developed in the companion documents {[}TOPO{]}, {[}DIAPH{]}, {[}ONTO{]}. The \texttt{Primitives/} track of the Lean library  --  \texttt{Core.lean}, \texttt{Synthon.lean}, \texttt{TierCrossing.lean}, \texttt{OPN\_2adic.lean}, \texttt{BSD\_2adic.lean}  --  constitutes a parallel formalization effort. The present paper uses \texttt{Core.lean} and \texttt{Synthon.lean} only for \texttt{PrimitiveBridge.lean}; the full primitive algebra is not required for the barrier taxonomy itself.
+The SynthOmnicon 12-primitive grammar is developed in companion grammar documents (SynthOmnicon repository). The \texttt{Primitives/} track of the Lean library  --  \texttt{Core.lean}, \texttt{Synthon.lean}, \texttt{TierCrossing.lean}, \texttt{OPN\_2adic.lean}, \texttt{BSD\_2adic.lean}  --  constitutes a parallel formalization effort. The present paper uses \texttt{Core.lean} and \texttt{Synthon.lean} only for \texttt{PrimitiveBridge.lean}; the full primitive algebra is not required for the barrier taxonomy itself.
 
 \begin{center}
 \rule{0.5\textwidth}{0.4pt}

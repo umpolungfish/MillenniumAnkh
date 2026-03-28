@@ -88,7 +88,7 @@ This encoding is an empirical claim about which primitive values correctly descr
 
 **S.4** — Omega_Z catalog entry: The SU(N) gauge bundle carries Omega_Z protection — integer-valued Chern-Simons winding numbers (instantons). This organizes the QCD Hilbert space into sectors H_n ($n \in \mathbb{Z}$). Each sector has minimum energy |n| × 8π²/g². This is an empirical fact about the topological structure of QCD, not a grammar axiom.
 
-**S.5** — Compatibility with SM kernel: meet(photon, graviton) = {P_pm_sym, F_hbar, K_fast, G_aleph, $\Phi_c$, $\Omega_0$} [DIAPH:$\S$III]. QCD shares $\Phi_c$ and F_hbar with the massless gauge kernel but differs at T (T_bowtie vs. T_perp), which is precisely why QCD is massive (confined) while the photon is massless. The Diaphorics plane records this primitive difference.
+**S.5** — Compatibility with SM kernel: meet(photon, graviton) = {P_pm_sym, F_hbar, K_fast, G_aleph, $\Phi_c$, $\Omega_0$}. QCD shares $\Phi_c$ and F_hbar with the massless gauge kernel but differs at T (T_bowtie vs. T_perp), which is precisely why QCD is massive (confined) while the photon is massless. The Diaphorics plane records this primitive difference.
 
 **What Diaphorics does NOT say:** It does not prove $\Delta_T > 0$ from axioms (that is Topics), nor does it say what it *means* for reality that matter is confined (that is Ontics).
 
@@ -142,7 +142,7 @@ This encoding is an empirical claim about which primitive values correctly descr
 
 **S.2** — NP-complete instances at $\Phi_c$: Random 3-SAT phase transitions at the satisfiability threshold are empirically at $\Phi_c$ — the clause/variable ratio at which satisfiability probability drops from 1 to 0 exhibits all critical phenomena (diverging susceptibility, power-law correlations). This places NP-complete problems at the $\Phi_c$ boundary in the catalog, consistent with the Topics claim that NP solution landscapes are $K_\text{mod}$.
 
-**S.3** — MIP* = RE as D_holo confirmation: The 2020 result by Ji, Natarajan, Vidick, Wright, and Yuen shows that quantum entanglement between spatially separated provers enables verification of recursively enumerable (undecidable) problems. In the Diaphorics catalog, this is the empirical confirmation of Topics claim T.4 — the entangled joint state of the provers is the physical realization of D_holo. The non-local correlations between provers are the boundary encoding of the full computational bulk. [Cross-reference: [DIAPH:$\S$III] for the D_holo primitive entry.]
+**S.3** — MIP* = RE as D_holo confirmation: The 2020 result by Ji, Natarajan, Vidick, Wright, and Yuen shows that quantum entanglement between spatially separated provers enables verification of recursively enumerable (undecidable) problems. In the Diaphorics catalog, this is the empirical confirmation of Topics claim T.4 — the entangled joint state of the provers is the physical realization of D_holo. The non-local correlations between provers are the boundary encoding of the full computational bulk.
 
 **S.4** — K primitivity evidence: Across the 50+ systems encoded in the catalog, no system encodes as a K-transition that is achievable without a $\Phi$ event. The closest candidates (allosteric proteins, molecular motors) show K transitions associated with $\Phi_c$ crossings, not smooth K deformations. This is the empirical support for Topics T.2.
 
@@ -305,7 +305,7 @@ Both theories operate at $\Phi_c$. Yang-Mills has a mass gap; Navier-Stokes has 
 
 **Conflating Diaphorics and Ontics** produces overreach. Example: "The cosmological constant is derivable from first principles" — is this a catalog calculation (Diaphorics, requires knowing E_Planck and $E_\Lambda$ as inputs) or an ontological claim (Ontics, "physical constants are G-scope readings")? The Diaphorics calculation is currently circular. The Ontics implication is not — it would hold even if the numbers were slightly different.
 
-**Conflating Topics and Ontics** produces the worst failure: deriving philosophical conclusions directly from grammar axioms without empirical grounding. Example: "Consciousness is structurally guaranteed at $\Phi_c$" — is this a grammar claim (Topics: $\Phi_c$ systems satisfy Axiom 5 self-reference) or an ontological claim (Ontics: self-reference *is* consciousness)? The grammar says self-reference occurs; the grammar cannot say what self-reference *is like* from the inside. The Grammar-Phenomenology Gap [ONTO:$\S$IV] exists precisely because Topics and Ontics are perpendicular.
+**Conflating Topics and Ontics** produces the worst failure: deriving philosophical conclusions directly from grammar axioms without empirical grounding. Example: "Consciousness is structurally guaranteed at $\Phi_c$" — is this a grammar claim (Topics: $\Phi_c$ systems satisfy Axiom 5 self-reference) or an ontological claim (Ontics: self-reference *is* consciousness)? The grammar says self-reference occurs; the grammar cannot say what self-reference *is like* from the inside. The Grammar-Phenomenology Gap exists precisely because Topics and Ontics are perpendicular.
 
 **The rule**: every claim in PRIMITIVE_THEOREMS.md can be assigned exactly one primary plane. Claims that appear to belong to multiple planes are usually compound — decompose them.
 
@@ -331,7 +331,4 @@ Ontics: [state what the structural result implies about the nature of being/real
 
 ---
 
-*This document accompanies PRIMITIVE_THEOREMS.md and feeds into the canonical document updates:*
-*— Topics claims $\to$ new sections in SYNTHONICON_TOPICS.md*
-*— Diaphorics claims $\to$ new catalog entries in SYNTHONICON_DIAPHORICS.md*
-*— Ontics claims $\to$ new sections in SYNTHONICON_ONTICS.md*
+*This document accompanies PRIMITIVE_THEOREMS.md and feeds into canonical document updates: Topics claims → Topology sections; Diaphorics claims → catalog entries; Ontics claims → ontology sections.*

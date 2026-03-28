@@ -485,4 +485,4 @@ Each sorry boundary corresponds to a missing primitive certificate (documented i
 | BSD | BSD rank formula | $\Phi_c$ = rank charge-carrier certificate |
 | OPN | Nonexistence proof | $\sigma$-constraint with no solution |
 
-The YM barrier ($G_\text{LOCAL}$, no quantum lift) corresponds to the G-scope analysis in [ONTICS:§XVII]: the quantum-gravity tensor product fails at $G_\text{LOCAL}$ because the carrier type (path integral measure) cannot be constructed in 4D.
+The YM barrier ($G_\text{LOCAL}$, no quantum lift) reflects the G-scope structure: the quantum-gravity tensor product fails at $G_\text{LOCAL}$ because the carrier type (path integral measure) cannot be constructed in 4D.
