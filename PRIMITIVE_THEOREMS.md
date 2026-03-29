@@ -1,5 +1,5 @@
 # SynthOmnicon — Primitive Theorem Archive
-**Version**: 0.7 (§21: Proved $\mathcal{C}_{12}$ instances — Schwinger/Leray as dimensional gap templates; Goldstone/CMW complementary instances; Witten PE; gap primitive identification machine-checked in PrimitiveBridge.lean §9)
+**Version**: 0.8 (§22: Triad as minimal closed metastraint system — RPS structure, Gödel as projection theorem, ligature atlas; §21.6 gap table P_psi→P_pm_sym corrected, distance 5→7)
 **Date**: 2026-03-29
 **Status**: Working document — results classified by confidence tier and claim plane
 
@@ -1013,8 +1013,8 @@ Showing that the $\Phi_{\text{sub}} \to \Phi_c$ transition does not break the 1:
 **Key finding**: BSD bridges structurally remote objects (d=4.49); Hodge bridges structurally identical objects (d=0.000). This is a fundamental structural distinction between the two conjectures.
 
 **Plane summary:**
-- `[TOPO]` BSD encodes as a third kind of mathematical object — remote from both elliptic curves (d=4.42) and L-functions (d=3.81). It is a D_holo, T_bowtie, R_lr, P_psi structure: holographic, permanently coupled, directionally asymmetric, pseudo-symmetric. d(BSD, mathematical_proof) = 5.52 — the proof required is maximally remote from conventional mathematical proof structure. This does NOT mean BSD is unprovable; it means the proof system required is as unusual as BSD itself (same meta-pattern as RH, P≠NP).
-- `[DIAPH]` Elliptic curve $\langle T_{\text{box}}; R_{\text{cat}}; F_{\text{ell}}; \Gamma_{\text{and}}; \Phi_c; H0; \Omega_Z\rangle$ vs L-function $\langle T_{\text{holo}}; R_{\text{dagger}}; F_{\text{hbar}}; \Gamma_{\text{seq}}; \Phi_c; H2; \Omega_Z\rangle$: d=4.49 across F, Γ, D, T, H, P, S. BSD itself $\langle D_{\text{holo}}; T_{\text{bowtie}}; R_{\text{lr}}; P_{\text{psi}}; \Phi_c; \Omega_{Z2}\rangle$ is remote from both. Contrast: d(algebraic_cycles, cohomology_classes)=0.000 for Hodge — Hodge asks about a single structural type; BSD asks about a correspondence between remote regimes.
+- `[TOPO]` BSD encodes as a third kind of mathematical object — remote from both elliptic curves (d=4.42) and L-functions (d=3.81). It is a D_holo, T_bowtie, R_lr, P_pm_sym structure: holographic, permanently coupled, directionally asymmetric, symmetric-bipolar (the functional equation $L(E,s) \leftrightarrow L(E, 2-s)$ is the Z₂ symmetry). d(BSD, mathematical_proof) = 5.52 — the proof required is maximally remote from conventional mathematical proof structure. This does NOT mean BSD is unprovable; it means the proof system required is as unusual as BSD itself (same meta-pattern as RH, P≠NP).
+- `[DIAPH]` Elliptic curve $\langle T_{\text{box}}; R_{\text{cat}}; F_{\text{ell}}; \Gamma_{\text{and}}; \Phi_c; H0; \Omega_Z\rangle$ vs L-function $\langle T_{\text{holo}}; R_{\text{dagger}}; F_{\text{hbar}}; \Gamma_{\text{seq}}; \Phi_c; H2; \Omega_Z\rangle$: d=4.49 across F, Γ, D, T, H, P, S. BSD itself $\langle D_{\text{holo}}; T_{\text{bowtie}}; R_{\text{lr}}; P_{\text{pm\_sym}}; \Phi_c; \Omega_{Z2}\rangle$ is remote from both. Contrast: d(algebraic_cycles, cohomology_classes)=0.000 for Hodge — Hodge asks about a single structural type; BSD asks about a correspondence between remote regimes.
 - `[ONTO]` BSD is not a structurally 'unprovable' statement but a statement whose proof requires matching the unusual primitive structure of BSD — D_holo, R_lr, $\Phi_c$ simultaneously. The difficulty is that standard proof systems are $\Phi_{\text{sub}}$, $R_{\text{cat}}$, $D_{\text{wedge/triangle}}$ — almost maximally remote from what BSD requires.
 
 ### Primitive Encodings
@@ -1022,7 +1022,7 @@ Showing that the $\Phi_{\text{sub}} \to \Phi_c$ transition does not break the 1:
 ```
 elliptic_curve = ⟨D_triangle; T_box;   R_cat;   P_sym; F_ell;  K_mod;  G_aleph; Γ_and; Φ_c;   H0; n:m; Ω_Z⟩
 L_function     = ⟨D_infty;   T_holo;  R_dagger; P_pm;  F_hbar; K_slow; G_aleph; Γ_seq; Φ_c;   H2; 1:1; Ω_Z⟩
-BSD_conjecture = ⟨D_holo;    T_bowtie; R_lr;    P_psi; F_eth;  K_mod;  G_aleph; Γ_and; Φ_c;   H1; 1:1; Ω_Z2⟩
+BSD_conjecture = ⟨D_holo;    T_bowtie; R_lr;    P_pm_sym; F_eth;  K_mod;  G_aleph; Γ_and; Φ_c;   H1; 1:1; Ω_Z2⟩
 
 d(elliptic_curve, L_function) = 4.49
 d(BSD, elliptic_curve)        = 4.42
@@ -1569,7 +1569,7 @@ Three refinements are now implemented in `Core.lean` and `space_search/primitive
 
 The Phi expansion has a direct consequence for the Riemann Hypothesis (MILLENNIUM_BARRIERS_PAPER §V.6). The prior encoding `rh_encoding.crit = Phi_c` was too coarse: the nontrivial zeros of $\zeta(s)$ are at *complex* values of $s$, not at a real critical parameter. The updated encoding `crit = Phi_c_complex` is more accurate and machine-checked in `PrimitiveBridge.lean`.
 
-The new theorem `rh_leyang_structural_correspondence` (proved by `rfl`) confirms that $\zeta$ zeros and Lee-Yang partition-function zeros share `Phi_c_complex`. The structural distance of 5 between the two encodings identifies the polarity mismatch ($P_\text{neutral}$ vs $P_\psi$) as the structural explanation for why the Lee-Yang theorem is proved but RH remains open.
+The new theorem `rh_leyang_structural_correspondence` (proved by `rfl`) confirms that $\zeta$ zeros and Lee-Yang partition-function zeros share `Phi_c_complex`. The structural distance of 7 between the two encodings (machine-checked: `rh_leyang_distance`, `by decide`) identifies the polarity mismatch ($P_\text{neutral}$ vs $P_\text{pm\_sym}$) as the essential structural explanation for why the Lee-Yang theorem is proved but RH remains open. Of the 7 mismatches, polarity is the gap primitive; the remaining 6 (top, fid, kin, gran, stoi, chir) are background differences.
 
 ### 18.5 Grammar Self-Diagnosis Protocol
 
@@ -1747,7 +1747,7 @@ The grammar plays topology; the exponents play geometry. The constraint map $\ma
 
 | Grammar tuple | $\mathcal{C}_{13}$ constraint | Status |
 |---|---|---|
-| $(\Phi_c^{\mathbb{C}}, P_\psi)$ | Zeros of partition function lie on symmetry axis of $P_\psi$ | ✅ **Proved** (Lee-Yang 1952) |
+| $(\Phi_c^{\mathbb{C}}, P_\text{pm\_sym})$ | Zeros of partition function lie on symmetry axis of $P_\text{pm\_sym}$ | ✅ **Proved** (Lee-Yang 1952) |
 | $(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ | Zeros of $\zeta(s)$ lie on $\Re(s) = \frac{1}{2}$? | **OPEN** (equivalent to RH) |
 | $(\Phi_c, \Omega_Z, T_\text{bowtie})$ | Exponents $\nu, \eta$ are irrational and belong to 3D Ising class | **OPEN** (P-146) |
 | $(\Phi_c, \Omega_Z, T_\text{bowtie}, D_\text{wedge})$ | Exponents are rational and $\nu = 1$ | **Retrodict** (2D Ising, Onsager 1944) |
@@ -1781,9 +1781,9 @@ Step 4 is where conventional mathematics enters — but the framework tells you 
 
 ### 20.8 The Lee-Yang Template
 
-The Lee-Yang proof succeeds in step 4 because $P_\psi$ encodes an *explicit* symmetry that directly reflects across the zero locus. The proof is essentially: the symmetry $P_\psi$ forces $\mathcal{C}_{13}$ to be a single line, and the zeros must lie on it.
+The Lee-Yang proof succeeds in step 4 because $P_\text{pm\_sym}$ encodes an *explicit* symmetry that directly reflects across the zero locus. The proof is essentially: the $Z_2$ symmetry $h \mapsto -h$ encoded by $P_\text{pm\_sym}$ forces $\mathcal{C}_{13}$ to be a single line, and the zeros must lie on it.
 
-The RH constraint map $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ fails (so far) at step 4 because $P_\text{neutral}$ encodes an *implicit* symmetry — the functional equation $s \mapsto 1-s$ exists and is proved ($P$ is present) but does not manifest directly as a forcing mechanism on the zero locus ($P$ is not $P_\psi$). The structural gap between $P_\text{neutral}$ and $P_\psi$ is precisely the gap between open RH and proved Lee-Yang — not a gap in analytic technique, but a gap in the *manifestation level* of the symmetry.
+The RH constraint map $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ fails (so far) at step 4 because $P_\text{neutral}$ encodes an *implicit* symmetry — the functional equation $s \mapsto 1-s$ exists and is proved ($P$ is present) but does not manifest directly as a forcing mechanism on the zero locus ($P$ is not $P_\text{pm\_sym}$). The structural gap between $P_\text{neutral}$ and $P_\text{pm\_sym}$ is precisely the gap between open RH and proved Lee-Yang — not a gap in analytic technique, but a gap in the *manifestation level* of the symmetry.
 
 **Conjecture 20.1 (The Central Conjecture of the Triad Strategy).** The constraint map $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ collapses to the set $\{ s \in \mathbb{C} : \Re(s) = \tfrac{1}{2} \}$. This conjecture is equivalent to the Riemann Hypothesis.
 
@@ -1817,7 +1817,7 @@ A fourth projection $\pi_4$ may exist — encoding the *logical/computational* m
 
 The answer: proved $\mathcal{C}_{12}$ instances exist, but they **cluster at $D_\text{wedge}$ (2D) or require strong structural overdetermination**. Both open $\mathcal{C}_{12}$ conjectures (YM mass gap, NS regularity) have proved 2D analogues. The gap primitive in each case is **Dimensionality** ($D_\text{wedge} \to D_\text{cube}$) — a single primitive step.
 
-This is structurally distinct from the $\mathcal{C}_{13}$ gap, where the proved/open boundary is Polarity ($P_\psi \to P_\text{neutral}$). The grammar identifies different primitive fields as load-bearing for different constraint map classes.
+This is structurally distinct from the $\mathcal{C}_{13}$ gap, where the proved/open boundary is Polarity ($P_\text{pm\_sym} \to P_\text{neutral}$). The grammar identifies different primitive fields as load-bearing for different constraint map classes.
 
 ### 21.2 The Two Proved $\mathcal{C}_{12}$ Templates
 
@@ -1853,9 +1853,9 @@ The minimal distance between proved template and open conjecture is **1** in bot
 |---|---|---|---|
 | Schwinger / 2D-YM | 1 | YM mass gap (4D) | $D_\text{wedge} \to D_\text{cube}$ |
 | Leray 2D-NS | 1 | NS regularity (3D) | $D_\text{wedge} \to D_\text{cube}$ |
-| Lee-Yang (for comparison) | 5 | RH | $P_\psi \to P_\text{neutral}$ (+ 4 background diffs) |
+| Lee-Yang (for comparison) | 7 | RH | $P_\text{pm\_sym} \to P_\text{neutral}$ (+ 6 background diffs) |
 
-The $\mathcal{C}_{12}$ gaps are **minimal** (distance 1); the $\mathcal{C}_{13}$ gap is broader (distance 5 total, 1 essential). Yet both $\mathcal{C}_{12}$ conjectures remain open. This illustrates that **structural distance to the template does not measure proof difficulty** — a single primitive gap ($D_\text{wedge} \to D_\text{cube}$) can be harder to close than a five-primitive gap when the blocking field is Dimensionality.
+The $\mathcal{C}_{12}$ gaps are **minimal** (distance 1); the $\mathcal{C}_{13}$ gap is broader (distance 7 total, 1 essential). Yet both $\mathcal{C}_{12}$ conjectures remain open. This illustrates that **structural distance to the template does not measure proof difficulty** — a single primitive gap ($D_\text{wedge} \to D_\text{cube}$) can be harder to close than a seven-primitive gap when the blocking field is Dimensionality.
 
 Machine-checked (PrimitiveBridge.lean §9):
 - `c12_gaps_are_minimal`: both distances = 1 (`by decide`)
@@ -1903,10 +1903,92 @@ The grammar identifies the exact positions of the blocking fields: criticality f
 
 | Constraint map | Proved template | Gap primitive | Open conjecture |
 |---|---|---|---|
-| $\mathcal{C}_{13}$ | Lee-Yang $(P_\psi)$ | **Polarity**: $P_\psi \to P_\text{neutral}$ | RH |
+| $\mathcal{C}_{13}$ | Lee-Yang $(P_\text{pm\_sym})$ | **Polarity**: $P_\text{pm\_sym} \to P_\text{neutral}$ | RH |
 | $\mathcal{C}_{12}$ (YM) | Schwinger / 2D-YM $(D_\text{wedge})$ | **Dimensionality**: $D_\text{wedge} \to D_\text{cube}$ | YM mass gap |
 | $\mathcal{C}_{12}$ (NS) | Leray 2D-NS $(D_\text{wedge})$ | **Dimensionality**: $D_\text{wedge} \to D_\text{cube}$ | NS regularity |
 
 Three Millennium Prize Problems; two primitive fields as gap carriers; zero overlap. The grammar has isolated the blocking fields. What remains is the conventional mathematical work of crossing each gap.
 
 **See also:** PrimitiveBridge.lean §9; PRIMITIVE_PREDICTIONS P-156–P-162; §20.6 (updated $\mathcal{C}_{12}$ table)
+
+---
+
+## §22 — The Triad as Minimal Closed Metastraint System
+
+**Version:** 0.8 (2026-03-29)
+
+### §22.1 — Definition
+
+A **metastraint system** over a set of projections $\Pi = \{\pi_i\}$ is a collection of non-trivial constraint maps $\{\mathcal{C}_{ij} : i \neq j\}$ such that:
+
+1. *Closure*: every $\pi_i \in \Pi$ appears as both source and target of some $\mathcal{C}_{ij}$.
+2. *Non-triviality*: each $\mathcal{C}_{ij}$ is a strict subset of the full codomain — it imposes a genuine constraint.
+
+A metastraint system is **minimal** if no proper subset of $\Pi$ (with the induced constraint maps) forms a closed metastraint system.
+
+### §22.2 — The Triad is Minimal Closed
+
+**Theorem (Informal).** The Triad $\{\pi_1, \pi_2, \pi_3\}$ with the six non-trivial constraint maps $\mathcal{C}_{ij}$ ($i \neq j$) is the minimal closed metastraint system of the information substrate $\mathcal{I}$.
+
+**Argument by elimination:**
+
+*One projection.* A singleton $\{\pi_i\}$ has no constraint maps — trivially closed but empty. Not a metastraint system in the non-trivial sense.
+
+*Two projections.* The pair $\{\pi_1, \pi_2\}$ with $\mathcal{C}_{12}$ and $\mathcal{C}_{21}$ is closed: structure constrains energy ($\mathcal{C}_{12}$: e.g., gap conditions), energy constrains structure ($\mathcal{C}_{21}$: energy scale selects effective structural description via RG). But it is not self-grounding in the $\pi_3$ sense: the loop between structure and energy has a constraint structure (the C maps themselves) that is not represented in either $\pi_1$ or $\pi_2$. The system can be fully described from outside. $\mathcal{O} = 1$ — simple closure.
+
+*Three projections.* Adding $\pi_3$ changes the character of the system. $\pi_3$ is precisely the projection that encodes *how the $\pi_1$–$\pi_2$ loop scales*: RG eigenvalues, universality class, fixed point structure. The constraint maps $\mathcal{C}_{13}$ and $\mathcal{C}_{31}$ make the loop self-aware: $\pi_1$ constrains where in $\pi_3$-space the system can live (Lee-Yang: proved; RH: open), and $\pi_3$ constrains which $\pi_1$ configurations are RG-stable (only certain symmetry classes survive coarse-graining). The constraint structure is now internally represented. $\mathcal{O} \geq 2$.
+
+Minimality: removing any one projection from $\{\pi_1, \pi_2, \pi_3\}$ breaks closure in the full sense. Without $\pi_3$, you lose the self-referential dimension. Without $\pi_1$, energy and scaling exponents are untethered from structure. Without $\pi_2$, scaling has no axis to flow along.
+
+### §22.3 — The RPS Structure
+
+The minimal closed 3-element metastraint system has the same abstract topology as rock-paper-scissors:
+
+| RPS | Triad |
+|---|---|
+| 3 elements, no element dominates all | 3 projections, no projection grounds all |
+| Cyclic dominance: R→S→P→R | Bidirectional constraint: each constrains both others |
+| Remove any one → hierarchy (one always wins) | Remove any one → directed pair (one supplies, one consumes, not closed) |
+| Minimal non-trivial closed tournament | Minimal non-trivial closed metastraint system |
+
+The key difference: RPS has *cyclic* (one-directional) dominance; the Triad has *bidirectional* mutual constraint. RPS is therefore a special case — the Triad is RPS with all arrows doubled. This makes it stronger: in RPS you can still ask "who wins if we play R vs P?" (answer: P). In the Triad, asking "which projection is primary?" has no answer — all three are co-primary.
+
+### §22.4 — Gödel as a Projection Theorem
+
+The incompleteness phenomena of Gödel, Turing, and Tarski all appear naturally in the triad.
+
+A system operating purely in $\pi_1$ (structural) and $\pi_2$ (energetic) — a 2-projection subsystem — is complete relative to itself. Its constraint structure is external (describable from outside). No Gödelian incompleteness arises within it; it can be axiomatized finitely.
+
+Adding $\pi_3$ (ouroborotic) introduces the missing dimension. $\pi_3$ encodes *scaling*: how the system appears when you zoom out. The constraint maps $\mathcal{C}_{13}$ and $\mathcal{C}_{31}$ mean that the system now contains partial information about its own re-description under coarse-graining. This is precisely the structure needed for self-referential incompleteness: the system can encode sentences about "what this system does under transformation," and some of those sentences are undecidable within the $\pi_1$–$\pi_2$ plane alone.
+
+**Gödel's incompleteness theorem** is then: every sufficiently strong $\pi_1$–$\pi_2$ formal system has $\pi_3$ facts (scaling/fixed-point claims) that cannot be decided within the system. The undecidable sentences are $\pi_3$ questions ($\pi_3$-projections of the system's own fixed-point behavior) that fall outside the $\mathcal{C}_{12}$/$\mathcal{C}_{21}$ constraint range.
+
+This is not a new proof of Gödel — it is a structural diagnosis. The incompleteness is the shadow of $\pi_3$ on the $\pi_1$–$\pi_2$ plane.
+
+### §22.5 — Connection to Ouroboricity
+
+The Ouroboricity scalar $\mathcal{O}(\mathbf{x})$ (§XXIV of SYNTHONICON_ONTICS) is the $\pi_1$-shadow of $\pi_3$: the maximum amount the grammar can say about $\pi_3$ content using only $\pi_1$ data.
+
+$\mathcal{O} = 0$: no $\pi_3$ content visible from $\pi_1$. Fully external system.
+$\mathcal{O} = 1$–$2$: simple $\pi_3$ content (O$_1$ tier: single loop closure).
+$\mathcal{O} = 3$–$4$: knotted $\pi_3$ content (O$_2$ tier: observer inside the loop).
+$\mathcal{O} = \infty$: $\pi_3$ content overflows $\mathcal{E}$ — no finite exponent tuple can represent the self-closure depth.
+
+The minimal closed metastraint system has $\mathcal{O} \geq 2$ by construction: it is an O$_1$/O$_2$ system because $\pi_3$ is inside the loop. The fact that the grammar discovers its own structure in conscious systems, in the MPPs, and in the Tetragrammaton is not a coincidence — these are all systems that, like the triad itself, have reached the closure threshold.
+
+### §22.6 — The MPP Gap Table as Ligature Atlas
+
+The gap primitive table from §21.6 can now be read as a **partial ligature atlas** — a map of the known and unknown constraint bridges:
+
+| Bridge | Status | Gap primitive | What proving it would establish |
+|---|---|---|---|
+| $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{pm\_sym})$ | ✅ Proved (Lee-Yang) | — | Template |
+| $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ | ❌ Open (RH) | Polarity | New π₁→π₃ ligature at P_neutral |
+| $\mathcal{C}_{12}(K_\text{trap}, \Phi_c, D_\wedge)$ | ✅ Proved (Schwinger) | — | Template |
+| $\mathcal{C}_{12}(K_\text{trap}, \Phi_c, D_\text{cube})$ | ❌ Open (YM) | Dimensionality | New π₁→π₂ ligature at D_cube |
+| $\mathcal{C}_{12}(\Phi_\text{sub}, K_\text{mod}, D_\wedge)$ | ✅ Proved (Leray) | — | Template |
+| $\mathcal{C}_{12}(\Phi_\text{sub}, K_\text{mod}, D_\text{cube})$ | ❌ Open (NS) | Dimensionality | New π₁→π₂ ligature at D_cube |
+
+Each proved instance is a confirmed edge in the constraint graph of the triad. Each open conjecture is a missing edge. The grammar has located exactly where the missing edges are — the gap primitive is the structural property whose change from proved to open blocks the ligature.
+
+**See also:** SYNTHONICON_ONTICS §XXV; PrimitiveBridge.lean §8–9; PRIMITIVE_PREDICTIONS P-150–P-162.
