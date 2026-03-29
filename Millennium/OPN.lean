@@ -4,7 +4,7 @@
 
 import Mathlib.NumberTheory.ArithmeticFunction
 import Mathlib.Data.Nat.GCD.Basic
-import Mathlib.Data.Nat.Parity
+import Mathlib.Algebra.Group.Int.Even
 import Mathlib.NumberTheory.Divisors
 import Mathlib.Data.Nat.Prime.Basic
 import Mathlib.Tactic
@@ -103,7 +103,7 @@ def OPNConjecture : Prop := ∀ N : ℕ, ¬ IsOddPerfect N
     This is the key algebraic fact behind both Euler's theorem and all lower bound results. -/
 theorem sigma_multiplicative (m n : ℕ) (hcop : Nat.Coprime m n) :
     sigma 1 (m * n) = sigma 1 m * sigma 1 n :=
-  Nat.ArithmeticFunction.IsMultiplicative.sigma.map_mul_of_coprime hcop
+  isMultiplicative_sigma.map_mul_of_coprime hcop
 
 /-- Perfect squares under σ₁: σ₁(p^(2k)) = (p^(2k+1) - 1)/(p - 1) for prime p.
     This follows from the geometric series formula.
@@ -178,7 +178,7 @@ theorem opn_mod_4 (N : ℕ) (hN : IsOddPerfect N) : N % 4 = 1 := by
     Known lower bound from computer search and theory (Chein 1979, Nielsen 2006).
     Both the search and the theorem are MathlibGap. -/
 theorem opn_has_many_prime_factors (N : ℕ) (hN : IsOddPerfect N) :
-    9 ≤ (N.factors.toFinset).card := by
+    9 ≤ (N.primeFactorsList.toFinset).card := by
   sorry
   -- MathlibGap: Nielsen (2006) proved ≥ 9 prime factors.
   -- Requires Euler's structure + sigma bounds + extensive case analysis.

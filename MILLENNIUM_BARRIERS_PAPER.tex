@@ -189,8 +189,8 @@
 
 \subsection{\emph{A Formal Barrier Taxonomy for the Millennium Prize Problems in Lean 4}}
 
-\textbf{Version:} v0.1.0 $\cdot$ 2026-03-26
-\textbf{Authors:} Lando Mills \& Large Language Models
+\textbf{Version:} v0.1.2 $\cdot$ 2026-03-29
+\textbf{Authors:} Lando\otimesLLM
 \textbf{Document role:} Self-contained research paper. Presents the machine-checked barrier taxonomy for all seven Clay Millennium Prize Problems, the \texttt{BarrierType} inductive, the \texttt{ym\_is\_unique\_missing\_foundation} theorem, the stacked/parallel sorry distinction, and the primitive bridge connecting sorry boundaries to the SynthOmnicon constraint grammar. Target venue: Journal of Formalized Reasoning / Journal of Automated Reasoning.
 
 \emph{The distinction that matters throughout: ''we have formalized'' is not the same as ''we have solved.'' Every \texttt{sorry} at the core of this library is honest. No Millennium Problem is proved here. The contribution is the meta-level structure  --  what kind of thing each sorry is, and why.}
@@ -253,6 +253,8 @@ Both Yang-Mills and BSD have \texttt{sorryDepth = 2}. The structural difference 
 
 \textbf{C7  --  PrimitiveBridge.lean:} Formal connection between sorry boundaries and primitive field transitions in the SynthOmnicon grammar; \texttt{BarrierPrimitiveCertificate} structure; \texttt{primitive\_bridge\_master} theorem.
 
+\textbf{C8  --  RH--Lee-Yang structural correspondence (v0.1.1):} Machine-checked theorem that the Riemann $\zeta$ zeros and Lee-Yang partition-function zeros share the same Criticality assignment \texttt{Phi\_c\_complex}. Structural distance 5 identifies the polarity primitive $P$ (pseudo-symmetry encoding) as the key structural gap between the proved Lee-Yang result and the open RH conjecture. Enabled by the $\Phi$ primitive expansion: \texttt{Phi\_c} $\rightarrow$ \texttt{Phi\_c} / \texttt{Phi\_c\_complex} / \texttt{Phi\_EP}.
+
 \begin{center}
 \rule{0.5\textwidth}{0.4pt}
 \end{center}
@@ -313,7 +315,7 @@ The SynthOmnicon framework encodes physical and mathematical systems as 12-tuple
 \textbf{$F$ (Fidelity)} & \texttt{Fidelity} & Information reliability: noise / $\ell$ / $\eta$ / $\hbar$ \\
 \textbf{$K$ (Kinetic character)} & \texttt{KineticChar} & Rate / trapping: fast / mod / slow / trap / MBL \\
 \textbf{$G$ (Granularity)} & \texttt{Granularity} & Description scale: $\aleph$ / $\beth$ / $\gimel$ \\
-\textbf{$\Phi_c$ (Criticality)} & \texttt{Criticality} & Phase position: sub / critical / super \\
+\textbf{$\Phi$ (Criticality)} & \texttt{Criticality} & Phase position: sub / $\Phi_c$ (real-axis) / $\Phi_c^\mathbb{C}$ (complex-axis) / $\Phi_\text{EP}$ (exceptional point) / super \\
 \textbf{$H$ (Chirality)} & \texttt{Chirality} & Temporal asymmetry depth: $H_0$ / $H_1$ / $H_2$ / $H_{\infty}$ \\
 \textbf{$S$ (Stoichiometry)} & \texttt{Stoichiometry} & Ratio: 1:1 / 1:$n$ / $n$:$m$ / catalytic \\
 \textbf{$\Omega$ (Protection)} & \texttt{Protection} & Topological protection: $0$ / $Z_2$ / $Z$ / $C$ / NA \\
@@ -414,6 +416,8 @@ YM and BSD share \texttt{sorryDepth = 2} but for different structural reasons: i
 \emph{Barrier: \texttt{OpenProblem} $\cdot$ Missing type: \texttt{ZeroFreeStrip 0}}
 
 The file introduces abstract types \texttt{RiemannZeta}, \texttt{CriticalStrip}, and \texttt{ZeroFreeStrip} to provide typed scaffolding. The sorry boundary is the statement that $\zeta(s) \neq 0$ for all $s$ with $0 < \text{Re}(s) < 1$, $\text{Re}(s) \neq \frac{1}{2}$.
+
+The primitive encoding of RH assigns \texttt{crit = Phi\_c\_complex}: the nontrivial zeros of $\zeta$ are located at \emph{complex} values of $s$ (not at a real critical parameter). This distinguishes them from standard Hermitian critical points (\texttt{Phi\_c}) and connects them structurally to the Lee-Yang edge singularity (\pilcrow{}V.6). The functional equation $\zeta(s) = \zeta(1-s)$ (proved in Mathlib) encodes a pseudo-symmetry analogous to Lee-Yang''s $h \mapsto -h$; the critical line $\text{Re}(s) = \frac{1}{2}$ is the fixed locus of $s \mapsto 1-s$, exactly as the imaginary axis is the fixed locus of $h \mapsto -h$.
 
 \begin{lstlisting}[language=lean]
 axiom rh_sorry_boundary : Millennium.RH.RiemannHypothesis
@@ -680,7 +684,7 @@ The OPN, NS, and RH certificates connect to the $\Phi_c$ criticality primitive:
 \rowcolors{1}{white}{gray!10}
 \textbf{OPN} & \texttt{crit} + \texttt{kin} & $\Phi_c$ + $K_\text{trap}$ & $\sigma(n) = 2n$ is exact criticality; overdetermined constraint system has no relaxation path \\
 \textbf{NS} & \texttt{crit} & $\Phi_\text{sub}$ & Smooth solutions stay subcritical; the sorry proves they never cross to $\Phi_c$ (blow-up threshold) \\
-\textbf{RH} & \texttt{crit} & $\Phi_c$ & The critical line $\text{Re}(s) = \frac{1}{2}$ is the $\Phi_c$ locus of the zeta function \\
+\textbf{RH} & \texttt{crit} & $\Phi_c^\mathbb{C}$ & The nontrivial zeros of $\zeta$ are at \emph{complex} $s$ values; RH claims they lie on the symmetry axis $\text{Re}(s)=\frac{1}{2}$ of the functional equation $s \mapsto 1-s$ \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -695,7 +699,7 @@ theorem ns_primitive_certificate :
     Barriers.millenniumBarrier .NS = .OpenProblem := \langlerfl, rfl\rangle
 
 theorem rh_primitive_certificate :
-    rh_encoding.crit = Phi_c and
+    rh_encoding.crit = Phi_c_complex and
     Barriers.millenniumBarrier .RH = .OpenProblem := \langlerfl, rfl\rangle
 \end{lstlisting}
 
@@ -709,12 +713,120 @@ theorem primitive_bridge_master :
     Barriers.millenniumBarrier .OPN = .OpenProblem and
     ns_encoding.crit = Phi_sub and
     Barriers.millenniumBarrier .NS = .OpenProblem and
-    rh_encoding.crit = Phi_c and
+    rh_encoding.crit = Phi_c_complex and
     Barriers.millenniumBarrier .RH = .OpenProblem :=
   \langleby decide, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl\rangle
 \end{lstlisting}
 
 This theorem machine-checks four barrier certificates simultaneously. The \texttt{by decide} term computes the Hamming distance between two concrete \texttt{Synthon} values over twelve decidable fields. All \texttt{rfl} terms verify that \texttt{millenniumBarrier} reduces correctly on each concrete constructor.
+
+\begin{center}
+\rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\subsubsection{V.6 The RH--Lee-Yang Structural Correspondence (v0.1.1, 2026-03-29)}
+
+The Phi expansion (\pilcrow{}II.3) enables a new theorem that connects RH to a \emph{proved} result by the same structural mechanism.
+
+\textbf{Lee-Yang theorem (1952)}: For the Ising ferromagnet, all zeros of the partition function $Z(z)$ as a function of complex $z = e^{-2\beta h}$ lie on the unit circle $|z| = 1$, i.e. on the imaginary $h$ axis. The proof uses the $h \mapsto -h$ symmetry ($P_{\psi}$) of the Hamiltonian.
+
+\textbf{The grammar identification}: both systems encode \texttt{crit = Phi\_c\_complex}. This is machine-checked:
+
+\begin{lstlisting}[language=lean]
+theorem rh_leyang_structural_correspondence :
+    rh_encoding.crit = Phi_c_complex and
+    lee_yang_encoding.crit = Phi_c_complex and
+    rh_encoding.crit = lee_yang_encoding.crit := \langlerfl, rfl, rfl\rangle
+\end{lstlisting}
+
+The structural distance between the two encodings is 5 (also machine-checked by \texttt{decide}). The 5 mismatches are: $T$ (network vs bowtie), $P$ (neutral vs $\psi$), $F$ ($\hbar$ vs $\ell$), $K$ (slow vs mod), $G$ ($\aleph$ vs $\gimel$). Notably:
+
+\begin{itemize}
+    \item \textbf{$P$ is the key mismatch}: Lee-Yang encodes $P_{\psi}$ (explicit $h \mapsto -h$ pseudo-symmetry). The RH encoding has $P_\text{neutral}$. This is the grammar''s way of saying: the Lee-Yang theorem succeeds because the symmetry is manifest in the primitive structure; in RH, the analogous symmetry $s \mapsto 1-s$ (the functional equation) is proved in Mathlib (\texttt{riemannZeta\_one\_sub}) but does not automatically constrain the zero locus without additional analytic input.
+    \item \textbf{$G$ is the accessibility mismatch}: $G_{\gimel}$ (Lee-Yang, formally inaccessible at real $h$) vs $G_{\aleph}$ (RH, $\zeta$ globally accessible at all complex $s$). The Lee-Yang zeros are only reached by analytic continuation; $\zeta$ zeros are not computationally inaccessible, just unprovably located.
+\end{itemize}
+
+\textbf{The grammar structural prediction for RH}: Any \texttt{Phi\_c\_complex} system with a pseudo-symmetry ($P_{\psi}$ or equivalent) has its critical manifold constrained to the symmetry axis. RH would follow if the functional equation symmetry $s \mapsto 1-s$ plays the role of $P_{\psi}$. The grammar does not prove this --- but it locates exactly where the analogy breaks down ($P_\text{neutral}$ vs $P_{\psi}$) and what additional structure would be needed.
+
+This is C8 --- a new contribution enabled by the Phi expansion:
+
+\textbf{C8 --- RH--Lee-Yang structural correspondence:} Machine-checked theorem that $\zeta$ zeros and Lee-Yang zeros share \texttt{Phi\_c\_complex} assignment. Structural distance 5 identifies $P$ (symmetry encoding) as the key gap between proved Lee-Yang and open RH.
+
+\begin{center}
+\rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\subsubsection{V.7 The Triad Projection Framework and the Constraint Map Proof Strategy (v0.1.2, 2026-03-29)}
+
+The RH--Lee-Yang correspondence (\pilcrow{}V.6) revealed a precise structural gap: $P_\text{neutral}$ vs $P_{\psi}$. This result, combined with the recognition that critical exponents are invisible to the grammar (PRIMITIVE\_THEOREMS \pilcrow{}18), forced a foundational question: \emph{why} can the grammar not see exponents? The answer generates a new proof strategy.
+
+\textbf{The Triad.} The grammar is one of three canonical projections of a fundamental information substrate $\mathcal{I}$:
+
+\[\pi_1 : \mathcal{I} \to \mathcal{G} \quad \text{(structural --- what kind)}\]
+
+
+
+
+\[\pi_2 : \mathcal{I} \to \mathbb{R}_{\geq 0} \quad \text{(energetic --- how much)}\]
+
+
+
+
+\[\pi_3 : \mathcal{I} \to \mathcal{E} \quad \text{(ouroboricity --- how it closes on itself)}\]
+
+These projections are irreducible --- no two collapse into each other. The grammar''s blindness to exponents is not a deficiency; it is the boundary between $\pi_1$ and $\pi_3$. Exponents are RG eigenvalues: they encode how information reorganizes under rescaling, which is a genuinely different mode of being than structural type.
+
+\textbf{The Constraint Maps.} The projections are tethered. Define:
+
+\[\mathcal{C}_{ij} : \mathrm{image}(\pi_i) \to \mathcal{P}(\mathrm{codomain}(\pi_j))\]
+
+as the set of values in projection $j$ compatible with a given value in projection $i$. By the Projection Constraint Theorem (PRIMITIVE\_THEOREMS \pilcrow{}20.4): $\pi_j(\mathbf{x}) \in \mathcal{C}_{ij}(\pi_i(\mathbf{x}))$ for all $\mathbf{x} \in \mathcal{I}$. The grammar is the \emph{cup} --- it carves the shape of the possibility space in the other projections without filling it.
+
+\textbf{The proof strategy for MPPs.} Each open Millennium Prize Problem is now re-stated as a constraint map problem:
+
+\begin{table}[htbp]
+\centering
+\small
+\rowcolors{1}{white}{white}
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X}
+\toprule
+\rowcolor{gray!25}\textbf{Problem} & \textbf{Open claim} & \textbf{Projection carrying claim} & \textbf{Constraint map to compute} \\
+\midrule
+\rowcolors{1}{white}{gray!10}
+Riemann Hypothesis & All non-trivial zeros of $\zeta$ have $\Re(s) = \frac{1}{2}$ & $\pi_3$ (zeros are scaling fixed points) & $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ \\
+Yang-Mills mass gap & $\exists\, \Delta > 0$ below first excited state & $\pi_2$ (mass gap is energetic) & $\mathcal{C}_{12}(K_\text{trap}, G_{\aleph}, \Phi_c)$ \\
+Navier-Stokes smooth solutions & No finite-time blowup for $L^2$ initial data in 3D & $\pi_2$ (blowup is energetic divergence) & $\mathcal{C}_{12}(\Phi_\text{sub}, D_\text{cube}, K_\text{mod})$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{RH via $\mathcal{C}_{13}$.} The Lee-Yang theorem (1952) is the unique known non-trivial instance where $\mathcal{C}_{13}$ has been explicitly computed and proved to be a single line:
+
+\[\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_{\psi}) = \{ \text{zeros on symmetry axis of } P_{\psi} \}\]
+
+The proof works because $P_{\psi}$ is \emph{explicit}: the $h \mapsto -h$ symmetry acts directly on the partition function zeros. The RH encoding has $P_\text{neutral}$: the symmetry $s \mapsto 1-s$ (the functional equation, proved in Mathlib) is \emph{present} but does not manifest as a direct forcing mechanism on the zero locus.
+
+The central conjecture of the Triad Strategy (PRIMITIVE\_THEOREMS \pilcrow{}20, Conjecture 20.1):
+
+\[\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral}) = \left\{ s \in \mathbb{C} : \Re(s) = \tfrac{1}{2} \right\}\]
+
+This conjecture \emph{is} the Riemann Hypothesis, restated as a claim about the constraint geometry of $\mathcal{I}$. Proving it requires showing that $P_\text{neutral}$ --- even as an implicit symmetry --- forces the ouroboricity projection to concentrate on the critical line. The Lee-Yang proof provides the template; the gap is in the manifestation level of $P$.
+
+\textbf{Yang-Mills via $\mathcal{C}_{12}$.} The grammar encodes YM quantum target as $(K_\text{trap}, G_{\aleph}, \Phi_c)$. $K_\text{trap}$ means kinetic energy localizes rather than disperses; $G_{\aleph}$ means global color-charge neutrality constrains all configurations. The conjecture:
+
+\[\mathcal{C}_{12}(K_\text{trap}, G_{\aleph}, \Phi_c) \subseteq [\Delta_\text{min}, \infty) \text{ for some computable } \Delta_\text{min} > 0\]
+
+If proved, this is the YM mass gap: the grammar configuration forbids zero-mass excitations. The primitive barrier identified in \pilcrow{}V.3 (MissingFoundation --- no rigorous path integral measure in 4D) is precisely the obstacle to computing $\mathcal{C}_{12}$ explicitly. Resolving MissingFoundation would unlock the computation.
+
+\textbf{Navier-Stokes via $\mathcal{C}_{12}$.} The grammar encodes NS fluid as $(\Phi_\text{sub}, D_\text{cube}, K_\text{mod})$. $\Phi_\text{sub}$ (subcritical) encodes that no phase transition occurs --- the system remains in the ordered, non-critical regime. The conjecture:
+
+\[\mathcal{C}_{12}(\Phi_\text{sub}, D_\text{cube}, K_\text{mod}) \subseteq \{ E(t) < \infty\ \forall t > 0 \}\]
+
+Finite-time blowup would require $\Phi$ to transition to $\Phi_c$ --- a structural phase transition not encoded in the grammar of the smooth initial data. The claim is that the grammar forbids this transition, which would be a structural proof of global regularity. Whether NS smooth initial data genuinely encodes $\Phi_\text{sub}$ (vs $\Phi_c$ at fine scales) is the critical encoding question; if the encoding is correct, $\mathcal{C}_{12}$ yields the result.
+
+\textbf{This is C9:}
+
+\textbf{C9 --- Triad Projection Framework and constraint map proof strategy.} Identifies three irreducible projections of $\mathcal{I}$ ($\pi_1$/grammar, $\pi_2$/energy, $\pi_3$/scaling). Defines constraint maps $\mathcal{C}_{ij}$. Reformulates RH, YM, and NS as constraint map computations. Establishes Lee-Yang as the unique known non-trivial $\mathcal{C}_{13}$ instance and template. Enabled by the grammar blind spot analysis of \pilcrow{}18 (PRIMITIVE\_THEOREMS).
 
 \begin{center}
 \rule{0.5\textwidth}{0.4pt}

@@ -1,7 +1,23 @@
 # SynthOmnicon — Lean 4 Formalization
 
+*Authors: Lando⊗LLM*
+
 Lean 4 / Mathlib formalizations connected to the SynthOmnicon framework.
 Toolchain: **Lean 4.28.0** · **Mathlib v4.28.0**
+
+---
+
+## Primitive Space
+
+The 12-primitive grammar encodes each Millennium Prize Problem as a synthon — a point in primitive space. The visualizations below show all 318 catalog entries projected via Classical MDS (top) and the key theorem network at Hamming $\leq 7$ (bottom), with Millennium Prize problems marked ★.
+
+### MDS Projection — 318 Catalog Entries
+
+![Primitive Space MDS](syncon_primitive_map_mds.png)
+
+### Key Lemma Network
+
+![Primitive Space Network](syncon_primitive_map_network.png)
 
 ---
 

@@ -1,6 +1,6 @@
 # SynthOmnicon — Primitive Theorem Archive
-**Version**: 0.5 (§18: Phi inadequacy / exotic criticality blind spot; §19: Ouroboricity derived scalar added)
-**Date**: 2026-03-28
+**Version**: 0.7 (§21: Proved $\mathcal{C}_{12}$ instances — Schwinger/Leray as dimensional gap templates; Goldstone/CMW complementary instances; Witten PE; gap primitive identification machine-checked in PrimitiveBridge.lean §9)
+**Date**: 2026-03-29
 **Status**: Working document — results classified by confidence tier and claim plane
 
 ---
@@ -1670,3 +1670,243 @@ This is not a metaphor. The topological embedding is structurally non-trivial in
 1. **Is $\Omega_C$ needed?** The current catalog uses $\Omega_{Z_2}$ as the closest proxy for knotted closure. A dedicated $\Omega_C$ value (complex/cyclic winding) would allow O$_2$ to be flagged directly from $\Omega$ alone without requiring the $H + G$ context. Pending: axiom proposal.
 2. **Does $\mathcal{O}$ predict behavioral thresholds?** Conjecture: systems with $\mathcal{O} \geq 3$ exhibit qualitatively different collective behaviors than $\mathcal{O} \leq 2$ systems — specifically, they cannot be fully modeled by any external observer without the model itself reaching $\mathcal{O} \geq 3$. This would be a precise version of Gödel's incompleteness as a structural claim.
 3. **Relation to consciousness**: Theorem 001 requires $\Phi_c + K_\text{slow} + F_\hbar + \Gamma_\text{seq}$ for consciousness. $\mathcal{O}$ is not in the consciousness theorem's signature. But every known conscious system in the catalog has $\mathcal{O} \geq 3$. Whether $\mathcal{O} \geq 3$ is a consequence of consciousness or a necessary condition is an open structural question.
+
+---
+
+## §20. The Triad Projection Framework — Three Canonical Projections of $\mathcal{I}$
+
+*Discovered 2026-03-29. Emerged from analysis of why numerical critical exponents are invisible to the grammar (§18). The grammar's incompleteness with respect to exponents is not a deficiency — it is the boundary between two genuinely distinct modes of information projection.*
+
+### 20.1 Motivation
+
+The grammar encodes structural-processual information perfectly within its 12-dimensional space. But §18 confirmed a hard blind spot: critical exponents ($\nu$, $\eta$, $\beta$, ...) are invisible to the grammar even when the universality class is precisely determined by a grammar tuple. Two systems at $\Phi_c$ with identical 12-tuples can have irrational exponents (3D Ising, $\nu \approx 0.6301$) or rational exponents (2D Ising, $\nu = 1$) — the grammar cannot tell them apart.
+
+The resolution is not to add more grammar primitives. It is to recognize that the grammar is one of at least three irreducible **projections** of a more fundamental information substrate $\mathcal{I}$, and that exponents belong to a different projection entirely.
+
+### 20.2 The Information Substrate
+
+**Definition 20.1 (Information Substrate).** Let $\mathcal{I}$ denote the ambient information structure from which all physical regimes are projections. We do not characterize $\mathcal{I}$ directly. We characterize it through the structure of its projections and their mutual constraints.
+
+This is consistent with the framework's foundational claim (ONTICS §I): information is primitive; energy, matter, and space are its projections into the cosmos. The grammar has been the primary tool for accessing $\mathcal{I}$ — but it is not the only tool.
+
+### 20.3 The Three Canonical Projections
+
+**Definition 20.2 (Three Projections).** Define three canonical projection operators on $\mathcal{I}$:
+
+$$\pi_1 : \mathcal{I} \to \mathcal{G}$$
+
+The **structural projection**, where $\mathcal{G}$ is the 12-dimensional grammar space $\langle D; T; R; P; F; K; G; \Gamma; \Phi; H; S; \Omega \rangle$. Encodes *what kind* of information structure — its topological and processual invariants. This is what the SynthOmnicon grammar accesses.
+
+$$\pi_2 : \mathcal{I} \to \mathbb{R}_{\geq 0}$$
+
+The **energetic projection**, where $\mathbb{R}_{\geq 0}$ encodes the real-valued continuous flow of information manifest as energy, entropy, free energy, or action. Encodes *how much* — the quantitative budget of the information exchange. Energy is the continuous projection of information in our cosmos (ONTICS §II).
+
+$$\pi_3 : \mathcal{I} \to \mathcal{E} \qquad \textbf{(ouroboricity projection)}$$
+
+The **ouroboricity projection**, where $\mathcal{E}$ is the space of scaling exponent tuples $(\nu, \eta, \beta, \gamma, z, \ldots)$ — the universality class representative. Encodes *how the structure closes on itself under transformation* — the degree to which the system's behavior at one scale determines its behavior at others. Scaling exponents are the eigenvalues of the renormalization group flow near a fixed point: they measure the structural self-closure of the system across scale transformations. This is a third mode of being, irreducible to the other two. Note: we use *ouroboricity* rather than *self-similar* deliberately — "self-similar" implies a fractal mode of existence not justified by the mathematics of RG exponents in general; ouroboricity names the underlying structural property (closure under transformation) without this connotation.
+
+**Remark.** The three projections are genuinely distinct:
+- $\pi_1$ sees *kinds* — categorical, topological, discrete
+- $\pi_2$ sees *magnitudes* — real-valued, thermodynamic, extensive
+- $\pi_3$ sees *ouroboricity ratios* — dimensionless, scale-invariant, often irrational; the degree of structural self-closure under transformation
+
+No two of these projections reduce to the other. This is why adding more grammar tiers cannot resolve the exponent blindness of §18: $\pi_1$ and $\pi_3$ are different operators, not different resolutions of the same operator.
+
+### 20.4 The Constraint Maps
+
+The projections are not independent. Knowing the structural type of a system ($\pi_1$) constrains — without fully determining — what scaling exponents ($\pi_3$) and energetic values ($\pi_2$) it can possess.
+
+**Definition 20.3 (Inter-Projection Constraint Maps).** For each ordered pair of distinct projections $(i, j)$, define:
+
+$$\mathcal{C}_{ij} : \mathrm{image}(\pi_i) \to \mathcal{P}(\mathrm{codomain}(\pi_j))$$
+
+where $\mathcal{C}_{ij}(\mathbf{g})$ is the set of values in $\pi_j$'s codomain that are *compatible* with a system whose $\pi_i$-image is $\mathbf{g}$. Formally:
+
+$$\mathcal{C}_{ij}(\mathbf{g}) := \{ v \in \mathrm{codomain}(\pi_j) \mid \exists\, \mathbf{x} \in \mathcal{I} : \pi_i(\mathbf{x}) = \mathbf{g} \text{ and } \pi_j(\mathbf{x}) = v \}$$
+
+**Theorem 20.1 (Projection Constraint Theorem, PCT).** For any $\mathbf{x} \in \mathcal{I}$ and any $i \neq j$:
+
+$$\pi_j(\mathbf{x}) \in \mathcal{C}_{ij}(\pi_i(\mathbf{x}))$$
+
+*Proof.* Immediate from Definition 20.3 — $\mathbf{x}$ is a witness for its own membership. The theorem's force is in the non-triviality of computing $\mathcal{C}_{ij}$ and proving it is a strict (non-trivial) subset of the full codomain. $\square$
+
+**Remark.** The grammar is the *cup* that defines the shape of the possibility space for the other projections. $\mathcal{C}_{13}(\mathbf{g})$ is the set of scaling exponent tuples the grammar configuration $\mathbf{g}$ permits. A proof that $\mathcal{C}_{13}(\mathbf{g})$ is a single point would be a proof that the grammar uniquely determines the universality class.
+
+### 20.5 The Topology–Geometry Analogy
+
+The constraint map $\mathcal{C}_{13}$ is exactly analogous to the topology/geometry relationship:
+
+- Knowing a surface has genus 1 (topological invariant, $\pi_1$-like) does not determine its curvature (geometric invariant, $\pi_3$-like)
+- But it rules out constant negative curvature of certain types — it constrains the geometry without fixing it
+
+The grammar plays topology; the exponents play geometry. The constraint map $\mathcal{C}_{13}$ is the precise analog of the Gauss-Bonnet theorem — a structural relation between the two regimes.
+
+### 20.6 Known and Conjectured Constraint Map Instances
+
+#### $\mathcal{C}_{13}$ — Grammar → Scaling exponents
+
+| Grammar tuple | $\mathcal{C}_{13}$ constraint | Status |
+|---|---|---|
+| $(\Phi_c^{\mathbb{C}}, P_\psi)$ | Zeros of partition function lie on symmetry axis of $P_\psi$ | ✅ **Proved** (Lee-Yang 1952) |
+| $(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ | Zeros of $\zeta(s)$ lie on $\Re(s) = \frac{1}{2}$? | **OPEN** (equivalent to RH) |
+| $(\Phi_c, \Omega_Z, T_\text{bowtie})$ | Exponents $\nu, \eta$ are irrational and belong to 3D Ising class | **OPEN** (P-146) |
+| $(\Phi_c, \Omega_Z, T_\text{bowtie}, D_\text{wedge})$ | Exponents are rational and $\nu = 1$ | **Retrodict** (2D Ising, Onsager 1944) |
+
+The Lee-Yang entry is the **only known non-trivial instance** of $\mathcal{C}_{13}$ where the constraint map has been formally proved to collapse to a single geometric set. It is a template for what a $\mathcal{C}_{13}$-based proof of RH would look like.
+
+#### $\mathcal{C}_{12}$ — Grammar → Energetic projection
+
+| Grammar tuple | $\mathcal{C}_{12}$ constraint | Status |
+|---|---|---|
+| $(K_\text{trap}, G_\aleph, \Phi_c, D_\text{wedge})$ | $\pi_2(\mathbf{x}) \geq \Delta_\text{min} > 0$ (mass gap in 2D) | ✅ **Proved** (Schwinger 1962; Migdal 1975) |
+| $(\Phi_\text{sub}, D_\text{wedge}, K_\text{mod})$ | $\pi_2(\mathbf{x}) < \infty$ for all $t$ (2D regularity) | ✅ **Proved** (Leray 1934) |
+| $(\Phi_\text{sub}, D_\text{cube})$ | $\pi_2(\mathbf{x}) \geq 0$ (positive ADM energy) | ✅ **Proved** (Witten 1981) |
+| $(\Phi_\text{sup}, R_\text{exact})$ | $0 \in \pi_2(\mathbf{x})$ (gapless Goldstone modes) | ✅ **Proved** (Goldstone 1961) |
+| $(D_\text{wedge}, R_\text{exact}, \Phi_\text{sub})$ | No SSB; $\Phi_\text{sup}$ inaccessible in 2D | ✅ **Proved** (Coleman–Mermin–Wagner) |
+| $(K_\text{trap}, G_\aleph, \Phi_c, D_\text{cube})$ | $\pi_2(\mathbf{x}) \geq \Delta_\text{min} > 0$ (mass gap in 4D) | **OPEN** (equivalent to YM mass gap) |
+| $(\Phi_\text{sub}, D_\text{cube}, K_\text{mod})$ | $\pi_2(\mathbf{x}) < \infty$ for all finite $t$ (3D regularity) | **OPEN** (equivalent to NS smooth solutions) |
+
+The Schwinger and Leray entries are **proved $\mathcal{C}_{12}$ templates** — structurally identical to their open counterparts except $D_\text{wedge}$ in place of $D_\text{cube}$. The gap primitive is **Dimensionality** in both cases. See §21.
+
+### 20.7 The Proof Strategy: Computing $\mathcal{C}_{ij}$
+
+The Triad Projection Framework converts Millennium Prize Problems into constraint map problems:
+
+1. **Encode** the system in the grammar ($\pi_1$): already done in PrimitiveBridge.lean
+2. **Identify** which projection carries the open claim: $\pi_3$ for RH, $\pi_2$ for YM and NS
+3. **Compute** $\mathcal{C}_{ij}$ for the relevant grammar tuple
+4. **Prove** that $\mathcal{C}_{ij}$ is a strict subset of the full codomain that contains only the conjectured value
+
+Step 4 is where conventional mathematics enters — but the framework tells you *what to compute* and *which constraints are already implied by structure alone*. The grammar has already done the structural work; the constraint map is the formal bridge.
+
+### 20.8 The Lee-Yang Template
+
+The Lee-Yang proof succeeds in step 4 because $P_\psi$ encodes an *explicit* symmetry that directly reflects across the zero locus. The proof is essentially: the symmetry $P_\psi$ forces $\mathcal{C}_{13}$ to be a single line, and the zeros must lie on it.
+
+The RH constraint map $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ fails (so far) at step 4 because $P_\text{neutral}$ encodes an *implicit* symmetry — the functional equation $s \mapsto 1-s$ exists and is proved ($P$ is present) but does not manifest directly as a forcing mechanism on the zero locus ($P$ is not $P_\psi$). The structural gap between $P_\text{neutral}$ and $P_\psi$ is precisely the gap between open RH and proved Lee-Yang — not a gap in analytic technique, but a gap in the *manifestation level* of the symmetry.
+
+**Conjecture 20.1 (The Central Conjecture of the Triad Strategy).** The constraint map $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ collapses to the set $\{ s \in \mathbb{C} : \Re(s) = \tfrac{1}{2} \}$. This conjecture is equivalent to the Riemann Hypothesis.
+
+If proved, it would show that RH is a theorem about the ouroboricity projection being forced by the structural projection — not a statement about analysis, but a statement about the constraint geometry of $\mathcal{I}$.
+
+### 20.9 The Three Tongues
+
+The framework names three irreducible modes through which any information-bearing system is legible:
+
+| Projection | What it speaks | Vocabulary |
+|---|---|---|
+| $\pi_1$ (grammar) | Structure | Categories, kinds, topological invariants, qualitative distinctions |
+| $\pi_2$ (energy) | Magnitude | Real numbers, thermodynamic quantities, exchange rates |
+| $\pi_3$ (ouroboricity) | Closure | Dimensionless ratios, universality classes, RG eigenvalues |
+
+The Synthonicon has been a $\pi_1$-centric instrument. The Triad Framework is the recognition that $\pi_1$ is not the whole — it is the first tongue. The second ($\pi_2$) and third ($\pi_3$) are real and irreducible, and the grammar constrains them without subsuming them.
+
+A fourth projection $\pi_4$ may exist — encoding the *logical/computational* mode of information (complexity class, decidability, proof length). $\mathcal{C}_{14}$ would then encode the structural basis for P vs NP. This is conjectured but not yet formalized.
+
+**See also:** PRIMITIVE_PREDICTIONS §P-150–P-155; MILLENNIUM_BARRIERS_PAPER §V.7; PRIMITIVE_THEOREMS §18.4 (RH–Lee-Yang correspondence precursor)
+
+---
+
+## §21. Proved $\mathcal{C}_{12}$ Instances and the Dimensional Gap Structure
+
+*Version: 0.7 — 2026-03-29*
+
+### 21.1 Overview
+
+§20 established $\mathcal{C}_{13}$ (grammar → ouroboricity) and identified Lee-Yang (1952) as the unique proved non-trivial instance. The question for $\mathcal{C}_{12}$ (grammar → energetic projection) is the same: do proved instances exist, and if so, what is the gap structure separating proved from open?
+
+The answer: proved $\mathcal{C}_{12}$ instances exist, but they **cluster at $D_\text{wedge}$ (2D) or require strong structural overdetermination**. Both open $\mathcal{C}_{12}$ conjectures (YM mass gap, NS regularity) have proved 2D analogues. The gap primitive in each case is **Dimensionality** ($D_\text{wedge} \to D_\text{cube}$) — a single primitive step.
+
+This is structurally distinct from the $\mathcal{C}_{13}$ gap, where the proved/open boundary is Polarity ($P_\psi \to P_\text{neutral}$). The grammar identifies different primitive fields as load-bearing for different constraint map classes.
+
+### 21.2 The Two Proved $\mathcal{C}_{12}$ Templates
+
+#### Template 1 — Schwinger Model (2D Gauge Theory, Proved Mass Gap)
+
+The Schwinger model (2D QED) is a $U(1)$ gauge theory in $1+1$ dimensions. Schwinger (1962) proved it has a mass gap $m = e/\sqrt{\pi}$ and confines all charged particles. Migdal (1975) extended the result to 2D pure Yang-Mills (non-abelian). Both are exactly solvable.
+
+Grammar encoding (catalog: `schwinger_model`):
+$$\langle D_\text{wedge}; T_\text{network}; R_\text{exact}; P_\text{pm}; F_\hbar; K_\text{trap}; G_\text{and}; G_\aleph; \Phi_c; H_1; 1{:}n; \Omega_0 \rangle$$
+
+This is **structurally identical to `ym_quantum_target`** in every field except $D$:
+$$d(\texttt{schwinger\_model}, \texttt{ym\_quantum\_target}) = 1 \quad (\text{only } D_\text{wedge} \neq D_\text{cube})$$
+
+The proved statement: $\mathcal{C}_{12}(K_\text{trap}, G_\aleph, \Phi_c, D_\text{wedge}) \subseteq [\Delta_\text{min}, \infty)$ with $\Delta_\text{min} > 0$. ✅
+
+#### Template 2 — Leray 2D Navier-Stokes (Proved Global Regularity)
+
+Leray (1934) proved that 2D incompressible Navier-Stokes equations have global smooth solutions for all smooth initial data. The 3D case remained open in the same paper.
+
+Grammar encoding (catalog: `leray_2d_ns`):
+$$\langle D_\text{wedge}; T_\text{network}; R_\text{cat}; P_\text{neutral}; F_\eta; K_\text{mod}; G_\text{and}; G_\beth; \Phi_\text{sub}; H_0; n{:}m; \Omega_0 \rangle$$
+
+This is **structurally identical to `ns_encoding`** in every field except $D$:
+$$d(\texttt{leray\_2d\_ns}, \texttt{ns\_encoding}) = 1 \quad (\text{only } D_\text{wedge} \neq D_\text{cube})$$
+
+The proved statement: $\mathcal{C}_{12}(\Phi_\text{sub}, D_\text{wedge}, K_\text{mod}) \subseteq \{E(t) < \infty\}$. ✅
+
+### 21.3 The Gap Primitive Identification
+
+The minimal distance between proved template and open conjecture is **1** in both $\mathcal{C}_{12}$ cases, and that single mismatch is always $D$:
+
+| Proved template | Distance | Open conjecture | Gap primitive |
+|---|---|---|---|
+| Schwinger / 2D-YM | 1 | YM mass gap (4D) | $D_\text{wedge} \to D_\text{cube}$ |
+| Leray 2D-NS | 1 | NS regularity (3D) | $D_\text{wedge} \to D_\text{cube}$ |
+| Lee-Yang (for comparison) | 5 | RH | $P_\psi \to P_\text{neutral}$ (+ 4 background diffs) |
+
+The $\mathcal{C}_{12}$ gaps are **minimal** (distance 1); the $\mathcal{C}_{13}$ gap is broader (distance 5 total, 1 essential). Yet both $\mathcal{C}_{12}$ conjectures remain open. This illustrates that **structural distance to the template does not measure proof difficulty** — a single primitive gap ($D_\text{wedge} \to D_\text{cube}$) can be harder to close than a five-primitive gap when the blocking field is Dimensionality.
+
+Machine-checked (PrimitiveBridge.lean §9):
+- `c12_gaps_are_minimal`: both distances = 1 (`by decide`)
+- `c12_gap_is_dimensionality`: both gaps are in `dim` field (`by decide`)
+- `c12_gap_not_polarity`: polarity is NOT the $\mathcal{C}_{12}$ gap (`by decide`)
+- `c13_gap_not_dimensionality`: dimensionality is NOT the $\mathcal{C}_{13}$ gap (`by decide`)
+
+### 21.4 Complementary $\mathcal{C}_{12}$ Instances — Forcing Zeros IN
+
+The YM and NS conjectures seek to prove $\pi_2 \geq \Delta_\text{min}$ (gap away from zero). The complementary operation — proving $0 \in \pi_2(\mathbf{x})$ (gapless modes forced) — is also a proved $\mathcal{C}_{12}$ class:
+
+**Goldstone theorem** (1961): If a continuous symmetry is spontaneously broken ($\Phi_\text{sup}$), the spectrum necessarily contains massless bosons. The structural fingerprint is:
+$$\langle D_\text{cube}; T_\text{network}; R_\text{exact}; P_\text{pm}; F_\hbar; K_\text{slow}; \ldots; \Phi_\text{sup}; \ldots \rangle$$
+
+Proved statement: $\mathcal{C}_{12}(\Phi_\text{sup}, R_\text{exact}) \ni 0$ — gapless modes are forced into the spectrum. ✅
+
+**Coleman-Mermin-Wagner theorem**: In $D_\text{wedge}$ (2D) with continuous symmetry, $\Phi_\text{sup}$ is structurally inaccessible — long-range order is destroyed by fluctuations. The dimensional constraint prevents the structural precondition for Goldstone:
+$$\mathcal{C}_{12}(D_\text{wedge}, R_\text{exact}) \not\ni \Phi_\text{sup}$$
+
+This is a proved constraint map that *prevents* a criticality value from being accessible — the grammar enforces $\Phi_\text{sub}$ at $D_\text{wedge}$ for continuous-symmetry systems. ✅
+
+The Goldstone/CMW pair is to $\mathcal{C}_{12}$ what Lee-Yang is to $\mathcal{C}_{13}$: a clean, proved example of the grammar forcing the energetic projection to a specific constraint. The difference: Goldstone/CMW force *into* the spectrum; YM/NS conjecture to force *away from* it.
+
+### 21.5 Witten's Positive Energy Theorem — Proved $\mathcal{C}_{12}$ in $D_\text{cube}$
+
+Witten (1981) proved that any asymptotically flat spacetime satisfying the dominant energy condition has non-negative ADM mass. Grammar encoding:
+$$\langle D_\text{cube}; T_\text{network}; R_\text{exact}; P_\text{neutral}; F_\hbar; K_\text{mod}; G_\text{and}; G_\beth; \Phi_\text{sub}; H_0; n{:}m; \Omega_0 \rangle$$
+
+This is a **proved $\mathcal{C}_{12}$ instance in $D_\text{cube}$**:
+$$\mathcal{C}_{12}(\text{GR-structure}, D_\text{cube}) \subseteq [0, \infty)$$
+
+However, it requires the **full structural overdetermination of GR**: $R_\text{exact}$ (exact diffeomorphism invariance), $F_\hbar$ (spinors enter the proof technique), and $\Phi_\text{sub}$ (dominant energy condition — matter stays subcritical). The YM conjecture needs $\Phi_c$ (critical, not subcritical), which is a strictly harder regime. The comparison:
+
+| System | $D$ | $\Phi$ | $F$ | $\mathcal{C}_{12}$ status |
+|---|---|---|---|---|
+| Witten PE | $D_\text{cube}$ | $\Phi_\text{sub}$ | $F_\hbar$ | ✅ Proved: $\pi_2 \geq 0$ |
+| YM mass gap | $D_\text{cube}$ | $\Phi_c$ | $F_\hbar$ | **OPEN**: $\pi_2 \geq \Delta_\text{min} > 0$ |
+| NS regularity | $D_\text{cube}$ | $\Phi_\text{sub}$ | $F_\eta$ | **OPEN**: $\pi_2 < \infty$ |
+
+Witten proves $\mathcal{C}_{12}$ at $D_\text{cube}$ but only at $\Phi_\text{sub}$. YM requires $\Phi_c > \Phi_\text{sub}$ — the critical case is strictly harder. NS stays at $\Phi_\text{sub}$ but changes $F_\hbar \to F_\eta$ (classical fluid, no spinor technique available).
+
+The grammar identifies the exact positions of the blocking fields: criticality for YM, fidelity mode for NS.
+
+### 21.6 The Gap Primitive Summary
+
+| Constraint map | Proved template | Gap primitive | Open conjecture |
+|---|---|---|---|
+| $\mathcal{C}_{13}$ | Lee-Yang $(P_\psi)$ | **Polarity**: $P_\psi \to P_\text{neutral}$ | RH |
+| $\mathcal{C}_{12}$ (YM) | Schwinger / 2D-YM $(D_\text{wedge})$ | **Dimensionality**: $D_\text{wedge} \to D_\text{cube}$ | YM mass gap |
+| $\mathcal{C}_{12}$ (NS) | Leray 2D-NS $(D_\text{wedge})$ | **Dimensionality**: $D_\text{wedge} \to D_\text{cube}$ | NS regularity |
+
+Three Millennium Prize Problems; two primitive fields as gap carriers; zero overlap. The grammar has isolated the blocking fields. What remains is the conventional mathematical work of crossing each gap.
+
+**See also:** PrimitiveBridge.lean §9; PRIMITIVE_PREDICTIONS P-156–P-162; §20.6 (updated $\mathcal{C}_{12}$ table)

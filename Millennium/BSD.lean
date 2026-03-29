@@ -110,13 +110,13 @@ def ExampleCurve : WeierstrassCurve ℚ :=
   -- Y² = X³ − X. This is the congruent number curve for n=1.
   -- Rank 0 over ℚ. E(ℚ)_tors = {O, (0,0), (1,0), (−1,0)} ≅ ℤ/2ℤ × ℤ/2ℤ.
 
-/-- The j-invariant of a Weierstrass curve is computable from coefficients.
+/-! The j-invariant of a Weierstrass curve is computable from coefficients.
     j = 0 iff the curve has additive reduction at all bad primes (special symmetry).
     The j-invariant classifies curves up to isomorphism over algebraically closed fields. -/
-#check @WeierstrassCurve.j   -- j : WeierstrassCurve R → R  (for fields R)
+-- #check @WeierstrassCurve.j  (j-invariant: j : WeierstrassCurve R → R)
 
-/-- An affine point on an elliptic curve over a field. -/
-#check @WeierstrassCurve.Affine.Point
+/-! An affine point on an elliptic curve over a field. -/
+-- #check @WeierstrassCurve.Affine.Point
 -- W.Affine.Point : Type u (affine points + point at infinity)
 
 -- ============================================================
@@ -168,7 +168,7 @@ axiom analyticRank (W : WeierstrassCurve ℚ) [W.IsElliptic] : ℕ
 
     Conjectured to be finite (this is part of BSD). Not proved in general.
     BSD formula involves |Ш|. -/
-axiom TateShafarevich (W : WeierstrassCurve ℚ) [W.IsElliptic] : Type*
+axiom TateShafarevich (W : WeierstrassCurve ℚ) [W.IsElliptic] : Type
 
 -- ============================================================
 -- §3. Core definitions
@@ -184,7 +184,7 @@ def BSDRankConjecture : Prop :=
 def BSDFullConjecture : Prop :=
   ∀ (W : WeierstrassCurve ℚ) [W.IsElliptic],
     ellipticRank W = analyticRank W ∧
-    Fintype (TateShafarevich W)
+    Finite (TateShafarevich W)
 
 -- ============================================================
 -- §4. Layer 1a — Mordell-Weil theorem (MathlibGap)

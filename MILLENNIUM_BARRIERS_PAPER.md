@@ -1,8 +1,8 @@
 # SynthOmnicon: Millennium Barriers
 ## *A Formal Barrier Taxonomy for the Millennium Prize Problems in Lean 4*
 
-**Version:** v0.1.1 · 2026-03-29
-**Authors:** Lando Mills & Large Language Models
+**Version:** v0.1.2 · 2026-03-29
+**Authors:** Lando⊗LLM
 **Document role:** Self-contained research paper. Presents the machine-checked barrier taxonomy for all seven Clay Millennium Prize Problems, the `BarrierType` inductive, the `ym_is_unique_missing_foundation` theorem, the stacked/parallel sorry distinction, and the primitive bridge connecting sorry boundaries to the SynthOmnicon constraint grammar. Target venue: Journal of Formalized Reasoning / Journal of Automated Reasoning.
 
 *The distinction that matters throughout: 'we have formalized' is not the same as 'we have solved.' Every `sorry` at the core of this library is honest. No Millennium Problem is proved here. The contribution is the meta-level structure  --  what kind of thing each sorry is, and why.*
@@ -498,6 +498,62 @@ The structural distance between the two encodings is 5 (also machine-checked by 
 This is C8 — a new contribution enabled by the Phi expansion:
 
 **C8 — RH–Lee-Yang structural correspondence:** Machine-checked theorem that $\zeta$ zeros and Lee-Yang zeros share `Phi_c_complex` assignment. Structural distance 5 identifies $P$ (symmetry encoding) as the key gap between proved Lee-Yang and open RH.
+
+---
+
+### V.7 The Triad Projection Framework and the Constraint Map Proof Strategy (v0.1.2, 2026-03-29)
+
+The RH–Lee-Yang correspondence (§V.6) revealed a precise structural gap: $P_\text{neutral}$ vs $P_\psi$. This result, combined with the recognition that critical exponents are invisible to the grammar (PRIMITIVE_THEOREMS §18), forced a foundational question: *why* can the grammar not see exponents? The answer generates a new proof strategy.
+
+**The Triad.** The grammar is one of three canonical projections of a fundamental information substrate $\mathcal{I}$:
+
+$$\pi_1 : \mathcal{I} \to \mathcal{G} \quad \text{(structural — what kind)}$$
+$$\pi_2 : \mathcal{I} \to \mathbb{R}_{\geq 0} \quad \text{(energetic — how much)}$$
+$$\pi_3 : \mathcal{I} \to \mathcal{E} \quad \text{(ouroboricity — how it closes on itself)}$$
+
+These projections are irreducible — no two collapse into each other. The grammar's blindness to exponents is not a deficiency; it is the boundary between $\pi_1$ and $\pi_3$. Exponents are RG eigenvalues: they encode how information reorganizes under rescaling, which is a genuinely different mode of being than structural type.
+
+**The Constraint Maps.** The projections are tethered. Define:
+
+$$\mathcal{C}_{ij} : \mathrm{image}(\pi_i) \to \mathcal{P}(\mathrm{codomain}(\pi_j))$$
+
+as the set of values in projection $j$ compatible with a given value in projection $i$. By the Projection Constraint Theorem (PRIMITIVE_THEOREMS §20.4): $\pi_j(\mathbf{x}) \in \mathcal{C}_{ij}(\pi_i(\mathbf{x}))$ for all $\mathbf{x} \in \mathcal{I}$. The grammar is the *cup* — it carves the shape of the possibility space in the other projections without filling it.
+
+**The proof strategy for MPPs.** Each open Millennium Prize Problem is now re-stated as a constraint map problem:
+
+| Problem | Open claim | Projection carrying claim | Constraint map to compute |
+|---|---|---|---|
+| Riemann Hypothesis | All non-trivial zeros of $\zeta$ have $\Re(s) = \frac{1}{2}$ | $\pi_3$ (zeros are scaling fixed points) | $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ |
+| Yang-Mills mass gap | $\exists\, \Delta > 0$ below first excited state | $\pi_2$ (mass gap is energetic) | $\mathcal{C}_{12}(K_\text{trap}, G_\aleph, \Phi_c)$ |
+| Navier-Stokes smooth solutions | No finite-time blowup for $L^2$ initial data in 3D | $\pi_2$ (blowup is energetic divergence) | $\mathcal{C}_{12}(\Phi_\text{sub}, D_\text{cube}, K_\text{mod})$ |
+
+**RH via $\mathcal{C}_{13}$.** The Lee-Yang theorem (1952) is the unique known non-trivial instance where $\mathcal{C}_{13}$ has been explicitly computed and proved to be a single line:
+
+$$\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\psi) = \{ \text{zeros on symmetry axis of } P_\psi \}$$
+
+The proof works because $P_\psi$ is *explicit*: the $h \mapsto -h$ symmetry acts directly on the partition function zeros. The RH encoding has $P_\text{neutral}$: the symmetry $s \mapsto 1-s$ (the functional equation, proved in Mathlib) is *present* but does not manifest as a direct forcing mechanism on the zero locus.
+
+The central conjecture of the Triad Strategy (PRIMITIVE_THEOREMS §20, Conjecture 20.1):
+
+$$\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral}) = \left\{ s \in \mathbb{C} : \Re(s) = \tfrac{1}{2} \right\}$$
+
+This conjecture *is* the Riemann Hypothesis, restated as a claim about the constraint geometry of $\mathcal{I}$. Proving it requires showing that $P_\text{neutral}$ — even as an implicit symmetry — forces the ouroboricity projection to concentrate on the critical line. The Lee-Yang proof provides the template; the gap is in the manifestation level of $P$.
+
+**Yang-Mills via $\mathcal{C}_{12}$.** The grammar encodes YM quantum target as $(K_\text{trap}, G_\aleph, \Phi_c)$. $K_\text{trap}$ means kinetic energy localizes rather than disperses; $G_\aleph$ means global color-charge neutrality constrains all configurations. The conjecture:
+
+$$\mathcal{C}_{12}(K_\text{trap}, G_\aleph, \Phi_c) \subseteq [\Delta_\text{min}, \infty) \text{ for some computable } \Delta_\text{min} > 0$$
+
+If proved, this is the YM mass gap: the grammar configuration forbids zero-mass excitations. The primitive barrier identified in §V.3 (MissingFoundation — no rigorous path integral measure in 4D) is precisely the obstacle to computing $\mathcal{C}_{12}$ explicitly. Resolving MissingFoundation would unlock the computation.
+
+**Navier-Stokes via $\mathcal{C}_{12}$.** The grammar encodes NS fluid as $(\Phi_\text{sub}, D_\text{cube}, K_\text{mod})$. $\Phi_\text{sub}$ (subcritical) encodes that no phase transition occurs — the system remains in the ordered, non-critical regime. The conjecture:
+
+$$\mathcal{C}_{12}(\Phi_\text{sub}, D_\text{cube}, K_\text{mod}) \subseteq \{ E(t) < \infty\ \forall t > 0 \}$$
+
+Finite-time blowup would require $\Phi$ to transition to $\Phi_c$ — a structural phase transition not encoded in the grammar of the smooth initial data. The claim is that the grammar forbids this transition, which would be a structural proof of global regularity. Whether NS smooth initial data genuinely encodes $\Phi_\text{sub}$ (vs $\Phi_c$ at fine scales) is the critical encoding question; if the encoding is correct, $\mathcal{C}_{12}$ yields the result.
+
+**This is C9:**
+
+**C9 — Triad Projection Framework and constraint map proof strategy.** Identifies three irreducible projections of $\mathcal{I}$ ($\pi_1$/grammar, $\pi_2$/energy, $\pi_3$/scaling). Defines constraint maps $\mathcal{C}_{ij}$. Reformulates RH, YM, and NS as constraint map computations. Establishes Lee-Yang as the unique known non-trivial $\mathcal{C}_{13}$ instance and template. Enabled by the grammar blind spot analysis of §18 (PRIMITIVE_THEOREMS).
 
 ---
 
