@@ -1,7 +1,7 @@
 # SynthOmnicon: Millennium Barriers
 ## *A Formal Barrier Taxonomy for the Millennium Prize Problems in Lean 4*
 
-**Version:** v0.1.0 · 2026-03-26
+**Version:** v0.1.1 · 2026-03-29
 **Authors:** Lando Mills & Large Language Models
 **Document role:** Self-contained research paper. Presents the machine-checked barrier taxonomy for all seven Clay Millennium Prize Problems, the `BarrierType` inductive, the `ym_is_unique_missing_foundation` theorem, the stacked/parallel sorry distinction, and the primitive bridge connecting sorry boundaries to the SynthOmnicon constraint grammar. Target venue: Journal of Formalized Reasoning / Journal of Automated Reasoning.
 
@@ -61,6 +61,8 @@ Both Yang-Mills and BSD have `sorryDepth = 2`. The structural difference is enco
 
 **C7  --  PrimitiveBridge.lean:** Formal connection between sorry boundaries and primitive field transitions in the SynthOmnicon grammar; `BarrierPrimitiveCertificate` structure; `primitive_bridge_master` theorem.
 
+**C8  --  RH–Lee-Yang structural correspondence (v0.1.1):** Machine-checked theorem that the Riemann $\zeta$ zeros and Lee-Yang partition-function zeros share the same Criticality assignment `Phi_c_complex`. Structural distance 5 identifies the polarity primitive $P$ (pseudo-symmetry encoding) as the key structural gap between the proved Lee-Yang result and the open RH conjecture. Enabled by the $\Phi$ primitive expansion: `Phi_c` → `Phi_c` / `Phi_c_complex` / `Phi_EP`.
+
 ---
 
 ## II. Background (v0.1.0, 2026-03-26)
@@ -102,7 +104,7 @@ The SynthOmnicon framework encodes physical and mathematical systems as 12-tuple
 | **$F$ (Fidelity)** | `Fidelity` | Information reliability: noise / $\ell$ / $\eta$ / $\hbar$ |
 | **$K$ (Kinetic character)** | `KineticChar` | Rate / trapping: fast / mod / slow / trap / MBL |
 | **$G$ (Granularity)** | `Granularity` | Description scale: $\aleph$ / $\beth$ / $\gimel$ |
-| **$\Phi_c$ (Criticality)** | `Criticality` | Phase position: sub / critical / super |
+| **$\Phi$ (Criticality)** | `Criticality` | Phase position: sub / $\Phi_c$ (real-axis) / $\Phi_c^\mathbb{C}$ (complex-axis) / $\Phi_\text{EP}$ (exceptional point) / super |
 | **$H$ (Chirality)** | `Chirality` | Temporal asymmetry depth: $H_0$ / $H_1$ / $H_2$ / $H_\infty$ |
 | **$S$ (Stoichiometry)** | `Stoichiometry` | Ratio: 1:1 / 1:$n$ / $n$:$m$ / catalytic |
 | **$\Omega$ (Protection)** | `Protection` | Topological protection: $0$ / $Z_2$ / $Z$ / $C$ / NA |
@@ -196,6 +198,8 @@ YM and BSD share `sorryDepth = 2` but for different structural reasons: in YM, s
 *Barrier: `OpenProblem` · Missing type: `ZeroFreeStrip 0`*
 
 The file introduces abstract types `RiemannZeta`, `CriticalStrip`, and `ZeroFreeStrip` to provide typed scaffolding. The sorry boundary is the statement that $\zeta(s) \neq 0$ for all $s$ with $0 < \text{Re}(s) < 1$, $\text{Re}(s) \neq \frac{1}{2}$.
+
+The primitive encoding of RH assigns `crit = Phi_c_complex`: the nontrivial zeros of $\zeta$ are located at *complex* values of $s$ (not at a real critical parameter). This distinguishes them from standard Hermitian critical points (`Phi_c`) and connects them structurally to the Lee-Yang edge singularity (§V.6). The functional equation $\zeta(s) = \zeta(1-s)$ (proved in Mathlib) encodes a pseudo-symmetry analogous to Lee-Yang's $h \mapsto -h$; the critical line $\text{Re}(s) = \frac{1}{2}$ is the fixed locus of $s \mapsto 1-s$, exactly as the imaginary axis is the fixed locus of $h \mapsto -h$.
 
 ```lean
 axiom rh_sorry_boundary : Millennium.RH.RiemannHypothesis
@@ -433,7 +437,7 @@ The OPN, NS, and RH certificates connect to the $\Phi_c$ criticality primitive:
 | :--- | :--- | :--- | :--- |
 | **OPN** | `crit` + `kin` | $\Phi_c$ + $K_\text{trap}$ | $\sigma(n) = 2n$ is exact criticality; overdetermined constraint system has no relaxation path |
 | **NS** | `crit` | $\Phi_\text{sub}$ | Smooth solutions stay subcritical; the sorry proves they never cross to $\Phi_c$ (blow-up threshold) |
-| **RH** | `crit` | $\Phi_c$ | The critical line $\text{Re}(s) = \frac{1}{2}$ is the $\Phi_c$ locus of the zeta function |
+| **RH** | `crit` | $\Phi_c^\mathbb{C}$ | The nontrivial zeros of $\zeta$ are at *complex* $s$ values; RH claims they lie on the symmetry axis $\text{Re}(s)=\frac{1}{2}$ of the functional equation $s \mapsto 1-s$ |
 
 ```lean
 theorem opn_primitive_certificate :
@@ -445,7 +449,7 @@ theorem ns_primitive_certificate :
     Barriers.millenniumBarrier .NS = .OpenProblem := ⟨rfl, rfl⟩
 
 theorem rh_primitive_certificate :
-    rh_encoding.crit = Phi_c ∧
+    rh_encoding.crit = Phi_c_complex ∧
     Barriers.millenniumBarrier .RH = .OpenProblem := ⟨rfl, rfl⟩
 ```
 
@@ -459,12 +463,41 @@ theorem primitive_bridge_master :
     Barriers.millenniumBarrier .OPN = .OpenProblem ∧
     ns_encoding.crit = Phi_sub ∧
     Barriers.millenniumBarrier .NS = .OpenProblem ∧
-    rh_encoding.crit = Phi_c ∧
+    rh_encoding.crit = Phi_c_complex ∧
     Barriers.millenniumBarrier .RH = .OpenProblem :=
   ⟨by decide, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl⟩
 ```
 
 This theorem machine-checks four barrier certificates simultaneously. The `by decide` term computes the Hamming distance between two concrete `Synthon` values over twelve decidable fields. All `rfl` terms verify that `millenniumBarrier` reduces correctly on each concrete constructor.
+
+---
+
+### V.6 The RH–Lee-Yang Structural Correspondence (v0.1.1, 2026-03-29)
+
+The Phi expansion (§II.3) enables a new theorem that connects RH to a *proved* result by the same structural mechanism.
+
+**Lee-Yang theorem (1952)**: For the Ising ferromagnet, all zeros of the partition function $Z(z)$ as a function of complex $z = e^{-2\beta h}$ lie on the unit circle $|z| = 1$, i.e. on the imaginary $h$ axis. The proof uses the $h \mapsto -h$ symmetry ($P_\psi$) of the Hamiltonian.
+
+**The grammar identification**: both systems encode `crit = Phi_c_complex`. This is machine-checked:
+
+```lean
+theorem rh_leyang_structural_correspondence :
+    rh_encoding.crit = Phi_c_complex ∧
+    lee_yang_encoding.crit = Phi_c_complex ∧
+    rh_encoding.crit = lee_yang_encoding.crit := ⟨rfl, rfl, rfl⟩
+```
+
+The structural distance between the two encodings is 5 (also machine-checked by `decide`). The 5 mismatches are: $T$ (network vs bowtie), $P$ (neutral vs $\psi$), $F$ ($\hbar$ vs $\ell$), $K$ (slow vs mod), $G$ ($\aleph$ vs $\gimel$). Notably:
+
+- **$P$ is the key mismatch**: Lee-Yang encodes $P_\psi$ (explicit $h \mapsto -h$ pseudo-symmetry). The RH encoding has $P_\text{neutral}$. This is the grammar's way of saying: the Lee-Yang theorem succeeds because the symmetry is manifest in the primitive structure; in RH, the analogous symmetry $s \mapsto 1-s$ (the functional equation) is proved in Mathlib (`riemannZeta_one_sub`) but does not automatically constrain the zero locus without additional analytic input.
+
+- **$G$ is the accessibility mismatch**: $G_\gimel$ (Lee-Yang, formally inaccessible at real $h$) vs $G_\aleph$ (RH, $\zeta$ globally accessible at all complex $s$). The Lee-Yang zeros are only reached by analytic continuation; $\zeta$ zeros are not computationally inaccessible, just unprovably located.
+
+**The grammar structural prediction for RH**: Any `Phi_c_complex` system with a pseudo-symmetry ($P_\psi$ or equivalent) has its critical manifold constrained to the symmetry axis. RH would follow if the functional equation symmetry $s \mapsto 1-s$ plays the role of $P_\psi$. The grammar does not prove this — but it locates exactly where the analogy breaks down ($P_\text{neutral}$ vs $P_\psi$) and what additional structure would be needed.
+
+This is C8 — a new contribution enabled by the Phi expansion:
+
+**C8 — RH–Lee-Yang structural correspondence:** Machine-checked theorem that $\zeta$ zeros and Lee-Yang zeros share `Phi_c_complex` assignment. Structural distance 5 identifies $P$ (symmetry encoding) as the key gap between proved Lee-Yang and open RH.
 
 ---
 

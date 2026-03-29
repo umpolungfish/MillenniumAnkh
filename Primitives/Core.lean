@@ -114,17 +114,36 @@ inductive Granularity : Type where
 -- Special: Φ_c is absorbing under meet (co-Heyting top of sublattice)
 -- This is NOT a standard linear order — see note below.
 inductive Criticality : Type where
-  | Phi_sub   -- subcritical (stable, ordered)
-  | Phi_c     -- critical point (absorbing under meet)
-  | Phi_sup   -- supercritical (unstable)
+  | Phi_sub        -- subcritical (stable, ordered)
+  | Phi_c          -- real-axis Hermitian criticality: standard fixed point (absorbing under meet)
+  | Phi_c_complex  -- complex-axis criticality: critical point at complex parameter value
+                   -- (Lee-Yang edge singularity, complex RG fixed point O(n>4), ζ-function zeros)
+                   -- Accessible only via analytic continuation. Grammar prediction: P-147.
+  | Phi_EP         -- exceptional-point criticality: non-Hermitian eigenvector coalescence
+                   -- Square-root branch point in parameter space; K_fast signature; no ν,η exponents.
+                   -- Omega_Z2 required (Z2 eigenvalue exchange around the EP branch cut).
+  | Phi_sup        -- supercritical (unstable)
   deriving DecidableEq, Repr, Ord
 
--- NOTE on Phi_c:
--- The standard Ord derivation gives Phi_sub < Phi_c < Phi_sup.
--- But the algebra spec says meet(Phi_c, Phi_sub) = Phi_c (absorbing),
--- which contradicts min semantics (min would give Phi_sub).
--- This means the meet operation on Criticality is NOT min.
--- We must define a custom MeetSemilattice instance. See Algebra.MeetJoin.
+-- NOTE on Criticality ordering and absorbing meet:
+-- The Ord derivation gives Phi_sub < Phi_c < Phi_c_complex < Phi_EP < Phi_sup.
+-- Accessibility ordering: Phi_c (real, fully accessible), Phi_c_complex (analytic continuation
+-- required), Phi_EP (fine-tuning two independent parameters), Phi_sup (runaway unstable).
+-- The algebra spec says meet(Phi_c, Phi_sub) = Phi_c (absorbing), and more generally
+-- meet(Phi_c, X) = Phi_c for X ∈ {Phi_sub, Phi_sup} — any system near a critical subsystem
+-- is dominated by the critical behavior.
+-- Extension: meet(Phi_c_complex, Phi_c) = Phi_c_complex (complex criticality absorbs real);
+-- meet(Phi_EP, anything_critical) = Phi_EP (EP absorbs all critical variants).
+-- The meet is NOT min — we must define a custom MeetSemilattice instance. See Algebra.MeetJoin.
+--
+-- Cross-primitive structural tendencies (not enforced as hard axioms):
+-- · Phi_c_complex systems typically encode G_gimel (formally inaccessible in real parameter space)
+--   or D_holo (boundary-encoded critical structure). Exception: ζ-function zeros (G_aleph, D_line).
+-- · Phi_EP systems typically encode Omega_Z2 (Z2 eigenvalue exchange around the branch cut)
+--   and G_gimel (requires simultaneous fine-tuning of two independent parameters).
+-- These are tendencies documented in PRIMITIVE_THEOREMS §18; they are NOT hard Lean axioms
+-- because the RH encoding (Phi_c_complex, G_aleph) is a legitimate counterexample to the
+-- first tendency.
 
 -- 10. Topological Index / Protection (Ω)
 -- Ordered: higher = stronger topological protection
