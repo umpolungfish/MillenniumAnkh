@@ -61,7 +61,7 @@ Both Yang-Mills and BSD have `sorryDepth = 2`. The structural difference is enco
 
 **C7  --  PrimitiveBridge.lean:** Formal connection between sorry boundaries and primitive field transitions in the SynthOmnicon grammar; `BarrierPrimitiveCertificate` structure; `primitive_bridge_master` theorem.
 
-**C8  --  RH–Lee-Yang structural correspondence (v0.1.2):** Machine-checked theorem that the Riemann $\zeta$ zeros and Lee-Yang partition-function zeros share the same Criticality assignment `Phi_c_complex`. Structural distance 7 (machine-checked; corrected from v0.1.1 which stated 5) identifies the polarity primitive $P$ ($P_\text{pm\_sym}$ vs $P_\text{neutral}$) as the essential structural gap; remaining 6 mismatches (T, F, K, gran, stoi, chir) are background differences. Enabled by the $\Phi$ primitive expansion: `Phi_c` → `Phi_c` / `Phi_c_complex` / `Phi_EP`.
+**C8  --  RH–Lee-Yang structural correspondence (v0.1.2):** Machine-checked theorem that the Riemann $\zeta$ zeros and Lee-Yang partition-function zeros share the same Criticality assignment `Phi_c_complex`. Structural distance 7 (machine-checked; corrected from v0.1.1 which stated 5) identifies the polarity primitive $P$ ($P_{\pm}^{\text{sym}}$ vs $P_\text{neutral}$) as the essential structural gap; remaining 6 mismatches (T, F, K, gran, stoi, chir) are background differences. Enabled by the $\Phi$ primitive expansion: `Phi_c` → `Phi_c` / `Phi_c_complex` / `Phi_EP`.
 
 ---
 
@@ -477,7 +477,7 @@ This theorem machine-checks four barrier certificates simultaneously. The `by de
 
 The Phi expansion (§II.3) enables a new theorem that connects RH to a *proved* result by the same structural mechanism.
 
-**Lee-Yang theorem (1952)**: For the Ising ferromagnet, all zeros of the partition function $Z(z)$ as a function of complex $z = e^{-2\beta h}$ lie on the unit circle $|z| = 1$, i.e. on the imaginary $h$ axis. The proof uses the $h \mapsto -h$ symmetry ($P_\text{pm\_sym}$) of the Hamiltonian — a Z₂ symmetric-bipolar action.
+**Lee-Yang theorem (1952)**: For the Ising ferromagnet, all zeros of the partition function $Z(z)$ as a function of complex $z = e^{-2\beta h}$ lie on the unit circle $|z| = 1$, i.e. on the imaginary $h$ axis. The proof uses the $h \mapsto -h$ symmetry ($P_{\pm}^{\text{sym}}$) of the Hamiltonian — a Z₂ symmetric-bipolar action.
 
 **The grammar identification**: both systems encode `crit = Phi_c_complex`. This is machine-checked:
 
@@ -490,11 +490,11 @@ theorem rh_leyang_structural_correspondence :
 
 The structural distance between the two encodings is 7 (machine-checked by `decide`; theorem `rh_leyang_distance`). The 7 mismatches are: $T$ (network vs bowtie), $P$ (neutral vs pm\_sym), $F$ ($\hbar$ vs $\ell$), $K$ (slow vs mod), gran ($\aleph$ vs $\gimel$), stoi (one\_n vs n\_m), chir (H0 vs H1). Notably:
 
-- **$P$ is the essential mismatch**: Lee-Yang encodes $P_\text{pm\_sym}$ (explicit Z₂ $h \mapsto -h$ symmetry). The RH encoding has $P_\text{neutral}$. This is the grammar's way of saying: the Lee-Yang theorem succeeds because the symmetry is manifest in the primitive structure; in RH, the analogous symmetry $s \mapsto 1-s$ (the functional equation) is proved in Mathlib (`riemannZeta_one_sub`) but does not automatically constrain the zero locus without additional analytic input. The remaining 6 mismatches are background differences — $P$ is the sole essential gap (PRIMITIVE_THEOREMS §22.6).
+- **$P$ is the essential mismatch**: Lee-Yang encodes $P_{\pm}^{\text{sym}}$ (explicit Z₂ $h \mapsto -h$ symmetry). The RH encoding has $P_\text{neutral}$. This is the grammar's way of saying: the Lee-Yang theorem succeeds because the symmetry is manifest in the primitive structure; in RH, the analogous symmetry $s \mapsto 1-s$ (the functional equation) is proved in Mathlib (`riemannZeta_one_sub`) but does not automatically constrain the zero locus without additional analytic input. The remaining 6 mismatches are background differences — $P$ is the sole essential gap (PRIMITIVE_THEOREMS §22.6).
 
 - **$G$ is the accessibility mismatch**: $G_\gimel$ (Lee-Yang, formally inaccessible at real $h$) vs $G_\aleph$ (RH, $\zeta$ globally accessible at all complex $s$). The Lee-Yang zeros are only reached by analytic continuation; $\zeta$ zeros are not computationally inaccessible, just unprovably located.
 
-**The grammar structural prediction for RH**: Any `Phi_c_complex` system with $P_\text{pm\_sym}$ (explicit Z₂ symmetry) has its critical manifold constrained to the symmetry axis. RH would follow if the functional equation symmetry $s \mapsto 1-s$ can be promoted from $P_\text{neutral}$ (implicit) to $P_\text{pm\_sym}$ strength. The grammar does not prove this — but it locates exactly where the analogy breaks down and what additional structure would be needed.
+**The grammar structural prediction for RH**: Any `Phi_c_complex` system with $P_{\pm}^{\text{sym}}$ (explicit Z₂ symmetry) has its critical manifold constrained to the symmetry axis. RH would follow if the functional equation symmetry $s \mapsto 1-s$ can be promoted from $P_\text{neutral}$ (implicit) to $P_{\pm}^{\text{sym}}$ strength. The grammar does not prove this — but it locates exactly where the analogy breaks down and what additional structure would be needed.
 
 This is C8 — a new contribution enabled by the Phi expansion:
 
@@ -504,7 +504,7 @@ This is C8 — a new contribution enabled by the Phi expansion:
 
 ### V.7 The Triad Projection Framework and the Constraint Map Proof Strategy (v0.1.2, 2026-03-29)
 
-The RH–Lee-Yang correspondence (§V.6) revealed a precise structural gap: $P_\text{neutral}$ vs $P_\text{pm\_sym}$. This result, combined with the recognition that critical exponents are invisible to the grammar (PRIMITIVE_THEOREMS §18), forced a foundational question: *why* can the grammar not see exponents? The answer generates a new proof strategy.
+The RH–Lee-Yang correspondence (§V.6) revealed a precise structural gap: $P_\text{neutral}$ vs $P_{\pm}^{\text{sym}}$. This result, combined with the recognition that critical exponents are invisible to the grammar (PRIMITIVE_THEOREMS §18), forced a foundational question: *why* can the grammar not see exponents? The answer generates a new proof strategy.
 
 **The Triad.** The grammar is one of three canonical projections of a fundamental information substrate $\mathcal{I}$:
 
@@ -530,9 +530,9 @@ as the set of values in projection $j$ compatible with a given value in projecti
 
 **RH via $\mathcal{C}_{13}$.** The Lee-Yang theorem (1952) is the unique known non-trivial instance where $\mathcal{C}_{13}$ has been explicitly computed and proved to be a single line:
 
-$$\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{pm\_sym}) = \{ \text{zeros on symmetry axis of } P_\text{pm\_sym} \}$$
+$$\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_{\pm}^{\text{sym}}) = \{ \text{zeros on symmetry axis of } P_{\pm}^{\text{sym}} \}$$
 
-The proof works because $P_\text{pm\_sym}$ is *explicit*: the Z₂ $h \mapsto -h$ symmetry acts directly on the partition function zeros. The RH encoding has $P_\text{neutral}$: the symmetry $s \mapsto 1-s$ (the functional equation, proved in Mathlib) is *present* but does not manifest as a direct forcing mechanism on the zero locus.
+The proof works because $P_{\pm}^{\text{sym}}$ is *explicit*: the Z₂ $h \mapsto -h$ symmetry acts directly on the partition function zeros. The RH encoding has $P_\text{neutral}$: the symmetry $s \mapsto 1-s$ (the functional equation, proved in Mathlib) is *present* but does not manifest as a direct forcing mechanism on the zero locus.
 
 The central conjecture of the Triad Strategy (PRIMITIVE_THEOREMS §20, Conjecture 20.1):
 
@@ -590,7 +590,7 @@ The theorem `no_tier_between_o1_and_o2` (machine-checked by `cases t <;> decide`
 
 **Lee-Yang is special Frobenius; RH is full non-special.** This is the Frobenius restatement of the $\mathcal{C}_{13}$ gap identified in §V.6:
 
-- **Lee-Yang** ($\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{pm\_sym})$): the $Z_2$ symmetry $h \mapsto -h$ acts *explicitly* on the partition function. $\mu \circ \delta = \text{id}$: the basin comultiplication and fixed-point multiplication are exact inverses. Every zero lies on the symmetry axis because specialness forces the constraint map to collapse to a line. Lean: `leeYang_is_special : IsSpecial leeYangFrobeniusType` (proved by `decide`).
+- **Lee-Yang** ($\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_{\pm}^{\text{sym}})$): the $Z_2$ symmetry $h \mapsto -h$ acts *explicitly* on the partition function. $\mu \circ \delta = \text{id}$: the basin comultiplication and fixed-point multiplication are exact inverses. Every zero lies on the symmetry axis because specialness forces the constraint map to collapse to a line. Lean: `leeYang_is_special : IsSpecial leeYangFrobeniusType` (proved by `decide`).
 
 - **RH** ($\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$): the symmetry $s \mapsto 1-s$ is *implicit* (it requires the functional equation, which is a theorem, not a direct action on the zero locus). The Frobenius condition may hold ($O_2$ is the structural conjecture), but $\mu \circ \delta \neq \text{id}$ because the symmetry cannot be directly composed with the comultiplication. Lean: `rh_is_not_special : ¬ IsSpecial rhFrobeniusType` (proved by `decide`).
 

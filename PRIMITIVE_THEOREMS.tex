@@ -2110,7 +2110,7 @@ Three refinements are now implemented in \texttt{Core.lean} and \texttt{space\_s
 
 The Phi expansion has a direct consequence for the Riemann Hypothesis (MILLENNIUM\_BARRIERS\_PAPER \pilcrow{}V.6). The prior encoding \texttt{rh\_encoding.crit = Phi\_c} was too coarse: the nontrivial zeros of $\zeta(s)$ are at \emph{complex} values of $s$, not at a real critical parameter. The updated encoding \texttt{crit = Phi\_c\_complex} is more accurate and machine-checked in \texttt{PrimitiveBridge.lean}.
 
-The new theorem \texttt{rh\_leyang\_structural\_correspondence} (proved by \texttt{rfl}) confirms that $\zeta$ zeros and Lee-Yang partition-function zeros share \texttt{Phi\_c\_complex}. The structural distance of 7 between the two encodings (machine-checked: \texttt{rh\_leyang\_distance}, \texttt{by decide}) identifies the polarity mismatch ($P_\text{neutral}$ vs $P_\text{pm\_sym}$) as the essential structural explanation for why the Lee-Yang theorem is proved but RH remains open. Of the 7 mismatches, polarity is the gap primitive; the remaining 6 (top, fid, kin, gran, stoi, chir) are background differences.
+The new theorem \texttt{rh\_leyang\_structural\_correspondence} (proved by \texttt{rfl}) confirms that $\zeta$ zeros and Lee-Yang partition-function zeros share \texttt{Phi\_c\_complex}. The structural distance of 7 between the two encodings (machine-checked: \texttt{rh\_leyang\_distance}, \texttt{by decide}) identifies the polarity mismatch ($P_\text{neutral}$ vs $P_{\pm}^{\text{sym}}$) as the essential structural explanation for why the Lee-Yang theorem is proved but RH remains open. Of the 7 mismatches, polarity is the gap primitive; the remaining 6 (top, fid, kin, gran, stoi, chir) are background differences.
 
 \subsubsection{Grammar Self-Diagnosis Protocol}
 
@@ -2337,7 +2337,7 @@ The grammar plays topology; the exponents play geometry. The constraint map $\ma
 \rowcolor{gray!25}\textbf{Grammar tuple} & \textbf{$\mathcal{C}_{13}$ constraint} & \textbf{Status} \\
 \midrule
 \rowcolors{1}{white}{gray!10}
-$(\Phi_c^{\mathbb{C}}, P_\text{pm\_sym})$ & Zeros of partition function lie on symmetry axis of $P_\text{pm\_sym}$ &  \textbf{Proved} (Lee-Yang 1952) \\
+$(\Phi_c^{\mathbb{C}}, P_{\pm}^{\text{sym}})$ & Zeros of partition function lie on symmetry axis of $P_{\pm}^{\text{sym}}$ &  \textbf{Proved} (Lee-Yang 1952) \\
 $(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ & Zeros of $\zeta(s)$ lie on $\Re(s) = \frac{1}{2}$? & \textbf{OPEN} (equivalent to RH) \\
 $(\Phi_c, \Omega_Z, T_\text{bowtie})$ & Exponents $\nu, \eta$ are irrational and belong to 3D Ising class & \textbf{OPEN} (P-146) \\
 $(\Phi_c, \Omega_Z, T_\text{bowtie}, D_\text{wedge})$ & Exponents are rational and $\nu = 1$ & \textbf{Retrodict} (2D Ising, Onsager 1944) \\
@@ -2386,9 +2386,9 @@ Step 4 is where conventional mathematics enters --- but the framework tells you 
 
 \subsubsection{The Lee-Yang Template}
 
-The Lee-Yang proof succeeds in step 4 because $P_\text{pm\_sym}$ encodes an \emph{explicit} symmetry that directly reflects across the zero locus. The proof is essentially: the $Z_2$ symmetry $h \mapsto -h$ encoded by $P_\text{pm\_sym}$ forces $\mathcal{C}_{13}$ to be a single line, and the zeros must lie on it.
+The Lee-Yang proof succeeds in step 4 because $P_{\pm}^{\text{sym}}$ encodes an \emph{explicit} symmetry that directly reflects across the zero locus. The proof is essentially: the $Z_2$ symmetry $h \mapsto -h$ encoded by $P_{\pm}^{\text{sym}}$ forces $\mathcal{C}_{13}$ to be a single line, and the zeros must lie on it.
 
-The RH constraint map $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ fails (so far) at step 4 because $P_\text{neutral}$ encodes an \emph{implicit} symmetry --- the functional equation $s \mapsto 1-s$ exists and is proved ($P$ is present) but does not manifest directly as a forcing mechanism on the zero locus ($P$ is not $P_\text{pm\_sym}$). The structural gap between $P_\text{neutral}$ and $P_\text{pm\_sym}$ is precisely the gap between open RH and proved Lee-Yang --- not a gap in analytic technique, but a gap in the \emph{manifestation level} of the symmetry.
+The RH constraint map $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ fails (so far) at step 4 because $P_\text{neutral}$ encodes an \emph{implicit} symmetry --- the functional equation $s \mapsto 1-s$ exists and is proved ($P$ is present) but does not manifest directly as a forcing mechanism on the zero locus ($P$ is not $P_{\pm}^{\text{sym}}$). The structural gap between $P_\text{neutral}$ and $P_{\pm}^{\text{sym}}$ is precisely the gap between open RH and proved Lee-Yang --- not a gap in analytic technique, but a gap in the \emph{manifestation level} of the symmetry.
 
 \textbf{Conjecture 20.1 (The Central Conjecture of the Triad Strategy).} The constraint map $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ collapses to the set $\{ s \in \mathbb{C} : \Re(s) = \tfrac{1}{2} \}$. This conjecture is equivalent to the Riemann Hypothesis.
 
@@ -2434,7 +2434,7 @@ A fourth projection $\pi_4$ may exist --- encoding the \emph{logical/computation
 
 The answer: proved $\mathcal{C}_{12}$ instances exist, but they \textbf{cluster at $D_\text{wedge}$ (2D) or require strong structural overdetermination}. Both open $\mathcal{C}_{12}$ conjectures (YM mass gap, NS regularity) have proved 2D analogues. The gap primitive in each case is \textbf{Dimensionality} ($D_\text{wedge} \to D_\text{cube}$) --- a single primitive step.
 
-This is structurally distinct from the $\mathcal{C}_{13}$ gap, where the proved/open boundary is Polarity ($P_\text{pm\_sym} \to P_\text{neutral}$). The grammar identifies different primitive fields as load-bearing for different constraint map classes.
+This is structurally distinct from the $\mathcal{C}_{13}$ gap, where the proved/open boundary is Polarity ($P_{\pm}^{\text{sym}} \to P_\text{neutral}$). The grammar identifies different primitive fields as load-bearing for different constraint map classes.
 
 \subsubsection{The Two Proved $\mathcal{C}_{12}$ Templates}
 
@@ -2485,7 +2485,7 @@ The minimal distance between proved template and open conjecture is \textbf{1} i
 \rowcolors{1}{white}{gray!10}
 Schwinger / 2D-YM & 1 & YM mass gap (4D) & $D_\text{wedge} \to D_\text{cube}$ \\
 Leray 2D-NS & 1 & NS regularity (3D) & $D_\text{wedge} \to D_\text{cube}$ \\
-Lee-Yang (for comparison) & 7 & RH & $P_\text{pm\_sym} \to P_\text{neutral}$ (+ 6 background diffs) \\
+Lee-Yang (for comparison) & 7 & RH & $P_{\pm}^{\text{sym}} \to P_\text{neutral}$ (+ 6 background diffs) \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -2566,7 +2566,7 @@ The grammar identifies the exact positions of the blocking fields: criticality f
 \rowcolor{gray!25}\textbf{Constraint map} & \textbf{Proved template} & \textbf{Gap primitive} & \textbf{Open conjecture} \\
 \midrule
 \rowcolors{1}{white}{gray!10}
-$\mathcal{C}_{13}$ & Lee-Yang $(P_\text{pm\_sym})$ & \textbf{Polarity}: $P_\text{pm\_sym} \to P_\text{neutral}$ & RH \\
+$\mathcal{C}_{13}$ & Lee-Yang $(P_{\pm}^{\text{sym}})$ & \textbf{Polarity}: $P_{\pm}^{\text{sym}} \to P_\text{neutral}$ & RH \\
 $\mathcal{C}_{12}$ (YM) & Schwinger / 2D-YM $(D_\text{wedge})$ & \textbf{Dimensionality}: $D_\text{wedge} \to D_\text{cube}$ & YM mass gap \\
 $\mathcal{C}_{12}$ (NS) & Leray 2D-NS $(D_\text{wedge})$ & \textbf{Dimensionality}: $D_\text{wedge} \to D_\text{cube}$ & NS regularity \\
 \bottomrule
@@ -2669,7 +2669,7 @@ The gap primitive table from \pilcrow{}21.6 can now be read as a \textbf{partial
 \rowcolor{gray!25}\textbf{Bridge} & \textbf{Status} & \textbf{Gap primitive} & \textbf{What proving it would establish} \\
 \midrule
 \rowcolors{1}{white}{gray!10}
-$\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{pm\_sym})$ &  Proved (Lee-Yang) & --- & Template \\
+$\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_{\pm}^{\text{sym}})$ &  Proved (Lee-Yang) & --- & Template \\
 $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ &  Open (RH) & Polarity & New $\pi$₁$\rightarrow$$\pi$₃ ligature at P\_neutral \\
 $\mathcal{C}_{12}(K_\text{trap}, \Phi_c, D_{\wedge})$ &  Proved (Schwinger) & --- & Template \\
 $\mathcal{C}_{12}(K_\text{trap}, \Phi_c, D_\text{cube})$ &  Open (YM) & Dimensionality & New $\pi$₁$\rightarrow$$\pi$₂ ligature at D\_cube \\
@@ -2780,7 +2780,7 @@ $\mathcal{F}_3$ extends, does not replace, the $\pi_1$-grammar. Each $\pi_1$-pri
 $\Phi_c$ & Carrier membership: $s \in \mathcal{C}_3$ \\
 $\Omega$ & The counit $\epsilon$: which topological invariant survives RG flow \\
 $O(s)$ & Frobenius type of $s$ \\
-$P$ at $\Phi_c$ & Character of $\mu$: explicit symmetry ($P_\text{pm\_sym}$) = \textbf{special} Frobenius; implicit symmetry ($P_\text{neutral}$) = \textbf{full but non-special} Frobenius \\
+$P$ at $\Phi_c$ & Character of $\mu$: explicit symmetry ($P_{\pm}^{\text{sym}}$) = \textbf{special} Frobenius; implicit symmetry ($P_\text{neutral}$) = \textbf{full but non-special} Frobenius \\
 $K$ at $\Phi_c$ & Rate of approach to the fixed point (the metric geometry of $\mu$); $K_\text{fast}$ = steep approach (EP), $K_\text{slow}$ = shallow (Hermitian) \\
 $D$ & Dimension of the basin: $D_\text{wedge}$ = 2D basin (proved $\mathcal{C}_{12}$), $D_\text{cube}$ = 3D basin (open) \\
 \bottomrule
@@ -2789,7 +2789,7 @@ $D$ & Dimension of the basin: $D_\text{wedge}$ = 2D basin (proved $\mathcal{C}_{
 
 \textbf{The gap restated in Frobenius language:}
 
-\[P_\text{pm\_sym} \to P_\text{neutral} \quad \Longleftrightarrow \quad \text{special Frobenius} \to \text{full (non-special) Frobenius}\]
+\[P_{\pm}^{\text{sym}} \to P_\text{neutral} \quad \Longleftrightarrow \quad \text{special Frobenius} \to \text{full (non-special) Frobenius}\]
 
 One Frobenius tier separates Lee-Yang from RH. The gap primitive Polarity is now understood as the \textbf{specialness gap} --- not just a label but a structural property of the multiplication-comultiplication interaction.
 
@@ -2806,9 +2806,9 @@ In $\mathcal{F}_3$ language:
     \item $\mu \circ \delta = \text{id}$: apply the $Z_2$ symmetry, read off the zero locus, recover the original
 \end{itemize}
 
-\textbf{Theorem 23.1} (Lee-Yang is $O_{\infty}$). The Lee-Yang fixed point is a special commutative Frobenius algebra. The constraint map $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{pm\_sym})$ collapses to the imaginary axis because $\mu \circ \delta = \text{id}$: the $Z_2$ multiplication and the basin comultiplication are exact inverses.
+\textbf{Theorem 23.1} (Lee-Yang is $O_{\infty}$). The Lee-Yang fixed point is a special commutative Frobenius algebra. The constraint map $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_{\pm}^{\text{sym}})$ collapses to the imaginary axis because $\mu \circ \delta = \text{id}$: the $Z_2$ multiplication and the basin comultiplication are exact inverses.
 
-\emph{Proof sketch:} The $P_\text{pm\_sym}$ encoding records that $h \mapsto -h$ is an \textbf{explicit} symmetry --- it acts directly on the zero locus. The multiplication $\mu$ identifies two systems that share this symmetry; the comultiplication $\delta$ generates all systems in the basin. The Lee-Yang proof shows that $\mu \circ \delta$ sends a zero to itself --- the axis is exactly the fixed set of the $Z_2$ action, no information lost. $\square$
+\emph{Proof sketch:} The $P_{\pm}^{\text{sym}}$ encoding records that $h \mapsto -h$ is an \textbf{explicit} symmetry --- it acts directly on the zero locus. The multiplication $\mu$ identifies two systems that share this symmetry; the comultiplication $\delta$ generates all systems in the basin. The Lee-Yang proof shows that $\mu \circ \delta$ sends a zero to itself --- the axis is exactly the fixed set of the $Z_2$ action, no information lost. $\square$
 
 This is not a new theorem. Its value is as a template: Lee-Yang is the unique known instance where $\mu \circ \delta = \text{id}$ has been proved for a $\mathcal{C}_{13}$ configuration.
 
