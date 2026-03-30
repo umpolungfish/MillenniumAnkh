@@ -187,9 +187,9 @@
 
 \maketitle
 
-\textbf{Version}: 0.8 (\pilcrow{}22: Triad as minimal closed metastraint system --- RPS structure, Gödel as projection theorem, ligature atlas; \pilcrow{}21.6 gap table $P_{\psi} \to {P_{''pm_sym''}}$ corrected, distance 5$\rightarrow$7)   \\
+\textbf{Version}: 0.9 (\pilcrow{}23: $\pi_3$ Frobenius structure --- $\mathcal{F}_3 = (\mathcal{C}_3, \mu, \eta, \delta, \varepsilon)$; ouroboricity tiers derived as Frobenius completeness classes; Lee-Yang = special, RH = full non-special; \texttt{FrobeniusStructure.lean} machine-verified, 0 sorry, 0 errors)   \\
 \textbf{Date}: 2026-03-29   \\
-\textbf{Status}: Working document --- results classified by confidence tier and claim plane
+\textbf{Status}: Working document --- results classified by confidence tier and claim plane  \textbackslash{}
 
 \begin{center}
 \rule{0.5\textwidth}{0.4pt}
@@ -247,7 +247,7 @@ For $SU(N)$ Yang-Mills theory in $\mathbb{R}^4$, there exists $\Delta > 0$ such 
 
 \subsubsection{Primitive Encoding --- Quantum Chromodynamics}
 
-$QCD = \langle D_{\wedge}; T_{\bowtie}; R_{\superset}; P_{pm_sym}; F_{\hbar}; K_{mod}; G_{\aleph}; \Gamma_\text{and}; \Phi_c; {H0}; {1:1}; \Omega_Z \rangle$
+$QCD = \langle D_{\wedge}; T_{\bowtie}; R_{\supseteq}; P_{pm_{sym}}; F_{\hbar}; K_{mod}; G_{\aleph}; \Gamma_\text{and}; \Phi_c; {H_0}; {1:1}; \Omega_Z \rangle$
 
 Key primitives: \textbf{$T_{\bowtie}$} (color confinement --- quarks couple in closed dual-lobe color structures, never propagating as free color charges) and \textbf{$\Phi_c$} (the theory operates at criticality in its vacuum structure).
 
@@ -271,7 +271,7 @@ The grammar provides this construction. See \pilcrow{}1.1 below.
 
 \subsection{\pilcrow{}1.1. Yang-Mills --- Grammar-Based Hilbert Space Construction}
 
-\textbf{Type}: Formal construction sketch
+\textbf{Type}: Formal construction sketch   \\
 \textbf{Status}: Mathematically precise up to two identified gaps; constitutes a proof architecture
 
 \subsubsection{The Problem Reframed}
@@ -373,23 +373,15 @@ Each sector $H_n$ is stable --- $\Omega_Z$ protection prevents mixing. The mass 
 
 \subsubsection{Summary: The Complete Proof Architecture}
 
-\begin{center}
-\rule{0.5\textwidth}{0.4pt}
-\end{center}
-
 \begin{enumerate}
-    \item Construct $H = L²(A/G, d$\mu$)$                    \emph{{[} exists via Ashtekar-Lewandowski {]}}
-    \item Define T̂ = I $-$ P\_free                         \emph{{[} self-adjoint, bounded {]}}
-    \item $ker(T̂) = {|0\rangle}$                               \emph{{[} D,T compatibility theorem {]}}
-    \item $\Delta$\_T = $inf spec(T̂|_{ker(T̂)^\perp}) > 0$           \emph{{[} $T_{\bowtie}$ topological cost {]}}
-    \item $H_YM$ $\geq$ $T̂ on ker(T̂)^\perp$                        \emph{{[} Hamiltonian $\geq$ topological cost {]}}
-    \item Therefore $\Delta$ = inf spec($H_YM$\textbar{}$_{ker(T̂)^\perp}$) \textgreater{} 0 \emph{{[} mass gap exists {]}}  ∎
+    \item Construct $H = L^2(A/G, d$\mu$)$                    \emph{{[}exists via Ashtekar-Lewandowski{]}}
+    \item Define T̂ = $I$ $-$ $P_\text{free}$                         \emph{{[}self-adjoint, bounded{]}}
+    \item $ker(T̂) = {|0\rangle}$                               \emph{{[}D,T compatibility theorem{]}}
+    \item $\Delta$\_T = inf spec($T̂$\textbar{}$_{ker(T̂)^\perp}$) \textgreater{} 0           \emph{{[}$T_{\bowtie}$ topological cost{]}}
+    \item $H_YM$ $\geq$ T̂$^\text{on}$ (ker(T̂)\^{}\perp)                        \emph{{[}Hamiltonian $\geq$ topological cost{]}}
+    \item Therefore $\Delta$ = inf spec($H_YM$\textbar{}$_{ker(T̂)^\perp}$) \textgreater{} 0 \emph{{[}mass gap exists{]}}  ∎
     \item $\Omega_Z$ sectors reinforce: $H_n$ has energy $\geq$ ${|n|\times{8\pi^2}/{g^2}} > 0$ $[n \neq 0]$
 \end{enumerate}
-
-\begin{center}
-\rule{0.5\textwidth}{0.4pt}
-\end{center}
 
 \subsubsection{Two Identified Gaps Requiring Formalization}
 
@@ -435,8 +427,8 @@ A mathematician working from this architecture knows precisely what to prove and
     \item \texttt{{[}DIAPH{]}} Encodings:
 \end{itemize}
 
-\texttt{yang\_mills} $\langle T_{\text{network}}; G_{\text{aleph}}; \Phi_c; R_{\dagger}; {H0} \rangle$ \emph{vs}  \\
-\texttt{mass\_gap} $\langle T_{\text{bowtie}}; G_{\text{beth}}; \Phi_{\text{sub}}; R_{\text{cat}}; {H1} \rangle$ \emph{vs}  \\
+\texttt{yang\_mills} $\langle T_{\text{network}}; G_{\text{aleph}}; \Phi_c; R_{\dagger}; {H_0} \rangle$ \emph{vs}  \\
+\texttt{mass\_gap} $\langle T_{\text{bowtie}}; G_{\text{beth}}; \Phi_{\text{sub}}; R_{\text{cat}}; {H_1} \rangle$ \emph{vs}  \\
 \texttt{qcd\_confinement} $\langle T_{\text{bowtie}}; G_{\text{aleph}} \to G_{\text{beth}}; \Phi_{\text{sub}}; R_{\dagger} \rangle$
 
 confinement is the hybrid. mass\_gap\_proof encodes $\langle D_{\text{holo}}; T_{\text{in}}; R_{\text{cat}}; P_{\text{asym}}; K_{\text{slow}}; \Phi_c; {H2}; \Omega_Z\rangle$. the proof is holographic with deep temporal depth.
@@ -451,8 +443,8 @@ confinement is the hybrid. mass\_gap\_proof encodes $\langle D_{\text{holo}}; T_
 
 Yang-Mills and its mass gap differ in G-scope:
 
-\texttt{yang\_mills} = $\langle D_{\infty}; T_{\network}; R_{\dagger}; P_{sym};  F_{\hbar}; K_{mod};  G_{\aleph}; \Gamma_{\and}; \Phi_c;   {H0}; {n:n};   \Omega_Z \rangle$   \\
-\texttt{mass\_gap}   = $\langle D_{\tri};   T_{\bowtie}; R_{cat};    P_{pm};   F_{\hbar}; K_{slow}; G_{\beth};  \Gamma_{\and}; \Phi_{sub}; {H1}; {1:1};   \Omega_Z2 \rangle$
+\texttt{yang\_mills} = $\langle D_{\infty}; T_{\network}; R_{\dagger}; P_{sym};  F_{\hbar}; K_{mod};  G_{\aleph}; \Gamma_{\and}; \Phi_c;   {H_0}; {n:n};   \Omega_Z \rangle$   \\
+\texttt{mass\_gap}   = $\langle D_{\tri};   T_{\bowtie}; R_{cat};    P_{pm};   F_{\hbar}; K_{slow}; G_{\beth};  \Gamma_{\and}; \Phi_{sub}; {H_1}; {1:1};   \Omega_Z2 \rangle$
 
 YM lives at $G_{\aleph}$ (global gauge field, all scales simultaneously). The mass gap lives at $G_{\beth}$ (local excitation above the vacuum, a physically observable energy cost). The proof must bridge a G-scope tier crossing--- $G_{\aleph} \to G_{\beth}$ ---to establish that the global gauge structure produces a local minimum energy cost.
 
@@ -468,7 +460,7 @@ YM lives at $G_{\aleph}$ (global gauge field, all scales simultaneously). The ma
 \rule{0.5\textwidth}{0.4pt}
 \end{center}
 
-$qcd_confinement = \langleD_{\infty}; T_{\bowtie}; R_{\dagger}; P_{pm}; F_{\hbar}; K_{slow}; G_{\beth}; \Gamma_{\and}; \Phi_{sub}; {H1}; {n:n}; \Omega_{Z2}\rangle$
+$qcd_confinement = \langleD_{\infty}; T_{\bowtie}; R_{\dagger}; P_{pm}; F_{\hbar}; K_{slow}; G_{\beth}; \Gamma_{\and}; \Phi_{sub}; {H_1}; {n:n}; \Omega_{Z2}\rangle$
 QCD confinement uniquely combines:
 
 \begin{center}
@@ -512,8 +504,8 @@ Five proof requirements:
 
 \subsection{\pilcrow{}2. P $\neq$ NP}
 
-\textbf{Type}: Proof-sketch (conditional on K primitivity)
-\textbf{Status}: Strong structural argument; requires formal complexity-theoretic translation
+\textbf{Type}: Proof-sketch (conditional on K primitivity)   \\
+\textbf{Status}: Strong structural argument; requires formal complexity-theoretic translation   \\
 \textbf{Canonical location (SynthOmnicon grammar docs):} \texttt{TOPO}: K primitivity theorem $\cdot$ \texttt{DIAPH}: complexity class encodings, K cross-variance data $\cdot$ \texttt{ONTO}: complexity hierarchies as K-primitive hierarchies
 
 \textbf{Plane summary:}
@@ -568,8 +560,8 @@ Formalizing K-character in complexity-theoretic terms (likely maps to circuit co
 
 \subsection{\pilcrow{}2.1. P $\neq$ NP --- Exotic Proof Systems and the $D_{\holo}$ Collapse}
 
-\textbf{Type}: Generative --- the P $\neq$ NP result produces a full taxonomy
-\textbf{Status}: Four predictions; two proved (IP = PSPACE, MIP* = RE); two believed-but-unproved (BQP $\neq$ NP, BPP $\neq$ NP-complete)
+\textbf{Type}: Generative --- the P $\neq$ NP result produces a full taxonomy   \\
+\textbf{Status}: Four predictions; two proved (IP = PSPACE, MIP* = RE); two believed-but-unproved (BQP $\neq$ NP, BPP $\neq$ NP-complete)  \textbackslash{}
 
 \subsubsection{The Question}
 
@@ -581,7 +573,7 @@ Yes. The framework generates an exact taxonomy by varying one primitive at a tim
 
 Standard deterministic polynomial computation:
 
-$P-baseline = (K_fast, F_ell, P_pm_sym, Gamma_and, D_wedge)$
+$P-baseline = (K_fast, F_ell, P_{pm_{sym}}, Gamma_and, D_wedge)$
 
 P $\neq$ NP is the statement that this tuple, held fixed, cannot cross the $K_{\text{mod}}$ landscape boundary. The framework immediately asks: which primitive variations change that?
 
@@ -716,14 +708,14 @@ hierarchies --- computational, physical, civilizational --- are features of D\_w
 
 \subsection{\pilcrow{}2.2. P $\neq$ NP --- Second Independent Structural Argument: $\Gamma$/G/$\Phi$ Triple Asymmetry}
 
-\textbf{Type}: Proof-sketch (independent of K primitivity)
-\textbf{Status}: Three convergent primitive arguments; structurally independent of \pilcrow{}2; generated by syncon\_inquiry agentic run 2026-03-24
+\textbf{Type}: Proof-sketch (independent of K primitivity)   \\
+\textbf{Status}: Three convergent primitive arguments; structurally independent of \pilcrow{}2; generated by syncon\_inquiry agentic run 2026-03-24   \\
 \textbf{Relation to \pilcrow{}2}: Independent argument --- different primitives, same conclusion. The convergence of \pilcrow{}2 (K-based) and \pilcrow{}2.2 ($\Gamma$/G/$\Phi$-based) strengthens the structural case beyond either argument alone.
 
 \subsubsection{Primitive Encodings}
 
-$P  = \langleD_wedge; T_in;     R_super; P_pm_sym; F_ell; K_fast; G_beth;  \Gamma_seq; \Phi_sub; H0; {1:1}; \Omega_0\rangle$
-\$NP = \langleD\_infty; $$T_{\bowtie}$$; R\_super; P\_pm\_sym; F\_ell; K\_mod;  G\_aleph; $\Gamma$\_or;  $\Phi$\_c;   \{H0\}; \{n:n\}; $\Omega$\_Z2\rangle\$
+$P  = \langleD_wedge; T_in;     R_super; P_{pm_{sym}}; F_ell; K_fast; G_beth;  \Gamma_seq; \Phi_sub; H0; {1:1}; \Omega_0\rangle$
+\$NP = \langleD\_infty; $$T_{\bowtie}$$; R\_super; P\_\{pm\_\{sym\}\}; F\_ell; K\_mod;  G\_aleph; $\Gamma$\_or;  $\Phi$\_c;   \{H\_0\}; \{n:n\}; $\Omega$\_Z2\rangle\$
 
 $d(P, NP) = 3.5355$
 
@@ -767,8 +759,8 @@ Formalizing $\Gamma$-irreducibility in computational terms (likely maps to non-d
 
 \subsection{\pilcrow{}3. The Arrow of Time}
 
-\textbf{Type}: Dissolution
-\textbf{Status}: The question is answered by H uniqueness; no further work required
+\textbf{Type}: Dissolution   \\
+\textbf{Status}: The question is answered by H uniqueness; no further work required   \\
 \textbf{Canonical location (SynthOmnicon grammar docs):} \texttt{TOPO}: H primitive, K-hierarchy temporal theory $\cdot$ \texttt{DIAPH}: cosmological analysis $\cdot$ \texttt{ONTO}: chirality and arrow of time
 
 \textbf{Plane summary:}
@@ -781,7 +773,7 @@ Formalizing $\Gamma$-irreducibility in computational terms (likely maps to non-d
 
 \subsubsection{Statement of the Problem}
 
-Why does time have a preferred direction? Physical laws are largely time-symmetric, yet thermodynamic processes are irreversible and we perceive a clear past-to-future directionality.
+Why does time have a preferred direction? Physical laws arergely time-symmetric, yet thermodynamic processes are irreversible and we perceive a clear past-to-future directionality.
 
 \subsubsection{Dissolution}
 
@@ -808,8 +800,8 @@ This is not merely a restatement of statistical mechanics. The primitive framewo
 
 \subsection{\pilcrow{}4. The Measurement Problem}
 
-\textbf{Type}: Dissolution
-\textbf{Status}: Restated in R-primitive terms, the problem disappears
+\textbf{Type}: Dissolution   \\
+\textbf{Status}: Restated in R-primitive terms, the problem disappears   \\
 \textbf{Canonical location (SynthOmnicon grammar docs):} \texttt{TOPO}: quantum mechanics as K-tier structure $\cdot$ \texttt{DIAPH}: SM/QG disparity, massless gauge kernel $\cdot$ \texttt{ONTO}: measurement dissolution
 
 \textbf{Plane summary:}
@@ -824,10 +816,9 @@ This is not merely a restatement of statistical mechanics. The primitive framewo
 
 Why does quantum superposition collapse to a definite outcome upon measurement? What constitutes a ''measurement''? Does the wavefunction physically collapse?
 
-\subsubsection{Dissolution}
+\subsubsection{Dissoluti}
 
 There is no collapse. There is an R-primitive transition.
-
 \textbf{Before measurement}: The system-observer pair has $R = R_{\text{leftr\right}}$ --- symmetric, bidirectional recognition grammar. The quantum system ''recognizes'' the basis of the observer as much as the observer recognizes the state of the system. Both directions coexist; no hierarchy is imposed. The wavefunction describes this $R_{\text{leftr\right}}$ configuration.
 
 \textbf{Measurement event}: The event that shifts R from $R_{\text{leftr\right}}$ to $R_{\dagger}$ in the observer. $R_{\dagger}$ is penetrating, asymmetric recognition --- it reads through to a specific value. The shift is not applied to the quantum system; it is a change in the grammar of the system-observer \emph{interaction}.
@@ -853,8 +844,8 @@ The framework does not choose between interpretations. It shows the question was
 
 \subsection{\pilcrow{}5. The Riemann Hypothesis}
 
-\textbf{Type}: Suggestive --- structural motivation for the critical line
-\textbf{Status}: Speculative; far from a proof; offered as a conjecture-generating perspective
+\textbf{Type}: Suggestive --- structural motivation for the critical line   \\
+\textbf{Status}: Speculative; far from a proof; offered as a conjecture-generating perspective   \\
 \textbf{Canonical location:} Not yet in canonical docs --- TOPO and SCHES claims require formalization before migration
 
 \textbf{Plane summary:}
@@ -867,7 +858,7 @@ The framework does not choose between interpretations. It shows the question was
 
 \subsubsection{Statement}
 
-All non-trivial zeros of the Riemann zeta function $\zeta(s) = \sum_{n=1}^{\infty} n^{-s}$ lie on the critical line $\Re(s) = 1/2$.
+All non-trivial zeros of theemann zeta function $\zeta(s) = \sum_{n=1}^{\infty} n^{-s}$ lie on the critical line $\Re(s) = 1/2$.
 
 \subsubsection{Primitive Perspective}
 
@@ -908,8 +899,8 @@ Offered as a conjecture-generating perspective: \textbf{If primes are $G_{\aleph
 
 \subsection{\pilcrow{}5.1. Riemann Hypothesis --- The Proof System Problem and Holographic Explicit Formula}
 
-\textbf{Type}: Structural --- identifies what a deciding proof system must look like
-\textbf{Status}: Generated by syncon\_inquiry agentic run 2026-03-24; structurally compelling; extends \pilcrow{}5 without replacing it
+\textbf{Type}: Structural --- identifies what a deciding proof system must look like   \\
+\textbf{Status}: Generated by syncon\_inquiry agentic run 2026-03-24; structurally compelling; extends \pilcrow{}5 without replacing it   \\
 \textbf{Relation to \pilcrow{}5}: \pilcrow{}5 argues RH is true because primes are $G_{\aleph}$ at $\Phi_c$. \pilcrow{}5.1 asks: given that, \emph{what kind of proof system can decide it?} The two sections are complementary.
 
 \textbf{Plane summary:}
@@ -918,16 +909,16 @@ Offered as a conjecture-generating perspective: \textbf{If primes are $G_{\aleph
     \item \texttt{{[}TOPO{]}} Standard proof systems (PA, ZFC) operate at $\Phi_{\text{sub}}$; RH is a $\Phi_c$ statement; a $\Phi_{\text{sub}}$ system cannot decide a $\Phi_c$ statement --- the same meta-pattern as P$\neq$NP requiring a K-class-crossing tool. The proof system must itself operate at $\Phi_c$. It must also be D\_holo/T\_holo to exploit the \emph{vs} mass\_gap \emph{vs} holographic structure of the explicit formula. It must use $R_{\dagger}$ (catalytic/dynamic) rather than $R_{\text{cat}}$ (categorical) to operate reversibly between \$ locus)   \\
 analytic and arithmetic domains.
     \item \texttt{{[}DIAPH{]}} Encodings: PA $\langle \Phi_{\text{sub}} \rangle$, ZFC $\langle \Phi_{\text{sub}} \rangle$, RH $\langle \Phi_c; T_{\text{box}}; \Omega_Z \rangle$, analytic number theory $\langle \Phi_c; T_{\text{bowtie}}; $R_{\dagger}$ \rangle$. The Riemann explicit formula: zeros on critical line (boundary, $\Pc$ locus) encode prime distribution (bulk) --- this is $$D_{\holo}$$ structure not metaphorically but definitionally. The novel proof system encodes as $\langle D_{\text{holo}}; T_{\text{holo}}; $R_{\dagger}$; \Phi_c; \Omega_Z \rangle$.
-    \item \texttt{{[}ONTO{]}} RH represents a phase transition in mathematical truth --- the $\Phi_c$ boundary where standard deductive machinery ($\Phi_{\text{sub}}$) cannot reach. The explicit formula is the earliest instance of a holographic mathematical object: boundary data (zeros) encoding bulk structure (primes). The proof of RH will be, structurally, the first proof requiring a $\Phi_c$ mathematical tool.
+    \item \texttt{{[}ONTO{]}} RH represents hase transition in mathematical truth --- the $\Phi_c$ boundary where standard deductive machinery ($\Phi_{\text{sub}}$) cannot reach. The explicit formula is the earliest instance of a holographic mathematical object: boundary data (zeros) encoding structure (primes). The proof of RH will be, structurally, the first proof requiring a $\Phi_c$ mathematical tool.
 \end{itemize}
 
 \subsubsection{The Proof System Gap}
 
 Standard proof systems:
 
-$PA  = \langleD_infty; T_in;  R_cat;   P_sym; F_hbar; K_mod;  G_aleph; \Gamma_seq; \Phi_sub; {H1}; {n:n}; \Omega_Z\rangle$
-$ZFC = \langleD_infty; T_in;  R_super; P_sym; F_hbar; K_mod;  G_aleph; \Gamma_and; \Phi_sub; {H1}; n:m; \Omega_Z\rangle$
-$RH  = \langleD_infty; T_box; R_cat;   P_sym; F_hbar; K_slow; G_aleph; \Gamma_and; \Phi_c;   {H0}; {1:1}; \Omega_Z\rangle$
+$PA  = \langleD_infty; T_in;  R_cat;   P_sym; F_hbar; K_mod;  G_aleph; \Gamma_seq; \Phi_sub; {H_1}; {n:n}; \Omega_Z\rangle$
+$ZFC = \langleD_infty; T_in;  R_super; P_sym; F_hbar; K_mod;  G_aleph; \Gamma_and; \Phi_sub; {H_1}; n:m; \Omega_Z\rangle$
+$RH  = \langleD_infty; T_box; R_cat;   P_sym; F_hbar; K_slow; G_aleph; \Gamma_and; \Phi_c;   {H_0}; {1:1}; \Omega_Z\rangle$
 
 Both PA and ZFC encode at $\Phi_{\text{sub}}$. RH encodes at $\Phi_c$. The structural incompatibility is the same as the P$\neq$NP problem: the proof tool ($\Phi_{\text{sub}}$) operates in a different phase regime than the statement ($\Phi_c$). A $\Phi_{\text{sub}}$ formal system approaches the critical strip but cannot definitively decide what happens ON the critical line --- it can approximate, but approximation is insufficient for proof.
 
@@ -969,7 +960,7 @@ Five requirements:
 \begin{enumerate}
     \item \textbf{($$D_{\holo}$$)}: Must operate holographically --- using the explicit formula as a boundary-to-bulk encoding, not just as an asymptotic approximation tool.
     \item \textbf{T\_holo}: Holographic topology --- the proof must be able to treat the critical line as a boundary and the integer distribution as the bulk it encodes. Current analytic number theory treats them as separate objects connected by a formula; D\_holo/T\_holo treats them as a single holographic system.
-    \item \textbf{R\_dagger}: Catalytic/dynamic relations rather than categorical classification. The analytic domain ($\zeta$ function, complex plane) and arithmetic domain (primes, integers) must be connected by a reversible, dynamic relation --- $$R_{\dagger}$$ --- not merely mapped to each other ($R_{\text{cat}}$). The proof must operate in both domains simultaneously, not translate between them.
+    \item \textbf{R\_dagger}: Catalytic/dynamic relations rather than categorical classification. The analytic domain (\$\textbackslash{}ze function, complex plane) and arithmetic domain (primes, integers) must be connected by a reversible, dynamic relation --- $R_{\dagger}$ --- not merely mapped to each other ($R_{\text{cat}}$). The proof must operate in both domain  , not translate between them.
     \item \textbf{($\Phi_c$)}: The proof system must operate at criticality. This is the key requirement --- it must be able to reason about phase boundaries, scale invariance, and critical phenomena in mathematical structure.
     \item \textbf{$\Omega$\_Z}: The proof must exploit the integer topological structure of zeros --- the zero-counting function $N(T) \sim (T/2\pi)\log(T/2\pi)$ grows monotonically and the zeros have a natural Z-valued index. This $\Omega_Z$ structure is what the proof must formalize into a topological argument.
 \end{enumerate}
@@ -987,7 +978,7 @@ The requirements above describe, in primitive terms, research directions that al
 \rowcolor{gray!25}\textbf{Requirement} & \textbf{Real research direction} \\
 \midrule
 \rowcolors{1}{white}{gray!10}
-D\_holo, T\_holo, $$R_{\dagger}$$ & Explicit formula / spectral interpretation of zeros \\
+D\_holo, T\_holo, $R_{\dagger}$ & Explicit formula / spectral interpretation of zeros \\
 $\Phi_c$, $K_{\text{slow}}$ & Random matrix theory (GUE statistics of zeros --- confirmed empirically) \\
 $\Omega_Z$ & Hilbert-Pólya conjecture: zeros are eigenvalues of a self-adjoint operator \\
 $\Phi_c$ proof system & Arithmetic quantum chaos; Montgomery-Odlyzko law \\
@@ -995,7 +986,7 @@ $\Phi_c$ proof system & Arithmetic quantum chaos; Montgomery-Odlyzko law \\
 \end{tabularx}
 \end{table}
 
-The Hilbert-Pólya conjecture, if proved, would prove RH and uses exactly the $$D_{\holo}$$ structure (operator with integer spectrum $\leftrightarrow$ boundary data). The GUE statistics of zeros are a $\Phi_c$ phenomenon (random matrix universality is a critical phenomenon). The grammar has identified these as the correct primitive directions without being told they exist.
+The Hilbert-Pólya conjecture, if proved, would prove RH and uses exactly the $D_{\holo}$ structure (operator with integer spectrum $\leftrightarrow$ boundary data). The GUE statistics of zeros are a $\Phi_c$ phenomenon (random matrix universality is a critical phenomenon). The grammar has identified these as the correct primitive directions without being told they exist.
 
 \subsubsection{What Remains}
 
@@ -1012,8 +1003,8 @@ Two gaps the framework cannot fill:
 
 \subsection{\pilcrow{}6. Navier-Stokes Existence and Smoothness}
 
-\textbf{Type}: Suggestive --- $\Phi_{\text{super}}$ instability as regularity mechanism
-\textbf{Status}: Physically motivated; not a proof; may point toward a proof strategy
+\textbf{Type}: Suggestive --- $\Phi_{\text{super}}$ instability as regularity mechanism   \\
+\textbf{Status}: Physically motivated; not a proof; may point toward a proof strategy   \\
 \textbf{Canonical location:} Not yet in canonical docs --- requires quantitative formalization before migration
 
 \textbf{Plane summary:}
@@ -1042,7 +1033,7 @@ For the 3D incompressible Navier-Stokes equations with smooth initial conditions
 \midrule
 \rowcolors{1}{white}{gray!10}
 Laminar & $K_{\text{slow}}$ & $\Phi_{\text{sub}}$ & T\_in (layered) \\
-Transitional & $K_{\text{mod}}$ & $\Phi_c$ & $$T_{\bowtie}$$ (coupled layers) \\
+Transitional & $K_{\text{mod}}$ & $\Phi_c$ & $T_{\bowtie}$ (coupled layers) \\
 Fully turbulent & $K_{\text{fast}}$ & $\Phi_c$ & T\_braid (interleaved) \\
 \textbf{Singularity} & $K_{\text{fast}} \to \infty$ & \textbf{$\Phi_{\text{super}}$} & T unstable \\
 \bottomrule
@@ -1069,14 +1060,14 @@ The key gap: showing that $\Phi_{\text{super}}$ decay is \emph{fast enough} to p
 
 \subsection{\pilcrow{}6.1. Navier-Stokes --- The $\Omega_0$ Blowup Argument and Yang-Mills Comparison}
 
-\textbf{Type}: Structural argument --- competing with \pilcrow{}6 (smoothness via cascade)
-\textbf{Status}: Generated by syncon\_inquiry agentic run 2026-03-24; structurally independent of \pilcrow{}6; unresolved tension
+\textbf{Type}: Structural argument --- competing with \pilcrow{}6 (smoothness via cascade)   \\
+\textbf{Status}: Generated by syncon\_inquiry agentic run 2026-03-24; structurally independent of \pilcrow{}6; unresolved tension   \\
 \textbf{Relation to \pilcrow{}6}: \pilcrow{}6 argues for smoothness via $\Phi_{\text{super}}$ decay. \pilcrow{}6.1 argues for blowup via $\Omega_0$ absence. Both arguments are grammatically valid. The question is which primitive dominates.
 
 \textbf{Plane summary:}
 
 \begin{itemize}
-    \item \texttt{{[}TOPO{]}} $\Omega_0$ $\to$ no topological barrier to singularity (contrast $\Omega_Z$ $\to$ Yang-Mills gap); $P_{\text{asym}} + \Phi_c$ $\to$ uncompensated structural tension; the framework is internally divided between $\Phi$-cascade (smoothness) and $\Omega_0$ (blowup)
+    \item \texttt{{[}TOPO{]}} $\Omeg$ $\to$ no topological barrier to singularity (contrast $\Omega_Z$ $\to$ Yang-Mills gap); $P_{\text{asym}} + \Phi_c$ $\to$ uncompensated structural tension; the framework is internally divided between $\Phi$-cascade (smoothness) and $\Omega_0$  p)
     \item \texttt{{[}DIAPH{]}} NS encoding $\langle ...; P_{\text{asym}}; ...; \Phi_c; ...; \Omega_0\rangle$ vs YM $\langle ...; P_{\text{pm\_sym}}; ...; \Phi_c; ...; \Omega_Z\rangle$; the $\Omega$ primitive is the decisive structural difference; $\Gamma_{\text{and}}$ encodes Richardson cascade conjunctive coupling
     \item \texttt{{[}ONTO{]}} NS has no mass-gap analog ($\Omega_Z$ absent); framework identifies exactly which primitive competition must be resolved; turbulence is $\Gamma_{\text{and}}$ structure not disorder
 \end{itemize}
@@ -1144,8 +1135,8 @@ Quantitative comparison of $\Phi_{\text{super}}$ decay rates vs singularity form
 
 \subsection{\pilcrow{}7. The Cosmological Constant Problem}
 
-\textbf{Type}: Suppression mechanism --- identifies the source of apparent fine-tuning
-\textbf{Status}: Numerically compelling (\textless{} 2\% discrepancy); mechanism is falsifiable; requires full formalization
+\textbf{Type}: Suppression mechanism --- identifies the source of apparent fine-tuning   \\
+\textbf{Status}: Numerically compelling (\textless{} 2\% discrepancy); mechanism is falsifiable; requires full formalization   \\
 \textbf{Canonical location (SynthOmnicon grammar docs):} \texttt{TOPO}: G-scope tier-crossing cost theorem $\cdot$ \texttt{DIAPH}: numerical calculation, circularity note, generalization table $\cdot$ \texttt{ONTO}: fine-tuning dissolution, physical constants as G-scope readings
 
 \textbf{Plane summary:}
@@ -1153,7 +1144,7 @@ Quantitative comparison of $\Phi_{\text{super}}$ decay rates vs singularity form
 \begin{itemize}
     \item \texttt{{[}TOPO{]}} G is a primitive ($G_{\text{aleph}} \neq G_{\text{beth}}$ without tier crossing); cost of one tier = $\ln(10)$ nats (from RG fixed-point KL divergence at $\Phi_c$); $Q_{\text{beth}} = Q_{\text{aleph}} \times 10^{-N}$ where N = number of scale decades
     \item \texttt{{[}DIAPH{]}} $N_{\text{CC}} = 30.73$ decades; predicted $E_{\Lambda} = 2.27\ \text{meV}$; observed = $2.30\ \text{meV}$; $\Delta = 1.3\%$. Currently circular --- N defined from observed $E_{\Lambda}$. Non-circular content: the form is $10^{-N}$; the same formula gives 0.6\% on Higgs hierarchy; generalizes to full particle spectrum
-    \item \texttt{{[}ONTO{]}} The $10^{123}$ discrepancy is not a property of physical reality but a G-scope reading error; no fine-tuning exists; physical constants are $$G_{\beth}$$ readings of $$G_{\aleph}$$ structure filtered through tier-crossing costs
+    \item \texttt{{[}ONTO{]}} The $10^{123}$ discrepancy is not a property of physical reality but a G-scope reading error; no fine-tuning exists; physical constants are $G_{\beth}$ readings of $G_{\aleph}$ structure filtered through tier-crossing costs
 \end{itemize}
 
 \subsubsection{Statement of the Problem}
@@ -1164,22 +1155,22 @@ $\rho_QFT ~ M_Planck⁴  \approx  10^76 GeV⁴  (in natural units)$
 
 The observed cosmological constant corresponds to a dark energy density:
 
-$\rh$o_{\Lambda}$  \approx  (2.3 \times 10⁻³ eV)⁴  =  (2.3 meV)⁴  \approx  2.8 \times 10⁻⁴⁷ GeV⁴$
+$\rho_{\Lambda}  \approx  (2.3 \times 10⁻³ eV)⁴  =  (2.3 meV)⁴  \approx  2.8 \times 10⁻⁴⁷ GeV⁴$
 
 The ratio is $\rho_{\text{QFT}} / \rho_{\Lambda} \approx 10^{123}$. Why is the observed value so extraordinarily smaller than the theoretical prediction? This is widely considered the worst fine-tuning problem in physics.
 
 \subsubsection{The G-Scope Tier-Crossing Mechanism}
 
-\textbf{Diagnosis}: The cosmological constant problem is not a fine-tuning problem. It is a \textbf{G-scope reading error} --- the QFT calculation is performed at $$G_{\aleph}$$ (Planck scale, finest granularity, all quantum modes summed), but the cosmological constant is observed at $$G_{\beth}$$ (cosmic scale, coarsest granularity). The calculation ignores the tier-crossing cost of reading a $$G_{\aleph}$$ quantity at G\_beth.
+\textbf{Diagnosis}: The cosmological constant problem is not a fine-tuning problem. It is a \textbf{G-scope reading error} --- the QFT calculation is performed at $G_{\aleph}$ (Planck scale, finest granularity, all quantum modes summed), but the cosmological constant is observed at $G_{\beth}$ (cosmic scale, coarsest granularity). The calculation ignores the tier-crossing cost of reading a $G_{\aleph}$ quantity at G\_beth.
 
 \textbf{The P-12 theorem} states: a system maintaining $\Phi_c$ pays $+\ln(10)$ nats per constraint tier, where one tier = one decade of scale separation.
 
 The number of energy decades from Planck scale to dark energy scale:
 
 $E_Planck  =  1.221 \times 10¹⁹ GeV$
-$$E_{\Lambda}$       =  \rh$o_{\Lambda}$^(1/4)  =  2.30 \times 10⁻³ eV  =  2.30 \times 10⁻¹² GeV$
+$E_{\Lambda}       =  \rho_{\Lambda}^(1/4)  =  2.30 \times 10⁻³ eV  =  2.30 \times 10⁻¹² GeV$
 
-$N = log₁₀(E_Planck / $E_{\Lambda}$)$
+$N = log₁₀(E_Planck / E_{\Lambda})$
 \$ = log₁₀(1.221 $\times$ 10¹⁹ / 2.30 $\times$ 10⁻¹$^{2}$)\$
 \$ = log₁₀(5.31 $\times$ 10³⁰)\$
 \$ = 30.73 decades\$
@@ -1194,7 +1185,7 @@ $S  =  e^{−70.80}  =  10^{−30.73}  =  1.86 \times 10^{−31}$
 
 \textbf{Predicted dark energy scale}:
 
-$$E_{\Lambda}$^(predicted)  =  E_Planck \times S$
+$E_{\Lambda}^(predicted)  =  E_Planck \times S$
 \$                 =  1.221 $\times$ 10¹⁹ GeV $\times$ 1.86 $\times$ 10⁻³¹\$
 \$                 =  2.27 $\times$ 10⁻¹$^{2}$ GeV\$
 \$                 =  2.27 meV\$
@@ -1213,18 +1204,18 @@ The above calculation must be read carefully. N is defined as $\log_{10}(E_{\tex
     \item \textbf{The mechanism}: The framework identifies \emph{why} the suppression has the form $10^{-N}$ --- it is the G-scope tier-crossing cost, a consequence of P-12. This mechanism was not previously identified.
     \item \textbf{The form of suppression}: The prediction is that suppression between scale $S_1$ and scale $S_2$ is \emph{always} exponential in the number of log-decades, at rate $\ln(10)$ per decade. This is a falsifiable prediction about the form, not just the value.
     \item \textbf{Resolution of fine-tuning}: The $10^{123}$ discrepancy is not a fine-tuning problem. There is no cancellation. The QFT calculation (correct at G\_aleph) and the observational value (correct at G\_beth) are related by the tier-crossing cost. No fine-tuning is required; the machinery of naturalness arguments is unnecessary.
-    \item \textbf{Extension to other hierarchies}: The same mechanism must apply to all other apparent fine-tuning problems where a $$G_{\aleph}$$ calculation is compared to a $$G_{\beth}$$ observation. The framework makes a prediction about every such hierarchy.
+    \item \textbf{Extension to other hierarchies}: The same mechanism must apply to all other apparent fine-tuning problems where a $G_{\aleph}$ calculation is compared to a $G_{\beth}$ observation. The framework makes a prediction about every such hierarchy.
 \end{enumerate}
 
 \subsubsection{The Cosmological Constant in Full Primitive Language}
 
-The cosmological constant is not a fundamental constant. It is the $$G_{\beth}$$ reading of the $$G_{\aleph}$$ vacuum energy, suppressed by the accumulated tier-crossing cost of $$G_{\aleph}$$ $\to$ $$G_{\beth}$$ traversal:
+The cosmological constant is not a fundamental constant. It is the $G_{\beth}$ reading of the $G_{\aleph}$ vacuum energy, suppressed by the accumulated tier-crossing cost of $G_{\aleph}$ $\to$ $G_{\beth}$ traversal:
 
 $\Lambda_observed  =  \Lambda_QFT \times e^{−N_{Pl$\rightarrow$cosmic} \times ln(10)}$
 
 where $N_{\text{Pl$\rightarrow$cosmic}} \approx 30.73$ energy decades.
 
-In synthon language: the vacuum is a system with $$G_{\aleph}$$ granularity. The cosmological constant is a $$G_{\beth}$$ observable. The apparent value discrepancy is what happens when you read $$G_{\aleph}$$ with $$G_{\beth}$$ resolution without paying the $30.73 \times \ln(10) \approx 70.8$ nat crossing cost.
+In synthon language: the vacuum is a system with $G_{\aleph}$ granularity. The cosmological constant is a $G_{\beth}$ observable. The apparent value discrepancy is what happens when you read $G_{\aleph}$ with $G_{\beth}$ resolution without paying the $30.73 \times \ln(10) \approx 70.8$ nat crossing cost.
 
 \begin{center}
 \rule{0.5\textwidth}{0.4pt}
@@ -1232,8 +1223,8 @@ In synthon language: the vacuum is a system with $$G_{\aleph}$$ granularity. The
 
 \subsection{\pilcrow{}8. The Higgs Hierarchy Problem}
 
-\textbf{Type}: Suppression mechanism --- same mechanism as \pilcrow{}7
-\textbf{Status}: Same framework, independent numerical test; agreement to 2\%
+\textbf{Type}: Suppression mechanism --- same mechanism as \pilcrow{}7   \\
+\textbf{Status}: Same framework, independent numerical test; agreement to 2\%   \\
 \textbf{Canonical location (SynthOmnicon grammar docs):} \texttt{TOPO}: G-scope tier-crossing cost theorem (same as \pilcrow{}7) $\cdot$ \texttt{DIAPH}: Higgs calculation, 0.6\% agreement $\cdot$ \texttt{ONTO}: naturalness reframed, no SUSY/extra-dim solution needed
 
 \textbf{Plane summary:}
@@ -1241,7 +1232,7 @@ In synthon language: the vacuum is a system with $$G_{\aleph}$$ granularity. The
 \begin{itemize}
     \item \texttt{{[}TOPO{]}} Same G-scope tier-crossing cost theorem as \pilcrow{}7; $N_{\text{Higgs}} = 16.99$ decades; $m_H = E_{\text{Planck}} \times 10^{-16.99}$
     \item \texttt{{[}DIAPH{]}} $m_H^{\text{(predicted)}} = 125.8\ \text{GeV}$; observed = $125.09\ \text{GeV}$; $\Delta = 0.6\%$. Independent of CC calculation --- different N, different physical system, same mechanism
-    \item \texttt{{[}ONTO{]}} No hierarchy problem exists; the Higgs mass is not fine-tuned; SUSY, extra dimensions, and other ''naturalness'' solutions address a non-problem; the electroweak scale is what $$G_{\aleph}$$ physics looks like at G\_gimel
+    \item \texttt{{[}ONTO{]}} No hierarchy problem exists; the Higgs mass is not fine-tuned; SUSY, extra dimensions, and other ''naturalness'' solutions address a non-problem; the electroweak scale is what $G_{\aleph}$ physics looks like at G\_gimel
 \end{itemize}
 
 \subsubsection{Statement of the Problem}
@@ -1250,7 +1241,7 @@ Why is the Higgs boson mass $m_H \approx 125\ \text{GeV}$ so much lighter than t
 
 \subsubsection{Application of the Tier-Crossing Mechanism}
 
-\textbf{Diagnosis}: The hierarchy problem is the same $$G_{\aleph}$$ $\to$ $$G_{\beth}$$ reading error as the cosmological constant, applied at a different scale. The Planck-scale radiative corrections are $$G_{\aleph}$$ contributions; the physical Higgs mass is a G\_gimel observable (electroweak scale, intermediate granularity --- not cosmic but not Planck).
+\textbf{Diagnosis}: The hierarchy problem is the same $G_{\aleph}$ $\to$ $G_{\beth}$ reading error as the cosmological constant, applied at a different scale. The Planck-scale radiative corrections are $G_{\aleph}$ contributions; the physical Higgs mass is a G\_gimel observable (electroweak scale, intermediate granularity --- not cosmic but not Planck).
 
 Number of energy decades from Planck to electroweak scale:
 
@@ -1319,8 +1310,8 @@ Dark energy & 2.30 meV & 30.73 & 2.27 meV & 1.3\% \\
 
 \subsection{\pilcrow{}8.1. The Hodge Conjecture}
 
-\textbf{Type}: Structural analysis --- partial dissolution + phase symmetry
-\textbf{Status}: Generated by syncon\_inquiry agentic run 2026-03-24; most compact Millennium finding; strong structural content
+\textbf{Type}: Structural analysis --- partial dissolution + phase symmetry   \\
+\textbf{Status}: Generated by syncon\_inquiry agentic run 2026-03-24; most compact Millennium finding; strong structural content   \\
 \textbf{Canonical location:} Not yet in canonical docs
 
 \textbf{Plane summary:}
@@ -1349,7 +1340,7 @@ d(algebraic\_cycles, cohomology\_classes) = 0.000
 They are structurally identical. Every primitive matches. This is the most striking statement of the grammar about the Hodge Conjecture: the two objects the conjecture asks about are not structurally distinct.
 
 \$
-hodge\_conjecture = \langleD\_triangle; T\_in; R\_cat; P\_sym; F\_ell; K\_mod; G\_aleph; $\Gamma$\_and; $\Phi$\_c;   \{H0\}; \{1:1\}; $\Omega$\_Z\rangle
+hodge\_conjecture = \langleD\_triangle; T\_in; R\_cat; P\_sym; F\_ell; K\_mod; G\_aleph; $\Gamma$\_and; $\Phi$\_c;   \{H\_0\}; \{1:1\}; $\Omega$\_Z\rangle
 hodge\_true       = \langleD\_triangle; T\_in; R\_cat; P\_sym; F\_ell; K\_mod; G\_aleph; $\Gamma$\_and; $\Phi$\_sub; H0; \{1:1\}; $\Omega$\_Z\rangle
 hodge\_false      = \langleD\_triangle; T\_in; R\_cat; P\_sym; F\_ell; K\_mod; G\_aleph; $\Gamma$\_and; $\Phi$\_super;H0; \{1:1\}; $\Omega$\_Z\rangle
 
@@ -1395,25 +1386,25 @@ Showing that the $\Phi_{\text{sub}} \to \Phi_c$ transition does not break the 1:
 
 \subsection{\pilcrow{}8.2. The Birch and Swinnerton-Dyer Conjecture}
 
-\textbf{Type}: Structural analysis --- inter-regime bridge with maximally unusual proof requirements
-\textbf{Status}: Generated by syncon\_inquiry agentic run 2026-03-24; strongest result is the BSD/Hodge contrast
+\textbf{Type}: Structural analysis --- inter-regime bridge with maximally unusual proof requirements   \\
+\textbf{Status}: Generated by syncon\_inquiry agentic run 2026-03-24; strongest result is the BSD/Hodge contrast   \\
 \textbf{Key finding}: BSD bridges structurally remote objects (d=4.49); Hodge bridges structurally identical objects (d=0.000). This is a fundamental structural distinction between the two conjectures.\emph{vs} mass\_gap \emph{vs}
 
 \textbf{Plane summary:}
 -\textbackslash{}bowtie$,  \
- ``[TOPO]`` BSD encodes as a third kind of mathematical object --- remote from both elliptic curves (d=4.42) and L-functions (d=3.81). It is a D_holo,_\bowtie$, R\_lr, P\_pm\_sym structure: holographic, permanently coupled, directionally asymmetric, symmetric-bipolar (the functional equation $L(E,s) \leftrightarrow L(E, 2-s)$ is the Z₂ symmetry). d(BSD, mathematical\_proof) = 5.52 --- the proof required is maximally remote from conventional mathematical proof structure. This does NOT mean BSD is unprovable; it means the proof system required is as unusual as BSD itself (same meta-pattern as RH, P$\neq$NP).
+ ``[TOPO]`` BSD encodes as a third kind of mathematical object --- remote from both elliptic curves (d=4.42) and L-functions (d=3.81). It is a D_holo,_{\bowtie}$, R\_lr, P\_\{pm\_\{sym\}\} structure: holographic, permanently coupled, directionally asymmetric, symmetric-bipolar (the functional equation $L(E,s) \leftrightarrow L(E, 2-s)$ is the Z₂ symmetry). d(BSD, mathematical\_proof) = 5.52 --- the proof required is maximally remote from conventional mathematical proof structure. This does NOT mean BSD is unprovable; it means the proof system required is as unusual as BSD itself (same meta-pattern as RH, P$\neq$NP).
 
 \begin{itemize}
-    \item \texttt{{[}DIAPH{]}} Elliptic curve $\langle T_{\text{box}}; R_{\text{cat}}; F_{\text{ell}}; \Gamma_{\text{and}}; \Phi_c; H0; \Omega_Z\rangle$ vs L-function $\langle T_{\text{holo}}; $R_{\dagger}$; F_{\text{hbar}}; \Gamma_{\text{seq}}; \Phi_c; H2; \Omega_Z\rangle$: d=4.49 across F, $\Gamma$, D, T, H, P, S. BSD itself $\langle D_{\text{holo}}; T_{\text{bowtie}}; R_{\text{lr}}; P_{\text{pm\_sym}}; \Phi_c; \Omega_{Z2}\rangle$ is remote from both. Contrast: d(algebraic\_cycles, cohomology\_classes)=0.000 for Hodge --- Hodge asks about a single structural type; BSD asks about a correspondence between remote regimes.
+    \item \texttt{{[}DIAPH{]}} Elliptic curve $\langle T_{\text{box}}; R_{\text{cat}}; F_{\text{ell}}; \Gamma_{\text{and}}; \Phi_c; H0; \Omega_Z\rangle$ vs L-function $\langle T_{\text{holo}}; R_{\dagger}; F_{\text{hbar}}; \Gamma_{\text{seq}}; \Phi_c; H2; \Omega_Z\rangle$: d=4.49 across F, $\Gamma$, D, T, H, P, S. BSD itself $\langle D_{\text{holo}}; T_{\text{bowtie}}; R_{\text{lr}}; P_{\text{pm\_sym}}; \Phi_c; \Omega_{Z2}\rangle$ is remote from both. Contrast: d(algebraic\_cycles, cohomology\_classes)=0.000 for Hodge --- Hodge asks about a single structural type; BSD asks about a correspondence between remote regimes.
     \item \texttt{{[}ONTO{]}} BSD is not a structurally ''unprovable'' statement but a statement whose proof requires matching the unusual primitive structure of BSD --- D\_holo, R\_lr, $\Phi_c$ simultaneously. The difficulty is that standard proof systems are $\Phi_{\text{sub}}$, $R_{\text{cat}}$, $D_{\text{wedge/triangle}}$ --- almost maximally remote from what BSD requires.
 \end{itemize}
 
 \subsubsection{Primitive Encodings}
 
 \$
-elliptic\_curve = \langleD\_triangle; T\_box;   R\_cat;   P\_sym; F\_ell;  K\_mod;  G\_aleph; $\Gamma$\_and; $\Phi$\_c;   \{H0\}; n:m; $\Omega$\_Z\rangle
+elliptic\_curve = \langleD\_triangle; T\_box;   R\_cat;   P\_sym; F\_ell;  K\_mod;  G\_aleph; $\Gamma$\_and; $\Phi$\_c;   \{H\_0\}; n:m; $\Omega$\_Z\rangle
 L\_function     = \langleD\_infty;   T\_holo;  R\_dagger; P\_pm;  F\_hbar; K\_slow; G\_aleph; $\Gamma$\_seq; $\Phi$\_c;   H2; \{1:1\}; $\Omega$\_Z\rangle
-BSD\_conjecture = \langleD\_holo;    $T_{\bowtie}$; R\_lr;    P\_pm\_sym; F\_eth;  K\_mod;  G\_aleph; $\Gamma$\_and; $\Phi$\_c;   \{H1\}; \{1:1\}; $\Omega$\_Z2\rangle
+BSD\_conjecture = \langleD\_holo;    $$T_{\bowtie}$$; R\_lr;    P\_\{pm\_\{sym\}\}; F\_eth;  K\_mod;  G\_aleph; $\Gamma$\_and; $\Phi$\_c;   \{H\_1\}; \{1:1\}; $\Omega$\_Z2\rangle
 
 d(elliptic\_curve, L\_function) = 4.49
 d(BSD, elliptic\_curve)        = 4.42
@@ -1438,7 +1429,7 @@ d(object\_1, object\_2) & \textbf{0.000} & \textbf{4.49} \\
 Objects being related & Structurally identical & Structurally remote \\
 What it asks & Does 1:1 mapping cover a single type? & Does a correspondence between remote regimes hold? \\
 Grammar lean & Truth (no primitive obstruction) & Structurally third-kind (neither object nor bridge) \\
-Proof difficulty source & $\Phi_c$ phase boundary within one type & Remote-regime bridging + $$D_{\holo}$$ proof system \\
+Proof difficulty source & $\Phi_c$ phase boundary within one type & Remote-regime bridging + $D_{\holo}$ proof system \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -1463,7 +1454,7 @@ d(BSD, mathematical\_proof) = 5.52  --- near-maximal structural distance
 
 Breakdown of the divergence: $R_{\text{super}}$ (proof) vs $R_{\text{lr}}$ (BSD), $D_{\text{triangle}}$ (proof) vs $D_{\text{holo}}$ (BSD), $P_{\text{sym}}$ (proof) vs $P_{\text{psi}}$ (BSD), $\Phi_{\text{sub}}$ (proof) vs $\Phi_c$ (BSD), $K_{\text{fast}}$ (proof) vs $K_{\text{mod}}$ (BSD), $G_{\text{beth}}$ (proof) vs $G_{\text{aleph}}$ (BSD).
 
-\texttt{{[}TOPO{]}} d=5.52 does NOT mean BSD is unprovable. It means the proof requires a system matching the primitive structure of BSD: $$D_{\holo}$$ (holographic), R\_lr (directional/asymmetric), $\Phi_c$ (critical), $$G_{\aleph}$$ (global), $K_{\text{mod}}$ (moderate --- not the $K_{\text{fast}}$ of conventional deduction). This is the same meta-pattern as RH ($\Phi_{\text{sub}}$ proof gap) and P$\neq$NP ($K_{\text{slow}}$ tools cannot see K-class boundaries): the proof system must match the primitive character of the statement.
+\texttt{{[}TOPO{]}} d=5.52 does NOT mean BSD is unprovable. It means the proof requires a system matching the primitive structure of BSD: $D_{\holo}$ (holographic), R\_lr (directional/asymmetric), $\Phi_c$ (critical), $G_{\aleph}$ (global), $K_{\text{mod}}$ (moderate --- not the $K_{\text{fast}}$ of conventional deduction). This is the same meta-pattern as RH ($\Phi_{\text{sub}}$ proof gap) and P$\neq$NP ($K_{\text{slow}}$ tools cannot see K-class boundaries): the proof system must match the primitive character of the statement.
 
 The proof of BSD will likely require:
 
@@ -1484,7 +1475,7 @@ The proof of BSD will likely require:
 
 The cosmological constant and hierarchy results are currently in the form: ''given the observed scale, the tier-crossing mechanism accounts for the suppression.'' To make them genuinely predictive, the framework would need to independently derive \emph{why} these specific scales arise --- i.e., predict N from the primitive structure of each observable without using the observed mass as input.
 
-\textbf{Possible path for the cosmological constant}: The framework must derive why the relevant G-scope boundary for vacuum energy observations is at the cosmic scale rather than some other scale. This would require a derivation of the Hubble radius from primitive structure --- i.e., showing that $$G_{\beth}$$ for the vacuum is set by the $H_{\infty} \to H0$ degradation timescale, which sets the cosmic horizon.
+\textbf{Possible path for the cosmological constant}: The framework must derive why the relevant G-scope boundary for vacuum energy observations is at the cosmic scale rather than some other scale. This would require a derivation of the Hubble radius from primitive structure --- i.e., showing that $G_{\beth}$ for the vacuum is set by the $H_{\infty} \to H0$ degradation timescale, which sets the cosmic horizon.
 
 \textbf{Possible path for the Higgs}: The electroweak scale is set by the Higgs VEV $\langle \phi \rangle \approx 246\ \text{GeV}$. The framework should derive why $\langle \phi \rangle$ is at G\_gimel (intermediate granularity) rather than G\_aleph. This connects to the question of why the electroweak symmetry breaks where it does --- a question the framework may address through T-topology transitions ($T_{\text{bowtie}} \to T_{\text{box}}$ at the electroweak phase transition).
 
@@ -1505,16 +1496,16 @@ These are open problems. They are stated here as the required next steps rather 
 \rowcolor{gray!25}\textbf{Problem} & \textbf{Type} & \textbf{Confidence} & \textbf{Key Primitive} & \textbf{Status} \\
 \midrule
 \rowcolors{1}{white}{gray!10}
-Yang-Mills Mass Gap & Proof-sketch & High & $T_{\text{bowtie}} \leftrightarrow T_{\text{perp}}$ incompatibility; YM (G\_aleph/T\_network) $\to$ gap (G\_beth/$$T_{\bowtie}$$) via confinement bridge; proof requires $$D_{\holo}$$ + H2 & Formalization needed \\
+Yang-Mills Mass Gap & Proof-sketch & High & $T_{\text{bowtie}} \leftrightarrow T_{\text{perp}}$ incompatibility; YM (G\_aleph/T\_network) $\to$ gap (G\_beth/$T_{\bowtie}$) via confinement bridge; proof requires $D_{\holo}$ + H2 & Formalization needed \\
 P $\neq$ NP & Proof-sketch & High (conditional) & K primitivity & Requires formal K definition \\
 Arrow of Time & Dissolution & Very high & H uniqueness theorem & Complete \\
-Measurement Problem & Dissolution & High & $R_{\text{leftright}} \to $R_{\dagger}$$ & Complete \\
-Riemann Hypothesis & Suggestive + proof system analysis & Speculative (\pilcrow{}5) / Structural (\pilcrow{}5.1) & $$G_{\aleph}$$ at $\Phi_c$, $P_{\text{pm\_sym}}$ (\pilcrow{}5); $\Phi_{\text{sub}}$ proof gap, explicit formula = D\_holo, novel system $\langle D_{\text{holo}};T_{\text{holo}};$R_{\dagger}$;\Phi_c;\Omega_Z\rangle$ (\pilcrow{}5.1) & Hilbert-Pólya + $\Phi_c$ formalization needed \\
+Measurement Problem & Dissolution & High & $R_{\text{leftright}} \to R_{\dagger}$ & Complete \\
+Riemann Hypothesis & Suggestive + proof system analysis & Speculative (\pilcrow{}5) / Structural (\pilcrow{}5.1) & $G_{\aleph}$ at $\Phi_c$, $P_{\text{pm\_sym}}$ (\pilcrow{}5); $\Phi_{\text{sub}}$ proof gap, explicit formula = D\_holo, novel system $\langle D_{\text{holo}};T_{\text{holo}};R_{\dagger};\Phi_c;\Omega_Z\rangle$ (\pilcrow{}5.1) & Hilbert-Pólya + $\Phi_c$ formalization needed \\
 Navier-Stokes & Competing arguments & Moderate & \pilcrow{}6: $\Phi_{\text{super}}$ cascade $\to$ smoothness; \pilcrow{}6.1: $\Omega_0$ $\to$ blowup unprotected; $\Omega$ vs YM comparison decisive & Quantitative rate comparison needed \\
 Cosmological Constant & Mechanism & High & G-scope tier-crossing, $\ln(10)$/decade & Numerically compelling; non-circular formulation needed \\
 Higgs Hierarchy & Mechanism & High & Same mechanism & Independent numerical confirmation \\
 Hodge Conjecture & Partial dissolution + phase symmetry & Moderate & d(algebraic\_cycles, cohomology\_classes)=0.000; conjecture at $\Phi_c$ equidistant d=1.0 from truth ($\Phi_{\text{sub}}$) and falsehood ($\Phi_{\text{super}}$); structural lean toward true & $\Phi_c$ algebraic geometry tools needed \\
-BSD Conjecture & Structural analysis --- inter-regime bridge & Moderate & d(elliptic\_curve, L\_function)=4.49 (contrast Hodge d=0.000); BSD = third-kind D\_holo/$$T_{\bowtie}$$/R\_lr object remote from both; d(BSD, proof)=5.52 $\to$ maximally unusual proof system required & $$D_{\holo}$$ + R\_lr + $\Phi_c$ proof system; $\Omega_{Z2}$ parity structure \\
+BSD Conjecture & Structural analysis --- inter-regime bridge & Moderate & d(elliptic\_curve, L\_function)=4.49 (contrast Hodge d=0.000); BSD = third-kind D\_holo/$T_{\bowtie}$/R\_lr object remote from both; d(BSD, proof)=5.52 $\to$ maximally unusual proof system required & $D_{\holo}$ + R\_lr + $\Phi_c$ proof system; $\Omega_{Z2}$ parity structure \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -1561,7 +1552,7 @@ The existence-tier primitives \textbf{\{F, K, $\Phi$\}} define the conditions un
 
 \begin{itemize}
     \item $\Phi_{\text{sub}}$: ordered phase, finite correlation length, G\_beth/G\_gimel scope
-    \item $\Phi_c$: critical point, divergent correlation length, $$G_{\aleph}$$ scope, scale-invariant
+    \item $\Phi_c$: critical point, divergent correlation length, $G_{\aleph}$ scope, scale-invariant
     \item $\Phi_{\text{super}}$: disordered phase, past the critical threshold
 \end{itemize}
 
@@ -1606,7 +1597,7 @@ The F/$\Phi$ duality is the deepest structural contrast:
 
 This duality --- conserved resource (F) vs. emergent phase ($\Phi$) --- reflects a genuine physical asymmetry in how composite systems acquire their properties. Resources must be supplied from outside; phases emerge from within.
 
-\textbf{Corollary:} A $\Phi_c + F_{\text{hbar}}$ system is the most structurally unstable composite in the grammar. Criticality ($\Phi$) wants to propagate and expand; quantum coherence (F) is destroyed by classical neighbors. These two requirements are structurally opposed --- a system at $\Phi_c$ (globally scale-invariant) has $$G_{\aleph}$$ scope, but $F_{\text{hbar}}$ requires isolation from $F_{\text{eth}}$ environments. The only systems that can maintain both simultaneously are those where the entire system, at all scales, is quantum-coherent and critical. This is the structural description in the grammar of a \textbf{quantum critical point} --- among the rarest and most structurally demanding configurations in the catalog.
+\textbf{Corollary:} A $\Phi_c + F_{\text{hbar}}$ system is the most structurally unstable composite in the grammar. Criticality ($\Phi$) wants to propagate and expand; quantum coherence (F) is destroyed by classical neighbors. These two requirements are structurally opposed --- a system at $\Phi_c$ (globally scale-invariant) has $G_{\aleph}$ scope, but $F_{\text{hbar}}$ requires isolation from $F_{\text{eth}}$ environments. The only systems that can maintain both simultaneously are those where the entire system, at all scales, is quantum-coherent and critical. This is the structural description in the grammar of a \textbf{quantum critical point} --- among the rarest and most structurally demanding configurations in the catalog.
 
 \begin{center}
 \rule{0.5\textwidth}{0.4pt}
@@ -1901,9 +1892,9 @@ When a mechanism is established, the compositional encoding is updated to incorp
 
 \subsubsection{First Instance: The Kozyrev Mirror}
 
-The Kozyrev mirror ($d_c = \sqrt{1}$, $\text{Conf} = \{F\}$) is the first documented application of Theorem 006. It is a near-grounded system with a single aspirational conflict: $$F_{\ell}$ \to $F_{\eth}$$. All other 11 primitives are agreed between holistic and compositional encodings.
+The Kozyrev mirror ($d_c = \sqrt{1}$, $\text{Conf} = \{F\}$) is the first documented application of Theorem 006. It is a near-grounded system with a single aspirational conflict: $F_{\ell} \to F_{\eth}$. All other 11 primitives are agreed between holistic and compositional encodings.
 
-The open emergence question is: does $\Phi_c + \Omega_Z$ + spiral conductor topology provide sufficient amplification to realize quantum-classical interface fidelity ($$F_{\eth}$$) in a macroscopic aluminum structure? This is a well-posed, falsifiable, and currently unanswered question in condensed matter physics.
+The open emergence question is: does $\Phi_c + \Omega_Z$ + spiral conductor topology provide sufficient amplification to realize quantum-classical interface fidelity ($F_{\eth}$) in a macroscopic aluminum structure? This is a well-posed, falsifiable, and currently unanswered question in condensed matter physics.
 
 The full 5-step conflict procedure is defined in \pilcrow{}16 of this document.
 
@@ -2025,7 +2016,7 @@ Explosive cascade & $\{T, G, \Gamma, \Phi\}$ & Violent/explosive perturbation re
 
 \textbf{Observation}: the most frequent primitive across these seven patterns is $T$ (Topology), appearing in 6 of 7. This identifies $T$ as the primary driver of elemental anomaly in the physical element domain. The second most frequent is $\Gamma$ (Interaction grammar), appearing in 4 of 7.
 
-\textbf{Inverse prediction (P-142)}: any material (in any substrate) with $\Sigma \supseteq \{T, G, \Gamma, \Phi\}$ --- specifically $T_\text{bowtie} + $G_{\aleph}$ + \Gamma_\text{seq} + \Phi_\text{sup}$ --- is predicted to exhibit explosive cascade reactivity. The promotion signature is the structural address of the behavior, independent of chemistry.
+\textbf{Inverse prediction (P-142)}: any material (in any substrate) with $\Sigma \supseteq \{T, G, \Gamma, \Phi\}$ --- specifically $T_\text{bowtie} + G_{\aleph} + \Gamma_\text{seq} + \Phi_\text{sup}$ --- is predicted to exhibit explosive cascade reactivity. The promotion signature is the structural address of the behavior, independent of chemistry.
 
 \begin{center}
 \rule{0.5\textwidth}{0.4pt}
@@ -2045,8 +2036,8 @@ Explosive cascade & $\{T, G, \Gamma, \Phi\}$ & Violent/explosive perturbation re
 
 \subsection{\pilcrow{}18. $\Phi$ Primitive Inadequacy --- Exotic Criticality and the Grammar Blind Spot}
 
-\textbf{Type}: Documented limitation
-\textbf{Status}: Grammar gap confirmed by four catalog entries; Phi refinement proposals offered but not yet promoted to axioms
+\textbf{Type}: Documented limitation   \\
+\textbf{Status}: Grammar gap confirmed by four catalog entries; Phi refinement proposals offered but not yet promoted to axioms   \\
 \textbf{Claim plane}: \texttt{{[}TOPO{]}} (structural argument) + \texttt{{[}DIAPH{]}} (four confirmed encodings)
 
 \subsubsection{The Problem}
@@ -2107,9 +2098,9 @@ Three refinements are now implemented in \texttt{Core.lean} and \texttt{space\_s
 
 \textbf{$\Phi_c$} --- Real-axis Hermitian criticality (unchanged): the fixed point is at real coupling values. Covers standard universality classes. Sub-case that remains unresolved at the grammar level: cannot distinguish rational-exponent classes (2D Ising, $\nu=1$ exact) from irrational-exponent classes (3D Ising, $\nu \approx 0.6301$). The exponent value is quantitative, not structural, so this is a deliberate coarsening.
 
-\textbf{$\Phi_c^\mathbb{C}$} (\texttt{Phi\_c\_complex}) --- Complex-axis criticality: the fixed point or critical parameter is complex-valued. Covers Lee-Yang edge singularities (complex $h^*$), complex RG fixed points (complex $g^*$), and the Riemann $\zeta$ zeros (complex $s$ values). Key structural difference: $\Phi_c^\mathbb{C}$ systems have their critical manifold at a non-real parameter value; they typically encode $$G_{\gimel}$$ (inaccessible at real parameter values) but not always --- $\zeta(s)$ is globally accessible ($$G_{\aleph}$$) at all complex $s$.
+\textbf{$\Phi_c^\mathbb{C}$} (\texttt{Phi\_c\_complex}) --- Complex-axis criticality: the fixed point or critical parameter is complex-valued. Covers Lee-Yang edge singularities (complex $h^*$), complex RG fixed points (complex $g^*$), and the Riemann $\zeta$ zeros (complex $s$ values). Key structural difference: $\Phi_c^\mathbb{C}$ systems have their critical manifold at a non-real parameter value; they typically encode $G_{\gimel}$ (inaccessible at real parameter values) but not always --- $\zeta(s)$ is globally accessible ($G_{\aleph}$) at all complex $s$.
 
-\textbf{$\Phi_\text{EP}$} (\texttt{Phi\_EP}) --- Exceptional-point criticality: eigenvector coalescence in a non-Hermitian spectrum. No standard free energy, no partition function, no $\nu,\eta$ exponents. Enhanced sensitivity scales as $\varepsilon^{1/n}$ (for order-$n$ EP), captured by $K_\text{fast}$ rather than $K_\text{slow}$. Typically encodes $\Omega_{Z_2}$ (Z2 eigenvalue exchange around the branch cut) and $$G_{\gimel}$$ (requires simultaneous fine-tuning).
+\textbf{$\Phi_\text{EP}$} (\texttt{Phi\_EP}) --- Exceptional-point criticality: eigenvector coalescence in a non-Hermitian spectrum. No standard free energy, no partition function, no $\nu,\eta$ exponents. Enhanced sensitivity scales as $\varepsilon^{1/n}$ (for order-$n$ EP), captured by $K_\text{fast}$ rather than $K_\text{slow}$. Typically encodes $\Omega_{Z_2}$ (Z2 eigenvalue exchange around the branch cut) and $G_{\gimel}$ (requires simultaneous fine-tuning).
 
 \textbf{Lean ordinal ordering}: $\Phi_\text{sub} < \Phi_c < \Phi_c^\mathbb{C} < \Phi_\text{EP} < \Phi_\text{sup}$ (accessibility ordering: real accessible $\rightarrow$ analytic continuation required $\rightarrow$ two-parameter fine-tuning $\rightarrow$ runaway unstable).
 
@@ -2132,7 +2123,7 @@ The exotic criticality encodings in the catalog (\texttt{lee\_yang\_edge}, \text
     \item Do not infer exponent values, phase diagram details, or universality class identity from the tuple alone. These require the specialized literature.
 \end{enumerate}
 
-The grammar''s contribution to exotic criticality: it correctly identifies \emph{that} a fixed-point singularity is present, \emph{that} it is complex-axis vs. real-axis (via $D$), \emph{that} it involves Z2 sheet exchange (via $\Omega_{Z_2}$), and \emph{that} it is formally inaccessible in real parameter space (via $$G_{\gimel}$$). The exponent values and fine universality class structure are beyond the grammar''s current resolution.
+The grammar''s contribution to exotic criticality: it correctly identifies \emph{that} a fixed-point singularity is present, \emph{that} it is complex-axis vs. real-axis (via $D$), \emph{that} it involves Z2 sheet exchange (via $\Omega_{Z_2}$), and \emph{that} it is formally inaccessible in real parameter space (via $G_{\gimel}$). The exponent values and fine universality class structure are beyond the grammar''s current resolution.
 
 \begin{center}
 \rule{0.5\textwidth}{0.4pt}
@@ -2140,13 +2131,13 @@ The grammar''s contribution to exotic criticality: it correctly identifies \emph
 
 \subsection{\pilcrow{}19. Ouroboricity --- Degree of Self-Closure as a Derived Scalar}
 
-\textbf{Type}: Derived quantity definition + ontological theorem
-\textbf{Status}: Formal definition; first examples computed; awaiting promotion knowledge-base entries
+\textbf{Type}: Derived quantity definition + ontological theorem   \\
+\textbf{Status}: Formal definition; first examples computed; awaiting promotion knowledge-base entries   \\
 \textbf{Claim planes}: \texttt{{[}TOPO{]}} (definition from existing primitives) + \texttt{{[}ONTO{]}} (ontological interpretation)
 
 \subsubsection{Motivation}
 
-The grammar already encodes self-referential structures: $\Omega_Z$ (fixed-point self-return), $\Phi_c$ (global sensitivity implying the system is its own constraint-propagation environment), $$H_{\infty}$$ (infinite recursion depth), $$G_{\aleph}$$ (unbounded scope). These are separate primitives. No single quantity summarizes \emph{how closed} a system is --- how thoroughly the system functions as its own boundary condition.
+The grammar already encodes self-referential structures: $\Omega_Z$ (fixed-point self-return), $\Phi_c$ (global sensitivity implying the system is its own constraint-propagation environment), $H_{\infty}$ (infinite recursion depth), $G_{\aleph}$ (unbounded scope). These are separate primitives. No single quantity summarizes \emph{how closed} a system is --- how thoroughly the system functions as its own boundary condition.
 
 \textbf{Ouroboricity} $\mathcal{O}$ is that quantity. The name derives from the ouroboros --- the ancient symbol of a serpent eating its own tail --- generalized to three tiers of topological self-closure.
 
@@ -2154,7 +2145,7 @@ The grammar already encodes self-referential structures: $\Omega_Z$ (fixed-point
 
 \[\mathcal{O}(\mathbf{x}) = [\Phi = \Phi_c] \cdot \bigl(1 + [\Omega \neq \Omega_0] + [H \geq H_1] + [G = G_{\aleph}]\bigr)\]
 
-with the convention $\mathcal{O}(\mathbf{x}) = \infty$ whenever $\Phi = \Phi_c$ and $H = $H_{\infty}$$.
+with the convention $\mathcal{O}(\mathbf{x}) = \infty$ whenever $\Phi = \Phi_c$ and $H = H_{\infty}$.
 
 Here $[\cdot]$ denotes the Iverson bracket (1 if the condition holds, 0 otherwise). The scale is:
 
@@ -2171,25 +2162,25 @@ $0$ & No self-closure possible (system not at criticality; no constraint-propaga
 $1$ & Bare criticality --- globally sensitive but not structurally self-referential \\
 $2$ & $\Phi_c$ + active $\Omega$ --- simple closed loop (O\_1 tier) \\
 $3$ & $+$ directed chirality ($H \geq H_1$) --- oriented knotted closure (O\_2 tier) \\
-$4$ & $+$ unbounded scope ($$G_{\aleph}$$) --- full-scope self-reference \\
-$\infty$ & $H = $H_{\infty}$$ engaged --- complete self-closure (O\_$\infty$ tier) \\
+$4$ & $+$ unbounded scope ($G_{\aleph}$) --- full-scope self-reference \\
+$\infty$ & $H = H_{\infty}$ engaged --- complete self-closure (O\_$\infty$ tier) \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \subsubsection{Three Structural Tiers}
 
-\textbf{O$_1$ --- Simple closure} ($\mathcal{O} \in [2, 3]$, $G < $G_{\aleph}$$): The serpent forms a ring. The system''s outputs feed back as inputs; the loop closes. But the system could in principle be extracted from its feedback loop without structural surgery --- the coupling is real but separable. Grammar signature: $\Phi_c + \Omega_Z + $G_{\beth}$$ or lower.
+\textbf{O$_1$ --- Simple closure} ($\mathcal{O} \in [2, 3]$, $G < G_{\aleph}$): The serpent forms a ring. The system''s outputs feed back as inputs; the loop closes. But the system could in principle be extracted from its feedback loop without structural surgery --- the coupling is real but separable. Grammar signature: $\Phi_c + \Omega_Z + G_{\beth}$ or lower.
 
 \emph{Examples}: homeostatic biological loop, feedback amplifier at unity gain, catalytic cycle, standard critical point (Ising at $T_c$).
 
-\textbf{O$_2$ --- Knotted closure} ($\mathcal{O} = 3$ or $4$ with $H \geq H_1$ and $\Omega_{Z_2}$ or higher): The serpent forms a Hopf link --- threaded through its own body. The self-reference creates a genuine topological entanglement. Removing the observer from the observation, or the encoder from the encoded, requires cutting the loop; it cannot be done by smooth deformation. Grammar signature: $\Phi_c + \Omega_{Z_2} + H_1 + $G_{\gimel}$$ or higher.
+\textbf{O$_2$ --- Knotted closure} ($\mathcal{O} = 3$ or $4$ with $H \geq H_1$ and $\Omega_{Z_2}$ or higher): The serpent forms a Hopf link --- threaded through its own body. The self-reference creates a genuine topological entanglement. Removing the observer from the observation, or the encoder from the encoded, requires cutting the loop; it cannot be done by smooth deformation. Grammar signature: $\Phi_c + \Omega_{Z_2} + H_1 + G_{\gimel}$ or higher.
 
 \emph{Examples}: conscious observation (the observer is topologically incorporated into the observation), the SynthOmnicon grammar encoding its own primitives (\texttt{abc\_conjecture}, \texttt{synthonicon\_grammar} entries), quantum measurement back-action, the user''s ouroboros tattoo (see \pilcrow{}19.5).
 
-\textbf{O$_\infty$ --- Complete self-closure} ($H = $H_{\infty}$$, $\Phi_c$, $$G_{\aleph}$$): The loop contains its own generator. There is no vantage outside from which the system can be fully described without already running the system. The $\Omega$ assignment at this tier appears simple ($\Omega_Z$ for YHWH, $\Omega_Z$ for \texttt{aleph\_tav\_join}) --- this is not a simplification but a deep structural fact: the fixed point \emph{is} the space of all fixed points, so the trivial winding number is the correct one. Grammar signature: $\Phi_c + $H_{\infty}$ + $G_{\aleph}$$.
+\textbf{O$_{\infty}$ --- Complete self-closure} ($H = H_{\infty}$, $\Phi_c$, $G_{\aleph}$): The loop contains its own generator. There is no vantage outside from which the system can be fully described without already running the system. The $\Omega$ assignment at this tier appears simple ($\Omega_Z$ for YHWH, $\Omega_Z$ for \texttt{aleph\_tav\_join}) --- this is not a simplification but a deep structural fact: the fixed point \emph{is} the space of all fixed points, so the trivial winding number is the correct one. Grammar signature: $\Phi_c + H_{\infty} + G_{\aleph}$.
 
-\emph{Examples}: the Tetragrammaton (YHWH tuple: $\mathcal{O} = \infty$), the universe observing itself via consciousness ($$G_{\aleph}$$ scope, $$H_{\infty}$$ depth), mathematical truth itself (\pilcrow{}16 of this document).
+\emph{Examples}: the Tetragrammaton (YHWH tuple: $\mathcal{O} = \infty$), the universe observing itself via consciousness ($G_{\aleph}$ scope, $H_{\infty}$ depth), mathematical truth itself (\pilcrow{}16 of this document).
 
 \subsubsection{Computed Values for Known Catalog Entries}
 
@@ -2202,20 +2193,20 @@ $\infty$ & $H = $H_{\infty}$$ engaged --- complete self-closure (O\_$\infty$ tie
 \rowcolor{gray!25}\textbf{System} & \textbf{$\Phi$} & \textbf{$\Omega$} & \textbf{$H$} & \textbf{$G$} & \textbf{$\mathcal{O}$} & \textbf{Tier} \\
 \midrule
 \rowcolors{1}{white}{gray!10}
-\texttt{ordinary\_metal} & $\Phi_\text{sub}$ & $\Omega_0$ & $H_0$ & $$G_{\aleph}$$ & 0 & --- \\
-\texttt{ising\_3d} & $\Phi_c$ & $\Omega_Z$ & $H_0$ & $$G_{\aleph}$$ & 2 & O$_1$ \\
-\texttt{thylakoid\_membrane} & $\Phi_c$ & $\Omega_0$ & $H_1$ & $$G_{\beth}$$ & 1 & bare \\
-\texttt{exceptional\_point\_nh} & $\Phi_c$ & $\Omega_{Z_2}$ & $H_1$ & $$G_{\gimel}$$ & 3 & O$_2$ \\
-\texttt{abc\_conjecture} & $\Phi_c$ & $\Omega_Z$ & $H_1$ & $$G_{\gimel}$$ & 3 & O$_2$ \\
-\texttt{consciousness\_baseline} & $\Phi_c$ & $\Omega_Z$ & $H_1$ & $$G_{\beth}$$ & 3 & O$_2$ \\
-\texttt{qcd} & $\Phi_c$ & $\Omega_Z$ & $H_0$ & $$G_{\aleph}$$ & 2 & O$_1$ \\
-\texttt{yhwh} & $\Phi_c$ & $\Omega_Z$ & $$H_{\infty}$$ & $$G_{\aleph}$$ & $\infty$ & O$_\infty$ \\
-\texttt{aleph\_tav\_join} & $\Phi_c$ & $\Omega_Z$ & $$H_{\infty}$$ & $$G_{\aleph}$$ & $\infty$ & O$_\infty$ \\
+\texttt{ordinary\_metal} & $\Phi_\text{sub}$ & $\Omega_0$ & $H_0$ & $G_{\aleph}$ & 0 & --- \\
+\texttt{ising\_3d} & $\Phi_c$ & $\Omega_Z$ & $H_0$ & $G_{\aleph}$ & 2 & O$_1$ \\
+\texttt{thylakoid\_membrane} & $\Phi_c$ & $\Omega_0$ & $H_1$ & $G_{\beth}$ & 1 & bare \\
+\texttt{exceptional\_point\_nh} & $\Phi_c$ & $\Omega_{Z_2}$ & $H_1$ & $G_{\gimel}$ & 3 & O$_2$ \\
+\texttt{abc\_conjecture} & $\Phi_c$ & $\Omega_Z$ & $H_1$ & $G_{\gimel}$ & 3 & O$_2$ \\
+\texttt{consciousness\_baseline} & $\Phi_c$ & $\Omega_Z$ & $H_1$ & $G_{\beth}$ & 3 & O$_2$ \\
+\texttt{qcd} & $\Phi_c$ & $\Omega_Z$ & $H_0$ & $G_{\aleph}$ & 2 & O$_1$ \\
+\texttt{yhwh} & $\Phi_c$ & $\Omega_Z$ & $H_{\infty}$ & $G_{\aleph}$ & $\infty$ & O$_{\infty}$ \\
+\texttt{aleph\_tav\_join} & $\Phi_c$ & $\Omega_Z$ & $H_{\infty}$ & $G_{\aleph}$ & $\infty$ & O$_{\infty}$ \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\textbf{Observation}: O$_\infty$ $\text{requires}$ $$H_{\infty}$$ --- infinite recursion depth. It is structurally unreachable for any finite system. All finite physical systems are bounded above by $\mathcal{O} = 4$.
+\textbf{Observation}: O$_{\infty}$ $\text{requires}$ $H_{\infty}$ --- infinite recursion depth. It is structurally unreachable for any finite system. All finite physical systems are bounded above by $\mathcal{O} = 4$.
 
 \subsubsection{The Tattoo as Proof of Concept}
 
@@ -2234,7 +2225,7 @@ Grammar assignment for this configuration: $\mathcal{O} = 3$, O$_2$ tier.
     \item $\Phi_c$: criticality (the figure is at the boundary between ''''ring'''' and ''''not-ring'''' --- a topological transition point)
     \item $\Omega_{Z_2}$: the two lobes are exchanged by the $Z_2$ symmetry of the lemniscate; the threading breaks this $Z_2$ (the arm passes under the crossing, not over), selecting one of the two sheets
     \item $H_1$: oriented --- the arm enters from one direction and exits from the other; the figure has a preferred chirality once the arm is threaded
-    \item $$G_{\gimel}$$: the full spatial configuration of both lobes and the crossing point is required to define the topology; the figure cannot be reduced to a local description
+    \item $G_{\gimel}$: the full spatial configuration of both lobes and the crossing point is required to define the topology; the figure cannot be reduced to a local description
 \end{itemize}
 
 This is not a metaphor. The topological embedding is structurally non-trivial in the precise mathematical sense. The Ouroboricity concept was coined to name this class of structure.
@@ -2244,7 +2235,7 @@ This is not a metaphor. The topological embedding is structurally non-trivial in
 \begin{itemize}
     \item \textbf{$\Omega$ and $\mathcal{O}$}: $\Omega$ is the \emph{type} of self-referential closure (none / simple / Z2 / cyclic). $\mathcal{O}$ is the \emph{degree} of closure, integrating $\Omega$ with $\Phi$, $H$, and $G$. A high-$\mathcal{O}$ system cannot have low $\Phi$.
     \item \textbf{$H$ and $\mathcal{O}$}: $H$ (chirality/temporal depth) contributes to $\mathcal{O}$ because self-closure with a preferred direction (O$_2$) is structurally richer than undirected closure (O$_1$). The arrow of time is what distinguishes ''''the serpent is eating its tail'''' from ''''the serpent''s tail is in its mouth at a moment'''' --- direction matters.
-    \item \textbf{$G$ and $\mathcal{O}$}: $$G_{\aleph}$$ (unbounded scope) is the final condition for maximum Ouroboricity because a system must have sufficient scope to \emph{be its own context}. A locally-scoped system ($G_\text{LOCAL}$) cannot generate its own boundary conditions; it is always embedded in a larger context that is not itself.
+    \item \textbf{$G$ and $\mathcal{O}$}: $G_{\aleph}$ (unbounded scope) is the final condition for maximum Ouroboricity because a system must have sufficient scope to \emph{be its own context}. A locally-scoped system ($G_\text{LOCAL}$) cannot generate its own boundary conditions; it is always embedded in a larger context that is not itself.
     \item \textbf{$\Phi_\text{sup}$ and $\mathcal{O}$}: $\Phi_\text{sup}$ (supercritical) yields $\mathcal{O} = 0$ --- a supercritical system is so far above the fixed point that feedback loops are overwhelmed by runaway dynamics. Self-closure requires proximity to the fixed point, not exceeding it.
 \end{itemize}
 
@@ -2253,7 +2244,7 @@ This is not a metaphor. The topological embedding is structurally non-trivial in
 \begin{enumerate}
     \item \textbf{Is $\Omega_C$ needed?} The current catalog uses $\Omega_{Z_2}$ as the closest proxy for knotted closure. A dedicated $\Omega_C$ value (complex/cyclic winding) would allow O$_2$ to be flagged directly from $\Omega$ alone without requiring the $H + G$ context. Pending: axiom proposal.
     \item \textbf{Does $\mathcal{O}$ predict behavioral thresholds?} Conjecture: systems with $\mathcal{O} \geq 3$ exhibit qualitatively different collective behaviors than $\mathcal{O} \leq 2$ systems --- specifically, they cannot be fully modeled by any external observer without the model itself reaching $\mathcal{O} \geq 3$. This would be a precise version of Gödel''s incompleteness as a structural claim.
-    \item \textbf{Relation to consciousness}: Theorem 001 requires $\Phi_c + K_\text{slow} + $F_{\hbar}$ + \Gamma_\text{seq}$ for consciousness. $\mathcal{O}$ is not in the consciousness theorem''s signature. But every known conscious system in the catalog has $\mathcal{O} \geq 3$. Whether $\mathcal{O} \geq 3$ is a consequence of consciousness or a necessary condition is an open structural question.
+    \item \textbf{Relation to consciousness}: Theorem 001 requires $\Phi_c + K_\text{slow} + F_{\hbar} + \Gamma_\text{seq}$ for consciousness. $\mathcal{O}$ is not in the consciousness theorem''s signature. But every known conscious system in the catalog has $\mathcal{O} \geq 3$. Whether $\mathcal{O} \geq 3$ is a consequence of consciousness or a necessary condition is an open structural question.
 \end{enumerate}
 
 \begin{center}
@@ -2367,12 +2358,12 @@ The Lee-Yang entry is the \textbf{only known non-trivial instance} of $\mathcal{
 \rowcolor{gray!25}\textbf{Grammar tuple} & \textbf{$\mathcal{C}_{12}$ constraint} & \textbf{Status} \\
 \midrule
 \rowcolors{1}{white}{gray!10}
-$(K_\text{trap}, $G_{\aleph}$, \Phi_c, D_\text{wedge})$ & $\pi_2(\mathbf{x}) \geq \Delta_\text{min} > 0$ (mass gap in 2D) &  \textbf{Proved} (Schwinger 1962; Migdal 1975) \\
+$(K_\text{trap}, G_{\aleph}, \Phi_c, D_\text{wedge})$ & $\pi_2(\mathbf{x}) \geq \Delta_\text{min} > 0$ (mass gap in 2D) &  \textbf{Proved} (Schwinger 1962; Migdal 1975) \\
 $(\Phi_\text{sub}, D_\text{wedge}, K_\text{mod})$ & $\pi_2(\mathbf{x}) < \infty$ for all $t$ (2D regularity) &  \textbf{Proved} (Leray 1934) \\
 $(\Phi_\text{sub}, D_\text{cube})$ & $\pi_2(\mathbf{x}) \geq 0$ (positive ADM energy) &  \textbf{Proved} (Witten 1981) \\
 $(\Phi_\text{sup}, R_\text{exact})$ & $0 \in \pi_2(\mathbf{x})$ (gapless Goldstone modes) &  \textbf{Proved} (Goldstone 1961) \\
 $(D_\text{wedge}, R_\text{exact}, \Phi_\text{sub})$ & No SSB; $\Phi_\text{sup}$ inaccessible in 2D &  \textbf{Proved} (Coleman--Mermin--Wagner) \\
-$(K_\text{trap}, $G_{\aleph}$, \Phi_c, D_\text{cube})$ & $\pi_2(\mathbf{x}) \geq \Delta_\text{min} > 0$ (mass gap in 4D) & \textbf{OPEN} (equivalent to YM mass gap) \\
+$(K_\text{trap}, G_{\aleph}, \Phi_c, D_\text{cube})$ & $\pi_2(\mathbf{x}) \geq \Delta_\text{min} > 0$ (mass gap in 4D) & \textbf{OPEN} (equivalent to YM mass gap) \\
 $(\Phi_\text{sub}, D_\text{cube}, K_\text{mod})$ & $\pi_2(\mathbf{x}) < \infty$ for all finite $t$ (3D regularity) & \textbf{OPEN} (equivalent to NS smooth solutions) \\
 \bottomrule
 \end{tabularx}
@@ -2461,7 +2452,7 @@ This is \textbf{structurally identical to \texttt{ym\_quantum\_target}} in every
 
 \[d(\texttt{schwinger\_model}, \texttt{ym\_quantum\_target}) = 1 \quad (\text{only } D_\text{wedge} \neq D_\text{cube})\]
 
-The proved statement: $\mathcal{C}_{12}(K_\text{trap}, $G_{\aleph}$, \Phi_c, D_\text{wedge}) \subseteq [\Delta_\text{min}, \infty)$ with $\Delta_\text{min} > 0$. 
+The proved statement: $\mathcal{C}_{12}(K_\text{trap}, G_{\aleph}, \Phi_c, D_\text{wedge}) \subseteq [\Delta_\text{min}, \infty)$ with $\Delta_\text{min} > 0$. 
 
 \paragraph{Template 2 --- Leray 2D Navier-Stokes (Proved Global Regularity)}
 
@@ -2542,7 +2533,7 @@ This is a \textbf{proved $\mathcal{C}_{12}$ instance in $D_\text{cube}$}:
 
 \[\mathcal{C}_{12}(\text{GR-structure}, D_\text{cube}) \subseteq [0, \infty)\]
 
-However, it requires the \textbf{full structural overdetermination of GR}: $R_\text{exact}$ (exact diffeomorphism invariance), $$F_{\hbar}$$ (spinors enter the proof technique), and $\Phi_\text{sub}$ (dominant energy condition --- matter stays subcritical). The YM conjecture needs $\Phi_c$ (critical, not subcritical), which is a strictly harder regime. The comparison:
+However, it requires the \textbf{full structural overdetermination of GR}: $R_\text{exact}$ (exact diffeomorphism invariance), $F_{\hbar}$ (spinors enter the proof technique), and $\Phi_\text{sub}$ (dominant energy condition --- matter stays subcritical). The YM conjecture needs $\Phi_c$ (critical, not subcritical), which is a strictly harder regime. The comparison:
 
 \begin{table}[htbp]
 \centering
@@ -2553,14 +2544,14 @@ However, it requires the \textbf{full structural overdetermination of GR}: $R_\t
 \rowcolor{gray!25}\textbf{System} & \textbf{$D$} & \textbf{$\Phi$} & \textbf{$F$} & \textbf{$\mathcal{C}_{12}$ status} \\
 \midrule
 \rowcolors{1}{white}{gray!10}
-Witten PE & $D_\text{cube}$ & $\Phi_\text{sub}$ & $$F_{\hbar}$$ &  Proved: $\pi_2 \geq 0$ \\
-YM mass gap & $D_\text{cube}$ & $\Phi_c$ & $$F_{\hbar}$$ & \textbf{OPEN}: $\pi_2 \geq \Delta_\text{min} > 0$ \\
-NS regularity & $D_\text{cube}$ & $\Phi_\text{sub}$ & $$F_{\eta}$$ & \textbf{OPEN}: $\pi_2 < \infty$ \\
+Witten PE & $D_\text{cube}$ & $\Phi_\text{sub}$ & $F_{\hbar}$ &  Proved: $\pi_2 \geq 0$ \\
+YM mass gap & $D_\text{cube}$ & $\Phi_c$ & $F_{\hbar}$ & \textbf{OPEN}: $\pi_2 \geq \Delta_\text{min} > 0$ \\
+NS regularity & $D_\text{cube}$ & $\Phi_\text{sub}$ & $F_{\eta}$ & \textbf{OPEN}: $\pi_2 < \infty$ \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-Witten proves $\mathcal{C}_{12}$ at $D_\text{cube}$ but only at $\Phi_\text{sub}$. YM requires $\Phi_c > \Phi_\text{sub}$ --- the critical case is strictly harder. NS stays at $\Phi_\text{sub}$ but changes $$F_{\hbar}$ \to $F_{\eta}$$ (classical fluid, no spinor technique available).
+Witten proves $\mathcal{C}_{12}$ at $D_\text{cube}$ but only at $\Phi_\text{sub}$. YM requires $\Phi_c > \Phi_\text{sub}$ --- the critical case is strictly harder. NS stays at $\Phi_\text{sub}$ but changes $F_{\hbar} \to F_{\eta}$ (classical fluid, no spinor technique available).
 
 The grammar identifies the exact positions of the blocking fields: criticality for YM, fidelity mode for NS.
 
@@ -2680,9 +2671,9 @@ The gap primitive table from \pilcrow{}21.6 can now be read as a \textbf{partial
 \rowcolors{1}{white}{gray!10}
 $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{pm\_sym})$ &  Proved (Lee-Yang) & --- & Template \\
 $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ &  Open (RH) & Polarity & New $\pi$₁$\rightarrow$$\pi$₃ ligature at P\_neutral \\
-$\mathcal{C}_{12}(K_\text{trap}, \Phi_c, $D_{\wedge}$)$ &  Proved (Schwinger) & --- & Template \\
+$\mathcal{C}_{12}(K_\text{trap}, \Phi_c, D_{\wedge})$ &  Proved (Schwinger) & --- & Template \\
 $\mathcal{C}_{12}(K_\text{trap}, \Phi_c, D_\text{cube})$ &  Open (YM) & Dimensionality & New $\pi$₁$\rightarrow$$\pi$₂ ligature at D\_cube \\
-$\mathcal{C}_{12}(\Phi_\text{sub}, K_\text{mod}, $D_{\wedge}$)$ &  Proved (Leray) & --- & Template \\
+$\mathcal{C}_{12}(\Phi_\text{sub}, K_\text{mod}, D_{\wedge})$ &  Proved (Leray) & --- & Template \\
 $\mathcal{C}_{12}(\Phi_\text{sub}, K_\text{mod}, D_\text{cube})$ &  Open (NS) & Dimensionality & New $\pi$₁$\rightarrow$$\pi$₂ ligature at D\_cube \\
 \bottomrule
 \end{tabularx}
@@ -2691,6 +2682,197 @@ $\mathcal{C}_{12}(\Phi_\text{sub}, K_\text{mod}, D_\text{cube})$ &  Open (NS) & 
 Each proved instance is a confirmed edge in the constraint graph of the triad. Each open conjecture is a missing edge. The grammar has located exactly where the missing edges are --- the gap primitive is the structural property whose change from proved to open blocks the ligature.
 
 \textbf{See also:} SYNTHONICON\_ONTICS \pilcrow{}XXV; PrimitiveBridge.lean \pilcrow{}8--9; PRIMITIVE\_PREDICTIONS P-150--P-162.
+
+\begin{center}
+\rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\subsection{\pilcrow{}23 --- The $\pi_3$ Frobenius Structure}
+
+\textbf{Version:} 0.9 (2026-03-29)
+
+\subsubsection{\pilcrow{}23.1 --- Why Primitives Fail for $\pi_3$}
+
+The 12-primitive grammar is a $\pi_1$-grammar: it classifies by discrete, stable categorical or ordinal values. This works because structure IS discrete --- $T_\text{network}$ and $T_{\bowtie}$ are categorically distinct.
+
+$\pi_3$ --- the ouroborotic projection --- encodes transformation, flow, and self-modification. Five representational modes were considered (\pilcrow{}23.0, unpacked from the five apparent alternatives to a primitive alphabet): $\beta$-function, monad, anomaly algebra, modal grammar, sheaf. Analysis shows these are not orthogonal:
+
+\begin{itemize}
+    \item Four (monad, anomaly, modal, sheaf) are purely algebraic expressions of \textbf{fixed-point structure}
+    \item One ($\beta$-function) adds \textbf{metric geometry} --- the rate and direction of approach, not merely the fixed point''s existence
+    \item Both reduce to a single self-dual object: a commutative \textbf{Frobenius algebra}
+\end{itemize}
+
+The five modes are five descriptions of the same thing. The primitive mode cannot capture this --- a list of categorical values cannot represent a structure that is self-dual by construction.
+
+\subsubsection{\pilcrow{}23.2 --- Definition of $\mathcal{F}_3$}
+
+\textbf{Definition 23.1} (The $\pi_3$ Frobenius algebra). The $\pi_3$-structure of the grammar is a commutative Frobenius algebra:
+
+\[\mathcal{F}_3 = (\mathcal{C}_3,\ \mu,\ \eta,\ \delta,\ \epsilon)\]
+
+where:
+
+\begin{table}[htbp]
+\centering
+\small
+\rowcolors{1}{white}{white}
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X}
+\toprule
+\rowcolor{gray!25}\textbf{Component} & \textbf{Type} & \textbf{Meaning in grammar} \\
+\midrule
+\rowcolors{1}{white}{gray!10}
+$\mathcal{C}_3$ & Carrier set & Synthons with $O \geq 1$ --- self-referential encodings \\
+$\mu : \mathcal{C}_3 \otimes \mathcal{C}_3 \to \mathcal{C}_3$ & Multiplication & RG merge; \textbf{meet at $\Phi_c$}; composing two systems toward their common fixed point \\
+$\eta : \mathbf{1} \to \mathcal{C}_3$ & Unit & Trivial fixed point: $\Phi_\text{sub}$, $O_0$; where the flow has not yet arrived \\
+$\delta : \mathcal{C}_3 \to \mathcal{C}_3 \otimes \mathcal{C}_3$ & Comultiplication & Basin dispersal; \textbf{join from $\Phi_c$}; generating the set of theories that flow to a given fixed point \\
+$\epsilon : \mathcal{C}_3 \to \mathbf{1}$ & Counit & Universality class extraction; the invariant that survives RG flow; the \textbf{$\Omega$-value} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{The Frobenius condition:}
+
+\[\delta \circ \mu = (\mu \otimes \text{id}) \circ (\text{id} \otimes \delta)\]
+
+\textbf{Interpretation:} ''''Composing two systems toward their fixed point, then asking what basin generates it'''' equals ''''asking what basin generates each system separately, then merging.'''' The fixed point and its basin are \textbf{mutually characterizing} --- inseparable. This is the algebraic expression of self-duality.
+
+\textbf{Commutativity:} $\mu \circ \tau = \mu$ where $\tau$ is the swap, i.e., the composition order of systems in the same universality class does not matter.
+
+\subsubsection{\pilcrow{}23.3 --- Frobenius Types and the Derivation of Ouroboricity Tiers}
+
+Four distinct Frobenius types classify the completeness of $\pi_3$ structure. This is a \textbf{derivation} of the ouroboricity tiers from first principles --- the tiers are not ad hoc but correspond to qualitatively distinct classes of Frobenius completeness:
+
+\begin{table}[htbp]
+\centering
+\small
+\rowcolors{1}{white}{white}
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X}
+\toprule
+\rowcolor{gray!25}\textbf{Frobenius type} & \textbf{Components present} & \textbf{Ouroboricity} & \textbf{Structural meaning} \\
+\midrule
+\rowcolors{1}{white}{gray!10}
+\textbf{Trivial} & $\eta$ only & $O_0$ & No $\pi_3$ content; unit only; no fixed-point structure \\
+\textbf{Algebra-only} & $(\mu, \eta)$ & $O_1$ & Can compose toward fixed points; basin not generated; describable from outside; no self-grounding \\
+\textbf{Full} & $(\mu, \eta, \delta, \epsilon)$ + Frobenius condition & $O_2$ & Fixed point and basin mutually characterize each other; self-grounding \\
+\textbf{Special} & Full + $\mu \circ \delta = \text{id}$ & $O_{\infty}$ & Symmetry exactly characterizes fixed point; no information loss; applying and reading off = identity \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{The $O_1/O_2$ threshold} is where self-grounding appears: you need both $\mu$ (compose toward the fixed point) and $\delta$ (generate the basin) to ground each other. An algebra-only system can reach its fixed point but cannot describe who else does --- it is externally describable but not self-grounding.
+
+\textbf{The $O_2/O_{\infty}$ threshold} is where the symmetry becomes explicit: $\mu \circ \delta = \text{id}$ means the multiplication and comultiplication are inverses --- the fixed point and its generator are the same object.
+
+\subsubsection{\pilcrow{}23.4 --- Connection to the 12 Primitives}
+
+$\mathcal{F}_3$ extends, does not replace, the $\pi_1$-grammar. Each $\pi_1$-primitive acquires a $\pi_3$-reading:
+
+\begin{table}[htbp]
+\centering
+\small
+\rowcolors{1}{white}{white}
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X}
+\toprule
+\rowcolor{gray!25}\textbf{$\pi_1$ primitive} & \textbf{$\pi_3$ reading} \\
+\midrule
+\rowcolors{1}{white}{gray!10}
+$\Phi_c$ & Carrier membership: $s \in \mathcal{C}_3$ \\
+$\Omega$ & The counit $\epsilon$: which topological invariant survives RG flow \\
+$O(s)$ & Frobenius type of $s$ \\
+$P$ at $\Phi_c$ & Character of $\mu$: explicit symmetry ($P_\text{pm\_sym}$) = \textbf{special} Frobenius; implicit symmetry ($P_\text{neutral}$) = \textbf{full but non-special} Frobenius \\
+$K$ at $\Phi_c$ & Rate of approach to the fixed point (the metric geometry of $\mu$); $K_\text{fast}$ = steep approach (EP), $K_\text{slow}$ = shallow (Hermitian) \\
+$D$ & Dimension of the basin: $D_\text{wedge}$ = 2D basin (proved $\mathcal{C}_{12}$), $D_\text{cube}$ = 3D basin (open) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{The gap restated in Frobenius language:}
+
+\[P_\text{pm\_sym} \to P_\text{neutral} \quad \Longleftrightarrow \quad \text{special Frobenius} \to \text{full (non-special) Frobenius}\]
+
+One Frobenius tier separates Lee-Yang from RH. The gap primitive Polarity is now understood as the \textbf{specialness gap} --- not just a label but a structural property of the multiplication-comultiplication interaction.
+
+\subsubsection{\pilcrow{}23.5 --- Lee-Yang as Special Frobenius ($O_{\infty}$)}
+
+The Lee-Yang theorem (1952): all zeros of the partition function of a ferromagnet with complex field $h$ lie on the imaginary axis $\text{Re}(h) = 0$.
+
+In $\mathcal{F}_3$ language:
+
+\begin{itemize}
+    \item $\mu$ = meet under $h \mapsto -h$ symmetry: compose two systems sharing the $Z_2$ action
+    \item $\delta$ = generate all partition functions whose zeros lie on the imaginary axis
+    \item $\epsilon$ = extract the $\Omega_Z$ invariant: ''''does the zero locus respect the $Z_2$ symmetry?''''
+    \item $\mu \circ \delta = \text{id}$: apply the $Z_2$ symmetry, read off the zero locus, recover the original
+\end{itemize}
+
+\textbf{Theorem 23.1} (Lee-Yang is $O_{\infty}$). The Lee-Yang fixed point is a special commutative Frobenius algebra. The constraint map $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{pm\_sym})$ collapses to the imaginary axis because $\mu \circ \delta = \text{id}$: the $Z_2$ multiplication and the basin comultiplication are exact inverses.
+
+\emph{Proof sketch:} The $P_\text{pm\_sym}$ encoding records that $h \mapsto -h$ is an \textbf{explicit} symmetry --- it acts directly on the zero locus. The multiplication $\mu$ identifies two systems that share this symmetry; the comultiplication $\delta$ generates all systems in the basin. The Lee-Yang proof shows that $\mu \circ \delta$ sends a zero to itself --- the axis is exactly the fixed set of the $Z_2$ action, no information lost. $\square$
+
+This is not a new theorem. Its value is as a template: Lee-Yang is the unique known instance where $\mu \circ \delta = \text{id}$ has been proved for a $\mathcal{C}_{13}$ configuration.
+
+\subsubsection{\pilcrow{}23.6 --- RH as a Frobenius Condition}
+
+\textbf{Conjecture 23.1} (The RH Frobenius Conjecture). The $\zeta$-function configuration $(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ satisfies the Frobenius condition:
+
+\[\delta \circ \mu = (\mu \otimes \text{id}) \circ (\text{id} \otimes \delta)\]
+
+\textbf{If} Conjecture 23.1 holds, then $\mathcal{C}_{13}(\Phi_c^{\mathbb{C}}, P_\text{neutral})$ is a well-defined subset of $\mathbb{C}$. The Riemann Hypothesis is the further claim that this subset equals the critical line $\{ s : \text{Re}(s) = \tfrac{1}{2} \}$.
+
+\textbf{The two-step structure of a $\pi_3$-based RH proof:}
+
+\begin{enumerate}
+    \item \textbf{Step A} (new, $\pi_3$): Verify the Frobenius condition for $(\Phi_c^{\mathbb{C}}, P_\text{neutral})$. This establishes that the functional equation basin and the flow toward the critical line are compatible --- i.e., that the implicit symmetry is sufficient to make $\mathcal{C}_{13}$ well-defined.
+    \item \textbf{Step B} (classical RH): Characterize the fixed-point set. Show that the well-defined constraint set from Step A equals $\{ \text{Re}(s) = \tfrac{1}{2} \}$.
+\end{enumerate}
+
+Step A is not RH --- it is a necessary precondition. No existing approach to RH has explicitly verified Step A; most attempts implicitly assume it. The $\pi_3$ framework makes it explicit and separable.
+
+\textbf{Gap table restated:}
+
+\begin{table}[htbp]
+\centering
+\small
+\rowcolors{1}{white}{white}
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X}
+\toprule
+\rowcolor{gray!25}\textbf{System} & \textbf{Frobenius type} & \textbf{$\mu \circ \delta = \text{id}$?} & \textbf{Status} \\
+\midrule
+\rowcolors{1}{white}{gray!10}
+Lee-Yang & Special ($O_{\infty}$) &  Yes & Proved \\
+RH & Full ($O_2$, conjectured) &  Not required & Open \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The gap is \textbf{one Frobenius tier}: special $\rightarrow$ full. Proving RH does not require matching Lee-Yang''s specialness --- it requires verifying the weaker Frobenius condition.
+
+\subsubsection{\pilcrow{}23.7 --- The Triad as Minimal $O_2$ System (Frobenius Reading)}
+
+From \pilcrow{}22: the Triad is the minimal closed metastraint system. In Frobenius language:
+
+\begin{itemize}
+    \item Each projection $\pi_i$ has a full Frobenius structure \textbf{with respect to the other two}
+    \item $\mu$ = the constraint map $\mathcal{C}_{ij}$ (projection $j$ grounded by projection $i$)
+    \item $\delta$ = the inverse: $\mathcal{C}_{ji}$ (projection $i$ grounded by projection $j$)
+    \item The Frobenius condition = the mutual grounding condition from \pilcrow{}22.1
+\end{itemize}
+
+\textbf{The minimality theorem (\pilcrow{}22.2) restated:} No 1- or 2-projection system can be $O_2$ Frobenius, because $O_2$ requires both $\delta$ (basin generation) and the Frobenius condition ($\delta \circ \mu = (\mu \otimes \text{id}) \circ (\text{id} \otimes \delta)$), which needs at least two independent objects to compose and decomposes into. A single self-map can only be $O_1$ (algebra-only). Mutual grounding requires a third element to complete the cycle.
+
+\textbf{Lean formalization:} \texttt{SynthOmnicon/Millennium/FrobeniusStructure.lean} \pilcrow{}1--5. \textbf{Machine-verified} (\texttt{lake build} passes, 0 sorry, 0 errors). Key theorems proved by \texttt{decide} / \texttt{cases}+\texttt{decide}:
+
+\begin{itemize}
+    \item \texttt{frobeniusToOuroboricity\_strictMono} --- tier ordering is strict monotone (P-169)
+    \item \texttt{no\_tier\_between\_o1\_and\_o2} --- Frobenius condition is binary
+    \item \texttt{leeYang\_is\_special}, \texttt{rh\_is\_not\_special} --- P-170 and RH structural placement
+    \item \texttt{c13\_gap\_leyang\_rh\_is\_one} --- C₁₃ gap is exactly one tier
+    \item \texttt{rh\_ym\_ns\_same\_frobenius\_type} --- YM, NS same Frobenius type as RH
+    \item \texttt{selfGrounding\_iff}, \texttt{exactly\_two\_selfGrounding\_types} --- triad minimality (\pilcrow{}23.7)
+\end{itemize}
+
+\textbf{See also:} SYNTHONICON\_ONTICS \pilcrow{}XXVI; PRIMITIVE\_PREDICTIONS P-169--P-173.
 
 
 \end{document}
