@@ -19,6 +19,10 @@ The 12-primitive grammar encodes each Millennium Prize Problem as a synthon — 
 
 ![Primitive Space Network](syncon_primitive_map_network.png)
 
+### Grammar Reference
+
+![Primitive Tensor Operations(REFSHEET.png)
+
 ---
 
 ## Library structure
