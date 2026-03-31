@@ -21,7 +21,7 @@ The 12-primitive grammar encodes each Millennium Prize Problem as a synthon — 
 
 ### Grammar Reference
 
-![Primitive Tensor Operations](REFSHEET.png)
+![Holographic Type Theory Ref Sheet](SYNCON_REF.png)
 
 ---
 
