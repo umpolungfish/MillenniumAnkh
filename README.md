@@ -1,4 +1,4 @@
-# SynthOmnicon — Lean 4 Formalization
+#  MilleniumAnkh: A Formal Barrier Taxonomy for the Millennium Prize Problems in Lean 4
 
 *Authors: Lando⊗LLM*
 
