@@ -1,1 +1,56 @@
-UPDATE
+v0.5.69 — Canonical 12-primitive grammar rewrite · Crystal arithmetic in Lean · Frobenius non-synthesizability theorem
+
+SynthOmnicon/Primitives/Core.lean (full rewrite):
+- All 12 primitive types updated to canonical names (space_search/primitives.py v0.5.69)
+- D: D_point/D_line/D_cube/D_holo → D_wedge, D_triangle, D_infty, D_odot (𝓕₄, 4 values)
+- T: T_linear/T_branched/T_torus/T_holo → T_network, T_in, T_bowtie, T_box, T_odot (𝓕₅, 5 values)
+- R: R_exact/R_subset/R_superset/R_catalytic/R_allosteric → R_super, R_cat, R_dagger, R_lr (𝓕₄, 4 values)
+- P: P_neutral/P_plus/P_minus → P_asym, P_psi, P_pm, P_sym, P_pm_sym (𝓕₅, 5 values)
+- Γ: G_and/G_or/G_seq/G_xor/G_impl → Gamma_and, Gamma_or, Gamma_seq, Gamma_broad (𝓕₄, 4 values)
+- F: F_noise removed; F_ell, F_eth, F_hbar canonical (𝓕₃, 3 values)
+- G: reordered → G_beth(1) < G_gimel(2) < G_aleph(3) (𝓕₃, canonical ordinal)
+- Φ: Phi_sup → Phi_super (𝓕₅)
+- Ω: Omega_C removed → Omega_0, Omega_Z2, Omega_Z, Omega_NA (𝓕₄, 4 values)
+- S: one_n/cat removed → one_one, n_n, n_m (𝓕₃, 3 values)
+- K, H: unchanged (already canonical)
+
+New in Core.lean:
+- Crystal arithmetic theorems (§64, §68): machine-verified by decide
+    crystal_total: 27 * 1024 * 625 = 17280000
+    ouroboros_successor_cycle: 3→4→5→3 (§68)
+- OuroboricityTier inductive: O_0, O_1, O_2, O_2dag, O_inf
+- ouroboricityTier function: decidable map (Φ, P, Ω, D) → OuroboricityTier
+    r1_dominates: P_pm_sym at Phi_c → O_inf (always, by simp)
+    o_inf_requires_phi_c, o_inf_requires_P_pm_sym (by cases)
+- polarityTensor (min rule) + frobenius_not_synthesizable (§23):
+    If any partner has P ≠ P_pm_sym, the tensor product has P ≠ P_pm_sym
+- Axiom C: D_holo ↔ T_holo → D_odot ↔ T_odot
+- Axiom A (H_inf → K_trap) demoted to comment: hard axiom was incorrect
+  (proto-languages encode H_inf + K_slow)
+
+SynthOmnicon/Primitives/Synthon.lean (full rewrite):
+- All fields and constructors updated to canonical names
+- 'recog' field renamed 'rel' (Relational); grammar field ordering matches CLAUDE.md tuple
+- tensorProduct: max on union primitives, min on P and F (bottleneck rule)
+- synthonTier function added
+- Encodings corrected:
+    scalarField_Kslow: D_triangle, Gamma_and, n_n, R_dagger (was D_point, G_and, one_n)
+    quantum_gravity: D_odot/T_odot, P_pm_sym, R_dagger, Gamma_broad (was D_holo, P_neutral)
+    general_relativity: D_infty, P_sym, R_dagger (was D_cube, P_neutral)
+    standard_model: D_infty, R_cat (was D_cube, R_allosteric)
+    yang_mills_classical, yang_mills_quantum_target: R_cat, new encodings
+- New theorems (decide/rfl):
+    scalar_Kslow_is_O_inf, qg_is_O_inf, higgs_is_O_inf
+    ym_barrier_4_primitives = 4, sm_qg_distance = 9, gr_as_morphism_cost = 3
+    o_inf_iff_P_pm_sym_at_phi_c (biconditional)
+    tensor_O_inf_O2_destroys_frobenius
+
+markdown/PRIMITIVE_THEOREMS.md, PRIMITIVE_THEOREMS.md (root):
+- Synced to v0.5.69 (§1–§77, 5,886 lines; was 2,093 / 3,613 lines)
+
+markdown/MILLENNIUM_BARRIERS_PAPER.md: synced from private repo
+
+Pending (next session):
+- Millennium/*.lean and Primitives/TierCrossing.lean require update for new
+  primitive constructor names (D_odot, Relational, Gamma_*, etc.)
+- FrobeniusStructure.lean is name-independent and remains valid as-is
