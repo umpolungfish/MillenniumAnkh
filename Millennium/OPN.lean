@@ -68,8 +68,8 @@ Are there any odd ones?
 
 **SynthOmnicon structural note:**
 
-  OPN has primitive tuple D_holo · T_bowtie · F_hbar · Γ_and · Φ_c · Ω_Z.
-  · D_holo: the problem lives in multiplicative structure of ℕ (number-theoretic holomorphic).
+  OPN has primitive tuple D_odot · T_bowtie · F_hbar · Γ_and · Φ_c · Ω_Z.
+  · D_odot: the problem lives in multiplicative structure of ℕ (number-theoretic holomorphic).
   · T_bowtie: the sigma constraint creates a balance condition (σ = 2N is symmetric).
   · Φ_c + Ω_Z: the interaction between the prime factorization (Φ_c charge carriers)
     and the sigma condition (Ω_Z topological winding) creates the OPN constraint.
@@ -259,7 +259,7 @@ theorem euclid_euler_even_perfect (N : ℕ) (heven : 2 ∣ N) (hperf : IsPerfect
 
 /-- The asymmetry: even perfect numbers are fully classified (modulo Mersenne primes);
     odd perfect numbers are not known to exist. This structural asymmetry is a
-    primitive signature of the problem: D_holo structure for even case (Mersenne structure
+    primitive signature of the problem: D_odot structure for even case (Mersenne structure
     is holomorphic in the prime tower); the odd case lacks this organizing principle. -/
 theorem odd_even_perfect_structural_asymmetry : True := trivial
 

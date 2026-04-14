@@ -1,4 +1,4 @@
-v0.5.69 — Canonical 12-primitive grammar rewrite · Crystal arithmetic in Lean · Frobenius non-synthesizability theorem
+v0.5.69 — Canonical 12-primitive grammar rewrite · Crystal arithmetic in Lean · Frobenius non-synthesizability theorem · MILLENNIUM_BARRIERS_PAPER v0.2.0
 
 SynthOmnicon/Primitives/Core.lean (full rewrite):
 - All 12 primitive types updated to canonical names (space_search/primitives.py v0.5.69)
@@ -45,12 +45,41 @@ SynthOmnicon/Primitives/Synthon.lean (full rewrite):
     o_inf_iff_P_pm_sym_at_phi_c (biconditional)
     tensor_O_inf_O2_destroys_frobenius
 
+markdown/MILLENNIUM_BARRIERS_PAPER.md + MILLENNIUM_BARRIERS_PAPER.md (root):
+- Version bump v0.1.3 → v0.2.0 (2026-04-14)
+- §I.3: C11 added (crystal arithmetic machine-verified: crystal_total, ouroboros_successor_cycle)
+- §I.3: C12 added (Frobenius non-synthesizability machine-verified: frobenius_not_synthesizable,
+  o_inf_iff_P_pm_sym_at_phi_c biconditional)
+- §II.3: Primitive table fully rewritten — canonical v0.5.69 types, field names, values
+  (R: Recognition → Relational; F: noise removed; G: ordering corrected beth<gimel<aleph;
+   S: 3 values; Ω: 4 values, Omega_C removed)
+- §V.3: D_cube → D_infty (ym_quantum_target_is_local, certificate theorem)
+- §V.6: P_neutral → P_sym (RH encoding discussion, structural prediction, C8 description)
+        one_n → n_n (mismatch list)
+- §V.7: P_neutral → P_sym (Triad conjecture; constraint-map table; RH encoding note)
+- §V.8: Lean sketch updated — canonical Synthon field names (dim/top/rel/pol/fid/kin/gran/gram/
+  crit/chir/stoi/prot); D_holo/T_holo → D_odot/T_odot; Omega_trivial → Omega_0/Omega_Z2;
+  ouroboricity → synthonTier
+- §X: v0.2.0 paragraph added (C11/C12 summary; decidable synthonTier closes §V loop)
+- Appendix I: Primitives/ line counts updated (Core.lean ~380, Synthon.lean ~305)
+- Appendix II: C11/C12 theorems added (crystal_total, ouroboros_successor_cycle,
+  frobenius_not_synthesizable, o_inf_iff_P_pm_sym_at_phi_c)
+- Version history footer: v0.2.0 changelog entry added
+
 markdown/PRIMITIVE_THEOREMS.md, PRIMITIVE_THEOREMS.md (root):
 - Synced to v0.5.69 (§1–§77, 5,886 lines; was 2,093 / 3,613 lines)
 
-markdown/MILLENNIUM_BARRIERS_PAPER.md: synced from private repo
-
-Pending (next session):
-- Millennium/*.lean and Primitives/TierCrossing.lean require update for new
-  primitive constructor names (D_odot, Relational, Gamma_*, etc.)
-- FrobeniusStructure.lean is name-independent and remains valid as-is
+Millennium/*.lean + Primitives/TierCrossing.lean (all updated this session):
+- PrimitiveBridge.lean: all Synthon encodings updated to canonical names
+    recog→rel, G_and→Gamma_and, D_cube→D_infty, D_holo→D_odot, D_line→D_triangle,
+    D_point→D_wedge, T_linear→T_in, R_exact→R_super/R_cat/R_dagger, R_catalytic→R_cat,
+    P_neutral→P_sym, one_n→n_n/one_one, Phi_sup→Phi_super
+    All `decide` theorems verified to hold under new encodings
+    rh_cmc: P_neutral→P_sym; constraint-map comments updated C_13(Phi_c_complex, P_sym)
+    c12_gap_is_dimensionality: D_cube→D_infty in two places
+    D_cube→D_infty in ym_primitive_barrier_certificate, three_mpp_two_gap_primitives, witten
+- TierCrossing.lean: granularityLevel ordering corrected
+    G_aleph(0)/G_beth(1)/G_gimel(2) → G_beth(0)/G_gimel(1)/G_aleph(2) (canonical)
+    tierCrossingCost_aleph_gimel → tierCrossingCost_beth_aleph (= 2*log10, YM lift cost)
+- OPN.lean, BSD.lean, Hodge.lean: D_holo/T_holo→D_odot/T_odot in docstrings
+- FrobeniusStructure.lean: P_neutral→P_sym in docstring comment

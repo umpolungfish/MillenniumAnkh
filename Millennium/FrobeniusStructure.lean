@@ -114,7 +114,7 @@ theorem special_is_top (t : FrobeniusType) : t ≤ FrobeniusType.special := by
 def leeYangFrobeniusType : FrobeniusType := .special
 
 /-- RH: conjectured full Frobenius (Frobenius condition holds) but not special
-    (μ ∘ δ ≠ id, because P_neutral is an implicit symmetry).
+    (μ ∘ δ ≠ id, because P_sym is an implicit symmetry).
     This encodes Conjecture 23.1 of PRIMITIVE_THEOREMS as a definition —
     not a sorry, but a precise structural claim. -/
 def rhFrobeniusType : FrobeniusType := .full
