@@ -165,6 +165,52 @@ def opn_encoding : Synthon := {
   stoi := one_one,
   chir := H0 }
 
+/-- Hodge Conjecture encoding.
+    D_odot: holographic — the complex variety encodes boundary cohomology via Hodge decomposition.
+    T_odot: double-holographic — topology encodes algebraic cycles (unique among MPPs).
+    P_sym: complex conjugation symmetry on H^{p,q}; NOT Frobenius (surjectivity of cycle class
+           map is unproved — that would require P_pm_sym strength).
+    F_hbar: complex algebraic geometry is quantum-like in fidelity.
+    crit = Phi_c: cycle class map surjectivity is exact criticality (the R-lift).
+    prot = Omega_0: Hodge cycles are topological, no winding.
+    The sorry boundary: AlgebraicCycleRep — every rational Hodge class has an algebraic rep. -/
+def hodge_encoding : Synthon := {
+  dim  := D_odot,         -- holographic: variety encodes its own cohomological boundary
+  top  := T_odot,         -- double-holographic: topology encodes cycles (unique among MPPs)
+  rel  := R_super,
+  pol  := P_sym,          -- complex conjugation symmetry; below Frobenius level
+  gram := Gamma_and,
+  fid  := F_hbar,         -- complex geometry quantum-like fidelity
+  kin  := K_slow,
+  gran := G_aleph,        -- number-theoretic / global holomorphic precision
+  crit := Phi_c,          -- ← surjectivity of cycle class map: exact criticality
+  prot := Omega_0,
+  stoi := n_m,            -- codimension-p cycles ↔ degree-2p cohomology classes
+  chir := H0 }
+
+/-- Birch--Swinnerton-Dyer encoding.
+    D_odot: holographic — E/ℚ ↔ modular form duality via Wiles (1995) modularity theorem.
+    T_bowtie: functional equation L(E,s) ↔ L(E,2−s) (two L-planes meeting at s=1).
+    P_sym: complex conjugation symmetry of L(E,s); below Frobenius level.
+    F_eth: classical algebraic geometry (elliptic curves are classical objects).
+    crit = Phi_c: rank = analytic rank is exact criticality (rank charge-carrier certificate).
+    prot = Omega_Z: Tate-Shafarevich group winding (conjectured finite).
+    Unique among MPPs: parallel triple sorry structure — Mordell-Weil (MathlibGap),
+    Mazur torsion (MathlibGap), and BSD formula itself (OpenProblem) are logically independent. -/
+def bsd_encoding : Synthon := {
+  dim  := D_odot,         -- holographic: E/ℚ ↔ modular form (Wiles modularity)
+  top  := T_bowtie,       -- functional equation s ↔ 2−s (bowtie: L-planes at s=1)
+  rel  := R_super,
+  pol  := P_sym,          -- complex conjugation symmetry; below Frobenius level
+  gram := Gamma_and,
+  fid  := F_eth,          -- classical algebraic geometry
+  kin  := K_slow,
+  gran := G_aleph,        -- number-theoretic precision
+  crit := Phi_c,          -- ← rank = analytic rank: exact criticality
+  prot := Omega_Z,        -- Tate-Shafarevich winding number (Omega_Z = conjectured finite)
+  stoi := n_m,
+  chir := H0 }
+
 -- ============================================================
 -- §2. The BarrierPrimitiveCertificate type
 -- ============================================================
@@ -202,6 +248,27 @@ def opn_certificate : BarrierPrimitiveCertificate .OPN where
 def ns_certificate : BarrierPrimitiveCertificate .NS where
   encoding     := ns_encoding
   blockedField := "crit: Phi_sub boundary (GlobalRegularityCert = proof solutions stay Phi_sub)"
+  barrier      := .OpenProblem
+  barrier_correct := rfl
+
+/-- Hodge certificate: the blocked field is pol (P_sym → P_pm_sym needed for cycle class surjectivity).
+    The R-lift — cycle class map surjectivity — requires inhabiting AlgebraicCycleRep for every
+    rational (p,p)-class. This is blocked at pol = P_sym: complex conjugation symmetry exists
+    but does not Frobenius-force algebraic representability (which would require P_pm_sym).
+    Unique feature: Hodge is the only MPP with D_odot ∧ T_odot (double-holographic structure). -/
+def hodge_certificate : BarrierPrimitiveCertificate .Hodge where
+  encoding     := hodge_encoding
+  blockedField := "pol: P_sym (complex conjugation) cannot force R-lift (cycle class surjectivity)"
+  barrier      := .OpenProblem
+  barrier_correct := rfl
+
+/-- BSD certificate: the blocked field is parallel triple (Mordell-Weil + Mazur + BSD formula).
+    Primary block: crit = Phi_c with the BSD formula (rank = analytic rank) unproved.
+    Secondary blocks: Mordell-Weil theorem (MathlibGap) + Mazur torsion theorem (MathlibGap)
+    are logically parallel, not prerequisites. This is the only MPP with parallel sorry structure. -/
+def bsd_certificate : BarrierPrimitiveCertificate .BSD where
+  encoding     := bsd_encoding
+  blockedField := "crit: Phi_c rank certificate (parallel: Mordell-Weil + Mazur MathlibGaps + BSD OpenProblem)"
   barrier      := .OpenProblem
   barrier_correct := rfl
 
