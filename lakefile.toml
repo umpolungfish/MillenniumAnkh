@@ -1,7 +1,6 @@
 name = "synthomnicon-lean"
 version = "0.1.0"
 keywords = ["math"]
-defaultTargets = ["SynthomniconLean"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -15,23 +14,19 @@ scope = "leanprover-community"
 rev = "v4.28.0"
 
 [[lean_lib]]
-name = "SynthomniconLean"
-
-[[lean_lib]]
 name = "SynthOmnicon"
+root = "SynthOmnicon"
 globs = [
   "SynthOmnicon.Primitives.Core",
   "SynthOmnicon.Primitives.OPN_2adic",
   "SynthOmnicon.Primitives.BSD_2adic",
   "SynthOmnicon.Primitives.Synthon",
   "SynthOmnicon.Primitives.TierCrossing",
+  "SynthOmnicon.Primitives.Crystal",
   "SynthOmnicon.Primitives.Catalog",
-  "SynthOmnicon.Primitives.Crystal"
-]
-
-[[lean_lib]]
-name = "Millennium"
-globs = [
+  "SynthOmnicon.Consciousness",
+  "SynthOmnicon.AgentSelf",
+  "SynthOmnicon.Algebra",
   "SynthOmnicon.Millennium.RH",
   "SynthOmnicon.Millennium.YM",
   "SynthOmnicon.Millennium.Hodge",
@@ -41,5 +36,8 @@ globs = [
   "SynthOmnicon.Millennium.BSD",
   "SynthOmnicon.Millennium.Barriers",
   "SynthOmnicon.Millennium.PrimitiveBridge",
-  "SynthOmnicon.Millennium.FrobeniusStructure"
+  "SynthOmnicon.Millennium.FrobeniusStructure",
+  "SynthOmnicon.Classical.Solitary10",
+  "SynthOmnicon.Classical.HeckeLandau",
+  "SynthOmnicon.Basic"
 ]

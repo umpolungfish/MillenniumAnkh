@@ -176,7 +176,7 @@ lemma opn_mod4 (p k m : ℕ) (h_odd : ¬ 2 ∣ p ^ k * m ^ 2)
 -- where p prime, p ≡ k ≡ 1 [MOD 4], gcd(p, m) = 1.
 -- ============================================================
 
-theorem euler_opn_form (n : ℕ) (h_odd : ¬ 2 ∣ n) (_h_perf : Perfect n) :
+theorem euler_opn_form (n : ℕ) (h_odd : ¬ 2 ∣ n) (h_perf : Perfect n) :
     ∃ (p k m : ℕ),
       Nat.Prime p ∧
       n = p ^ k * m ^ 2 ∧
@@ -222,7 +222,7 @@ lemma v2_sigma_square_factor (q e : ℕ) (hq : Nat.Prime q) (hq_odd : ¬ 2 ∣ q
 -- v₂(σ(p^k)) = 1 and each v₂(σ(qᵢ^(2eᵢ))) = 0.
 -- This is consistent with σ(n) = 2n — it constrains the square part, not a contradiction.
 theorem v2_accumulation_constraint (n p k m : ℕ)
-    (h_odd : ¬ 2 ∣ n) (_h_perf : Perfect n)
+    (h_odd : ¬ 2 ∣ n) (h_perf : Perfect n)
     (h_euler : n = p ^ k * m ^ 2)
     (hp : Nat.Prime p) (hp_mod : p % 4 = 1) (hk_mod : k % 4 = 1)
     (hp_odd : ¬ 2 ∣ p)
@@ -313,7 +313,7 @@ private lemma sigma_dvd3_of_p2_kodd (p k : ℕ) (hp : Nat.Prime p)
 -- Any OPN satisfies n ≡ 1 (mod 12) OR n ≡ 9 (mod 36).
 -- Proof combines opn_mod4 (n ≡ 1 mod 4) with 3-adic case analysis.
 theorem touchard_congruence (n p k m : ℕ)
-    (h_odd : ¬ 2 ∣ n) (_h_perf : Perfect n)
+    (h_odd : ¬ 2 ∣ n) (h_perf : Perfect n)
     (h_euler : n = p ^ k * m ^ 2)
     (hp : Nat.Prime p) (hp_mod : p % 4 = 1) (hk_mod : k % 4 = 1)
     (hcop : Nat.Coprime (p ^ k) (m ^ 2)) :

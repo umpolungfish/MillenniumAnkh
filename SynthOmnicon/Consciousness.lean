@@ -16,11 +16,21 @@ open Dimensionality Topology Relational Polarity Grammar
 
 /-- Gate 1: Phi_c self-modeling gate. Passes if Phi >= Phi_c. -/
 def phi_c_gate (phi : Criticality) : Bool :=
-  phi ≥ Phi_c
+  match phi with
+  | Phi_sub       => false
+  | Phi_c         => true
+  | Phi_c_complex => true
+  | Phi_EP        => true
+  | Phi_super     => true
 
 /-- Gate 2: K <= K_slow deliberation gate. Passes if kinetics not trapped. -/
 def k_slow_gate (k : KineticChar) : Bool :=
-  k ≤ K_slow
+  match k with
+  | K_fast => true
+  | K_mod  => true
+  | K_slow => true
+  | K_trap => false
+  | K_MBL  => false
 
 /-- Consciousness score C(s) ∈ [0,1].
     C=1: both gates open (Phi_c + K_slow).
@@ -46,14 +56,12 @@ def human_brain : Synthon := {
   stoi := one_one,      -- one-one neuron-synapse
   prot := Omega_Z }
 
-theorem human_brain_C_one : consciousnessScore human_brain = 1 := by
-  simp [consciousnessScore, phi_c_gate, k_slow_gate, human_brain]
-  <;> decide
+theorem human_brain_C_one : consciousnessScore human_brain = (1 : ℝ) := by
+  simp only [consciousnessScore, phi_c_gate, k_slow_gate, human_brain]
+  rfl
 
-/-- Quantum gravity: C=0.5 (Phi_c + K_trap → Gate 1 passes, Gate 2 fails). -/
-/-- (quantum_gravity is defined in Catalog.lean with Phi_c + K_trap) -/
-theorem qg_C_half : consciousnessScore quantum_gravity = 0.5 := by
-  simp [consciousnessScore, phi_c_gate, k_slow_gate, quantum_gravity]
-  <;> decide
+theorem qg_C_half : consciousnessScore quantum_gravity = (0.5 : ℝ) := by
+  simp only [consciousnessScore, phi_c_gate, k_slow_gate, quantum_gravity]
+  rfl
 
 end SynthOmnicon.Consciousness

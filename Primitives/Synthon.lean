@@ -288,8 +288,8 @@ theorem o_inf_iff_P_pm_sym_at_phi_c (s : Synthon) :
     · exact o_inf_requires_P_pm_sym s.crit s.pol s.prot s.dim h
   · intro ⟨hphi, hpol⟩
     cases hphi with
-    | inl h => rw [h, hpol]; simp only [synthonTier, ouroboricityTier]
-    | inr h => rw [h, hpol]; simp only [synthonTier, ouroboricityTier]
+    | inl h => simp [synthonTier, ouroboricityTier, h, hpol]
+    | inr h => simp [synthonTier, ouroboricityTier, h, hpol]
 
 /-- Higgs is O_inf (P-70 structural claim). -/
 theorem higgs_is_O_inf : synthonTier higgs = .O_inf := by decide
