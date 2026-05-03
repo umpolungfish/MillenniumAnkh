@@ -299,7 +299,9 @@ theorem higgs_is_O_inf : synthonTier higgs = .O_inf := by decide
 theorem tensor_O_inf_O2_destroys_frobenius (s_inf s_two : Synthon)
     (h_inf : s_inf.pol = .P_pm_sym) (h_two : s_two.pol = .P_sym) :
     (tensorProduct s_inf s_two).pol = .P_sym := by
-  simp [tensorProduct, h_inf, h_two, compare, Ord.compare,
-        compareOfLessAndEq, instOrdPolarity]
+  simp [tensorProduct, h_inf, h_two]
+  -- Need to show compare P_pm_sym P_sym ≠ .lt, i.e. P_pm_sym ≥ P_sym
+  rw [show compare (.P_pm_sym : Polarity) .P_sym = .gt by decide]
+  simp
 
 end SynthOmnicon.Primitives

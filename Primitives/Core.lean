@@ -283,7 +283,8 @@ theorem o_inf_requires_P_pm_sym (phi : Criticality) (pol : Polarity)
     (prot : Protection) (dim : Dimensionality)
     (h : ouroboricityTier phi pol prot dim = .O_inf) :
     pol = .P_pm_sym := by
-  cases phi <;> cases pol <;> simp [ouroboricityTier] at h
+  cases phi <;> cases pol <;> cases prot <;> cases dim <;> simp [ouroboricityTier] at h
+  <;> (try contradiction) <;> rfl
 
 -- The Frobenius non-synthesizability statement (§23):
 -- P_pm_sym cannot be reached by the Polarity min (tensor bottleneck rule).
@@ -293,13 +294,12 @@ def polarityTensor (a b : Polarity) : Polarity :=
 
 theorem frobenius_not_synthesizable (a b : Polarity)
     (ha : a ≠ .P_pm_sym) : polarityTensor a b ≠ .P_pm_sym := by
-  simp [polarityTensor]
-  split_ifs with h
-  · exact ha
-  · intro heq
-    -- If b wins (a ≥ b), then result = b. But a ≠ P_pm_sym and result = P_pm_sym
-    -- means b = P_pm_sym and a ≥ P_pm_sym, i.e. a = P_pm_sym — contradiction.
-    cases a <;> cases b <;> simp_all [compare, Ord.compare]
+  cases a with
+  | P_asym => cases b <;> decide
+  | P_psi  => cases b <;> decide
+  | P_pm   => cases b <;> decide
+  | P_sym  => cases b <;> decide
+  | P_pm_sym => contradiction
 
 -- ============================================================
 -- DECIDABILITY INSTANCES (needed for proof automation)
