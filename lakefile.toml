@@ -41,5 +41,6 @@ globs = [
   "SynthOmnicon.Millennium.E8G2_Vessel_Proofs",
   "SynthOmnicon.Classical.Solitary10",
   "SynthOmnicon.Classical.HeckeLandau",
-  "SynthOmnicon.Basic"
+  "SynthOmnicon.Basic",
+  "SynthOmnicon.Millennium.PrimitiveConventionalBridge"
 ]

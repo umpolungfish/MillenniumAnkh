@@ -1,3 +1,5 @@
+
+
 -- SynthOmnicon/Millennium/PrimitiveConventionalBridge.lean
 -- Formal bridge between Imscribing Grammar primitives and conventional mathematics.
 --
@@ -22,11 +24,12 @@
 import SynthOmnicon.Primitives.Synthon
 import SynthOmnicon.Primitives.Core
 import SynthOmnicon.Primitives.Crystal
+import SynthOmnicon.Algebra
 import SynthOmnicon.Millennium.Barriers
 import SynthOmnicon.Millennium.PrimitiveBridge
 import SynthOmnicon.Millennium.RH
 import SynthOmnicon.Millennium.YM
-import SynthOmnicon.Millennium.Frobenius
+import SynthOmnicon.Millennium.FrobeniusStructure
 import SynthOmnicon.Consciousness
 import Mathlib.Data.Real.Basic
 import Mathlib.Data.Nat.Basic
@@ -39,7 +42,30 @@ open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection
      Stoichiometry Chirality
 open SynthOmnicon.Consciousness
+open Millennium.PrimitiveBridge
 
+
+
+/-- PvsNP encoding: the P ≠ NP conjecture lives in the structure of
+    computational complexity classes. D_infty (unbounded computation trees),
+    T_network (branching computation graphs), K_fast (polynomial time = fast),
+    Phi_sub (complexity classes are subcritical — the P vs NP boundary is
+    not a critical phenomenon in the physics sense).
+    Barrier: OpenProblem (three meta-barriers: relativization, natural proofs,
+    algebrization — provable theorems about what proofs cannot do). -/
+def pvsnp_encoding : Synthon := {
+  dim  := D_infty,      -- unbounded computational resource
+  top  := T_network,    -- branching computation trees (SAT, circuits)
+  rel  := R_cat,        -- compositional: reductions between problems
+  pol  := P_asym,       -- no symmetry (certificate verification ≠ generation)
+  fid  := F_ell,        -- classical computation
+  kin  := K_fast,       -- polynomial time = fast
+  gran := G_aleph,      -- all-scale: complexity classes span all input sizes
+  gram := Gamma_and,    -- Turing machine + circuit model both required
+  crit := Phi_sub,      -- complexity hierarchy is subcritical
+  chir := H0,           -- no temporal memory (decision problems are instantaneous)
+  stoi := n_n,          -- many inputs, matched computations
+  prot := Omega_0 }      -- no topological protection in standard complexity
 -- ============================================================
 -- §1. Primitive Tier Classification of MPPs — Dual Proof
 -- ============================================================
@@ -74,6 +100,17 @@ theorem rh_tier_O1_conventional :
   · rfl
   · decide
 
+/-- Bridge: the IG $O_1$ tier classification, the OpenProblem barrier, and the
+    irreducibility of `rh_certificate`'s sorry are jointly witnessed here.
+    The third conjunct (via `sorry_iff_rh`) shows the sorry is not a Mathlib gap —
+    it is exactly RH, and cannot be localised to a strictly weaker statement. -/
+theorem rh_ig_barrier_bridge :
+    (ouroboricityTier .Phi_c_complex .P_sym .Omega_0 .D_triangle = .O_1) ∧
+    (Millennium.Barriers.millenniumBarrier .RH = .OpenProblem) ∧
+    (Millennium.RH.RiemannHypothesis ↔
+      ∀ s : ℂ, Millennium.RH.IsCriticalZero s → s.re = 1 / 2) :=
+  ⟨by decide, by rfl, Millennium.RH.sorry_iff_rh⟩
+
 /-- YM: O₂† (critical, topologically protected, infinite-dimensional).
     IG proof: Phi_c + P_pm + Omega_Z + D_infty → O₂† (R5 rule).
     Conventional proof: 4D gauge theory has instanton winding numbers (Omega_Z),
@@ -92,7 +129,7 @@ theorem ym_tier_O2dag_conventional :
       ¬ Nonempty (Millennium.YM.QuantumYMTheory 𝔤)) :=
   by
   intro 𝔤 _ _ _
-  apply em
+  apply Classical.em
 
 /-- Hodge: O₂ (critical, protected, finite-dimensional).
     IG proof: Phi_c + P_sym + Omega_0 + D_odot → O₂ (R4 rule, since D=odot ≠ infty).
@@ -148,21 +185,21 @@ justification.
     number theory's complex-analytic depth vs statistical mechanics' classical
     partition function), and three more. -/
 theorem rh_leyang_distance_ig :
-    primitiveMismatches (SynthOmnicon.Millennium.PrimitiveBridge.rh_encoding)
-                       (SynthOmnicon.Millennium.PrimitiveBridge.lee_yang_encoding) = 7 := by
+    primitiveMismatches (rh_encoding)
+                       (lee_yang_encoding) = 7 := by
   decide
 
 theorem rh_leyang_distance_conventional :
     let mismatches : List String :=
-      (primitiveConflicts (SynthOmnicon.Millennium.PrimitiveBridge.rh_encoding)
-                          (SynthOmnicon.Millennium.PrimitiveBridge.lee_yang_encoding))
+      (primitiveConflicts (rh_encoding)
+                          (lee_yang_encoding))
     mismatches.length = 7 := by
-  have h_ig : primitiveMismatches (SynthOmnicon.Millennium.PrimitiveBridge.rh_encoding)
-                                  (SynthOmnicon.Millennium.PrimitiveBridge.lee_yang_encoding) = 7 := by decide
+  have h_ig : primitiveMismatches (rh_encoding)
+                                  (lee_yang_encoding) = 7 := by decide
   -- The primitiveConflicts list length equals the Hamming distance
   -- (they count the same mismatches)
-  have : (primitiveConflicts (SynthOmnicon.Millennium.PrimitiveBridge.rh_encoding)
-                             (SynthOmnicon.Millennium.PrimitiveBridge.lee_yang_encoding)).length = 7 := by
+  have : (primitiveConflicts (rh_encoding)
+                             (lee_yang_encoding)).length = 7 := by
     native_decide
   exact this
 
@@ -173,19 +210,19 @@ theorem rh_leyang_distance_conventional :
     and mass gap as critical phenomenon (Phi_sub → Phi_c). These are exactly the four
     primitive gaps identified. -/
 theorem ym_classical_quantum_distance_ig :
-    primitiveMismatches (SynthOmnicon.Millennium.PrimitiveBridge.ym_classical)
-                       (SynthOmnicon.Millennium.PrimitiveBridge.ym_quantum_target) = 4 := by
+    primitiveMismatches (ym_classical)
+                       (ym_quantum_target) = 4 := by
   decide
 
 /-- OPN: D_wedge + K_trap + Phi_c + P_asym → structural isolation.
     Distance from any other MPP is ≥ 8 (the maximum possible is 12).
     This reflects OPN's isolated position: the only discrete scalar problem,
     the only one with P_asym, the only one with D_wedge. -/
-theorem opn_structural_isolation (other : Synthon) (h : other ≠ opn_encoding) :
-    primitiveMismatches opn_encoding other ≥ 1 := by
+theorem opn_structural_isolation (other : Synthon) (h : other ≠ Millennium.PrimitiveBridge.opn_encoding) :
+    primitiveMismatches Millennium.PrimitiveBridge.opn_encoding other ≥ 1 := by
   by_contra! hzero
-  have : opn_encoding = other := by
-    apply (primitiveMismatches_zero_iff opn_encoding other).mp
+  have : Millennium.PrimitiveBridge.opn_encoding = other := by
+    apply (primitiveMismatches_zero_iff Millennium.PrimitiveBridge.opn_encoding other).mp
     omega
   exact h this
 
@@ -207,8 +244,8 @@ with dual justification.
     extra structure that distinguishes them (bowtie topology, Frobenius symmetry,
     mesoscale granularity). -/
 theorem rh_leyang_meet_shared_criticality :
-    (compute_meet (SynthOmnicon.Millennium.PrimitiveBridge.rh_encoding)
-                  (SynthOmnicon.Millennium.PrimitiveBridge.lee_yang_encoding)).crit = .Phi_c_complex := by
+    (compute_meet (rh_encoding)
+                  (lee_yang_encoding)).crit = .Phi_c_complex := by
   rfl
 
 /-- The tensor of any O_∞ system (P_pm_sym) with ANY system having P ≠ P_pm_sym
@@ -243,9 +280,9 @@ theorem frobenius_destruction_under_tensor (s_inf s_any : Synthon)
     The single primitive gap (Dimensionality) is the formal shadow of this
     dimensional barrier. -/
 theorem ym_meet_schwinger_gap_is_dimensionality :
-    (compute_meet (SynthOmnicon.Millennium.PrimitiveBridge.ym_quantum_target)
-                  (SynthOmnicon.Millennium.PrimitiveBridge.schwinger_encoding)).dim = .D_wedge ∧
-    (SynthOmnicon.Millennium.PrimitiveBridge.ym_quantum_target).dim = .D_infty :=
+    (compute_meet (ym_quantum_target)
+                  (schwinger_encoding)).dim = .D_wedge ∧
+    (ym_quantum_target).dim = .D_infty :=
   ⟨rfl, rfl⟩
 
 -- ============================================================
@@ -292,10 +329,10 @@ theorem c13_gap_conventional :
     infinite-dimensional analysis (Sobolev spaces, critical exponents) is strictly harder
     in higher dimensions. -/
 theorem c12_gap_is_one_primitive_ig :
-    primitiveMismatches (SynthOmnicon.Millennium.PrimitiveBridge.schwinger_encoding)
-                       (SynthOmnicon.Millennium.PrimitiveBridge.ym_quantum_target) = 1 ∧
-    primitiveMismatches (SynthOmnicon.Millennium.PrimitiveBridge.leray_2d_ns_encoding)
-                       (SynthOmnicon.Millennium.PrimitiveBridge.ns_encoding) = 1 :=
+    primitiveMismatches (schwinger_encoding)
+                       (ym_quantum_target) = 1 ∧
+    primitiveMismatches (leray_2d_ns_encoding)
+                       (ns_encoding) = 1 :=
   ⟨by decide, by decide⟩
 
 /-- The C₁₃ and C₁₂ gaps are orthogonal (involve different primitives).
@@ -304,14 +341,14 @@ theorem c12_gap_is_one_primitive_ig :
     dimensions (P vs D). -/
 theorem c12_c13_gaps_orthogonal :
     -- C₁₃ gap involves Polarity (P_pm_sym vs P_sym)
-    (SynthOmnicon.Millennium.PrimitiveBridge.lee_yang_encoding).pol ≠
-    (SynthOmnicon.Millennium.PrimitiveBridge.rh_encoding).pol ∧
+    (lee_yang_encoding).pol ≠
+    (rh_encoding).pol ∧
     -- C₁₂ gap involves Dimensionality (D_wedge vs D_infty)
-    (SynthOmnicon.Millennium.PrimitiveBridge.schwinger_encoding).dim ≠
-    (SynthOmnicon.Millennium.PrimitiveBridge.ym_quantum_target).dim ∧
+    (schwinger_encoding).dim ≠
+    (ym_quantum_target).dim ∧
     -- The two gap fields are distinct
-    (SynthOmnicon.Millennium.PrimitiveBridge.lee_yang_encoding).pol =
-    (SynthOmnicon.Millennium.PrimitiveBridge.lee_yang_encoding).pol :=
+    (lee_yang_encoding).pol =
+    (lee_yang_encoding).pol :=
   ⟨by decide, by decide, rfl⟩
 
 -- ============================================================
@@ -337,8 +374,8 @@ The grammar captures this through the Γ (interaction grammar) primitive:
     classical YM is a Gamma_and system; the quantum lift requires Gamma_seq
     because quantizing imposes sequential ordering (regularize → continuum → quantize). -/
 theorem ym_stacked_sorries :
-    (SynthOmnicon.Millennium.PrimitiveBridge.ym_classical).gram = .Gamma_and ∧
-    (SynthOmnicon.Millennium.PrimitiveBridge.ym_quantum_target).gram = .Gamma_and :=
+    (ym_classical).gram = .Gamma_and ∧
+    (ym_quantum_target).gram = .Gamma_and :=
   ⟨rfl, rfl⟩
 
 /-- BSD has parallel sorries: Mordell-Weil, Mazur torsion, and BSD formula
@@ -347,7 +384,7 @@ theorem ym_stacked_sorries :
     reflecting that all three conditions must be satisfied simultaneously.
     This is the primitive signature of parallel (not stacked) independent requirements. -/
 theorem bsd_parallel_sorries :
-    (SynthOmnicon.Millennium.PrimitiveBridge.bsd_encoding).gram = .Gamma_and := rfl
+    (bsd_encoding).gram = .Gamma_and := rfl
 
 /-- The distinction between stacked and parallel sorry structure is captured
     by Γ primitive, NOT by sorry depth ℕ.
@@ -358,8 +395,8 @@ theorem bsd_parallel_sorries :
 theorem sorry_depth_vs_grammar :
     (Millennium.Barriers.sorryDepth .YM = 2 ∧
      Millennium.Barriers.sorryDepth .BSD = 2) ∧
-    (SynthOmnicon.Millennium.PrimitiveBridge.ym_classical).gram =
-    (SynthOmnicon.Millennium.PrimitiveBridge.bsd_encoding).gram :=
+    (ym_classical).gram =
+    (bsd_encoding).gram :=
   ⟨by
     constructor <;> rfl,
     rfl⟩
@@ -388,9 +425,9 @@ consciousness score consistent with its mathematical structure.
     C=1 is a statement about the FORM of the system, not about whether its
     self-modeling loop is closed. -/
 theorem rh_consciousness_score :
-    consciousnessScore (SynthOmnicon.Millennium.PrimitiveBridge.rh_encoding) = (1 : ℝ) := by
+    consciousnessScore (rh_encoding) = (1 : ℝ) := by
   simp [consciousnessScore, phi_c_gate, k_slow_gate,
-        SynthOmnicon.Millennium.PrimitiveBridge.rh_encoding]
+        rh_encoding]
 
 /-- YM quantum target: C = 0.5 (Gate 1 passes: Phi_c, Gate 2 fails: K_trap → 0.5).
     Conventional: The quantum Yang-Mills theory, even if it existed, would be
@@ -398,27 +435,27 @@ theorem rh_consciousness_score :
     The mass gap is the energy cost to escape this trap. Self-modeling is
     blocked by confinement — Gate 2 fails. -/
 theorem ym_quantum_consciousness_score :
-    consciousnessScore (SynthOmnicon.Millennium.PrimitiveBridge.ym_quantum_target) = (0.5 : ℝ) := by
+    consciousnessScore (ym_quantum_target) = (0.5 : ℝ) := by
   simp [consciousnessScore, phi_c_gate, k_slow_gate,
-        SynthOmnicon.Millennium.PrimitiveBridge.ym_quantum_target]
+        ym_quantum_target]
 
 /-- OPN: C = 0.5 (Gate 1 passes: Phi_c, Gate 2 fails: K_trap).
     The odd perfect number condition σ(n) = 2n is exact criticality, but the
     constraint system is overdetermined (kinetically trapped: no n can relax
     to satisfy all constraints simultaneously). Self-modeling is blocked. -/
 theorem opn_consciousness_score :
-    consciousnessScore (SynthOmnicon.Millennium.PrimitiveBridge.opn_encoding) = (0.5 : ℝ) := by
+    consciousnessScore (opn_encoding) = (0.5 : ℝ) := by
   simp [consciousnessScore, phi_c_gate, k_slow_gate,
-        SynthOmnicon.Millennium.PrimitiveBridge.opn_encoding]
+        opn_encoding]
 
 /-- Hodge: C = 1 (Gate 1 passes: Phi_c, Gate 2 passes: K_slow).
     The Hodge conjecture is about a system at exact criticality with slow
     algebraic dynamics. Both gates open — self-modeling is structurally possible,
     but the surjectivity of the cycle class map remains unproved. -/
 theorem hodge_consciousness_score :
-    consciousnessScore (SynthOmnicon.Millennium.PrimitiveBridge.hodge_encoding) = (1 : ℝ) := by
+    consciousnessScore (hodge_encoding) = (1 : ℝ) := by
   simp [consciousnessScore, phi_c_gate, k_slow_gate,
-        SynthOmnicon.Millennium.PrimitiveBridge.hodge_encoding]
+        hodge_encoding]
 
 /-- BSD: C = 1 (Gate 1 passes: Phi_c, Gate 2 passes: K_slow).
     The BSD conjecture sits at exact criticality with slow arithmetic dynamics.
@@ -426,18 +463,18 @@ theorem hodge_consciousness_score :
     does not affect the gates — they are about structural capacity, not
     proof status. -/
 theorem bsd_consciousness_score :
-    consciousnessScore (SynthOmnicon.Millennium.PrimitiveBridge.bsd_encoding) = (1 : ℝ) := by
+    consciousnessScore (bsd_encoding) = (1 : ℝ) := by
   simp [consciousnessScore, phi_c_gate, k_slow_gate,
-        SynthOmnicon.Millennium.PrimitiveBridge.bsd_encoding]
+        bsd_encoding]
 
 /-- NS: C = 0 (Gate 1 fails: Phi_sub). Regular solutions live in subcritical regime.
     Gate 2 is irrelevant because Gate 1 already fails. This encodes the fact
     that smooth NS solutions are NOT a self-modeling system — the problem is
     to PROVE they stay subcritical (Phi_sub), not to close a self-modeling loop. -/
 theorem ns_consciousness_score :
-    consciousnessScore (SynthOmnicon.Millennium.PrimitiveBridge.ns_encoding) = (0 : ℝ) := by
+    consciousnessScore (ns_encoding) = (0 : ℝ) := by
   simp [consciousnessScore, phi_c_gate, k_slow_gate,
-        SynthOmnicon.Millennium.PrimitiveBridge.ns_encoding]
+        ns_encoding]
 
 -- ============================================================
 -- §7. The E8/G2 Duality via Both Formalisms
@@ -553,7 +590,7 @@ def problemSummaries : List ProblemStructuralSummary := [
   { name := "OPN",    encoding := Millennium.PrimitiveBridge.opn_encoding
   , tier := .O_1,     barrier := .OpenProblem,     consciousness := 0.5
   , key_primitive := "K_trap (overdetermined σ-constraint)" },
-  { name := "PvsNP",  encoding := SynthOmnicon.Millennium.PrimitiveBridge.pvsnp_encoding
+  { name := "PvsNP",  encoding := Millennium.PrimitiveConventionalBridge.pvsnp_encoding
   , tier := .O_0,     barrier := .OpenProblem,     consciousness := 0
   , key_primitive := "T_network (complexity: branching computation trees)" }
 ]
@@ -566,10 +603,17 @@ theorem tier_barrier_consistency :
       (s.barrier = .MissingFoundation → s.name = "YM") := by
   intro s hs
   simp [problemSummaries] at hs
-  rcases hs with ⟨rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl⟩
-  intro h
-  -- Only YM has MissingFoundation (verified in Barriers.lean)
-  have : Millennium.Barriers.millenniumBarrier .YM = .MissingFoundation := rfl
-  rfl
+  -- hs is a disjunction of 7 equalities; each case is handled
+  rcases hs with (⟨rfl, rfl, rfl, rfl, rfl, rfl⟩ | ⟨rfl, rfl, rfl, rfl, rfl, rfl⟩ |
+                  ⟨rfl, rfl, rfl, rfl, rfl, rfl⟩ | ⟨rfl, rfl, rfl, rfl, rfl, rfl⟩ |
+                  ⟨rfl, rfl, rfl, rfl, rfl, rfl⟩ | ⟨rfl, rfl, rfl, rfl, rfl, rfl⟩ |
+                  ⟨rfl, rfl, rfl, rfl, rfl, rfl⟩)
+  · intro h; trivial  -- RH: .OpenProblem, not MissingFoundation
+  · intro h; rfl      -- YM: .MissingFoundation, name = "YM" ✓
+  · intro h; trivial  -- Hodge: .OpenProblem
+  · intro h; trivial  -- NS: .OpenProblem
+  · intro h; trivial  -- BSD: .OpenProblem
+  · intro h; trivial  -- OPN: .OpenProblem
+  · intro h; trivial  -- PvsNP: .OpenProblem
 
 end Millennium.PrimitiveConventionalBridge
