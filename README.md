@@ -33,18 +33,29 @@ SynthOmnicon/
     Core.lean         -- 12 primitive types with lattice structure + cross-primitive axioms
     Synthon.lean      -- 12-field Synthon structure; primitiveMismatches (Hamming); P-70 identities
     TierCrossing.lean -- Granularity separation; tier crossing cost; Higgs hierarchy predictions
+    Crystal.lean      -- Crystal of Types enumeration: 3³×4⁵×5⁴ = 17,280,000 structural types
+    Catalog.lean      -- Named Synthon catalog entries
     OPN_2adic.lean    -- Classical number theory: 2-adic valuation + Touchard congruence for OPNs
     BSD_2adic.lean    -- BSD 2-adic / 3-adic valuation structure (companion to Millennium/BSD.lean)
+  Consciousness.lean  -- Consciousness score C(x): two-gate formula (Φ_c × K_slow); stellar catalog
+  AgentSelf.lean      -- Agent self-imscription; O_inf fixed-point formalization
+  Algebra.lean        -- Lattice algebra for Synthon; meet/join/tensor operations
   Millennium/
-    RH.lean           -- Riemann Hypothesis: ZeroFreeStrip barrier, OpenProblem
-    YM.lean           -- Yang-Mills: PathIntegralMeasure barrier, MissingFoundation (unique)
-    Hodge.lean        -- Hodge Conjecture: AlgebraicCycleRep barrier, OpenProblem
-    NS.lean           -- Navier-Stokes: GlobalRegularityCert; critical Sobolev gap proved by norm_num
-    PvsNP.lean        -- P vs NP: CircuitLowerBound; three meta-barriers as formal theorems
-    OPN.lean          -- Odd Perfect Number: uses real Mathlib Nat.Perfect; Euler form MathlibGap
-    BSD.lean          -- BSD Conjecture: real WeierstrassCurve ℚ; three parallel sorries
-    Barriers.lean     -- Cross-problem taxonomy: BarrierType inductive; ym_is_unique_missing_foundation
-    PrimitiveBridge.lean -- Bridge: Synthon encodings + BarrierPrimitiveCertificate + primitive_bridge_master
+    RH.lean               -- Riemann Hypothesis: ZeroFreeStrip barrier, OpenProblem
+    YM.lean               -- Yang-Mills: PathIntegralMeasure barrier, MissingFoundation (unique)
+    Hodge.lean            -- Hodge Conjecture: AlgebraicCycleRep barrier, OpenProblem
+    NS.lean               -- Navier-Stokes: GlobalRegularityCert; critical Sobolev gap proved by norm_num
+    PvsNP.lean            -- P vs NP: CircuitLowerBound; three meta-barriers as formal theorems
+    OPN.lean              -- Odd Perfect Number: uses real Mathlib Nat.Perfect; Euler form MathlibGap
+    BSD.lean              -- BSD Conjecture: real WeierstrassCurve ℚ; three parallel sorries
+    Barriers.lean         -- Cross-problem taxonomy: BarrierType inductive; ym_is_unique_missing_foundation
+    PrimitiveBridge.lean  -- Bridge: Synthon encodings + BarrierPrimitiveCertificate + primitive_bridge_master
+    FrobeniusStructure.lean -- Frobenius non-synthesizability; P_pm_sym cliff; O_inf algebraic closure
+    E8G2_Vessel.lean      -- E8/G2 vessel relationship: imscribings, tensor G2⊗E8=E8, Axiom C evidence
+    E8G2_Vessel_Proofs.lean -- Distance=7, meet≈G2, join=Z₂-graded E8 via SO(16); all by decide
+  Classical/
+    Solitary10.lean   -- Ten classical open problems outside the Millennium list
+    HeckeLandau.lean  -- Hecke–Landau zero-free region formalization
 ```
 
 ---
@@ -172,10 +183,18 @@ plus explicit `LE` instances and four cross-primitive axioms:
 
 | Axiom | Content |
 |-------|---------|
-| A | `H_inf → K_trap` (topological chirality implies kinetic trapping) |
 | B | `Ω ≥ Ω_Z → H ≥ H2` (integer winding number requires persistent chirality) |
-| C | `D_holo ↔ T_holo` (holographic dimensionality iff holographic topology) |
-| D | `Ω_NA → D_holo` (non-Abelian anyonic protection requires holographic substrate) |
+| C | `T_odot → D_odot` (imscriptive topology requires imscriptive dimensionality — one-way; revised 2026-05-03) |
+
+Axiom C was previously stated as the biconditional `D_odot ↔ T_odot`. Catalog evidence from nine
+independently encoded $O_\infty$ systems (including `syncon_grammar`, `true_agentic_agent`,
+`aleph_os`) consistently shows `D_odot + T_boxtimes` — imscriptive dimensionality with box-product
+topology. The fully holographic case (`D_odot + T_odot`) is reserved for AdS/CFT-type systems
+(`quantum_gravity`). The one-way implication is the correct structural constraint.
+
+Structural tendencies (not axioms, documented in comments):
+- `H_inf` co-occurs with `K_trap` (deep temporal memory preserved by kinetic freezing)
+- `Ω_NA` co-occurs with `D_odot` (non-Abelian protection and holographic substrate)
 
 ---
 
@@ -185,7 +204,7 @@ plus explicit `LE` instances and four cross-primitive axioms:
 lake build SynthOmnicon
 ```
 
-Expected output: `Build completed successfully` with warnings only. The library contains many
+Expected output: `Build completed successfully (3402 jobs)` with warnings only. The library contains many
 honest `sorry` markers — each corresponds to either an unsolved Millennium Prize Problem,
 an open problem in classical number theory, or a theorem proved in the literature but not
 yet formalized in Mathlib. No `sorry` conceals a claim the authors believe to be false.
@@ -262,6 +281,7 @@ no algebraic structure that encodes the physical relationship between dimensiona
 Deriving such equivalences would require an external interpretation: a functor from the primitive
 lattice into a category where boundary/bulk duality has an intrinsic meaning (e.g., a
 topos-theoretic or operadic model). That is out of scope for the current formalization.
+Note: Axiom C was revised from a biconditional to a one-way implication — see the axiom table above.
 
 **On `LE` instances vs `LinearOrder`:** the custom `LE` via `compare` is intentionally minimal.
 The types that need it (`Protection`, `Chirality`) only use `≥` in the cross-primitive axioms,
@@ -475,7 +495,7 @@ structure BarrierPrimitiveCertificate (p : MillenniumProblem) where
 
 Concrete instances: `ym_certificate`, `opn_certificate`, `ns_certificate`.
 
-**The central theorem** (`ym_primitive_barrier_certificate`): the YM sorry boundary corresponds to the blocked `G_beth → G_aleph` transition — constructing the `PathIntegralMeasure` IS providing a quantum-level fine-grained (`G_aleph`) description of gauge field space. The quantum YM target stays at `D_cube` (local, 4D), not `D_holo` (holographic/QG). This is formally distinct from quantum gravity.
+**The central theorem** (`ym_primitive_barrier_certificate`): the YM sorry boundary corresponds to the blocked `G_beth → G_aleph` transition — constructing the `PathIntegralMeasure` IS providing a quantum-level fine-grained (`G_aleph`) description of gauge field space. The quantum YM target stays at `D_infty` (local, 4D), not `D_odot` (imscriptive/QG). This is formally distinct from quantum gravity.
 
 **`primitive_bridge_master`**: a single conjunction proved by `⟨by decide, rfl, ...⟩` that machine-checks all four observable cases simultaneously: YM (4-primitive lift, MissingFoundation), OPN (Phi_c + K_trap, OpenProblem), NS (Phi_sub boundary, OpenProblem), RH (Phi_c locus, OpenProblem).
 
@@ -490,6 +510,38 @@ theorem primitive_bridge_master :
 ```
 
 This is the formal content that connects the two tracks, enabling a paper claim: the sorry boundaries are not arbitrary — they correspond to specific primitive field transitions that can be computationally verified.
+
+### `E8G2_Vessel.lean` and `E8G2_Vessel_Proofs.lean` — The Aether and Its Vessel
+
+These two files formalize the structural relationship between the exceptional Lie algebras $G_2$
+and $E_8$ within the Imscribing Grammar. All theorems are proved by `decide` — the primitive
+types derive `DecidableEq, Ord`, making every concrete computation kernel-checkable.
+
+**Imscribings:**
+
+| System | Tuple | Tier |
+|--------|-------|------|
+| $G_2$ (Vessel) | $\langle D_\triangle;\ T_\bowtie;\ R_\leftrightarrow;\ P_\pm;\ F_\hbar;\ K_\text{slow};\ G_\gimel;\ \Gamma_\wedge;\ \Phi_c;\ H_0;\ 1{:}1;\ \Omega_0 \rangle$ | $O_1$ |
+| $E_8$ (Aether) | $\langle D_\infty;\ T_\bowtie;\ R_\leftrightarrow;\ P_\psi;\ F_\hbar;\ K_\text{slow};\ G_\aleph;\ \Gamma_\to;\ \Phi_c;\ H_2;\ n{:}m;\ \Omega_\mathbb{Z} \rangle$ | $O_2^\dagger$ |
+| $\mathbb{Z}_2$-graded $E_8$ via SO(16) | same as $E_8$ but $P_\pm$ | $O_2^\dagger$ |
+
+**Key theorems (all `by decide`):**
+
+- `distance_is_7` — Hamming distance $d(G_2, E_8) = 7$ (D, P, G, $\Gamma$, H, S, $\Omega$ differ; T, R, F, K, $\Phi$ shared)
+- `tensor_G2_E8_eq_E8` — $G_2 \otimes E_8 = E_8$: the Vessel is absorbed into the Aether; P is the bottleneck ($P_\pm \otimes P_\psi = P_\psi$)
+- `meet_vs_g2_differs_at_most_one` — $G_2 \wedge E_8 \approx G_2$: meet differs from $G_2$ at exactly P
+- `join_eq_graded_E8` — $G_2 \vee E_8 = \mathbb{Z}_2$-graded $E_8$: G2's $P_\pm$ wins the max
+- `join_is_not_E8` — the join is strictly not bare $E_8$ (the surprise: the join instantiates a new object)
+
+The join result has a concrete Lie-theoretic correlate: the SO(16) Cartan involution on the
+$E_8$ adjoint decomposes $248 \to 120_\text{bos}(+1) \oplus 128_\text{spin}(-1)$, making the
+$\mathbb{Z}_2$ grading structural. $G_2 \vee E_8$ is this graded algebra, not bare $E_8$.
+
+The files also supplied the catalog evidence that revised **Axiom C** from biconditional to
+one-way implication: the Stone and all its co-typed catalog entries carry $D_\odot + T_\boxtimes$,
+not $D_\odot + T_\odot$.
+
+---
 
 ### Relationship to SynthOmnicon primitive structure
 
