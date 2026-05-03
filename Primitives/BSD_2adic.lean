@@ -182,11 +182,13 @@ theorem rank_ge_one_of_neg_root_number (E : WeierstrassCurve ℚ)
     2-adically inert. In the BSD substrate, $\mathrm{rank}(T) = 0$ — torsion elements
     have finite order and do not contribute to the free rank. Both are the same claim:
     the scaffold is charge-neutral by construction. -/
-theorem torsion_scaffold_neutral (r : ℕ) (T : ℕ) :
+theorem torsion_scaffold_neutral (r : ℕ) (_T : ℕ) :
     r + 0 = r := Nat.add_zero r
 
 /-- **$v_2(|T|) \leq 4$**: the scaffold's 2-adic weight is bounded.
-    From Mazur: $|T| \leq 16 = 2^4$, so $2^{v_2(|T|)} \mid |T| \leq 16$, giving $v_2(|T|) \leq 4$. -/
+    From Mazur: $|T| \leq 16 = 2^4$,
+    so $2^{v_2(|T|)} \mid |T| \leq 16$,
+    giving $v_2(|T|) \leq 4$. -/
 theorem torsion_v2_bound (E : WeierstrassCurve ℚ) :
     v₂ (torsionOrder_EC E) ≤ 4 := by
   have hmazur := mazur_torsion_bound E
@@ -201,18 +203,19 @@ theorem torsion_v2_bound (E : WeierstrassCurve ℚ) :
 
 /-- **BSD 3-adic structural input** (sorry).
     In OPN, the case split on $3 \mid n$ is derived from two facts:
-      · $p \equiv 1 \pmod{4}$ forces $p \not\equiv 2 \pmod{3}$, so if $3 \nmid n$ then $n \equiv 1 \pmod{3}$;
-      · if $3 \mid n$ then $3 \nmid p^k$ (since $p \equiv 1 \pmod{4}$), so $3 \mid m^2$,
+      · $p \equiv 1 \pmod{4}$ forces $p \not\equiv 2 \pmod{3}$,
+        so if $3 \nmid n$ then $n \equiv 1 \pmod{3}$;
+      · if $3 \mid n$ then $3 \nmid p^k$, so $3 \mid m^2$,
         hence $9 \mid m^2$, hence $9 \mid n$.
     Result: $n \equiv 1 \pmod{3}$ OR $9 \mid n$.
 
-    The BSD analogue: the 3-adic structure of $L(E,s)$ and the BSD formula for the leading
-    coefficient at $s = 1$ should force $r \equiv 1 \pmod{3}$ OR $9 \mid r$, analogously.
+    BSD analogue: 3-adic structure of $L(E,s)$ should force
+    $r \equiv 1 \pmod{3}$ OR $9 \mid r$.
     This requires:
-      (1) BSD (open) to connect $r$ to $L(E,s)$;
-      (2) The 3-adic local root number $\varepsilon_3(E)$ to give 3-adic information on $r$;
-      (3) The 3-Selmer group structure when $3 \mid r$.
-    These are available for specific families of curves but are not yet proved uniformly. -/
+      (1) BSD (open) to connect $r$ to $L(E,s)$,
+      (2) The 3-adic local root number $\varepsilon_3(E)$,
+      (3) The 3-Selmer group when $3 \mid r$.
+    Available for specific families but not uniformly. -/
 theorem bsd_rank_3adic (E : WeierstrassCurve ℚ) [E.IsElliptic]
     (hε : rootNumber_EC E = -1) :
     rank_EC E % 3 = 1 ∨ 9 ∣ rank_EC E := by

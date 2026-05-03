@@ -4,7 +4,7 @@ keywords = ["math"]
 defaultTargets = ["SynthomniconLean"]
 
 [leanOptions]
-pp.unicode.fun = true # pretty-prints `fun a ↦ b`
+pp.unicode.fun = true
 relaxedAutoImplicit = false
 weak.linter.mathlibStandardSet = true
 maxSynthPendingDepth = 3
@@ -24,7 +24,9 @@ globs = [
   "SynthOmnicon.Primitives.OPN_2adic",
   "SynthOmnicon.Primitives.BSD_2adic",
   "SynthOmnicon.Primitives.Synthon",
-  "SynthOmnicon.Primitives.TierCrossing"
+  "SynthOmnicon.Primitives.TierCrossing",
+  "SynthOmnicon.Primitives.Catalog",
+  "SynthOmnicon.Primitives.Crystal"
 ]
 
 [[lean_lib]]

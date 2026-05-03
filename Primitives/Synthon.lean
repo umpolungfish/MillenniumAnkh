@@ -149,8 +149,8 @@ def scalarField_Kslow : Synthon := {
   prot := Omega_0      -- no topological protection of the vacuum
 }
 
-def higgs    : Synthon := scalarField_Kslow
-def axion    : Synthon := scalarField_Kslow
+def higgs : Synthon := scalarField_Kslow
+def axion : Synthon := scalarField_Kslow
 def inflaton : Synthon := scalarField_Kslow
 
 /-- P-70a: Higgs and axion are structurally identical. -/
@@ -287,10 +287,9 @@ theorem o_inf_iff_P_pm_sym_at_phi_c (s : Synthon) :
     · exact o_inf_requires_phi_c s.crit s.pol s.prot s.dim h
     · exact o_inf_requires_P_pm_sym s.crit s.pol s.prot s.dim h
   · intro ⟨hphi, hpol⟩
-    simp [synthonTier, ouroboricityTier]
     cases hphi with
-    | inl h => simp [h, hpol]
-    | inr h => simp [h, hpol]
+    | inl h => rw [h, hpol]; simp only [synthonTier, ouroboricityTier]
+    | inr h => rw [h, hpol]; simp only [synthonTier, ouroboricityTier]
 
 /-- Higgs is O_inf (P-70 structural claim). -/
 theorem higgs_is_O_inf : synthonTier higgs = .O_inf := by decide
@@ -299,9 +298,8 @@ theorem higgs_is_O_inf : synthonTier higgs = .O_inf := by decide
 theorem tensor_O_inf_O2_destroys_frobenius (s_inf s_two : Synthon)
     (h_inf : s_inf.pol = .P_pm_sym) (h_two : s_two.pol = .P_sym) :
     (tensorProduct s_inf s_two).pol = .P_sym := by
-  simp [tensorProduct, h_inf, h_two]
-  -- Need to show compare P_pm_sym P_sym ≠ .lt, i.e. P_pm_sym ≥ P_sym
+  rw [tensorProduct, h_inf, h_two]
   rw [show compare (.P_pm_sym : Polarity) .P_sym = .gt by decide]
-  simp
+  rfl
 
 end SynthOmnicon.Primitives

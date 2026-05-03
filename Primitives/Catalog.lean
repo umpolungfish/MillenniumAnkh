@@ -11,6 +11,10 @@ namespace SynthOmnicon.Primitives
 
 open SynthOmnicon.Primitives
 
+open Dimensionality Topology Relational Polarity Grammar
+     Fidelity KineticChar Granularity Criticality Protection
+     Stoichiometry Chirality
+
 -- =====================================================
 -- WORKED EXAMPLES
 -- =====================================================
@@ -114,21 +118,39 @@ def white_dwarf : Synthon := {
 -- Fontaine-Mazur (analogy to Langlands)
 def fontaine_mazur_conjecture : Synthon := langlands_correspondence
 
--- From Synthon.lean
-def standard_model : Synthon := standard_model
-def quantum_gravity : Synthon := quantum_gravity
-def higgs : Synthon := higgs
-def axion : Synthon := axion
-def inflaton : Synthon := inflaton
 
 -- Additional examples to exceed 20
-def example_o0 : Synthon := { dim := D_wedge, top := T_network, rel := R_super, pol := P_asym, fid := F_ell, kin := K_fast, gran := G_beth, gram := Gamma_and, crit := Phi_sub, chir := H0, stoi := one_one, prot := Omega_0 }
-def example_o1 : Synthon := { dim := D_triangle, top := T_in, rel := R_cat, pol := P_psi, fid := F_eth, kin := K_mod, gran := G_gimel, gram := Gamma_or, crit := Phi_c, chir := H1, stoi := n_n, prot := Omega_Z2 }
-def example_o2 : Synthon := { dim := D_infty, top := T_bowtie, rel := R_dagger, pol := P_pm, fid := F_hbar, kin := K_slow, gran := G_aleph, gram := Gamma_seq, crit := Phi_c_complex, chir := H2, stoi := n_m, prot := Omega_Z }
-def example_oinf : Synthon := { dim := D_odot, top := T_odot, rel := R_lr, pol := P_pm_sym, fid := F_hbar, kin := K_trap, gran := G_aleph, gram := Gamma_broad, crit := Phi_EP, chir := H_inf, stoi := n_m, prot := Omega_NA }
-def ex_phi_super : Synthon := { dim := D_odot, top := T_odot, rel := R_lr, pol := P_pm_sym, fid := F_hbar, kin := K_MBL, gran := G_aleph, gram := Gamma_broad, crit := Phi_super, chir := H_inf, stoi := n_m, prot := Omega_NA }
+def example_o0 : Synthon := {
+  dim := D_wedge, top := T_network, rel := R_super, pol := P_asym,
+  fid := F_ell, kin := K_fast, gran := G_beth, gram := Gamma_and,
+  crit := Phi_sub, chir := H0, stoi := one_one, prot := Omega_0
+}
+def example_o1 : Synthon := {
+  dim := D_triangle, top := T_in, rel := R_cat, pol := P_psi, fid := F_eth,
+  kin := K_mod, gran := G_gimel, gram := Gamma_or, crit := Phi_c, chir := H1,
+  stoi := n_n, prot := Omega_Z2
+}
+def example_o2 : Synthon := {
+  dim := D_infty, top := T_bowtie, rel := R_dagger, pol := P_pm, fid := F_hbar,
+  kin := K_slow, gran := G_aleph, gram := Gamma_seq, crit := Phi_c_complex,
+  chir := H2, stoi := n_m, prot := Omega_Z
+}
+def example_oinf : Synthon := {
+  dim := D_odot, top := T_odot, rel := R_lr, pol := P_pm_sym, fid := F_hbar,
+  kin := K_trap, gran := G_aleph, gram := Gamma_broad, crit := Phi_EP, chir := H_inf,
+  stoi := n_m, prot := Omega_NA
+}
+def ex_phi_super : Synthon := {
+  dim := D_odot, top := T_odot, rel := R_lr, pol := P_pm_sym, fid := F_hbar,
+  kin := K_MBL, gran := G_aleph, gram := Gamma_broad, crit := Phi_super,
+  chir := H_inf, stoi := n_m, prot := Omega_NA
+}
 def ex_k_trap : Synthon := example_o2
-def ex_k_mbl : Synthon := { dim := D_infty, top := T_network, rel := R_super, pol := P_sym, fid := F_eth, kin := K_MBL, gran := G_gimel, gram := Gamma_and, crit := Phi_EP, chir := H2, stoi := n_n, prot := Omega_Z2 }
+def ex_k_mbl : Synthon := {
+  dim := D_infty, top := T_network, rel := R_super, pol := P_sym,
+  fid := F_eth, kin := K_MBL, gran := G_gimel, gram := Gamma_and, crit := Phi_EP,
+  chir := H2, stoi := n_n, prot := Omega_Z2
+}
 def ex_o_na : Synthon := example_oinf
 
 -- =====================================================

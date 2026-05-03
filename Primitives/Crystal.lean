@@ -128,7 +128,8 @@ def stoi_of_nat : Nat → Stoichiometry
 -- Crystal address
 def crystal_encode (s : Synthon) : Nat :=
   let f3 := idx_F s.fid * 9 + idx_G s.gran * 3 + idx_S s.stoi  -- 0-26
-  let f4 := idx_D s.dim * 256 + idx_R s.rel * 64 + idx_Γ s.gram * 16 + idx_H s.chir * 4 + idx_Ω s.prot  -- 0-1023
+  let f4 := idx_D s.dim * 256 + idx_R s.rel * 64
+    + idx_Γ s.gram * 16 + idx_H s.chir * 4 + idx_Ω s.prot  -- 0-1023
   let f5 := idx_T s.top * 125 + idx_P s.pol * 25 + idx_Φ s.crit * 5 + idx_K s.kin  -- 0-624
   f3 + 27 * f4 + 27 * 1024 * f5
 
@@ -154,7 +155,7 @@ theorem crystal_total_size : 27 * 1024 * 625 = 17280000 := by decide
 -- Roundtrip: decode ∘ encode = id
 theorem crystal_roundtrip (s : Synthon) : crystal_decode (crystal_encode s) = s := by
   unfold crystal_encode crystal_decode
-  simp only [Nat.div_add_mod, Nat.mod_eq_of_lt]
+  simp only
   -- Field-by-field: each idx_of_nat (idx_x x) = x since idx 0..max-1
   -- and div/mod recover exact digits because bases are powers
   -- Prove per-field recovery

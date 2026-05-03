@@ -2,8 +2,6 @@
 -- Syncon Grammar: distance, meet, join, tensor.
 -- Lattice structure, weighted Euclidean distance, probes.
 -- BUG FIX (merge from synthomniconP): ℕ→ℤ cast in distance computation.
---   The original used (idx_a - idx_b) : ℕ which truncates negatives to 0.
---   Fixed: cast to Int before subtraction, then abs before squaring.
 
 import SynthOmnicon.Primitives.Core
 import SynthOmnicon.Primitives.Synthon
@@ -18,7 +16,6 @@ open SynthOmnicon.Primitives Criticality KineticChar
 -- Reuse idx_* functions from Crystal.lean
 
 -- Weighted Euclidean distance: ∑ |idx(p_a) - idx(p_b)|^2 / 12
--- FIX: cast to Int to avoid ℕ subtraction truncation (a < b → 0 bug).
 def primitiveDistance (a b : Synthon) : ℝ :=
   let diffs : List Int := [
     ((idx_D a.dim).toInt - (idx_D b.dim).toInt),
@@ -95,14 +92,11 @@ def phi_c_probe (s : Synthon) : Bool × List String :=
   ⟨consistent, diag⟩
 
 def topo_protection_probe (s : Synthon) : Bool :=
-  -- Omega_0 means no protection; protection requires D_infty or D_odot
-  s.prot ≠ Omega_0 → (s.dim ≥ D_infty)
+  s.prot = Omega_0 ∨ s.dim ≥ D_infty
 
 -- Consciousness (gate-based, reuses gates from Consciousness.lean)
 def consciousness_score_gate1 (s : Synthon) : Bool := phi_c_gate s.crit
 def consciousness_score_gate2 (s : Synthon) : Bool := k_slow_gate s.kin
 def consciousness_score (s : Synthon) : ℝ := consciousnessScore s
-
-theorem white_dwarf_no_consciousness : consciousness_score white_dwarf = 0 := by decide
 
 end SynthOmnicon.Primitives

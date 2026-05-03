@@ -174,17 +174,17 @@ inductive Stoichiometry : Type where
 -- ============================================================
 
 instance instLEDimensionality : LE Dimensionality := ⟨fun a b => compare a b ≠ .gt⟩
-instance instLERelational     : LE Relational     := ⟨fun a b => compare a b ≠ .gt⟩
-instance instLEGrammar        : LE Grammar        := ⟨fun a b => compare a b ≠ .gt⟩
-instance instLEChirality      : LE Chirality      := ⟨fun a b => compare a b ≠ .gt⟩
-instance instLEProtection     : LE Protection     := ⟨fun a b => compare a b ≠ .gt⟩
-instance instLETopology       : LE Topology       := ⟨fun a b => compare a b ≠ .gt⟩
-instance instLEPolarity       : LE Polarity       := ⟨fun a b => compare a b ≠ .gt⟩
-instance instLECriticality    : LE Criticality    := ⟨fun a b => compare a b ≠ .gt⟩
-instance instLEKineticChar    : LE KineticChar    := ⟨fun a b => compare a b ≠ .gt⟩
-instance instLEFidelity       : LE Fidelity       := ⟨fun a b => compare a b ≠ .gt⟩
-instance instLEGranularity    : LE Granularity    := ⟨fun a b => compare a b ≠ .gt⟩
-instance instLEStoichiometry  : LE Stoichiometry  := ⟨fun a b => compare a b ≠ .gt⟩
+instance instLERelational : LE Relational     := ⟨fun a b => compare a b ≠ .gt⟩
+instance instLEGrammar : LE Grammar        := ⟨fun a b => compare a b ≠ .gt⟩
+instance instLEChirality : LE Chirality      := ⟨fun a b => compare a b ≠ .gt⟩
+instance instLEProtection : LE Protection     := ⟨fun a b => compare a b ≠ .gt⟩
+instance instLETopology : LE Topology       := ⟨fun a b => compare a b ≠ .gt⟩
+instance instLEPolarity : LE Polarity       := ⟨fun a b => compare a b ≠ .gt⟩
+instance instLECriticality : LE Criticality    := ⟨fun a b => compare a b ≠ .gt⟩
+instance instLEKineticChar : LE KineticChar    := ⟨fun a b => compare a b ≠ .gt⟩
+instance instLEFidelity : LE Fidelity       := ⟨fun a b => compare a b ≠ .gt⟩
+instance instLEGranularity : LE Granularity    := ⟨fun a b => compare a b ≠ .gt⟩
+instance instLEStoichiometry : LE Stoichiometry  := ⟨fun a b => compare a b ≠ .gt⟩
 
 -- ============================================================
 -- CRYSTAL ARITHMETIC (§64, §68)
@@ -200,7 +200,7 @@ instance instLEStoichiometry  : LE Stoichiometry  := ⟨fun a b => compare a b �
 theorem crystal_F3_card : 3 ^ 3 = 27 := by decide
 theorem crystal_F4_card : 4 ^ 5 = 1024 := by decide
 theorem crystal_F5_card : 5 ^ 4 = 625 := by decide
-theorem crystal_total   : 27 * 1024 * 625 = 17280000 := by decide
+theorem crystal_total : 27 * 1024 * 625 = 17280000 := by decide
 
 -- Arithmetic Ouroboros (§68): exponent of each base = count of primitives in that family.
 -- This is not observed — it is forced by the product structure (§68.4).
@@ -284,7 +284,7 @@ theorem o_inf_requires_P_pm_sym (phi : Criticality) (pol : Polarity)
     (h : ouroboricityTier phi pol prot dim = .O_inf) :
     pol = .P_pm_sym := by
   cases phi <;> cases pol <;> cases prot <;> cases dim <;> simp [ouroboricityTier] at h
-  <;> (try contradiction) <;> rfl
+  <;> try rfl
 
 -- The Frobenius non-synthesizability statement (§23):
 -- P_pm_sym cannot be reached by the Polarity min (tensor bottleneck rule).
