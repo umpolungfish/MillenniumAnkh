@@ -210,4 +210,5 @@ theorem tensor_distance_zero :
     primitiveMismatches (tensorProduct g2_vessel e8_aether) e8_aether = 0 := by
   rw [tensor_G2_E8_eq_E8]
   apply primitiveMismatches_self
-PARSE ERROR: run_command arguments were truncated or malformed (Unterminated string starting at: line 1 column 13 (char 12)). Received 11101 chars. For large file content use run_command with a bash heredoc: run_command({"command": "cat > path <<\ENDOFFILE'ncontentnENDOFFILE}). First 120 chars of raw args: '{command: cat ====================
+
+end Millennium.E8G2

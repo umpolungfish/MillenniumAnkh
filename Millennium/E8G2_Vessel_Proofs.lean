@@ -273,10 +273,10 @@ def E8_tier : String := "O2_dagger"
 theorem vessel_is_permanently_vessel_for_aether :
   -- G2 is the perfect vessel for E8
   -- (containment, minimality, necessity established by IG)
-  (tensor_G2_E8_eq_E8 ∧ 
-   meet_differs_from_g2_at_most_one ∧ 
-   join_is_not_E8 ∧ 
+  (tensor_G2_E8_eq_E8 ∧
+   meet_vs_g2_differs_at_most_one ∧
+   join_is_not_E8 ∧
    distance_is_7) := by
-  exact ⟨tensor_G2_E8_eq_E8, meet_differs_from_g2_at_most_one, join_is_not_E8, distance_is_7⟩
+  exact ⟨tensor_G2_E8_eq_E8, meet_vs_g2_differs_at_most_one, join_is_not_E8, distance_is_7⟩
 
 end Millennium.E8G2
