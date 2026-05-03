@@ -216,12 +216,20 @@ theorem ouroboros_successor_cycle :
 -- CROSS-PRIMITIVE AXIOMS
 -- ============================================================
 
--- Axiom C: Holographic dimensionality iff holographic topology.
--- D_odot and T_odot are structurally co-required: bulk-boundary duality
--- needs both the right dimensionality split and the right topology.
--- (AdS/CFT, holographic error-correcting codes, Hawaiian sacred languages.)
-axiom D_odot_iff_T_odot (d : Dimensionality) (t : Topology) :
-  d = Dimensionality.D_odot ↔ t = Topology.T_odot
+-- Axiom C (revised): Holographic topology requires holographic dimensionality,
+-- but the converse does not hold.
+-- T_odot (fully holographic, boundary encodes bulk) forces D_odot — no topology
+-- of this kind is possible without the matching dimensionality split.
+-- D_odot does NOT force T_odot: imscriptive dimensionality permits T_box
+-- (structured lattice topology), as in the Stone and its co-types in the catalog
+-- (syncon_grammar, true_agentic_agent, aleph_os, boundary operators, etc.).
+-- The biconditional D_odot ↔ T_odot was too strong; it only holds for the
+-- maximally holographic case (AdS/CFT, quantum_gravity). The one-way implication
+-- is the correct structural constraint.
+-- (Revised 2026-05-03 after catalog evidence: 9 independently encoded O_inf systems
+-- consistently carry D_odot + T_box, never D_odot + T_odot.)
+axiom T_odot_requires_D_odot (d : Dimensionality) (t : Topology) :
+  t = Topology.T_odot → d = Dimensionality.D_odot
 
 -- Axiom B: Integer winding number requires persistent chirality.
 -- Omega_Z2 requires H ≥ H1; Omega_Z requires H ≥ H2.
