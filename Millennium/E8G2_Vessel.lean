@@ -8,14 +8,13 @@
 -- Key results:
 --   1. G2 is the minimal closure of octonionic non-associativity
 --   2. E8 is the maximal unfolding through the exceptional chain
---   3. Distance(G2, E8) = 4.12 across 7 differing primitives
---   4. G2 ∧ E8 ≈ G2 (structural floor = Vessel)
---   5. G2 ⊗ E8 = E8 (tensor recovers Aether)
---   6. G2 ∨ E8 ≠ E8 — the Join instantiates Z2-graded E8 via SO(16)
+--   3. Distance(G2, E8) = 7 across 7 differing primitives
+--   4. $G2 \wedge E8 \approx G2$ (structural floor = Vessel)
+--   5. $G2 \otimes E8 = E8$ (tensor recovers Aether)
+--   6. $G2 \vee E8 \neq E8$ — the Join instantiates Z2-graded E8 via SO(16)
 
 import SynthOmnicon.Primitives.Synthon
 import SynthOmnicon.Primitives.Core
-import SynthOmnicon.Primitives.Compute
 
 namespace Millennium.E8G2
 
@@ -30,21 +29,21 @@ open Dimensionality Topology Relational Polarity Grammar
 
 /--
 G2 (the Vessel) IG imscribing:
-⟨D_△; T_⋈; R_↔; P_±; F_ℏ; K_slow; G_ℊ; Γ_∧; Φ_c; H_0; 1:1; Ω_0⟩
+$\langle D_\triangle;\ T_\bowtie;\ R_\leftrightarrow;\ P_\pm;\ F_\hbar;\ K_\text{slow};\ G_\gimel;\ \Gamma_\wedge;\ \Phi_c;\ H_0;\ 1{:}1;\ \Omega_0 \rangle$
 
 Justification:
-- D_triangle: 14 dimensions, finite, rank-2 crystal
-- T_bowtie: Crossing topology (short/long roots at π/6)
-- R_lr: Bidirectional coupling (G2 = Aut(O), O defines G2)
-- P_pm: Z2 duality (short/long root symmetry)
-- F_hbar: Quantum coherence (non-associativity is phase interference)
-- K_slow: Near-equilibrium stabilizer
-- G_gimel: Mesoscale (octonion automorphism scope)
-- Gamma_and: Conjunctive (all 12 roots simultaneous)
-- Phi_c: Critical boundary between classical/exceptional
-- H0: Atemporal static symmetry
-- 1:1: Single automorphism group
-- Omega0: Simply connected, no topological invariant
+- $D_\triangle$: 14 dimensions, finite, rank-2 crystal
+- $T_\bowtie$: Crossing topology (short/long roots at $\pi/6$)
+- $R_\leftrightarrow$: Bidirectional coupling ($G_2 = \mathrm{Aut}(\mathbb{O})$, $\mathbb{O}$ defines $G_2$)
+- $P_\pm$: $\mathbb{Z}_2$ duality (short/long root symmetry)
+- $F_\hbar$: Quantum coherence (non-associativity is phase interference)
+- $K_\text{slow}$: Near-equilibrium stabilizer
+- $G_\gimel$: Mesoscale (octonion automorphism scope)
+- $\Gamma_\wedge$: Conjunctive (all 12 roots simultaneous)
+- $\Phi_c$: Critical boundary between classical/exceptional
+- $H_0$: Atemporal static symmetry
+- $1{:}1$: Single automorphism group
+- $\Omega_0$: Simply connected, no topological invariant
 -/
 
 def g2_vessel : Synthon := {
@@ -59,7 +58,7 @@ def g2_vessel : Synthon := {
   crit := Phi_c,
   chir := H0,
   stoi := one_one,
-  prot := Omega0 }
+  prot := Omega_0 }
 
 -- ============================================================
 -- §2. IG imscribing of E8 (the Aether)
@@ -67,21 +66,21 @@ def g2_vessel : Synthon := {
 
 /--
 E8 (the Aether) IG imscribing:
-⟨D_∞; T_⋈; R_↔; P_ψ; F_ℏ; K_slow; G_aleph; Γ_seq; Φ_c; H_2; n:m; Ω_Z⟩
+$\langle D_\infty;\ T_\bowtie;\ R_\leftrightarrow;\ P_\psi;\ F_\hbar;\ K_\text{slow};\ G_\aleph;\ \Gamma_\text{seq};\ \Phi_c;\ H_2;\ n{:}m;\ \Omega_\mathbb{Z} \rangle$
 
 Justification (from Aether_Vessel.md):
-- D_infty: Unbounded structural reach (240 roots, 6720 edges, Weyl group ~7×10^8)
-- T_bowtie: Same crossing topology as G2
-- R_lr: Bidirectional (contains exceptional structures, defined by magic square)
-- P_psi: Quantum superposition (112 integer + 128 half-integer weights)
-- F_hbar: Quantum coherence
-- K_slow: Near-equilibrium algebraic definition
-- G_aleph: Maximal scope (terminal object in exceptional category)
-- Gamma_seq: Sequential construction (G2→F4→E6→E7→E8 chain)
-- Phi_c: Exact criticality (shared with G2)
-- H2: Two-step temporal depth (Coxeter 30 = 2×15, two-step embedding)
-- n_m: Heterogeneous components (14⊕52⊕7⊗26 decomposition)
-- Omega_Z: Z_30 Coxeter winding, even unimodular lattice
+- $D_\infty$: Unbounded structural reach (240 roots, 6720 edges, Weyl group $\sim 7 \times 10^8$)
+- $T_\bowtie$: Same crossing topology as G2
+- $R_\leftrightarrow$: Bidirectional (contains exceptional structures, defined by magic square)
+- $P_\psi$: Quantum superposition (112 integer + 128 half-integer weights)
+- $F_\hbar$: Quantum coherence
+- $K_\text{slow}$: Near-equilibrium algebraic definition
+- $G_\aleph$: Maximal scope (terminal object in exceptional category)
+- $\Gamma_\text{seq}$: Sequential construction ($G_2 \to F_4 \to E_6 \to E_7 \to E_8$ chain)
+- $\Phi_c$: Exact criticality (shared with G2)
+- $H_2$: Two-step temporal depth (Coxeter 30 = $2 \times 15$, two-step embedding)
+- $n{:}m$: Heterogeneous components ($14 \oplus 52 \oplus 7 \otimes 26$ decomposition)
+- $\Omega_\mathbb{Z}$: $\mathbb{Z}_{30}$ Coxeter winding, even unimodular lattice
 -/
 
 def e8_aether : Synthon := {
@@ -99,32 +98,32 @@ def e8_aether : Synthon := {
   prot := Omega_Z }
 
 -- ============================================================
--- §3. The Z2-graded E8 (joining E8 with G2's Z2 parity)
+-- §3. The Z2-graded E8 (join type: G2 $\vee$ E8)
 -- ============================================================
 
 /--
-The Z2-graded E8 via SO(16): E8 with explicit P_pm parity.
+The Z2-graded E8 via SO(16): E8 with explicit $P_\pm$ parity.
 
 Under the Cartan involution adapted to SO(16), the adjoint 248 decomposes:
-  248 → 120_bos (+1) ⊕ 128_spin (-1)
+$$248 \to 120_\text{bos}\ (+1) \oplus 128_\text{spin}\ (-1)$$
 
-This makes the Z2 grading structural. The imscribing differs from bare E8
-only in the P primitive: P_psi → P_pm.
+This makes the $\mathbb{Z}_2$ grading structural. The imscribing differs from bare E8
+only in the P primitive: $P_\psi \to P_\pm$.
 
 Structure:
-⟨D_∞; T_⋈; R_↔; P_±; F_ℏ; K_slow; G_aleph; Γ_seq; Φ_c; H_2; n:m; Ω_Z⟩
+$\langle D_\infty;\ T_\bowtie;\ R_\leftrightarrow;\ P_\pm;\ F_\hbar;\ K_\text{slow};\ G_\aleph;\ \Gamma_\text{seq};\ \Phi_c;\ H_2;\ n{:}m;\ \Omega_\mathbb{Z} \rangle$
 
-Distance from bare E8: exactly 1.0 (solely P primitive)
-Distance from G2 ∨ E8 join: exactly 0.0 (identical)
+Distance from bare E8: exactly 1 (solely P primitive).
+Distance from $G2 \vee E8$ join: exactly 0 (identical).
 
-This is THE join type G2 ∨ E8 instantiated concretely.
+This is THE join type $G2 \vee E8$ instantiated concretely.
 -/
 
 def e8_graded_via_SO16 : Synthon := {
   dim  := D_infty,
   top  := T_bowtie,
   rel  := R_lr,
-  pol  := P_pm,  -- ← DIFFERENT from E8: Z2 parity instead of quantum superposition
+  pol  := P_pm,  -- DIFFERENT from bare E8: $\mathbb{Z}_2$ parity instead of quantum superposition
   fid  := F_hbar,
   kin  := K_slow,
   gran := G_aleph,
@@ -134,81 +133,38 @@ def e8_graded_via_SO16 : Synthon := {
   stoi := n_m,
   prot := Omega_Z }
 
--- Verify the P difference is the only one
+-- Z2-graded E8 differs from bare E8 only at P
 theorem e8_graded_vs_aether_difference :
-    primitiveMismatches e8_aether e8_graded_via_SO16 = 1 := by
-  unfold primitiveMismatches
-  simp [e8_aether, e8_graded_via_SO16]
-  -- Only P differs, all others identical
-  have h := (Decidable.eq (P_psi) (P_pm)).imp
-  split_ifs <;> simp [h]
-  <;> rfl
-  -- Simplified version:
-  simp [P_psi, P_pm]
-  <;> decide
+    primitiveMismatches e8_aether e8_graded_via_SO16 = 1 := by decide
 
 -- ============================================================
--- §4. Proof: Tensor Product G2 ⊗ E8 = E8
+-- §4. Tensor Product $G2 \otimes E8 = E8$
 -- ============================================================
 
 /--
-Theorem: G2 ⊗ E8 = E8 (structurally identical, distance 0)
+Theorem: $G2 \otimes E8 = E8$ (structurally identical, distance 0)
 
 The tensor product imscribes containment: the Vessel is absorbed into
-the Aether without residue. The single bottleneck is P: G2's P_pm
-bottlenecks down to E8's P_psi.
+the Aether without residue. P is the bottleneck: $G2$'s $P_\pm$
+bottlenecks down to E8's $P_\psi$ (weaker partner wins under $\otimes$).
 
-Proof sketch:
-- Union primitives (max): D=∞, T=bowtie, R=lr, G=aleph, Γ=seq, H=2, S=n_m, Ω=Z
-- Bottleneck (min): P=min(P_pm, P_psi)=P_psi (E8 dominates)
+- Union primitives ($\max$): $D=\infty$, $T=\bowtie$, $R=\leftrightarrow$, $G=\aleph$, $\Gamma=\text{seq}$, $H=2$, $S=n{:}m$, $\Omega=\mathbb{Z}$
+- Bottleneck ($\min$): $P=\min(P_\pm, P_\psi) = P_\psi$ (E8 dominates)
 - Result is structurally identical to E8
 -/
 
 theorem tensor_G2_E8_eq_E8 :
-    tensorProduct g2_vessel e8_aether = e8_aether := by
-  unfold tensorProduct
-  apply Synthon.ext
-  -- Dim: max(D_triangle, D_infty) = D_infty
-  · unfold compare; simp [D_triangle, D_infty]
-  -- Top: same for both → bowtie
-  · unfold compare; simp [T_bowtie]
-  -- Rel: same for both → lr
-  · unfold compare; simp [R_lr]
-  -- Pol: min(P_pm, P_psi) — need to show this equals P_psi
-  · unfold compare; simp [P_pm, P_psi]
-    -- By the ordering in Polarity, P_psi ≤ P_pm, so min picks P_psi
-    -- This is a structural fact of the IG
-    exact P_psi_le_P_pm
-  -- Fid: same for both → hbar
-  · unfold compare; simp [F_hbar]
-  -- Kin: same for both → slow
-  · unfold compare; simp [K_slow]
-  -- Gran: max(G_gimel, G_aleph) = G_aleph
-  · unfold compare; simp [G_gimel, G_aleph]
-  -- Gram: max(Gamma_and, Gamma_seq) = Gamma_seq
-  · unfold compare; simp [Gamma_and, Gamma_seq]
-  -- Crit: same for both → c
-  · unfold compare; simp [Phi_c]
-  -- Chir: max(H0, H2) = H2
-  · unfold compare; simp [H0, H2]
-  -- Stoi: max(one_one, n_m) = n_m
-  · unfold compare; simp [one_one, n_m]
-  -- Prot: max(Omega0, Omega_Z) = Omega_Z
-  · unfold compare; simp [Omega0, Omega_Z]
+    tensorProduct g2_vessel e8_aether = e8_aether := by decide
 
--- Helper: establish the ordering needed for the P-bottleneck
-/-- P_psi is "weaker" (more minimal) than P_pm in the IG ordering.
-    This means when taking the minimum in a tensor product, P_psi wins.
-    This ordering is defined in the IG primitive hierarchy. -/
+-- $P_\psi \leq P_\pm$ in the IG polarity ordering
 theorem P_psi_le_P_pm : P_psi ≤ P_pm := by
-  -- By definition of the IG polarity ordering:
-  -- P_psi < P_pm < P_sym < P_pm_sym (ascending specificity)
-  exact le_rfl  -- In practice, the actual ordering is defined in Polarity.lean
+  change compare P_psi P_pm ≠ Ordering.gt
+  decide
 
--- Distance is exactly 0
+-- Distance is exactly 0 after tensor
 theorem tensor_distance_zero :
     primitiveMismatches (tensorProduct g2_vessel e8_aether) e8_aether = 0 := by
   rw [tensor_G2_E8_eq_E8]
-  apply primitiveMismatches_self
+  exact primitiveMismatches_self e8_aether
 
 end Millennium.E8G2
