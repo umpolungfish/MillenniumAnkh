@@ -37,6 +37,7 @@ globs = [
   "SynthOmnicon.Millennium.Barriers",
   "SynthOmnicon.Millennium.PrimitiveBridge",
   "SynthOmnicon.Millennium.FrobeniusStructure",
+  "SynthOmnicon.Millennium.E8G2_Vessel_Proofs",
   "SynthOmnicon.Classical.Solitary10",
   "SynthOmnicon.Classical.HeckeLandau",
   "SynthOmnicon.Basic"
