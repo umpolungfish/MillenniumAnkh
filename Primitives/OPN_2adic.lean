@@ -222,7 +222,7 @@ lemma v2_sigma_square_factor (q e : ℕ) (hq : Nat.Prime q) (hq_odd : ¬ 2 ∣ q
 -- v₂(σ(p^k)) = 1 and each v₂(σ(qᵢ^(2eᵢ))) = 0.
 -- This is consistent with σ(n) = 2n — it constrains the square part, not a contradiction.
 theorem v2_accumulation_constraint (n p k m : ℕ)
-    (h_odd : ¬ 2 ∣ n) (h_perf : Perfect n)
+    (h_odd : ¬ 2 ∣ n) (_h_perf : Perfect n)
     (h_euler : n = p ^ k * m ^ 2)
     (hp : Nat.Prime p) (hp_mod : p % 4 = 1) (hk_mod : k % 4 = 1)
     (hp_odd : ¬ 2 ∣ p)

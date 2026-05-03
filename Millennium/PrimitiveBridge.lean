@@ -222,7 +222,7 @@ def bsd_encoding : Synthon := {
     - `barrier`: the barrier type (MathlibGap / OpenProblem / MissingFoundation)
     - `barrier_correct`: machine-checked proof that this matches the taxonomy -/
 structure BarrierPrimitiveCertificate (p : Barriers.MillenniumProblem) where
-  encoding      : Synthon
+  encoding : Synthon
   blockedField  : String
   barrier       : Barriers.BarrierType
   barrier_correct : barrier = Barriers.millenniumBarrier p
@@ -251,7 +251,8 @@ def ns_certificate : BarrierPrimitiveCertificate .NS where
   barrier      := .OpenProblem
   barrier_correct := rfl
 
-/-- Hodge certificate: the blocked field is pol (P_sym → P_pm_sym needed for cycle class surjectivity).
+/-- Hodge certificate: the blocked field is pol (P_sym → P_pm_sym needed for
+  cycle class surjectivity).
     The R-lift — cycle class map surjectivity — requires inhabiting AlgebraicCycleRep for every
     rational (p,p)-class. This is blocked at pol = P_sym: complex conjugation symmetry exists
     but does not Frobenius-force algebraic representability (which would require P_pm_sym).
@@ -265,10 +266,12 @@ def hodge_certificate : BarrierPrimitiveCertificate .Hodge where
 /-- BSD certificate: the blocked field is parallel triple (Mordell-Weil + Mazur + BSD formula).
     Primary block: crit = Phi_c with the BSD formula (rank = analytic rank) unproved.
     Secondary blocks: Mordell-Weil theorem (MathlibGap) + Mazur torsion theorem (MathlibGap)
-    are logically parallel, not prerequisites. This is the only MPP with parallel sorry structure. -/
+    are logically parallel, not prerequisites. This is the only MPP with
+  parallel sorry structure. -/
 def bsd_certificate : BarrierPrimitiveCertificate .BSD where
   encoding     := bsd_encoding
-  blockedField := "crit: Phi_c rank certificate (parallel: Mordell-Weil + Mazur MathlibGaps + BSD OpenProblem)"
+  blockedField := "crit: Phi_c rank certificate (parallel: Mordell-Weil + Mazur
+  MathlibGaps + BSD OpenProblem)"
   barrier      := .OpenProblem
   barrier_correct := rfl
 
@@ -397,7 +400,8 @@ theorem lee_yang_primitive_certificate :
     RH is the claim that ζ obeys this pattern.
 
     The structural distance d(rh_encoding, lee_yang_encoding) = 7 (D same, T differ,
-    R same, P differ [P_sym vs P_pm_sym], F differ, K differ, G differ, stoi differ, chir differ). -/
+    R same, P differ [P_sym vs P_pm_sym], F differ, K differ, G differ, stoi
+  differ, chir differ). -/
 theorem rh_leyang_structural_correspondence :
     rh_encoding.crit = Phi_c_complex ∧
     lee_yang_encoding.crit = Phi_c_complex ∧

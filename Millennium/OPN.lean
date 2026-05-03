@@ -2,7 +2,11 @@
 -- Odd Perfect Numbers — Three-Layer Barrier Analysis
 -- Every sorry is an honest marker. Layer 1 sorry is MathlibGap; Layer 2 is OpenProblem.
 
-import Mathlib.NumberTheory.ArithmeticFunction
+import Mathlib.NumberTheory.ArithmeticFunction.Defs
+import Mathlib.NumberTheory.ArithmeticFunction.Misc
+import Mathlib.NumberTheory.ArithmeticFunction.Moebius
+import Mathlib.NumberTheory.ArithmeticFunction.VonMangoldt
+import Mathlib.NumberTheory.ArithmeticFunction.Zeta
 import Mathlib.Data.Nat.GCD.Basic
 import Mathlib.Algebra.Group.Int.Even
 import Mathlib.NumberTheory.Divisors

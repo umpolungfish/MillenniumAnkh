@@ -40,7 +40,8 @@ Tate-Shafarevich group Ш(E/ℚ), Tamagawa numbers c_v, and torsion:
 **The key structural distinction from YM and OPN:**
 
   · YM: stacked sorries (existence blocks mass gap — you can't even state mass gap without theory)
-  · OPN: methodologically ordered (Euler form is the approach to nonexistence, but both can be stated)
+  · OPN: methodologically ordered (Euler form is the approach to nonexistence,
+  but both can be stated)
   · BSD: truly parallel (Mordell-Weil, Mazur torsion, and BSD itself are logically independent)
 
 ---
@@ -83,7 +84,8 @@ Tate-Shafarevich group Ш(E/ℚ), Tamagawa numbers c_v, and torsion:
 
   BSD has primitive tuple D_odot · T_bowtie · F_eth · Γ_and · Φ_c · Ω_Z.
   · D_odot: the modularity theorem makes E/ℚ ↔ modular form a holographic duality.
-    Boundary-to-bulk: the L-function on the analytic side corresponds to the rank on the algebraic side.
+    Boundary-to-bulk: the L-function on the analytic side corresponds to the
+  rank on the algebraic side.
   · T_bowtie: the functional equation of L(E,s) (symmetry s ↔ 2-s) is a bowtie structure.
   · Φ_c: the rank is a charge-carrier — it counts the "free" part of E(ℚ).
   · Ω_Z: the Tate-Shafarevich group is the topological obstruction; |Ш| is the winding number.
@@ -279,7 +281,8 @@ theorem bsd_certificate : BSDRankConjecture := by
     · `mordell_weil` can be discharged without knowing BSD or torsion classification.
     · `mazur_torsion` can be discharged without knowing BSD or Mordell-Weil.
     · `bsd_certificate` can be stated independently of the other two.
-      (It uses `ellipticRank` and `analyticRank`, which are axioms — not derived from Mordell-Weil.) -/
+      (It uses `ellipticRank` and `analyticRank`, which are axioms — not
+  derived from Mordell-Weil.) -/
 theorem bsd_sorries_are_parallel : True := trivial
 
 /-- Sorry depth comparison:
@@ -329,8 +332,8 @@ theorem bsd_barrier : BSDRankConjecture ↔
     This is the first instance of BSD proved for an infinite family.
     It is a MathlibGap: proved in mathematics, not in Mathlib. -/
 theorem bsd_rank_zero_cm (W : WeierstrassCurve ℚ) [W.IsElliptic]
-    (_ : True)  -- placeholder: W has complex multiplication
-    (_ : True)  -- placeholder: L(W, 1) ≠ 0
+    (_ : True) -- placeholder: W has complex multiplication
+    (_ : True) -- placeholder: L(W, 1) ≠ 0
     : BSDRankCertificate W := by
   sorry
   -- MathlibGap: Coates-Wiles (1977). Proved for CM curves with analytic rank 0.

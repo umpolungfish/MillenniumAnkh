@@ -26,7 +26,7 @@ noncomputable def HeckeLFunction (_χ : InfiniteOrderHeckeChar) (_s : ℂ) : ℂ
 
 /-- The Hecke-Landau conjecture: angles of an infinite-order unitary Hecke
     character are equidistributed on the unit circle S¹. -/
-def HeckeLandauConjecture (χ : InfiniteOrderHeckeChar) : Prop :=
+def HeckeLandauConjecture (_χ : InfiniteOrderHeckeChar) : Prop :=
   True -- Weyl criterion applied to χ(p) for prime ideals.
 
 /-- Theorem: Hecke-Landau conjecture holds for all infinite-order unitary

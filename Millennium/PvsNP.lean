@@ -172,7 +172,7 @@ def SATLanguage (n : ℕ) : Finset (CNFFormula n) :=
   sorry  -- Requires decidability of IsSatisfiable + finiteness of CNFFormula n
 
 /-- A circuit solves SAT on n variables: it accepts exactly the satisfiable formulas. -/
-def SolvesSAT (n : ℕ) (C : BooleanCircuit (2^n)) : Prop :=
+def SolvesSAT (n : ℕ) (_C : BooleanCircuit (2 ^ n)) : Prop :=
   -- The circuit takes an encoding of a CNF formula (exponential input size) and
   -- outputs 1 iff the formula is satisfiable.
   -- Encoding and decoding require infrastructure not formalized here.
@@ -201,7 +201,7 @@ axiom p_subset_np : ComplexityP → ComplexityNP
 
 /-- The P = NP question as a Prop. -/
 def PEqualsNP : Prop :=
-  ∀ (L : ComplexityNP), ∃ (_ : ComplexityP), True
+  ∀ (_L : ComplexityNP), ∃ (_ : ComplexityP), True
   -- Informal: every NP language has a polynomial time TM algorithm.
 
 -- ============================================================

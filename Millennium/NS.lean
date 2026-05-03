@@ -171,7 +171,7 @@ axiom LerayWeakSolution (u₀ : NSInitialDatum) : Type
     This is Leray's central estimate. It gives WEAK solutions globally
     but does not give smoothness or uniqueness. -/
 axiom lerayEnergyInequality (u₀ : NSInitialDatum) (w : LerayWeakSolution u₀) :
-    ∀ t : ℝ≥0, True  -- placeholder: full type requires Bochner integration + Sobolev
+    ∀ _t : ℝ≥0, True  -- placeholder: full type requires Bochner integration + Sobolev
 
 -- ============================================================
 -- §2. Core definitions
@@ -180,8 +180,8 @@ axiom lerayEnergyInequality (u₀ : NSInitialDatum) (w : LerayWeakSolution u₀)
 /-- The NS regularity statement for a single initial datum u₀:
     there exists a smooth global solution with the given initial data
     that remains bounded for all time. -/
-def NSGlobalRegularity (u₀ : NSInitialDatum) : Prop :=
-  ∃ (u : VelocityField) (p : PressureField),
+def NSGlobalRegularity (_u₀ : NSInitialDatum) : Prop :=
+  ∃ (u : VelocityField) (_p : PressureField),
     -- u satisfies NS equations (requires PDE infrastructure — stated informally)
     True ∧
     -- u is globally bounded
@@ -298,7 +298,8 @@ theorem critical_scaling_gap :
     It is analogous to `ZeroFreeStrip 0` (RH) and `AlgebraicCycleRep X p α` (Hodge).
 
     Unlike those cases:
-    · The certificate is not a proposition about a pre-existing object (zero locations, cycle classes).
+    · The certificate is not a proposition about a pre-existing object (zero
+  locations, cycle classes).
     · It is the *existence* of a new object (a smooth solution) that cannot be constructed
       from current PDE tools for general u₀.
 
