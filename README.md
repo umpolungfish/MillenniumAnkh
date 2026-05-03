@@ -53,6 +53,7 @@ SynthOmnicon/
     FrobeniusStructure.lean -- Frobenius non-synthesizability; P_pm_sym cliff; O_inf algebraic closure
     E8G2_Vessel.lean      -- E8/G2 vessel relationship: imscribings, tensor G2⊗E8=E8, Axiom C evidence
     E8G2_Vessel_Proofs.lean -- Distance=7, meet≈G2, join=Z₂-graded E8 via SO(16); all by decide
+    truth.lean             -- Observer-dependent truth formalization: structural types and consciousness gates
   Classical/
     Solitary10.lean   -- Ten classical open problems outside the Millennium list
     HeckeLandau.lean  -- Hecke–Landau zero-free region formalization
