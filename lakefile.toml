@@ -42,5 +42,6 @@ globs = [
   "SynthOmnicon.Classical.Solitary10",
   "SynthOmnicon.Classical.HeckeLandau",
   "SynthOmnicon.Basic",
-  "SynthOmnicon.Millennium.PrimitiveConventionalBridge"
+  "SynthOmnicon.Millennium.PrimitiveConventionalBridge",
+  "SynthOmnicon.Millennium.PerfectCuboid"
 ]
