@@ -86,7 +86,16 @@ theorem no_tier_between_o1_and_o2 (t : FrobeniusType) :
 -- ─────────────────────────────────────────────────────────────────────────────
 
 /-- A Frobenius structure is special iff μ ∘ δ = id.
-    Structurally: the symmetry exactly characterises the fixed point; no information loss. -/
+    Structurally: the symmetry exactly characterises the fixed point; no information loss.
+
+    Notational self-evidence (glyph-topology remark): the equation μ ∘ δ = id is
+    self-demonstrating at the level of its own symbols under continuous deformation.
+    μ (arch + left descender) straightens its descender to a vertical stroke; ∘
+    migrates upward to become the tittle — together they spell 'i'.
+    δ (closed loop + descender) contracts its loop to the counter of 'd', retaining
+    the same descender — spelling 'd'.
+    The three glyphs μ ∘ δ thus deform to "id".  The Frobenius fixed-point condition
+    encodes its own name in the notation chosen to express it. -/
 def IsSpecial (t : FrobeniusType) : Prop := t = FrobeniusType.special
 
 instance (t : FrobeniusType) : Decidable (IsSpecial t) :=
