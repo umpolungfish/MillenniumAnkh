@@ -35,7 +35,11 @@ axiom bsd_tier_O2dag_ig : Prop
 axiom opn_tier_O1_ig : Prop
 
 -- RH irreducibility bridge
-axiom rh_ig_barrier_bridge : Prop
+theorem rh_ig_barrier_bridge :
+    (ouroboricityTier .Phi_c_complex .P_sym .Omega_0 .D_triangle = .O_1) ∧
+    (millenniumBarrier .RH = .OpenProblem) ∧
+    (RH.RiemannHypothesis ↔ ∀ s : ℂ, riemannZeta s = 0 → 0 < s.re → s.re < 1 → s.re = 1 / 2) :=
+  ⟨by decide, by rfl, RH.sorry_iff_rh⟩
 
 -- §2 Distances
 axiom rh_leyang_distance_ig : Prop
@@ -59,9 +63,9 @@ structure Summary where
 deriving Repr
 
 def problemSummaries : List Summary := [
-  ⟨"RH", O_1, .OpenProblem⟩,
-  ⟨"YM", O_2†, .MissingFoundation⟩,
-  ⟨"OPN", O_1, .OpenProblem⟩ ]
+  ⟨"RH",  .O_1,    .OpenProblem⟩,
+  ⟨"YM",  .O_2dag, .MissingFoundation⟩,
+  ⟨"OPN", .O_1,    .OpenProblem⟩ ]
 
 axiom tier_barrier_consistency : Prop
 
