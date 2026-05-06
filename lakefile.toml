@@ -45,5 +45,7 @@ globs = [
   "Imscribing.Millennium.PrimitiveConventionalBridge",
   "Imscribing.Millennium.PerfectCuboid",
   "Imscribing.Millennium.Beal",
-  "Imscribing.Millennium.SIC_POVM_Stark"
+  "Imscribing.Millennium.SIC_POVM_Stark",
+  "Imscribing.Millennium.CMPLX_IMGN",
+  "Imscribing.PrimitiveMismatch"
 ]
