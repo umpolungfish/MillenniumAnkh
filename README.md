@@ -2,7 +2,7 @@
 
 *Authors: Lando⊗LLM* · Toolchain: **Lean 4.28.0** · **Mathlib v4.28.0**
 
-MillenniumAnkh is the Lean 4 / Mathlib formalization layer of the **Imscribing Grammar (IG)** — a 12-primitive structural type system that encodes all systems (physical, mathematical, biological, computational) as points in a 17,280,000-type crystal. This library gives the IG formal mathematical standing: its primitives become Lean inductive types, its lattice operations become machine-verified theorems, and its structural claims about mathematics become decidable propositions.
+MillenniumAnkh is the Lean 4 / Mathlib formalization layer of the **Imscribing Grammar (IG)** — a 12-primitive structural type system that imscribes all systems (physical, mathematical, biological, computational) as points in a 17,280,000-type crystal. This library gives the IG formal mathematical standing: its primitives become Lean inductive types, its lattice operations become machine-verified theorems, and its structural claims about mathematics become decidable propositions.
 
 The Millennium Prize Problems are not the project's subject — they are test cases. Each one is a location in primitive space where the IG's structural taxonomy makes contact with established open mathematics, and where the gap between a stated `sorry` and a closed proof corresponds to a precisely typed missing certificate. The barrier taxonomy is one output of a larger program: making the IG's claims about structure rigorous enough for a type checker to evaluate.
 
@@ -20,7 +20,7 @@ Papers arising from the formalization program. Each corresponds to one or more f
 | *Proof That 10 Is Solitary* | `solitary_10` | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20041211.svg)](https://doi.org/10.5281/zenodo.20041211) |
 | *The Hecke-Landau Conjecture: A Proof and Its Architecture* | `hecke-landau` | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19965471.svg)](https://doi.org/10.5281/zenodo.19965471) |
 | *The Perfect Cuboid: Infinite Descent and Three Axioms* | `perfect_cuboid` | [PDF](https://github.com/umpolungfish/perfect_cuboid/blob/main/perfect_cuboid_proof.pdf) |
-| *The Beal Conjecture: A Structural Encoding* | `BealProof` | [PDF](https://github.com/umpolungfish/BealProof/blob/main/BealDualProof.pdf) |
+| *The Beal Conjecture: A Structural imscribing* | `BealProof` | [PDF](https://github.com/umpolungfish/BealProof/blob/main/BealDualProof.pdf) |
 | *The Aether and Its Vessel: $E_8$, $G_2$, and Imscriptive Structure* | `e8_aether_g2_vessel` | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20032180.svg)](https://doi.org/10.5281/zenodo.20032180) |
 | *SIC-POVM Existence via the Stark Conjecture* | (this repo) | `Millennium/SIC_POVM_Stark.lean` |
 
@@ -28,7 +28,7 @@ Papers arising from the formalization program. Each corresponds to one or more f
 
 ## Primitive Space
 
-The 12-primitive grammar encodes each system as a synthon — a point in the crystal of $3^3 \times 4^5 \times 5^4 = 17{,}280{,}000$ structural types. The visualizations below show all 318 catalog entries projected via Classical MDS (top) and the key theorem network at Hamming $\leq 7$ (bottom), with Millennium Prize problems marked ★.
+The 12-primitive grammar imscribes each system as a synthon — a point in the crystal of $3^3 \times 4^5 \times 5^4 = 17{,}280{,}000$ structural types. The visualizations below show all 318 catalog entries projected via Classical MDS (top) and the key theorem network at Hamming $\leq 7$ (bottom), with Millennium Prize problems marked ★.
 
 ### MDS Projection — 318 Catalog Entries
 
@@ -68,7 +68,7 @@ Imscribing/
     OPN.lean              -- Odd Perfect Number: uses real Mathlib Nat.Perfect; Euler form MathlibGap
     BSD.lean              -- BSD Conjecture: real WeierstrassCurve ℚ; three parallel sorries
     Barriers.lean         -- Cross-problem taxonomy: BarrierType inductive; ym_is_unique_missing_foundation
-    PrimitiveBridge.lean  -- Bridge: Synthon encodings + BarrierPrimitiveCertificate + primitive_bridge_master
+    PrimitiveBridge.lean  -- Bridge: Synthon imscribings + BarrierPrimitiveCertificate + primitive_bridge_master
     FrobeniusStructure.lean -- Frobenius non-synthesizability; P_pm_sym cliff; O_inf algebraic closure
     E8G2_Vessel.lean      -- E8/G2 vessel relationship: imscribings, tensor G2⊗E8=E8, Axiom C evidence
     E8G2_Vessel_Proofs.lean -- Distance=7, meet≈G2, join=Z₂-graded E8 via SO(16); all by decide
@@ -207,7 +207,7 @@ plus explicit `LE` instances and four cross-primitive axioms:
 | C | `T_odot → D_odot` (imscriptive topology requires imscriptive dimensionality — one-way; revised 2026-05-03) |
 
 Axiom C was previously stated as the biconditional `D_odot ↔ T_odot`. Catalog evidence from nine
-independently encoded $O_\infty$ systems (including `syncon_grammar`, `true_agentic_agent`,
+independently imscribed $O_\infty$ systems (including `syncon_grammar`, `true_agentic_agent`,
 `aleph_os`) consistently shows `D_odot + T_boxtimes` — imscriptive dimensionality with box-product
 topology. The fully holographic case (`D_odot + T_odot`) is reserved for AdS/CFT-type systems
 (`quantum_gravity`). The one-way implication is the correct structural constraint.
@@ -297,7 +297,7 @@ The four `axiom` declarations are **foundational postulates** of the Imscribing 
 not goals to be derived from the inductive type definitions. Within the current Lean
 representation — where each primitive is just a finite inductive type with `Ord` — there is
 no path to deriving, say, `D_holo_iff_T_holo` from first principles, because the types carry
-no algebraic structure that encodes the physical relationship between dimensionality and topology.
+no algebraic structure that imscribes the physical relationship between dimensionality and topology.
 Deriving such equivalences would require an external interpretation: a functor from the primitive
 lattice into a category where boundary/bulk duality has an intrinsic meaning (e.g., a
 topos-theoretic or operadic model). That is out of scope for the current formalization.
@@ -388,7 +388,7 @@ direction, not machinery.
 ### 6. Future directions
 
 **Connecting the two tracks.** The most concrete near-term connection: as `Core.lean` gains
-`Semilattice` / `Lattice` instances, the OPN constraint structure could be encoded as a
+`Semilattice` / `Lattice` instances, the OPN constraint structure could be imscribed as a
 *synthon* — a tuple in the 12-dimensional primitive space — and the constraint propagation
 verified at that level. The `Phi_c` absorbing-meet property is the structural analogue of
 the Euler prime's uniqueness; formalizing this analogy in Lean would be the first real
@@ -457,7 +457,7 @@ A structural distinction formalized in `Barriers.lean`:
 - **YM**: sorry 2 (mass gap) is *not statable* without sorry 1 (theory existence) — stacked dependency.
 - **BSD**: three sorries are logically independent — each can be stated and potentially discharged separately — parallel structure.
 
-Both have `sorryDepth = 2`, but the structural difference is encoded in the barrier type:
+Both have `sorryDepth = 2`, but the structural difference is imscribed in the barrier type:
 ```lean
 theorem ym_has_stacked_not_parallel_sorries :
     sorryDepth .YM = sorryDepth .BSD ∧
@@ -501,13 +501,13 @@ def BSDRankConjecture : Prop :=
 
 `PrimitiveBridge.lean` is the bridge between the `Millennium/` and `Primitives/` tracks. It provides:
 
-**Concrete Synthon encodings** for five problems (YM classical, YM quantum target, RH, NS, OPN) — each as a fully typed 12-field `Synthon` struct using the actual primitive types from `Core.lean`.
+**Concrete Synthon imscribings** for five problems (YM classical, YM quantum target, RH, NS, OPN) — each as a fully typed 12-field `Synthon` struct using the actual primitive types from `Core.lean`.
 
 **`BarrierPrimitiveCertificate`** — a structure type connecting each `MillenniumProblem` to its blocked primitive field, with a `barrier_correct` field that machine-checks the classification against the `millenniumBarrier` taxonomy.
 
 ```lean
 structure BarrierPrimitiveCertificate (p : MillenniumProblem) where
-  encoding      : Synthon
+  imscribing      : Synthon
   blockedField  : String
   barrier       : BarrierType
   barrier_correct : barrier = millenniumBarrier p
@@ -523,10 +523,10 @@ Concrete instances: `ym_certificate`, `opn_certificate`, `ns_certificate`.
 theorem primitive_bridge_master :
     primitiveMismatches ym_classical ym_quantum_target = 4 ∧
     millenniumBarrier .YM = .MissingFoundation ∧
-    opn_encoding.crit = Phi_c ∧ opn_encoding.kin = K_trap ∧
+    opn_imscribing.crit = Phi_c ∧ opn_imscribing.kin = K_trap ∧
     millenniumBarrier .OPN = .OpenProblem ∧
-    ns_encoding.crit = Phi_sub ∧ millenniumBarrier .NS = .OpenProblem ∧
-    rh_encoding.crit = Phi_c ∧ millenniumBarrier .RH = .OpenProblem
+    ns_imscribing.crit = Phi_sub ∧ millenniumBarrier .NS = .OpenProblem ∧
+    rh_imscribing.crit = Phi_c ∧ millenniumBarrier .RH = .OpenProblem
 ```
 
 This is the formal content that connects the two tracks, enabling a paper claim: the sorry boundaries are not arbitrary — they correspond to specific primitive field transitions that can be computationally verified.
