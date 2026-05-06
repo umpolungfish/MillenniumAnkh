@@ -1,4 +1,4 @@
--- SynthOmnicon/Millennium/Hodge.lean
+-- Imscribing/Millennium/Hodge.lean
 -- Hodge Conjecture — Three-Layer Barrier Analysis
 -- Every sorry is an honest marker. No sorry is dischargeable from current Mathlib.
 
@@ -72,7 +72,7 @@ is surjective for every p.
 
 ---
 
-**SynthOmnicon structural note:**
+**Imscribing structural note:**
 
   Hodge is the ONLY Millennium Problem with both D_odot and T_odot simultaneously.
   All other MPPs with D_odot (RH, BSD, OPN) have T_network or T_bowtie, not T_odot.
@@ -298,7 +298,7 @@ theorem hodge_sorry_requires_algebraic_cycle_rep :
     · Hodge: the missing type is a *lift* (AlgebraicCycleRep — topology → algebra).
     Both are OpenProblems, but in different structural positions.
 
-    In SynthOmnicon primitive terms:
+    In Imscribing primitive terms:
     · RH: Φ_c constraint failure — no Φ_c-certified position off critical line.
     · Hodge: R-lift failure — R-degenerate class does not force algebraic representative. -/
 theorem hodge_vs_rh_structural_distinction : True := trivial

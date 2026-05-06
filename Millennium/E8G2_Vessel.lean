@@ -1,4 +1,4 @@
--- SynthOmnicon/Millennium/E8G2_Vessel.lean
+-- Imscribing/Millennium/E8G2_Vessel.lean
 -- The Aether and Its Vessel: E8 Finds Its Perfect Vessel in G2
 --
 -- This file formalizes the dual proof from Aether_Vessel.md:
@@ -13,12 +13,12 @@
 --   5. $G2 \otimes E8 = E8$ (tensor recovers Aether)
 --   6. $G2 \vee E8 \neq E8$ — the Join instantiates Z2-graded E8 via SO(16)
 
-import SynthOmnicon.Primitives.Synthon
-import SynthOmnicon.Primitives.Core
+import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Core
 
 namespace Millennium.E8G2
 
-open SynthOmnicon.Primitives
+open Imscribing.Primitives
 open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection
      Stoichiometry Chirality

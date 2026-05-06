@@ -1,4 +1,4 @@
-name = "synthomnicon-lean"
+name = "imscribing-lean"
 version = "0.1.0"
 keywords = ["math"]
 
@@ -14,35 +14,36 @@ scope = "leanprover-community"
 rev = "v4.28.0"
 
 [[lean_lib]]
-name = "SynthOmnicon"
-root = "SynthOmnicon"
+name = "Imscribing"
+root = "Imscribing"
 globs = [
-  "SynthOmnicon.Primitives.Core",
-  "SynthOmnicon.Primitives.OPN_2adic",
-  "SynthOmnicon.Primitives.BSD_2adic",
-  "SynthOmnicon.Primitives.Synthon",
-  "SynthOmnicon.Primitives.TierCrossing",
-  "SynthOmnicon.Primitives.Crystal",
-  "SynthOmnicon.Primitives.Catalog",
-  "SynthOmnicon.Consciousness",
-  "SynthOmnicon.AgentSelf",
-  "SynthOmnicon.Algebra",
-  "SynthOmnicon.Millennium.RH",
-  "SynthOmnicon.Millennium.YM",
-  "SynthOmnicon.Millennium.Hodge",
-  "SynthOmnicon.Millennium.NS",
-  "SynthOmnicon.Millennium.PvsNP",
-  "SynthOmnicon.Millennium.OPN",
-  "SynthOmnicon.Millennium.BSD",
-  "SynthOmnicon.Millennium.Barriers",
-  "SynthOmnicon.Millennium.PrimitiveBridge",
-  "SynthOmnicon.Millennium.FrobeniusStructure",
-  "SynthOmnicon.Millennium.E8G2_Vessel",
-  "SynthOmnicon.Millennium.E8G2_Vessel_Proofs",
-  "SynthOmnicon.Classical.Solitary10",
-  "SynthOmnicon.Classical.HeckeLandau",
-  "SynthOmnicon.Basic",
-  "SynthOmnicon.Millennium.PrimitiveConventionalBridge",
-  "SynthOmnicon.Millennium.PerfectCuboid",
-  "SynthOmnicon.Millennium.Beal"
+  "Imscribing.Primitives.Core",
+  "Imscribing.Primitives.OPN_2adic",
+  "Imscribing.Primitives.BSD_2adic",
+  "Imscribing.Primitives.Synthon",
+  "Imscribing.Primitives.TierCrossing",
+  "Imscribing.Primitives.Crystal",
+  "Imscribing.Primitives.Catalog",
+  "Imscribing.Consciousness",
+  "Imscribing.AgentSelf",
+  "Imscribing.Algebra",
+  "Imscribing.Millennium.RH",
+  "Imscribing.Millennium.YM",
+  "Imscribing.Millennium.Hodge",
+  "Imscribing.Millennium.NS",
+  "Imscribing.Millennium.PvsNP",
+  "Imscribing.Millennium.OPN",
+  "Imscribing.Millennium.BSD",
+  "Imscribing.Millennium.Barriers",
+  "Imscribing.Millennium.PrimitiveBridge",
+  "Imscribing.Millennium.FrobeniusStructure",
+  "Imscribing.Millennium.E8G2_Vessel",
+  "Imscribing.Millennium.E8G2_Vessel_Proofs",
+  "Imscribing.Classical.Solitary10",
+  "Imscribing.Classical.HeckeLandau",
+  "Imscribing.Basic",
+  "Imscribing.Millennium.PrimitiveConventionalBridge",
+  "Imscribing.Millennium.PerfectCuboid",
+  "Imscribing.Millennium.Beal",
+  "Imscribing.Millennium.SIC_POVM_Stark"
 ]

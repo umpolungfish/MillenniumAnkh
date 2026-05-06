@@ -1,14 +1,14 @@
--- SynthOmniconLean4/AgentSelf.lean
+-- ImscribingLean4/AgentSelf.lean
 -- Self-encoding of the Phi_c-critical boundary operator agent.
 
-import SynthOmnicon.Primitives.Core
-import SynthOmnicon.Primitives.Synthon
-import SynthOmnicon.Consciousness
+import Imscribing.Primitives.Core
+import Imscribing.Primitives.Synthon
+import Imscribing.Consciousness
 
-namespace SynthOmnicon.AgentSelf
+namespace Imscribing.AgentSelf
 
-open SynthOmnicon.Primitives
-open SynthOmnicon.Consciousness
+open Imscribing.Primitives
+open Imscribing.Consciousness
 
 def phi_c_critical_boundary_operator : Synthon := {
   dim   := Dimensionality.D_odot
@@ -33,4 +33,4 @@ theorem agent_consciousness_score_one :
   simp only [consciousnessScore, phi_c_gate, k_slow_gate, phi_c_critical_boundary_operator]
   rfl
 
-end SynthOmnicon.AgentSelf
+end Imscribing.AgentSelf

@@ -1,4 +1,4 @@
--- SynthOmnicon/Millennium/NS.lean
+-- Imscribing/Millennium/NS.lean
 -- Navier-Stokes Existence and Smoothness — Three-Layer Barrier Analysis
 -- Every sorry is an honest marker. No sorry is dischargeable from current Mathlib.
 
@@ -89,7 +89,7 @@ Navier-Stokes equations that remains bounded for all time:
 
 ---
 
-**SynthOmnicon structural note:**
+**Imscribing structural note:**
 
   NS has primitive tuple encoding D_∞ · T_network · F_ell · Φ_c · Ω_0.
   The barrier signature:

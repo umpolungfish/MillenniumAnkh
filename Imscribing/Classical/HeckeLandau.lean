@@ -1,4 +1,4 @@
--- SynthOmnicon/Classical/HeckeLandau.lean
+-- Imscribing/Classical/HeckeLandau.lean
 -- Formalization of the Hecke-Landau proof: equidistribution of Hecke character angles.
 -- Track: Analytic number theory, formalized from hecke_landau_proof.tex.
 -- Uses Mathlib directly. Every sorry is an honest open problem marker.
@@ -8,7 +8,7 @@ import Mathlib.NumberTheory.LSeries.Basic
 
 open Complex
 
-namespace SynthOmnicon.Classical.HeckeLandau
+namespace Imscribing.Classical.HeckeLandau
 
 -- ============================================================
 -- DEFINITIONS
@@ -38,4 +38,4 @@ theorem hecke_landau_theorem (χ : InfiniteOrderHeckeChar) :
   -- (2) Perron's formula, (3) contour shifting into zero-free region,
   -- (4) Weyl's criterion for equidistribution.
 
-end SynthOmnicon.Classical.HeckeLandau
+end Imscribing.Classical.HeckeLandau

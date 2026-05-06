@@ -1,4 +1,4 @@
--- SynthOmnicon/Millennium/E8G2_Vessel_Proofs.lean
+-- Imscribing/Millennium/E8G2_Vessel_Proofs.lean
 -- Formal proof of the Aether-Vessel relationship from Aether_Vessel.md
 --
 -- Theorem: G2 is the perfect vessel for E8
@@ -8,12 +8,12 @@
 --   3. $G2 \vee E8 = \mathbb{Z}_2\text{-graded}\ E8$ via SO(16) (the surprising join)
 --   4. Distance(G2, E8) = 7 (7 differing primitives, 5 shared)
 
-import SynthOmnicon.Primitives.Synthon
-import SynthOmnicon.Primitives.Core
+import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Core
 
 namespace Millennium.E8G2
 
-open SynthOmnicon.Primitives
+open Imscribing.Primitives
 open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection
      Stoichiometry Chirality

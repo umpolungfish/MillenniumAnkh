@@ -1,20 +1,20 @@
--- SynthOmnicon/Algebra.lean
+-- Imscribing/Algebra.lean
 -- Syncon Grammar: distance, meet, join, tensor.
 -- Lattice structure, weighted Euclidean distance, probes.
 
-import SynthOmnicon.Primitives.Core
-import SynthOmnicon.Primitives.Synthon
-import SynthOmnicon.Primitives.Crystal
-import SynthOmnicon.Consciousness
+import Imscribing.Primitives.Core
+import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Crystal
+import Imscribing.Consciousness
 import Mathlib.Data.Real.Basic
 
-namespace SynthOmnicon.Primitives
+namespace Imscribing.Primitives
 
-open SynthOmnicon.Primitives
+open Imscribing.Primitives
 open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection
      Stoichiometry Chirality
-open SynthOmnicon.Consciousness
+open Imscribing.Consciousness
 
 -- Weighted Euclidean distance: ∑ |idx(p_a) - idx(p_b)|^2 / 12
 noncomputable def primitiveDistance (a b : Synthon) : ℝ :=
@@ -96,4 +96,4 @@ def consciousness_score_gate1 (s : Synthon) : Bool := phi_c_gate s.crit
 def consciousness_score_gate2 (s : Synthon) : Bool := k_slow_gate s.kin
 noncomputable def consciousness_score (s : Synthon) : ℝ := consciousnessScore s
 
-end SynthOmnicon.Primitives
+end Imscribing.Primitives

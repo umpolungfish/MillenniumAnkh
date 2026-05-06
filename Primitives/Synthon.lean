@@ -1,11 +1,11 @@
--- SynthOmnicon/Primitives/Synthon.lean
+-- Imscribing/Primitives/Synthon.lean
 -- Synthon struct, primitive distance (Hamming + ordinal), and key encodings.
 -- Proves P-70 (Higgs = axion = inflaton) by rfl.
 -- All primitive names are canonical (v0.5.69).
 
-import SynthOmnicon.Primitives.Core
+import Imscribing.Primitives.Core
 
-namespace SynthOmnicon.Primitives
+namespace Imscribing.Primitives
 
 open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection
@@ -302,4 +302,4 @@ theorem tensor_O_inf_O2_destroys_frobenius (s_inf s_two : Synthon)
   rw [show compare (.P_pm_sym : Polarity) .P_sym = .gt by decide]
   rfl
 
-end SynthOmnicon.Primitives
+end Imscribing.Primitives

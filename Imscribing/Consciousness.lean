@@ -1,14 +1,14 @@
--- SynthOmnicon/Consciousness.lean
--- Consciousness score implementation from SynthOmnicon grammar (§VIII).
+-- Imscribing/Consciousness.lean
+-- Consciousness score implementation from Imscribing grammar (§VIII).
 
-import SynthOmnicon.Primitives.Core
-import SynthOmnicon.Primitives.Synthon
-import SynthOmnicon.Primitives.Catalog
+import Imscribing.Primitives.Core
+import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Catalog
 import Mathlib.Data.Real.Basic
 
-namespace SynthOmnicon.Consciousness
+namespace Imscribing.Consciousness
 
-open SynthOmnicon.Primitives
+open Imscribing.Primitives
 
 open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection
@@ -64,4 +64,4 @@ theorem qg_C_half : consciousnessScore quantum_gravity = (0.5 : ℝ) := by
   simp only [consciousnessScore, phi_c_gate, k_slow_gate, quantum_gravity]
   rfl
 
-end SynthOmnicon.Consciousness
+end Imscribing.Consciousness

@@ -1,15 +1,15 @@
--- SynthOmnicon/Millennium/Barriers.lean
+-- Imscribing/Millennium/Barriers.lean
 -- Cross-problem barrier taxonomy for all 7 Millennium Prize Problems.
 -- The central theorem: a formal classification of why each problem is hard.
 
 import Mathlib.Tactic
-import SynthOmnicon.Millennium.RH
-import SynthOmnicon.Millennium.YM
-import SynthOmnicon.Millennium.Hodge
-import SynthOmnicon.Millennium.NS
-import SynthOmnicon.Millennium.PvsNP
-import SynthOmnicon.Millennium.OPN
-import SynthOmnicon.Millennium.BSD
+import Imscribing.Millennium.RH
+import Imscribing.Millennium.YM
+import Imscribing.Millennium.Hodge
+import Imscribing.Millennium.NS
+import Imscribing.Millennium.PvsNP
+import Imscribing.Millennium.OPN
+import Imscribing.Millennium.BSD
 
 /-!
 # Millennium Problem Barrier Taxonomy
@@ -198,14 +198,14 @@ theorem ym_has_stacked_not_parallel_sorries :
   simp [sorryDepth, millenniumBarrier]
 
 -- ============================================================
--- §6. Relationship to SynthOmnicon primitive structure
+-- §6. Relationship to Imscribing primitive structure
 -- ============================================================
 
 /-!
 Each Millennium Problem's sorry boundary corresponds to a missing primitive certificate
-in the SynthOmnicon constraint grammar.
+in the Imscribing constraint grammar.
 
-  | Problem | Missing certificate    | Primitive analog in SynthOmnicon             |
+  | Problem | Missing certificate    | Primitive analog in Imscribing             |
   |---------|------------------------|----------------------------------------------|
   | RH      | ZeroFreeStrip 0        | Φ_c = 0 threshold: no zeros off critical line|
   | Hodge   | AlgebraicCycleRep      | R-degeneracy: topology-to-algebra lift       |

@@ -1,12 +1,12 @@
--- SynthOmniconLean4/Primitives/Crystal.lean
+-- ImscribingLean4/Primitives/Crystal.lean
 -- Crystal arithmetic: full encode/decode Synthon ↔ Nat (0..17279999).
 -- Frobenius address: 𝓕₃³ × 𝓕₄⁵ × 𝓕₅⁴ numbering.
 -- 𝓕₃ = 27 (F,G,S), 𝓕₄=1024 (D,R,Γ,H,Ω), 𝓕₅=625 (T,P,Φ,K)
 
-import SynthOmnicon.Primitives.Core
-import SynthOmnicon.Primitives.Synthon
+import Imscribing.Primitives.Core
+import Imscribing.Primitives.Synthon
 
-namespace SynthOmnicon.Primitives
+namespace Imscribing.Primitives
 
 open Dimensionality Topology Relational Polarity Grammar Fidelity KineticChar
      Granularity Criticality Protection Stoichiometry Chirality
@@ -190,4 +190,4 @@ theorem crystal_roundtrip (s : Synthon) : crystal_decode (crystal_encode s) = s 
   -- This requires lemmas on bounded div/mod.
   sorry  -- TODO: full proof with Nat arithmetic lemmas (div_mod_lt etc.)
 
-end SynthOmnicon.Primitives
+end Imscribing.Primitives

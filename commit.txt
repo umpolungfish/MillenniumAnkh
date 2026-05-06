@@ -1,85 +1,33 @@
-v0.5.69 — Canonical 12-primitive grammar rewrite · Crystal arithmetic in Lean · Frobenius non-synthesizability theorem · MILLENNIUM_BARRIERS_PAPER v0.2.0
+v0.5.70 — SynthOmnicon → Imscribing rename · SIC-POVM / Stark module · formatting fixes
 
-SynthOmnicon/Primitives/Core.lean (full rewrite):
-- All 12 primitive types updated to canonical names (space_search/primitives.py v0.5.69)
-- D: D_point/D_line/D_cube/D_holo → D_wedge, D_triangle, D_infty, D_odot (𝓕₄, 4 values)
-- T: T_linear/T_branched/T_torus/T_holo → T_network, T_in, T_bowtie, T_box, T_odot (𝓕₅, 5 values)
-- R: R_exact/R_subset/R_superset/R_catalytic/R_allosteric → R_super, R_cat, R_dagger, R_lr (𝓕₄, 4 values)
-- P: P_neutral/P_plus/P_minus → P_asym, P_psi, P_pm, P_sym, P_pm_sym (𝓕₅, 5 values)
-- Γ: G_and/G_or/G_seq/G_xor/G_impl → Gamma_and, Gamma_or, Gamma_seq, Gamma_broad (𝓕₄, 4 values)
-- F: F_noise removed; F_ell, F_eth, F_hbar canonical (𝓕₃, 3 values)
-- G: reordered → G_beth(1) < G_gimel(2) < G_aleph(3) (𝓕₃, canonical ordinal)
-- Φ: Phi_sup → Phi_super (𝓕₅)
-- Ω: Omega_C removed → Omega_0, Omega_Z2, Omega_Z, Omega_NA (𝓕₄, 4 values)
-- S: one_n/cat removed → one_one, n_n, n_m (𝓕₃, 3 values)
-- K, H: unchanged (already canonical)
+Project-wide rename: SynthOmnicon → Imscribing
+- SynthOmnicon/ directory renamed to Imscribing/
+- lakefile.toml: project name synthomnicon-lean → imscribing-lean;
+  [[lean_lib]] name/root SynthOmnicon → Imscribing;
+  all 30 globs updated SynthOmnicon.* → Imscribing.*
+- All .lean files: import/namespace/open/comment references updated
+  (find … -print0 | xargs -0 sed -i 's/SynthOmnicon/Imscribing/g')
+- README.md: all SynthOmnicon references updated; description updated to
+  "Imscribing Grammar"; "Holographic Type Theory Ref Sheet" →
+  "Imscribing Grammar Ref Sheet"; build command updated
 
-New in Core.lean:
-- Crystal arithmetic theorems (§64, §68): machine-verified by decide
-    crystal_total: 27 * 1024 * 625 = 17280000
-    ouroboros_successor_cycle: 3→4→5→3 (§68)
-- OuroboricityTier inductive: O_0, O_1, O_2, O_2dag, O_inf
-- ouroboricityTier function: decidable map (Φ, P, Ω, D) → OuroboricityTier
-    r1_dominates: P_pm_sym at Phi_c → O_inf (always, by simp)
-    o_inf_requires_phi_c, o_inf_requires_P_pm_sym (by cases)
-- polarityTensor (min rule) + frobenius_not_synthesizable (§23):
-    If any partner has P ≠ P_pm_sym, the tensor product has P ≠ P_pm_sym
-- Axiom C: D_holo ↔ T_holo → D_odot ↔ T_odot
-- Axiom A (H_inf → K_trap) demoted to comment: hard axiom was incorrect
-  (proto-languages encode H_inf + K_slow)
+New module: Imscribing/Millennium/SIC_POVM_Stark.lean
+- Formalises SIC-POVM existence ∀ d ≥ 2 via the mixed-signature Stark
+  conjecture for ray class fields K_d = Q(√(d(d−2)))
+- Weyl–Heisenberg group, shift/phase operators X_d, Z_d, displacement D_{a,b}
+- IsSICPOVM structure (norm + equiangularity conditions)
+- Arithmetic tower: m_d discriminant, Fd_exists, Kd_exists, GalKd, StarkUnit,
+  Embeddings (all axioms — open number theory)
+- MixedSignatureStarkConjecture axiom (regulator condition + Galois invariance)
+- fiducial_from_stark + normalize_fiducial construction
+- zauner_correspondence axiom (order-3 Galois–Zauner symmetry)
+- sic_povm_exists_via_stark: main conditional theorem, closes under
+  norm_of_normalized + equiangular_from_stark (two remaining sorries)
+- Hilbert 12th Problem connection documented in §9 comment block
+- Namespace: Millennium.SIC_POVM_Stark
+- Registered in lakefile.toml as Imscribing.Millennium.SIC_POVM_Stark
 
-SynthOmnicon/Primitives/Synthon.lean (full rewrite):
-- All fields and constructors updated to canonical names
-- 'recog' field renamed 'rel' (Relational); grammar field ordering matches CLAUDE.md tuple
-- tensorProduct: max on union primitives, min on P and F (bottleneck rule)
-- synthonTier function added
-- Encodings corrected:
-    scalarField_Kslow: D_triangle, Gamma_and, n_n, R_dagger (was D_point, G_and, one_n)
-    quantum_gravity: D_odot/T_odot, P_pm_sym, R_dagger, Gamma_broad (was D_holo, P_neutral)
-    general_relativity: D_infty, P_sym, R_dagger (was D_cube, P_neutral)
-    standard_model: D_infty, R_cat (was D_cube, R_allosteric)
-    yang_mills_classical, yang_mills_quantum_target: R_cat, new encodings
-- New theorems (decide/rfl):
-    scalar_Kslow_is_O_inf, qg_is_O_inf, higgs_is_O_inf
-    ym_barrier_4_primitives = 4, sm_qg_distance = 9, gr_as_morphism_cost = 3
-    o_inf_iff_P_pm_sym_at_phi_c (biconditional)
-    tensor_O_inf_O2_destroys_frobenius
-
-markdown/MILLENNIUM_BARRIERS_PAPER.md + MILLENNIUM_BARRIERS_PAPER.md (root):
-- Version bump v0.1.3 → v0.2.0 (2026-04-14)
-- §I.3: C11 added (crystal arithmetic machine-verified: crystal_total, ouroboros_successor_cycle)
-- §I.3: C12 added (Frobenius non-synthesizability machine-verified: frobenius_not_synthesizable,
-  o_inf_iff_P_pm_sym_at_phi_c biconditional)
-- §II.3: Primitive table fully rewritten — canonical v0.5.69 types, field names, values
-  (R: Recognition → Relational; F: noise removed; G: ordering corrected beth<gimel<aleph;
-   S: 3 values; Ω: 4 values, Omega_C removed)
-- §V.3: D_cube → D_infty (ym_quantum_target_is_local, certificate theorem)
-- §V.6: P_neutral → P_sym (RH encoding discussion, structural prediction, C8 description)
-        one_n → n_n (mismatch list)
-- §V.7: P_neutral → P_sym (Triad conjecture; constraint-map table; RH encoding note)
-- §V.8: Lean sketch updated — canonical Synthon field names (dim/top/rel/pol/fid/kin/gran/gram/
-  crit/chir/stoi/prot); D_holo/T_holo → D_odot/T_odot; Omega_trivial → Omega_0/Omega_Z2;
-  ouroboricity → synthonTier
-- §X: v0.2.0 paragraph added (C11/C12 summary; decidable synthonTier closes §V loop)
-- Appendix I: Primitives/ line counts updated (Core.lean ~380, Synthon.lean ~305)
-- Appendix II: C11/C12 theorems added (crystal_total, ouroboros_successor_cycle,
-  frobenius_not_synthesizable, o_inf_iff_P_pm_sym_at_phi_c)
-- Version history footer: v0.2.0 changelog entry added
-
-markdown/PRIMITIVE_THEOREMS.md, PRIMITIVE_THEOREMS.md (root):
-- Synced to v0.5.69 (§1–§77, 5,886 lines; was 2,093 / 3,613 lines)
-
-Millennium/*.lean + Primitives/TierCrossing.lean (all updated this session):
-- PrimitiveBridge.lean: all Synthon encodings updated to canonical names
-    recog→rel, G_and→Gamma_and, D_cube→D_infty, D_holo→D_odot, D_line→D_triangle,
-    D_point→D_wedge, T_linear→T_in, R_exact→R_super/R_cat/R_dagger, R_catalytic→R_cat,
-    P_neutral→P_sym, one_n→n_n/one_one, Phi_sup→Phi_super
-    All `decide` theorems verified to hold under new encodings
-    rh_cmc: P_neutral→P_sym; constraint-map comments updated C_13(Phi_c_complex, P_sym)
-    c12_gap_is_dimensionality: D_cube→D_infty in two places
-    D_cube→D_infty in ym_primitive_barrier_certificate, three_mpp_two_gap_primitives, witten
-- TierCrossing.lean: granularityLevel ordering corrected
-    G_aleph(0)/G_beth(1)/G_gimel(2) → G_beth(0)/G_gimel(1)/G_aleph(2) (canonical)
-    tierCrossingCost_aleph_gimel → tierCrossingCost_beth_aleph (= 2*log10, YM lift cost)
-- OPN.lean, BSD.lean, Hodge.lean: D_holo/T_holo→D_odot/T_odot in docstrings
-- FrobeniusStructure.lean: P_neutral→P_sym in docstring comment
+Formatting fixes: imscribing_grammar/time_through_the_ig_lifted.md
+- § 3 header: ⊗ → $\otimes$, = → $=$
+- § 5.2 header: ⊗ → $\otimes$
+- Neighborhood table row 1: A2† → A2$^\dagger$ (CLAUDE.md: no raw Unicode math)

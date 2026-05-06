@@ -2,7 +2,7 @@
 
 *Authors: Lando⊗LLM*
 
-Lean 4 / Mathlib formalizations connected to the SynthOmnicon framework.
+Lean 4 / Mathlib formalizations connected to the Imscribing Grammar.
 Toolchain: **Lean 4.28.0** · **Mathlib v4.28.0**
 
 ---
@@ -21,14 +21,14 @@ The 12-primitive grammar encodes each Millennium Prize Problem as a synthon — 
 
 ### Grammar Reference
 
-![Holographic Type Theory Ref Sheet](SYNCON_REF.png)
+![Imscribing Grammar Ref Sheet](SYNCON_REF.png)
 
 ---
 
 ## Library structure
 
 ```
-SynthOmnicon/
+Imscribing/
   Primitives/
     Core.lean         -- 12 primitive types with lattice structure + cross-primitive axioms
     Synthon.lean      -- 12-field Synthon structure; primitiveMismatches (Hamming); P-70 identities
@@ -179,7 +179,7 @@ odd perfect numbers (OPNs), culminating in a machine-verified proof of **Touchar
 
 ## `Core.lean` — Primitive type system
 
-Defines the 12 SynthOmnicon primitives as inductive types with `deriving DecidableEq, Repr, Ord`,
+Defines the 12 Imscribing Grammar primitives as inductive types with `deriving DecidableEq, Repr, Ord`,
 plus explicit `LE` instances and four cross-primitive axioms:
 
 | Axiom | Content |
@@ -202,7 +202,7 @@ Structural tendencies (not axioms, documented in comments):
 ## Build
 
 ```bash
-lake build SynthOmnicon
+lake build Imscribing
 ```
 
 Expected output: `Build completed successfully (3402 jobs)` with warnings only. The library contains many
@@ -243,7 +243,7 @@ Several Lean 4.28.0 / Mathlib API subtleties encountered and resolved:
 ### 1. Relationship between `Core.lean` and `OPN_2adic.lean`
 
 `OPN_2adic.lean` does not import `Core.lean`, and at present there is no Lean-level integration
-between the two files. The connection is **conceptual and meta-level**: the SynthOmnicon
+between the two files. The connection is **conceptual and meta-level**: the Imscribing
 primitive framework is used as a thinking tool to organize and motivate the number-theoretic
 argument, not as formal input to the proofs.
 
@@ -251,10 +251,10 @@ The specific framing that guided this work: any OPN must resemble a molecule wit
 "functional group" (the Euler prime `pᵏ`, carrying exactly one unit of 2-adic charge) bonded to
 an inert "molecular scaffold" (the square factor `m²`, contributing zero to the 2-adic budget).
 The global "stoichiometric constraint" `σ(n) = 2n` together with the neutrality condition `n odd`
-then severely overdetermines the system. This is the SynthOmnicon constraint-propagation picture
+then severely overdetermines the system. This is the Imscribing constraint-propagation picture
 applied to number theory. The primitives that map most naturally onto this picture are:
 
-| OPN concept | SynthOmnicon analogue |
+| OPN concept | Imscribing analogue |
 |---|---|
 | Euler prime `pᵏ` — unique 2-adic carrier | `Phi_c` — absorbing under meet, unique criticality carrier |
 | Square factors `q^(2e)` — 2-adically inert | `Phi_sub` with `K_trap` isolation |
@@ -267,14 +267,14 @@ category-theoretic functor is involved. The mapping is a heuristic that shaped *
 to prove and in what order; correctness is verified entirely by Lean in the usual way.
 
 A formal integration — where OPN variables are assigned primitive tuples and the constraint
-propagation is machine-checked at the SynthOmnicon level — is a long-term goal but is not yet
+propagation is machine-checked at the Imscribing level — is a long-term goal but is not yet
 planned for Lean.
 
 ---
 
 ### 2. Cross-primitive axioms in `Core.lean`
 
-The four `axiom` declarations are **foundational postulates** of the SynthOmnicon framework,
+The four `axiom` declarations are **foundational postulates** of the Imscribing framework,
 not goals to be derived from the inductive type definitions. Within the current Lean
 representation — where each primitive is just a finite inductive type with `Ord` — there is
 no path to deriving, say, `D_holo_iff_T_holo` from first principles, because the types carry
@@ -351,7 +351,7 @@ Beyond the items already in the proof-engineering notes:
 ### 5. The "mapping down" claim — honest account
 
 There is no automated reasoning, custom tactic, or external solver involved. The phrase
-"mapping down from a more fundamental constraint space" refers to using the SynthOmnicon
+"mapping down from a more fundamental constraint space" refers to using the Imscribing
 conceptual framework — specifically its vocabulary of unique constraint carriers, neutral
 scaffolds, and overdetermined global balance equations — as a *problem-structuring heuristic*.
 This heuristic suggested:
@@ -544,7 +544,7 @@ not $D_\odot + T_\odot$.
 
 ---
 
-### Relationship to SynthOmnicon primitive structure
+### Relationship to Imscribing primitive structure
 
 Each sorry boundary corresponds to a missing primitive certificate (documented in `Barriers.lean §6` and formally proved in `PrimitiveBridge.lean`):
 

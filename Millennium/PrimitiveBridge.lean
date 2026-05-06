@@ -1,6 +1,6 @@
--- SynthOmnicon/Millennium/PrimitiveBridge.lean
+-- Imscribing/Millennium/PrimitiveBridge.lean
 -- Formal bridge between Millennium Problem sorry boundaries
--- and missing primitive certificates in the SynthOmnicon constraint grammar.
+-- and missing primitive certificates in the Imscribing constraint grammar.
 --
 -- Each Millennium Problem's sorry corresponds to a specific primitive field
 -- transition that cannot be completed. This file:
@@ -12,13 +12,13 @@
 --
 -- This is the formal content connecting Millennium/ and Primitives/.
 
-import SynthOmnicon.Primitives.Synthon
-import SynthOmnicon.Millennium.Barriers
-import SynthOmnicon.Millennium.RH
+import Imscribing.Primitives.Synthon
+import Imscribing.Millennium.Barriers
+import Imscribing.Millennium.RH
 
 namespace Millennium.PrimitiveBridge
 
-open SynthOmnicon.Primitives
+open Imscribing.Primitives
 open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection
      Stoichiometry Chirality

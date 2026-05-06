@@ -1,4 +1,4 @@
--- SynthOmnicon/Millennium/PerfectCuboid.lean
+-- Imscribing/Millennium/PerfectCuboid.lean
 -- Perfect Cuboid — $\Phi_c$ Critical Formalization
 --
 -- Structural type (lifted framework):

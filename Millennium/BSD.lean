@@ -1,4 +1,4 @@
--- SynthOmnicon/Millennium/BSD.lean
+-- Imscribing/Millennium/BSD.lean
 -- Birch and Swinnerton-Dyer Conjecture — Three-Layer Barrier Analysis
 -- Every sorry is an honest marker. Two layers are MathlibGap; one is OpenProblem.
 
@@ -80,7 +80,7 @@ Tate-Shafarevich group Ш(E/ℚ), Tamagawa numbers c_v, and torsion:
 
 ---
 
-**SynthOmnicon structural note:**
+**Imscribing structural note:**
 
   BSD has primitive tuple D_odot · T_bowtie · F_eth · Γ_and · Φ_c · Ω_Z.
   · D_odot: the modularity theorem makes E/ℚ ↔ modular form a holographic duality.

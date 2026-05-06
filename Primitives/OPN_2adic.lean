@@ -1,4 +1,4 @@
--- SynthOmnicon/Classical/OPN_2adic.lean
+-- Imscribing/Classical/OPN_2adic.lean
 -- Track 2, File 1: Classical number theory — 2-adic valuation for OPN.
 -- This file is INDEPENDENT of the Synthonicon type system.
 -- It uses Mathlib directly. Every sorry is an honest open problem marker.
@@ -15,7 +15,7 @@ import Mathlib.Data.Nat.Multiplicity         -- emultiplicity / v₂ lemmas
 
 open Nat ArithmeticFunction
 
-namespace SynthOmnicon.Classical.OPN
+namespace Imscribing.Classical.OPN
 
 -- ============================================================
 -- DEFINITIONS (must precede helper lemmas that reference them)
@@ -396,4 +396,4 @@ theorem touchard_congruence (n p k m : ℕ)
 theorem opn_nonexistence : ∀ n : ℕ, ¬ (¬ 2 ∣ n ∧ Perfect n) := by
   sorry -- Open problem. Do not claim proven.
 
-end SynthOmnicon.Classical.OPN
+end Imscribing.Classical.OPN

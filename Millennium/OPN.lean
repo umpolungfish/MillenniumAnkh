@@ -1,4 +1,4 @@
--- SynthOmnicon/Millennium/OPN.lean
+-- Imscribing/Millennium/OPN.lean
 -- Odd Perfect Numbers — Three-Layer Barrier Analysis
 -- Every sorry is an honest marker. Layer 1 sorry is MathlibGap; Layer 2 is OpenProblem.
 
@@ -70,7 +70,7 @@ Are there any odd ones?
 
 ---
 
-**SynthOmnicon structural note:**
+**Imscribing structural note:**
 
   OPN has primitive tuple D_odot · T_bowtie · F_hbar · Γ_and · Φ_c · Ω_Z.
   · D_odot: the problem lives in multiplicative structure of ℕ (number-theoretic holomorphic).

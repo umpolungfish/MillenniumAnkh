@@ -1,15 +1,15 @@
--- SynthOmniconLean4/Primitives/Catalog.lean
+-- ImscribingLean4/Primitives/Catalog.lean
 -- Catalog of encoded Synthons: worked examples + Millennium problems.
 -- Each const is a Synthon with synthonTier comment.
 -- 20+ examples as required.
 
-import SynthOmnicon.Primitives.Core
-import SynthOmnicon.Primitives.Synthon
-import SynthOmnicon.Primitives.Crystal
+import Imscribing.Primitives.Core
+import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Crystal
 
-namespace SynthOmnicon.Primitives
+namespace Imscribing.Primitives
 
-open SynthOmnicon.Primitives
+open Imscribing.Primitives
 
 open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection
@@ -353,4 +353,4 @@ def euler_touchard_opn : Synthon := {
   prot := Omega_Z2
 }
 
-end SynthOmnicon.Primitives
+end Imscribing.Primitives

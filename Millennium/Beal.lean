@@ -2,7 +2,7 @@ import Mathlib
 
 /-!
 # The Beal Conjecture — Dual Proof: Lean4 Structural Encoding
-# SynthOmnicon / MillenniumAnkh edition
+# Imscribing / MillenniumAnkh edition
 
 Structural type:
   ⟨D_infty; T_bowtie; R_lr; P_pm; F_ell; K_slow;

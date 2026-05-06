@@ -1,4 +1,4 @@
--- SynthOmnicon/Classical/Solitary10.lean
+-- Imscribing/Classical/Solitary10.lean
 -- Proof that 10 is solitary: σ(10)/10 = 9/5 has no other integer solution.
 -- Track: Classical number theory, formalized from SOLITARY_10.tex.
 -- Uses Mathlib directly. Every sorry is an honest open problem marker (none here — fully proved).
@@ -12,7 +12,7 @@ import Mathlib.NumberTheory.Divisors
 
 open Nat ArithmeticFunction
 
-namespace SynthOmnicon.Classical.Solitary10
+namespace Imscribing.Classical.Solitary10
 
 -- ============================================================
 -- DEFINITIONS
@@ -30,4 +30,4 @@ def IsSolitary (n : ℕ) : Prop :=
 theorem ten_is_solitary : IsSolitary 10 := by
   sorry  -- Proved in SOLITARY_10.tex; formalization pending.
 
-end SynthOmnicon.Classical.Solitary10
+end Imscribing.Classical.Solitary10

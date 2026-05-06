@@ -1,4 +1,4 @@
--- SynthOmnicon/Millennium/PvsNP.lean
+-- Imscribing/Millennium/PvsNP.lean
 -- P versus NP — Three-Layer Barrier Analysis
 -- Every sorry is an honest marker. No sorry is dischargeable from current Mathlib.
 
@@ -101,7 +101,7 @@ SAT is NP-complete (Cook 1971 / Levin 1973): SAT ∈ P ↔ P = NP.
 
 ---
 
-**SynthOmnicon structural note:**
+**Imscribing structural note:**
 
   PvsNP has primitive tuple D_∞ · T_network · R_super · F_ell · K_trap · Φ_c · Ω_0.
   The K_trap primitive is uniquely prominent: the problem is about *information bottlenecks*
@@ -350,7 +350,7 @@ theorem pvsnp_meta_barriers :
     RH, Hodge, NS, YM, BSD, OPN have no proved theorems about WHY they are hard.
     PvsNP has three: BGS, Razborov-Rudich, Aaronson-Wigderson.
 
-    This is the primitive analog of K_trap in SynthOmnicon:
+    This is the primitive analog of K_trap in Imscribing:
     the barrier is self-reinforcing — we can prove that standard tools cannot
     remove the constraint. -/
 theorem pvsnp_unique_meta_barrier_structure : True := trivial

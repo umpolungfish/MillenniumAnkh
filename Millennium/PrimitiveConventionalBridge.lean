@@ -1,22 +1,22 @@
 -- Fixed PrimitiveConventionalBridge.lean
 -- Resolved identifier conflicts and syntax errors.
 
-import SynthOmnicon.Primitives.Synthon
-import SynthOmnicon.Primitives.Core
-import SynthOmnicon.Algebra
-import SynthOmnicon.Millennium.Barriers
-import SynthOmnicon.Millennium.PrimitiveBridge
-import SynthOmnicon.Millennium.RH
-import SynthOmnicon.Consciousness
+import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Core
+import Imscribing.Algebra
+import Imscribing.Millennium.Barriers
+import Imscribing.Millennium.PrimitiveBridge
+import Imscribing.Millennium.RH
+import Imscribing.Consciousness
 import Mathlib.Data.Real.Basic
 
 namespace Millennium.PrimitiveConventionalBridge
 
-open SynthOmnicon.Primitives
+open Imscribing.Primitives
 open Dimensionality Topology Relational Polarity Grammar
 open Fidelity KineticChar Granularity Criticality Protection
 open Stoichiometry Chirality
-open SynthOmnicon.Consciousness
+open Imscribing.Consciousness
 open Millennium.PrimitiveBridge
 open Millennium.RH
 open Millennium.Barriers
