@@ -1,4 +1,4 @@
-# MillenniumAnkh: Formal Mathematical Extension of the Imscribing Grammar
+# MillenniumAnkh: The Grammar Formalized
 
 *Authors: Lando⊗LLM* · Toolchain: **Lean 4.28.0** · **Mathlib v4.28.0**
 
