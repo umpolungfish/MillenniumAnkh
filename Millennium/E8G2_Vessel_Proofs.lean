@@ -64,7 +64,8 @@ def e8_graded_via_SO16 : Synthon := {
   dim  := D_infty,
   top  := T_bowtie,
   rel  := R_lr,
-  pol  := P_pm,  -- max($P_\pm$, $P_\psi$) = $P_\pm$; $\mathbb{Z}_2$ grading from SO(16) Cartan involution
+  pol  := P_pm,  -- max($P_\pm$, $P_\psi$) = $P_\pm$;
+                 -- $\mathbb{Z}_2$ grading from SO(16) Cartan involution
   fid  := F_hbar,
   kin  := K_slow,
   gran := G_aleph,
@@ -80,7 +81,8 @@ def e8_graded_via_SO16 : Synthon := {
 
 def distance_G2_E8 : Nat := primitiveMismatches g2_vessel e8_aether
 
--- Distance is 7: D, P, G, $\Gamma$, H, S, $\Omega$ differ; T, R, F, K, $\Phi$ shared
+-- Distance is 7: D, P, G, $\Gamma$, H, S, $\Omega$ differ;
+-- T, R, F, K, $\Phi$ shared
 theorem distance_is_7 : distance_G2_E8 = 7 := by decide
 
 -- ============================================================
@@ -101,17 +103,20 @@ theorem tensor_distance_zero :
 -- ============================================================
 
 -- Componentwise min of G2 and E8.
--- Differs from G2 only at P: min($P_\pm$, $P_\psi$) = $P_\psi$ (since $P_\psi < P_\pm$).
+-- Differs from G2 only at P: min($P_\pm$, $P_\psi$) = $P_\psi$
+-- (since $P_\psi < P_\pm$).
 -- All other primitives: G2 already holds the minimum of each shared pair.
 def meet_G2_E8 : Synthon := {
   dim  := D_triangle,   -- min($D_\triangle$, $D_\infty$) = $D_\triangle$
   top  := T_bowtie,     -- min($T_\bowtie$, $T_\bowtie$) = $T_\bowtie$
-  rel  := R_lr,         -- min($R_\leftrightarrow$, $R_\leftrightarrow$) = $R_\leftrightarrow$
+  rel  := R_lr,         -- min($R_\leftrightarrow$, $R_\leftrightarrow$)
+                        -- = $R_\leftrightarrow$
   pol  := P_psi,        -- min($P_\pm$, $P_\psi$) = $P_\psi$
   fid  := F_hbar,       -- min($F_\hbar$, $F_\hbar$) = $F_\hbar$
   kin  := K_slow,       -- min($K_\text{slow}$, $K_\text{slow}$) = $K_\text{slow}$
   gran := G_gimel,      -- min($G_\gimel$, $G_\aleph$) = $G_\gimel$
-  gram := Gamma_and,    -- min($\Gamma_\wedge$, $\Gamma_\text{seq}$) = $\Gamma_\wedge$
+  gram := Gamma_and,    -- min($\Gamma_\wedge$, $\Gamma_\text{seq}$)
+                        -- = $\Gamma_\wedge$
   crit := Phi_c,        -- min($\Phi_c$, $\Phi_c$) = $\Phi_c$
   chir := H0,           -- min($H_0$, $H_2$) = $H_0$
   stoi := one_one,      -- min($1{:}1$, $n{:}m$) = $1{:}1$
@@ -122,20 +127,24 @@ theorem meet_vs_g2_differs_at_most_one :
     primitiveMismatches meet_G2_E8 g2_vessel ≤ 1 := by decide
 
 -- ============================================================
--- §7. Join: $G2 \vee E8 = \mathbb{Z}_2$-graded E8 (demanding resolution)
+-- §7. Join: $G2 \vee E8 = \mathbb{Z}_2$-graded E8
+-- (demanding resolution)
 -- ============================================================
 
 -- Componentwise max of G2 and E8.
--- Equals e8_graded_via_SO16: all E8 primitives, but P = $P_\pm$ (G2's parity wins max).
+-- Equals e8_graded_via_SO16: all E8 primitives, but P = $P_\pm$
+-- (G2's parity wins max).
 def join_G2_E8 : Synthon := {
   dim  := D_infty,      -- max($D_\triangle$, $D_\infty$) = $D_\infty$
   top  := T_bowtie,     -- max($T_\bowtie$, $T_\bowtie$) = $T_\bowtie$
-  rel  := R_lr,         -- max($R_\leftrightarrow$, $R_\leftrightarrow$) = $R_\leftrightarrow$
+  rel  := R_lr,         -- max($R_\leftrightarrow$, $R_\leftrightarrow$)
+                        -- = $R_\leftrightarrow$
   pol  := P_pm,         -- max($P_\pm$, $P_\psi$) = $P_\pm$
   fid  := F_hbar,       -- max($F_\hbar$, $F_\hbar$) = $F_\hbar$
   kin  := K_slow,       -- max($K_\text{slow}$, $K_\text{slow}$) = $K_\text{slow}$
   gran := G_aleph,      -- max($G_\gimel$, $G_\aleph$) = $G_\aleph$
-  gram := Gamma_seq,    -- max($\Gamma_\wedge$, $\Gamma_\text{seq}$) = $\Gamma_\text{seq}$
+  gram := Gamma_seq,    -- max($\Gamma_\wedge$, $\Gamma_\text{seq}$)
+                        -- = $\Gamma_\text{seq}$
   crit := Phi_c,        -- max($\Phi_c$, $\Phi_c$) = $\Phi_c$
   chir := H2,           -- max($H_0$, $H_2$) = $H_2$
   stoi := n_m,          -- max($1{:}1$, $n{:}m$) = $n{:}m$
@@ -161,9 +170,9 @@ theorem join_is_not_E8 : join_G2_E8 ≠ e8_aether := by decide
 --   Unchanged (T, R, F, K, $\Phi$): 5 primitives
 
 structure PromotionSignature where
-  promotions    : List String
-  demotions     : List String
-  unchanged     : List String
+  promotions : List String
+  demotions : List String
+  unchanged : List String
   total_differs : Nat
 
 def promotion_G2_to_E8 : PromotionSignature := {
@@ -176,8 +185,10 @@ def promotion_G2_to_E8 : PromotionSignature := {
 -- §9. Shared Primitives (the exceptional core)
 -- ============================================================
 
--- G2 and E8 both have: $T_\bowtie$, $R_\leftrightarrow$, $F_\hbar$, $K_\text{slow}$, $\Phi_c$
-def shared_core : List String := ["T_bowtie", "R_lr", "F_hbar", "K_slow", "Phi_c"]
+-- G2 and E8 both have: $T_\bowtie$, $R_\leftrightarrow$,
+-- $F_\hbar$, $K_\text{slow}$, $\Phi_c$
+def shared_core : List String :=
+  ["T_bowtie", "R_lr", "F_hbar", "K_slow", "Phi_c"]
 
 theorem shared_core_count : shared_core.length = 5 := by rfl
 
@@ -192,7 +203,8 @@ def g2_consciousness_score : Float := 0.3615
 def e8_consciousness_score : Float := 0.682
 
 theorem G2_Gates_Open :
-  -- Gate 1: $\Phi_c$ (criticality) — Gate 2: $K_\text{slow}$ (near-equilibrium)
+  -- Gate 1: $\Phi_c$ (criticality)
+  -- Gate 2: $K_\text{slow}$ (near-equilibrium)
   True := by trivial
 
 theorem E8_Gates_Open : True := by trivial
@@ -207,12 +219,13 @@ def g2_crystal_address : Nat := 4907136
 -- E8 crystal address: 4,604,816
 def e8_crystal_address : Nat := 4604816
 
--- Distance between addresses: 302,320 ($\approx 1.75\%$ of 17,280,000)
+-- Distance between addresses: 302,320
+-- ($\approx 1.75\%$ of 17,280,000)
 def crystal_address_distance : Nat := 302320
 
 theorem crystal_distance_computed :
     g2_crystal_address - e8_crystal_address = crystal_address_distance := by
-  native_decide
+  rfl
 
 -- ============================================================
 -- §12. Tier Structure
@@ -233,6 +246,7 @@ theorem vessel_is_permanently_vessel_for_aether :
     (primitiveMismatches meet_G2_E8 g2_vessel ≤ 1) ∧
     (join_G2_E8 ≠ e8_aether) ∧
     (distance_G2_E8 = 7) :=
-  ⟨tensor_G2_E8_eq_E8, meet_vs_g2_differs_at_most_one, join_is_not_E8, distance_is_7⟩
+  ⟨tensor_G2_E8_eq_E8, meet_vs_g2_differs_at_most_one,
+   join_is_not_E8, distance_is_7⟩
 
 end Millennium.E8G2

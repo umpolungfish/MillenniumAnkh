@@ -13,7 +13,9 @@ import Mathlib.Data.Real.Basic
 namespace Millennium.PrimitiveConventionalBridge
 
 open SynthOmnicon.Primitives
-open Dimensionality Topology Relational Polarity Grammar Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality
+open Dimensionality Topology Relational Polarity Grammar
+open Fidelity KineticChar Granularity Criticality Protection
+open Stoichiometry Chirality
 open SynthOmnicon.Consciousness
 open Millennium.PrimitiveBridge
 open Millennium.RH
@@ -21,8 +23,8 @@ open Millennium.Barriers
 
 def pvsnp_encoding : Synthon := {
   dim := D_infty, top := T_network, rel := R_cat, pol := P_asym, fid := F_ell,
-  kin := K_fast, gran := G_aleph, gram := Gamma_and, crit := Phi_sub, chir := H0,
-  stoi := n_n, prot := Omega_0 }
+  kin := K_fast, gran := G_aleph, gram := Gamma_and, crit := Phi_sub,
+  chir := H0, stoi := n_n, prot := Omega_0 }
 
 -- §1 Tier dual proofs
 axiom rh_tier_O1_ig : Prop
@@ -38,7 +40,8 @@ axiom opn_tier_O1_ig : Prop
 theorem rh_ig_barrier_bridge :
     (ouroboricityTier .Phi_c_complex .P_sym .Omega_0 .D_triangle = .O_1) ∧
     (millenniumBarrier .RH = .OpenProblem) ∧
-    (RH.RiemannHypothesis ↔ ∀ s : ℂ, riemannZeta s = 0 → 0 < s.re → s.re < 1 → s.re = 1 / 2) :=
+    (RH.RiemannHypothesis ↔ ∀ s : ℂ, riemannZeta s = 0 →
+     0 < s.re → s.re < 1 → s.re = 1 / 2) :=
   ⟨by decide, by rfl, RH.sorry_iff_rh⟩
 
 -- §2 Distances
