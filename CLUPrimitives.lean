@@ -55,15 +55,23 @@ theorem CLU_approx_2_303 : CLU > 2.302 ∧ CLU < 2.303 := by
 abbrev CLU_bits : ℝ := Real.log 10 / Real.log 2
 
 theorem CLU_bits_approx : CLU_bits > 3.321 ∧ CLU_bits < 3.323 := by
+  have hlog2 : (0 : ℝ) < Real.log 2 := Real.log_pos (by norm_num)
   unfold CLU_bits
-  have h1 : Real.log 10 / Real.log 2 > 3.321 := by
-    have := mul_pos (log_pos (by norm_num)) (log_pos (by norm_num))
-    rw [gt_iff_lt]
-    have h : (3.321 : ℝ) * Real.log 2 < Real.log 10 := by
-      have := Real.log_lt_log (by norm_num)
-      sorry -- TODO: tighten with norm_num + Real approximations
-    sorry
-  sorry
+  constructor
+  · rw [gt_iff_lt, lt_div_iff hlog2]
+    have hpow : (2 : ℝ) ^ (3321 : ℕ) < (10 : ℝ) ^ (1000 : ℕ) := by
+      norm_cast; native_decide
+    have h := Real.log_lt_log (by positivity) hpow
+    simp only [Real.log_pow] at h
+    push_cast at h
+    linarith
+  · rw [div_lt_iff hlog2]
+    have hpow : (10 : ℝ) ^ (1000 : ℕ) < (2 : ℝ) ^ (3323 : ℕ) := by
+      norm_cast; native_decide
+    have h := Real.log_lt_log (by positivity) hpow
+    simp only [Real.log_pow] at h
+    push_cast at h
+    linarith
 
 /-- 1 CLU = 1 decade. This is the defining identity. -/
 theorem CLU_eq_one_decade : CLU = Real.log 10 := rfl
@@ -299,8 +307,8 @@ theorem soai_TMS_1_CLU : autoEnhancement 1 = 10 := by
 
 -- ============================================================
 -- V.4 Grokking: ln(N_grok / N_memorize) = 2.303 × n_K
-// The grokking transition (memorization → generalization) is the
-// criticality-lift in the model's internal representation.
+-- The grokking transition (memorization → generalization) is the
+-- criticality-lift in the model's internal representation.
 -- ============================================================
 
 /-- The grokking parameter ratio: 10^{n_K}. -/
@@ -323,10 +331,10 @@ theorem grokking_natural_language : grokkingRatio 3 = 1000 := by
 
 -- ============================================================
 -- V.5 Log-Normal Distribution as Φ_c Signature
-// At criticality (Φ_c, Axiom 5: G/D degeneracy), no scale is privileged.
-// Scale-free multiplicative processes generate log-normal distributions.
-// The inter-decade spacing is exactly 2.303 nats.
-// ============================================================
+-- At criticality (Φ_c, Axiom 5: G/D degeneracy), no scale is privileged.
+-- Scale-free multiplicative processes generate log-normal distributions.
+-- The inter-decade spacing is exactly 2.303 nats.
+-- ============================================================
 
 /-- The decade width of a log-normal distribution encodes the K-span. -/
 noncomputable def logNormalDecadeWidth (sigma : ℝ) : ℝ := sigma / CLU
@@ -429,10 +437,10 @@ theorem CLU_recognition (x x' : ℝ) (hx : x > 0) (hx' : x' > 0)
     but ln(10x/x) = ln(10) is invariant under any scaling. -/
 theorem CLU_scale_independence (x c : ℝ) (hx : x > 0) (hc : c > 0) :
     Real.log ((10 * c * x) / (c * x)) = CLU := by
-  field_simp [hx, hc]
   unfold CLU
-  rw [← Real.exp_log (by norm_num)]
-  have : Real.exp (Real.log 10) = 10 := by simp [Real.exp_log, Real.log_exp]
+  congr 1
+  have hcx : c * x ≠ 0 := mul_ne_zero hc.ne' hx.ne'
+  field_simp [hcx]
 
 -- ============================================================
 -- IX. CROSS-REFERENCE: CLU in the K-Tier Ladder of Synthon

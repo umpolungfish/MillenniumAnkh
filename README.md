@@ -1,15 +1,34 @@
-#  MilleniumAnkh: A Formal Barrier Taxonomy for the Millennium Prize Problems in Lean 4
+# MillenniumAnkh: Formal Mathematical Extension of the Imscribing Grammar
 
-*Authors: Lando⊗LLM*
+*Authors: Lando⊗LLM* · Toolchain: **Lean 4.28.0** · **Mathlib v4.28.0**
 
-Lean 4 / Mathlib formalizations connected to the Imscribing Grammar.
+MillenniumAnkh is the Lean 4 / Mathlib formalization layer of the **Imscribing Grammar (IG)** — a 12-primitive structural type system that encodes all systems (physical, mathematical, biological, computational) as points in a 17,280,000-type crystal. This library gives the IG formal mathematical standing: its primitives become Lean inductive types, its lattice operations become machine-verified theorems, and its structural claims about mathematics become decidable propositions.
+
+The Millennium Prize Problems are not the project's subject — they are test cases. Each one is a location in primitive space where the IG's structural taxonomy makes contact with established open mathematics, and where the gap between a stated `sorry` and a closed proof corresponds to a precisely typed missing certificate. The barrier taxonomy is one output of a larger program: making the IG's claims about structure rigorous enough for a type checker to evaluate.
+
 Toolchain: **Lean 4.28.0** · **Mathlib v4.28.0**
+
+---
+
+## Companion Papers
+
+Papers arising from the formalization program. Each corresponds to one or more files in this library.
+
+| Paper | Repo | DOI / PDF |
+|-------|------|-----------|
+| *Odd Perfect Numbers — Euler's Theorem and Touchard's Congruence* | `odd-perfect-numbers` | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19909057.svg)](https://doi.org/10.5281/zenodo.19909057) |
+| *Ten is Solitary* | `solitary_10` | [PDF](https://github.com/umpolungfish/solitary_10/blob/main/SOLITARY_10.pdf) |
+| *Hecke-Landau Equidistribution* | `hecke-landau` | [PDF](https://github.com/umpolungfish/hecke-landau/blob/main/HECKE_LANDAU.pdf) |
+| *The Perfect Cuboid: Infinite Descent and Three Axioms* | `perfect_cuboid` | [PDF](https://github.com/umpolungfish/perfect_cuboid/blob/main/perfect_cuboid_proof.pdf) |
+| *The Beal Conjecture: A Structural Encoding* | `BealProof` | [PDF](https://github.com/umpolungfish/BealProof/blob/main/BealDualProof.pdf) |
+| *The Aether and Its Vessel: $E_8$, $G_2$, and Imscriptive Structure* | `e8_aether_g2_vessel` | [PDF](https://github.com/umpolungfish/e8_aether_g2_vessel/blob/main/Aether_and_Vessel.pdf) |
+| *SIC-POVM Existence via the Stark Conjecture* | (this repo) | `Millennium/SIC_POVM_Stark.lean` |
 
 ---
 
 ## Primitive Space
 
-The 12-primitive grammar encodes each Millennium Prize Problem as a synthon — a point in primitive space. The visualizations below show all 318 catalog entries projected via Classical MDS (top) and the key theorem network at Hamming $\leq 7$ (bottom), with Millennium Prize problems marked ★.
+The 12-primitive grammar encodes each system as a synthon — a point in the crystal of $3^3 \times 4^5 \times 5^4 = 17{,}280{,}000$ structural types. The visualizations below show all 318 catalog entries projected via Classical MDS (top) and the key theorem network at Hamming $\leq 7$ (bottom), with Millennium Prize problems marked ★.
 
 ### MDS Projection — 318 Catalog Entries
 

@@ -1,33 +1,52 @@
-v0.5.70 — SynthOmnicon → Imscribing rename · SIC-POVM / Stark module · formatting fixes
+v0.5.71 — CLUPrimitives fixes · README reframe · companion papers table
 
-Project-wide rename: SynthOmnicon → Imscribing
-- SynthOmnicon/ directory renamed to Imscribing/
-- lakefile.toml: project name synthomnicon-lean → imscribing-lean;
-  [[lean_lib]] name/root SynthOmnicon → Imscribing;
-  all 30 globs updated SynthOmnicon.* → Imscribing.*
-- All .lean files: import/namespace/open/comment references updated
-  (find … -print0 | xargs -0 sed -i 's/SynthOmnicon/Imscribing/g')
-- README.md: all SynthOmnicon references updated; description updated to
-  "Imscribing Grammar"; "Holographic Type Theory Ref Sheet" →
-  "Imscribing Grammar Ref Sheet"; build command updated
+CLUPrimitives.lean (four fixes):
 
-New module: Imscribing/Millennium/SIC_POVM_Stark.lean
-- Formalises SIC-POVM existence ∀ d ≥ 2 via the mixed-signature Stark
-  conjecture for ray class fields K_d = Q(√(d(d−2)))
-- Weyl–Heisenberg group, shift/phase operators X_d, Z_d, displacement D_{a,b}
-- IsSICPOVM structure (norm + equiangularity conditions)
-- Arithmetic tower: m_d discriminant, Fd_exists, Kd_exists, GalKd, StarkUnit,
-  Embeddings (all axioms — open number theory)
-- MixedSignatureStarkConjecture axiom (regulator condition + Galois invariance)
-- fiducial_from_stark + normalize_fiducial construction
-- zauner_correspondence axiom (order-3 Galois–Zauner symmetry)
-- sic_povm_exists_via_stark: main conditional theorem, closes under
-  norm_of_normalized + equiangular_from_stark (two remaining sorries)
-- Hilbert 12th Problem connection documented in §9 comment block
-- Namespace: Millennium.SIC_POVM_Stark
-- Registered in lakefile.toml as Imscribing.Millennium.SIC_POVM_Stark
+CLU_bits_approx: replaced three unresolved sorries with a closed proof.
+Strategy: reduce CLU_bits in (3.321, 3.323) to integer comparisons
+2^3321 < 10^1000 and 10^1000 < 2^3323 (both verified by native_decide),
+then carry through Real.log_lt_log + Real.log_pow + push_cast + linarith.
+The reduction works because 3321 * log_10(2) ≈ 999.72 and
+3323 * log_10(2) ≈ 1000.32, bracketing 10^1000 on both sides.
+Previous attempt used norm_num [Real.exp_le_exp] which cannot evaluate
+transcendental bounds; the native_decide path compiles to native integer
+arithmetic and handles ~1000-digit comparisons without issue.
 
-Formatting fixes: imscribing_grammar/time_through_the_ig_lifted.md
-- § 3 header: ⊗ → $\otimes$, = → $=$
-- § 5.2 header: ⊗ → $\otimes$
-- Neighborhood table row 1: A2† → A2$^\dagger$ (CLAUDE.md: no raw Unicode math)
+CLU_scale_independence: replaced incomplete dangling-have proof with:
+  unfold CLU; congr 1; have hcx := mul_ne_zero hc.ne' hx.ne'; field_simp [hcx]
+Previous proof ended mid-tactic with an unused `have : Real.exp (Real.log 10) = 10`
+that never discharged the goal. congr 1 reduces to the arithmetic subgoal
+(10 * c * x) / (c * x) = 10 which field_simp closes directly.
+
+Section V.4 and V.5 comment syntax: changed four // lines to --.
+C-style // comments are not valid in Lean 4; silently ignored by the parser
+but would cause issues under strict linting. Affected: the grokking transition
+description (V.4) and the log-normal/criticality description (V.5), including
+the section-close // ===... delimiter in V.5.
+
+README.md (reframe):
+
+Title changed:
+  "A Formal Barrier Taxonomy for the Millennium Prize Problems in Lean 4"
+  → "Formal Mathematical Extension of the Imscribing Grammar"
+
+Opening paragraph rewritten to lead with the IG: this library gives the
+12-primitive grammar formal mathematical standing — primitives become Lean
+inductive types, lattice operations become machine-verified theorems, structural
+claims become decidable propositions. The Millennium Problems are test cases,
+not the subject.
+
+Companion Papers table added (after title, before Primitive Space):
+- Odd Perfect Numbers — Euler's Theorem and Touchard's Congruence
+  DOI: 10.5281/zenodo.19909057 (confirmed; odd-perfect-numbers repo)
+- Ten is Solitary (PDF; solitary_10 repo; Zenodo pending)
+- Hecke-Landau Equidistribution (PDF; hecke-landau repo; Zenodo pending)
+- The Perfect Cuboid: Infinite Descent and Three Axioms (PDF; Zenodo pending)
+- The Beal Conjecture: A Structural Encoding (PDF; Zenodo pending)
+- The Aether and Its Vessel: E8, G2, and Imscriptive Structure (PDF; Zenodo pending)
+- SIC-POVM Existence via the Stark Conjecture (Millennium/SIC_POVM_Stark.lean)
+
+Primitive Space intro updated:
+  "encodes each Millennium Prize Problem as a synthon"
+  → "encodes each system as a synthon — a point in the crystal of
+     3^3 * 4^5 * 5^4 = 17,280,000 structural types"
