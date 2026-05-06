@@ -17,11 +17,11 @@ Papers arising from the formalization program. Each corresponds to one or more f
 | Paper | Repo | DOI / PDF |
 |-------|------|-----------|
 | *Odd Perfect Numbers — Euler's Theorem and Touchard's Congruence* | `odd-perfect-numbers` | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19909057.svg)](https://doi.org/10.5281/zenodo.19909057) |
-| *Ten is Solitary* | `solitary_10` | [PDF](https://github.com/umpolungfish/solitary_10/blob/main/SOLITARY_10.pdf) |
-| *Hecke-Landau Equidistribution* | `hecke-landau` | [PDF](https://github.com/umpolungfish/hecke-landau/blob/main/HECKE_LANDAU.pdf) |
+| *Proof That 10 Is Solitary* | `solitary_10` | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20041211.svg)](https://doi.org/10.5281/zenodo.20041211) |
+| *The Hecke-Landau Conjecture: A Proof and Its Architecture* | `hecke-landau` | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19965471.svg)](https://doi.org/10.5281/zenodo.19965471) |
 | *The Perfect Cuboid: Infinite Descent and Three Axioms* | `perfect_cuboid` | [PDF](https://github.com/umpolungfish/perfect_cuboid/blob/main/perfect_cuboid_proof.pdf) |
 | *The Beal Conjecture: A Structural Encoding* | `BealProof` | [PDF](https://github.com/umpolungfish/BealProof/blob/main/BealDualProof.pdf) |
-| *The Aether and Its Vessel: $E_8$, $G_2$, and Imscriptive Structure* | `e8_aether_g2_vessel` | [PDF](https://github.com/umpolungfish/e8_aether_g2_vessel/blob/main/Aether_and_Vessel.pdf) |
+| *The Aether and Its Vessel: $E_8$, $G_2$, and Imscriptive Structure* | `e8_aether_g2_vessel` | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20032180.svg)](https://doi.org/10.5281/zenodo.20032180) |
 | *SIC-POVM Existence via the Stark Conjecture* | (this repo) | `Millennium/SIC_POVM_Stark.lean` |
 
 ---

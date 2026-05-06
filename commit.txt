@@ -1,4 +1,4 @@
-v0.5.71 — CLUPrimitives fixes · README reframe · companion papers table
+v0.5.71 — CLUPrimitives fixes · README reframe · companion papers table + DOIs
 
 CLUPrimitives.lean (four fixes):
 
@@ -39,11 +39,14 @@ not the subject.
 Companion Papers table added (after title, before Primitive Space):
 - Odd Perfect Numbers — Euler's Theorem and Touchard's Congruence
   DOI: 10.5281/zenodo.19909057 (confirmed; odd-perfect-numbers repo)
-- Ten is Solitary (PDF; solitary_10 repo; Zenodo pending)
-- Hecke-Landau Equidistribution (PDF; hecke-landau repo; Zenodo pending)
+- Proof That 10 Is Solitary
+  DOI: 10.5281/zenodo.20041211 (confirmed; solitary_10 repo)
+- The Hecke-Landau Conjecture: A Proof and Its Architecture
+  DOI: 10.5281/zenodo.19965471 (confirmed; hecke-landau repo)
 - The Perfect Cuboid: Infinite Descent and Three Axioms (PDF; Zenodo pending)
 - The Beal Conjecture: A Structural Encoding (PDF; Zenodo pending)
-- The Aether and Its Vessel: E8, G2, and Imscriptive Structure (PDF; Zenodo pending)
+- The Aether and Its Vessel: E8, G2, and Imscriptive Structure
+  DOI: 10.5281/zenodo.20032180 (confirmed; e8_aether_g2_vessel repo)
 - SIC-POVM Existence via the Stark Conjecture (Millennium/SIC_POVM_Stark.lean)
 
 Primitive Space intro updated:
