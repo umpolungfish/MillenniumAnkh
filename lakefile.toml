@@ -24,6 +24,7 @@ globs = [
   "Imscribing.Primitives.TierCrossing",
   "Imscribing.Primitives.Crystal",
   "Imscribing.Primitives.Catalog",
+  "Imscribing.Primitives.ZFCt",
   "Imscribing.Consciousness",
   "Imscribing.AgentSelf",
   "Imscribing.Algebra",
