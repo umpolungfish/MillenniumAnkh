@@ -51,5 +51,6 @@ globs = [
   "Imscribing.Millennium.Suffering",
   "Imscribing.PrimitiveMismatch",
   "Imscribing.Millennium.Zosimos_Stilling",
-  "Imscribing.Millennium.WorldReligions"
+  "Imscribing.Millennium.WorldReligions",
+  "Imscribing.IGMorphism"
 ]

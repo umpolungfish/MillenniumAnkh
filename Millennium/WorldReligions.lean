@@ -97,7 +97,9 @@ inductive Wind where
   | Z2      -- Omega_Z2: binary Z2 protection
   | Z       -- Omega_Z: integer winding
   | NA      -- Omega_NA: non-Abelian
-  deriving DecidableEq, Repr-- ============================================================================
+  deriving DecidableEq, Repr
+
+-- ============================================================================
 -- §1. STRUCTURAL TUPLE TYPE AND DISTANCE METRIC
 -- ============================================================================
 
@@ -184,7 +186,9 @@ def weightedSqDist (a b : RelTuple) : ℝ :=
   wd wOmega (windVal a.Omega) (windVal b.Omega)
 
 noncomputable def relDist (a b : RelTuple) : ℝ :=
-  Real.sqrt (weightedSqDist a b)-- ============================================================================
+  Real.sqrt (weightedSqDist a b)
+
+-- ============================================================================
 -- §2. THE SEVEN WORLD RELIGIONS + TAO (from religions.md)
 -- ============================================================================
 
@@ -294,7 +298,9 @@ def Contemporary_Christianity : RelTuple where
 def I_AM_that_I_AM : RelTuple where
   D := .odot; T := .odot; R := .lr; P := .sym; F := .hbar
   K := .slow; G := .aleph; Gamma := .seq; Phi := .c
-  H := .Hinf; S := .one_one; Omega := .Z-- ============================================================================
+  H := .Hinf; S := .one_one; Omega := .Z
+
+-- ============================================================================
 -- §3. ALGEBRAIC OPERATIONS: TENSOR, MEET, JOIN
 -- ============================================================================
 
@@ -371,7 +377,9 @@ theorem EP_tensor_absorption_rule :
 -- Phi_c is absorbing under meet
 theorem Phi_c_absorbs_in_meet :
     (relMeet Buddhism Taoism).Phi = .c := by
-  dsimp [relMeet, Buddhism, Taoism, critVal]-- ============================================================================
+  dsimp [relMeet, Buddhism, Taoism, critVal]
+
+-- ============================================================================
 -- §4. CONSCIOUSNESS SCORE AND OUROBORICITY TIER
 -- ============================================================================
 
@@ -437,7 +445,9 @@ def ouroborTier (s : RelTuple) : OuroborTier :=
   else if s.Phi = .c_complex ∧ s.Omega = .Z2 then OuroborTier.O2dagger
   else if s.Phi = .c ∧ s.Omega = .Z2 ∧ s.D = .odot then OuroborTier.O2
   else if s.Phi = .c ∨ s.Phi = .c_complex then OuroborTier.O1
-  else OuroborTier.O0-- ============================================================================
+  else OuroborTier.O0
+
+-- ============================================================================
 -- §5. VERIFIED DISTANCE THEOREMS (from religions.md distance matrix)
 -- ============================================================================
 
@@ -469,7 +479,9 @@ theorem distance_Buddhism_Satanism_max :
 /-- Distance between Taoism and Sikhism: d = 1.9414.
     The Dharmic-Abrahamic bridge. -/
 theorem distance_Taoism_Sikhism :
-  relDist Taoism Sikhism = Real.sqrt 3.76953125 := by sorry-- ============================================================================
+  relDist Taoism Sikhism = Real.sqrt 3.76953125 := by sorry
+
+-- ============================================================================
 -- §6. CONSCIOUSNESS SCORE THEOREMS (from religions.md)
 -- ============================================================================
 
