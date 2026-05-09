@@ -28,3 +28,4 @@ wheels/
 *.synctex.gz
 *.bbl
 *.blg
+gourly.py

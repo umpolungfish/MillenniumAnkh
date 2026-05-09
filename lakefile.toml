@@ -48,5 +48,8 @@ globs = [
   "Imscribing.Millennium.Beal",
   "Imscribing.Millennium.SIC_POVM_Stark",
   "Imscribing.Millennium.CMPLX_IMGN",
-  "Imscribing.PrimitiveMismatch"
+  "Imscribing.Millennium.Suffering",
+  "Imscribing.PrimitiveMismatch",
+  "Imscribing.Millennium.Zosimos_Stilling",
+  "Imscribing.Millennium.WorldReligions"
 ]

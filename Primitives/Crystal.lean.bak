@@ -5,7 +5,6 @@
 
 import Imscribing.Primitives.Core
 import Imscribing.Primitives.Synthon
-import Mathlib.Tactic.Set
 
 namespace Imscribing.Primitives
 
@@ -154,10 +153,8 @@ def crystal_decode (addr : Nat) : Synthon :=
 theorem crystal_total_size : 27 * 1024 * 625 = 17280000 := by decide
 
 -- Roundtrip: decode ∘ encode = id
-set_option maxHeartbeats 800000 in
--- 12-field mixed-radix roundtrip: 12 × (set + omega) bursts exceed the default 200k budget
 theorem crystal_roundtrip (s : Synthon) : crystal_decode (crystal_encode s) = s := by
-  -- Index bounds: each idx fits within its digit radix
+  -- Index bounds: each idx fits within its digit's radix
   have hD : idx_D s.dim  < 4 := by cases s.dim  <;> simp [idx_D]
   have hR : idx_R s.rel  < 4 := by cases s.rel  <;> simp [idx_R]
   have hΓ : idx_Γ s.gram < 4 := by cases s.gram <;> simp [idx_Γ]
@@ -183,45 +180,68 @@ theorem crystal_roundtrip (s : Synthon) : crystal_decode (crystal_encode s) = s 
   have h_chir : chir_of_nat (idx_H s.chir) = s.chir := by cases s.chir <;> simp [idx_H,  chir_of_nat]
   have h_stoi : stoi_of_nat (idx_S s.stoi) = s.stoi := by cases s.stoi <;> simp [idx_S,  stoi_of_nat]
   have h_prot : prot_of_nat (idx_Ω s.prot) = s.prot := by cases s.prot <;> simp [idx_Ω,  prot_of_nat]
-  -- Introduce block variables; set gives unfoldable defs for omega.
-  set f3 := idx_F s.fid * 9 + idx_G s.gran * 3 + idx_S s.stoi
-  set f4 := idx_D s.dim * 256 + idx_R s.rel * 64 + idx_Γ s.gram * 16 + idx_H s.chir * 4 + idx_Ω s.prot
-  set f5 := idx_T s.top * 125 + idx_P s.pol * 25 + idx_Φ s.crit * 5 + idx_K s.kin
-  -- Block bounds (omega derives from individual bounds)
-  have hf3 : f3 < 27   := by omega
-  have hf4 : f4 < 1024 := by omega
-  have hf5 : f5 < 625  := by omega
-  -- Per-field one-level digit extractions (omega with 5 vars each)
-  have he_dim  : f4 / 256       = idx_D s.dim  := by omega
-  have he_rel  : f4 / 64 % 4   = idx_R s.rel  := by omega
-  have he_gram : f4 / 16 % 4   = idx_Γ s.gram := by omega
-  have he_chir : f4 / 4 % 4    = idx_H s.chir := by omega
-  have he_prot : f4 % 4         = idx_Ω s.prot := by omega
-  have he_top  : f5 / 125       = idx_T s.top  := by omega
-  have he_pol  : f5 / 25 % 5   = idx_P s.pol  := by omega
-  have he_crit : f5 / 5 % 5    = idx_Φ s.crit := by omega
-  have he_kin  : f5 % 5         = idx_K s.kin  := by omega
-  have he_fid  : f3 / 9         = idx_F s.fid  := by omega
-  have he_gran : f3 / 3 % 3    = idx_G s.gran := by omega
-  have he_stoi : f3 % 3         = idx_S s.stoi := by omega
-  -- Rewrite encode as f3 + 27*f4 + 27*1024*f5
-  have henc : crystal_encode s = f3 + 27 * f4 + 27 * 1024 * f5 := by
+  -- Block range bounds (derived from individual bounds above).
+  have hf3_lt : idx_F s.fid * 9 + idx_G s.gran * 3 + idx_S s.stoi < 27 := by omega
+  have hf4_lt : idx_D s.dim * 256 + idx_R s.rel * 64 + idx_Γ s.gram * 16
+                + idx_H s.chir * 4 + idx_Ω s.prot < 1024 := by omega
+  have hf5_lt : idx_T s.top * 125 + idx_P s.pol * 25 + idx_Φ s.crit * 5 + idx_K s.kin < 625 := by omega
+  -- Sub-block bounds needed for inner digit extraction.
+  have hf4_sub  : idx_R s.rel * 64 + idx_Γ s.gram * 16 + idx_H s.chir * 4 + idx_Ω s.prot < 256 := by omega
+  have hf4_sub2 : idx_Γ s.gram * 16 + idx_H s.chir * 4 + idx_Ω s.prot < 64 := by omega
+  have hf4_sub3 : idx_H s.chir * 4 + idx_Ω s.prot < 16 := by omega
+  have hf5_sub  : idx_P s.pol * 25 + idx_Φ s.crit * 5 + idx_K s.kin < 125 := by omega
+  have hf5_sub2 : idx_Φ s.crit * 5 + idx_K s.kin < 25 := by omega
+  have hf3_sub  : idx_G s.gran * 3 + idx_S s.stoi < 9 := by omega
+  -- Three raw block extractions (two-level each; omega handles with explicit block bounds).
+  have hf3_raw : crystal_encode s % 27 =
+      idx_F s.fid * 9 + idx_G s.gran * 3 + idx_S s.stoi := by
     simp only [crystal_encode]; omega
-  rw [henc]
+  have hf4_raw : (crystal_encode s / 27) % 1024 =
+      idx_D s.dim * 256 + idx_R s.rel * 64 + idx_Γ s.gram * 16
+      + idx_H s.chir * 4 + idx_Ω s.prot := by
+    simp only [crystal_encode]; omega
+  have hf5_raw : crystal_encode s / 27648 =
+      idx_T s.top * 125 + idx_P s.pol * 25 + idx_Φ s.crit * 5 + idx_K s.kin := by
+    simp only [crystal_encode]; omega
+  -- Lift raw extractions to per-field lemmas; clear hf?_raw so omega
+  -- sees only the clean single-level div/mod goal without crystal_encode auxiliaries.
+  have he_dim  : (crystal_encode s / 27 % 1024) / 256 = idx_D s.dim := by
+    rw [hf4_raw]; clear hf3_raw hf4_raw hf5_raw; omega
+  have he_top  : crystal_encode s / 27648 / 125 = idx_T s.top := by
+    rw [hf5_raw]; clear hf3_raw hf4_raw hf5_raw; omega
+  have he_rel  : crystal_encode s / 27 % 1024 / 64 % 4 = idx_R s.rel := by
+    rw [hf4_raw]; clear hf3_raw hf4_raw hf5_raw; omega
+  have he_pol  : crystal_encode s / 27648 / 25 % 5 = idx_P s.pol := by
+    rw [hf5_raw]; clear hf3_raw hf4_raw hf5_raw; omega
+  have he_fid  : crystal_encode s % 27 / 9 = idx_F s.fid := by
+    rw [hf3_raw]; clear hf3_raw hf4_raw hf5_raw; omega
+  have he_kin  : crystal_encode s / 27648 % 5 = idx_K s.kin := by
+    rw [hf5_raw]; clear hf3_raw hf4_raw hf5_raw; omega
+  have he_gran : crystal_encode s % 27 / 3 % 3 = idx_G s.gran := by
+    rw [hf3_raw]; clear hf3_raw hf4_raw hf5_raw; omega
+  have he_gram : crystal_encode s / 27 % 1024 / 16 % 4 = idx_Γ s.gram := by
+    rw [hf4_raw]; clear hf3_raw hf4_raw hf5_raw; omega
+  have he_crit : crystal_encode s / 27648 / 5 % 5 = idx_Φ s.crit := by
+    rw [hf5_raw]; clear hf3_raw hf4_raw hf5_raw; omega
+  have he_chir : crystal_encode s / 27 % 1024 / 4 % 4 = idx_H s.chir := by
+    rw [hf4_raw]; clear hf3_raw hf4_raw hf5_raw; omega
+  have he_stoi : crystal_encode s % 27 % 3 = idx_S s.stoi := by
+    rw [hf3_raw]; clear hf3_raw hf4_raw hf5_raw; omega
+  have he_prot : crystal_encode s / 27 % 1024 % 4 = idx_Ω s.prot := by
+    rw [hf4_raw]; clear hf3_raw hf4_raw hf5_raw; omega
   simp only [crystal_decode]
-  -- dsimp only reduces struct projection; rw transforms RHS; congr 1 then omega (3 vars).
   ext
-  · dsimp only; rw [← h_dim, ← he_dim]; congr 1; omega
-  · dsimp only; rw [← h_top, ← he_top]; congr 1; omega
-  · dsimp only; rw [← h_rel, ← he_rel]; congr 1; omega
-  · dsimp only; rw [← h_pol, ← he_pol]; congr 1; omega
-  · dsimp only; rw [← h_fid, ← he_fid]; congr 1; omega
-  · dsimp only; rw [← h_kin, ← he_kin]; congr 1; omega
-  · dsimp only; rw [← h_gran, ← he_gran]; congr 1; omega
-  · dsimp only; rw [← h_gram, ← he_gram]; congr 1; omega
-  · dsimp only; rw [← h_crit, ← he_crit]; congr 1; omega
-  · dsimp only; rw [← h_chir, ← he_chir]; congr 1; omega
-  · dsimp only; rw [← h_stoi, ← he_stoi]; congr 1; omega
-  · dsimp only; rw [← h_prot, ← he_prot]; congr 1; omega
+  · rw [← h_dim];  congr 1; exact he_dim
+  · rw [← h_top];  congr 1; exact he_top
+  · rw [← h_rel];  congr 1; exact he_rel
+  · rw [← h_pol];  congr 1; exact he_pol
+  · rw [← h_fid];  congr 1; exact he_fid
+  · rw [← h_kin];  congr 1; exact he_kin
+  · rw [← h_gran]; congr 1; exact he_gran
+  · rw [← h_gram]; congr 1; exact he_gram
+  · rw [← h_crit]; congr 1; exact he_crit
+  · rw [← h_chir]; congr 1; exact he_chir
+  · rw [← h_stoi]; congr 1; exact he_stoi
+  · rw [← h_prot]; congr 1; exact he_prot
 
 end Imscribing.Primitives
