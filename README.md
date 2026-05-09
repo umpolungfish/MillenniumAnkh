@@ -28,9 +28,9 @@ Papers arising from the formalization program. Each corresponds to one or more f
 
 ## Primitive Space
 
-The 12-primitive grammar imscribes each system as a synthon — a point in the crystal of $3^3 \times 4^5 \times 5^4 = 17{,}280{,}000$ structural types. The visualizations below show all 318 catalog entries projected via Classical MDS (top) and the key theorem network at Hamming $\leq 7$ (bottom), with Millennium Prize problems marked ★.
+The 12-primitive grammar imscribes each system as a synthon — a point in the crystal of $3^3 \times 4^5 \times 5^4 = 17{,}280{,}000$ structural types. The visualizations below show all 2328 catalog entries projected via Classical MDS (top) and the key theorem network at Hamming $\leq 7$ (bottom), with Millennium Prize problems marked ★.
 
-### MDS Projection — 318 Catalog Entries
+### MDS Projection — 2328 Catalog Entries
 
 ![Primitive Space MDS](syncon_primitive_map_mds.png)
 
@@ -224,7 +224,7 @@ Structural tendencies (not axioms, documented in comments):
 lake build Imscribing
 ```
 
-Expected output: `Build completed successfully (3402 jobs)` with warnings only. The library contains many
+Expected output: `Build completed successfully (8061 jobs)` with warnings only. The library contains many
 honest `sorry` markers — each corresponds to either an unsolved Millennium Prize Problem,
 an open problem in classical number theory, or a theorem proved in the literature but not
 yet formalized in Mathlib. No `sorry` conceals a claim the authors believe to be false.
