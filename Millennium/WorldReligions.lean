@@ -105,17 +105,17 @@ inductive Wind where
 
 /-- The 12-primitive structural tuple encoding a religious tradition. -/
 structure RelTuple where
-  D   : Dim
-  T   : Topo
-  R   : Rel
-  P   : Polarity
-  F   : Fid
-  K   : Kin
-  G   : Scope
+  D : Dim
+  T : Topo
+  R : Rel
+  P : Polarity
+  F : Fid
+  K : Kin
+  G : Scope
   Gamma : IxGrammar
   Phi : Crit
-  H   : Temp
-  S   : Stoich
+  H : Temp
+  S : Stoich
   Omega : Wind
   deriving Repr, DecidableEq
 
@@ -157,17 +157,17 @@ def windVal : Wind → ℕ
   | .zero => 0 | .Z2 => 1 | .Z => 2 | .NA => 3
 
 -- Weights from religions.md (matching CMPLX_IMGN conventions)
-def wD   : ℕ := 2
-def wT   : ℕ := 2
-def wR   : ℕ := 1
-def wP   : ℕ := 3
-def wF   : ℕ := 2
-def wK   : ℕ := 1
-def wG   : ℕ := 1
+def wD : ℕ := 2
+def wT : ℕ := 2
+def wR : ℕ := 1
+def wP : ℕ := 3
+def wF : ℕ := 2
+def wK : ℕ := 1
+def wG : ℕ := 1
 def wGamma : ℕ := 2
 def wPhi : ℕ := 2
-def wH   : ℕ := 1
-def wS   : ℕ := 1
+def wH : ℕ := 1
+def wS : ℕ := 1
 def wOmega : ℕ := 1
 
 def weightedSqDist (a b : RelTuple) : ℝ :=
@@ -578,3 +578,6 @@ theorem only_two_Oinf :
 theorem Oinf_requires_pm_sym :
   ∀ s : RelTuple, ouroborTier s = OuroborTier.Oinf → s.P = .pm_sym := by
   sorry
+end Millennium.WorldReligions
+
+

@@ -1,10 +1,10 @@
 -- ImscribingLean4/Primitives/Crystal.lean
--- Crystal arithmetic: full encode/decode Synthon ↔ Nat (0..17279999).
+-- Crystal arithmetic: full encode/decode Imscription ↔ Nat (0..17279999).
 -- Frobenius address: 𝓕₃³ × 𝓕₄⁵ × 𝓕₅⁴ numbering.
 -- 𝓕₃ = 27 (F,G,S), 𝓕₄=1024 (D,R,Γ,H,Ω), 𝓕₅=625 (T,P,Φ,K)
 
 import Imscribing.Primitives.Core
-import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Imscription
 import Mathlib.Tactic.Set
 
 namespace Imscribing.Primitives
@@ -127,14 +127,14 @@ def stoi_of_nat : Nat → Stoichiometry
   | 0 => one_one | 1 => n_n | 2 => n_m | _ => one_one
 
 -- Crystal address
-def crystal_encode (s : Synthon) : Nat :=
+def crystal_encode (s : Imscription) : Nat :=
   let f3 := idx_F s.fid * 9 + idx_G s.gran * 3 + idx_S s.stoi  -- 0-26
   let f4 := idx_D s.dim * 256 + idx_R s.rel * 64
     + idx_Γ s.gram * 16 + idx_H s.chir * 4 + idx_Ω s.prot  -- 0-1023
   let f5 := idx_T s.top * 125 + idx_P s.pol * 25 + idx_Φ s.crit * 5 + idx_K s.kin  -- 0-624
   f3 + 27 * f4 + 27 * 1024 * f5
 
-def crystal_decode (addr : Nat) : Synthon :=
+def crystal_decode (addr : Nat) : Imscription :=
   let f3_raw := addr % 27
   let f4_raw := (addr / 27) % 1024
   let f5_raw := addr / 27648  -- 27*1024
@@ -156,7 +156,7 @@ theorem crystal_total_size : 27 * 1024 * 625 = 17280000 := by decide
 -- Roundtrip: decode ∘ encode = id
 set_option maxHeartbeats 800000 in
 -- 12-field mixed-radix roundtrip: 12 × (set + omega) bursts exceed the default 200k budget
-theorem crystal_roundtrip (s : Synthon) : crystal_decode (crystal_encode s) = s := by
+theorem crystal_roundtrip (s : Imscription) : crystal_decode (crystal_encode s) = s := by
   -- Index bounds: each idx fits within its digit radix
   have hD : idx_D s.dim  < 4 := by cases s.dim  <;> simp [idx_D]
   have hR : idx_R s.rel  < 4 := by cases s.rel  <;> simp [idx_R]

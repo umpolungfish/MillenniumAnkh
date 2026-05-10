@@ -2,7 +2,7 @@
 -- ZFC$_t$: ZFC extended with Sequentiality, Temporal Depth, and Winding.
 
 import Imscribing.Primitives.Core
-import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Imscription
 import Imscribing.Algebra
 import Imscribing.Consciousness
 import Mathlib.Data.Real.Basic
@@ -19,48 +19,48 @@ set_option autoImplicit false
 set_option linter.style.longLine false
 
 /- ZFC -/
-def zfc : Synthon := {
+def zfc : Imscription := {
   dim := D_infty,  top := T_network, rel := R_super,
   pol := P_asym,   fid := F_hbar,    kin := K_slow,
   gran := G_aleph, gram := Gamma_and, crit := Phi_c,
   chir := H0,      stoi := n_m,      prot := Omega_0 }
 
-def temporal_mathematics : Synthon := {
+def temporal_mathematics : Imscription := {
   dim := D_infty, top := T_odot, rel := R_dagger, pol := P_sym,
   fid := F_hbar,  kin := K_slow, gran := G_aleph, gram := Gamma_seq,
   crit := Phi_c,  chir := H2,    stoi := n_m,     prot := Omega_Z }
 
-def zfc_t : Synthon := {
+def zfc_t : Imscription := {
   dim := D_infty, top := T_odot,  rel := R_lr,     pol := P_pm,
   fid := F_hbar,  kin := K_slow,  gran := G_aleph, gram := Gamma_seq,
   crit := Phi_c,  chir := H2,     stoi := n_m,     prot := Omega_Z }
 
-/-- Schr\xF6dinger equation synthon. -/
-def schrodinger_equation : Synthon := {
+/-- Schr\xF6dinger equation imscription. -/
+def schrodinger_equation : Imscription := {
   dim := D_infty, top := T_bowtie, rel := R_lr,    pol := P_psi,
   fid := F_hbar,  kin := K_slow,  gran := G_aleph, gram := Gamma_seq,
   crit := Phi_c_complex, chir := H2, stoi := n_m, prot := Omega_Z }
 
-/-- Heat diffusion equation synthon. -/
-def heat_diffusion_equation : Synthon := {
+/-- Heat diffusion equation imscription. -/
+def heat_diffusion_equation : Imscription := {
   dim := D_infty, top := T_bowtie, rel := R_dagger, pol := P_asym,
   fid := F_eth,   kin := K_slow,  gran := G_aleph,  gram := Gamma_seq,
   crit := Phi_sub, chir := H1,    stoi := n_m,      prot := Omega_0 }
 
-/-- Navier-Stokes equation synthon. -/
-def navier_stokes_equations : Synthon := {
+/-- Navier-Stokes equation imscription. -/
+def navier_stokes_equations : Imscription := {
   dim := D_infty, top := T_bowtie, rel := R_lr,    pol := P_pm,
   fid := F_ell,   kin := K_mod,   gran := G_aleph, gram := Gamma_seq,
   crit := Phi_c,  chir := H2,     stoi := n_m,     prot := Omega_Z }
 
-/-- Wave equation synthon. -/
-def wave_equation_temporal : Synthon := {
+/-- Wave equation imscription. -/
+def wave_equation_temporal : Imscription := {
   dim := D_infty, top := T_bowtie, rel := R_dagger, pol := P_sym,
   fid := F_ell,   kin := K_mod,   gran := G_aleph, gram := Gamma_seq,
   crit := Phi_sub, chir := H2,    stoi := n_m,     prot := Omega_0 }
 
-/-- Einstein field equations synthon. -/
-def einstein_field_equations_dynamic : Synthon := {
+/-- Einstein field equations imscription. -/
+def einstein_field_equations_dynamic : Imscription := {
   dim := D_infty, top := T_odot,  rel := R_dagger, pol := P_sym,
   fid := F_ell,   kin := K_slow,  gran := G_aleph, gram := Gamma_seq,
   crit := Phi_c_complex, chir := H2, stoi := n_m, prot := Omega_Z }
@@ -95,7 +95,7 @@ def einstein_field_equations (M : Type) (g : LorentzianMetric M)
 
 inductive FormulaSeqRel where | precedes | precedes_rev | conj deriving DecidableEq
 
-def temporalDepth (n : ℕ) (s : Synthon) : Synthon :=
+def temporalDepth (n : ℕ) (s : Imscription) : Imscription :=
   { s with chir :=
     if n = 0 then H0 else if n = 1 then H1 else if n = 2 then H2 else H_inf }
 

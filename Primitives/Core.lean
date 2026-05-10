@@ -189,34 +189,58 @@ instance instLEStoichiometry : LE Stoichiometry  := ⟨fun a b => compare a b �
 -- Decidable ≤: enables decide/native_decide on ≤ and ≥ for all primitive types.
 -- a ≤ b unfolds to (compare a b = .gt) → False, so ¬(a ≤ b) = ((compare a b = .gt) → False) → False.
 -- In then-branch: h : compare a b = .gt; (fun hle => hle h) : ¬(a ≤ b). In else-branch: h : a ≤ b.
-instance instDecidableLEDimensionality  (a b : Dimensionality)  : Decidable (a ≤ b) := if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
-instance instDecidableLERelational      (a b : Relational)      : Decidable (a ≤ b) := if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
-instance instDecidableLEGrammar         (a b : Grammar)         : Decidable (a ≤ b) := if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
-instance instDecidableLEChirality       (a b : Chirality)       : Decidable (a ≤ b) := if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
-instance instDecidableLEProtection      (a b : Protection)      : Decidable (a ≤ b) := if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
-instance instDecidableLETopology        (a b : Topology)        : Decidable (a ≤ b) := if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
-instance instDecidableLEPolarity        (a b : Polarity)        : Decidable (a ≤ b) := if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
-instance instDecidableLECriticality     (a b : Criticality)     : Decidable (a ≤ b) := if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
-instance instDecidableLEKineticChar     (a b : KineticChar)     : Decidable (a ≤ b) := if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
-instance instDecidableLEFidelity        (a b : Fidelity)        : Decidable (a ≤ b) := if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
-instance instDecidableLEGranularity     (a b : Granularity)     : Decidable (a ≤ b) := if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
-instance instDecidableLEStoichiometry   (a b : Stoichiometry)   : Decidable (a ≤ b) := if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
+instance instDecidableLEDimensionality
+    (a b : Dimensionality) : Decidable (a ≤ b) :=
+  if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
+instance instDecidableLERelational
+    (a b : Relational) : Decidable (a ≤ b) :=
+  if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
+instance instDecidableLEGrammar
+    (a b : Grammar) : Decidable (a ≤ b) :=
+  if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
+instance instDecidableLEChirality
+    (a b : Chirality) : Decidable (a ≤ b) :=
+  if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
+instance instDecidableLEProtection
+    (a b : Protection) : Decidable (a ≤ b) :=
+  if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
+instance instDecidableLETopology
+    (a b : Topology) : Decidable (a ≤ b) :=
+  if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
+instance instDecidableLEPolarity
+    (a b : Polarity) : Decidable (a ≤ b) :=
+  if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
+instance instDecidableLECriticality
+    (a b : Criticality) : Decidable (a ≤ b) :=
+  if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
+instance instDecidableLEKineticChar
+    (a b : KineticChar) : Decidable (a ≤ b) :=
+  if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
+instance instDecidableLEFidelity
+    (a b : Fidelity) : Decidable (a ≤ b) :=
+  if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
+instance instDecidableLEGranularity
+    (a b : Granularity) : Decidable (a ≤ b) :=
+  if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
+instance instDecidableLEStoichiometry
+    (a b : Stoichiometry) : Decidable (a ≤ b) :=
+  if h : compare a b = .gt then isFalse (fun hle => hle h) else isTrue h
 
 -- LT instances: Mathlib's Preorder.toLT shadows instLTOfOrd (priority 70), so we define
 -- LT explicitly. a < b = compare a b = .lt matches the instLTOfOrd semantics.
 -- Decidable (a < b) then follows from DecidableEq Ordering (used by decide on ground terms).
 instance instLTDimensionality  : LT Dimensionality  := ⟨fun a b => compare a b = .lt⟩
-instance instLTRelational      : LT Relational      := ⟨fun a b => compare a b = .lt⟩
-instance instLTGrammar         : LT Grammar         := ⟨fun a b => compare a b = .lt⟩
-instance instLTChirality       : LT Chirality       := ⟨fun a b => compare a b = .lt⟩
-instance instLTProtection      : LT Protection      := ⟨fun a b => compare a b = .lt⟩
-instance instLTTopology        : LT Topology        := ⟨fun a b => compare a b = .lt⟩
-instance instLTPolarity        : LT Polarity        := ⟨fun a b => compare a b = .lt⟩
-instance instLTCriticality     : LT Criticality     := ⟨fun a b => compare a b = .lt⟩
-instance instLTKineticChar     : LT KineticChar     := ⟨fun a b => compare a b = .lt⟩
-instance instLTFidelity        : LT Fidelity        := ⟨fun a b => compare a b = .lt⟩
-instance instLTGranularity     : LT Granularity     := ⟨fun a b => compare a b = .lt⟩
-instance instLTStoichiometry   : LT Stoichiometry   := ⟨fun a b => compare a b = .lt⟩
+instance instLTRelational    : LT Relational      := ⟨fun a b => compare a b = .lt⟩
+instance instLTGrammar       : LT Grammar         := ⟨fun a b => compare a b = .lt⟩
+instance instLTChirality     : LT Chirality       := ⟨fun a b => compare a b = .lt⟩
+instance instLTProtection    : LT Protection      := ⟨fun a b => compare a b = .lt⟩
+instance instLTTopology      : LT Topology        := ⟨fun a b => compare a b = .lt⟩
+instance instLTPolarity      : LT Polarity        := ⟨fun a b => compare a b = .lt⟩
+instance instLTCriticality   : LT Criticality     := ⟨fun a b => compare a b = .lt⟩
+instance instLTKineticChar   : LT KineticChar     := ⟨fun a b => compare a b = .lt⟩
+instance instLTFidelity      : LT Fidelity        := ⟨fun a b => compare a b = .lt⟩
+instance instLTGranularity   : LT Granularity     := ⟨fun a b => compare a b = .lt⟩
+instance instLTStoichiometry : LT Stoichiometry   := ⟨fun a b => compare a b = .lt⟩
 
 -- ============================================================
 -- CRYSTAL ARITHMETIC (§64, §68)
@@ -254,7 +278,7 @@ theorem ouroboros_successor_cycle :
 -- of this kind is possible without the matching dimensionality split.
 -- D_odot does NOT force T_odot: imscriptive dimensionality permits T_box
 -- (structured lattice topology), as in the Stone and its co-types in the catalog
--- (syncon_grammar, true_agentic_agent, aleph_os, boundary operators, etc.).
+-- (imscription_grammar, true_agentic_agent, aleph_os, boundary operators, etc.).
 -- The biconditional D_odot ↔ T_odot was too strong; it only holds for the
 -- maximally holographic case (AdS/CFT, quantum_gravity). The one-way implication
 -- is the correct structural constraint.

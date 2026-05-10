@@ -8,7 +8,7 @@
 --   3. $G2 \vee E8 = \mathbb{Z}_2\text{-graded}\ E8$ via SO(16) (the surprising join)
 --   4. Distance(G2, E8) = 7 (7 differing primitives, 5 shared)
 
-import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Imscription
 import Imscribing.Primitives.Core
 
 namespace Millennium.E8G2
@@ -22,7 +22,7 @@ open Dimensionality Topology Relational Polarity Grammar
 -- §1. IG Imscribing of G2 (the Vessel)
 -- ============================================================
 
-def g2_vessel : Synthon := {
+def g2_vessel : Imscription := {
   dim  := D_triangle,
   top  := T_bowtie,
   rel  := R_lr,
@@ -40,7 +40,7 @@ def g2_vessel : Synthon := {
 -- §2. IG Imscribing of E8 (the Aether)
 -- ============================================================
 
-def e8_aether : Synthon := {
+def e8_aether : Imscription := {
   dim  := D_infty,
   top  := T_bowtie,
   rel  := R_lr,
@@ -60,7 +60,7 @@ def e8_aether : Synthon := {
 
 -- $G2 \vee E8$ computed: componentwise max. Differs from bare E8 only at P
 -- ($P_\pm$ instead of $P_\psi$, since $P_\psi < P_\pm$).
-def e8_graded_via_SO16 : Synthon := {
+def e8_graded_via_SO16 : Imscription := {
   dim  := D_infty,
   top  := T_bowtie,
   rel  := R_lr,
@@ -106,7 +106,7 @@ theorem tensor_distance_zero :
 -- Differs from G2 only at P: min($P_\pm$, $P_\psi$) = $P_\psi$
 -- (since $P_\psi < P_\pm$).
 -- All other primitives: G2 already holds the minimum of each shared pair.
-def meet_G2_E8 : Synthon := {
+def meet_G2_E8 : Imscription := {
   dim  := D_triangle,   -- min($D_\triangle$, $D_\infty$) = $D_\triangle$
   top  := T_bowtie,     -- min($T_\bowtie$, $T_\bowtie$) = $T_\bowtie$
   rel  := R_lr,         -- min($R_\leftrightarrow$, $R_\leftrightarrow$)
@@ -134,7 +134,7 @@ theorem meet_vs_g2_differs_at_most_one :
 -- Componentwise max of G2 and E8.
 -- Equals e8_graded_via_SO16: all E8 primitives, but P = $P_\pm$
 -- (G2's parity wins max).
-def join_G2_E8 : Synthon := {
+def join_G2_E8 : Imscription := {
   dim  := D_infty,      -- max($D_\triangle$, $D_\infty$) = $D_\infty$
   top  := T_bowtie,     -- max($T_\bowtie$, $T_\bowtie$) = $T_\bowtie$
   rel  := R_lr,         -- max($R_\leftrightarrow$, $R_\leftrightarrow$)

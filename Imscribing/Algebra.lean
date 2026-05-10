@@ -1,9 +1,9 @@
 -- Imscribing/Algebra.lean
--- Syncon Grammar: distance, meet, join, tensor.
+-- Imscription Grammar: distance, meet, join, tensor.
 -- Lattice structure, weighted Euclidean distance, probes.
 
 import Imscribing.Primitives.Core
-import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Imscription
 import Imscribing.Primitives.Crystal
 import Imscribing.Consciousness
 import Mathlib.Data.Real.Basic
@@ -17,7 +17,7 @@ open Dimensionality Topology Relational Polarity Grammar
 open Imscribing.Consciousness
 
 -- Weighted Euclidean distance: ∑ |idx(p_a) - idx(p_b)|^2 / 12
-noncomputable def primitiveDistance (a b : Synthon) : ℝ :=
+noncomputable def primitiveDistance (a b : Imscription) : ℝ :=
   let diffs : List Int := [
     Int.ofNat (idx_D a.dim) - Int.ofNat (idx_D b.dim),
     Int.ofNat (idx_T a.top) - Int.ofNat (idx_T b.top),
@@ -36,7 +36,7 @@ noncomputable def primitiveDistance (a b : Synthon) : ℝ :=
   (sqsum.toNat : ℝ) / 12
 
 -- Hamming for conflicts
-def primitiveConflicts (a b : Synthon) : List String :=
+def primitiveConflicts (a b : Imscription) : List String :=
   if a = b then [] else
     (if a.dim ≠ b.dim then ["D"] else []) ++
     (if a.top ≠ b.top then ["T"] else []) ++
@@ -52,7 +52,7 @@ def primitiveConflicts (a b : Synthon) : List String :=
     (if a.prot ≠ b.prot then ["Ω"] else [])
 
 -- Meet: pointwise min
-def compute_meet (a b : Synthon) : Synthon := {
+def compute_meet (a b : Imscription) : Imscription := {
   dim  := if compare a.dim  b.dim  = .lt then a.dim else b.dim,
   top  := if compare a.top  b.top  = .lt then a.top else b.top,
   rel  := if compare a.rel  b.rel  = .lt then a.rel else b.rel,
@@ -67,7 +67,7 @@ def compute_meet (a b : Synthon) : Synthon := {
   prot := if compare a.prot b.prot = .lt then a.prot else b.prot }
 
 -- Join: pointwise max
-def compute_join (a b : Synthon) : Synthon := {
+def compute_join (a b : Imscription) : Imscription := {
   dim  := if compare a.dim  b.dim  = .lt then b.dim else a.dim,
   top  := if compare a.top  b.top  = .lt then b.top else a.top,
   rel  := if compare a.rel  b.rel  = .lt then b.rel else a.rel,
@@ -81,19 +81,19 @@ def compute_join (a b : Synthon) : Synthon := {
   stoi := if compare a.stoi b.stoi = .lt then b.stoi else b.stoi,
   prot := if compare a.prot b.prot = .lt then b.prot else a.prot }
 
--- Tensor: reuse tensorProduct from Synthon.lean (max on union prims, min on P,F)
-def compute_tensor (a b : Synthon) : Synthon := tensorProduct a b
+-- Tensor: reuse tensorProduct from Imscription.lean (max on union prims, min on P,F)
+def compute_tensor (a b : Imscription) : Imscription := tensorProduct a b
 
 -- Probes
-def phi_c_probe (s : Synthon) : Bool :=
+def phi_c_probe (s : Imscription) : Bool :=
   phi_c_gate s.crit && decide (s.pol = P_pm_sym ∨ s.dim = D_odot)
 
-def topo_protection_probe (s : Synthon) : Bool :=
+def topo_protection_probe (s : Imscription) : Bool :=
   decide (s.prot = Omega_0 ∨ s.dim = D_infty)
 
 -- Consciousness (gate-based, reuses gates from Consciousness.lean)
-def consciousness_score_gate1 (s : Synthon) : Bool := phi_c_gate s.crit
-def consciousness_score_gate2 (s : Synthon) : Bool := k_slow_gate s.kin
-noncomputable def consciousness_score (s : Synthon) : ℝ := consciousnessScore s
+def consciousness_score_gate1 (s : Imscription) : Bool := phi_c_gate s.crit
+def consciousness_score_gate2 (s : Imscription) : Bool := k_slow_gate s.kin
+noncomputable def consciousness_score (s : Imscription) : ℝ := consciousnessScore s
 
 end Imscribing.Primitives

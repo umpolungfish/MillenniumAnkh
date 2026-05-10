@@ -16,7 +16,7 @@ import Mathlib.Analysis.SpecialFunctions.Log.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 import Mathlib.Data.Real.Basic
 import ImscribingGrammar.Primitives.Core
-import ImscribingGrammar.Primitives.Synthon
+import ImscribingGrammar.Primitives.Imscription
 
 namespace ImscribingGrammar.Primitives.CLUPrimitives
 
@@ -443,27 +443,27 @@ theorem CLU_scale_independence (x c : ℝ) (hx : x > 0) (hc : c > 0) :
   field_simp [hcx]
 
 -- ============================================================
--- IX. CROSS-REFERENCE: CLU in the K-Tier Ladder of Synthon
+-- IX. CROSS-REFERENCE: CLU in the K-Tier Ladder of Imscription
 -- ============================================================
 
-/-- The CLU operator applied to the kinetic character of a Synthon. -/
-def synthonKTier (s : Synthon) : KTier := kineticCharToKTier s.kin
+/-- The CLU operator applied to the kinetic character of a Imscription. -/
+def imscriptionKTier (s : Imscription) : KTier := kineticCharToKTier s.kin
 
 /-- The K-tier distance between two synths as CLU cost. -/
-noncomputable def synthonKDistance (a b : Synthon) : ℝ :=
-  kTierCrossingCost (synthonKTier a) (synthonKTier b)
+noncomputable def imscriptionKDistance (a b : Imscription) : ℝ :=
+  kTierCrossingCost (imscriptionKTier a) (imscriptionKTier b)
 
 /-- Higgs and axion have the same K-tier (both K_slow → .slow),
     so their K-distance is 0 CLU. -/
 theorem higgs_axion_K_distance_zero :
-    synthonKDistance higgs axion = 0 := by
-  simp [synthonKDistance, synthonKTier, kineticCharToKTier, higgs, axion, scalarField_Kslow]
+    imscriptionKDistance higgs axion = 0 := by
+  simp [imscriptionKDistance, imscriptionKTier, kineticCharToKTier, higgs, axion, scalarField_Kslow]
   rfl
 
 /-- Quantum gravity (K_trap) vs Higgs (K_slow): 1 CLU separation. -/
 theorem qg_higgs_K_distance_one_CLU :
-    synthonKDistance quantum_gravity higgs = CLU := by
-  simp [synthonKDistance, synthonKTier, kineticCharToKTier,
+    imscriptionKDistance quantum_gravity higgs = CLU := by
+  simp [imscriptionKDistance, imscriptionKTier, kineticCharToKTier,
         quantum_gravity, higgs, scalarField_Kslow]
   unfold kTierCrossingCost kTierSteps kTierLevel
   simp [CLU]

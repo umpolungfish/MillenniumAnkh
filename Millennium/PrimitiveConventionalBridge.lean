@@ -1,7 +1,7 @@
 -- Fixed PrimitiveConventionalBridge.lean
 -- Resolved identifier conflicts and syntax errors.
 
-import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Imscription
 import Imscribing.Primitives.Core
 import Imscribing.Algebra
 import Imscribing.Millennium.Barriers
@@ -21,7 +21,7 @@ open Millennium.PrimitiveBridge
 open Millennium.RH
 open Millennium.Barriers
 
-def pvsnp_encoding : Synthon := {
+def pvsnp_encoding : Imscription := {
   dim := D_infty, top := T_network, rel := R_cat, pol := P_asym, fid := F_ell,
   kin := K_fast, gran := G_aleph, gram := Gamma_and, crit := Phi_sub,
   chir := H0, stoi := n_n, prot := Omega_0 }

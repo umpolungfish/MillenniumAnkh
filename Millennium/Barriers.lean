@@ -216,7 +216,7 @@ in the Imscribing constraint grammar.
   | OPN     | Nonexistence proof     | σ-constraint no solution                     |
 
 The YM barrier (G=LOCAL, no quantum lift) corresponds exactly to the G-scope
-analysis in SYNTHONICON.md §XVII: the quantum-gravity tensor product fails at G=LOCAL
+analysis in IMSCRIPTION.md §XVII: the quantum-gravity tensor product fails at G=LOCAL
 because the carrier type (path integral measure) cannot be constructed.
 -/
 

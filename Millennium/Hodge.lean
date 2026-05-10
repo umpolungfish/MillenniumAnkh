@@ -86,7 +86,7 @@ is surjective for every p.
   The lift is the missing `AlgebraicCycleRep`.
 
   Primitive analog: R-lift blocked. The meet of the topological and algebraic
-  synthons does not equal the algebraic synthon — the degenerate position does not
+  imscriptions does not equal the algebraic imscription — the degenerate position does not
   force algebraic representability.
 -/
 

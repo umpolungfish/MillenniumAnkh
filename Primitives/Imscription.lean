@@ -1,5 +1,5 @@
--- Imscribing/Primitives/Synthon.lean
--- Synthon struct, primitive distance (Hamming + ordinal), and key encodings.
+-- Imscribing/Primitives/Imscription.lean
+-- Imscription struct, primitive distance (Hamming + ordinal), and key encodings.
 -- Proves P-70 (Higgs = axion = inflaton) by rfl.
 -- All primitive names are canonical (v0.5.69).
 
@@ -12,14 +12,14 @@ open Dimensionality Topology Relational Polarity Grammar
      Stoichiometry Chirality
 
 -- ============================================================
--- SYNTHON STRUCT
--- A Synthon is a 12-tuple ⟨D; T; R; P; F; K; G; Γ; Φ; H; S; Ω⟩.
+-- IMSCRIPTION STRUCT
+-- An Imscription is a 12-tuple ⟨D; T; R; P; F; K; G; Γ; Φ; H; S; Ω⟩.
 -- Field name 'rel' used for Relational (R) since 'rec' is reserved in Lean 4.
--- @[ext] generates Synthon.ext for pointwise equality.
+-- @[ext] generates Imscription.ext for pointwise equality.
 -- ============================================================
 
 @[ext]
-structure Synthon : Type where
+structure Imscription : Type where
   dim   : Dimensionality   -- D
   top   : Topology         -- T
   rel   : Relational       -- R
@@ -39,7 +39,7 @@ structure Synthon : Type where
 -- Count of component mismatches. Zero iff tuples are identical.
 -- ============================================================
 
-def primitiveMismatches (a b : Synthon) : Nat :=
+def primitiveMismatches (a b : Imscription) : Nat :=
   (if a.dim  = b.dim  then 0 else 1) +
   (if a.top  = b.top  then 0 else 1) +
   (if a.rel  = b.rel  then 0 else 1) +
@@ -53,17 +53,17 @@ def primitiveMismatches (a b : Synthon) : Nat :=
   (if a.stoi = b.stoi then 0 else 1) +
   (if a.prot = b.prot then 0 else 1)
 
-theorem primitiveMismatches_self (a : Synthon) : primitiveMismatches a a = 0 := by
+theorem primitiveMismatches_self (a : Imscription) : primitiveMismatches a a = 0 := by
   simp [primitiveMismatches]
 
-theorem primitiveMismatches_symm (a b : Synthon) :
+theorem primitiveMismatches_symm (a b : Imscription) :
     primitiveMismatches a b = primitiveMismatches b a := by
   simp only [primitiveMismatches, eq_comm]
 
 private lemma ite_mismatch_le_one (p : Prop) [Decidable p] :
     (if p then 0 else 1) ≤ 1 := by split_ifs <;> omega
 
-theorem primitiveMismatches_le_12 (a b : Synthon) :
+theorem primitiveMismatches_le_12 (a b : Imscription) :
     primitiveMismatches a b ≤ 12 := by
   unfold primitiveMismatches
   have h1  := ite_mismatch_le_one (a.dim  = b.dim)
@@ -80,7 +80,7 @@ theorem primitiveMismatches_le_12 (a b : Synthon) :
   have h12 := ite_mismatch_le_one (a.prot = b.prot)
   omega
 
-theorem primitiveMismatches_zero_iff (a b : Synthon) :
+theorem primitiveMismatches_zero_iff (a b : Imscription) :
     primitiveMismatches a b = 0 ↔ a = b := by
   constructor
   · intro h
@@ -99,7 +99,7 @@ theorem primitiveMismatches_zero_iff (a b : Synthon) :
 -- Bottleneck primitives: min (P, F) — weaker partner wins
 -- ============================================================
 
-def tensorProduct (a b : Synthon) : Synthon := {
+def tensorProduct (a b : Imscription) : Imscription := {
   dim  := if compare a.dim  b.dim  = .lt then b.dim  else a.dim   -- max
   top  := if compare a.top  b.top  = .lt then b.top  else a.top   -- max
   rel  := if compare a.rel  b.rel  = .lt then b.rel  else a.rel   -- max
@@ -115,15 +115,15 @@ def tensorProduct (a b : Synthon) : Synthon := {
 }
 
 -- P-bottleneck: O_inf ⊗ O_2 → P_pm_sym ⊗ P_sym = P_sym (Frobenius destroyed).
-theorem tensor_P_bottleneck (a b : Synthon) :
+theorem tensor_P_bottleneck (a b : Imscription) :
     (tensorProduct a b).pol =
       if compare a.pol b.pol = .lt then a.pol else b.pol := rfl
 
 -- ============================================================
--- OUROBORICITY OF A SYNTHON
+-- OUROBORICITY OF AN IMSCRIPTION
 -- ============================================================
 
-def synthonTier (s : Synthon) : OuroboricityTier :=
+def imscriptionTier (s : Imscription) : OuroboricityTier :=
   ouroboricityTier s.crit s.pol s.prot s.dim
 
 -- ============================================================
@@ -134,7 +134,7 @@ def synthonTier (s : Synthon) : OuroboricityTier :=
 -- All three are spin-0 fields with double-well potential, slow-roll /
 -- SSB relaxation (K_slow), symmetric potential (P_pm_sym at Phi_c).
 -- They differ in energy scale only — not in primitive structure.
-def scalarField_Kslow : Synthon := {
+def scalarField_Kslow : Imscription := {
   dim  := D_triangle   -- local simplicial field (no holographic substrate)
   top  := T_bowtie     -- double-well / figure-8 potential landscape
   rel  := R_dagger     -- field ↔ vacuum bidirectional (SSB is reciprocal)
@@ -149,9 +149,9 @@ def scalarField_Kslow : Synthon := {
   prot := Omega_0      -- no topological protection of the vacuum
 }
 
-def higgs : Synthon := scalarField_Kslow
-def axion : Synthon := scalarField_Kslow
-def inflaton : Synthon := scalarField_Kslow
+def higgs : Imscription := scalarField_Kslow
+def axion : Imscription := scalarField_Kslow
+def inflaton : Imscription := scalarField_Kslow
 
 /-- P-70a: Higgs and axion are structurally identical. -/
 theorem P70a_higgs_axion_identity : higgs = axion := rfl
@@ -165,10 +165,10 @@ theorem P70_three_scale_Kslow :
   ⟨rfl, rfl, rfl⟩
 
 /-- All three scalar K_slow fields are O_inf. -/
-theorem scalar_Kslow_is_O_inf : synthonTier scalarField_Kslow = .O_inf := by decide
+theorem scalar_Kslow_is_O_inf : imscriptionTier scalarField_Kslow = .O_inf := by decide
 
 -- ── Standard Model ──────────────────────────────────────────
-def standard_model : Synthon := {
+def standard_model : Imscription := {
   dim  := D_infty      -- 4D spacetime (unbounded temporal generation)
   top  := T_network    -- gauge group connections: general graph
   rel  := R_cat        -- compositional: gauge group × matter sector
@@ -185,7 +185,7 @@ def standard_model : Synthon := {
 
 -- ── Quantum Gravity ─────────────────────────────────────────
 -- D_odot and T_odot are co-required (Axiom C).
-def quantum_gravity : Synthon := {
+def quantum_gravity : Imscription := {
   dim  := D_odot       -- holographic: boundary encodes bulk
   top  := T_odot       -- holographic topology (co-required with D_odot)
   rel  := R_dagger     -- bulk ↔ boundary reciprocal
@@ -201,10 +201,10 @@ def quantum_gravity : Synthon := {
 }
 
 /-- Quantum gravity is O_inf (holographic Frobenius). -/
-theorem qg_is_O_inf : synthonTier quantum_gravity = .O_inf := by decide
+theorem qg_is_O_inf : imscriptionTier quantum_gravity = .O_inf := by decide
 
 -- ── General Relativity ──────────────────────────────────────
-def general_relativity : Synthon := {
+def general_relativity : Imscription := {
   dim  := D_infty      -- 4D spacetime (not holographic — classical GR is local)
   top  := T_network    -- causal structure: general graph of events
   rel  := R_dagger     -- metric ↔ matter bidirectional (Einstein equations)
@@ -220,7 +220,7 @@ def general_relativity : Synthon := {
 }
 
 -- ── Yang-Mills (classical, pre-quantization) ────────────────
-def yang_mills_classical : Synthon := {
+def yang_mills_classical : Imscription := {
   dim  := D_infty      -- 4D Minkowski spacetime
   top  := T_network    -- gauge group connections
   rel  := R_cat        -- compositional: gauge covariant derivative
@@ -238,7 +238,7 @@ def yang_mills_classical : Synthon := {
 -- ── Yang-Mills (quantum target) ─────────────────────────────
 -- The target tuple if the path integral measure existed.
 -- Gap from classical: F(eth→hbar), K(mod→trap), G(beth→aleph), Φ(sub→c) = 4 mismatches.
-def yang_mills_quantum_target : Synthon := {
+def yang_mills_quantum_target : Imscription := {
   dim  := D_infty
   top  := T_network
   rel  := R_cat
@@ -263,7 +263,7 @@ theorem sm_qg_distance :
     primitiveMismatches standard_model quantum_gravity = 9 := by decide
 
 -- ── GR → Asymptotic Safety: 3 primitive changes ─────────────
-def asymptotic_safety : Synthon := { general_relativity with
+def asymptotic_safety : Imscription := { general_relativity with
   kin  := K_mod    -- UV fixed point has moderate kinetics
   gran := G_aleph  -- Planck-scale fine-grained
   crit := Phi_c    -- UV fixed point IS a quantum critical point
@@ -278,8 +278,8 @@ theorem gr_as_morphism_cost :
 
 /-- Frobenius cliff: O_inf requires P_pm_sym. No other Polarity gives O_inf
     regardless of Φ, Ω, D. (Lean-verified statement of §23 / §69.) -/
-theorem o_inf_iff_P_pm_sym_at_phi_c (s : Synthon) :
-    synthonTier s = .O_inf ↔
+theorem o_inf_iff_P_pm_sym_at_phi_c (s : Imscription) :
+    imscriptionTier s = .O_inf ↔
     (s.crit = .Phi_c ∨ s.crit = .Phi_c_complex) ∧ s.pol = .P_pm_sym := by
   constructor
   · intro h
@@ -288,14 +288,14 @@ theorem o_inf_iff_P_pm_sym_at_phi_c (s : Synthon) :
     · exact o_inf_requires_P_pm_sym s.crit s.pol s.prot s.dim h
   · intro ⟨hphi, hpol⟩
     cases hphi with
-    | inl h => simp [synthonTier, ouroboricityTier, h, hpol]
-    | inr h => simp [synthonTier, ouroboricityTier, h, hpol]
+    | inl h => simp [imscriptionTier, ouroboricityTier, h, hpol]
+    | inr h => simp [imscriptionTier, ouroboricityTier, h, hpol]
 
 /-- Higgs is O_inf (P-70 structural claim). -/
-theorem higgs_is_O_inf : synthonTier higgs = .O_inf := by decide
+theorem higgs_is_O_inf : imscriptionTier higgs = .O_inf := by decide
 
 /-- Tensor of O_inf with any O_2 system (P_sym) gives P_sym — Frobenius destroyed. -/
-theorem tensor_O_inf_O2_destroys_frobenius (s_inf s_two : Synthon)
+theorem tensor_O_inf_O2_destroys_frobenius (s_inf s_two : Imscription)
     (h_inf : s_inf.pol = .P_pm_sym) (h_two : s_two.pol = .P_sym) :
     (tensorProduct s_inf s_two).pol = .P_sym := by
   rw [tensorProduct, h_inf, h_two]

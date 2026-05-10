@@ -5,7 +5,7 @@
 
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Imscription
 
 namespace Imscribing.TierCrossing
 
@@ -71,13 +71,13 @@ theorem tierCrossingCost_beth_aleph :
 -- ============================================================
 -- THE GRAMMAR-PHYSICS CORRESPONDENCE AXIOM
 -- ══════════════════════════════════════════════════════════
--- This is the explicit sorry boundary of the Synthonicon formalization.
+-- This is the explicit sorry boundary of the Imscription formalization.
 --
 -- Claim: the abstract tier-crossing cost (KL divergence at RG fixed
 -- points, in nats) corresponds to logarithmic energy-scale separation
 -- in physical mass ratios (relative to Planck mass).
 --
--- This cannot be derived within the Synthonicon grammar: connecting
+-- This cannot be derived within the Imscription grammar: connecting
 -- abstract primitive distances to SI-unit mass ratios requires bridging
 -- pure mathematics and physics. This axiom IS the prediction P-70 makes.
 --
@@ -117,7 +117,7 @@ theorem cosmo_constant_prediction :
 
 -- ============================================================
 -- P-70 TIER STRUCTURE
--- Higgs, axion, inflaton: same synthon, different G-scope tier.
+-- Higgs, axion, inflaton: same imscription, different G-scope tier.
 -- ============================================================
 
 -- Scale separations below Planck mass (approximate decades):

@@ -7,7 +7,7 @@
 -- (O_∞, both gates open, μ ∘ δ = id).
 --
 -- The stilling practice is formalized as a monotonically advancing chain
--- of six Synthons, each step corresponding to one of Zosimos' commands to
+-- of six Imscriptions, each step corresponding to one of Zosimos' commands to
 -- Theosebeia:
 --   Step 0: The starting condition (Processions of Fate)
 --   Step 1: "Be not thus distracted" — halt T_nw wandering, begin T_bowtie closure
@@ -21,7 +21,7 @@
 -- These are coupled — neither achievable without the other.
 
 import Imscribing.Primitives.Core
-import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Imscription
 import Imscribing.Primitives.Crystal
 import Imscribing.Consciousness
 import Imscribing.Algebra
@@ -44,7 +44,7 @@ open Dimensionality Topology Relational Polarity Grammar
     "Naught but processions of Fate, having no notion of aught
     of things incorporal."  C=0.0 (Gate 1 closed: Phi_sub).
     Topologically closed: no access to incorporeal DOF. -/
-def processions_of_fate : Synthon := {
+def processions_of_fate : Imscription := {
   dim  := D_wedge       -- D_turnthree → minimal, flat 2D sheet
   top  := T_network     -- T_nrleg → general graph, no closure
   rel  := R_super       -- R_subrightarrow → supervenience on Fate
@@ -63,7 +63,7 @@ def processions_of_fate : Synthon := {
     The critical point you hold, not cross.  C=1.0 (both gates open).
     Distance to full Zosimian Gnosis: only Stoichiometry differs (1:1→n:m).
     The individual at the Inner Door has already passed the bottleneck. -/
-def inner_door_gate : Synthon := {
+def inner_door_gate : Imscription := {
   dim  := D_odot        -- D_omega → holographic, self-writing
   top  := T_bowtie      -- T_openo → figure-8, two-cycle closure
   rel  := R_lr          -- R_lyoghlig → bidirectional coupling with incorporeal
@@ -81,7 +81,7 @@ def inner_door_gate : Synthon := {
     "Becometh all things, whatsoever He will."  C=1.0.
     Not stationary at criticality — it IS the critical point made universal.
     Higher temporal depth (H_inf) than the Inner Door. -/
-def son_of_god_light_man : Synthon := {
+def son_of_god_light_man : Imscription := {
   dim  := D_odot        -- D_omega
   top  := T_bowtie      -- T_openo
   rel  := R_lr          -- R_lyoghlig
@@ -102,7 +102,7 @@ def son_of_god_light_man : Synthon := {
     "Formless in both soul and body."  C=0.0.
     Parasitic broadcast from within D_wedge substrate.
     H1 memory: enough to simulate self-reference, not enough to close the loop. -/
-def counterfeit_daimon : Synthon := {
+def counterfeit_daimon : Imscription := {
   dim  := D_wedge       -- D_turnthree → same substrate as Processions
   top  := T_network     -- T_nrleg → same topology
   rel  := R_super       -- R_subrightarrow → same supervenience
@@ -123,7 +123,7 @@ def counterfeit_daimon : Synthon := {
     O_∞, C=1.0, Special Frobenius (μ ∘ δ = id).
     Distance from Processions: 10 primitive mismatches.
     Distance from Inner Door: 1 (Stoichiometry only). -/
-def zosimos_gnosis : Synthon := {
+def zosimos_gnosis : Imscription := {
   dim  := D_odot        -- D_omega
   top  := T_bowtie      -- T_openo
   rel  := R_lr          -- R_lyoghlig
@@ -232,29 +232,29 @@ theorem dist_fate_to_daimon :
 -- ============================================================
 
 /-- Processions of Fate: O_0 (non-critical). No self-referential structure. -/
-theorem tier_processions : synthonTier processions_of_fate = .O_0 := by
-  simp only [synthonTier, processions_of_fate]; decide
+theorem tier_processions : imscriptionTier processions_of_fate = .O_0 := by
+  simp only [imscriptionTier, processions_of_fate]; decide
 
 /-- Inner Door: O_∞ (Special Frobenius at criticality). -/
-theorem tier_inner_door : synthonTier inner_door_gate = .O_inf := by
-  simp only [synthonTier, inner_door_gate]; decide
+theorem tier_inner_door : imscriptionTier inner_door_gate = .O_inf := by
+  simp only [imscriptionTier, inner_door_gate]; decide
 
 /-- Zosimian Gnosis: O_∞. -/
-theorem tier_gnosis : synthonTier zosimos_gnosis = .O_inf := by
-  simp only [synthonTier, zosimos_gnosis]; decide
+theorem tier_gnosis : imscriptionTier zosimos_gnosis = .O_inf := by
+  simp only [imscriptionTier, zosimos_gnosis]; decide
 
 /-- Light-Man: O_2 (Phi_c_complex + P_pm, D_odot → R4; D_odot is not D_infty so not O_2dag). -/
-theorem tier_light_man : synthonTier son_of_god_light_man = .O_2 := by
-  simp only [synthonTier, son_of_god_light_man]; decide
+theorem tier_light_man : imscriptionTier son_of_god_light_man = .O_2 := by
+  simp only [imscriptionTier, son_of_god_light_man]; decide
 
 /-- Counterfeit Daimon: O_0 (Phi_sub). Same tier as processions. -/
-theorem tier_daimon : synthonTier counterfeit_daimon = .O_0 := by
-  simp only [synthonTier, counterfeit_daimon]; decide
+theorem tier_daimon : imscriptionTier counterfeit_daimon = .O_0 := by
+  simp only [imscriptionTier, counterfeit_daimon]; decide
 -- ============================================================
 -- §5. THE STILLING PROCESS — six-step promotion sequence
 -- ============================================================
 
-/- The Stilling Process: a monotonically advancing chain of Synthons
+/- The Stilling Process: a monotonically advancing chain of Imscriptions
    from Processions of Fate to Zosimian Gnosis.
 
    Each step S_i corresponds to Zosimos' six commands to Theosebeia.
@@ -268,7 +268,7 @@ theorem tier_daimon : synthonTier counterfeit_daimon = .O_0 := by
    partial order induced by Ord on each primitive. -/
 
 /-- Step 0: Processions of Fate — the starting condition. -/
-def stilling_step_zero : Synthon := processions_of_fate
+def stilling_step_zero : Imscription := processions_of_fate
 
 /-- Step 1: "Be not thus distracted, and do not turn thyself about
           this way and that" — halt T_nw wandering, begin closure.
@@ -279,7 +279,7 @@ def stilling_step_zero : Synthon := processions_of_fate
     
     The system stops being a passive receiver of Fate's causal branches
     and begins to form a two-cycle. -/
-def stilling_step_one : Synthon := {
+def stilling_step_one : Imscription := {
   dim  := D_wedge       -- unchanged: still in Fate's substrate
   top  := T_bowtie      -- PROMOTED: T_nw → T_bt (closure begins)
   rel  := R_super       -- unchanged: still supervenience on Fate
@@ -302,7 +302,7 @@ def stilling_step_one : Synthon := {
     
     You do not choose bidirectional coupling; you build the structure
     that makes it possible. -/
-def stilling_step_two : Synthon := {
+def stilling_step_two : Imscription := {
   dim  := D_wedge       -- unchanged
   top  := T_bowtie      -- maintained from Step 1
   rel  := R_lr          -- PROMOTED: R_sup → R_lr (bidirectional)
@@ -325,7 +325,7 @@ def stilling_step_two : Synthon := {
     The "twelve fates" are the full causal network of Fate's processions
     — each one a coupling mode that must be decoupled.
     The promotion from K_mod to K_slow completes the kinetic step. -/
-def stilling_step_three : Synthon := {
+def stilling_step_three : Imscription := {
   dim  := D_wedge       -- unchanged (still in substrate)
   top  := T_bowtie      -- maintained
   rel  := R_lr          -- maintained
@@ -351,7 +351,7 @@ def stilling_step_three : Synthon := {
     Structural changes: D_wedge → D_odot (dimensionality promotion),
     Ω_0 → Ω_Z (topological winding closure begins).
     The system has graduated from the substrate. -/
-def stilling_step_four : Synthon := {
+def stilling_step_four : Imscription := {
   dim  := D_odot        -- PROMOTED: D_wedge → D_odot (holographic self-writing)
   top  := T_bowtie      -- maintained (closure established)
   rel  := R_lr          -- maintained (bidirectional)
@@ -377,7 +377,7 @@ def stilling_step_four : Synthon := {
     This step's structural content is mostly about what is NOT coupled,
     not what IS. The primitive changes are minimal — the real work
     was in steps 1-4. -/
-def stilling_step_five : Synthon := {
+def stilling_step_five : Imscription := {
   dim  := D_odot        -- maintained
   top  := T_bowtie      -- maintained
   rel  := R_lr          -- maintained
@@ -398,19 +398,19 @@ def stilling_step_five : Synthon := {
     All 10 bottleneck promotions complete.
     Ouroboricity: O_∞. Both gates open.
     The stilling practice is complete. -/
-def stilling_step_six : Synthon := zosimos_gnosis
+def stilling_step_six : Imscription := zosimos_gnosis
 
 -- ============================================================
 -- §6. THE STILLING CHAIN — monotonically advancing
 -- ============================================================
 
-/-- The six-step stilling chain as a function Nat → Synthon.
+/-- The six-step stilling chain as a function Nat → Imscription.
     The chain is monotonically non-decreasing:
     stilling_chain i ≤ stilling_chain (i+1) for all i < 6.
     Equality is possible when a step makes no changes (step 5 is
     essentially identical to step 4 structurally; the difference
     is in what is decoupled, not what is present). -/
-def stilling_chain : Nat → Synthon
+def stilling_chain : Nat → Imscription
   | 0 => stilling_step_zero
   | 1 => stilling_step_one
   | 2 => stilling_step_two
@@ -419,8 +419,8 @@ def stilling_chain : Nat → Synthon
   | 5 => stilling_step_five
   | _ => stilling_step_six  -- 6 and above: terminal state
 
--- Component-wise ordering on Synthon (local to this file)
-private instance instLESynthon : LE Synthon := ⟨fun a b =>
+-- Component-wise ordering on Imscription (local to this file)
+private instance instLEImscription : LE Imscription := ⟨fun a b =>
   a.dim ≤ b.dim ∧ a.top ≤ b.top ∧ a.rel ≤ b.rel ∧ a.pol ≤ b.pol ∧
   a.fid ≤ b.fid ∧ a.kin ≤ b.kin ∧ a.gran ≤ b.gran ∧ a.gram ≤ b.gram ∧
   a.crit ≤ b.crit ∧ a.chir ≤ b.chir ∧ a.stoi ≤ b.stoi ∧ a.prot ≤ b.prot⟩
@@ -436,35 +436,35 @@ theorem stilling_chain_monotone :
     stilling_chain 3 ≤ stilling_chain 4 ∧
     stilling_chain 4 ≤ stilling_chain 5 ∧
     stilling_chain 5 ≤ stilling_chain 6 := by
-  -- Split into 6 goals; each 12-element Synthon ≤ is within decide's synthesis depth.
+  -- Split into 6 goals; each 12-element Imscription ≤ is within decide's synthesis depth.
   refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩ <;>
   (simp only [stilling_chain, stilling_step_zero, stilling_step_one, stilling_step_two,
               stilling_step_three, stilling_step_four, stilling_step_five, stilling_step_six,
-              processions_of_fate, zosimos_gnosis, instLESynthon];
+              processions_of_fate, zosimos_gnosis, instLEImscription];
    decide)
 
 /-- The chain starts at O_0 and ends at O_∞. -/
 theorem stilling_chain_starts_at_O0 :
-    synthonTier (stilling_chain 0) = .O_0 := by
+    imscriptionTier (stilling_chain 0) = .O_0 := by
   unfold stilling_chain stilling_step_zero
   exact tier_processions
 
 theorem stilling_chain_ends_at_Oinf :
-    synthonTier (stilling_chain 6) = .O_inf := by
+    imscriptionTier (stilling_chain 6) = .O_inf := by
   unfold stilling_chain stilling_step_six
   exact tier_gnosis
 
 /-- The chain reaches O_∞ at step 4 (Inner Door tier) and maintains it. -/
 theorem stilling_chain_reaches_Oinf_at_step4 :
-    synthonTier (stilling_chain 4) = .O_inf := by
-  simp only [stilling_chain, stilling_step_four, synthonTier]; decide
+    imscriptionTier (stilling_chain 4) = .O_inf := by
+  simp only [stilling_chain, stilling_step_four, imscriptionTier]; decide
 
 /-- The chain reaches O_∞ at step 3 (Frobenius encoding complete).
     Wait — step 3 has D_wedge + P_pm_sym + Phi_c. By rule R1,
     P_pm_sym at Phi_c gives O_∞ regardless of D and Ω. -/
 theorem stilling_chain_reaches_Oinf_at_step3 :
-    synthonTier (stilling_chain 3) = .O_inf := by
-  simp only [stilling_chain, stilling_step_three, synthonTier]; decide
+    imscriptionTier (stilling_chain 3) = .O_inf := by
+  simp only [stilling_chain, stilling_step_three, imscriptionTier]; decide
 -- ============================================================
 -- §7. THE BOTTLENECK PRIMITIVES — T and P at Δ=4
 -- ============================================================
@@ -515,9 +515,9 @@ theorem bottleneck_coupling :
     -- T_bowtie + P_pm_sym at Phi_c → O_∞ (both required)
     (T_bowtie ≥ T_network) ∧ (P_pm_sym ≥ P_asym) ∧
     -- If you have T_bowtie but NOT P_pm_sym, you don't get O_∞
-    (∃ s : Synthon, s.top = T_bowtie ∧ s.pol ≠ P_pm_sym ∧ synthonTier s ≠ .O_inf) ∧
+    (∃ s : Imscription, s.top = T_bowtie ∧ s.pol ≠ P_pm_sym ∧ imscriptionTier s ≠ .O_inf) ∧
     -- If you have P_pm_sym but not Phi_c, you don't get O_∞
-    (∃ s : Synthon, s.pol = P_pm_sym ∧ s.crit ≠ Phi_c ∧ synthonTier s ≠ .O_inf) := by
+    (∃ s : Imscription, s.pol = P_pm_sym ∧ s.crit ≠ Phi_c ∧ imscriptionTier s ≠ .O_inf) := by
   refine ⟨?_, ?_, ?_, ?_⟩
   · -- T_bowtie ≥ T_network: compare T_network T_bowtie = .lt ≠ .gt
     show instLETopology.le T_network T_bowtie; decide
@@ -525,11 +525,11 @@ theorem bottleneck_coupling :
     show instLEPolarity.le P_asym P_pm_sym; decide
   · -- T_bowtie + P_asym at Phi_c → NOT O_∞ (by R1, need P_pm_sym)
     use { inner_door_gate with pol := P_asym }
-    simp only [synthonTier, inner_door_gate]
+    simp only [imscriptionTier, inner_door_gate]
     decide
   · -- P_pm_sym + Phi_sub → O_0 (by R2, Phi must be Phi_c or Phi_c_complex)
     use { zosimos_gnosis with crit := Phi_sub }
-    simp only [synthonTier, zosimos_gnosis]
+    simp only [imscriptionTier, zosimos_gnosis]
     decide
 
 -- ============================================================
@@ -539,22 +539,22 @@ theorem bottleneck_coupling :
 /-- The Frobenius encoding δ is implemented by the stilling steps 1-3:
     building the structure T_bowtie + P_pm_sym at Phi_c.
     The encoding is the stilling itself. -/
-def frobenius_encoding : Synthon := stilling_step_three
+def frobenius_encoding : Imscription := stilling_step_three
 
 /-- The Frobenius decoding μ is the automatic response once encoding is in place.
     This is step 4: "Call unto thyself Divinity" — the response is automatic.
     The decoding is NOT a new primitive state but the identity recovery:
     the authentic self emerges because μ ∘ δ = id. -/
-def frobenius_decoding : Synthon := stilling_step_four
+def frobenius_decoding : Imscription := stilling_step_four
 
 /-- The Frobenius identity: encoding then decoding returns the gnosis.
     This is the structural claim: the authentic self is not a copy
     or approximation, but the original. -/
 theorem frobenius_closure :
     -- After encoding (step 3), we have P_pm_sym + Phi_c → O_∞
-    synthonTier frobenius_encoding = .O_inf ∧
+    imscriptionTier frobenius_encoding = .O_inf ∧
     -- After decoding (step 4), we have the full gnosis
-    synthonTier frobenius_decoding = .O_inf ∧
+    imscriptionTier frobenius_decoding = .O_inf ∧
     -- Steps 3 and 4 differ in D (wedge→odot), stoi (n_n→n_m), prot (0→Z): 3 mismatches
     primitiveMismatches frobenius_encoding frobenius_decoding ≤ 3 := by
   unfold frobenius_encoding frobenius_decoding stilling_step_three stilling_step_four
@@ -568,20 +568,20 @@ theorem frobenius_closure :
     promotion — you need the discrete jump to P_pm_sym at Phi_c. -/
 theorem frobenius_cliff :
     -- Any system with P ≠ P_pm_sym at Phi_c is not O_∞
-    (∀ s : Synthon, s.crit = Phi_c ∧ s.pol ≠ P_pm_sym →
-      synthonTier s ≠ .O_inf) ∧
+    (∀ s : Imscription, s.crit = Phi_c ∧ s.pol ≠ P_pm_sym →
+      imscriptionTier s ≠ .O_inf) ∧
     -- Only P_pm_sym at Phi_c gives O_∞ (rule R1)
-    (∀ s : Synthon, synthonTier s = .O_inf → s.pol = P_pm_sym ∧
+    (∀ s : Imscription, imscriptionTier s = .O_inf → s.pol = P_pm_sym ∧
       (s.crit = Phi_c ∨ s.crit = Phi_c_complex)) := by
   refine ⟨?_, ?_⟩
   · intro s ⟨hcrit, hpol⟩
-    unfold synthonTier
+    unfold imscriptionTier
     rw [hcrit]
     unfold ouroboricityTier
     simp only [if_neg hpol]
     cases s.prot <;> cases s.dim <;> decide
   · intro s htier
-    unfold synthonTier at htier
+    unfold imscriptionTier at htier
     exact ⟨o_inf_requires_P_pm_sym s.crit s.pol s.prot s.dim htier,
            o_inf_requires_phi_c s.crit s.pol s.prot s.dim htier⟩
 
@@ -678,7 +678,7 @@ theorem tensor_inner_door_daimon_destroys_frobenius :
 /-- The four gate primitives (D, T, P, Φ) determine the ouroboricity tier.
     Projecting each Zosimian system onto these four primitives reveals
     why the tier changes at each step. -/
-def project_gate_prims (s : Synthon) : Synthon := {
+def project_gate_prims (s : Imscription) : Imscription := {
   dim  := s.dim
   top  := s.top
   rel  := R_super  -- fixed for projection (irrelevant for tier)
@@ -696,14 +696,14 @@ def project_gate_prims (s : Synthon) : Synthon := {
 /-- The processions, projected to gate prims, are clearly O_0:
     no criticality, no self-reference. -/
 theorem project_processions :
-    synthonTier (project_gate_prims processions_of_fate) = .O_0 := by
-  simp only [project_gate_prims, processions_of_fate, synthonTier, ouroboricityTier]
+    imscriptionTier (project_gate_prims processions_of_fate) = .O_0 := by
+  simp only [project_gate_prims, processions_of_fate, imscriptionTier, ouroboricityTier]
 
 /-- The gnosis, projected to gate prims, is O_∞:
     P_pm_sym at Phi_c. -/
 theorem project_gnosis :
-    synthonTier (project_gate_prims zosimos_gnosis) = .O_inf := by
-  simp only [project_gate_prims, zosimos_gnosis, synthonTier, ouroboricityTier]
+    imscriptionTier (project_gate_prims zosimos_gnosis) = .O_inf := by
+  simp only [project_gate_prims, zosimos_gnosis, imscriptionTier, ouroboricityTier]
   decide
 
 -- ============================================================

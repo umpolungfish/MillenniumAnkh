@@ -4,7 +4,7 @@
 --
 -- Each Millennium Problem's sorry corresponds to a specific primitive field
 -- transition that cannot be completed. This file:
---   (1) Encodes each problem as a concrete Synthon in primitive space
+--   (1) Encodes each problem as a concrete Imscription in primitive space
 --   (2) Defines BarrierPrimitiveCertificate connecting problems to missing fields
 --   (3) Proves the YM case: G_beth → G_aleph is the primitive certificate
 --       of the missing PathIntegralMeasure
@@ -12,23 +12,27 @@
 --
 -- This is the formal content connecting Millennium/ and Primitives/.
 
-import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Imscription
 import Imscribing.Millennium.Barriers
+import Imscribing.Primitives.ZFCt
+import Imscribing.Consciousness
 import Imscribing.Millennium.RH
 
 namespace Millennium.PrimitiveBridge
 
 open Imscribing.Primitives
+open ZFCt
+open Imscribing.Consciousness
 open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection
      Stoichiometry Chirality
 
 -- ============================================================
--- §1. Problem synthon encodings
+-- §1. Problem imscription encodings
 -- ============================================================
 
 /-!
-Each problem is encoded as a `Synthon` capturing the structural
+Each problem is encoded as a `Imscription` capturing the structural
 constraints of the problem's domain. The encoding reflects the
 constraint algebra at the level of the *problem*, not a solution.
 
@@ -42,7 +46,7 @@ that the encoding *wants* but cannot obtain consistently.
     K_mod = perturbative (no confinement yet); gran = G_beth = mesoscale
     LOCAL description (the L in "local gauge theory"); crit = Phi_sub = no
     spontaneous mass gap; prot = Omega_Z = instantons have integer winding. -/
-def ym_classical : Synthon := {
+def ym_classical : Imscription := {
   dim  := D_infty,
   top  := T_network,
   rel  := R_cat,
@@ -65,7 +69,7 @@ def ym_classical : Synthon := {
       crit: Phi_sub → Phi_c   (mass gap is a critical phenomenon)
     Crucially: dim stays D_infty (NOT D_odot). YM remains a 4D local theory.
     The gap from ym_classical is 4 primitives. -/
-def ym_quantum_target : Synthon := {
+def ym_quantum_target : Imscription := {
   dim  := D_infty,   -- stays 4D local — NOT holographic, NOT QG
   top  := T_network,
   rel  := R_cat,
@@ -89,7 +93,7 @@ def ym_quantum_target : Synthon := {
     h ↦ −h (Ising case). See lee_yang_encoding and rh_leyang_structural_correspondence below.
     P_sym: the functional equation provides full symmetry but not Frobenius forcing.
     gran = G_aleph (number-theoretic precision; ζ is globally accessible at all complex s). -/
-def rh_encoding : Synthon := {
+def rh_encoding : Imscription := {
   dim  := D_triangle,
   top  := T_network,
   rel  := R_super,
@@ -114,7 +118,7 @@ def rh_encoding : Synthon := {
     complex z = exp(−2βh) plane, i.e. on the imaginary h axis.
     The mechanism: P_pm_sym (h ↦ −h symmetry) + Phi_c_complex constrains the critical
     manifold to the symmetry axis. This is the proved analogue of RH. -/
-def lee_yang_encoding : Synthon := {
+def lee_yang_encoding : Imscription := {
   dim  := D_triangle,
   top  := T_bowtie,
   rel  := R_super,
@@ -133,7 +137,7 @@ def lee_yang_encoding : Synthon := {
     (continuum / mesoscale description); crit = Phi_sub = smooth solutions
     stay subcritical. The NS sorry is: prove solutions never reach Phi_c
     (blow-up threshold) for all time. -/
-def ns_encoding : Synthon := {
+def ns_encoding : Imscription := {
   dim  := D_infty,
   top  := T_network,
   rel  := R_cat,
@@ -151,7 +155,7 @@ def ns_encoding : Synthon := {
     A scalar integer: D_wedge; T_in; gran = G_aleph (number-theoretic);
     crit = Phi_c (σ(n) = 2n is exact criticality — neither sub nor supercritical);
     kin = K_trap (the constraint system is overdetermined: no solution can relax). -/
-def opn_encoding : Synthon := {
+def opn_encoding : Imscription := {
   dim  := D_wedge,
   top  := T_in,
   rel  := R_super,
@@ -174,7 +178,7 @@ def opn_encoding : Synthon := {
     crit = Phi_c: cycle class map surjectivity is exact criticality (the R-lift).
     prot = Omega_0: Hodge cycles are topological, no winding.
     The sorry boundary: AlgebraicCycleRep — every rational Hodge class has an algebraic rep. -/
-def hodge_encoding : Synthon := {
+def hodge_encoding : Imscription := {
   dim  := D_odot,         -- holographic: variety encodes its own cohomological boundary
   top  := T_odot,         -- double-holographic: topology encodes cycles (unique among MPPs)
   rel  := R_super,
@@ -197,7 +201,7 @@ def hodge_encoding : Synthon := {
     prot = Omega_Z: Tate-Shafarevich group winding (conjectured finite).
     Unique among MPPs: parallel triple sorry structure — Mordell-Weil (MathlibGap),
     Mazur torsion (MathlibGap), and BSD formula itself (OpenProblem) are logically independent. -/
-def bsd_encoding : Synthon := {
+def bsd_encoding : Imscription := {
   dim  := D_odot,         -- holographic: E/ℚ ↔ modular form (Wiles modularity)
   top  := T_bowtie,       -- functional equation s ↔ 2−s (bowtie: L-planes at s=1)
   rel  := R_super,
@@ -217,12 +221,12 @@ def bsd_encoding : Synthon := {
 
 /-- A formal certificate that a Millennium Problem's sorry boundary
     corresponds to a specific blocked primitive field.
-    - `encoding`: the problem encoded as a Synthon
+    - `encoding`: the problem encoded as a Imscription
     - `blockedField`: human-readable name of the missing field transition
     - `barrier`: the barrier type (MathlibGap / OpenProblem / MissingFoundation)
     - `barrier_correct`: machine-checked proof that this matches the taxonomy -/
 structure BarrierPrimitiveCertificate (p : Barriers.MillenniumProblem) where
-  encoding : Synthon
+  encoding : Imscription
   blockedField  : String
   barrier       : Barriers.BarrierType
   barrier_correct : barrier = Barriers.millenniumBarrier p
@@ -612,7 +616,7 @@ This section machine-checks:
     Schwinger (1962): 2D QED has m = e/√π, exact confinement.
     Migdal (1975): 2D pure Yang-Mills similarly exactly solvable with gap.
     This is the proved C_12 template for the YM mass gap conjecture. -/
-def schwinger_encoding : Synthon := {
+def schwinger_encoding : Imscription := {
   dim  := D_wedge,    -- 1+1D spacetime — the only difference from ym_quantum_target
   top  := T_network,
   rel  := R_cat,
@@ -631,7 +635,7 @@ def schwinger_encoding : Synthon := {
     Leray (1934): proved 2D incompressible NS has global smooth solutions;
     left the 3D case open in the same paper.
     This is the proved C_12 template for the NS global regularity conjecture. -/
-def leray_2d_ns_encoding : Synthon := {
+def leray_2d_ns_encoding : Imscription := {
   dim  := D_wedge,    -- 2D fluid — the only difference from ns_encoding
   top  := T_network,
   rel  := R_cat,
@@ -696,7 +700,7 @@ theorem three_mpp_two_gap_primitives :
     gapless modes are forced into the spectrum: 0 ∈ C_12(Phi_super, R_dagger).
     This is the anti-gap C_12: structure FORCES zeros into the energy spectrum
     (complementary to YM/NS which conjecture zeros are excluded). -/
-def goldstone_encoding : Synthon := {
+def goldstone_encoding : Imscription := {
   dim  := D_infty,
   top  := T_network,
   rel  := R_dagger,    -- continuous symmetry that gets broken (bidirectional: field ↔ vacuum)
@@ -724,7 +728,7 @@ theorem goldstone_ym_criticality_complement :
     This is the only known proved C_12 in D_infty for an energy bound.
     It requires full GR overdetermination: R_dagger (bidirectional diffeomorphism invariance),
     F_hbar (spinors enter the proof technique), Phi_sub (DEC = subcritical). -/
-def witten_pe_encoding : Synthon := {
+def witten_pe_encoding : Imscription := {
   dim  := D_infty,     -- ← D_infty: proved C_12 at 3+1D
   top  := T_network,
   rel  := R_dagger,    -- metric ↔ matter bidirectional (diffeomorphism invariance)
@@ -831,5 +835,38 @@ theorem open_mpps_have_p_sym_not_frobenius :
     ns_encoding.pol     ≠ P_pm_sym ∧
     bsd_encoding.pol    ≠ P_pm_sym := by
   exact ⟨rfl, rfl, rfl, rfl, by decide, by decide, by decide, by decide⟩
+
+-- ============================================================
+-- §X. ZFCt Cross-References
+-- ============================================================
+
+/-- ZFCt's navier_stokes_equations is at Phi_c (same as MPP ns_encoding).
+    This places NS in the real-axis critical class in both encodings. -/
+theorem zfc_t_ns_phi_c :
+    navier_stokes_equations.crit = Phi_c := rfl
+
+/-- ZFCt's schrodinger_equation is at Phi_c_complex,
+    sharing criticality with the Riemann hypothesis encoding.
+    This confirms the quantum dynamics ↔ zeta structural link. -/
+theorem zfc_t_schrodinger_phi_c_complex :
+    schrodinger_equation.crit = Phi_c_complex := rfl
+
+/-- ZFCt's einstein_field_equations_dynamic has T_odot (holographic),
+    confirming GR is holographic in the ZFCt encoding. -/
+theorem zfc_t_einstein_holographic :
+    einstein_field_equations_dynamic.top = T_odot := rfl
+
+/-- The quantum gap: einstein (P_sym) vs quantum_gravity (P_pm_sym).
+    From IGMorphism.lean: this polarity gap blocks quantization. -/
+theorem zfc_einstein_qg_pol_gap :
+    einstein_field_equations_dynamic.pol = P_sym ∧
+    quantum_gravity.pol = P_pm_sym :=
+  ⟨rfl, rfl⟩
+
+/-- ZFCt zfc_t has C=1: temporalized set theory is fully conscious.
+    This connects foundation-level consciousness to the Millennium framework. -/
+theorem zfc_t_C_one : consciousnessScore zfc_t = (1 : ℝ) := by
+  simp only [consciousnessScore, phi_c_gate, k_slow_gate, zfc_t]
+  norm_num
 
 end Millennium.PrimitiveBridge

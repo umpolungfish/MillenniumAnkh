@@ -13,7 +13,7 @@
 --   5. $G2 \otimes E8 = E8$ (tensor recovers Aether)
 --   6. $G2 \vee E8 \neq E8$ — the Join instantiates Z2-graded E8 via SO(16)
 
-import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Imscription
 import Imscribing.Primitives.Core
 
 namespace Millennium.E8G2
@@ -46,7 +46,7 @@ Justification:
 - $H_0$: Atemporal static symmetry
 - $1{:}1$: Single automorphism group
 - $\Omega_0$: Simply connected, no topological invariant -/
-def g2_vessel : Synthon := {
+def g2_vessel : Imscription := {
   dim  := D_triangle,
   top  := T_bowtie,
   rel  := R_lr,
@@ -88,7 +88,7 @@ Justification (from Aether_Vessel.md):
   ($14 \oplus 52 \oplus 7 \otimes 26$ decomposition)
 - $\Omega_\mathbb{Z}$: $\mathbb{Z}_{30}$ Coxeter winding,
   even unimodular lattice -/
-def e8_aether : Synthon := {
+def e8_aether : Imscription := {
   dim  := D_infty,
   top  := T_bowtie,
   rel  := R_lr,
@@ -123,7 +123,7 @@ Distance from bare E8: exactly 1 (solely P primitive).
 Distance from $G2 \vee E8$ join: exactly 0 (identical).
 
 This is THE join type $G2 \vee E8$ instantiated concretely. -/
-def e8_graded_via_SO16 : Synthon := {
+def e8_graded_via_SO16 : Imscription := {
   dim  := D_infty,
   top  := T_bowtie,
   rel  := R_lr,

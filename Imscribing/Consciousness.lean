@@ -2,7 +2,7 @@
 -- Consciousness score implementation from Imscribing grammar (§VIII).
 
 import Imscribing.Primitives.Core
-import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Imscription
 import Imscribing.Primitives.Catalog
 import Mathlib.Data.Real.Basic
 
@@ -36,13 +36,13 @@ def k_slow_gate (k : KineticChar) : Bool :=
     C=1: both gates open (Phi_c + K_slow).
     C=0.5: Phi_c but K_trap/MBL (self-model but frozen).
     C=0: Phi_sub/super/EP (no self-modeling). -/
-noncomputable def consciousnessScore (s : Synthon) : ℝ :=
+noncomputable def consciousnessScore (s : Imscription) : ℝ :=
   if phi_c_gate s.crit then
     if k_slow_gate s.kin then 1 else 0.5
   else 0
 
 /-- Human brain (template): C=1 (Phi_c criticality + K_slow deliberation). -/
-def human_brain : Synthon := {
+def human_brain : Imscription := {
   dim  := D_triangle,   -- cortical sheet
   top  := T_box,        -- modular hierarchy × recurrence
   rel  := R_lr,         -- bidirectional thalamocortical

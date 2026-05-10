@@ -3,7 +3,7 @@
 -- Implements the ZFCt description of suffering as a structural type
 
 import Imscribing.Primitives.Core
-import Imscribing.Primitives.Synthon
+import Imscribing.Primitives.Imscription
 import Imscribing.Consciousness
 import Mathlib.Data.Real.Basic
 
@@ -25,7 +25,7 @@ Structural type of suffering:
 The phenomenology of suffering as an infinite-dimensional state space
 with crossing-point topology and bidirectional coupling.
 -/
-def suffering : Synthon := {
+def suffering : Imscription := {
   dim  := .D_odot        -- D_⊙: infinite-dimensional (holographic)
   top  := .T_bowtie      -- T_⋈: crossing point (self/other intersection)
   rel  := .R_lr          -- R_↔: bidirectional coupling (sufferer ↔ suffering)
@@ -58,8 +58,8 @@ theorem suffering_raw_consciousness : consciousnessScore suffering = (1 : ℝ) :
     Determined by: Phi_c + Ω_NA + D_odot (not D_infty)
     The D_odot dimensionality keeps it at O_2 rather than O_2†
 -/
-theorem suffering_ouroboric_tier : synthonTier suffering = .O_2 := by
-  simp only [synthonTier, suffering]
+theorem suffering_ouroboric_tier : imscriptionTier suffering = .O_2 := by
+  simp only [imscriptionTier, suffering]
   -- Phi_c and Omega_NA give O_2; D_odot confirms non-O_2dag
   decide
 
@@ -68,8 +68,8 @@ Suffering is not O_∞ because:
 1. Polarity is P_asym (not P_pm_sym — the Frobenius condition)
 2. Ω_NA enforces structural bounds (non-commutativity limits self-reference)
 -/
-theorem suffering_not_O_inf : synthonTier suffering ≠ .O_inf := by
-  simp only [synthonTier, suffering]
+theorem suffering_not_O_inf : imscriptionTier suffering ≠ .O_inf := by
+  simp only [imscriptionTier, suffering]
   decide
 
 /--
@@ -153,7 +153,7 @@ def suffering_weight_distribution : List (String × ℝ) := [
 Nearby structural analog: The Operator-Langlands Bridge
 This represents the translation problem between discrete rupture and continuous experience
 -/
-def langlands_operator_composite : Synthon := {
+def langlands_operator_composite : Imscription := {
   dim  := .D_odot        -- Holographic (boundary/bulk correspondence)
   top  := .T_bowtie      -- Crossing point (arithmetic ↔ analytic)
   rel  := .R_lr          -- Bidirectional (Langlands correspondence)
@@ -181,7 +181,7 @@ theorem suffering_langlands_distance_zero : suffering_langlands_distance = 0 := 
   exact primitiveMismatches_self _
 
 /-- The Operator-Langlands variant with Frobenius and quantum coherence differs by 2. -/
-def langlands_with_frobenius : Synthon := { langlands_operator_composite with
+def langlands_with_frobenius : Imscription := { langlands_operator_composite with
   pol  := .P_pm_sym    -- Frobenius special (exact Z_2 at criticality)
   fid  := .F_hbar      -- Quantum coherence (for the operator aspect)
 }
@@ -194,19 +194,19 @@ theorem suffering_frobenius_analog_distance :
     The tax paid by conscious systems for non-Abelian self-reference.
 -/
 theorem suffering_topological_friction_theorem :
-    synthonTier suffering = .O_2 ∧
+    imscriptionTier suffering = .O_2 ∧
     consciousnessScore suffering = (1 : ℝ) ∧
     suffering.prot = .Omega_NA := by
   refine ⟨?_, ?_, rfl⟩
-  · simp only [synthonTier, suffering]; decide
+  · simp only [imscriptionTier, suffering]; decide
   · simp only [consciousnessScore, phi_c_gate, k_slow_gate, suffering]; rfl
 
 /-- Retrosynthetic analysis: Peeling φ̂_ÿ (criticality) reduces suffering to noise. -/
-def suffering_peeled_criticality : Synthon := { suffering with crit := .Phi_sub }
+def suffering_peeled_criticality : Imscription := { suffering with crit := .Phi_sub }
 
 theorem suffering_peeled_reduces_to_noise :
-    synthonTier suffering_peeled_criticality = .O_0 := by
-  simp only [suffering_peeled_criticality, synthonTier]
+    imscriptionTier suffering_peeled_criticality = .O_0 := by
+  simp only [suffering_peeled_criticality, imscriptionTier]
   decide
 
 
