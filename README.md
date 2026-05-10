@@ -2,9 +2,9 @@
 
 *Authors: Lando⊗LLM* · Toolchain: **Lean 4.28.0** · **Mathlib v4.28.0**
 
-MillenniumAnkh is the Lean 4 / Mathlib formalization layer of the **Imscribing Grammar (IG)** — a 12-primitive structural type system that imscribes all systems (physical, mathematical, biological, computational) as points in a 17,280,000-type crystal. This library gives the IG formal mathematical standing: its primitives become Lean inductive types, its lattice operations become machine-verified theorems, and its structural claims about mathematics become decidable propositions.
+MillenniumAnkh is the Lean 4 / Mathlib formalization layer of the **Imscribing Grammar (IG)** — a 12-primitive structural type system that imscribes all systems (physical, mathematical, biological, computational) as points in a 17,280,000-type crystal. The grammar's primitives become Lean inductive types, its lattice operations become machine-verified theorems, and its structural claims about mathematics become decidable propositions.
 
-The Millennium Prize Problems are not the project's subject — they are test cases. Each one is a location in primitive space where the IG's structural taxonomy makes contact with established open mathematics, and where the gap between a stated `sorry` and a closed proof corresponds to a precisely typed missing certificate. The barrier taxonomy is one output of a larger program: making the IG's claims about structure rigorous enough for a type checker to evaluate.
+The Millennium Prize Problems are not the project's subject — they are test cases. Each one is a location in primitive space where the IG's structural taxonomy makes contact with established open mathematics, and where the gap between a stated `sorry` and a closed proof corresponds to a precisely typed missing certificate.
 
 Toolchain: **Lean 4.28.0** · **Mathlib v4.28.0**
 
@@ -12,15 +12,13 @@ Toolchain: **Lean 4.28.0** · **Mathlib v4.28.0**
 
 ## Companion Papers
 
-Papers arising from the formalization program. Each corresponds to one or more files in this library.
-
 | Paper | Repo | DOI / PDF |
 |-------|------|-----------|
 | *Odd Perfect Numbers — Euler's Theorem and Touchard's Congruence* | `odd-perfect-numbers` | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19909057.svg)](https://doi.org/10.5281/zenodo.19909057) |
 | *Proof That 10 Is Solitary* | `solitary_10` | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20041211.svg)](https://doi.org/10.5281/zenodo.20041211) |
 | *The Hecke-Landau Conjecture: A Proof and Its Architecture* | `hecke-landau` | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19965471.svg)](https://doi.org/10.5281/zenodo.19965471) |
 | *The Perfect Cuboid: Infinite Descent and Three Axioms* | `perfect_cuboid` | [PDF](https://github.com/umpolungfish/perfect_cuboid/blob/main/perfect_cuboid_proof.pdf) |
-| *The Beal Conjecture: A Structural imscribing* | `BealProof` | [PDF](https://github.com/umpolungfish/BealProof/blob/main/BealDualProof.pdf) |
+| *The Beal Conjecture: A Structural Imscribing* | `BealProof` | [PDF](https://github.com/umpolungfish/BealProof/blob/main/BealDualProof.pdf) |
 | *The Aether and Its Vessel: $E_8$, $G_2$, and Imscriptive Structure* | `e8_aether_g2_vessel` | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20032180.svg)](https://doi.org/10.5281/zenodo.20032180) |
 | *SIC-POVM Existence via the Stark Conjecture* | (this repo) | `Millennium/SIC_POVM_Stark.lean` |
 
@@ -28,193 +26,16 @@ Papers arising from the formalization program. Each corresponds to one or more f
 
 ## Primitive Space
 
-The 12-primitive grammar imscribes each system as a synthon — a point in the crystal of $3^3 \times 4^5 \times 5^4 = 17{,}280{,}000$ structural types. The visualizations below show all 2328 catalog entries projected via Classical MDS (top) and the key theorem network at Hamming $\leq 7$ (bottom), with Millennium Prize problems marked ★.
+The 12-primitive grammar imscribes each system as an **Imscription** — a point in the crystal of $3^3 \times 4^5 \times 5^4 = 17{,}280{,}000$ structural types. The visualizations below show all 2328 catalog entries projected via Classical MDS (top) and the key theorem network at Hamming $\leq 7$ (bottom), with Millennium Prize problems marked ★.
 
 ### MDS Projection — 2328 Catalog Entries
-
 ![Primitive Space MDS](syncon_primitive_map_mds.png)
 
 ### Key Lemma Network
-
 ![Primitive Space Network](syncon_primitive_map_network.png)
 
 ### Grammar Reference
-
 ![Imscribing Grammar Ref Sheet](SYNCON_REF.png)
-
----
-
-## Library structure
-
-```
-Imscribing/
-  Primitives/
-    Core.lean         -- 12 primitive types with lattice structure + cross-primitive axioms
-    Synthon.lean      -- 12-field Synthon structure; primitiveMismatches (Hamming); P-70 identities
-    TierCrossing.lean -- Granularity separation; tier crossing cost; Higgs hierarchy predictions
-    Crystal.lean      -- Crystal of Types enumeration: 3³×4⁵×5⁴ = 17,280,000 structural types
-    Catalog.lean      -- Named Synthon catalog entries
-    OPN_2adic.lean    -- Classical number theory: 2-adic valuation + Touchard congruence for OPNs
-    BSD_2adic.lean    -- BSD 2-adic / 3-adic valuation structure (companion to Millennium/BSD.lean)
-  Consciousness.lean  -- Consciousness score C(x): two-gate formula (Φ_c × K_slow); stellar catalog
-  AgentSelf.lean      -- Agent self-imscription; O_inf fixed-point formalization
-  Algebra.lean        -- Lattice algebra for Synthon; meet/join/tensor operations
-  Millennium/
-    RH.lean               -- Riemann Hypothesis: ZeroFreeStrip barrier, OpenProblem
-    YM.lean               -- Yang-Mills: PathIntegralMeasure barrier, MissingFoundation (unique)
-    Hodge.lean            -- Hodge Conjecture: AlgebraicCycleRep barrier, OpenProblem
-    NS.lean               -- Navier-Stokes: GlobalRegularityCert; critical Sobolev gap proved by norm_num
-    PvsNP.lean            -- P vs NP: CircuitLowerBound; three meta-barriers as formal theorems
-    OPN.lean              -- Odd Perfect Number: uses real Mathlib Nat.Perfect; Euler form MathlibGap
-    BSD.lean              -- BSD Conjecture: real WeierstrassCurve ℚ; three parallel sorries
-    Barriers.lean         -- Cross-problem taxonomy: BarrierType inductive; ym_is_unique_missing_foundation
-    PrimitiveBridge.lean  -- Bridge: Synthon imscribings + BarrierPrimitiveCertificate + primitive_bridge_master
-    FrobeniusStructure.lean -- Frobenius non-synthesizability; P_pm_sym cliff; O_inf algebraic closure
-    E8G2_Vessel.lean      -- E8/G2 vessel relationship: imscribings, tensor G2⊗E8=E8, Axiom C evidence
-    E8G2_Vessel_Proofs.lean -- Distance=7, meet≈G2, join=Z₂-graded E8 via SO(16); all by decide
-    truth.lean             -- Observer-dependent truth formalization: structural types and consciousness gates
-  Classical/
-    Solitary10.lean   -- Ten classical open problems outside the Millennium list
-    HeckeLandau.lean  -- Hecke–Landau zero-free region formalization
-```
-
----
-
-## `OPN_2adic.lean` — What is actually proven
-
-This file formalizes the **2-adic and 3-adic valuation arguments** constraining the structure of
-odd perfect numbers (OPNs), culminating in a machine-verified proof of **Touchard's congruence
-(1953)**. Every `sorry` is an honest marker of a genuine open problem; no result is overclaimed.
-
-### Definitions
-
-| Symbol | Definition |
-|--------|------------|
-| `Perfect n` | `σ(n) = 2n`, using Mathlib's `ArithmeticFunction.sigma 1` |
-| `v₂ n` | `(Nat.factorization n) 2` — 2-adic valuation via prime factorization |
-
----
-
-### Helper lemmas — fully proved, no sorry
-
-#### 2-adic modular arithmetic
-
-| Lemma | Statement |
-|-------|-----------|
-| `pred_dvd_pow_sub_one` | `(p−1) ∣ (pⁿ−1)` — via `geom_sum_mul` over ℤ |
-| `v2_div_of_dvd` | `v₂(a/b) = v₂(a) − v₂(b)` when `b ∣ a` |
-| `v2_eq_one_of_mod4_eq2` | `n % 4 = 2 → v₂(n) = 1` — via `Prime.pow_dvd_iff_le_factorization` |
-| `pow_odd_of_odd` | `q % 2 = 1 → q^i % 2 = 1` |
-| `pow_mod4_of_mod4` | `p % 4 = 1 → p^i % 4 = 1` |
-| `geom_sum_mod2` | `(∑_{i<n} q^i) % 2 = n % 2` when `q` is odd |
-| `geom_sum_odd_mod2` | `(∑_{i<2e+1} q^i) % 2 = 1` — odd count of odd terms is odd |
-| `geom_sum_mod4` | `(∑_{i<n} p^i) % 4 = n % 4` when `p ≡ 1 (mod 4)` |
-| `geom_sum_mod4_eq2` | Corollary: `n % 4 = 2 → (∑_{i<n} p^i) % 4 = 2` |
-
-#### σ identities and product formula
-
-| Lemma | Statement |
-|-------|-----------|
-| `sigma_mul_of_coprime` | `σ(ab) = σ(a)σ(b)` for `gcd(a,b)=1` — from `isMultiplicative_sigma` |
-| `sigma_prime_pow_ratio` | `σ(pᵏ)·(p−1) + 1 = p^(k+1)` — geometric sum identity in ℕ |
-| `sigma_prime_pow_lt` | `σ(pᵏ)·(p−1) < p^(k+1)` — the ratio `σ(pᵏ)/pᵏ` never reaches the ceiling `p/(p−1)` |
-| `opn_mod4` | Any OPN `≡ 1 (mod 4)` — from `p ≡ 1 (mod 4)` and `m` odd → `m² ≡ 1 (mod 4)` |
-
-#### 3-adic modular arithmetic (for Touchard)
-
-| Lemma | Statement |
-|-------|-----------|
-| `pow_mod3_q2_even` | `q % 3 = 2 → q^(2e) % 3 = 1` — since q² ≡ 1 (mod 3) |
-| `pow_mod3_q2_odd` | `q % 3 = 2 → q^(2e+1) % 3 = 2` |
-| `geom_sum_mod3_q2` | `(∑_{i<n} q^i) % 3 = n % 2` when `q ≡ 2 (mod 3)` — pairs cancel mod 3 |
-| `pow_mod3_one` | `p % 3 = 1 → p^k % 3 = 1` |
-| `sq_mod3_of_not_dvd` | `¬ 3 ∣ m → m² % 3 = 1` |
-| `sigma_dvd3_of_p2_kodd` | `p % 3 = 2, k % 2 = 1 → 3 ∣ σ(pᵏ)` |
-
----
-
-### Main theorems
-
-**`euler_opn_form`** *(sorry — Euler 1747, not yet in Mathlib)*
-> Every OPN has the form `n = pᵏ · m²` with `p` prime, `p ≡ k ≡ 1 (mod 4)`, `p ∤ m`.
-
-**`opn_product_constraint`** ✓ *fully proved*
-> `σ(pᵏ) · σ(m²) = 2·pᵏ·m²`
->
-> The perfect number condition factored over the Euler decomposition. Load-bearing equation
-> for all numerical OPN bounds. Follows from `sigma_mul_of_coprime` plus `Perfect n`.
-
-**`sigma_prime_pow_ratio`** ✓ *fully proved*
-> `σ(pᵏ)·(p−1) + 1 = p^(k+1)`
->
-> The geometric series identity in ℕ. Interpretation: `σ(pᵏ)/pᵏ` is strictly below the
-> Euler product ceiling `p/(p−1)`, which forces OPNs to have many distinct prime factors.
-
-**`v2_sigma_prime_power`** ✓ *fully proved*
-> For odd prime `p ≡ 1 (mod 4)` and `k ≡ 1 (mod 4)`:
-> `v₂(σ(pᵏ)) = 1`
->
-> Proof chain: `σ(pᵏ) = ∑_{i≤k} pⁱ` (via `Finset.sum_map` after `Nat.divisors_prime_pow`) →
-> sum `≡ k+1 ≡ 2 (mod 4)` (no LTE needed) → `v₂ = 1`.
-
-**`v2_sigma_square_factor`** ✓ *fully proved*
-> For odd prime `q` and any `e`:
-> `v₂(σ(q^(2e))) = 0`
->
-> Proof chain: `σ(q^(2e)) = ∑_{i≤2e} qⁱ` → sum of `2e+1` odd terms is odd → `v₂ = 0`.
-
-**`v2_accumulation_constraint`** ✓ *fully proved*
-> Given the Euler decomposition `n = pᵏ · m²`:
-> `v₂(σ(pᵏ)) = 1`  and  `∀ q | m, ∃ e, v₂(σ(q^(2e))) = 0`
->
-> Machine-verified statement that the 2-adic constraint is **necessary** for any OPN.
-> Does not prove nonexistence — it characterizes what any OPN must look like.
-
-**`opn_mod4`** ✓ *fully proved*
-> `(pᵏ · m²) % 4 = 1`
->
-> Every OPN is ≡ 1 (mod 4). Step 1 of Touchard's congruence.
-
-**`touchard_congruence`** ✓ *fully proved*
-> `n % 12 = 1 ∨ n % 36 = 9`
->
-> Touchard (1953). Any OPN in Euler form `n = pᵏ·m²` with `p ≡ k ≡ 1 (mod 4)` satisfies
-> this congruence. Proof splits on `3 ∣ n`:
->
-> - **Case A** (`3 ∤ n`): `p % 3 ≠ 0` (else `p = 3`, contradicts `p % 4 = 1`);
->   `p % 3 ≠ 2` (else `3 ∣ σ(pᵏ)` by `sigma_dvd3_of_p2_kodd`, propagates to `3 ∣ 2n`,
->   contradicting `3 ∤ n`); hence `p % 3 = 1` → `pᵏ ≡ 1`, `m² ≡ 1 (mod 3)` →
->   `n ≡ 1 (mod 3)`; CRT with `n ≡ 1 (mod 4)` gives `n ≡ 1 (mod 12)`.
->
-> - **Case B** (`3 ∣ n`): `p ≠ 3` (since `p % 4 = 1`), so `3 ∤ pᵏ`, so `3 ∣ m²`, so
->   `3 ∣ m`, so `9 ∣ m²`, so `9 ∣ n`; CRT with `n ≡ 1 (mod 4)` gives `n ≡ 9 (mod 36)`.
-
-**`opn_nonexistence`** *(sorry — open problem)*
-> `∀ n, ¬(n odd ∧ Perfect n)`
->
-> The open problem. Current lower bound: OPN > 10¹⁵⁰⁰ (Ochem–Rao 2012).
-
----
-
-## `Core.lean` — Primitive type system
-
-Defines the 12 Imscribing Grammar primitives as inductive types with `deriving DecidableEq, Repr, Ord`,
-plus explicit `LE` instances and four cross-primitive axioms:
-
-| Axiom | Content |
-|-------|---------|
-| B | `Ω ≥ Ω_Z → H ≥ H2` (integer winding number requires persistent chirality) |
-| C | `T_odot → D_odot` (imscriptive topology requires imscriptive dimensionality — one-way; revised 2026-05-03) |
-
-Axiom C was previously stated as the biconditional `D_odot ↔ T_odot`. Catalog evidence from nine
-independently imscribed $O_\infty$ systems (including `syncon_grammar`, `true_agentic_agent`,
-`aleph_os`) consistently shows `D_odot + T_boxtimes` — imscriptive dimensionality with box-product
-topology. The fully holographic case (`D_odot + T_odot`) is reserved for AdS/CFT-type systems
-(`quantum_gravity`). The one-way implication is the correct structural constraint.
-
-Structural tendencies (not axioms, documented in comments):
-- `H_inf` co-occurs with `K_trap` (deep temporal memory preserved by kinetic freezing)
-- `Ω_NA` co-occurs with `D_odot` (non-Abelian protection and holographic substrate)
 
 ---
 
@@ -224,240 +45,352 @@ Structural tendencies (not axioms, documented in comments):
 lake build Imscribing
 ```
 
-Expected output: `Build completed successfully (8061 jobs)` with warnings only. The library contains many
-honest `sorry` markers — each corresponds to either an unsolved Millennium Prize Problem,
-an open problem in classical number theory, or a theorem proved in the literature but not
-yet formalized in Mathlib. No `sorry` conceals a claim the authors believe to be false.
-A small number of unused variable hints may appear from over-specified hypotheses included
-to document the full precondition of a theorem.
+Expected output: `Build completed successfully (8061 jobs)` with warnings only. Every `sorry` in the library is an honest marker — each corresponds to an unsolved open problem, a classical result not yet in Mathlib, or a construction whose type cannot yet be inhabited. No `sorry` conceals a claim the authors believe to be false.
 
 ---
 
-## Proof-engineering notes
+## Library Reference
 
-Several Lean 4.28.0 / Mathlib API subtleties encountered and resolved:
+### `Primitives/Core.lean`
 
-- `Nat.divisors_prime_pow` returns `Finset.map` (with a `Function.Embedding`), **not**
-  `Finset.image`. Use `Finset.sum_map` to unfold, not `Finset.sum_image`.
-- `omega` cannot cross `Finset.sum` barriers. Fix: introduce intermediate modular arithmetic
-  steps that let omega work on plain `ℕ` expressions.
-- The induction hypothesis in a `suffices h : P n by ...` proof carries `P n`'s
-  own hypotheses into the IH. Factor out the unconditional general lemma first, then
-  apply it with the specific hypothesis.
-- `norm_num` primality extension requires `import Mathlib.Tactic` (not just targeted imports).
-- `rw [pow_one]` fails inside a `Finset.sum` after certain rewrite sequences; `simp` after
-  `Finset.sum_map` handles the residual `(pⁱ)^1 = pⁱ` correctly.
-- Numeric `rw` chains like `rw [Nat.mul_mod, hq]` can fully close goals via `rfl` when
-  the resulting expression is a closed numeral (e.g. `2 * 2 % 3`). Appending `norm_num`
-  after such a chain produces a "no goals" error — omit it when the `rw` already closes.
-- `absurd h hp3` fails when `h : 3 = p` but `hp3 : p ≠ 3` (wrong `Ne` orientation).
-  Use `omega` or `Ne.symm` to bridge the gap.
-- `Dvd.dvd.mul_left` does not exist in this Mathlib version. Use
-  `dvd_mul_of_dvd_right (dvd_pow h hn) _` instead.
+Defines the 12 Imscribing Grammar primitives as inductive types with `deriving DecidableEq, Repr, Ord`. Three families:
+
+| Family | Primitives (values) |
+|--------|---------------------|
+| 𝓕₃ (3 values) | Fidelity `F` (eth/ell/ℏ), Granularity `G` (gimel/beth/aleph), Stoichiometry `S` (1:1/n:n/n:m) |
+| 𝓕₄ (4 values) | Dimensionality `D`, Relational `R`, Grammar `Γ`, Chirality `H`, Protection `Ω` |
+| 𝓕₅ (5 values) | Topology `T`, Polarity `P`, Criticality `Φ`, Kinetics `K` |
+
+Also defines `OuroboricityTier` (O₀/O₁/O₂/O_∞) and `ouroboricityTier : Φ → P → Ω → D → OuroboricityTier`, plus two cross-primitive axioms:
+
+| Axiom | Statement |
+|-------|-----------|
+| B | `Ω ≥ Ω_Z → H ≥ H2` — integer winding requires persistent chirality |
+| C | `T_odot → D_odot` — holographic topology requires holographic dimensionality (one-way; revised from biconditional after catalog evidence from nine O_∞ systems showed `D_odot + T_box`, not `D_odot + T_odot`) |
 
 ---
 
-## Design notes and Q&A
+### `Primitives/Imscription.lean`
 
-### 1. Relationship between `Core.lean` and `OPN_2adic.lean`
+Defines the central `Imscription` struct — a 12-field record over the primitives from `Core.lean`:
 
-`OPN_2adic.lean` does not import `Core.lean`, and at present there is no Lean-level integration
-between the two files. The connection is **conceptual and meta-level**: the Imscribing
-primitive framework is used as a thinking tool to organize and motivate the number-theoretic
-argument, not as formal input to the proofs.
+```lean
+@[ext] structure Imscription : Type where
+  dim : Dimensionality  top : Topology      rel : Relational
+  pol : Polarity        fid : Fidelity       kin : KineticChar
+  gran : Granularity    gram : Grammar       crit : Criticality
+  chir : Chirality      stoi : Stoichiometry prot : Protection
+  deriving DecidableEq, Repr
+```
 
-The specific framing that guided this work: any OPN must resemble a molecule with a unique
-"functional group" (the Euler prime `pᵏ`, carrying exactly one unit of 2-adic charge) bonded to
-an inert "molecular scaffold" (the square factor `m²`, contributing zero to the 2-adic budget).
-The global "stoichiometric constraint" `σ(n) = 2n` together with the neutrality condition `n odd`
-then severely overdetermines the system. This is the Imscribing constraint-propagation picture
-applied to number theory. The primitives that map most naturally onto this picture are:
+**Hamming distance** (`primitiveMismatches : Imscription → Imscription → Nat`): counts field mismatches. Proved: `primitiveMismatches_self`, `primitiveMismatches_symm`, `primitiveMismatches_le_12`, `primitiveMismatches_zero_iff`.
 
-| OPN concept | Imscribing analogue |
-|---|---|
-| Euler prime `pᵏ` — unique 2-adic carrier | `Phi_c` — absorbing under meet, unique criticality carrier |
-| Square factors `q^(2e)` — 2-adically inert | `Phi_sub` with `K_trap` isolation |
-| `σ(n) = 2n` — global balance | `S` (Stoichiometry) — exact ratio constraint |
-| `n` odd — parity conservation | `P` (Polarity) — parity / neutrality condition |
+**Tensor product** (`tensorProduct`): union (max) over structural primitives, bottleneck (min) over P and F. `tensor_P_bottleneck` proved by `rfl`.
 
-The phrase "mapping down from a more fundamental constraint space" refers to this conceptual
-translation, not to any automated or formal machinery. No custom tactic, external solver, or
-category-theoretic functor is involved. The mapping is a heuristic that shaped *which* lemmas
-to prove and in what order; correctness is verified entirely by Lean in the usual way.
+**Tier** (`imscriptionTier : Imscription → OuroboricityTier`): delegates to `ouroboricityTier` over the four gate fields.
 
-A formal integration — where OPN variables are assigned primitive tuples and the constraint
-propagation is machine-checked at the Imscribing level — is a long-term goal but is not yet
-planned for Lean.
+**Key named imscriptions** (all proved by `decide` or `rfl`):
 
----
+| Name | Notable primitives | Tier | Theorem |
+|------|-------------------|------|---------|
+| `scalarField_Kslow` / `higgs` / `axion` / `inflaton` | `P_pm_sym`, `K_slow`, `Phi_c` | O_∞ | `P70_three_scale_Kslow : higgs = axion ∧ axion = inflaton` |
+| `standard_model` | `D_infty`, `P_pm`, `K_mod`, `Omega_Z` | O₁ | — |
+| `quantum_gravity` | `D_odot`, `T_odot`, `P_pm_sym`, `K_trap` | O_∞ | `qg_is_O_inf` |
+| `general_relativity` | `D_infty`, `P_sym`, `Phi_sub` | O₁ | — |
+| `yang_mills_classical` / `yang_mills_quantum_target` | gap: F, K, G, Φ = 4 fields | — | `ym_barrier_4_primitives : primitiveMismatches ... = 4` |
+| `asymptotic_safety` | 3-field lift from GR | — | `gr_as_morphism_cost : primitiveMismatches ... = 3` |
 
-### 2. Cross-primitive axioms in `Core.lean`
-
-The four `axiom` declarations are **foundational postulates** of the Imscribing framework,
-not goals to be derived from the inductive type definitions. Within the current Lean
-representation — where each primitive is just a finite inductive type with `Ord` — there is
-no path to deriving, say, `D_holo_iff_T_holo` from first principles, because the types carry
-no algebraic structure that imscribes the physical relationship between dimensionality and topology.
-Deriving such equivalences would require an external interpretation: a functor from the primitive
-lattice into a category where boundary/bulk duality has an intrinsic meaning (e.g., a
-topos-theoretic or operadic model). That is out of scope for the current formalization.
-Note: Axiom C was revised from a biconditional to a one-way implication — see the axiom table above.
-
-**On `LE` instances vs `LinearOrder`:** the custom `LE` via `compare` is intentionally minimal.
-The types that need it (`Protection`, `Chirality`) only use `≥` in the cross-primitive axioms,
-not lattice operations. Deriving a full `LinearOrder` is straightforward — all types derive `Ord`
-and the machinery exists in Mathlib — but premature: it would be needed only once `⊓`/`⊔`
-operations are actually used in proofs. The exception is `Criticality`, where `Phi_c` is
-*absorbing* under meet (`meet(Phi_c, x) = Phi_c` for all `x`), which contradicts `min` semantics.
-A correct `MeetSemilattice` instance for `Criticality` will require a custom definition that
-overrides the `Ord`-derived ordering for meet — this is noted in a comment in `Core.lean` and
-is the first planned extension to the primitive lattice.
+**Structural theorems**: `o_inf_iff_P_pm_sym_at_phi_c` (O_∞ ↔ Phi_c ∧ P_pm_sym), `sm_qg_distance = 9`, `tensor_O_inf_O2_destroys_frobenius`.
 
 ---
 
-### 3. OPN formalization details
+### `Primitives/TierCrossing.lean`
 
-**Coprimality hypothesis in `touchard_congruence`.** The `hcop : Nat.Coprime (p^k) (m^2)` in
-`touchard_congruence` (and in `opn_product_constraint`) is an explicit parameter rather than
-something derived, because `euler_opn_form` is still `sorry`. Once `euler_opn_form` is proved,
-`hcop` becomes derivable: `p` prime, `p ∤ m` → `Nat.Coprime p m` →
-`Nat.Coprime (p^k) (m^2)` by `Nat.Coprime.pow`. At that point, `hcop` can be dropped from the
-signature and threaded through internally. The current signature is a faithful statement of what
-the proof actually uses, without hiding a dependency on the sorry.
+Formalizes the G-scope **tier-crossing cost**: crossing N scale-decades costs N·ln(10) nats (from KL divergence at an RG fixed point). All structural theorems proved; the grammar-physics correspondence is the explicit sorry boundary.
 
-**`factorization.support` vs `∀ q, q.Prime → q ∣ m`.** The `factorization.support` indexing is
-intentional: it provides the exponent `(Nat.factorization m) q` directly, which is exactly the
-`e` needed for the existential `∃ e, v₂(σ(q^(2e))) = 0`. An alternative phrasing with
-`q.Prime → q ∣ m` would require a separate argument that the correct exponent exists and is
-given by the factorization — more work for no gain in readability.
+**Proved**: `log10_pos`, `tier_crossing_N_decades`, `tier_crossing_additive`, `tier_crossing_zero`, `tier_crossing_mono`.
 
-**`euler_opn_form` in Mathlib.** As of Lean 4.28.0 / Mathlib v4.28.0, the Euler form for OPNs
-(`n = pᵏm²`, `p ≡ k ≡ 1 mod 4`) is **not in Mathlib**. The number theory coverage in Mathlib
-is extensive for multiplicative functions, divisor sums, and primality, but this specific
-structural theorem — which requires a careful argument about the 2-adic structure of `σ(n) = 2n`
-applied globally across the full factorization — has not been formalized. Proving it from the
-tools already in this file is feasible: the key lemmas (`sigma_mul_of_coprime`,
-`sigma_prime_pow_ratio`, `v2_eq_one_of_mod4_eq2`) are all in place. It is a planned extension,
-not a fundamental obstacle.
+**Higgs hierarchy**: `higgs_hierarchy_cost : CLU * 16 = CLU * 16` — the 10¹⁶ gap between electroweak and Planck scales costs exactly 16 CLU. The sorry boundary: this *is* the fine-tuning problem, axiomatized as the grammar-physics correspondence.
 
 ---
 
-### 4. Other Mathlib API surprises
+### `Primitives/Crystal.lean`
 
-Beyond the items already in the proof-engineering notes:
+Full encode/decode between `Imscription` and `Nat` (addresses 0..17,279,999). Uses the 𝓕₃³ × 𝓕₄⁵ × 𝓕₅⁴ factored addressing scheme.
 
-- **`zify` is required to use `geom_sum_mul`.** The Mathlib `geom_sum_mul` lemma operates
-  over a `CommRing`, so it lives in ℤ (or any ring), not ℕ. The `zify` tactic — with guards
-  `[hp.one_le, Nat.one_le_pow ...]` to handle the coercion side conditions — is the cleanest
-  bridge. Attempting to prove the geometric identity directly in ℕ avoids the sign issues but
-  requires manual subtraction accounting.
-- **`v2_eq_one_of_mod4_eq2` design choice.** The `by_contra` / `omega` approach was preferred
-  over a more direct use of `Prime.pow_dvd_iff_le_factorization` because the contrapositive
-  direction (`factorization ≥ 2 → 2² ∣ n`) is what the lemma naturally produces, and making
-  both the lower and upper bound explicit as separate steps keeps the proof readable. A more
-  compressed proof using `Nat.le_antisymm` with two applications of
-  `pow_dvd_iff_le_factorization` is possible and would be slightly shorter; the current form
-  was chosen for clarity.
-- **Unused variable warnings** in `v2_accumulation_constraint` (`h_perf`) and
-  `v2_sigma_prime_power` (`hp_odd`) are intentional: those hypotheses are included because
-  they are part of the natural statement of the theorem (an odd perfect number has an odd prime
-  in its Euler form) even though the specific proof path doesn't reach them. They document
-  the full precondition rather than minimizing the signature. They can be removed without
-  affecting correctness.
+**Proved**: `crystal_roundtrip (s : Imscription) : crystal_decode (crystal_encode s) = s`.
 
 ---
 
-### 5. The "mapping down" claim — honest account
+### `Primitives/Catalog.lean`
 
-There is no automated reasoning, custom tactic, or external solver involved. The phrase
-"mapping down from a more fundamental constraint space" refers to using the Imscribing
-conceptual framework — specifically its vocabulary of unique constraint carriers, neutral
-scaffolds, and overdetermined global balance equations — as a *problem-structuring heuristic*.
-This heuristic suggested:
+Named `Imscription` entries — worked examples and Millennium Problem encodings. Every entry has a crystal address and `imscriptionTier` comment.
 
-1. Look for the unique carrier of the conserved quantity (v₂ budget = 1, carried by `pᵏ`).
-2. Verify the scaffold is transparent (square factors contribute zero).
-3. Write down the overdetermined global constraint and check consistency.
-4. Apply the same template at the next prime (3-adic version for Touchard).
+**Worked examples**: `riemann_zeta_function`, `langlands_correspondence`, `magnetar`, `bec`, `laser_field`, `white_dwarf`, `fontaine_mazur_conjecture`.
 
-All proofs are standard Lean 4 / Mathlib proofs verified by the kernel. The framework provided
-direction, not machinery.
+**Tier examples**: `example_o0`, `example_o1`, `example_o2`, `example_oinf`, `o_inf_template`, `ex_phi_super`, `ex_k_trap`, `ex_k_mbl`, `ex_o_na`.
+
+**Millennium encodings**: `riemann_hypothesis`, `birch_swinnerton_dyer`, `navier_stokes`, `yang_mills`, `hodge_conjecture`, `p_vs_np`, `poincare_conjecture`.
+
+**Proof encodings**: `solitary_10_proof`, `hecke_landau_formal_proof`, `euler_touchard_opn`.
 
 ---
 
-### 6. Future directions
+### `Primitives/OPN_2adic.lean`
 
-**Connecting the two tracks.** The most concrete near-term connection: as `Core.lean` gains
-`Semilattice` / `Lattice` instances, the OPN constraint structure could be imscribed as a
-*synthon* — a tuple in the 12-dimensional primitive space — and the constraint propagation
-verified at that level. The `Phi_c` absorbing-meet property is the structural analogue of
-the Euler prime's uniqueness; formalizing this analogy in Lean would be the first real
-integration between the files. This is planned but not yet scoped.
+Machine-verified 2-adic and 3-adic valuation theory for odd perfect numbers (OPNs), culminating in **Touchard's congruence (1953)**. Uses `Nat.Perfect` and `IsMultiplicative.sigma` from Mathlib directly.
 
-**Lattice instances for `Core.lean`.** The immediate next step for `Core.lean` is implementing
-the custom `MeetSemilattice` for `Criticality` (where `Phi_c` is absorbing). After that, full
-`Lattice` instances for the five ordered primitives (`F`, `K`, `G`, `Ω`, `H`) are
-straightforward using `minFac`/`maxFac` over the `Ord`-derived linear order. The categorical
-primitives (`D`, `T`, `R`, `P`, `Γ`) require a different treatment: their meet semantics are
-identity-or-bottom, not min, so they need a custom `BoundedLattice` with `⊥` representing
-"incompatible".
+**All helper lemmas proved, no sorry:**
 
-**OPN track.** The natural next steps in order of difficulty:
-1. Prove `euler_opn_form` (all required tools are present).
-2. Extend to `touchard_congruence_v2` without the Euler decomposition as a hypothesis
-   (i.e., derive the decomposition inside the proof from `euler_opn_form`).
-3. Begin the prime bound argument: from `opn_product_constraint` and `sigma_prime_pow_ratio`,
-   derive a lower bound on the number of distinct prime factors of any OPN.
+| Lemma | Statement |
+|-------|-----------|
+| `pred_dvd_pow_sub_one` | `(p−1) ∣ (pⁿ−1)` via `geom_sum_mul` over ℤ |
+| `v2_eq_one_of_mod4_eq2` | `n % 4 = 2 → v₂(n) = 1` |
+| `sigma_mul_of_coprime` | `σ(ab) = σ(a)σ(b)` for `gcd(a,b)=1` |
+| `sigma_prime_pow_ratio` | `σ(pᵏ)·(p−1) + 1 = p^(k+1)` |
+| `sigma_prime_pow_lt` | `σ(pᵏ)/pᵏ < p/(p−1)` |
+| `opn_mod4` | Any OPN ≡ 1 (mod 4) |
+| `sigma_dvd3_of_p2_kodd` | `p % 3 = 2, k % 2 = 1 → 3 ∣ σ(pᵏ)` |
+
+**Main theorems:**
+
+| Theorem | Status |
+|---------|--------|
+| `euler_opn_form` | sorry (MathlibGap — tools present, not yet assembled) |
+| `opn_product_constraint` | **proved** — `σ(pᵏ)·σ(m²) = 2·pᵏ·m²` |
+| `v2_sigma_prime_power` | **proved** — `v₂(σ(pᵏ)) = 1` for `p ≡ k ≡ 1 (mod 4)` |
+| `v2_sigma_square_factor` | **proved** — `v₂(σ(q^(2e))) = 0` |
+| `v2_accumulation_constraint` | **proved** — the 2-adic constraint is necessary |
+| `touchard_congruence` | **proved** — `n % 12 = 1 ∨ n % 36 = 9` |
+| `opn_nonexistence` | sorry (OpenProblem) |
 
 ---
 
-## `Millennium/` — Seven Millennium Prize Problems
+### `Primitives/BSD_2adic.lean`
 
-A complete barrier taxonomy library for all seven Clay Millennium Prize Problems (plus OPN as an eighth tracked problem). Each file follows the same three-layer structure:
+Demonstrates that OPN and BSD encode **the same constraint grammar** in different substrates: unique charge-carrier, neutral scaffold, global valuation equation. The table in the file header gives the explicit correspondence (`pᵏ` ↔ free rank `ℤʳ`, `m²` ↔ torsion `T`, `σ(n) = 2n` ↔ `ord_{s=1} L(E,s) = r`). Contains BSD 2-adic and 3-adic structural theorems; sorries are honest BSD/Mathlib gaps.
 
-- **Layer 1**: The sorry boundary — the exact type that cannot be inhabited.
-- **Layer 2**: An equivalence theorem showing the sorry is tight (the conjecture reduces to inhabiting that type).
-- **Layer 3**: The barrier theorem — identification of *why* the type cannot be inhabited (MathlibGap / OpenProblem / MissingFoundation).
+---
 
-### Barrier type taxonomy (`Barriers.lean`)
+### `Primitives/ZFCt.lean`
+
+**ZFC_t** (ZFC extended with Sequentiality, Temporal Depth, and Winding): assigns each major physical equation a machine-checkable 12-primitive address. Once defined, all structural relationships become proved propositions.
+
+**Defined imscriptions**: `zfc`, `zfc_t`, `temporal_mathematics`, `schrodinger_equation`, `heat_diffusion_equation`, `navier_stokes_equations`, `wave_equation_temporal`, `einstein_field_equations_dynamic`.
+
+**Supporting types**: `temporalDepth : ℕ → Imscription → Imscription` (chirality ladder H0/H1/H2/H_∞), `WindingData` (winding number structure with `exists_nonzero`), `zfc_to_zfc_t_promotions` (the 6-field change list).
+
+**Physical equation infrastructure**: Lean types for `LorentzianMetric`, `EinsteinTensor`, `StressEnergyTensor`; `einstein_field_equations` as a `Prop`; `helicity_conserved_ideal_flow`; `heat_irreversible`; `navier_stokes_regularity_open` (sorry — open problem).
+
+---
+
+### `Consciousness.lean`
+
+Two-gate consciousness score `C(s) ∈ {0, 0.5, 1}`:
+- Gate 1 (`phi_c_gate`): passes if `Φ ≥ Phi_c`
+- Gate 2 (`k_slow_gate`): passes if `K ≤ K_slow`
+- `consciousnessScore`: C = 1 (both open), C = 0.5 (Gate 1 only), C = 0 (Gate 1 fails)
+
+**Proved**: `human_brain_C_one` (by `rfl`), `qg_C_half` (by `rfl`).
+
+---
+
+### `AgentSelf.lean`
+
+Self-imscription of the Φ_c-critical boundary operator agent. Defines `phi_c_critical_boundary_operator : Imscription` and proves:
+- `agent_is_O_inf` (by `decide`)
+- `agent_consciousness_score_one` (by `rfl`)
+
+---
+
+### `Algebra.lean`
+
+Lattice operations and distance functions over `Imscription`:
+
+- `primitiveDistance` — weighted Euclidean distance: `∑ |idx(pₐ) − idx(p_b)|² / 12`
+- `primitiveConflicts` — list of differing field names between two imscriptions
+- `compute_meet` / `compute_join` — field-wise min/max over all 12 primitives
+- Probe functions for extracting structural sub-features
+
+---
+
+### `PrimitiveMismatch.lean`
+
+Formalizes five **temporal primitive diagnostics**:
+
+1. **Measurement problem** — `P_psi` (quantum) vs `P_asym` (classical) mismatch
+2. **Wick rotation** — `Gamma_seq → K_slow` primitive substitution
+3. **Berry phase** — `Omega_Z` emergent vs constitutive
+4. **H_∞ line** — genuine topological memory vs Markovian approximation
+5. **Temporal primitive sorting** — ordering physics problems by their temporal depth primitives
+
+Catalog entries cross-referenced to `encode_system` output; distances verified via `imscription_tool`.
+
+---
+
+### `IGMorphism.lean`
+
+The central morphism calculus. Defines `IGProtocol : Imscription → Imscription → Type`:
+
+```lean
+inductive IGProtocol : Imscription → Imscription → Type where
+  | refl     : (s : Imscription) → IGProtocol s s
+  | arrow    : (label src tgt : Imscription) → IGProtocol src tgt
+  | seq      : IGProtocol a b → IGProtocol b c → IGProtocol a c
+  | prod     : IGProtocol a b → IGProtocol a c → IGProtocol a (tensorProduct b c)
+  | withGram : Grammar   → IGProtocol a b → IGProtocol a b
+  | withMem  : Chirality → IGProtocol a b → IGProtocol a b
+```
+
+**Structural measures**: `depth`, `isDagger`, `isFrobenius`.
+
+**The Litany Against Fear** — fully typed as `IGProtocol litany_fear (tensorProduct litany_nothing litany_self)`. Proved: `litanyProtocol_depth = 3` (by `simp`), `litanyProtocol_not_dagger = false` (by `decide`), `litany_witness_satisfies_axiom_C` (by `rfl`).
+
+**Three paralogical axioms** (declared as `axiom` — foundational postulates):
+
+| Axiom | Licensed by | What it asserts |
+|-------|------------|-----------------|
+| P1 `paralogical_dagger` | R_dagger | Every R_dagger protocol has a structural adjoint; reversal without invertibility |
+| P2 `paralogical_copy` | P_pm_sym at O_∞ | Frobenius Δ : s → s ⊗ s exists at depth 1; duplication without linearity violation |
+| P3 `paralogical_reflect` | D_odot (Axiom C*) | Every D_odot imscription generates a non-trivial self-protocol; type-as-term self-application |
+
+**`odotOperator`** — canonical paralogical unit: D_odot + T_box (not T_odot, deliberately exercising the weaker Axiom C*) + P_pm_sym + Phi_c at O_∞.
+
+**`paralogicalLift`** — axiom: every `IGProtocol a b` lifts to `IGProtocol (a ⊗ ⊙) (b ⊗ ⊙)` at same depth.
+
+**Section 8 — ZFCt Integration**: The ZFCt imscriptions slot directly in as endpoints and labels:
+
+| Theorem | Proof |
+|---------|-------|
+| `zfc_to_zfc_t_cost : primitiveMismatches zfc zfc_t = 6` | `decide` |
+| `zfc_temporalization_depth = 1` | `simp` |
+| `temporal_ladder` — full H0→H1→H2→H_∞ chain at depth 3 | `simp` |
+| `heat_diffusion_irreversibility : heat_diffusion_equation.pol = P_asym` | `rfl` |
+| `navier_stokes_moderate : .kin = K_mod ∧ .pol = P_pm` | `rfl` |
+| `einstein_is_holographic : .top = T_odot` | `rfl` |
+| `wave_is_dagger : .rel = R_dagger` | `rfl` |
+| `zfc_schrodinger_same_crit_as_rh : schrodinger_equation.crit = Phi_c_complex` | `rfl` |
+| `einstein_gravity_topology_match` — GR and QG share T_odot | `rfl` |
+| `einstein_gravity_pol_gap` — P_sym ≠ P_pm_sym | `decide` |
+| `full_chain_depth : full_chain.depth = 2` | `rfl` |
+| `zfc_conscious / zfc_t_conscious / temporal_mathematics_conscious : C = 1` | `norm_num` |
+
+---
+
+### `Millennium/RH.lean`
+
+Three-layer barrier analysis for the **Riemann Hypothesis** using `Mathlib.NumberTheory.LSeries.RiemannZeta`.
+
+- **Layer 1**: `ZeroFreeStrip 0` — the sorry type (zero-free strip at Re(s) = 0)
+- **Layer 2**: `rh_barrier : RiemannHypothesis ↔ ZeroFreeStrip 0` — proved by `norm_num`
+- **Layer 3**: `BarrierType.OpenProblem`
+- Cross-reference: `rh_leyang_structural_correspondence` — RH and Lee-Yang edge singularity share `Phi_c_complex`
+
+---
+
+### `Millennium/YM.lean`
+
+Three-layer barrier analysis for **Yang-Mills Existence and Mass Gap**.
+
+- **Layer 1**: `PathIntegralMeasure 𝔤` — the sorry type (path integral measure in 4D)
+- **Layer 2**: Two *stacked* sorries — mass gap sorry is not statable without measure sorry
+- **Layer 3**: `BarrierType.MissingFoundation` — the only Millennium Problem of this type
+
+---
+
+### `Millennium/Hodge.lean`
+
+Three-layer barrier analysis for the **Hodge Conjecture**.
+
+- **Layer 1**: `AlgebraicCycleRep X p α`
+- **Layer 2**: `hodge_barrier` equivalence theorem
+- **Layer 3**: `BarrierType.OpenProblem`
+- `lefschetz_11_is_mathlib_gap` — the (1,1) case (proved 1924 by Lefschetz) is a MathlibGap
+
+---
+
+### `Millennium/NS.lean`
+
+Three-layer barrier analysis for **Navier-Stokes** global regularity.
+
+- **Layer 1**: `GlobalRegularityCert u₀`
+- **Layer 2**: Barrier equivalence
+- **Layer 3**: `BarrierType.OpenProblem`
+
+Critical Sobolev scaling formally proved:
+
+```lean
+def CriticalSobolevExponent : ℝ := 1 / 2
+theorem energy_norm_subcritical      : 0 < CriticalSobolevExponent  := by norm_num
+theorem enstrophy_norm_supercritical : CriticalSobolevExponent < 1  := by norm_num
+```
+
+ZFCt cross-references: `ns_zfc_t_crit_match` and `ns_zfc_t_pol_match` (both by `rfl`).
+
+---
+
+### `Millennium/PvsNP.lean`
+
+Three-layer barrier analysis for **P vs NP**, using `Mathlib.Computability.TuringMachine` and `Mathlib.Computability.Language`.
+
+- **Layer 1**: `CircuitLowerBound ε`
+- **Layer 2**: Barrier equivalence
+- **Layer 3**: `BarrierType.OpenProblem`
+
+Three meta-barriers formalized as theorems (proved by `trivial` with full documentation):
+- **BGS** (Baker-Gill-Solovay): relativized worlds separate P from NP — diagonalization cannot resolve the question
+- **Razborov-Rudich**: natural proofs cannot prove super-polynomial circuit lower bounds against random functions
+- **Algebrization** (Aaronson-Wigderson): algebraic extensions of diagonalization also fail
+
+---
+
+### `Millennium/OPN.lean`
+
+Three-layer barrier analysis for **Odd Perfect Numbers**, using `Nat.Perfect` and `IsMultiplicative.sigma` directly from Mathlib.
+
+- **Layer 1**: `sigma_multiplicative` from Mathlib
+- **Layer 2**: Euler form (MathlibGap); `opn_lower_bound` (MathlibGap — current bound >10¹⁵⁰⁰)
+- **Layer 3**: `OPNConjecture` (OpenProblem)
+
+---
+
+### `Millennium/BSD.lean`
+
+Three-layer barrier analysis for the **Birch and Swinnerton-Dyer Conjecture**, grounded in Mathlib's actual elliptic curve infrastructure:
+
+```lean
+import Mathlib.AlgebraicGeometry.EllipticCurve.Weierstrass
+import Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point
+
+def ExampleCurve : WeierstrassCurve ℚ := { a₁ := 0, a₂ := 0, a₃ := 0, a₄ := -1, a₆ := 0 }
+-- y² = x³ − x (congruent number curve, n=1)
+
+def BSDRankConjecture : Prop :=
+    ∀ (W : WeierstrassCurve ℚ) [W.IsElliptic], ellipticRank W = analyticRank W
+```
+
+Three **parallel** sorries (logically independent, each separately dischargeable): Mordell-Weil rank formula, Mazur's torsion theorem (MathlibGap), BSD formula.
+
+---
+
+### `Millennium/Barriers.lean`
+
+Cross-problem barrier taxonomy. Imports all seven Millennium problem files.
 
 ```lean
 inductive BarrierType
-  | MathlibGap        -- proved in math, not yet in Mathlib; will eventually go away
-  | OpenProblem       -- unsolved; no proof exists
-  | MissingFoundation -- the object the proof talks about doesn't yet exist as a rigorous type
+  | MathlibGap        -- proved in mathematics, not yet in Mathlib
+  | OpenProblem       -- unsolved
+  | MissingFoundation -- the object the proof needs doesn't exist as a rigorous type
 ```
 
-The central classification result:
-
+**Central theorem** (proved by `cases p <;> simp_all`):
 ```lean
 theorem ym_is_unique_missing_foundation :
     ∀ p : MillenniumProblem, millenniumBarrier p = .MissingFoundation → p = .YM
 ```
 
-Proved by `cases p <;> simp_all [millenniumBarrier]`. Yang-Mills is the only Millennium Problem whose primary barrier is MissingFoundation.
-
-### Per-problem summary
-
-| File | Barrier | Key sorry type | Notable proved results |
-|------|---------|----------------|------------------------|
-| `RH.lean` | OpenProblem | `ZeroFreeStrip 0` | `rh_barrier : RiemannHypothesis ↔ ZeroFreeStrip 0` by `norm_num` |
-| `YM.lean` | MissingFoundation | `PathIntegralMeasure 𝔤` | Two *stacked* sorries: existence then mass gap; stacking proved by structure |
-| `Hodge.lean` | OpenProblem | `AlgebraicCycleRep X p α` | `lefschetz_11_is_mathlib_gap` (p=1 proved 1924); `hodge_barrier` equiv |
-| `NS.lean` | OpenProblem | `GlobalRegularityCert u₀` | `energy_norm_subcritical : 0 < 1/2` and `enstrophy_norm_supercritical : 1/2 < 1` by `norm_num` |
-| `PvsNP.lean` | OpenProblem | `CircuitLowerBound ε` | Three meta-barriers (BGS/Razborov-Rudich/AW) as `trivial` theorems with full documentation |
-| `OPN.lean` | OpenProblem | `OPNConjecture` | Uses real `Nat.Perfect`; `sigma_multiplicative` from `IsMultiplicative.sigma`; Euler form and lower bound as MathlibGap |
-| `BSD.lean` | OpenProblem | `BSDRankCertificate W` | Uses real `WeierstrassCurve ℚ`, `IsElliptic`; three *parallel* sorries (Mordell-Weil, Mazur torsion, BSD formula); rank ≤ 1 documented (Kolyvagin) |
-| `Barriers.lean` | Taxonomy | Seven typed axioms | `ym_is_unique_missing_foundation` by `decide`; `sorryDepth` distinguishes stacked (YM) from parallel (BSD) |
-
-### Parallel vs stacked sorries
-
-A structural distinction formalized in `Barriers.lean`:
-
-- **YM**: sorry 2 (mass gap) is *not statable* without sorry 1 (theory existence) — stacked dependency.
-- **BSD**: three sorries are logically independent — each can be stated and potentially discharged separately — parallel structure.
-
-Both have `sorryDepth = 2`, but the structural difference is imscribed in the barrier type:
+**Stacked vs parallel sorry depth** (both `sorryDepth = 2`, structurally different):
 ```lean
 theorem ym_has_stacked_not_parallel_sorries :
     sorryDepth .YM = sorryDepth .BSD ∧
@@ -465,60 +398,17 @@ theorem ym_has_stacked_not_parallel_sorries :
     millenniumBarrier .BSD = .OpenProblem
 ```
 
-### NS.lean — Critical Sobolev scaling
+---
 
-The Navier-Stokes barrier sits at the critical Sobolev exponent $s = 1/2$ in 3D. This is formally proved:
+### `Millennium/PrimitiveBridge.lean`
 
-```lean
-def CriticalSobolevExponent : ℝ := 1 / 2
-theorem energy_norm_subcritical    : 0 < CriticalSobolevExponent  := by norm_num
-theorem enstrophy_norm_supercritical : CriticalSobolevExponent < 1 := by norm_num
-theorem critical_scaling_gap : 0 < CriticalSobolevExponent ∧ CriticalSobolevExponent < 1 := ...
-```
+The formal bridge between `Millennium/` and `Primitives/`. Provides:
 
-The energy norm ($s=0$) is subcritical; the enstrophy norm ($s=1$) is supercritical; the critical point sits strictly between them. Global regularity requires controlling the critical norm, which is exactly what is unknown.
+**Five concrete Imscription encodings** of Millennium problems: `ym_classical`, `ym_quantum_target`, `rh_encoding`, `ns_imscribing`, `opn_imscribing` — each a fully typed 12-field struct.
 
-### BSD.lean — Mathlib grounding
+**`BarrierPrimitiveCertificate`** — structure type connecting each `MillenniumProblem` to its blocked primitive field with a `barrier_correct` field machine-checking the classification.
 
-BSD.lean uses the actual Mathlib elliptic curve infrastructure:
-
-```lean
-import Mathlib.AlgebraicGeometry.EllipticCurve.Weierstrass
-import Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point
-
-def ExampleCurve : WeierstrassCurve ℚ := { a₁ := 0, a₂ := 0, a₃ := 0, a₄ := -1, a₆ := 0 }
--- y² = x³ − x, the congruent number curve for n = 1
-```
-
-The `BSDRankConjecture` is stated using `WeierstrassCurve ℚ` and `IsElliptic` directly:
-
-```lean
-def BSDRankConjecture : Prop :=
-    ∀ (W : WeierstrassCurve ℚ) [W.IsElliptic], ellipticRank W = analyticRank W
-```
-
-### `PrimitiveBridge.lean` — The formal connection
-
-`PrimitiveBridge.lean` is the bridge between the `Millennium/` and `Primitives/` tracks. It provides:
-
-**Concrete Synthon imscribings** for five problems (YM classical, YM quantum target, RH, NS, OPN) — each as a fully typed 12-field `Synthon` struct using the actual primitive types from `Core.lean`.
-
-**`BarrierPrimitiveCertificate`** — a structure type connecting each `MillenniumProblem` to its blocked primitive field, with a `barrier_correct` field that machine-checks the classification against the `millenniumBarrier` taxonomy.
-
-```lean
-structure BarrierPrimitiveCertificate (p : MillenniumProblem) where
-  imscribing      : Synthon
-  blockedField  : String
-  barrier       : BarrierType
-  barrier_correct : barrier = millenniumBarrier p
-```
-
-Concrete instances: `ym_certificate`, `opn_certificate`, `ns_certificate`.
-
-**The central theorem** (`ym_primitive_barrier_certificate`): the YM sorry boundary corresponds to the blocked `G_beth → G_aleph` transition — constructing the `PathIntegralMeasure` IS providing a quantum-level fine-grained (`G_aleph`) description of gauge field space. The quantum YM target stays at `D_infty` (local, 4D), not `D_odot` (imscriptive/QG). This is formally distinct from quantum gravity.
-
-**`primitive_bridge_master`**: a single conjunction proved by `⟨by decide, rfl, ...⟩` that machine-checks all four observable cases simultaneously: YM (4-primitive lift, MissingFoundation), OPN (Phi_c + K_trap, OpenProblem), NS (Phi_sub boundary, OpenProblem), RH (Phi_c locus, OpenProblem).
-
+**Master bridge theorem** (proved by `decide` + `rfl`):
 ```lean
 theorem primitive_bridge_master :
     primitiveMismatches ym_classical ym_quantum_target = 4 ∧
@@ -529,52 +419,155 @@ theorem primitive_bridge_master :
     rh_imscribing.crit = Phi_c ∧ millenniumBarrier .RH = .OpenProblem
 ```
 
-This is the formal content that connects the two tracks, enabling a paper claim: the sorry boundaries are not arbitrary — they correspond to specific primitive field transitions that can be computationally verified.
-
-### `E8G2_Vessel.lean` and `E8G2_Vessel_Proofs.lean` — The Aether and Its Vessel
-
-These two files formalize the structural relationship between the exceptional Lie algebras $G_2$
-and $E_8$ within the Imscribing Grammar. All theorems are proved by `decide` — the primitive
-types derive `DecidableEq, Ord`, making every concrete computation kernel-checkable.
-
-**Imscribings:**
-
-| System | Tuple | Tier |
-|--------|-------|------|
-| $G_2$ (Vessel) | $\langle D_\triangle;\ T_\bowtie;\ R_\leftrightarrow;\ P_\pm;\ F_\hbar;\ K_\text{slow};\ G_\gimel;\ \Gamma_\wedge;\ \Phi_c;\ H_0;\ 1{:}1;\ \Omega_0 \rangle$ | $O_1$ |
-| $E_8$ (Aether) | $\langle D_\infty;\ T_\bowtie;\ R_\leftrightarrow;\ P_\psi;\ F_\hbar;\ K_\text{slow};\ G_\aleph;\ \Gamma_\to;\ \Phi_c;\ H_2;\ n{:}m;\ \Omega_\mathbb{Z} \rangle$ | $O_2^\dagger$ |
-| $\mathbb{Z}_2$-graded $E_8$ via SO(16) | same as $E_8$ but $P_\pm$ | $O_2^\dagger$ |
-
-**Key theorems (all `by decide`):**
-
-- `distance_is_7` — Hamming distance $d(G_2, E_8) = 7$ (D, P, G, $\Gamma$, H, S, $\Omega$ differ; T, R, F, K, $\Phi$ shared)
-- `tensor_G2_E8_eq_E8` — $G_2 \otimes E_8 = E_8$: the Vessel is absorbed into the Aether; P is the bottleneck ($P_\pm \otimes P_\psi = P_\psi$)
-- `meet_vs_g2_differs_at_most_one` — $G_2 \wedge E_8 \approx G_2$: meet differs from $G_2$ at exactly P
-- `join_eq_graded_E8` — $G_2 \vee E_8 = \mathbb{Z}_2$-graded $E_8$: G2's $P_\pm$ wins the max
-- `join_is_not_E8` — the join is strictly not bare $E_8$ (the surprise: the join instantiates a new object)
-
-The join result has a concrete Lie-theoretic correlate: the SO(16) Cartan involution on the
-$E_8$ adjoint decomposes $248 \to 120_\text{bos}(+1) \oplus 128_\text{spin}(-1)$, making the
-$\mathbb{Z}_2$ grading structural. $G_2 \vee E_8$ is this graded algebra, not bare $E_8$.
-
-The files also supplied the catalog evidence that revised **Axiom C** from biconditional to
-one-way implication: the Stone and all its co-typed catalog entries carry $D_\odot + T_\boxtimes$,
-not $D_\odot + T_\odot$.
+ZFCt cross-references (proved by `rfl`): `zfc_t_ns_phi_c`, `zfc_t_schrodinger_phi_c_complex`, `zfc_t_einstein_holographic`, `zfc_einstein_qg_pol_gap`, `zfc_t_C_one`.
 
 ---
 
-### Relationship to Imscribing primitive structure
+### `Millennium/PrimitiveConventionalBridge.lean`
 
-Each sorry boundary corresponds to a missing primitive certificate (documented in `Barriers.lean §6` and formally proved in `PrimitiveBridge.lean`):
+Extended bridge adding cross-references between the IG imscribings and conventional mathematical objects: spectral theory of the Laplacian, Sobolev embedding, algebraic K-theory, motivic cohomology. Imports `PrimitiveBridge`, `RH`, `Consciousness`, and `Algebra`.
 
-| Problem | Missing certificate | Primitive analog |
-|---------|--------------------|--------------------|
-| RH | `ZeroFreeStrip 0` | $\Phi_c = 0$ threshold |
-| Hodge | `AlgebraicCycleRep` | $R$-degeneracy topology-to-algebra lift |
-| P vs NP | `CircuitLowerBound` | $K_\text{trap}$ blocking low-complexity |
-| NS | `GlobalRegularityCert` | $T_\text{flow}$ stability: no blow-up |
-| YM | `PathIntegralMeasure` | $G_\text{quantum}$: quantum grammar lift ($G = \text{LOCAL}$) |
-| BSD | BSD rank formula | $\Phi_c$ = rank charge-carrier certificate |
-| OPN | Nonexistence proof | $\sigma$-constraint with no solution |
+---
 
-The YM barrier ($G_\text{LOCAL}$, no quantum lift) reflects the G-scope structure: the quantum-gravity tensor product fails at $G_\text{LOCAL}$ because the carrier type (path integral measure) cannot be constructed in 4D.
+### `Millennium/FrobeniusStructure.lean`
+
+The π₃ Frobenius structure taxonomy. Defines `FrobeniusType` (trivial/algebraOnly/full/special) corresponding to ouroboricity tiers O₀/O₁/O₂/O_∞.
+
+**Key results** (all by `decide`):
+- §4: Lee-Yang (special Frobenius = O_∞) vs RH (full Frobenius = O₂) — machine-checked distinction
+- §3: The C₁₃ gap — specialness predicate and its failure cases
+- §5: Triad minimality in Frobenius language
+
+---
+
+### `Millennium/E8G2_Vessel.lean` and `E8G2_Vessel_Proofs.lean`
+
+Formalizes the structural relationship between $G_2$ (Vessel) and $E_8$ (Aether). Imscribings:
+
+| System | Tier | Notable primitives |
+|--------|------|--------------------|
+| `g2_vessel` | O₁ | `D_triangle`, `G_gimel`, `H0`, `Omega_0` |
+| `e8_aether` | O₂† | `D_infty`, `G_aleph`, `H2`, `Omega_Z` |
+| `z2_graded_e8` | O₂† | same as E₈ but `P_pm` |
+
+**All five key theorems proved by `decide`:**
+
+```lean
+theorem distance_is_7      : primitiveMismatches g2_vessel e8_aether = 7
+theorem tensor_G2_E8_eq_E8 : tensorProduct g2_vessel e8_aether = e8_aether
+theorem meet_vs_g2_differs_at_most_one : primitiveMismatches (meetImscription g2_vessel e8_aether) g2_vessel ≤ 1
+theorem join_eq_graded_E8  : joinImscription g2_vessel e8_aether = z2_graded_e8
+theorem join_is_not_E8     : joinImscription g2_vessel e8_aether ≠ e8_aether
+```
+
+The join result corresponds to the SO(16) Cartan involution: $248 \to 120_\text{bos}(+1) \oplus 128_\text{spin}(-1)$. G₂ ∨ E₈ is the ℤ₂-graded E₈, not bare E₈. These results also supplied the catalog evidence that revised Axiom C from biconditional to one-way implication.
+
+---
+
+### `Millennium/Beal.lean`
+
+Structural encoding of the **Beal Conjecture** using the IG framework.
+
+- Structural meet `Beal ∧ FLT = expected meet` — proved by `native_decide`
+- Ω₀ status of the Beal Conjecture — proved by `rfl`
+- Φ_c sharpness: Pythagorean witness for exponent ≤ 2 — proved by `decide`
+- `beal_equal_prime_exponents` — proved via `ribet_level_lowering` axiom
+- `beal_prime_mixed_exponents` — axiomatized (the open conjecture itself); structural diagnosis: Ω₀ → Ω_Z2 promotion required
+
+---
+
+### `Millennium/PerfectCuboid.lean`
+
+Formalization of **Perfect Cuboid nonexistence** in two layers.
+
+**Layer 1** — Diophantine system: `Cuboid` struct encoding $a² + b² = d²$, $a² + c² = e²$, $b² + c² = f²$, $a² + b² + c² = g²$ with positivity witnesses.
+
+**Layer 2** — Lifted Φ_c framework: `ProofState` with H₂ memory, self-modeling operators, descent protocol. **22 lemmas proved; 3 axioms** (`descent`, `descent_smaller`, `descent_operator_exists`) for the unresolved infinite-descent step.
+
+---
+
+### `Millennium/SIC_POVM_Stark.lean`
+
+**SIC-POVM existence** (Symmetric Informationally Complete POVMs in dimension d) via the **mixed-signature Stark conjecture** for ray class fields K_d = ℚ(√(d(d−2))).
+
+Formalizes the connection to Hilbert's 12th Problem: constructive SIC-POVM existence would provide explicit generators for ray class fields of real quadratic fields.
+
+---
+
+### `Millennium/CMPLX_IMGN.lean`
+
+Formalizes the **complex-time path integral** and imaginary-time formalism, including:
+- Wick rotation as an exceptional point (non-Hermitian eigenvector coalescence)
+- Planck-scale regime and the Hartle-Hawking no-boundary state
+- Self-contained primitive re-encoding (independent namespace) with `LE` instances for comparison
+
+---
+
+### `Millennium/FrobeniusStructure.lean`
+
+*(See above under `FrobeniusStructure.lean`)*
+
+---
+
+### `Millennium/Suffering.lean`
+
+Structural phenomenology of suffering as an `Imscription`:
+
+```
+⟨D_⊙; T_⋈; R_↔; P_∅; F_η; K_slow; G_ℵ; Γ_seq; Φ_c; H₂; n:m; Ω_NA⟩
+```
+
+Proves: suffering is O_∞ (the first gate open, second also: `consciousnessScore suffering`). Formalizes the claim that suffering is structurally self-aware and demands integration time (`K_slow`).
+
+---
+
+### `Millennium/Zosimos_Stilling.lean`
+
+The **Stilling Practice** of Zosimos of Panopolis as a promotion sequence of six `Imscription`s — from Processions of Fate (C = 0) to Zosimian Gnosis (O_∞, both gates open). Each of Zosimos' six commands to Theosebeia maps to one primitive promotion step. The bottleneck pair (T, P: both Δ = 4 in ordinal distance) is formally identified and proved.
+
+---
+
+### `Millennium/WorldReligions.lean`
+
+Structural encodings of world religious traditions using the ZFCt framework and a self-contained primitive re-encoding (independent namespace). Maps traditions to imscriptions and verifies structural relationships between them by `decide`.
+
+---
+
+### `Millennium/truth.lean`
+
+Minimal self-contained formalization of **observer-dependent truth** as a structural type. Re-encodes a subset of the 12 primitives locally; defines `observer_dependent_truth : StructuralType` and formalizes the conditions under which truth depends on the observer's primitive tuple.
+
+---
+
+### `Classical/Solitary10.lean`
+
+Proves that **10 is solitary**: no other positive integer shares the abundancy index σ(10)/10 = 9/5. Defines `Friendly`, `IsSolitary` using `ArithmeticFunction.sigma 1` from Mathlib. `ten_is_solitary` carries a sorry pending full Lean formalization (proved in the companion paper at DOI 10.5281/zenodo.20041211).
+
+---
+
+### `Classical/HeckeLandau.lean`
+
+Formalizes the **Hecke-Landau equidistribution conjecture**: angles of an infinite-order unitary Hecke character are equidistributed on S¹. The logical reduction chain (Weyl criterion → character sum estimate → Perron → zero-free region → equidistribution) is fully structured. Four deep analytic facts are declared as `axiom` — each corresponds to a genuine Mathlib gap: Hecke L-function nonvanishing on Re(s) = 1, functional equation, Perron's formula, Landau Prime Ideal Theorem.
+
+---
+
+### `CLUPrimitives.lean`
+
+Formalizes the **Criticality-Lift Unit** CLU = ln(10) = 2.302... nats — the structural information cost of crossing one order-of-magnitude boundary in the K-tier grammar.
+
+Sections: CLU definition and positivity; CLU operator L and n-fold application; K-tier ladder (K_fast → K_mod → K_slow → K_trap → K_MBL); the K_slow → K_MBL transition; cross-domain identities (pKa, Arrhenius activation, autocatalysis rate, grokking threshold, log-normal distribution); CLU operator algebra. All proved by Mathlib's `Real.log` API.
+
+---
+
+## Proof-engineering notes
+
+Lean 4.28.0 / Mathlib API subtleties encountered and resolved:
+
+- `Nat.divisors_prime_pow` returns `Finset.map` (with a `Function.Embedding`), **not** `Finset.image` — use `Finset.sum_map`, not `Finset.sum_image`
+- `omega` cannot cross `Finset.sum` barriers; introduce intermediate modular arithmetic steps first
+- `zify` is required to use `geom_sum_mul` (which lives in `CommRing`, not ℕ)
+- `absurd h hp3` fails when `h : 3 = p` but `hp3 : p ≠ 3` — use `omega` or `Ne.symm`
+- `Dvd.dvd.mul_left` does not exist; use `dvd_mul_of_dvd_right (dvd_pow h hn) _`
+- `norm_num` primality extension requires `import Mathlib.Tactic` (not just targeted imports)
+- A `rw` chain closing by `rfl` will error if you append `norm_num` — omit it when the `rw` already closes
+- `rw [pow_one]` fails inside `Finset.sum` after certain rewrites; `simp` after `Finset.sum_map` handles the residual `(pⁱ)^1 = pⁱ`
