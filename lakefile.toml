@@ -36,6 +36,7 @@ globs = [
   "Imscribing.Millennium.OPN",
   "Imscribing.Millennium.BSD",
   "Imscribing.Millennium.Barriers",
+  "Imscribing.Millennium.GeneralizedPipeline",
   "Imscribing.Millennium.PrimitiveBridge",
   "Imscribing.Millennium.FrobeniusStructure",
   "Imscribing.Millennium.E8G2_Vessel",
