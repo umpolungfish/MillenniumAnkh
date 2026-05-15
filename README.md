@@ -309,6 +309,39 @@ Three-layer barrier analysis for the **Hodge Conjecture**.
 
 ---
 
+### `Millennium/Lefschetz11.lean`
+
+Axiomatic skeleton for the **Lefschetz (1,1) Theorem** (Lefschetz 1924) — the only confirmed general case of the Hodge conjecture and the p = 1 discharge target identified in `Hodge.lean`.
+
+**The theorem**: on a compact Kähler manifold X, the first Chern class map c₁ : Pic(X) → H²(X, ℤ) is surjective onto the integral (1,1)-classes: Im(c₁) = H²(X, ℤ) ∩ H^{1,1}(X).
+
+Sorry classification: **`MathlibGap` throughout** — no sorry is an open problem. Every sorry will go away once Mathlib contains the exponential sheaf sequence and Hodge decomposition.
+
+**Proof outline formalized** (in §5): the argument runs two concrete steps before hitting the axiom boundary:
+
+```lean
+lemma integral_11_maps_to_zero_in_hol (X) (α : Integral11Classes X) :
+    seq_map_to_hol X α.1 = 0 :=
+  (h02_zero_iff_seq_zero X α.1).mp α.2.2     -- Dolbeault isomorphism
+
+theorem lefschetz_11 (X) (α : Integral11Classes X) :
+    ∃ L : PicardGroup X, c₁ X L = α.1 :=
+  (exact_at_H2Z X α.1).mpr (integral_11_maps_to_zero_in_hol X α)   -- exactness
+```
+
+The two axioms doing work — `h02_zero_iff_seq_zero` and `exact_at_H2Z` — identify precisely the two Mathlib gaps: the Dolbeault isomorphism and the long exact cohomology sequence from the exponential sequence.
+
+**Axiomatized infrastructure** (eight axioms, all standard objects in Griffiths-Harris):
+`CompactKählerManifold`, `PicardGroup`, `ShCoh`, `connecting_hom` (= c₁), `seq_map_to_hol`, `exact_at_H2Z`, `hodge_proj`, `h02_zero_iff_seq_zero`.
+
+**Key definitions**: `Integral11Classes X` (subtype of H²(X; ℤ) with zero (2,0) and (0,2) components), `c₁` (the Chern class map, defined as the connecting homomorphism).
+
+**Sorry inventory** (§8): six axioms listed with precise discharge conditions; estimated Mathlib formalization difficulty HIGH, timeline 5+ years. These axioms overlap with what would discharge `lefschetz_11_is_mathlib_gap` in `Hodge.lean`.
+
+Cross-reference: the companion standalone repo `hodge-lefschetz` contains the same file as `HodgeLefschetz/Lefschetz11.lean` with its own `lakefile.toml` (Mathlib v4.28.0, shared cache).
+
+---
+
 ### `Millennium/NS.lean`
 
 Three-layer barrier analysis for **Navier-Stokes** global regularity.

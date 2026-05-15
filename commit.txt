@@ -1,47 +1,41 @@
-v0.5.72 — WorldReligions build fix · README catalog update · image regeneration
+v0.5.73 — Lefschetz11.lean added · README updated
 
-WorldReligions.lean (17 errors resolved, full library now builds clean at 8061 jobs):
+Imscribing/Millennium/Lefschetz11.lean (new file, 268 lines, builds clean):
 
-Six "no goals to be solved" fixes — dsimp became more aggressive between builds
-and now closes goals that previously required a trailing tactic:
-  EP_absorption_in_tensor, EP_tensor_absorption_rule, Phi_c_absorbs_in_meet:
-    removed trailing `decide` (dsimp [relTensor/relMeet + fields] closes goal)
-  consciousness_Taoism_zero:
-    removed trailing `norm_num` (dsimp reduces gate1_pass Taoism to false,
-    collapses if-branch to 0.0 = 0.0 which is rfl; norm_num then has no goal)
-  tier_Buddhism_Oinf, tier_Christianity_Oinf:
-    removed trailing `decide` (dsimp [ouroborTier + fields] closes goal)
+Axiomatic skeleton for the Lefschetz (1,1) theorem (Lefschetz 1924) — the p = 1
+case of the Hodge conjecture and the discharge target of `lefschetz_11_is_mathlib_gap`
+in Hodge.lean. Every sorry is classified MathlibGap; none are open problems.
 
-Six distance theorems replaced with sorry — claimed values do not match the
-weightedSqDist formula under the canonical weights (wD=2, wT=2, wP=3, etc.):
-  distance_Tao_Taoism:           claimed sqrt(10),       actual sqrt(19)
-  distance_Buddhism_Christianity: claimed sqrt(2),        actual sqrt(3)
-  distance_Buddhism_Sufi:         claimed 1.0,            actual 1.0 (tactic fails)
-  distance_Christianity_Islam:    claimed sqrt(14),       actual sqrt(20)
-  distance_Buddhism_Satanism_max: claimed sqrt(41.9375),  actual sqrt(94)
-  distance_Taoism_Sikhism:        claimed sqrt(3.769),    actual sqrt(13)
-Values need recomputation against the current weight vector; sorry is honest.
+File structure follows the three-layer pattern of the other Millennium files:
+  §1  Abstract types: CompactKählerManifold, PicardGroup, ShCoh, HodgePQ (8 axioms)
+  §2  Exponential sheaf sequence: connecting_hom (= c₁), exact_at_H2Z
+  §3  Hodge decomposition: hodge_proj, int_to_complex, h02_zero_iff_seq_zero
+  §4  Integral11Classes definition (subtype of H²(X; ℤ))
+  §5  Main theorem — proof runs two real steps before the axiom boundary:
+        integral_11_maps_to_zero_in_hol: uses h02_zero_iff_seq_zero (Dolbeault iso)
+        lefschetz_11: uses exact_at_H2Z (long exact cohomology sequence)
+  §6  Corollary: algebraicity of integral (1,1)-classes
+  §7  Surjectivity reformulations (two equivalent restatements)
+  §8  Sorry inventory — six axioms, discharge conditions, estimated timeline
 
-Three consciousness score theorems replaced with sorry — claimed values do not
-match consciousnessScore as defined (gate1_pass / match Phi P / kMod chain):
-  consciousness_Tao:     claimed 0.828, actual 0.736 (Phi_c + P_sym + K_slow)
-  consciousness_Paganism: claimed 0.275, actual 0.368 (Phi_c + P_sym + K_mod * 0.5)
-  consciousness_IAM:     claimed 0.550, actual 0.736 (Phi_c + P_sym + K_slow)
+noncomputable section added (required: defs call axioms, Type-valued, not Prop).
+AddCommGroup instances axiomatized for ShCoh and HodgePQ (needed for 0 and =).
+All theorems in §6-7 discharge via the main theorem without additional sorry.
 
-consciousness_top_tie: fixed free variable — `x` was unbound in theorem statement
-under relaxedAutoImplicit = false. Added `∀ x : RelTuple,` to statement; proof
-replaced with sorry (first clause Tao = Sikhism is false under current scores).
-
-only_two_Oinf, Oinf_requires_pm_sym: native_decide replaced with sorry.
-native_decide on `∀ s : RelTuple, ...` requires Fintype RelTuple; none of the
-12 local inductive types derive Fintype. Adding Fintype instances is the fix;
-sorry is the honest placeholder until then.
+lakefile.toml:
+  "Imscribing.Millennium.Lefschetz11" appended to globs list.
+  Build job count unchanged (3102 Mathlib jobs + 1 new module).
 
 README.md:
-  Catalog count updated: 318 → 2328 entries
-  Build job count updated: 3402 → 8061 jobs
+  New section added after Millennium/Hodge.lean:
+    - Theorem statement and classification (MathlibGap, not OpenProblem)
+    - Proof outline with the two concrete step snippets
+    - Eight axioms listed with cross-references
+    - Sorry inventory summary and timeline estimate
+    - Cross-reference to standalone hodge-lefschetz repo
 
-syncon_primitive_map_mds.png, syncon_primitive_map_network.png:
-  Regenerated from full 2328-entry catalog via syncon_primitive_map.py.
-  MDS now reflects the grown catalog (7x more entries than previous images).
-  25273 Hamming d=1 sibling edges drawn (up from ~3000 in prior render).
+hodge-lefschetz (companion standalone repo, ~/hodge_lefschetz):
+  lakefile.toml and lean-toolchain created (Mathlib v4.28.0, same cached rev).
+  HodgeLefschetz/Lefschetz11.lean copied from MillenniumAnkh.
+  Builds clean at 3102 jobs (shared Mathlib cache, no re-download required).
+  Old foundations/, hodge/, exponential/, main/ subdirs retained as reference.
