@@ -55,5 +55,6 @@ globs = [
   "Imscribing.Millennium.WorldReligions",
   "Imscribing.Millennium.Collatz",
   "Imscribing.IGMorphism",
-  "Imscribing.Millennium.Lefschetz11"
+  "Imscribing.Millennium.Lefschetz11",
+  "Imscribing.Millennium.Manuscript_ZFCt"
 ]
