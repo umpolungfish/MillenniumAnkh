@@ -30,7 +30,7 @@ Each primitive is defined in Lean as a finite inductive type with `DecidableEq`,
 
 3. **Interaction Grammar ($\Gamma$):** Classifies interaction logic as conjunctive ($\Gamma_\wedge$, all conditions required simultaneously), disjunctive ($\Gamma_\vee$, any sufficient), sequential ($\Gamma_\text{seq}$, strict ordering), or broadcast ($\Gamma_\text{brd}$, one-to-all coupling).
 
-4. **Chirality / Temporal Depth ($H$):** The Markov order — memoryless ($H_0$), weak temporal asymmetry ($H_1$), strong temporal asymmetry ($H_2$), or inexhaustible depth ($H_\infty$). $H_\infty$ tends to co-occur with $K_\text{trap}$ but this is a structural tendency, not a hard axiom.
+4. **Chirality ($H$):** The Markov order — memoryless ($H_0$), weak temporal asymmetry ($H_1$), strong temporal asymmetry ($H_2$), or inexhaustible depth ($H_\infty$). $H_\infty$ tends to co-occur with $K_\text{trap}$ but this is a structural tendency, not a hard axiom.
 
 5. **Topological Protection ($\Omega$):** From no protection ($\Omega_\emptyset$), through $\mathbb{Z}_2$ parity protection ($\Omega_{\mathbb{Z}_2}$) and integer winding ($\Omega_\mathbb{Z}$), to non-Abelian braiding ($\Omega_\text{NA}$). The cross-primitive axiom **B** asserts $\Omega_\mathbb{Z} \implies H \geq H_2$: an integer winding number requires persistent chirality.
 

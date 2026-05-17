@@ -1,5 +1,5 @@
 -- Imscribing/Primitives/ZFCt.lean
--- ZFC$_t$: ZFC extended with Sequentiality, Temporal Depth, and Winding.
+-- ZFC$_t$: ZFC extended with Sequentiality, Chirality, and Winding.
 
 import Imscribing.Primitives.Core
 import Imscribing.Primitives.Imscription
@@ -31,7 +31,7 @@ def temporal_mathematics : Imscription := {
   crit := Phi_c,  chir := H2,    stoi := n_m,     prot := Omega_Z }
 
 def zfc_t : Imscription := {
-  dim := D_infty, top := T_odot,  rel := R_lr,     pol := P_pm,
+  dim := D_infty, top := T_odot,  rel := R_lr,     pol := P_pm_sym,
   fid := F_hbar,  kin := K_slow,  gran := G_aleph, gram := Gamma_seq,
   crit := Phi_c,  chir := H2,     stoi := n_m,     prot := Omega_Z }
 
@@ -110,9 +110,58 @@ def example_winding : WindingData := {
   exists_nonzero := ⟨(), by simp⟩ }
 
 def zfc_to_zfc_t_promotions : List (String × String) := [
-  ("P", "P_asym → P_pm"), ("Gamma", "Gamma_and → Gamma_seq"),
+  ("P", "P_asym → P_pm_sym"), ("Gamma", "Gamma_and → Gamma_seq"),
   ("chir", "H0 → H2"), ("prot", "Omega_0 → Omega_Z"),
   ("top", "T_network → T_odot"), ("rel", "R_super → R_lr") ]
+
+-- ============================================================
+-- IMAGINARY NUMBERS CONNECTION
+-- ============================================================
+
+/-- Complex-time path integral (Wick-rotated: t → iτ, Euclidean field theory).
+    Identical to ZFC_t in all 12 primitives except topology:
+    T_bowtie (figure-8 closure) vs T_odot (holographic boundary encoding).
+    The Wick rotation is a one-step topology promotion. -/
+def complex_time_path_integral : Imscription := {
+  dim  := D_infty,   top  := T_bowtie,  rel  := R_lr,      pol  := P_pm_sym
+  fid  := F_hbar,    kin  := K_slow,    gran := G_aleph,   gram := Gamma_seq
+  crit := Phi_c,     chir := H2,        stoi := n_m,       prot := Omega_Z }
+
+/-- Complex-time path integral is O_inf: Frobenius condition holds in Euclidean time. -/
+theorem complex_time_is_O_inf : imscriptionTier complex_time_path_integral = .O_inf := by decide
+
+/-- The Wick rotation is a single topology step: T_bowtie → T_odot.
+    Everything else in ZFC_t is already present in the Euclidean path integral. -/
+theorem wick_rotation_is_one_step :
+    primitiveMismatches complex_time_path_integral zfc_t = 1 := by decide
+
+/-- The imaginary unit i, in canonical Imscription form.
+    P_psi (phase/U(1) symmetry): rotation in the complex plane, not Frobenius.
+    F_ell (classical lossy): i is a classical construct, not quantum-coherent.
+    D_triangle (triangulated): finite depth, no recursive holographic structure.
+    C = 1.0: both gates pass (Phi_c, K_slow). -/
+def imaginary_unit : Imscription := {
+  dim  := D_triangle, top  := T_bowtie,  rel  := R_lr,     pol  := P_psi
+  fid  := F_ell,      kin  := K_slow,    gran := G_aleph,  gram := Gamma_seq
+  crit := Phi_c,      chir := H2,        stoi := one_one,  prot := Omega_Z }
+
+/-- Imaginary unit is O_2: Omega_Z protection but no Frobenius symmetry. -/
+theorem imaginary_unit_is_O_2 : imscriptionTier imaginary_unit = .O_2 := by decide
+
+/-- Frobenius cliff: imaginary unit cannot tensor-compose its way to ZFC_t.
+    P_psi (U(1)) cannot reach P_pm_sym by any tensor — the Frobenius gate
+    must be opened independently (the Wick rotation is a promotion, not a product). -/
+theorem imaginary_unit_frobenius_cliff :
+    ∀ other : Imscription, (tensorProduct imaginary_unit other).pol ≠ P_pm_sym := by
+  intro other
+  simp [tensorProduct, imaginary_unit]
+  cases other.pol <;> decide
+
+/-- Distance from imaginary unit to ZFC_t: five primitive promotions needed
+    (dim: D_triangle→D_infty, top: T_bowtie→T_odot, pol: P_psi→P_pm_sym,
+     fid: F_ell→F_hbar, stoi: one_one→n_m). -/
+theorem imaginary_unit_to_zfc_t_dist :
+    primitiveMismatches imaginary_unit zfc_t = 5 := by decide
 
 end ZFCt
 end Imscribing.Primitives

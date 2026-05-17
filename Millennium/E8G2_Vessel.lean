@@ -82,7 +82,7 @@ Justification (from Aether_Vessel.md):
 - $\Gamma_\text{seq}$: Sequential construction
   ($G_2 \to F_4 \to E_6 \to E_7 \to E_8$ chain)
 - $\Phi_c$: Exact criticality (shared with G2)
-- $H_2$: Two-step temporal depth (Coxeter 30 = $2 \times 15$,
+- $H_2$: Two-step chirality (Coxeter 30 = $2 \times 15$,
   two-step embedding)
 - $n{:}m$: Heterogeneous components
   ($14 \oplus 52 \oplus 7 \otimes 26$ decomposition)

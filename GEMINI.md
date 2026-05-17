@@ -45,7 +45,7 @@ The project uses the seven Clay Millennium Prize Problems as test cases. Each pr
 | **𝓕₄** | **D** (Dimensionality) | 4 | Space type: Wedge $\to$ Triangle $\to$ $\infty$ $\to$ $\odot$ (holographic). |
 | | **R** (Relational) | 4 | Coupling mode: Super $\to$ Cat $\to$ Dagger $\to$ Lateral. |
 | | **Γ** (Grammar) | 4 | Composition rule: And, Or, Seq, Broad. |
-| | **H** (Chirality) | 4 | Temporal depth: $H_0$ $\to$ $H_1$ $\to$ $H_2$ $\to$ $H_\infty$ (topological). |
+| | **H** (Chirality) | 4 | Chirality: $H_0$ $\to$ $H_1$ $\to$ $H_2$ $\to$ $H_\infty$ (topological). |
 | | **Ω** (Protection) | 4 | Symmetry protection: $0$ $\to$ $\mathbb{Z}_2$ $\to$ $\mathbb{Z}$ $\to$ Non-Abelian. |
 | **𝓕₅** | **T** (Topology) | 5 | Network, In, Bowtie, Box, $\odot$ (holographic). |
 | | **P** (Parity) | 5 | Asym, $\psi$ (phase), $\pm$, Sym, $\pm$Sym (Frobenius). |

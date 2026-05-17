@@ -34,7 +34,7 @@ Each primitive is defined in Lean as a finite inductive type with `DecidableEq`,
 
 3. **Interaction Grammar ($\Gamma$):** $\Gamma_\wedge$ (all conditions required simultaneously), $\Gamma_\vee$ (any sufficient), $\Gamma_\text{seq}$ (strict ordering), $\Gamma_\text{brd}$ (one-to-all coupling). Each section must open with necessity from the prior.
 
-4. **Chirality / Temporal Depth ($H$):** $H_0$ (memoryless), $H_1$ (weak temporal asymmetry), $H_2$ (strong temporal asymmetry), $H_\infty$ (inexhaustible depth). $H_\infty$ tends to co-occur with $K_\text{trap}$ but this is a structural tendency, not a hard axiom.
+4. **Chirality ($H$):** $H_0$ (memoryless), $H_1$ (weak temporal asymmetry), $H_2$ (strong temporal asymmetry), $H_\infty$ (inexhaustible depth). $H_\infty$ tends to co-occur with $K_\text{trap}$ but this is a structural tendency, not a hard axiom.
 
 5. **Topological Protection ($\Omega$):** $\Omega_\emptyset$ (none), $\Omega_{\mathbb{Z}_2}$ (parity protection), $\Omega_\mathbb{Z}$ (integer winding), $\Omega_\text{NA}$ (non-Abelian braiding). Axiom B asserts $\Omega_\mathbb{Z} \implies H \geq H_2$: an integer winding number requires persistent chirality.
 

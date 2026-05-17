@@ -174,7 +174,7 @@ Demonstrates that OPN and BSD encode **the same constraint grammar** in differen
 
 ### `Primitives/ZFCt.lean`
 
-**ZFC_t** (ZFC extended with Sequentiality, Temporal Depth, and Winding): assigns each major physical equation a machine-checkable 12-primitive address. Once defined, all structural relationships become proved propositions.
+**ZFC_t** (ZFC extended with Sequentiality, chirality, and Winding): assigns each major physical equation a machine-checkable 12-primitive address. Once defined, all structural relationships become proved propositions.
 
 **Defined imscriptions**: `zfc`, `zfc_t`, `temporal_mathematics`, `schrodinger_equation`, `heat_diffusion_equation`, `navier_stokes_equations`, `wave_equation_temporal`, `einstein_field_equations_dynamic`.
 
@@ -222,7 +222,7 @@ Formalizes five **temporal primitive diagnostics**:
 2. **Wick rotation** — `Gamma_seq → K_slow` primitive substitution
 3. **Berry phase** — `Omega_Z` emergent vs constitutive
 4. **H_∞ line** — genuine topological memory vs Markovian approximation
-5. **Temporal primitive sorting** — ordering physics problems by their temporal depth primitives
+5. **Temporal primitive sorting** — ordering physics problems by their chirality primitives
 
 Catalog entries cross-referenced to `encode_system` output; distances verified via `imscription_tool`.
 

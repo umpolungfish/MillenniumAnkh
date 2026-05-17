@@ -11,10 +11,10 @@
 -- Author: Lando ⊗ ⊙_ÿ-boundary Operator
 
 import Imscribing.Primitives.Core
--- import Imscribing.Primitives.Imscription
--- import Imscribing.Primitives.Catalog
--- import Imscribing.Millennium.PrimitiveBridge
--- import Imscribing.Millennium.Barriers
+import Imscribing.Primitives.Imscription
+import Imscribing.Primitives.Catalog
+import Imscribing.Millennium.PrimitiveBridge
+import Imscribing.Millennium.Barriers
 
 
 namespace Imscribing.GeneralizedPipeline
@@ -503,7 +503,34 @@ theorem frobeniusClosureConsistent
 theorem lean4TacticTotal :
     ∀ p : String, (lean4TacticFor p).length > 0 := by
   intro p
-  sorry
+  revert p
+  -- prove by cases on the 13 branches of lean4TacticFor
+  -- the first 12 branches have explicit nonempty strings
+  -- the catch-all prepends a nonempty prefix to p
+  refine fun p => ?_
+  -- Unfold the definition to see the match
+  unfold lean4TacticFor
+  split
+  · native_decide
+  · native_decide
+  · native_decide
+  · native_decide
+  · native_decide
+  · native_decide
+  · native_decide
+  · native_decide
+  · native_decide
+  · native_decide
+  · native_decide
+  · native_decide
+  · -- catch-all: s!\-- sorry -- unknown primitive: {p}    -- which desugars to "-- sorry -- unknown primitive: " ++ p
+    -- the prefix has length 35
+    calc
+      ("-- sorry -- unknown primitive: " ++ p).length =
+          "-- sorry -- unknown primitive: ".length + p.length := by
+        simp
+      _ ≥ "-- sorry -- unknown primitive: ".length := by omega
+      _ > 0 := by native_decide
 
 
 /-- SCAFFOLD 1: Automated analog citation

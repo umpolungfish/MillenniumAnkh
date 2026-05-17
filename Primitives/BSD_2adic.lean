@@ -7,6 +7,7 @@ import Mathlib.Tactic
 import Mathlib.AlgebraicGeometry.EllipticCurve.Weierstrass
 import Mathlib.Data.Nat.Factorization.Basic
 import Mathlib.Data.Int.Lemmas
+import Mathlib.NumberTheory.Padics.PadicVal.Basic
 
 /-!
 # BSD 2-Adic: The Same Constraint Structure as OPN, in a Different Substrate
@@ -72,8 +73,9 @@ namespace BSD
 -- §1. The 2-adic valuation (same convention as OPN_2adic.lean)
 -- ============================================================
 
-/-- The 2-adic valuation of $n$: the exponent of 2 in the prime factorization. -/
-noncomputable def v₂ (n : ℕ) : ℕ := (Nat.factorization n) 2
+/-- The 2-adic valuation of $n$: the exponent of 2 in the prime factorization.
+    Uses Mathlib's computable `padicValNat 2 n`. -/
+def v₂ (n : ℕ) : ℕ := padicValNat 2 n
 
 -- ============================================================
 -- §2. Axioms: deep theorems not yet in Mathlib
@@ -163,9 +165,11 @@ theorem v2_rank_of_neg_root_number (E : WeierstrassCurve ℚ)
     (hε : rootNumber_EC E = -1) :
     v₂ (rank_EC E) = 0 := by
   have hodd := rank_odd_of_neg_root_number E hε
-  simp only [v₂, Nat.factorization_eq_zero_iff]
-  right; left
-  intro ⟨c, hc⟩
+  rw [v₂]
+  refine padicValNat.eq_zero_iff.mpr ?_
+  right; right
+  intro h
+  have : rank_EC E % 2 = 0 := Nat.dvd_iff_mod_eq_zero.mp h
   omega
 
 /-- **$r \geq 1$ when $\varepsilon = -1$.**
@@ -193,9 +197,11 @@ theorem torsion_v2_bound (E : WeierstrassCurve ℚ) :
     v₂ (torsionOrder_EC E) ≤ 4 := by
   have hmazur := mazur_torsion_bound E
   have hpos := torsionOrder_EC_pos E
-  -- 2^(v₂ |T|) ∣ |T| ≤ 16 < 2^5; sorry pending Mathlib `p^(v_p n) ∣ n` API.
-  simp only [v₂]
-  sorry
+  have h_all : ∀ n ∈ Finset.Icc 1 16, v₂ n ≤ 4 := by
+    native_decide
+  have h_mem : torsionOrder_EC E ∈ Finset.Icc 1 16 :=
+    Finset.mem_Icc.mpr ⟨by omega, hmazur⟩
+  exact h_all (torsionOrder_EC E) h_mem
 
 -- ============================================================
 -- §5. The 3-adic input (sorry — requires BSD and local arithmetic)

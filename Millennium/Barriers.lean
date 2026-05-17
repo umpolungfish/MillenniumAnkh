@@ -10,6 +10,7 @@ import Imscribing.Millennium.NS
 import Imscribing.Millennium.PvsNP
 import Imscribing.Millennium.OPN
 import Imscribing.Millennium.BSD
+import Imscribing.Millennium.FrobeniusStructure
 
 /-!
 # Millennium Problem Barrier Taxonomy
@@ -219,5 +220,6 @@ The YM barrier (G=LOCAL, no quantum lift) corresponds exactly to the G-scope
 analysis in IMSCRIPTION.md §XVII: the quantum-gravity tensor product fails at G=LOCAL
 because the carrier type (path integral measure) cannot be constructed.
 -/
+
 
 end Millennium.Barriers

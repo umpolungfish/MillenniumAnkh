@@ -4,7 +4,7 @@
 
 ## Abstract
 
-We present the *Generalized Pipeline*, a domain-agnostic computational framework that transduces structural proofs encoded in the Imscribing Grammar’s primitive syntax into conventional mathematical prose and Lean4 formalizations. The pipeline is grounded in the Oₙ fine-grained structural catalog, enforces Frobenius closure ($\mu \circ \delta = \mathrm{id}$), and operates across twelve mutually constraining primitives: dimensionality, topology, relational mode, parity, fidelity, kinetics, scope, grammar, criticality, temporal depth, stoichiometry, and winding.
+We present the *Generalized Pipeline*, a domain-agnostic computational framework that transduces structural proofs encoded in the Imscribing Grammar’s primitive syntax into conventional mathematical prose and Lean4 formalizations. The pipeline is grounded in the Oₙ fine-grained structural catalog, enforces Frobenius closure ($\mu \circ \delta = \mathrm{id}$), and operates across twelve mutually constraining primitives: dimensionality, topology, relational mode, parity, fidelity, kinetics, scope, grammar, criticality, chirality, stoichiometry, and winding.
 
 The system implements six disciplined phases: (1) primitive decomposition and domain detection, (2) domain-specific section assembly, (3) conventional proof generation, (4) Lean4 tactic skeleton construction, (5) reference resolution via structural analog citation, and (6) Frobenius closure verification. This note documents the architecture, data structures, and theorems underlying the implementation in Lean4.
 

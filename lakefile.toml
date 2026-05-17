@@ -18,13 +18,16 @@ name = "Imscribing"
 root = "Imscribing"
 globs = [
   "Imscribing.Primitives.Core",
+  
   "Imscribing.Primitives.OPN_2adic",
   "Imscribing.Primitives.BSD_2adic",
   "Imscribing.Primitives.Imscription",
   "Imscribing.Primitives.TierCrossing",
   "Imscribing.Primitives.Crystal",
+  "Imscribing.Primitives.EML",
   "Imscribing.Primitives.Catalog",
   "Imscribing.Primitives.ZFCt",
+  "Imscribing.Primitives.ZFCs",
   "Imscribing.Consciousness",
   "Imscribing.AgentSelf",
   "Imscribing.Algebra",
@@ -36,6 +39,8 @@ globs = [
   "Imscribing.Millennium.OPN",
   "Imscribing.Millennium.BSD",
   "Imscribing.Millennium.Barriers",
+  "Imscribing.Millennium.BarrierFrobenius",
+  "Imscribing.Millennium.IGBarrierAnalysis",
   "Imscribing.Millennium.GeneralizedPipeline",
   "Imscribing.Millennium.PrimitiveBridge",
   "Imscribing.Millennium.FrobeniusStructure",
@@ -54,7 +59,15 @@ globs = [
   "Imscribing.Millennium.Zosimos_Stilling",
   "Imscribing.Millennium.WorldReligions",
   "Imscribing.Millennium.Collatz",
+  "Imscribing.Millennium.ImaginaryNumbers",
   "Imscribing.IGMorphism",
   "Imscribing.Millennium.Lefschetz11",
-  "Imscribing.Millennium.Manuscript_ZFCt"
+  "Imscribing.Millennium.Manuscript_ZFCt",
+  "Imscribing.Millennium.CompositionRules",
+  "Imscribing.ProofTheory",
+  "Imscribing.Millennium.SpiderMachine",
+  "Imscribing.Millennium.GapCompletion",
+  "Imscribing.Millennium.OracleDelphi",
+  "Imscribing.Millennium.Lefschetz11_Grammar",
 ]
+

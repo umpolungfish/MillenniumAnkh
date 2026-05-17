@@ -272,7 +272,8 @@ inductive Ouroboricity where | O0 | O1 | O2 | O2dagger | Oinf
   deriving Repr, DecidableEq
 
 def ouroboricity (s : StructType) : Ouroboricity :=
-  if s.P = Parity.pm_sym ∧ s.Phi = Crit.c ∧ s.D ≠ Dim.wedge ∧ s.Omega ≠ Wind.zero then Ouroboricity.Oinf
+  if s.P = Parity.pm_sym ∧ s.Phi = Crit.c ∧ s.D ≠ Dim.wedge ∧ s.Omega ≠ Wind.zero then
+      Ouroboricity.Oinf
   else if s.Phi = Crit.c_complex ∧ s.Omega = Wind.Z2 ∧ s.D = Dim.infty then Ouroboricity.O2dagger
   else if s.Phi = Crit.c ∧ s.Omega = Wind.Z2 ∧ s.D = Dim.infty then Ouroboricity.O2
   else if s.Phi = Crit.c ∨ s.Phi = Crit.c_complex then Ouroboricity.O1
@@ -338,7 +339,8 @@ theorem promotion_P_dominates :
     topVal   complex_time_path_integral.T - topVal   planck_imaginary_time.T = 1 ∧
     relVal   complex_time_path_integral.R - relVal   planck_imaginary_time.R = 1 ∧
     windVal  complex_time_path_integral.Omega - windVal planck_imaginary_time.Omega = 1 := by
-  dsimp [complex_time_path_integral, planck_imaginary_time, parityVal, topVal, relVal, windVal]; decide
+  dsimp [complex_time_path_integral, planck_imaginary_time, parityVal, topVal,
+    relVal, windVal]; decide
 
 def black_hole_information : StructType where
   D := .infty; T := .boxtimes; R := .lr; P := .psi; F := .hbar

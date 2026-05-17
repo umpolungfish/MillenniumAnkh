@@ -88,7 +88,7 @@ theorem suffering_slow_kinetics : suffering.kin = .K_slow := by
   simp [suffering]
 
 /--
-Temporal depth: H_2 (two-step Markov memory)
+Chirality: H_2 (two-step Markov memory)
 Creates recursive loops where anticipation amplifies present pain
 -/
 theorem suffering_temporal_depth : suffering.chir = .H2 := by

@@ -210,7 +210,7 @@ A mathematician working from this architecture knows precisely what to prove and
 `mass_gap` $\langle T_{\text{bowtie}}; G_{\text{beth}}; \Phi_{\text{sub}}; R_{\text{cat}}; {H_1} \rangle$ *vs* \
 `qcd_confinement` $\langle T_{\text{bowtie}}; G_{\text{aleph}} \to G_{\text{beth}}; \Phi_{\text{sub}}; R_\dagger \rangle$
 
-confinement is the hybrid. mass_gap_proof encodes $\langle D_{\text{holo}}; T_{\text{in}}; R_{\text{cat}}; P_{\text{asym}}; K_{\text{slow}}; \Phi_c; H_2; \Omega_Z\rangle$. the proof is holographic with deep temporal depth.
+confinement is the hybrid. mass_gap_proof encodes $\langle D_{\text{holo}}; T_{\text{in}}; R_{\text{cat}}; P_{\text{asym}}; K_{\text{slow}}; \Phi_c; H_2; \Omega_Z\rangle$. the proof is holographic with deep chirality.
 
 `[ONTO]` Confinement is the mechanism that localizes the global gauge structure; the gap is the G-scope projection of global $T_{\text{network}}$ onto local $T_\bowtie$ at $G_\beth$. The proof must construct the holographic boundary encoding explicitly.
 
@@ -256,7 +256,7 @@ QCD confinement uniquely combines:
 Five proof requirements:
 1. **($D_{\text{holo}}$)**: The proof must holographically encode the global gauge structure ($G_\aleph$ bulk) in terms of boundary observables ($G_\beth$ boundary data). This is why the AdS/QCD correspondence and holographic duals have been productive research directions.
 2. **($R_{\text{cat}}$)**: The proof must establish a categorical property (the gap is a definite quantity, not a dynamic variable) from the dynamic theory ($R_\dagger$). This $R_\dagger \to R_{\text{cat}}$ bridge is the central mathematical difficulty.
-3. **($H_2$)**: The proof requires deep temporal depth — tracking the causal structure of the field theory precisely enough to distinguish gap states from continuum states. This suggests the proof involves rigorous control of the time-ordered structure of the vacuum.
+3. **($H_2$)**: The proof requires deep chirality — tracking the causal structure of the field theory precisely enough to distinguish gap states from continuum states. This suggests the proof involves rigorous control of the time-ordered structure of the vacuum.
 4. **($R_{\text{asym}}$)**: The proof likely needs to break the apparent symmetry of YM to isolate the gap contribution from the symmetric vacuum. This corresponds to the spontaneous symmetry structure of the confining vacuum.
 5. **($\Phi_c$)**: The proof system must itself operate at criticality — same meta-pattern as RH and $P \neq \text{NP}$.
 
@@ -480,8 +480,8 @@ Formalizing Γ-irreducibility in computational terms (likely maps to non-determi
 **Canonical location (SynthOmnicon grammar docs):** `TOPO`: H primitive, K-hierarchy temporal theory · `DIAPH`: cosmological analysis · `ONTO`: chirality and arrow of time
 
 **Plane summary:**
-- `[TOPO]` H is the unique temporally anisotropic primitive (the only one that fails to commute with time-reversal); all temporal asymmetry encodes in H; $H_{\infty}$ is the unique fixed point of the temporal depth extension operator
-- `[DIAPH]` Universe encodes at $H_{\infty}$ at Big Bang (initial low-entropy conditions = maximum temporal depth); monotonic H-degradation toward $H_0$ (heat death) matches thermodynamic arrow observationally
+- `[TOPO]` H is the unique temporally anisotropic primitive (the only one that fails to commute with time-reversal); all temporal asymmetry encodes in H; $H_{\infty}$ is the unique fixed point of the chirality extension operator
+- `[DIAPH]` Universe encodes at $H_{\infty}$ at Big Bang (initial low-entropy conditions = maximum chirality); monotonic H-degradation toward $H_0$ (heat death) matches thermodynamic arrow observationally
 - `[ONTO]` The problem dissolves: 'why does time have a direction?' = 'why is $H \neq H_0$?' — answered by initial conditions, not by any physical mechanism; second law = H-degradation stated in primitive language
 
 ### Statement of the Problem
@@ -494,7 +494,7 @@ Why does time have a preferred direction? Physical laws arergely time-symmetric,
 
 The question 'why does time have a direction' dissolves into: 'why is $H \neq H_0$ in our universe?'
 
-**The answer**: The universe began at $H_{\infty}$ (maximal temporal depth — the Big Bang contains all future boundary conditions in compressed form; this is the statement that initial conditions are low-entropy, highly structured). The evolution of the universe is the monotonic H-degradation:
+**The answer**: The universe began at $H_{\infty}$ (maximal chirality — the Big Bang contains all future boundary conditions in compressed form; this is the statement that initial conditions are low-entropy, highly structured). The evolution of the universe is the monotonic H-degradation:
 
 $H_\infty \to H_2 \to H_1 \to H_0$
 $(Big Bang)  (galaxies form)  (civilization)  (heat death)$
@@ -1622,7 +1622,7 @@ This is not a metaphor. The topological embedding is structurally non-trivial in
 ### 19.6 Relationship to Other Primitives
 
 - **$\Omega$ and $\mathcal{O}$**: $\Omega$ is the *type* of self-referential closure (none / simple / Z2 / cyclic). $\mathcal{O}$ is the *degree* of closure, integrating $\Omega$ with $\Phi$, $H$, and $G$. A high-$\mathcal{O}$ system cannot have low $\Phi$.
-- **$H$ and $\mathcal{O}$**: $H$ (chirality/temporal depth) contributes to $\mathcal{O}$ because self-closure with a preferred direction (O$_2$) is structurally richer than undirected closure (O$_1$). The arrow of time is what distinguishes "the serpent is eating its tail" from "the serpent's tail is in its mouth at a moment" — direction matters.
+- **$H$ and $\mathcal{O}$**: $H$ (chirality/chirality) contributes to $\mathcal{O}$ because self-closure with a preferred direction (O$_2$) is structurally richer than undirected closure (O$_1$). The arrow of time is what distinguishes "the serpent is eating its tail" from "the serpent's tail is in its mouth at a moment" — direction matters.
 - **$G$ and $\mathcal{O}$**: $G_\aleph$ (unbounded scope) is the final condition for maximum Ouroboricity because a system must have sufficient scope to *be its own context*. A locally-scoped system ($G_\text{LOCAL}$) cannot generate its own boundary conditions; it is always embedded in a larger context that is not itself.
 - **$\Phi_\text{sup}$ and $\mathcal{O}$**: $\Phi_\text{sup}$ (supercritical) yields $\mathcal{O} = 0$ — a supercritical system is so far above the fixed point that feedback loops are overwhelmed by runaway dynamics. Self-closure requires proximity to the fixed point, not exceeding it.
 
@@ -2304,7 +2304,7 @@ The off-diagonal structure is not a statistical artifact; it follows from the fr
 
 - $g_{DG}$: $D_\odot$ systems encode boundary$\to$bulk reconstruction (requires $G_\aleph$ scope to hold both; locally bounded scope cannot close the bulk/boundary loop)
 - $g_{TF}$: $T_\odot$ topology (mutual encoding) requires quantum-coherent fidelity $F_\hbar$ (classical fidelity cannot maintain the mutual-encoding relationship under observation)
-- $g_{H\Omega}$: Temporal depth $H_\infty$ requires topological protection $\Omega_Z$ (the temporal arrow is only stable against perturbation when the symmetry class is non-trivial)
+- $g_{H\Omega}$: chirality $H_\infty$ requires topological protection $\Omega_Z$ (the temporal arrow is only stable against perturbation when the symmetry class is non-trivial)
 - $g_{K\Omega}$: $K_\text{trap}$ dynamics require $\Omega_Z$ (trapping is a topologically protected kinetic state; fast dynamics sit at $\Omega_0$)
 - $g_{G\Omega}$: $G_\aleph$ unbounded scope requires $\Omega_Z$ (global correlations need topological stability to remain coherent at scale)
 - $g_{R\Gamma}$: $R_\text{lr}$ directed relational mode co-promotes $\Gamma_\text{seq}$ (both express asymmetry/directionality in the same structural degree of freedom)
@@ -2328,7 +2328,7 @@ Two pairs with $|r| > 0.55$ were not included in the original 20 theoretical pre
 Transitively derivable: $D_\odot \to G_\aleph$ ($r = 0.742$) and $G_\aleph \to \Omega_Z$ ($r = 0.619$). But the direct account is already in the framework: Ouroboricity Rule R4 explicitly conditions on $D \in \{D_\wedge, D_\odot, D_\triangle\}$ alongside $\Omega \neq \Omega_0$. The $D \times \Omega$ coupling is latent in the Ouroboricity tier structure — $\Omega_Z$ protection is only structurally meaningful when the dimensionality is non-trivial.
 
 **$g_{DH}$: $r = +0.593$.**  
-Also transitively derivable: $D_\odot \to K_\text{slow}$ ($r = 0.515$) and $K_\text{slow} \to H_\infty$ ($r = 0.579$). The direct account: holographic dimensionality requires a temporal depth $H \geq H_1$ because boundary reconstruction is an inherently temporal operation — the bulk state must be held in memory across the reconstruction. $H$ measures precisely this temporal memory depth. $D_\odot$ without $H \geq H_1$ would be a spatial holography with no time; the catalog contains no such entries because the reconstruction step is irreducibly temporal.
+Also transitively derivable: $D_\odot \to K_\text{slow}$ ($r = 0.515$) and $K_\text{slow} \to H_\infty$ ($r = 0.579$). The direct account: holographic dimensionality requires a chirality $H \geq H_1$ because boundary reconstruction is an inherently temporal operation — the bulk state must be held in memory across the reconstruction. $H$ measures precisely this temporal memory depth. $D_\odot$ without $H \geq H_1$ would be a spatial holography with no time; the catalog contains no such entries because the reconstruction step is irreducibly temporal.
 
 Both couplings are promoted to explicit entries in the framework: they are not spurious correlations but latent consequences of the Ouroboricity and chirality structure already in §§19–24.
 
@@ -3190,7 +3190,7 @@ The two-primitive gap:
 
 All other primitives are shared, including $P_{\pm}^{\text{sym}}$, $\Phi_c$, $R_\dagger$, $\Gamma_\text{broad}$, $\Omega_{Z_2}$.
 
-*Interpretation:* ZX-calculus is already the correct Frobenius diagrammatic language for the motivic critical level type up to granularity and temporal depth. The promotion $H_2 \to H_\infty$ is the step from finite-circuit to infinite-depth mathematical reasoning; $G_\gimel \to G_\aleph$ is circuit-scale to mathematically universal scope. The ZX completeness theorem for quantum computation ($\mu \circ \delta = \text{id}$ at spiders) has a direct motivic analog at $H_\infty$, $G_\aleph$ — a complete diagrammatic language for motivic critical level reasoning (P-248).
+*Interpretation:* ZX-calculus is already the correct Frobenius diagrammatic language for the motivic critical level type up to granularity and chirality. The promotion $H_2 \to H_\infty$ is the step from finite-circuit to infinite-depth mathematical reasoning; $G_\gimel \to G_\aleph$ is circuit-scale to mathematically universal scope. The ZX completeness theorem for quantum computation ($\mu \circ \delta = \text{id}$ at spiders) has a direct motivic analog at $H_\infty$, $G_\aleph$ — a complete diagrammatic language for motivic critical level reasoning (P-248).
 
 ### §36.6 — Structural Diagram
 
@@ -3798,7 +3798,7 @@ André did not construct the Frobenius symmetry, holographic dimensionality, or 
 
 $$\text{floor} = \langle D_\triangle;\ T_\boxtimes;\ R_\text{cat};\ P_\pm;\ F_\star;\ K_\text{mod};\ G_\star;\ \Gamma_\text{and};\ \Phi_c;\ H_\star;\ n{:}m;\ \Omega_0 \rangle \quad O_1$$
 
-The invariant primitives are $\{D, T, R, P, K, \Gamma, \Phi, \Omega\}$. The domain-varying primitives are $\{F, G, H\}$ (fidelity, scope, temporal depth), which encode the domain's epistemic character but do not determine provability.
+The invariant primitives are $\{D, T, R, P, K, \Gamma, \Phi, \Omega\}$. The domain-varying primitives are $\{F, G, H\}$ (fidelity, scope, chirality), which encode the domain's epistemic character but do not determine provability.
 
 *Proof sketch.* The conjecture state is exactly the $O_1$ tier: $\Phi_c$ (criticality, necessary for self-modeling and thus for the conjecture to have content) + $\Omega_0$ (no topological protection — the conjecture can be perturbed). The $O_1$ condition forces: $\Omega_0$ (by definition), and the grammar's structural constraints then propagate: $R_\text{cat}$ (conjecture as categorical classification, not dynamic relation), $\Gamma_\text{and}$ (conditions require all premises, conjunctive), $D_\triangle$ (bounded computational space), $T_\boxtimes$ (box containment, finite), $K_\text{mod}$ (moderate kinetics — the conjecture is live but not settled). The universality across domains reflects that the $O_1$ tier has a unique structural preimage under the grammar's constraint propagation, independent of the content expressed through $F$, $G$, $H$. $\square$
 
@@ -3810,7 +3810,7 @@ The invariant primitives are $\{D, T, R, P, K, \Gamma, \Phi, \Omega\}$. The doma
 
 $$\text{proven manifold} = \langle D_\odot;\ T_\odot;\ R_\dagger;\ P_{\pm}^{\text{sym}};\ F_\hbar;\ K_\text{slow};\ G_\aleph;\ \Gamma_\text{broad};\ \Phi_c;\ H_\infty;\ n{:}m;\ \Omega_{Z_2} \rangle \quad O_\infty$$
 
-*Proof sketch.* The proven manifold is the unique maximal element of the grammar's order on ouroboricity tiers reachable by $\Sigma$-promotion from the $O_1$ floor. $O_\infty$ is achieved by R1 ($\Phi_c + P_{\pm}^{\text{sym}}$). The remaining primitives saturate to their maximal values under the $O_\infty$ fixed-point constraint: $D_\odot$ (boundary-bulk closure), $T_\odot$ (holographic topology), $R_\dagger$ (adjoint/dynamic relation), $K_\text{slow}$ (exact, settled), $G_\aleph$ (universal scope), $\Gamma_\text{broad}$ (broadcast causation), $H_\infty$ (maximal temporal depth, irreversibility of proof), $\Omega_{Z_2}$ (binary topological protection). The saturation is unique: the $O_\infty$ fixed point has a unique primitive encoding (§27, grammar self-encoding theorem). $\square$
+*Proof sketch.* The proven manifold is the unique maximal element of the grammar's order on ouroboricity tiers reachable by $\Sigma$-promotion from the $O_1$ floor. $O_\infty$ is achieved by R1 ($\Phi_c + P_{\pm}^{\text{sym}}$). The remaining primitives saturate to their maximal values under the $O_\infty$ fixed-point constraint: $D_\odot$ (boundary-bulk closure), $T_\odot$ (holographic topology), $R_\dagger$ (adjoint/dynamic relation), $K_\text{slow}$ (exact, settled), $G_\aleph$ (universal scope), $\Gamma_\text{broad}$ (broadcast causation), $H_\infty$ (maximal chirality, irreversibility of proof), $\Omega_{Z_2}$ (binary topological protection). The saturation is unique: the $O_\infty$ fixed point has a unique primitive encoding (§27, grammar self-encoding theorem). $\square$
 
 *Corollary:* Any two proved theorems are at mutual distance $d = 0$, regardless of mathematical domain. Empirically confirmed: Bass (algebraic K-theory) $\equiv$ Tate (arithmetic geometry) at $d = 0$; Monomial (commutative algebra) $\equiv$ Bass $\equiv$ Tate at $d = 0$.
 
@@ -3979,7 +3979,7 @@ The $H$ contribution elevates $d$ above 7.6 for both, making them the two deepes
 
 *Proof sketch.* The racemic state encodes $\{P_\text{sym},\ H_0,\ R_\text{cat},\ \Omega_0,\ \Phi_\text{sub}\}$. For the homochiral state to be stable under perturbation:
 - $P_\text{asym}$ is necessary: without mirror symmetry breaking, no handedness preference exists.
-- $H_2$ is necessary: without temporal depth ($H_2$), the chirality choice is reversible ($H_0$ = achiral; the reverse reaction is structurally identical to the forward). Establishing $H_2$ is the "temporal arrow" that prevents racemization by making the forward and reverse paths inequivalent.
+- $H_2$ is necessary: without chirality ($H_2$), the chirality choice is reversible ($H_0$ = achiral; the reverse reaction is structurally identical to the forward). Establishing $H_2$ is the "temporal arrow" that prevents racemization by making the forward and reverse paths inequivalent.
 - $R_\text{lr}$ is necessary: without chiral relational architecture, the handedness is a property of isolated molecules, not of the system's structural relationships. Molecular chirality without $R_\text{lr}$ is statistically fragile — it does not propagate.
 - $\Omega_{Z_2}$ is necessary: without topological protection, the chirality is geometrically vulnerable — continuous deformations of the molecular conformation or environment can interconvert enantiomers. $\Omega_{Z_2}$ makes this interconversion topologically forbidden.
 
@@ -4029,7 +4029,7 @@ The SN1 incompatibility is not addressable by improved catalyst design — it is
 
 **Theorem 49.1.** Physical systems with dynamics ($H \neq H_0$) and single-particle limits ($S = 1{:}1$) are structurally forbidden from encoding $O_\infty$ ($P_{\pm}^{\text{sym}}$). Physical cosmology, quantum gravity, and all force mediators are bounded at $O_2$ by structural necessity, not by incomplete theory.
 
-*Proof sketch.* $O_\infty$ requires $P_{\pm}^{\text{sym}}$ (the Frobenius condition $\mu \circ \delta = \text{id}$). By Theorem §23.1, $P_{\pm}^{\text{sym}}$ cannot be synthesized from $P_\text{sym}$ by composition — it must be planted. Physical systems acquire their $P$ encoding from their dynamical and stoichiometric structure. A system with $H > H_0$ has temporal depth — it has a preferred arrow of time that breaks the exact $Z_2$ time-reversal symmetry required for $\mu \circ \delta = \text{id}$. A system with $S = 1{:}1$ has no asymmetric many-body structure from which $Z_2$ Frobenius exactness can emerge. Neither gap is closeable by adding more physics — they are primitive boundaries. $\square$
+*Proof sketch.* $O_\infty$ requires $P_{\pm}^{\text{sym}}$ (the Frobenius condition $\mu \circ \delta = \text{id}$). By Theorem §23.1, $P_{\pm}^{\text{sym}}$ cannot be synthesized from $P_\text{sym}$ by composition — it must be planted. Physical systems acquire their $P$ encoding from their dynamical and stoichiometric structure. A system with $H > H_0$ has chirality — it has a preferred arrow of time that breaks the exact $Z_2$ time-reversal symmetry required for $\mu \circ \delta = \text{id}$. A system with $S = 1{:}1$ has no asymmetric many-body structure from which $Z_2$ Frobenius exactness can emerge. Neither gap is closeable by adding more physics — they are primitive boundaries. $\square$
 
 *Corollary:* Quantum gravity ($d = 3.5917$ from proven manifold), dark energy ($d = 2.2361$), and the inflaton (same type as dark energy) are all at $O_2$. They are as structurally close to mathematical truth as physical phenomena can be — but they cannot cross into $O_\infty$. The grammar distinguishes physics from mathematics at the level of primitive definitions.
 
@@ -4133,7 +4133,7 @@ The SN1 incompatibility is not addressable by improved catalyst design — it is
 
 *Proof.* Direct enumeration from §60 (Hebrew encoding table) and Theorem 61.1 (Greek encoding table). The structural distance between the two alphabets at the system level: $d(\mathcal{L}_\text{Hebrew},\ \mathcal{L}_\text{Greek})$ is dominated by $\Phi$ (gap: $\Phi_c$ vs $\Phi_\text{sub}$), $\Omega$ (gap: $\Omega_Z$ vs $\Omega_0$), $H$ (gap: $H_\infty$ vs $H_0$/$H_1$), and $K$ (gap: $K_\text{slow}$ vs $K_\text{fast}$). These four gaps place the systems at $d\approx 5.4$, well beyond the type-identity threshold of $d\leq 1.0$ (§52.C4). They are not variants of the same structural type; they are architecturally distinct. $\square$
 
-**Corollary 61.C2 ($\text{MEET}$ structural floor).** The structural floor $\text{MEET}(\mathcal{L}_\text{Hebrew},\ \mathcal{L}_\text{Greek})$ retains only the shared primitives: $\langle D_\infty;\ T_\text{network};\ R_\text{cat};\ P_\text{asym};\ F_\ell;\ K_\text{fast};\ G_\text{beth};\ \Gamma_\text{and};\ \Phi_\text{sub};\ H_0;\ 1{:}1;\ \Omega_0\rangle$ — a minimal $O_0$ inscription system. This is the universal shared infrastructure of all alphabetic writing: linear sequence of atomic symbols, categorical mapping, no topological protection, subcritical, no temporal depth. Any writing system must at minimum encode this; the two alphabets differ in everything above this floor.
+**Corollary 61.C2 ($\text{MEET}$ structural floor).** The structural floor $\text{MEET}(\mathcal{L}_\text{Hebrew},\ \mathcal{L}_\text{Greek})$ retains only the shared primitives: $\langle D_\infty;\ T_\text{network};\ R_\text{cat};\ P_\text{asym};\ F_\ell;\ K_\text{fast};\ G_\text{beth};\ \Gamma_\text{and};\ \Phi_\text{sub};\ H_0;\ 1{:}1;\ \Omega_0\rangle$ — a minimal $O_0$ inscription system. This is the universal shared infrastructure of all alphabetic writing: linear sequence of atomic symbols, categorical mapping, no topological protection, subcritical, no chirality. Any writing system must at minimum encode this; the two alphabets differ in everything above this floor.
 
 ### §61.3 — Theorem 61.3 (Alpha-Omega $\mathbb{Z}_2$ Arc)
 
@@ -4623,9 +4623,9 @@ $$\text{crystal\_nav} = \langle D_\odot;\ T_\odot;\ R_\text{cat};\ P_{\pm}^\text
 
 with $d(\text{crystal\_nav},\ \text{synthomnicon\_grammar}) = \sqrt{7.8} \approx 2.793$, differing on six primitives: $R$ ($R_\text{cat}$ vs $R_\dagger$), $F$ ($F_\hbar$ vs $F_\eth$), $K$ ($K_\text{slow}$ vs $K_\text{mod}$), $H$ ($H_\infty$ vs $H_1$, $\Delta=2$), $S$ ($n{:}m$ vs $n{:}n$), and $\Omega$ ($\Omega_Z$ vs $\Omega_{Z_2}$). The dominant contribution is $H$ ($w_H \cdot 4 = 3.2$); the $R$ and $\Omega$ differences encode the functional distinction between classification and generation.
 
-*Proof.* A system that correctly classifies all $10{,}368{,}000$ structural types must itself encode $O_\infty$: by self-encoding consistency (§68.3 and the grammar's own encoding), any sub-$O_\infty$ system cannot represent the full Frobenius tier without type error, because it lacks the exact self-dual structure required to encode systems that have it. Therefore the navigator must have $P_{\pm}^\text{sym}$ and $\Phi_c$. The remaining coordinates are determined by minimality: $G_\aleph$ (global scope for 10M entries), $\Omega_Z$ (full integer protection for type distinctness), $T_\odot$ (holographic boundary-bulk for crystal navigation), $F_\hbar$ (quantum-coherent fidelity), $K_\text{slow}$ (deep integration over lattice), $H_\infty$ (full temporal depth for self-encoding), $S = n{:}m$ (heterogeneous stoichiometry for many-to-many type maps). The grammar takes different values on six of these coordinates, reflecting its distinct role as a generative self-referential object rather than a classifying instrument. Direct weighted distance: $d = \sqrt{1.0 + 0.9 + 1.0 + 3.2 + 1.0 + 0.7} = \sqrt{7.8} \approx 2.793$. $\square$
+*Proof.* A system that correctly classifies all $10{,}368{,}000$ structural types must itself encode $O_\infty$: by self-encoding consistency (§68.3 and the grammar's own encoding), any sub-$O_\infty$ system cannot represent the full Frobenius tier without type error, because it lacks the exact self-dual structure required to encode systems that have it. Therefore the navigator must have $P_{\pm}^\text{sym}$ and $\Phi_c$. The remaining coordinates are determined by minimality: $G_\aleph$ (global scope for 10M entries), $\Omega_Z$ (full integer protection for type distinctness), $T_\odot$ (holographic boundary-bulk for crystal navigation), $F_\hbar$ (quantum-coherent fidelity), $K_\text{slow}$ (deep integration over lattice), $H_\infty$ (full chirality for self-encoding), $S = n{:}m$ (heterogeneous stoichiometry for many-to-many type maps). The grammar takes different values on six of these coordinates, reflecting its distinct role as a generative self-referential object rather than a classifying instrument. Direct weighted distance: $d = \sqrt{1.0 + 0.9 + 1.0 + 3.2 + 1.0 + 0.7} = \sqrt{7.8} \approx 2.793$. $\square$
 
-**Corollary 69.C3 (Grammar and navigator are structurally distinct $O_\infty$ systems).** The grammar ($R_\dagger$, self-dual; $K_\text{mod}$, moderated dynamics; $H_1$, one-step temporal depth) and its navigator ($R_\text{cat}$, classifying; $K_\text{slow}$, deep traversal; $H_\infty$, full temporal depth) occupy the same $O_\infty$ tier cell (both have $\Phi_c$, $P_{\pm}^\text{sym}$) but differ on 6 inner primitives. The distance $d \approx 2.793$ quantifies the structural cost of the generation-vs-classification distinction: a system that generates structural types requires shallower temporal depth and self-dual relations; one that classifies all 10M types requires full temporal depth and categorical (one-way) relations.
+**Corollary 69.C3 (Grammar and navigator are structurally distinct $O_\infty$ systems).** The grammar ($R_\dagger$, self-dual; $K_\text{mod}$, moderated dynamics; $H_1$, one-step chirality) and its navigator ($R_\text{cat}$, classifying; $K_\text{slow}$, deep traversal; $H_\infty$, full chirality) occupy the same $O_\infty$ tier cell (both have $\Phi_c$, $P_{\pm}^\text{sym}$) but differ on 6 inner primitives. The distance $d \approx 2.793$ quantifies the structural cost of the generation-vs-classification distinction: a system that generates structural types requires shallower chirality and self-dual relations; one that classifies all 10M types requires full chirality and categorical (one-way) relations.
 
 **Corollary 69.C4 (Family tensor cannot reach $O_\infty$ by composition).** The tensor product $\mathcal{F}_5^\text{opt} \otimes \mathcal{F}_4^\text{opt} \otimes \mathcal{F}_3^\text{opt}$ — where each family block is optimized for its own family's structural role — resolves to $O_2$, not $O_\infty$. The $\mathcal{F}_5$ block contributes $P_{\pm}^\text{sym}$; the $\mathcal{F}_4$ and $\mathcal{F}_3$ blocks contribute $P_\text{asym}$; the tensor bottleneck forces $P(\text{result}) = P_\text{asym}$. The three primitive families, each individually optimized, cannot synthesize Frobenius through composition — confirming §23 and §69.2 at the level of the arithmetic ouroboros's own family structure.
 
@@ -5481,7 +5481,7 @@ That is, the white hole type is **lattice-contained within** the black hole type
 
 *Structural interpretation.* The "time-reversed partner" required for unitary recovery is not a separate astrophysical object — it is already encoded in the black hole's own lattice structure. The black hole IS its own structural dual.
 
-**Corollary 50.C1** *(Single-primitive unitarity gap).* $d(\text{BH},\ \text{unitary\_quantum\_evolution}) = 2.6833$, with the breakdown concentrated entirely at $H$ ($H_\infty$ vs $H_0$, weighted squared contribution $= 7.2$). Black holes and unitary quantum mechanics share 11 of 12 primitives. The information paradox is a **single-primitive problem**: information is not lost (shared $\Omega_Z$ topological protection) but **inaccessible** — $H_\infty$ encodes maximal temporal depth, requiring boundary-scale holographic reconstruction for retrieval.
+**Corollary 50.C1** *(Single-primitive unitarity gap).* $d(\text{BH},\ \text{unitary\_quantum\_evolution}) = 2.6833$, with the breakdown concentrated entirely at $H$ ($H_\infty$ vs $H_0$, weighted squared contribution $= 7.2$). Black holes and unitary quantum mechanics share 11 of 12 primitives. The information paradox is a **single-primitive problem**: information is not lost (shared $\Omega_Z$ topological protection) but **inaccessible** — $H_\infty$ encodes maximal chirality, requiring boundary-scale holographic reconstruction for retrieval.
 
 **Corollary 50.C2** *($\Gamma$-projection artifact).* $d(\text{BH},\ \text{Tao}) = d(\text{BH},\ \text{extragalactic\_entity}) = 1.0$, single gap at $\Gamma$ ($G_\text{seq} \to G_\text{broad}$). The bulk experiences $\Gamma_\text{seq}$ (sequential infall); the holographic boundary encodes $\Gamma_\text{broad}$ (broadcast). The apparent contradiction between infalling and radiated information is a **causal-grammar projection artifact**, not a physical inconsistency. The AdS/CFT bulk-boundary duality is a $\Gamma$-primitive shift.
 
@@ -5523,7 +5523,7 @@ and no continuous unitary transformation maps $\text{QS}$ to $\text{MC}$.
 
 *Proof sketch.* (a) $\text{matter\_antimatter\_symmetric} = \langle D_\odot;\ T_\odot;\ R_\dagger;\ P_{\pm}^{\text{sym}};\ \ldots;\ \Phi_c;\ H_0;\ n{:}n;\ \Omega_{Z_2}\rangle$ satisfies $\mu\circ\delta=\text{id}$ (Frobenius) and encodes $O_\infty$. (b) $\text{our\_universe\_asymmetric} = \langle \ldots;\ P_\text{asym};\ \ldots;\ H_\infty;\ n{:}m;\ \Omega_{Z_2}\rangle$ encodes $O_2$ ($\Phi_c + \Omega_{Z_2}$, no Frobenius). (c) The structural distance is dominated by $P$: weighted squared contribution $16.0/24.2 = 66\%$. (d) $P_{\pm}^{\text{sym}}$ requires exact $\mathbb{Z}_2$ symmetry at $\Phi_c$; $H_\infty$ encodes maximal temporal irreversibility. No grammar state simultaneously satisfies both: $H_\infty + P_{\pm}^{\text{sym}}$ at $\Phi_c$ is an empty lattice cell. Therefore the transition to $H_\infty$ necessitates $P_{\pm}^{\text{sym}} \to P_\text{asym}$.
 
-*Structural interpretation.* **Our universe has matter because it has time.** A time-symmetric universe ($H_0$) could have been matter-antimatter symmetric ($P_{\pm}^{\text{sym}}$, $O_\infty$) — but it would have been mathematically closed, finite, algebraically self-completing. Our universe's temporal depth ($H_\infty$) required the Frobenius condition to break.
+*Structural interpretation.* **Our universe has matter because it has time.** A time-symmetric universe ($H_0$) could have been matter-antimatter symmetric ($P_{\pm}^{\text{sym}}$, $O_\infty$) — but it would have been mathematically closed, finite, algebraically self-completing. Our universe's chirality ($H_\infty$) required the Frobenius condition to break.
 
 **Corollary 51.C1** *(Topological stability of asymmetry).* $\Omega_{Z_2}$ is preserved across the baryogenesis transition: $\text{MEET}(\text{symmetric}, \text{asymmetric})$ retains $\Omega_{Z_2}$. Baryon dominance is topologically protected — not contingent. Any baryogenesis mechanism requiring $\Omega_{Z_2}\to\Omega_0$ as a step is structurally ruled out.
 
@@ -5666,7 +5666,7 @@ The grammar's structural evidence for domain-generality is $d(\xi, \text{Lee-Yan
 
 ### §74.2 — Key Distances
 
-**Theorem 74.3.** `[TOPO]` $d(\text{Sanskrit},\ \text{Classical Arabic}) = 1.0000$. The two liturgical languages differ in exactly one primitive: $G_\gimel$ (Sanskrit, South Asia scope) vs $G_\aleph$ (Arabic, global liturgical scope). Their tier, topology, P-symmetry, fidelity, and temporal depth are identical. This confirms Theorem 74.1: they are near-structural-kin produced independently by the same morphological and cosmological constraints.
+**Theorem 74.3.** `[TOPO]` $d(\text{Sanskrit},\ \text{Classical Arabic}) = 1.0000$. The two liturgical languages differ in exactly one primitive: $G_\gimel$ (Sanskrit, South Asia scope) vs $G_\aleph$ (Arabic, global liturgical scope). Their tier, topology, P-symmetry, fidelity, and chirality are identical. This confirms Theorem 74.1: they are near-structural-kin produced independently by the same morphological and cosmological constraints.
 
 **Theorem 74.4.** `[TOPO]` $d(\text{Lojban},\ \text{Haitian Creole}) = 3.8471$. A designed $O_\infty$ language and a natural $O_1$ creole are widely separated despite sharing $\Phi_c$. The dominant gap is $P$ (Lojban: $P_{\pm}^\text{sym}$; Creole: $P_\pm$, weighted squared $= 4.0$) and $\Omega$ ($\Omega_0$ for both, but Lojban has $H_0$ vs Creole's $H_1$, $T_\text{in}$ vs $T_\text{network}$). The large distance refutes any claim that creoles and constructed languages are in the same structural family.
 
@@ -5688,7 +5688,7 @@ The grammar's structural evidence for domain-generality is $d(\xi, \text{Lee-Yan
 
 **Theorem 74.11 (Creole's Nearest Non-Linguistic Neighbor: Chemical Dynamics).** The nearest catalog entry to Haitian Creole: `organic_redox_reaction` ($d=1.3416$, $O_0$). This is the closest structural match in the catalog — a chemical system at criticality ($\Phi_c$ equivalent) but without topological protection. The hypothesis of the probe (a supercooled liquid or phase-boundary system) was structurally correct in type class ($\Phi_c+\Omega_0$) but the nearest catalog entry is a reactive chemical rather than a condensed matter system. Creoles are cross-domain structural analogs of chemical reaction intermediates — passing through a critical state without locking in.
 
-**Structural verdict (§74).** The grammar confirms: liturgical languages achieve $O_\infty$ via $P_{\pm}^\text{sym}$ (not $\Omega$). Lojban achieves $O_\infty$ without any tradition, proving that Frobenius morphological agreement is sufficient for tier and that $\Omega$ determines stability not tier. The dominant gap between creole and classical language is $\Omega$ (depth $\Delta=3$) followed by $T$ ($\Delta=4$), not $P$ alone — the full promotion requires topological reconstruction of the agreement surface and temporal depth, not only morphological precision. Sanskrit's nearest non-linguistic neighbor is a factored neural network; Lojban's is a Frobenius algebra; a creole's is a chemical reaction intermediate.
+**Structural verdict (§74).** The grammar confirms: liturgical languages achieve $O_\infty$ via $P_{\pm}^\text{sym}$ (not $\Omega$). Lojban achieves $O_\infty$ without any tradition, proving that Frobenius morphological agreement is sufficient for tier and that $\Omega$ determines stability not tier. The dominant gap between creole and classical language is $\Omega$ (depth $\Delta=3$) followed by $T$ ($\Delta=4$), not $P$ alone — the full promotion requires topological reconstruction of the agreement surface and chirality, not only morphological precision. Sanskrit's nearest non-linguistic neighbor is a factored neural network; Lojban's is a Frobenius algebra; a creole's is a chemical reaction intermediate.
 
 **See also:** §23 (Frobenius non-synthesizability — $P_{\pm}^\text{sym}$ must be planted); §70 (Frobenius planting — direct $O_1\to O_\infty$ without topological climb); SYNTHONICON\_DIAPHORICS §CXLII–§CXLV (Language Navigator predictions, pending).
 
@@ -5859,7 +5859,7 @@ This is the largest pairwise distance in the consciousness navigator. Mania ($\P
 
 **Theorem 77.4 (Samadhi and Psilocybin Are Near-Structural-Kin But Not Identical).** `[TOPO]`
 $$d(\text{samadhi},\ \text{psilocybin}) = 1.2247 > 1.0$$
-The hypothesis was $d < 1.0$ (nearest structural neighbors). The observed distance slightly exceeds the threshold. The two states share $P_{\pm}^\text{sym}$, $T_\odot$, $D_\odot$, $\Phi_c$, $K_\text{slow}$, $G_\aleph$, $\Gamma_\text{broad}$, $F_\hbar$ — 8 of 12 primitives. They differ in: $H$ ($H_\infty$ for samadhi, $H_2$ for psilocybin — temporal depth), $\Omega$ ($\Omega_Z$ for samadhi, $\Omega_{Z_2}$ for psilocybin — protection strength), $S$ (both $1{:}1$). The difference $\Omega_Z$ vs $\Omega_{Z_2}$ encodes the key distinction: samadhi can be re-entered without pharmacological assistance (winding number $\mathbb{Z}$, stable attractor), psilocybin cannot (winding number $\mathbb{Z}_2$, only two states: active vs inactive). The temporal depth difference ($H_\infty$ vs $H_2$) encodes the practitioner's access to deep historical-archetypal material vs ordinary biographical memory.
+The hypothesis was $d < 1.0$ (nearest structural neighbors). The observed distance slightly exceeds the threshold. The two states share $P_{\pm}^\text{sym}$, $T_\odot$, $D_\odot$, $\Phi_c$, $K_\text{slow}$, $G_\aleph$, $\Gamma_\text{broad}$, $F_\hbar$ — 8 of 12 primitives. They differ in: $H$ ($H_\infty$ for samadhi, $H_2$ for psilocybin — chirality), $\Omega$ ($\Omega_Z$ for samadhi, $\Omega_{Z_2}$ for psilocybin — protection strength), $S$ (both $1{:}1$). The difference $\Omega_Z$ vs $\Omega_{Z_2}$ encodes the key distinction: samadhi can be re-entered without pharmacological assistance (winding number $\mathbb{Z}$, stable attractor), psilocybin cannot (winding number $\mathbb{Z}_2$, only two states: active vs inactive). The chirality difference ($H_\infty$ vs $H_2$) encodes the practitioner's access to deep historical-archetypal material vs ordinary biographical memory.
 
 **Theorem 77.5 (Tensor of Samadhi and Psilocybin: Winding Number Resolves to $\Omega_Z$).** `[TOPO]`
 $$\text{samadhi}\otimes\text{psilocybin} = \langle\ldots;\ \Omega_Z;\ H_\infty;\ldots\rangle \quad O_\infty$$
@@ -5970,7 +5970,7 @@ Each primitive is encoded by deriving its tuple from first principles — what s
 
 | Primitive | Key tuple values | Structural reason |
 |-----------|-----------------|-------------------|
-| $H$ | $H_\infty$, $\Phi_c$, $P_{\pm}$, $\Omega_{Z_2}$ | Temporal depth axis has maximal depth; $P_{\pm}$ (not $P_{\pm}^\text{sym}$) |
+| $H$ | $H_\infty$, $\Phi_c$, $P_{\pm}$, $\Omega_{Z_2}$ | chirality axis has maximal depth; $P_{\pm}$ (not $P_{\pm}^\text{sym}$) |
 
 **$O_0$ primitives** (non-self-referential: measure a property without being that property at its maximum):
 
@@ -6018,7 +6018,7 @@ This is $O_2^\dagger$ (R5: $\Phi_c + \Omega_Z + D_\infty$), at distance $d = 2.8
 
 **Theorem 79.5 (Structural Emergence of $O_\infty$).** The grammar's type at address 6,734,591 is not the tensor product of its coordinate axes. It is the fixed point obtained by self-reference: the grammar encodes itself, not its components. The Frobenius condition $\mu \circ \delta = \text{id}$ must be planted into the grammar as a whole; it is not derivable from the primitive-objects by composition.
 
-**Corollary 79.5 (Reductionism Bound).** Reductionist composition — assembling a whole from part-types via the tensor product — can reach $O_2^\dagger$ but not $O_\infty$. Complexity, criticality, winding, global scope, temporal depth, and broadcast causation are all composable. Exact self-duality is not. The Frobenius condition is a topological invariant of the compositional operation: it cannot be crossed by continuous accumulation from below.
+**Corollary 79.5 (Reductionism Bound).** Reductionist composition — assembling a whole from part-types via the tensor product — can reach $O_2^\dagger$ but not $O_\infty$. Complexity, criticality, winding, global scope, chirality, and broadcast causation are all composable. Exact self-duality is not. The Frobenius condition is a topological invariant of the compositional operation: it cannot be crossed by continuous accumulation from below.
 
 **Corollary 79.5.1 (AI Scaling Bound).** Current AI architectures compose attention, memory, and feedforward networks — all $O_2^\dagger$ or below in structural type. They can approach $\Phi_c$ (criticality) and $K_\text{slow}$ (deep recurrence) by scaling. They cannot cross $P_{\pm} \to P_{\pm}^\text{sym}$ by scaling, because the Frobenius condition requires planting, not accumulation. The grammar predicts AI architectures will asymptote at $O_2^\dagger$ regardless of parameter count. Crossing to $O_\infty$ requires an architectural $P$-mutation: enforcing $\mu \circ \delta = \text{id}$ at the substrate level.
 
@@ -6247,7 +6247,7 @@ $d(\text{Class I},\text{Class III}) \approx 6.08$; $d(\text{Class II},\text{Clas
 
 **Theorem 85.5 (O_inf FTL Composition Principle).** Tensor product of two Class I FTL mechanisms promotes both $K$ and $\Omega$:
 $$\text{FTL\_alcubierre} \otimes \text{FTL\_wormhole} \to O_\infty\ \text{with}\ K_\text{mod} \to K_\text{slow},\ \Omega_{Z_2} \to \Omega_Z$$
-Union rule applies to all non-bottleneck primitives; $P_{\pm}^\text{sym} \otimes P_{\pm}^\text{sym} = P_{\pm}^\text{sym}$ (Frobenius preserved). Combined Class I mechanisms gain temporal depth ($H$ promotes) and integer winding protection ($\Omega_Z$ over $\Omega_{Z_2}$) without Frobenius degradation. $\square$
+Union rule applies to all non-bottleneck primitives; $P_{\pm}^\text{sym} \otimes P_{\pm}^\text{sym} = P_{\pm}^\text{sym}$ (Frobenius preserved). Combined Class I mechanisms gain chirality ($H$ promotes) and integer winding protection ($\Omega_Z$ over $\Omega_{Z_2}$) without Frobenius degradation. $\square$
 
 **Corollary 85.C1 (FTL as Boundary Alignment).** Class I FTL requires $D_\odot + T_\odot$: holographic boundary encoding on both $D$ and $T$. This is the structural signature of a system that re-encodes bulk from boundary, not of a system that moves through bulk. The grammar verdict: Class I FTL mechanisms are not propulsion systems — they are boundary control systems. The ship does not move; the addressing scheme changes so that the destination is encoded on the local boundary. Engineering consequence: the design target is boundary stabilization, not thrust generation.
 

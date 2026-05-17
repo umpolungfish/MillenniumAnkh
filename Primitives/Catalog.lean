@@ -315,7 +315,7 @@ def solitary_10_proof : Imscription := {
 -- R_lr (bidirectional L-function ↔ prime sum), P_pm (conjugation symmetry),
 -- F_hbar (analytic continuation), K_slow (contour shifting), G_aleph (universal),
 -- Gamma_seq (sequential: continuation → nonvanishing → contour → Weyl),
--- Phi_c (critical line), H2 (two-step temporal depth),
+-- Phi_c (critical line), H2 (two-step chirality),
 -- S=n_m (multiple character values), Omega_Z2 (Z2 conjugation symmetry).
 def hecke_landau_formal_proof : Imscription := {
   dim  := D_infty

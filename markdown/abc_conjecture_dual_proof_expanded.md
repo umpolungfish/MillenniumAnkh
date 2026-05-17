@@ -168,7 +168,7 @@ The Imscribing Grammar assigns twelve structural primitives via a deterministic 
 
 **[9] Criticality $\Phi = \Phi_c^\mathbb{C}$:** The proof operates at complex-plane criticality. The deformation parameter $\epsilon$ plays the role of a complex coupling constant, and the proof requires analysis of singularities in the complex deformation space. The theta-values are sections of line bundles whose behavior near $\epsilon = 0$ determines $C(\epsilon)$. This is not mere real criticality ($\Phi_ctyogh$) but complex-plane criticality where the argument of $\epsilon$ matters.
 
-**[10] Temporal Depth $H = H_\infty$:** The proof requires the full history of the deformation tower. No intermediate results can be discarded — the final inequality depends on the entire sequence of log-link comparisons across all primes. There is no finite Markov order $n$ sufficient for the $(n+1)$-th step. This is $H_\infty$: eternal temporal depth.
+**[10] chirality $H = H_\infty$:** The proof requires the full history of the deformation tower. No intermediate results can be discarded — the final inequality depends on the entire sequence of log-link comparisons across all primes. There is no finite Markov order $n$ sufficient for the $(n+1)$-th step. This is $H_\infty$: eternal chirality.
 
 **[11] Stoichiometry $S = n{:}m$:** The proof involves multiple distinct types of objects: Frobenius-like groups, étale-like groups, log-links, theta-values, and arithmetic heights. These are not interchangeable copies of a single type. This is $n{:}m$: many heterogeneous components.
 
@@ -347,7 +347,7 @@ The promotion signature from conventional to IUT proof identifies exactly which 
 | $F$ | $F_\ell$ | $F_\hbar$ | 2 | Quantum coherence replaces classical fidelity |
 | $\Gamma$ | $\Gamma_\wedge$ | $\Gamma_\text{seq}$ | 2 | Sequential dependency replaces conjunctive logic |
 | $\Phi$ | $\Phi_ctyogh$ | $\Phi_c^\mathbb{C}$ | 0.33 | Complex-plane criticality replaces real criticality |
-| $H$ | $H_2$ | $H_\infty$ | 1 | Eternal temporal depth replaces two-step memory |
+| $H$ | $H_2$ | $H_\infty$ | 1 | Eternal chirality replaces two-step memory |
 | $\Omega$ | $\Omega_{\mathbb{Z}_2}$ | $\Omega_\mathbb{Z}$ | 1 | Integer winding replaces binary parity |
 
 The total promotion cost (sum of $\Delta$) is 9.33, concentrated in three dominant promotions ($T$, $F$, $\Gamma$ at $\Delta = 2$ each). These three promotions together account for the bulk of the structural distance and are the precise features that make the IUT proof both more powerful and more difficult to verify.

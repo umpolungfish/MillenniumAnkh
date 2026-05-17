@@ -23,7 +23,7 @@ $$\text{TPC} = \langle \mathrm{Ð}_{\mathrm{;}};\ \mathrm{Þ}_{\mathrm{;}};\ \ma
 | **Γ** | $\mathrm{Γ}_{\mathrm{ʔ}}$ | Universal scope: the claim is about ALL twin primes, not a finite subset. The quantifier ranges over the full prime lattice. |
 | **ɢ** | $\mathrm{ɢ}_{\mathrm{ˌ}}$ | Sequential grammar: the twin condition requires sequential verification — first $n$ prime, then $n+2$ prime. This is not conjunctive (both simultaneously) but sequential (one enables checking of the other). |
 | **$⊙_{ÿ}$** | $⊙_{ÿ}$ | Criticality: the TPC sits at the boundary between convergence and divergence of the twin sum $\sum 1/p$. The twin constant $C_2 \approx 0.66016...$ is the critical parameter. |
-| **Ħ** | $\mathrm{Ħ}_{\mathrm{A}}$ | Two-step temporal depth: the prime gap depends on two prior primes, not just one. Markov order 2 is essential — the gap structure remembers (p_{n-1}, p_n) to characterize p_{n+1}. |
+| **Ħ** | $\mathrm{Ħ}_{\mathrm{A}}$ | Two-step chirality: the prime gap depends on two prior primes, not just one. Markov order 2 is essential — the gap structure remembers (p_{n-1}, p_n) to characterize p_{n+1}. |
 | **Σ** | $\mathrm{Σ}_{\mathrm{S}}$ | Uniqueness: the twin gap $g=2$ is the only gap value conjectured to occur infinitely often (unlike general bounded gaps). |
 | **Ω** | $\mathrm{Ω}_{\mathrm{z}}$ | Integer winding: each twin pair contributes winding +1 to the twin-counter. The total winding number diverges if and only if TPC is true. |
 

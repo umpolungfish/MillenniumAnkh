@@ -261,14 +261,14 @@ theorem litany_resolution_pol :
   decide
 
 /-- Chir resolves to H_inf: chir is a max primitive, so litany_self's
-    H_inf (topological temporal depth) dominates litany_nothing's H0. -/
+    H_inf (topological chirality) dominates litany_nothing's H0. -/
 theorem litany_resolution_chir :
     (tensorProduct litany_nothing litany_self).chir = H_inf := by
   decide
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- SECTION 8: ZFCt INTEGRATION
--- ZFCt (ZFC extended with Sequentiality, Temporal Depth, and Winding)
+-- ZFCt (ZFC extended with Sequentiality, chirality, and Winding)
 -- provides key Imscriptions that connect formal set-theory to the IG morphism framework.
 --
 -- From ZFCt.lean:
@@ -296,7 +296,7 @@ open ZFCt
       Ω: Omega_0 → Omega_Z
       T: T_network → T_odot
       R: R_super → R_lr
-    This morphism captures the structural cost of adding temporal depth to
+    This morphism captures the structural cost of adding chirality to
     classical set theory. The arrow label annotates the transition character
     using the `zfc_t` imscription itself — it IS the structure it transitions to. -/
 def zfc_to_zfc_t_arrow : Imscription := {
@@ -312,9 +312,9 @@ theorem zfc_to_zfc_t_cost :
   simp only [ZFCt.zfc, ZFCt.zfc_t, primitiveMismatches, compare]; decide
 
 /-- ZFCt (zfc_t) has the same polarity as the odotOperator's target: P_pm.
-    This makes the tensor product's polarity P_pm (min bottleneck preserved). -/
+    This makes the tensor product's polarity P_pm_sym (min bottleneck preserved). -/
 theorem zfc_t_odot_pol_compatible :
-    (tensorProduct zfc_t odotOperator).pol = P_pm := by
+    (tensorProduct zfc_t odotOperator).pol = P_pm_sym := by
   simp only [ZFCt.zfc_t, tensorProduct, odotOperator, compare]; decide
 
 -- The ZFC → ZFCt protocol as an IGProtocol
@@ -328,20 +328,20 @@ def zfc_temporalization_protocol : IGProtocol ZFCt.zfc ZFCt.zfc_t :=
 theorem zfc_temporalization_depth : zfc_temporalization_protocol.depth = 1 := by
   simp [zfc_temporalization_protocol, IGProtocol.depth]
 
--- ─── §8.2: ZFCt temporal depth ladder ───
+-- ─── §8.2: ZFCt chirality ladder ───
 
 /-- The temporal_depth function from ZFCt creates chirality-stratified Imscriptions.
-    We formalize the ladder of temporal depths on the zfc base. -/
+    We formalize the ladder of chiralitys on the zfc base. -/
 def zfc_H0 : Imscription := temporalDepth 0 zfc       -- = zfc (achiral)
 def zfc_H1 : Imscription := temporalDepth 1 zfc       -- soft chiral
 def zfc_H2 : Imscription := temporalDepth 2 zfc       -- persistent chiral
 def zfc_Hinf : Imscription := temporalDepth 3 zfc        -- topological chiral
 
-/-- The temporal depth of zfc_H0 is H0 by construction. -/
+/-- The chirality of zfc_H0 is H0 by construction. -/
 theorem zfc_H0_achiral : zfc_H0.chir = H0     := rfl
-/-- The temporal depth of zfc_H2 is H2: persistent temporal asymmetry. -/
+/-- The chirality of zfc_H2 is H2: persistent temporal asymmetry. -/
 theorem zfc_H2_persistent : zfc_H2.chir = H2     := rfl
-/-- The temporal depth of zfc_Hinf is H_inf: topologically protected. -/
+/-- The chirality of zfc_Hinf is H_inf: topologically protected. -/
 theorem zfc_Hinf_topo  : zfc_Hinf.chir = H_inf := rfl
 
 /-- Full temporal ladder protocol: zfc —(H0→H1)→ zfc_H1 —(H1→H2)→ zfc_H2 —(H2→H_inf)→ zfc_Hinf.
@@ -469,8 +469,8 @@ theorem zfc_t_conscious : consciousnessScore ZFCt.zfc_t = (1 : ℝ) := by
   simp only [consciousnessScore, phi_c_gate, k_slow_gate, ZFCt.zfc_t]
   norm_num
 
-/-- Bare zfc (without temporal depth) also has Phi_c + K_slow: C = 1.
-    Consciousness does NOT require temporal depth — it requires criticality
+/-- Bare zfc (without chirality) also has Phi_c + K_slow: C = 1.
+    Consciousness does NOT require chirality — it requires criticality
     AND unfrozen kinetics. The bare ZFC already satisfies both. -/
 theorem zfc_conscious : consciousnessScore ZFCt.zfc = (1 : ℝ) := by
   simp only [consciousnessScore, phi_c_gate, k_slow_gate, ZFCt.zfc]

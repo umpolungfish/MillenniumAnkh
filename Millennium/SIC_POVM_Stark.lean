@@ -121,8 +121,7 @@ def fiducial_from_stark (d : ℕ) (hd : 2 ≤ d) (hns : ¬ IsSquare (m_d d)) :
   fun k => (Embeddings d hd hns k) (StarkUnit d hd hns)
 
 /-- Normalize to norm √d. -/
-def normalize_fiducial (d : ℕ) (hd : 2 ≤ d) (hns : ¬ IsSquare (m_d d))
-    (sc : MixedSignatureStarkConjecture d hd hns) : Fin d → ℂ :=
+def normalize_fiducial (d : ℕ) (hd : 2 ≤ d) (hns : ¬ IsSquare (m_d d)) : Fin d → ℂ :=
   fun k => (Real.sqrt (d : ℝ))⁻¹ * fiducial_from_stark d hd hns k
 
 /- ====================================================================
@@ -153,14 +152,14 @@ theorem equiangular_from_stark
     (d : ℕ) [NeZero d] (hd : 2 ≤ d) (hns : ¬ IsSquare (m_d d))
     (sc : MixedSignatureStarkConjecture d hd hns) :
     ∀ (a b : Fin d), (a, b) ≠ (0, 0) →
-      ‖wh_inner d (normalize_fiducial d hd hns sc)
-        (D_ah d a b 0 (normalize_fiducial d hd hns sc))‖ = 1 := by
+      ‖wh_inner d (normalize_fiducial d hd hns)
+        (D_ah d a b 0 (normalize_fiducial d hd hns))‖ = 1 := by
   sorry
 
 theorem norm_of_normalized
     (d : ℕ) [NeZero d] (hd : 2 ≤ d) (hns : ¬ IsSquare (m_d d))
     (sc : MixedSignatureStarkConjecture d hd hns) :
-    wh_normSq d (normalize_fiducial d hd hns sc) = (d : ℝ) := by
+    wh_normSq d (normalize_fiducial d hd hns) = (d : ℝ) := by
   sorry
 
 /- ====================================================================
@@ -175,7 +174,7 @@ theorem sic_povm_exists_via_stark
     (d : ℕ) [NeZero d] (hd : 2 ≤ d) (hns : ¬ IsSquare (m_d d))
     (sc : MixedSignatureStarkConjecture d hd hns) :
     SICPOVM_Exists d := by
-  use normalize_fiducial d hd hns sc
+  use normalize_fiducial d hd hns
   exact { norm_eq := norm_of_normalized d hd hns sc,
           equiangular := equiangular_from_stark d hd hns sc }
 

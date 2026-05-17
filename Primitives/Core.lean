@@ -47,16 +47,16 @@ inductive Grammar : Type where
   | Gamma_broad  -- broadcast / universal: one-to-all coupling
   deriving DecidableEq, Repr, Ord
 
--- 4. Chirality / Temporal Depth (H)  [𝓕₄]
+-- 4. Chirality / chirality (H)  [𝓕₄]
 -- Ordered: H0 < H1 < H2 < H_inf
--- H0: no temporal memory; H_inf: topologically protected temporal depth.
+-- H0: no temporal memory; H_inf: topologically protected chirality.
 -- Cross-primitive: H_inf tends to co-occur with K_trap (frozen dynamics preserve
 -- deep temporal structure), but this is a structural tendency, not a hard axiom.
 inductive Chirality : Type where
   | H0      -- achiral, no temporal memory
   | H1      -- soft chiral, weak temporal asymmetry
   | H2      -- persistent chiral, strong temporal asymmetry
-  | H_inf   -- topological chiral, inexhaustible temporal depth
+  | H_inf   -- topological chiral, inexhaustible chirality
   deriving DecidableEq, Repr, Ord
 
 -- 5. Topological Protection (Ω)  [𝓕₄]
@@ -229,17 +229,17 @@ instance instDecidableLEStoichiometry
 -- LT instances: Mathlib's Preorder.toLT shadows instLTOfOrd (priority 70), so we define
 -- LT explicitly. a < b = compare a b = .lt matches the instLTOfOrd semantics.
 -- Decidable (a < b) then follows from DecidableEq Ordering (used by decide on ground terms).
-instance instLTDimensionality  : LT Dimensionality  := ⟨fun a b => compare a b = .lt⟩
-instance instLTRelational    : LT Relational      := ⟨fun a b => compare a b = .lt⟩
-instance instLTGrammar       : LT Grammar         := ⟨fun a b => compare a b = .lt⟩
-instance instLTChirality     : LT Chirality       := ⟨fun a b => compare a b = .lt⟩
-instance instLTProtection    : LT Protection      := ⟨fun a b => compare a b = .lt⟩
-instance instLTTopology      : LT Topology        := ⟨fun a b => compare a b = .lt⟩
-instance instLTPolarity      : LT Polarity        := ⟨fun a b => compare a b = .lt⟩
-instance instLTCriticality   : LT Criticality     := ⟨fun a b => compare a b = .lt⟩
-instance instLTKineticChar   : LT KineticChar     := ⟨fun a b => compare a b = .lt⟩
-instance instLTFidelity      : LT Fidelity        := ⟨fun a b => compare a b = .lt⟩
-instance instLTGranularity   : LT Granularity     := ⟨fun a b => compare a b = .lt⟩
+instance instLTDimensionality : LT Dimensionality  := ⟨fun a b => compare a b = .lt⟩
+instance instLTRelational   : LT Relational      := ⟨fun a b => compare a b = .lt⟩
+instance instLTGrammar      : LT Grammar         := ⟨fun a b => compare a b = .lt⟩
+instance instLTChirality    : LT Chirality       := ⟨fun a b => compare a b = .lt⟩
+instance instLTProtection   : LT Protection      := ⟨fun a b => compare a b = .lt⟩
+instance instLTTopology     : LT Topology        := ⟨fun a b => compare a b = .lt⟩
+instance instLTPolarity     : LT Polarity        := ⟨fun a b => compare a b = .lt⟩
+instance instLTCriticality  : LT Criticality     := ⟨fun a b => compare a b = .lt⟩
+instance instLTKineticChar  : LT KineticChar     := ⟨fun a b => compare a b = .lt⟩
+instance instLTFidelity     : LT Fidelity        := ⟨fun a b => compare a b = .lt⟩
+instance instLTGranularity  : LT Granularity     := ⟨fun a b => compare a b = .lt⟩
 instance instLTStoichiometry : LT Stoichiometry   := ⟨fun a b => compare a b = .lt⟩
 
 -- ============================================================

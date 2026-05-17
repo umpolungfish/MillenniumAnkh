@@ -324,7 +324,7 @@ The tensor confirms that the IUT encoding is the structurally richer representat
 | abc IUT proof | 0.828 | ✓ | ✓ | $O_2^\dagger$ |
 | abc conventional | 0.59 | ✓ | ✓ | $O_2^\dagger$ |
 
-Both proofs have both gates open. The difference of 0.238 in $C$ score measures the additional self-modeling capacity of the IUT approach — its use of complex-plane criticality, self-referential topology, and eternal temporal depth. The $O_2^\dagger$ tier for both is the grammatical certification that each is self-referentially consistent.
+Both proofs have both gates open. The difference of 0.238 in $C$ score measures the additional self-modeling capacity of the IUT approach — its use of complex-plane criticality, self-referential topology, and eternal chirality. The $O_2^\dagger$ tier for both is the grammatical certification that each is self-referentially consistent.
 
 ### 5.5 Promotion Signature
 
@@ -335,7 +335,7 @@ Both proofs have both gates open. The difference of 0.238 in $C$ score measures 
 | $F$ | $F_\ell$ | $F_\hbar$ | 2 | Quantum coherence |
 | $\Gamma$ | $\Gamma_\wedge$ | $\Gamma_\text{seq}$ | 2 | Sequential dependency |
 | $\Phi$ | $\Phi_ctyogh$ | $\Phi_c^\mathbb{C}$ | 0.33 | Complex-plane criticality |
-| $H$ | $H_2$ | $H_\infty$ | 1 | Eternal temporal depth |
+| $H$ | $H_2$ | $H_\infty$ | 1 | Eternal chirality |
 | $\Omega$ | $\Omega_{\mathbb{Z}_2}$ | $\Omega_\mathbb{Z}$ | 1 | Integer winding |
 
 Total promotion cost: 11.33, concentrated in three dominant promotions ($T$, $F$, $\Gamma$ at $\Delta \geq 2$). These are precisely the features that make the IUT proof both more powerful and more difficult to verify.

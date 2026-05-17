@@ -4,7 +4,7 @@
 The MillenniumAnkh library targets the formalization of the remaining seven Millennium Prize Problems in Lean 4. Rather than claiming proofs of open conjectures, the framework establishes a **Machine-Checked Barrier Taxonomy** that classifies the epistemic and ontological obstacles preventing their resolution. Central to this taxonomy is the distinction between `MathlibGap` (formalization deficit), `OpenProblem` (mathematical deficit), and `MissingFoundation` (ontological deficit).
 
 ## II. The ZFCₜ Architecture
-The library introduces **ZFCₜ** (ZFC with Temporal depth and Winding), extending the standard Zermelo-Fraenkel axioms into a dynamic, sequential regime.
+The library introduces **ZFCₜ** (ZFC with Chirality and Winding), extending the standard Zermelo-Fraenkel axioms into a dynamic, sequential regime.
 
 ### 1. Primitive Grammars
 The mathematical systems are encoded as 12-primitive tuples (Synthons): 

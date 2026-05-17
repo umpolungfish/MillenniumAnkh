@@ -19,7 +19,18 @@ namespace Voynich
     { dim := D_odot, top := T_odot, rel := R_lr, pol := P_asym, fid := F_ell, kin := K_trap, gran := G_aleph, gram := Gamma_seq, crit := Phi_c, chir := H_inf, stoi := one_one, prot := Omega_Z }
 
   def type1_zfct : String :=
-    "LCard a ∧ holo x a  ∧\n    ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    cls x  ∧\n    fixpt f  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∧  ∧\n    fixpt f  ∧\n    wind f x ∧ ¬ wind f σ x  ∧\n    bij f x x  ∧\n    ℤwind f x ∧ wind f x"
+    "LCard a ∧ holo x a  ∧\n    \
+      ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    \
+      lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    \
+      cls x  ∧\n    \
+      fixpt f  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∧  ∧\n    \
+      fixpt f  ∧\n    \
+      wind f x ∧ ¬ wind f σ x  ∧\n    \
+      bij f x x  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type1_tier : imscriptionTier type1 = .O_2 := by native_decide
 
@@ -28,7 +39,18 @@ namespace Voynich
     { dim := D_odot, top := T_odot, rel := R_lr, pol := P_pm, fid := F_ell, kin := K_trap, gran := G_aleph, gram := Gamma_seq, crit := Phi_c, chir := H_inf, stoi := one_one, prot := Omega_Z }
 
   def type2_sym_F_zfct : String :=
-    "LCard a ∧ holo x a  ∧\n    ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    ℤ₂ f ∧ ∃ f( bij f x x ∧ ∀ y( f( f y) = y))  ∧\n    cls x  ∧\n    fixpt f  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∧  ∧\n    fixpt f  ∧\n    wind f x ∧ ¬ wind f σ x  ∧\n    bij f x x  ∧\n    ℤwind f x ∧ wind f x"
+    "LCard a ∧ holo x a  ∧\n    \
+      ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    \
+      lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    \
+      ℤ₂ f ∧ ∃ f( bij f x x ∧ ∀ y( f( f y) = y))  ∧\n    \
+      cls x  ∧\n    \
+      fixpt f  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∧  ∧\n    \
+      fixpt f  ∧\n    \
+      wind f x ∧ ¬ wind f σ x  ∧\n    \
+      bij f x x  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type2_sym_F_tier : imscriptionTier type2_sym_F = .O_2 := by native_decide
 
@@ -37,7 +59,18 @@ namespace Voynich
     { dim := D_odot, top := T_odot, rel := R_lr, pol := P_sym, fid := F_ell, kin := K_trap, gran := G_aleph, gram := Gamma_seq, crit := Phi_c, chir := H_inf, stoi := one_one, prot := Omega_Z }
 
   def type3_sym_all_zfct : String :=
-    "LCard a ∧ holo x a  ∧\n    ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    ∀ f( bij f x x → ∀ y( y ∈ x ↔ f y ∈ x))  ∧\n    cls x  ∧\n    fixpt f  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∧  ∧\n    fixpt f  ∧\n    wind f x ∧ ¬ wind f σ x  ∧\n    bij f x x  ∧\n    ℤwind f x ∧ wind f x"
+    "LCard a ∧ holo x a  ∧\n    \
+      ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    \
+      lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    \
+      ∀ f( bij f x x → ∀ y( y ∈ x ↔ f y ∈ x))  ∧\n    \
+      cls x  ∧\n    \
+      fixpt f  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∧  ∧\n    \
+      fixpt f  ∧\n    \
+      wind f x ∧ ¬ wind f σ x  ∧\n    \
+      bij f x x  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type3_sym_all_tier : imscriptionTier type3_sym_all = .O_2 := by native_decide
 
@@ -46,7 +79,18 @@ namespace Voynich
     { dim := D_odot, top := T_odot, rel := R_lr, pol := P_pm, fid := F_ell, kin := K_trap, gran := G_aleph, gram := Gamma_broad, crit := Phi_c, chir := H_inf, stoi := one_one, prot := Omega_Z }
 
   def type4_sym_F_broad_zfct : String :=
-    "LCard a ∧ holo x a  ∧\n    ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    ℤ₂ f ∧ ∃ f( bij f x x ∧ ∀ y( f( f y) = y))  ∧\n    cls x  ∧\n    fixpt f  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∀ y( f y)  ∧\n    fixpt f  ∧\n    wind f x ∧ ¬ wind f σ x  ∧\n    bij f x x  ∧\n    ℤwind f x ∧ wind f x"
+    "LCard a ∧ holo x a  ∧\n    \
+      ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    \
+      lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    \
+      ℤ₂ f ∧ ∃ f( bij f x x ∧ ∀ y( f( f y) = y))  ∧\n    \
+      cls x  ∧\n    \
+      fixpt f  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∀ y( f y)  ∧\n    \
+      fixpt f  ∧\n    \
+      wind f x ∧ ¬ wind f σ x  ∧\n    \
+      bij f x x  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type4_sym_F_broad_tier : imscriptionTier type4_sym_F_broad = .O_2 := by native_decide
 
@@ -55,7 +99,18 @@ namespace Voynich
     { dim := D_odot, top := T_odot, rel := R_lr, pol := P_asym, fid := F_ell, kin := K_trap, gran := G_aleph, gram := Gamma_broad, crit := Phi_c, chir := H_inf, stoi := one_one, prot := Omega_Z }
 
   def type5_broad_zfct : String :=
-    "LCard a ∧ holo x a  ∧\n    ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    cls x  ∧\n    fixpt f  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∀ y( f y)  ∧\n    fixpt f  ∧\n    wind f x ∧ ¬ wind f σ x  ∧\n    bij f x x  ∧\n    ℤwind f x ∧ wind f x"
+    "LCard a ∧ holo x a  ∧\n    \
+      ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    \
+      lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    \
+      cls x  ∧\n    \
+      fixpt f  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∀ y( f y)  ∧\n    \
+      fixpt f  ∧\n    \
+      wind f x ∧ ¬ wind f σ x  ∧\n    \
+      bij f x x  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type5_broad_tier : imscriptionTier type5_broad = .O_2 := by native_decide
 
@@ -64,7 +119,18 @@ namespace Voynich
     { dim := D_odot, top := T_box, rel := R_lr, pol := P_pm_sym, fid := F_ell, kin := K_trap, gran := G_aleph, gram := Gamma_seq, crit := Phi_c, chir := H_inf, stoi := one_one, prot := Omega_Z }
 
   def type6_sym_cl_cross_zfct : String :=
-    "LCard a ∧ holo x a  ∧\n    ∀ z( z ∈ x ↔ repl f z)  ∧\n    lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    Frob f g  ∧\n    cls x  ∧\n    fixpt f  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∧  ∧\n    fixpt f  ∧\n    wind f x ∧ ¬ wind f σ x  ∧\n    bij f x x  ∧\n    ℤwind f x ∧ wind f x"
+    "LCard a ∧ holo x a  ∧\n    \
+      ∀ z( z ∈ x ↔ repl f z)  ∧\n    \
+      lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    \
+      Frob f g  ∧\n    \
+      cls x  ∧\n    \
+      fixpt f  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∧  ∧\n    \
+      fixpt f  ∧\n    \
+      wind f x ∧ ¬ wind f σ x  ∧\n    \
+      bij f x x  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type6_sym_cl_cross_tier : imscriptionTier type6_sym_cl_cross = .O_inf := by native_decide
 
@@ -73,7 +139,18 @@ namespace Voynich
     { dim := D_odot, top := T_box, rel := R_lr, pol := P_sym, fid := F_ell, kin := K_trap, gran := G_aleph, gram := Gamma_seq, crit := Phi_c, chir := H_inf, stoi := one_one, prot := Omega_Z }
 
   def type7_sym_all_cross_zfct : String :=
-    "LCard a ∧ holo x a  ∧\n    ∀ z( z ∈ x ↔ repl f z)  ∧\n    lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    ∀ f( bij f x x → ∀ y( y ∈ x ↔ f y ∈ x))  ∧\n    cls x  ∧\n    fixpt f  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∧  ∧\n    fixpt f  ∧\n    wind f x ∧ ¬ wind f σ x  ∧\n    bij f x x  ∧\n    ℤwind f x ∧ wind f x"
+    "LCard a ∧ holo x a  ∧\n    \
+      ∀ z( z ∈ x ↔ repl f z)  ∧\n    \
+      lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    \
+      ∀ f( bij f x x → ∀ y( y ∈ x ↔ f y ∈ x))  ∧\n    \
+      cls x  ∧\n    \
+      fixpt f  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∧  ∧\n    \
+      fixpt f  ∧\n    \
+      wind f x ∧ ¬ wind f σ x  ∧\n    \
+      bij f x x  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type7_sym_all_cross_tier : imscriptionTier type7_sym_all_cross = .O_2 := by native_decide
 
@@ -82,7 +159,18 @@ namespace Voynich
     { dim := D_odot, top := T_odot, rel := R_lr, pol := P_pm_sym, fid := F_ell, kin := K_trap, gran := G_aleph, gram := Gamma_seq, crit := Phi_c, chir := H_inf, stoi := one_one, prot := Omega_Z }
 
   def type8_sym_cl_zfct : String :=
-    "LCard a ∧ holo x a  ∧\n    ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    Frob f g  ∧\n    cls x  ∧\n    fixpt f  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∧  ∧\n    fixpt f  ∧\n    wind f x ∧ ¬ wind f σ x  ∧\n    bij f x x  ∧\n    ℤwind f x ∧ wind f x"
+    "LCard a ∧ holo x a  ∧\n    \
+      ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    \
+      lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    \
+      Frob f g  ∧\n    \
+      cls x  ∧\n    \
+      fixpt f  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∧  ∧\n    \
+      fixpt f  ∧\n    \
+      wind f x ∧ ¬ wind f σ x  ∧\n    \
+      bij f x x  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type8_sym_cl_tier : imscriptionTier type8_sym_cl = .O_inf := by native_decide
 
@@ -91,7 +179,18 @@ namespace Voynich
     { dim := D_odot, top := T_odot, rel := R_lr, pol := P_asym, fid := F_ell, kin := K_trap, gran := G_aleph, gram := Gamma_broad, crit := Phi_c, chir := H0, stoi := one_one, prot := Omega_Z }
 
   def type9_broad_memless_zfct : String :=
-    "LCard a ∧ holo x a  ∧\n    ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    cls x  ∧\n    fixpt f  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∀ y( f y)  ∧\n    fixpt f  ∧\n    x = x  ∧\n    bij f x x  ∧\n    ℤwind f x ∧ wind f x"
+    "LCard a ∧ holo x a  ∧\n    \
+      ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    \
+      lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    \
+      cls x  ∧\n    \
+      fixpt f  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∀ y( f y)  ∧\n    \
+      fixpt f  ∧\n    \
+      x = x  ∧\n    \
+      bij f x x  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type9_broad_memless_tier : imscriptionTier type9_broad_memless = .O_2 := by native_decide
 
@@ -100,7 +199,18 @@ namespace Voynich
     { dim := D_odot, top := T_box, rel := R_lr, pol := P_pm_sym, fid := F_ell, kin := K_trap, gran := G_aleph, gram := Gamma_broad, crit := Phi_c, chir := H_inf, stoi := one_one, prot := Omega_Z }
 
   def type10_sym_cl_broad_cross_zfct : String :=
-    "LCard a ∧ holo x a  ∧\n    ∀ z( z ∈ x ↔ repl f z)  ∧\n    lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    Frob f g  ∧\n    cls x  ∧\n    fixpt f  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∀ y( f y)  ∧\n    fixpt f  ∧\n    wind f x ∧ ¬ wind f σ x  ∧\n    bij f x x  ∧\n    ℤwind f x ∧ wind f x"
+    "LCard a ∧ holo x a  ∧\n    \
+      ∀ z( z ∈ x ↔ repl f z)  ∧\n    \
+      lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    \
+      Frob f g  ∧\n    \
+      cls x  ∧\n    \
+      fixpt f  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∀ y( f y)  ∧\n    \
+      fixpt f  ∧\n    \
+      wind f x ∧ ¬ wind f σ x  ∧\n    \
+      bij f x x  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type10_sym_cl_broad_cross_tier : imscriptionTier type10_sym_cl_broad_cross = .O_inf := by native_decide
 
@@ -109,7 +219,18 @@ namespace Voynich
     { dim := D_odot, top := T_odot, rel := R_lr, pol := P_asym, fid := F_ell, kin := K_trap, gran := G_aleph, gram := Gamma_seq, crit := Phi_c, chir := H0, stoi := one_one, prot := Omega_Z }
 
   def type11_memless_zfct : String :=
-    "LCard a ∧ holo x a  ∧\n    ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    ∃ x ¬ x = x  ∧\n    cls x  ∧\n    fixpt f  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∧  ∧\n    fixpt f  ∧\n    x = x  ∧\n    bij f x x  ∧\n    ℤwind f x ∧ wind f x"
+    "LCard a ∧ holo x a  ∧\n    \
+      ⊙bound a f ∧ Refl a f ∧ holo x a  ∧\n    \
+      lr⇔ x y ∧ Θ x y ∧ ¬ Θ y x  ∧\n    \
+      ∃ x ¬ x = x  ∧\n    \
+      cls x  ∧\n    \
+      fixpt f  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∧  ∧\n    \
+      fixpt f  ∧\n    \
+      x = x  ∧\n    \
+      bij f x x  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type11_memless_tier : imscriptionTier type11_memless = .O_2 := by native_decide
 
@@ -122,7 +243,18 @@ namespace Rohonc
     { dim := D_triangle, top := T_box, rel := R_dagger, pol := P_pm, fid := F_ell, kin := K_slow, gran := G_aleph, gram := Gamma_seq, crit := Phi_c, chir := H1, stoi := n_m, prot := Omega_Z }
 
   def type1_sym_F_cross_zfct : String :=
-    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    ∀ z( z ∈ x ↔ repl f z)  ∧\n    repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    ℤ₂ f ∧ ∃ f( bij f x x ∧ ∀ y( f( f y) = y))  ∧\n    cls x  ∧\n    ∀ y( y ⊆ x → ∃ z( z ∈ x ∧ y ⊆ z))  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    seq! f g ∧ ⟨→⟩ f g τ ∧ ¬ ⟨→⟩ g f τ  ∧\n    fixpt f  ∧\n    ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    ∃ f( func f ∧ ¬ bij f x x)  ∧\n    ℤwind f x ∧ wind f x"
+    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    \
+      ∀ z( z ∈ x ↔ repl f z)  ∧\n    \
+      repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    \
+      ℤ₂ f ∧ ∃ f( bij f x x ∧ ∀ y( f( f y) = y))  ∧\n    \
+      cls x  ∧\n    \
+      ∀ y( y ⊆ x → ∃ z( z ∈ x ∧ y ⊆ z))  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      seq! f g ∧ ⟨→⟩ f g τ ∧ ¬ ⟨→⟩ g f τ  ∧\n    \
+      fixpt f  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    \
+      ∃ f( func f ∧ ¬ bij f x x)  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type1_sym_F_cross_tier : imscriptionTier type1_sym_F_cross = .O_2 := by native_decide
 
@@ -131,7 +263,18 @@ namespace Rohonc
     { dim := D_triangle, top := T_box, rel := R_dagger, pol := P_asym, fid := F_ell, kin := K_slow, gran := G_aleph, gram := Gamma_broad, crit := Phi_c, chir := H1, stoi := n_m, prot := Omega_Z }
 
   def type2_broad_cross_zfct : String :=
-    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    ∀ z( z ∈ x ↔ repl f z)  ∧\n    repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    cls x  ∧\n    ∀ y( y ⊆ x → ∃ z( z ∈ x ∧ y ⊆ z))  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∀ y( f y)  ∧\n    fixpt f  ∧\n    ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    ∃ f( func f ∧ ¬ bij f x x)  ∧\n    ℤwind f x ∧ wind f x"
+    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    \
+      ∀ z( z ∈ x ↔ repl f z)  ∧\n    \
+      repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    \
+      cls x  ∧\n    \
+      ∃ y ∃ z( y ∈ x ∧ z ∈ x ∧ y ⊆ z)  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∀ y( f y)  ∧\n    \
+      fixpt f  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    \
+      ∃ f( func f ∧ ¬ bij f x x)  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type2_broad_cross_tier : imscriptionTier type2_broad_cross = .O_2 := by native_decide
 
@@ -140,7 +283,18 @@ namespace Rohonc
     { dim := D_triangle, top := T_box, rel := R_dagger, pol := P_asym, fid := F_ell, kin := K_slow, gran := G_aleph, gram := Gamma_seq, crit := Phi_c, chir := H1, stoi := n_m, prot := Omega_Z }
 
   def type3_cross_zfct : String :=
-    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    ∀ z( z ∈ x ↔ repl f z)  ∧\n    repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    cls x  ∧\n    ∀ y( y ⊆ x → ∃ z( z ∈ x ∧ y ⊆ z))  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    seq! f g ∧ ⟨→⟩ f g τ ∧ ¬ ⟨→⟩ g f τ  ∧\n    fixpt f  ∧\n    ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    ∃ f( func f ∧ ¬ bij f x x)  ∧\n    ℤwind f x ∧ wind f x"
+    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    \
+      ∀ z( z ∈ x ↔ repl f z)  ∧\n    \
+      repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    \
+      cls x  ∧\n    \
+      ∀ y( y ⊆ x → ∃ z( z ∈ x ∧ y ⊆ z))  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      seq! f g ∧ ⟨→⟩ f g τ ∧ ¬ ⟨→⟩ g f τ  ∧\n    \
+      fixpt f  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    \
+      ∃ f( func f ∧ ¬ bij f x x)  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type3_cross_tier : imscriptionTier type3_cross = .O_2 := by native_decide
 
@@ -149,7 +303,18 @@ namespace Rohonc
     { dim := D_triangle, top := T_in, rel := R_dagger, pol := P_asym, fid := F_ell, kin := K_slow, gran := G_aleph, gram := Gamma_seq, crit := Phi_c, chir := H1, stoi := n_m, prot := Omega_Z }
 
   def type4_incl_zfct : String :=
-    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    sep f x  ∧\n    repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    cls x  ∧\n    ∀ y( y ⊆ x → ∃ z( z ∈ x ∧ y ⊆ z))  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    seq! f g ∧ ⟨→⟩ f g τ ∧ ¬ ⟨→⟩ g f τ  ∧\n    fixpt f  ∧\n    ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    ∃ f( func f ∧ ¬ bij f x x)  ∧\n    ℤwind f x ∧ wind f x"
+    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    \
+      sep f x  ∧\n    \
+      repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    \
+      cls x  ∧\n    \
+      ∀ y( y ⊆ x → ∃ z( z ∈ x ∧ y ⊆ z))  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      seq! f g ∧ ⟨→⟩ f g τ ∧ ¬ ⟨→⟩ g f τ  ∧\n    \
+      fixpt f  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    \
+      ∃ f( func f ∧ ¬ bij f x x)  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type4_incl_tier : imscriptionTier type4_incl = .O_2 := by native_decide
 
@@ -158,7 +323,18 @@ namespace Rohonc
     { dim := D_triangle, top := T_in, rel := R_dagger, pol := P_asym, fid := F_ell, kin := K_slow, gran := G_aleph, gram := Gamma_broad, crit := Phi_c, chir := H1, stoi := n_m, prot := Omega_Z }
 
   def type5_broad_incl_zfct : String :=
-    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    sep f x  ∧\n    repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    cls x  ∧\n    ∀ y( y ⊆ x → ∃ z( z ∈ x ∧ y ⊆ z))  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∀ y( f y)  ∧\n    fixpt f  ∧\n    ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    ∃ f( func f ∧ ¬ bij f x x)  ∧\n    ℤwind f x ∧ wind f x"
+    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    \
+      sep f x  ∧\n    \
+      repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    \
+      cls x  ∧\n    \
+      ∀ y( y ⊆ x → ∃ z( z ∈ x ∧ y ⊆ z))  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∀ y( f y)  ∧\n    \
+      fixpt f  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    \
+      ∃ f( func f ∧ ¬ bij f x x)  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type5_broad_incl_tier : imscriptionTier type5_broad_incl = .O_2 := by native_decide
 
@@ -167,7 +343,18 @@ namespace Rohonc
     { dim := D_triangle, top := T_box, rel := R_dagger, pol := P_sym, fid := F_ell, kin := K_slow, gran := G_aleph, gram := Gamma_seq, crit := Phi_c, chir := H1, stoi := n_m, prot := Omega_Z }
 
   def type6_sym_all_cross_zfct : String :=
-    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    ∀ z( z ∈ x ↔ repl f z)  ∧\n    repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    ∀ f( bij f x x → ∀ y( y ∈ x ↔ f y ∈ x))  ∧\n    cls x  ∧\n    ∀ y( y ⊆ x → ∃ z( z ∈ x ∧ y ⊆ z))  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    seq! f g ∧ ⟨→⟩ f g τ ∧ ¬ ⟨→⟩ g f τ  ∧\n    fixpt f  ∧\n    ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    ∃ f( func f ∧ ¬ bij f x x)  ∧\n    ℤwind f x ∧ wind f x"
+    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    \
+      ∀ z( z ∈ x ↔ repl f z)  ∧\n    \
+      repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    \
+      ∀ f( bij f x x → ∀ y( y ∈ x ↔ f y ∈ x))  ∧\n    \
+      cls x  ∧\n    \
+      ∀ y( y ⊆ x → ∃ z( z ∈ x ∧ y ⊆ z))  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      seq! f g ∧ ⟨→⟩ f g τ ∧ ¬ ⟨→⟩ g f τ  ∧\n    \
+      fixpt f  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    \
+      ∃ f( func f ∧ ¬ bij f x x)  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type6_sym_all_cross_tier : imscriptionTier type6_sym_all_cross = .O_2 := by native_decide
 
@@ -180,7 +367,18 @@ namespace LinearA
     { dim := D_triangle, top := T_box, rel := R_dagger, pol := P_asym, fid := F_hbar, kin := K_mod, gran := G_aleph, gram := Gamma_seq, crit := Phi_c, chir := H1, stoi := n_m, prot := Omega_Z }
 
   def type1_cross_zfct : String :=
-    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    ∀ z( z ∈ x ↔ repl f z)  ∧\n    repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    cls x  ∧\n    ∃ y ∃ z( y ∈ x ∧ z ∈ x ∧ y ⊆ z)  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    seq! f g ∧ ⟨→⟩ f g τ ∧ ¬ ⟨→⟩ g f τ  ∧\n    fixpt f  ∧\n    ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    ∃ f( func f ∧ ¬ bij f x x)  ∧\n    ℤwind f x ∧ wind f x"
+    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    \
+      ∀ z( z ∈ x ↔ repl f z)  ∧\n    \
+      repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    \
+      cls x  ∧\n    \
+      ∃ y ∃ z( y ∈ x ∧ z ∈ x ∧ y ⊆ z)  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      seq! f g ∧ ⟨→⟩ f g τ ∧ ¬ ⟨→⟩ g f τ  ∧\n    \
+      fixpt f  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    \
+      ∃ f( func f ∧ ¬ bij f x x)  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type1_cross_tier : imscriptionTier type1_cross = .O_2 := by native_decide
 
@@ -189,7 +387,18 @@ namespace LinearA
     { dim := D_triangle, top := T_box, rel := R_dagger, pol := P_asym, fid := F_hbar, kin := K_mod, gran := G_aleph, gram := Gamma_broad, crit := Phi_c, chir := H1, stoi := n_m, prot := Omega_Z }
 
   def type2_broad_cross_zfct : String :=
-    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    ∀ z( z ∈ x ↔ repl f z)  ∧\n    repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    cls x  ∧\n    ∃ y ∃ z( y ∈ x ∧ z ∈ x ∧ y ⊆ z)  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    ∀ y( f y)  ∧\n    fixpt f  ∧\n    ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    ∃ f( func f ∧ ¬ bij f x x)  ∧\n    ℤwind f x ∧ wind f x"
+    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    \
+      ∀ z( z ∈ x ↔ repl f z)  ∧\n    \
+      repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ y = x)  ∧\n    \
+      cls x  ∧\n    \
+      ∃ y ∃ z( y ∈ x ∧ z ∈ x ∧ y ⊆ z)  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      ∀ y( f y)  ∧\n    \
+      fixpt f  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    \
+      ∃ f( func f ∧ ¬ bij f x x)  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type2_broad_cross_tier : imscriptionTier type2_broad_cross = .O_2 := by native_decide
 
@@ -198,7 +407,18 @@ namespace LinearA
     { dim := D_triangle, top := T_box, rel := R_dagger, pol := P_pm, fid := F_hbar, kin := K_mod, gran := G_aleph, gram := Gamma_seq, crit := Phi_c, chir := H1, stoi := n_m, prot := Omega_Z }
 
   def type3_sym_F_cross_zfct : String :=
-    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    ∀ z( z ∈ x ↔ repl f z)  ∧\n    repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    ℤ₂ f ∧ ∃ f( bij f x x ∧ ∀ y( f( f y) = y))  ∧\n    cls x  ∧\n    ∃ y ∃ z( y ∈ x ∧ z ∈ x ∧ y ⊆ z)  ∧\n    ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    seq! f g ∧ ⟨→⟩ f g τ ∧ ¬ ⟨→⟩ g f τ  ∧\n    fixpt f  ∧\n    ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    ∃ f( func f ∧ ¬ bij f x x)  ∧\n    ℤwind f x ∧ wind f x"
+    "∃ a( Ord a ∧ x ∈ rank a)  ∧\n    \
+      ∀ z( z ∈ x ↔ repl f z)  ∧\n    \
+      repl f x ∧ ∀ y( y ∈ repl f x → bij f x y)  ∧\n    \
+      ℤ₂ f ∧ ∃ f( bij f x x ∧ ∀ y( f( f y) = y))  ∧\n    \
+      cls x  ∧\n    \
+      ∃ y ∃ z( y ∈ x ∧ z ∈ x ∧ y ⊆ z)  ∧\n    \
+      ∀ a ∃ y( Card a → Card y ∧ a ⊆ y ∧ y ∈ x)  ∧\n    \
+      seq! f g ∧ ⟨→⟩ f g τ ∧ ¬ ⟨→⟩ g f τ  ∧\n    \
+      fixpt f  ∧\n    \
+      ∃ y( y ∈ x ∧ ¬ x ∈ y)  ∧\n    \
+      ∃ f( func f ∧ ¬ bij f x x)  ∧\n    \
+      ℤwind f x ∧ wind f x"
 
   theorem type3_sym_F_cross_tier : imscriptionTier type3_sym_F_cross = .O_2 := by native_decide
 
@@ -267,3 +487,4 @@ namespace CorpusComparison
 end CorpusComparison
 
 end Imscribing.Millennium.Manuscript_ZFCt
+

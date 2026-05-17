@@ -80,7 +80,7 @@ def inner_door_gate : Imscription := {
 /-- 3. The Son of God / Light-Man (Phōs) — §2.3
     "Becometh all things, whatsoever He will."  C=1.0.
     Not stationary at criticality — it IS the critical point made universal.
-    Higher temporal depth (H_inf) than the Inner Door. -/
+    Higher chirality (H_inf) than the Inner Door. -/
 def son_of_god_light_man : Imscription := {
   dim  := D_odot        -- D_omega
   top  := T_bowtie      -- T_openo

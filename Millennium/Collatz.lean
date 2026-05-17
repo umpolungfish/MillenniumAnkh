@@ -41,8 +41,8 @@ def collatz_shallow : Imscription := {
 
 def collatz_deep : Imscription := {
   dim  := D_triangle, top  := T_odot, rel  := R_dagger, pol  := P_pm_sym,
-  fid  := F_hbar,    kin  := K_mod,  gran := G_aleph,    gram := Gamma_seq,
-  crit := Phi_c,     chir := H_inf,  stoi := one_one,    prot := Omega_Z }
+  fid  := F_hbar,    kin  := K_mod,    gran := G_aleph,    gram := Gamma_seq,
+  crit := Phi_c,     chir := H_inf,    stoi := one_one,    prot := Omega_Z }
 
 def CollatzConjecture : Prop := ∀ n : ℕ, n > 0 → ∃ k : ℕ, T_iter k n = 1
 
@@ -98,7 +98,7 @@ theorem lemma2_inverse_tree_closed :
     ∀ m ∈ InverseTree, ∀ n ∈ T_inv_preimage m, n ∈ InverseTree := by
   intro m hm n hn
   rcases hm with ⟨k, hk⟩
-  simp [InverseTree, T_inv_preimage] at *
+  simp only [InverseTree, T_inv_preimage, Set.mem_setOf_eq] at *
   use k + 1
   simp [T_iter]
   rw [T_iter_comm, hn, hk]
@@ -115,20 +115,63 @@ theorem lemma3_bidirectional_coupling (n : ℕ) (hn : n > 0) :
 def cycleWindingNumber (n p : ℕ) : ℕ :=
   (List.range p).filter (fun k => parity (T_iter k n) = 1) |>.length
 
-theorem lemma4_winding_terminal : cycleWindingNumber 1 3 = 1 := by sorry
-theorem lemma4_no_fixed_point (n : ℕ) (hn : n > 0) : T n ≠ n := by unfold T; intro h; split at h <;> omega
-theorem lemma4_no_2cycle (n : ℕ) (hn : n > 0) : T (T n) ≠ n := by sorry
+theorem lemma4_winding_terminal : cycleWindingNumber 1 3 = 1 := by
+  unfold cycleWindingNumber
+  simp only [T_iter, parity, T]
+  decide
+
+theorem lemma4_no_fixed_point (n : ℕ) (hn : n > 0) : T n ≠ n := by
+  unfold T; intro h; split at h <;> omega
+
+lemma T_val_even (n : ℕ) (h : n % 2 = 0) : T n = n / 2 := by unfold T; simp [h]
+lemma T_val_odd (n : ℕ) (h : n % 2 = 1) : T n = 3 * n + 1 := by unfold T; simp [h]
+
+theorem lemma4_no_2cycle (n : ℕ) (hn : n > 0) : T (T n) ≠ n := by
+  have : n % 4 = 0 ∨ n % 4 = 1 ∨ n % 4 = 2 ∨ n % 4 = 3 := by omega
+  rcases this with hn4 | hn4 | hn4 | hn4
+  · -- n % 4 = 0
+    have hn2 : n % 2 = 0 := by omega
+    have hn2d : (n / 2) % 2 = 0 := by omega
+    unfold T
+    simp [hn2, hn2d]
+    intro eq
+    omega
+  · -- n % 4 = 1
+    have hn2 : n % 2 = 1 := by omega
+    have h3n1 : (3 * n + 1) % 2 = 0 := by omega
+    unfold T
+    simp [hn2, h3n1]
+    intro eq
+    omega
+  · -- n % 4 = 2
+    have hn2 : n % 2 = 0 := by omega
+    have hn2o : (n / 2) % 2 = 1 := by omega
+    unfold T
+    simp [hn2, hn2o]
+    intro eq
+    omega
+  · -- n % 4 = 3
+    have hn2 : n % 2 = 1 := by omega
+    have h3n1 : (3 * n + 1) % 2 = 0 := by omega
+    unfold T
+    simp [hn2, h3n1]
+    intro eq
+    omega
+
+
 theorem no_cycle_below_69 :
     ¬ ∃ (n p : ℕ), n > 0 ∧ 1 < p ∧ p ≤ 69 ∧ T_iter p n = n
     ∧ ∀ k, 0 < k → k < p → T_iter k n ≠ n := by sorry
+
 
 noncomputable def averageCompressedDrift : ℝ :=
   (1/2 : ℝ) * (Real.log (1/2) + Real.log (3/2))
 
 theorem average_drift_negative : averageCompressedDrift < 0 := by
-  -- Verified: (1/2)(log(1/2) + log(3/2)) = (1/2)log(3/4) < 0
-  -- Since 0 < 3/4 < 1, log(3/4) < 0, and multiplying by 1/2 stays < 0.
-  sorry
+  unfold averageCompressedDrift
+  apply mul_neg_of_pos_of_neg (by norm_num)
+  rw [← Real.log_mul (by norm_num) (by norm_num)]
+  exact Real.log_neg (by norm_num) (by norm_num)
 
 theorem lemma5_boundedness :
     ∀ ε > 0, ∃ N : ℕ, ∀ M > N,

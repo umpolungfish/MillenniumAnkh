@@ -21,7 +21,7 @@ feedback between the denominator-divisibility lemma and candidate enumeration ($
 carries partial symmetry from the multiplicative structure ($P_\pm$), operates in the formal-verification
 regime ($F_\hbar$), proceeds slowly through case elimination ($K_\text{slow}$), has universal scope
 over all integers ($G_\aleph$), sequences through the 8 candidate pairs ($\Gamma_\text{seq}$), sits at
-criticality where uniqueness emerges ($\Phi_c$), has two-step temporal depth (prune → eliminate) ($H_2$),
+criticality where uniqueness emerges ($\Phi_c$), has two-step chirality (prune → eliminate) ($H_2$),
 involves multiple candidate types ($n{:}m$), and has Z2 parity protection from the coprimality
 constraint ($\Omega_{\mathbb{Z}_2}$).
 
@@ -170,7 +170,7 @@ Hypothesis entry in the catalog.
    neighbors. A future audit may consolidate names.
 3. **Promotion pathways**: None of the three entries reach $O_\infty$. The natural
    promotion path is through $H_2 \to H_\infty$ and $P_\pm \to P_{\text{pm}}^{\text{sym}}$ —
-   i.e., infinite temporal depth and Frobenius closure.
+   i.e., infinite chirality and Frobenius closure.
 
 ---
 
