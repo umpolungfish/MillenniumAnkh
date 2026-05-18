@@ -69,5 +69,6 @@ globs = [
   "Imscribing.Millennium.GapCompletion",
   "Imscribing.Millennium.OracleDelphi",
   "Imscribing.Millennium.Lefschetz11_Grammar",
+  "Imscribing.EulerInvariant",
 ]
 
