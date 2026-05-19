@@ -73,4 +73,6 @@ globs = [
   "Imscribing.Millennium.YM_ZFCt_Bridge",
   "Imscribing.Millennium.NS_ZFCt_Bridge",
   "Imscribing.Millennium.RH_ZFCt_Bridge",
+  "Imscribing.Millennium.RH_GateInhabitants",
+  "Imscribing.Millennium.Hodge_GateInhabitants",
 ]
