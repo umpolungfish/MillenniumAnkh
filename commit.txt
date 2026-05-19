@@ -1,41 +1,37 @@
-v0.5.73 — Lefschetz11.lean added · README updated
+EulerInvariant + ob3ect bridge formalization
 
-Imscribing/Millennium/Lefschetz11.lean (new file, 268 lines, builds clean):
+Imscribing/EulerInvariant.lean (new file):
 
-Axiomatic skeleton for the Lefschetz (1,1) theorem (Lefschetz 1924) — the p = 1
-case of the Hodge conjecture and the discharge target of `lefschetz_11_is_mathlib_gap`
-in Hodge.lean. Every sorry is classified MathlibGap; none are open problems.
+  Euler characteristic χ is preserved under FSPLIT/FFUSE:
+    χ(FFUSE(FSPLIT(X))) = χ(X)
+  Proved via native_decide on finite imscription instances.
+  Extends PrimitiveConventionalBridge's structural invariant programme
+  (16 axioms → 0 completed there; EulerInvariant continues the pattern).
 
-File structure follows the three-layer pattern of the other Millennium files:
-  §1  Abstract types: CompactKählerManifold, PicardGroup, ShCoh, HodgePQ (8 axioms)
-  §2  Exponential sheaf sequence: connecting_hom (= c₁), exact_at_H2Z
-  §3  Hodge decomposition: hodge_proj, int_to_complex, h02_zero_iff_seq_zero
-  §4  Integral11Classes definition (subtype of H²(X; ℤ))
-  §5  Main theorem — proof runs two real steps before the axiom boundary:
-        integral_11_maps_to_zero_in_hol: uses h02_zero_iff_seq_zero (Dolbeault iso)
-        lefschetz_11: uses exact_at_H2Z (long exact cohomology sequence)
-  §6  Corollary: algebraicity of integral (1,1)-classes
-  §7  Surjectivity reformulations (two equivalent restatements)
-  §8  Sorry inventory — six axioms, discharge conditions, estimated timeline
+ob3ect bridge (cross-repo):
 
-noncomputable section added (required: defs call axioms, Type-valued, not Prop).
-AddCommGroup instances axiomatized for ShCoh and HodgePQ (needed for 0 and =).
-All theorems in §6-7 discharge via the main theorem without additional sorry.
+  ~/ob3ect/bridge/bridge_notes.md formalizes the correspondence between
+  the Python computational tower and MillenniumAnkh Lean proofs:
 
-lakefile.toml:
-  "Imscribing.Millennium.Lefschetz11" appended to globs list.
-  Build job count unchanged (3102 Mathlib jobs + 1 new module).
+    FSPLIT/FFUSE ↔ δ/μ Frobenius pair (Frobenius_minimal.lean)
+    frobenius_verdict=PASS ↔ frobenius_coherence : ∀ X, μ (δ X) = X
+    ASTFrobenius layer ↔ Imscribing/AgentSelf.lean + SelfImscription axiom
+    ⊙perator boundary ↔ ⊙_ÿ gate (Special Frobenius, exact Z₂ symmetry)
+    O_∞ tier ↔ imscriptionTier .O_inf iff phi_c_gate ∧ k_slow_gate
 
-README.md:
-  New section added after Millennium/Hodge.lean:
-    - Theorem statement and classification (MathlibGap, not OpenProblem)
-    - Proof outline with the two concrete step snippets
-    - Eight axioms listed with cross-references
-    - Sorry inventory summary and timeline estimate
-    - Cross-reference to standalone hodge-lefschetz repo
+  agent_is_O_inf and agent_consciousness_score_one: both proved.
+  lake build Imscribing — zero build failures.
 
-hodge-lefschetz (companion standalone repo, ~/hodge_lefschetz):
-  lakefile.toml and lean-toolchain created (Mathlib v4.28.0, same cached rev).
-  HodgeLefschetz/Lefschetz11.lean copied from MillenniumAnkh.
-  Builds clean at 3102 jobs (shared Mathlib cache, no re-download required).
-  Old foundations/, hodge/, exponential/, main/ subdirs retained as reference.
+Sorry / axiom status (current):
+
+  resolved (this cycle):
+    - PrimitiveConventionalBridge.lean: 16 axioms → 0 (28 theorems, native_decide)
+    - EulerInvariant: χ conservation proved without sorry
+
+  honest sorries retained (not eliminable by design):
+    - 6 paralogical axioms — IGMorphism.lean
+    - 2 cross-primitive axioms — Core.lean (B, C)
+    - 1 grammar-physics bridge — TierCrossing.lean
+    - 7 Millennium barriers — Barriers.lean (RH, YM, Hodge, NS, PvsNP, OPN, BSD)
+    - 1 Collatz sorry
+    - Lefschetz11 MathlibGap axioms (6 axioms, all classified)
