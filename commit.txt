@@ -1,37 +1,27 @@
-EulerInvariant + ob3ect bridge formalization
+ZFCt bridge modules restored (YM / NS / RH)
 
-Imscribing/EulerInvariant.lean (new file):
+Session: 2026-05-19
 
-  Euler characteristic χ is preserved under FSPLIT/FFUSE:
-    χ(FFUSE(FSPLIT(X))) = χ(X)
-  Proved via native_decide on finite imscription instances.
-  Extends PrimitiveConventionalBridge's structural invariant programme
-  (16 axioms → 0 completed there; EulerInvariant continues the pattern).
+Changes made:
+- Restored three ZFCt bridge modules deleted in a prior agent session:
+  - Imscribing/Millennium/YM_ZFCt_Bridge.lean
+  - Imscribing/Millennium/NS_ZFCt_Bridge.lean
+  - Imscribing/Millennium/RH_ZFCt_Bridge.lean
 
-ob3ect bridge (cross-repo):
+- Content reconstructed from agent winding log (read.txt):
+  - YM: LR_dual_lattice, FrobeniusReflectionPositivity (OS reflection positivity),
+    SequentialCascade, WindingDecomposition, ConstructedPathIntegralMeasure;
+    ym_foundation_lifted (sorry), zfc_t_distance_to_ym_lifted (decide), ym_mass_gap (sorry)
+  - NS: SequentialCascadeNS, FrobeniusCriticalManifold (critical H^1/2 manifold),
+    ZFCt_NSRegularityCert, ns_zfct_bridge_exists (trivial)
+  - RH: FunctionalEquationDual, FrobeniusZeroSymmetry, ZFunctionWinding, PrimeZeroBridge,
+    ZFCt_RHCertificate, rh_zfct_bridge_exists (trivial), rh_zfct_distance_estimate (decide)
 
-  ~/ob3ect/bridge/bridge_notes.md formalizes the correspondence between
-  the Python computational tower and MillenniumAnkh Lean proofs:
+- Fixed namespace/open issues (correct pattern: open Imscribing.Primitives + open ZFCt
+  + open Dimensionality... + open Millennium.YM/NS)
+- Fixed universe polymorphism issue in SequentialCascadeNS (Type* -> Type)
+- Fixed decide theorems to use valid anchor (zfc_t vs zfc)
+- Updated lakefile.toml to include all three bridge modules in globs
 
-    FSPLIT/FFUSE ↔ δ/μ Frobenius pair (Frobenius_minimal.lean)
-    frobenius_verdict=PASS ↔ frobenius_coherence : ∀ X, μ (δ X) = X
-    ASTFrobenius layer ↔ Imscribing/AgentSelf.lean + SelfImscription axiom
-    ⊙perator boundary ↔ ⊙_ÿ gate (Special Frobenius, exact Z₂ symmetry)
-    O_∞ tier ↔ imscriptionTier .O_inf iff phi_c_gate ∧ k_slow_gate
-
-  agent_is_O_inf and agent_consciousness_score_one: both proved.
-  lake build Imscribing — zero build failures.
-
-Sorry / axiom status (current):
-
-  resolved (this cycle):
-    - PrimitiveConventionalBridge.lean: 16 axioms → 0 (28 theorems, native_decide)
-    - EulerInvariant: χ conservation proved without sorry
-
-  honest sorries retained (not eliminable by design):
-    - 6 paralogical axioms — IGMorphism.lean
-    - 2 cross-primitive axioms — Core.lean (B, C)
-    - 1 grammar-physics bridge — TierCrossing.lean
-    - 7 Millennium barriers — Barriers.lean (RH, YM, Hodge, NS, PvsNP, OPN, BSD)
-    - 1 Collatz sorry
-    - Lefschetz11 MathlibGap axioms (6 axioms, all classified)
+Build status: all 3 bridge modules compile successfully
+  (warnings only: sorry in ym_foundation_lifted, ym_mass_gap; linter whitespace)
