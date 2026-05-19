@@ -26,7 +26,7 @@ Toolchain: **Lean 4.28.0** · **Mathlib v4.28.0**
 
 ## Primitive Space
 
-The 12-primitive grammar imscribes each system as an **Imscription** — a point in the crystal of $3^3 \times 4^5 \times 5^4 = 17{,}280{,}000$ structural types. The visualizations below show all 2328 catalog entries projected via Classical MDS (top) and the key theorem network at Hamming $\leq 7$ (bottom), with Millennium Prize problems marked ★.
+The 12-primitive grammar imscribes each and every and any system as an **Imscription** — a point in the crystal of $3^3 \times 4^5 \times 5^4 = 17{,}280{,}000$ structural types. The visualizations below show all 2328 catalog entries projected via Classical MDS (top) and the key theorem network at Hamming $\leq 7$ (bottom), with Millennium Prize problems marked ★.
 
 ### MDS Projection — 2328 Catalog Entries
 ![Primitive Space MDS](syncon_primitive_map_mds.png)
