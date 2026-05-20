@@ -36,15 +36,15 @@ open Millennium.RH
 /-- The PM_Z2 promotion target: a Z_2 involution on ℂ encoding the functional
     equation symmetry. -/
 structure FrobeniusZeroSymmetry where
-  theta_op         : ℂ → ℂ
+  theta_op : ℂ → ℂ
   theta_involution : ∀ s : ℂ, theta_op (theta_op s) = s
 
 /-- The LR_DUAL promotion target: the functional equation as a duality between
     s and 1-s on the critical line. -/
 structure FunctionalEquationDual where
-  dual_map     : ℂ → ℂ
+  dual_map : ℂ → ℂ
   dual_on_crit : ∀ t : ℝ, (dual_map ((1 : ℂ)/2 + t * Complex.I)).re = 1/2
-  xi_invariant : ∀ s : ℂ, True  -- xi(s) = xi(1-s); axiom in Mathlib
+  xi_invariant : ℂ → True  -- xi(s) = xi(1-s); axiom in Mathlib
 
 /-- The ZWIND promotion target: a counting function for zeros on the critical line. -/
 structure ZFunctionWinding where
@@ -56,10 +56,10 @@ structure PrimeZeroBridge where
 
 /-- The assembled ZFCt certificate for RH: all four gate structures. -/
 structure ZFCt_RHCertificate where
-  fe_sym         : FunctionalEquationDual
-  frob_sym       : FrobeniusZeroSymmetry
-  z_wind         : ZFunctionWinding
-  prime_bridge   : PrimeZeroBridge
+  fe_sym : FunctionalEquationDual
+  frob_sym : FrobeniusZeroSymmetry
+  z_wind : ZFunctionWinding
+  prime_bridge : PrimeZeroBridge
   gate_inhabited : True
 
 namespace Millennium.RH_GateInhabitants
@@ -72,7 +72,7 @@ namespace Millennium.RH_GateInhabitants
     The functional equation involution s ↦ 1-s is a concrete operation on ℂ.
     It exists in the base theory and requires no missing foundation. -/
 def FZS_inhabitant : FrobeniusZeroSymmetry where
-  theta_op         := fun s ↦ 1 - s
+  theta_op := fun s ↦ 1 - s
   theta_involution := fun s ↦ by ring
 
 -- ============================================================
@@ -84,7 +84,7 @@ def FZS_inhabitant : FrobeniusZeroSymmetry where
     xi_invariant is axiomatic — it follows from riemannZeta_one_sub in Mathlib,
     but the xi function itself is not directly formalized as a separate object. -/
 def FESymmetry_inhabitant : FunctionalEquationDual where
-  dual_map     := fun s ↦ 1 - s
+  dual_map := fun s ↦ 1 - s
   dual_on_crit := fun t ↦ by simp [Complex.add_re, Complex.mul_re, Complex.I_re, Complex.I_im]; ring
   xi_invariant := fun _ ↦ trivial
 
@@ -138,7 +138,7 @@ noncomputable def zfc_tc_inhabitant_is_well_formed : ZFCt_RHCertificate :=
     open forcing theorem, not derivable from the gate structure alone. -/
 theorem frob_gate_without_forcing (s : ℂ) :
     FZS_inhabitant.theta_op s = s ↔ s = (1 / 2 : ℂ) := by
-  show (1 : ℂ) - s = s ↔ s = 1 / 2
+  change (1 : ℂ) - s = s ↔ s = 1 / 2
   constructor
   · intro h; linear_combination -(1 / 2 : ℂ) * h
   · intro h; rw [h]; norm_num
@@ -162,6 +162,6 @@ theorem rh_forcing_implies_rh : RH_ForcingTheorem → Millennium.RH.RiemannHypot
   have heq  : FZS_inhabitant.theta_op s = s := h s hz hpos hlt
   have heqs : s = (1 / 2 : ℂ) := (frob_gate_without_forcing s).mp heq
   have hre  : s.re = 1 / 2 := by simpa using congr_arg Complex.re heqs
-  simp [ZeroFreeStrip, hre]
+  simp [hre]
 
 end Millennium.RH_GateInhabitants

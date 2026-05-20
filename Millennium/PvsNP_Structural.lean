@@ -85,7 +85,7 @@ theorem p_not_equals_np_structural_tautology : P_class ≠ NP_class :=
 --             G (beth≠aleph), Gamma (and≠seq), Phi (sub≠c) = 6
 
 theorem mismatch_count : primitiveMismatches P_class NP_class = 6 := by
-  sorry
+  decide
 
 -- =============================================================
 -- §5. Join and meet in the primitive lattice

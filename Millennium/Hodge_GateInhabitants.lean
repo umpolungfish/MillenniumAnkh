@@ -43,7 +43,7 @@ structure HodgeLRDual where
 /-- The PM_Z2 promotion target for Hodge:
     complex conjugation σ as a Z_2 Frobenius involution on Hodge cohomology. -/
 structure HodgePM_Z2 where
-  conj_op         : True  -- σ: H^{p,q} → H^{q,p}
+  conj_op : True  -- σ: H^{p,q} → H^{q,p}
   conj_involution : True  -- σ² = id (conjugation is an involution)
 
 /-- The ZWIND promotion target for Hodge:
