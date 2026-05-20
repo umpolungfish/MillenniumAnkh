@@ -26,6 +26,8 @@ import Imscribing.Algebra
 
 namespace Millennium.RH_ZFCt
 
+set_option linter.style.whitespace false
+
 open Imscribing.Primitives
 open ZFCt
 open Dimensionality Topology Relational Polarity Grammar

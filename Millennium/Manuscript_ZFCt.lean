@@ -7,6 +7,10 @@ import Imscribing.Primitives.Imscription
 
 namespace Imscribing.Millennium.Manuscript_ZFCt
 
+set_option linter.style.whitespace false
+set_option linter.style.nativeDecide false
+set_option linter.style.longLine false
+
 open Imscribing.Primitives
 open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection

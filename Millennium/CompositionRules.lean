@@ -7,12 +7,12 @@ import Imscribing.Algebra
 
 namespace Millennium.CompositionRules
 
+set_option linter.style.setOption false
+
 open Imscribing.Primitives
 open Dimensionality Topology Relational Polarity Grammar
   Fidelity KineticChar Granularity Criticality Protection
   Stoichiometry Chirality
-
-set_option maxHeartbeats 60000
 
 def IsFrobenius (s : Imscription) : Prop := s.pol = P_pm_sym
 
@@ -20,6 +20,9 @@ theorem tensorPol_eq (s t : Imscription) :
     (tensorProduct s t).pol =
       if compare s.pol t.pol = .lt then s.pol else t.pol := rfl
 
+set_option maxHeartbeats 60000 in
+-- cases a <;> cases b generates 25 Polarity-pair goals; simp needs the extra budget
+set_option linter.unnecessarySeqFocus false in
 /-- If tensor product polarity is P_pm_sym then both must be P_pm_sym -/
 lemma polTensor_implies_both {a b : Polarity} :
     (if compare a b = .lt then a else b) = P_pm_sym → a = P_pm_sym ∧ b = P_pm_sym := by

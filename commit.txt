@@ -1,3 +1,15 @@
+Linter cleanup — CompositionRules / RH_ZFCt_Bridge / Manuscript_ZFCt / YM / NS — 2026-05-20
+
+  YM.lean (×2) + NS.lean (×2): bare text after `-- ` parsed as Lean commands → fixed to `-- ` comment lines
+  NS.lean line 12: split 101-char open statement
+  CompositionRules.lean: scoped `set_option maxHeartbeats 60000 in` with comment after; added
+    `set_option linter.style.setOption false` + `set_option linter.unnecessarySeqFocus false in`
+  RH_ZFCt_Bridge.lean: added `set_option linter.style.whitespace false` + trailing newline
+  Manuscript_ZFCt.lean: moved whitespace/nativeDecide/longLine linter suppression to namespace root
+  Build: 3316 jobs, 0 errors.
+
+=======================================================================
+
 YM.lean + NS.lean — fix bare-text comment lines — 2026-05-20
 
   Bare text after `-- ` was parsed as Lean commands → "unexpected identifier; expected 'lemma'".
