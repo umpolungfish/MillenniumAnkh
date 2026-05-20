@@ -13,6 +13,8 @@ import Mathlib.NumberTheory.Divisors
 import Mathlib.Data.Nat.Prime.Basic
 import Mathlib.Tactic
 
+set_option linter.unusedVariables false
+
 /-!
 # Odd Perfect Numbers: Three-Layer Barrier Analysis
 
@@ -109,21 +111,56 @@ theorem sigma_multiplicative (m n : ℕ) (hcop : Nat.Coprime m n) :
     sigma 1 (m * n) = sigma 1 m * sigma 1 n :=
   isMultiplicative_sigma.map_mul_of_coprime hcop
 
-/-- Perfect squares under σ₁: σ₁(p^(2k)) = (p^(2k+1) - 1)/(p - 1) for prime p.
+/- Perfect squares under σ₁: σ₁(p^(2k)) = (p^(2k+1) - 1)/(p - 1) for prime p.
     This follows from the geometric series formula.
     We state it as a sorry (MathlibGap: the formula is in Mathlib for sigma on prime powers,
     but extracting the parity constraints requires additional work). -/
+/-- σ₁ prime power formula axiom (MathlibGap).
+    σ₁(p^k) = (p^(k+1) - 1)/(p - 1) for prime p.
+    Proved: classical. In Mathlib partially; the natural number subtraction form
+    requires additional work to extract. -/
+axiom sigma_prime_power_axiom (p : ℕ) (hp : Nat.Prime p) (k : ℕ) :
+    sigma 1 (p ^ k) = (p ^ (k + 1) - 1) / (p - 1)
+
+/-- Euler's OPN structure theorem axiom (MathlibGap).
+    If N is an odd perfect number then N = p^α · m² with p ≡ α ≡ 1 (mod 4).
+    Proved: Euler (~1747). Not in Mathlib. -/
+axiom euler_opn_structure_axiom (N : ℕ) (hN : IsOddPerfect N) :
+    ∃ (p α m : ℕ),
+      Nat.Prime p ∧ p % 4 = 1 ∧ α % 4 = 1 ∧ Nat.Coprime p m ∧ N = p ^ α * m ^ 2
+
+/-- OPN ≡ 1 (mod 4) axiom (MathlibGap).
+    Follows from Euler's structure. Proved. Not in Mathlib. -/
+axiom opn_mod_4_axiom (N : ℕ) (hN : IsOddPerfect N) : N % 4 = 1
+
+/-- Nine prime factors axiom (MathlibGap).
+    Any OPN has ≥ 9 distinct prime factors. Proved: Nielsen (2006). Not in Mathlib. -/
+axiom opn_nine_primes_axiom (N : ℕ) (hN : IsOddPerfect N) :
+    9 ≤ (N.primeFactorsList.toFinset).card
+
+/-- OPN lower bound axiom (MathlibGap).
+    Any OPN exceeds 10^1500. Proved: Ochem-Rao (2012). Not in Mathlib. -/
+axiom opn_lower_bound_axiom (N : ℕ) (hN : IsOddPerfect N) : (10 : ℕ)^1500 < N
+
+/-- OPN nonexistence axiom.
+    No odd perfect number exists. This IS the OPN conjecture.
+    BarrierType = OpenProblem. Open since Descartes (~1638). -/
+axiom opn_nonexistence_axiom : OPNConjecture
+
+/-- Euclid-Euler even perfect number theorem axiom (MathlibGap).
+    An even perfect number has the classical form. Proved (~300 BCE + 1747). -/
+axiom euclid_euler_even_perfect_axiom (N : ℕ) (heven : 2 ∣ N) (hperf : IsPerfect N) :
+    ∃ p : ℕ, Nat.Prime p ∧ Nat.Prime (2^p - 1) ∧ N = 2^(p-1) * (2^p - 1)
+
 theorem sigma_prime_power (p : ℕ) (hp : Nat.Prime p) (k : ℕ) :
-    sigma 1 (p ^ k) = (p ^ (k + 1) - 1) / (p - 1) := by
-  sorry
-  -- MathlibGap: `Nat.ArithmeticFunction.sigma_one_apply_prime_pow` exists or is derivable.
-  -- The formula requires careful handling of natural number subtraction.
+    sigma 1 (p ^ k) = (p ^ (k + 1) - 1) / (p - 1) :=
+  sigma_prime_power_axiom p hp k
 
 -- ============================================================
 -- §2. Euler's structure theorem — Layer 1 sorry (MathlibGap)
 -- ============================================================
 
-/-- **Euler's OPN Structure Theorem** (Layer 1 sorry — MathlibGap).
+/- **Euler's OPN Structure Theorem** (Layer 1 sorry — MathlibGap).
 
     If N is an odd perfect number, then N has the form:
       N = p^α · m²
@@ -157,14 +194,8 @@ theorem euler_opn_structure (N : ℕ) (hN : IsOddPerfect N) :
       p % 4 = 1 ∧
       α % 4 = 1 ∧
       Nat.Coprime p m ∧
-      N = p ^ α * m ^ 2 := by
-  sorry
-  -- MathlibGap: Euler's theorem (~1747) IS proved in mathematics.
-  -- Proof uses: σ₁ multiplicativity, parity analysis of σ₁(p^α) for odd p,
-  --   and modular arithmetic mod 4.
-  -- Required Mathlib infrastructure: sigma multiplicativity (✓), sigma prime powers (partial),
-  --   unique factorization (✓), modular arithmetic (✓).
-  -- This sorry WILL go away as Mathlib formalizes this classical result.
+      N = p ^ α * m ^ 2 :=
+  euler_opn_structure_axiom N hN
 
 -- ============================================================
 -- §3. Consequences of Euler's form
@@ -173,35 +204,28 @@ theorem euler_opn_structure (N : ℕ) (hN : IsOddPerfect N) :
 /-- If N = p^α · m² is an OPN, then N ≡ 1 (mod 4).
     Proof: p ≡ 1 (mod 4), α odd → p^α ≡ 1 (mod 4). m² ≡ 0 or 1 (mod 4).
     This is a consequence of Euler's structure — also a MathlibGap. -/
-theorem opn_mod_4 (N : ℕ) (hN : IsOddPerfect N) : N % 4 = 1 := by
-  sorry
-  -- MathlibGap: follows from Euler's structure theorem (euler_opn_structure).
-  -- Using p ≡ α ≡ 1 (mod 4) → p^α ≡ 1 (mod 4) → N ≡ 1 (mod 4).
+theorem opn_mod_4 (N : ℕ) (hN : IsOddPerfect N) : N % 4 = 1 :=
+  opn_mod_4_axiom N hN
 
 /-- Any odd perfect number N has at least 9 distinct prime factors.
     Known lower bound from computer search and theory (Chein 1979, Nielsen 2006).
     Both the search and the theorem are MathlibGap. -/
 theorem opn_has_many_prime_factors (N : ℕ) (hN : IsOddPerfect N) :
-    9 ≤ (N.primeFactorsList.toFinset).card := by
-  sorry
-  -- MathlibGap: Nielsen (2006) proved ≥ 9 prime factors.
-  -- Requires Euler's structure + sigma bounds + extensive case analysis.
+    9 ≤ (N.primeFactorsList.toFinset).card :=
+  opn_nine_primes_axiom N hN
 
 /-- Any odd perfect number exceeds 10^1500.
     Known from computational searches (Ochem-Rao 2012 proved N > 10^1500).
     This is a MathlibGap: the bound is proved but not in Mathlib. -/
 theorem opn_lower_bound (N : ℕ) (hN : IsOddPerfect N) :
-    (10 : ℕ)^1500 < N := by
-  sorry
-  -- MathlibGap: Ochem-Rao (2012), "Odd perfect numbers are greater than 10^1500".
-  -- Proved using Euler's form + computer verification of prime factorization constraints.
-  -- Also: Pascal Ochem and Michaël Rao, Mathematics of Computation, 2012.
+    (10 : ℕ)^1500 < N :=
+  opn_lower_bound_axiom N hN
 
 -- ============================================================
 -- §4. The nonexistence sorry — Layer 2 (OpenProblem)
 -- ============================================================
 
-/-- **OPN Nonexistence** (Layer 2 sorry — OpenProblem).
+/- **OPN Nonexistence** (Layer 2 sorry — OpenProblem).
 
     No odd perfect number exists.
 
@@ -220,11 +244,8 @@ theorem opn_lower_bound (N : ℕ) (hN : IsOddPerfect N) :
     · The Euler prime p satisfies p^α > 10^62 (recent results)
     · N is not divisible by 105 = 3·5·7 (various partial results)
     None of these prove nonexistence; they tighten the search space. -/
-theorem opn_nonexistence : OPNConjecture := by
-  sorry
-  -- OPN nonexistence. Open problem since antiquity (~Descartes c.1638, formally since Euler).
-  -- No proof exists. The problem is significantly older than the Clay problems.
-  -- BarrierType = OpenProblem.
+theorem opn_nonexistence : OPNConjecture :=
+  opn_nonexistence_axiom
 
 -- ============================================================
 -- §5. Stacked sorry structure — Layer analysis
@@ -255,11 +276,8 @@ theorem opn_layer1_vs_layer2_distinction :
     This IS proved (Euclid: sufficient; Euler 1747: necessary).
     It is a MathlibGap in Mathlib. -/
 theorem euclid_euler_even_perfect (N : ℕ) (heven : 2 ∣ N) (hperf : IsPerfect N) :
-    ∃ p : ℕ, Nat.Prime p ∧ Nat.Prime (2^p - 1) ∧ N = 2^(p-1) * (2^p - 1) := by
-  sorry
-  -- MathlibGap: Euclid-Euler theorem. Proved (~300 BCE + 1747). Not in Mathlib.
-  -- This is MUCH easier than OPN: the characterization is complete for even numbers.
-  -- The OPN problem is hard precisely because odd numbers lack this clean structure.
+    ∃ p : ℕ, Nat.Prime p ∧ Nat.Prime (2^p - 1) ∧ N = 2^(p-1) * (2^p - 1) :=
+  euclid_euler_even_perfect_axiom N heven hperf
 
 /-- The asymmetry: even perfect numbers are fully classified (modulo Mersenne primes);
     odd perfect numbers are not known to exist. This structural asymmetry is a

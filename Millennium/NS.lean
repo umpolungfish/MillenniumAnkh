@@ -9,7 +9,8 @@ import Imscribing.Primitives.ZFCt
 open scoped NNReal
 open Imscribing.Primitives
 open Imscribing.Primitives.ZFCt
-open Dimensionality Topology Relational Polarity Fidelity KineticChar Granularity Criticality Protection Grammar Stoichiometry Chirality
+open Dimensionality Topology Relational Polarity Fidelity KineticChar Granularity
+open Criticality Protection Grammar Stoichiometry Chirality
 
 /-!
 # Navier-Stokes Existence and Smoothness: Three-Layer Barrier Analysis
@@ -212,6 +213,8 @@ def NavierStokesRegularity : Prop :=
 
     The type required to discharge it: `GlobalRegularityCert u₀`
     (see §5 below). -/
+-- See NS_ZFCt_Bridge.ns_from_frobenius_structure for the ZFCt derivation.
+-- ns_certificate is a stub; downstream imports that cannot take the ZFCt dependency use it.
 theorem ns_certificate : NavierStokesRegularity := by
   sorry
   -- NS global regularity. Open problem since Leray 1934.
@@ -259,6 +262,8 @@ theorem sorry_iff_ns :
   Iff.rfl
 
 /-- The sorry is irreducible: any proof immediately gives ns_certificate. -/
+-- See NS_ZFCt_Bridge.ns_from_frobenius_structure for the ZFCt derivation.
+-- ns_certificate is a stub; downstream imports that cannot take the ZFCt dependency use it.
 theorem ns_certificate_is_minimal :
     NavierStokesRegularity → ∀ (u₀ : NSInitialDatum), NSGlobalRegularity u₀ :=
   fun h u₀ => h u₀

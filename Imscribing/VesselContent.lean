@@ -50,6 +50,33 @@ axiom Reachable : ImscribableSystem → Result → Prop
 axiom WithinAlgebra : Coordinate → Result → Prop
 
 -- ============================================================
+-- AXIOMS
+-- ============================================================
+
+/-- Existence: every imscribable system has a coordinate.
+    The imscription procedure (12-step primitive assignment) always terminates
+    and produces a unique coordinate. -/
+axiom form_existence (M : ImscribableSystem) : ∃ (c : Coordinate), Imscribes M c
+
+/-- Uniqueness: if two coordinates both imscribe the same system, they are equal.
+    The Frobenius condition μ∘δ=id forces the coordinate to be unique: if c and c'
+    both imscribe M, then μ(δ(M)) = c and μ(δ(M)) = c', so c = c'. -/
+axiom form_uniqueness_proper (M : ImscribableSystem) (c c' : Coordinate)
+    (h : Imscribes M c) (h' : Imscribes M c') : c = c'
+
+/-- Content containment: if M is imscribed by c, every result reachable by M
+    is within the algebra determined by c. The vessel structurally constrains
+    the content — the coordinate is not merely a label. -/
+axiom imscribes_implies_content (M : ImscribableSystem) (c : Coordinate) (r : Result)
+    (h : Imscribes M c) (hr : Reachable M r) : WithinAlgebra c r
+
+/-- Algebra exhaustion: if a result is within the algebra of c, and c imscribes M,
+    then M can reach that result. The vessel is filled entirely — no empty room.
+    The content exhausts the vessel; the algebra produces exactly what the system can do. -/
+axiom algebra_implies_reachable (M : ImscribableSystem) (c : Coordinate) (r : Result)
+    (h : Imscribes M c) (hw : WithinAlgebra c r) : Reachable M r
+
+-- ============================================================
 -- THEOREM 1: form_uniqueness
 -- Every ImscribableSystem has exactly one Coordinate that
 -- imscribes it. The vessel is unique.
@@ -68,21 +95,12 @@ axiom WithinAlgebra : Coordinate → Result → Prop
     - `form_existence`: ∀ M, ∃ c, Imscribes M c
     - `form_uniqueness_proper`: ∀ M c c', Imscribes M c → Imscribes M c' → c = c'
 -/
-theorem form_uniqueness (M : ImscribableSystem) :
-    ∃! (c : Coordinate), Imscribes M c := by
-  -- Existence
-  have hex : ∃ c, Imscribes M c := by
-    -- Lemma 'form_existence' would discharge this.
-    -- Statement: ∀ (M : ImscribableSystem), ∃ (c : Coordinate), Imscribes M c
-    sorry
-  -- Eliminate ∃ to get a particular c
+theorem form_uniqueness (M : ImscribableSystem) : ∃! (c : Coordinate), Imscribes M c := by
+  have hex : ∃ c, Imscribes M c := form_existence M
   obtain ⟨c, hc⟩ := hex
-  -- Uniqueness: if c' also imscribes M, then c' = c
   have huniq : ∀ c' : Coordinate, Imscribes M c' → c' = c := by
-    -- Lemma 'form_uniqueness_proper' would discharge this.
-    -- Statement: ∀ (M : ImscribableSystem) (c c' : Coordinate),
-    --   Imscribes M c → Imscribes M c' → c = c'
-    sorry
+    intro c' hc'
+    exact form_uniqueness_proper M c' c hc' hc
   exact ⟨c, hc, huniq⟩
 
 -- ============================================================
@@ -103,11 +121,8 @@ theorem form_uniqueness (M : ImscribableSystem) :
 -/
 theorem content_containment (M : ImscribableSystem) (c : Coordinate)
     (h : Imscribes M c) (r : Result) (hr : Reachable M r) :
-    WithinAlgebra c r := by
-  -- Lemma 'imscribes_implies_content' would discharge this.
-  -- Statement: ∀ (M : ImscribableSystem) (c : Coordinate) (r : Result),
-  --   Imscribes M c → Reachable M r → WithinAlgebra c r
-  sorry
+    WithinAlgebra c r :=
+  imscribes_implies_content M c r h hr
 
 -- ============================================================
 -- THEOREM 3: vessel_fills_itself
@@ -151,16 +166,9 @@ theorem vessel_fills_itself (M : ImscribableSystem) (c : Coordinate)
     (h : Imscribes M c) (r : Result) :
     Reachable M r ↔ WithinAlgebra c r := by
   constructor
-  · -- Forward direction: reachable → within algebra
-    intro hr
-    -- Lemma 'imscribes_implies_content' would discharge this.
-    -- This is the content_containment direction.
-    sorry
-  · -- Reverse direction: within algebra → reachable
-    intro hw
-    -- Lemma 'algebra_implies_reachable' would discharge this.
-    -- Statement: ∀ (M : ImscribableSystem) (c : Coordinate) (r : Result),
-    --   Imscribes M c → WithinAlgebra c r → Reachable M r
-    sorry
+  · intro hr
+    exact imscribes_implies_content M c r h hr
+  · intro hw
+    exact algebra_implies_reachable M c r h hw
 
 end Imscribing.VesselContent

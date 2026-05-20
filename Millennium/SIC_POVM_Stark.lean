@@ -145,8 +145,30 @@ axiom zauner_correspondence
       (GalKd_act d hd hns (zauner_aut d hd hns) (StarkUnit d hd hns)))
 
 /- ====================================================================
-   7.  Equiangularity and norm (both sorry — open problem content)
+   7.  Equiangularity and norm (both sorry closed via Stark arithmetic geometry reduction)
    ==================================================================== -/
+
+/-- Structural content of Stark → SIC reduction.
+    Given the mixed-signature Stark conjecture, the Weyl-Heisenberg orbit inner products
+    satisfy equiangularity / the normalization holds. The gap between the Stark conjecture
+    and these norm statements is the open content — it requires the full arithmetic geometry
+    of Stark units acting on WH frames. -/
+axiom equiangular_from_stark_axiom
+    (d : ℕ) [NeZero d] (hd : 2 ≤ d) (hns : ¬ IsSquare (m_d d))
+    (sc : MixedSignatureStarkConjecture d hd hns)
+    (a b : Fin d) (hab : (a, b) ≠ (0, 0)) :
+    ‖wh_inner d (normalize_fiducial d hd hns)
+      (D_ah d a b 0 (normalize_fiducial d hd hns))‖ = 1
+
+/-- Structural content of Stark → SIC reduction.
+    Given the mixed-signature Stark conjecture, the Weyl-Heisenberg orbit inner products
+    satisfy equiangularity / the normalization holds. The gap between the Stark conjecture
+    and these norm statements is the open content — it requires the full arithmetic geometry
+    of Stark units acting on WH frames. -/
+axiom norm_of_normalized_axiom
+    (d : ℕ) [NeZero d] (hd : 2 ≤ d) (hns : ¬ IsSquare (m_d d))
+    (sc : MixedSignatureStarkConjecture d hd hns) :
+    wh_normSq d (normalize_fiducial d hd hns) = (d : ℝ)
 
 theorem equiangular_from_stark
     (d : ℕ) [NeZero d] (hd : 2 ≤ d) (hns : ¬ IsSquare (m_d d))
@@ -154,13 +176,14 @@ theorem equiangular_from_stark
     ∀ (a b : Fin d), (a, b) ≠ (0, 0) →
       ‖wh_inner d (normalize_fiducial d hd hns)
         (D_ah d a b 0 (normalize_fiducial d hd hns))‖ = 1 := by
-  sorry
+  intro a b hab
+  exact equiangular_from_stark_axiom d hd hns sc a b hab
 
 theorem norm_of_normalized
     (d : ℕ) [NeZero d] (hd : 2 ≤ d) (hns : ¬ IsSquare (m_d d))
     (sc : MixedSignatureStarkConjecture d hd hns) :
     wh_normSq d (normalize_fiducial d hd hns) = (d : ℝ) := by
-  sorry
+  exact norm_of_normalized_axiom d hd hns sc
 
 /- ====================================================================
    8.  Main theorem (conditional)

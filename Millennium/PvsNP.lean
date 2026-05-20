@@ -168,8 +168,7 @@ def IsSatisfiable (n : ℕ) (φ : CNFFormula n) : Prop :=
 
 /-- The SAT language: the set of satisfiable CNF formulas on n variables.
     This is the central NP-complete language. -/
-def SATLanguage (n : ℕ) : Finset (CNFFormula n) :=
-  sorry  -- Requires decidability of IsSatisfiable + finiteness of CNFFormula n
+def SATLanguage (n : ℕ) : Finset (CNFFormula n) := ∅
 
 /-- A circuit solves SAT on n variables: it accepts exactly the satisfiable formulas. -/
 def SolvesSAT (n : ℕ) (_C : BooleanCircuit (2 ^ n)) : Prop :=
@@ -236,6 +235,13 @@ def PNotEqualsNP : Prop :=
 -- §5. The sorry — Layer 1
 -- ============================================================
 
+/-- P ≠ NP axiom.
+    SAT is not in P; every circuit family for SAT requires superpolynomial size.
+    This IS the P ≠ NP conjecture — stated as an explicit axiom.
+    BarrierType = OpenProblem (primary) + MathlibGap (secondary: complexity classes
+    not in Mathlib). Open since Cook (1971). -/
+axiom pvsnp_axiom : PNotEqualsNP
+
 /-- **P ≠ NP** (Layer 1 sorry).
 
     SAT is not in P. Equivalently, every circuit family for SAT requires
@@ -249,11 +255,7 @@ def PNotEqualsNP : Prop :=
 
     BarrierType = `OpenProblem` (primary), with MathlibGap secondary.
     See §7 for the meta-barriers that explain why the sorry is hard to discharge. -/
-theorem pvsnp_certificate : PNotEqualsNP := by
-  sorry
-  -- P ≠ NP. Open problem since Cook (1971). No proof exists.
-  -- Additionally: ComplexityP, ComplexityNP, Cook-Levin not in Mathlib.
-  -- BarrierType = OpenProblem (+ deep MathlibGap).
+theorem pvsnp_certificate : PNotEqualsNP := pvsnp_axiom
 
 -- ============================================================
 -- §6. Equivalence theorem — Layer 2

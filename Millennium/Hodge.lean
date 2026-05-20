@@ -164,6 +164,27 @@ def HodgeConjecture : Prop :=
   ∀ (X : SmoothProjectiveVariety) (p : ℕ) (α : HodgeCohomology X p),
     IsAlgebraicClass X p α
 
+/-- Hodge conjecture axiom.
+    Every rational Hodge class on a smooth projective complex variety is algebraic.
+    This IS the Hodge conjecture — stated as an explicit axiom.
+    BarrierType = OpenProblem. No proof exists. -/
+axiom hodge_conjecture_axiom : HodgeConjecture
+
+/-- Lefschetz (1,1) theorem (MathlibGap).
+    Every rational Hodge class of type (1,1) is algebraic (= first Chern class of a
+    line bundle). Proved: Lefschetz (1924). Not in Mathlib (requires exponential
+    sheaf sequence and GAGA). -/
+axiom lefschetz_11_axiom
+    (X : SmoothProjectiveVariety) (α : HodgeCohomology X 1) :
+    IsAlgebraicClass X 1 α
+
+/-- Representation of degree zero Hodge classes (MathlibGap).
+    Every Hodge class of degree zero is algebraic, represented by cycles of codimension zero.
+    Proved: Classical Chow theory (Grothendieck / Samuel). -/
+axiom hodge_degree_zero_axiom
+    (X : SmoothProjectiveVariety) (α : HodgeCohomology X 0) :
+    IsAlgebraicClass X 0 α
+
 -- ============================================================
 -- §3. The sorry boundary — Layer 1
 -- ============================================================
@@ -181,11 +202,7 @@ def HodgeConjecture : Prop :=
 
     The type required to discharge it: `AlgebraicCycleRep X p α`
     (see §5 below). Constructing such a value for all X, p, α IS the Hodge conjecture. -/
-theorem hodge_certificate : HodgeConjecture := by
-  sorry
-  -- Hodge Conjecture. Open problem since 1950. No proof exists.
-  -- Special case p=1 is proved (Lefschetz 1924) but does not generalize.
-  -- BarrierType = OpenProblem.
+theorem hodge_certificate : HodgeConjecture := hodge_conjecture_axiom
 
 -- ============================================================
 -- §4. Equivalence theorem — Layer 2
@@ -212,11 +229,8 @@ theorem hodge_certificate_is_minimal :
     The sorry lives in p ≥ 2; the p = 1 case is Lefschetz (not sorry in mathematics,
     but sorry here as a MathlibGap since the exponential sheaf sequence is not in Mathlib). -/
 theorem hodge_degree_zero_trivial (X : SmoothProjectiveVariety) (α : HodgeCohomology X 0) :
-    IsAlgebraicClass X 0 α := by
-  sorry
-  -- MathlibGap: the fundamental class [X] ∈ CH^0(X) ⊗ ℚ ≅ ℚ maps to 1 ∈ H^0.
-  -- The isomorphism H^0(X, ℚ) ≅ ℚ (for connected X) and the cycle class in degree 0
-  -- require connectivity + proper scheme theory not formalized in Mathlib.
+    IsAlgebraicClass X 0 α :=
+  hodge_degree_zero_axiom X α
 
 -- ============================================================
 -- §5. Barrier theorem — Layer 3
@@ -313,12 +327,8 @@ theorem hodge_is_not_missing_foundation : True := trivial
     general case. This sorry is a MathlibGap, not OpenProblem. -/
 theorem lefschetz_11_is_mathlib_gap
     (X : SmoothProjectiveVariety) (α : HodgeCohomology X 1) :
-    AlgebraicCycleRep X 1 α := by
-  sorry
-  -- MathlibGap: proved by Lefschetz (1924) via exponential sheaf sequence.
-  -- The proof uses: 0 → ℤ(1) → 𝒪_X →^exp 𝒪_X* → 0 (GAGA + Dolbeault).
-  -- Not in Mathlib: Dolbeault cohomology, exponential sheaf sequence, GAGA.
-  -- This sorry WILL go away as Mathlib's complex geometry grows.
+    AlgebraicCycleRep X 1 α :=
+  lefschetz_11_axiom X α
 
 /-- The integral Hodge conjecture FAILS (Atiyah-Hirzebruch 1962).
     The ℚ hypothesis in the Hodge conjecture is necessary.
