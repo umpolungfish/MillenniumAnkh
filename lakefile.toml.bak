@@ -36,8 +36,6 @@ globs = [
   "Imscribing.Millennium.Hodge",
   "Imscribing.Millennium.NS",
   "Imscribing.Millennium.PvsNP",
-  "Imscribing.Millennium.PvsNP_Structural",
-  "Imscribing.Millennium.PvsNP_Certificates",
   "Imscribing.Millennium.OPN",
   "Imscribing.Millennium.BSD",
   "Imscribing.Millennium.Barriers",
@@ -77,5 +75,4 @@ globs = [
   "Imscribing.Millennium.RH_ZFCt_Bridge",
   "Imscribing.Millennium.RH_GateInhabitants",
   "Imscribing.Millennium.Hodge_GateInhabitants",
-  "Imscribing.VesselContent",
 ]
