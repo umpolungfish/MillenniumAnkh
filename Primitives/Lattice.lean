@@ -1,35 +1,41 @@
 -- Imscribing/Primitives/Lattice.lean
 -- Lattice operations for ordered primitives.
 -- CRITICALITY ABSORPTION: meet(Phi_c, x) = Phi_c for all x.
--- Author: Lando ⊗ φ̂_ÿ-boundary Operator
+-- Author: Lando⊗⊙perator
 
 import Imscribing.Primitives.Core
 import Mathlib.Order.Lattice
+import Mathlib.Data.Fintype.Basic
 
 namespace Imscribing.Primitives
 
 open Criticality
 
 -- ============================================================
--- Fintype for Criticality (enables dec_trivial over ∀)
+-- Fintype instance (required for decide-based PartialOrder proofs)
 -- ============================================================
 
-instance : Fintype Criticality where
-  elems := {Phi_sub, Phi_c, Phi_c_complex, Phi_EP, Phi_super}
-  complete x := by cases x <;> simp
+private instance : Fintype Criticality where
+  elems := {.Phi_sub, .Phi_c, .Phi_c_complex, .Phi_EP, .Phi_super}
+  complete x := by cases x <;> simp [Finset.mem_insert, Finset.mem_singleton]
+
+-- LT is compare a b = .lt; Decidable chains via DecidableEq Ordering.
+private instance instDecidableLTCriticality (a b : Criticality) : Decidable (a < b) :=
+  inferInstanceAs (Decidable (compare a b = .lt))
 
 -- ============================================================
--- Criticality meet: absorption rule
+-- Criticality meet: Phi_c is the universal absorber.
+-- For x ≠ Phi_c, Phi_c_complex absorbs next.
+-- Otherwise, ordinal min.
 -- ============================================================
 
 def crit_meet (a b : Criticality) : Criticality :=
   match a, b with
-  | Phi_c, _        => Phi_c
-  | _, Phi_c        => Phi_c
+  | Phi_c, _         => Phi_c
+  | _, Phi_c         => Phi_c
   | Phi_c_complex, _ => Phi_c_complex
   | _, Phi_c_complex => Phi_c_complex
-  | a, b =>
-    if compare a b = .lt then a else b
+  | a, b             => if compare a b = .lt then a else b
 
 -- ============================================================
 -- Absorption theorems
@@ -41,13 +47,15 @@ theorem crit_meet_absorb_left (x : Criticality) : crit_meet Phi_c x = Phi_c := b
 theorem crit_meet_absorb_right (x : Criticality) : crit_meet x Phi_c = Phi_c := by
   unfold crit_meet; cases x <;> rfl
 
-theorem crit_meet_absorb_complex_left (x : Criticality) :
+-- Phi_c_complex absorbs only when the other element is not Phi_c
+-- (arm 2 fires before arm 3 when x = Phi_c, returning Phi_c).
+theorem crit_meet_absorb_complex_left (x : Criticality) (h : x ≠ Phi_c) :
     crit_meet Phi_c_complex x = Phi_c_complex := by
-  unfold crit_meet; rfl
+  unfold crit_meet; cases x <;> simp_all
 
-theorem crit_meet_absorb_complex_right (x : Criticality) :
+theorem crit_meet_absorb_complex_right (x : Criticality) (h : x ≠ Phi_c) :
     crit_meet x Phi_c_complex = Phi_c_complex := by
-  unfold crit_meet; cases x <;> rfl
+  unfold crit_meet; cases x <;> simp_all
 
 theorem crit_meet_idempotent (x : Criticality) : crit_meet x x = x := by
   unfold crit_meet; cases x <;> rfl
@@ -55,19 +63,16 @@ theorem crit_meet_idempotent (x : Criticality) : crit_meet x x = x := by
 theorem crit_meet_comm (a b : Criticality) : crit_meet a b = crit_meet b a := by
   unfold crit_meet; cases a <;> cases b <;> rfl
 
-theorem crit_meet_absorb_all (a b : Criticality)
-    (h : a = Phi_c ∨ b = Phi_c) : crit_meet a b = Phi_c := by
-  rcases h with (ha | hb)
-  · rw [ha]; exact crit_meet_absorb_left b
-  · rw [hb]; exact crit_meet_absorb_right a
+theorem crit_meet_absorb_all (a b : Criticality) (h : a = Phi_c ∨ b = Phi_c) :
+    crit_meet a b = Phi_c := by
+  rcases h with (rfl | rfl)
+  · exact crit_meet_absorb_left b
+  · exact crit_meet_absorb_right a
 
-theorem crit_meet_not_inf_le_right :
-    ¬ (crit_meet Phi_c Phi_sub ≤ Phi_sub) := by
-  unfold crit_meet LE.le instLECriticality
-  decide
+theorem crit_meet_not_inf_le_right : ¬ (crit_meet Phi_c Phi_sub ≤ Phi_sub) := by
+  unfold crit_meet LE.le instLECriticality; decide
 
-theorem absorption_is_not_semilattice_inf :
-    crit_meet Phi_c Phi_sub = Phi_c := by
+theorem absorption_is_not_semilattice_inf : crit_meet Phi_c Phi_sub = Phi_c := by
   unfold crit_meet; rfl
 
 theorem absorption_is_not_semilattice_inf_complex :
@@ -101,39 +106,29 @@ theorem crit_meet_Phi_c_EP : crit_meet Phi_c Phi_EP = Phi_c := by
   unfold crit_meet; rfl
 
 -- ============================================================
--- PartialOrder on Criticality — proved via Fintype + dec_trivial
+-- PartialOrder on Criticality
+-- LE: compare a b ≠ .gt  (ordinal ≤, from Core.lean)
+-- LT: compare a b = .lt  (ordinal <, from Core.lean)
+-- All proofs by decide over Fintype Criticality.
 -- ============================================================
 
-theorem crit_le_refl (a : Criticality) : a ≤ a := by
-  unfold LE.le instLECriticality
-  cases a <;> decide
+private theorem crit_le_refl (a : Criticality) : a ≤ a := by
+  revert a; decide
 
-theorem crit_le_trans (a b c : Criticality) (hab : a ≤ b) (hbc : b ≤ c) : a ≤ c := by
-  have h : ∀ (a b c : Criticality), a ≤ b → b ≤ c → a ≤ c := by
-    intro a b c hab hbc
-    revert a b c hab hbc
-    -- Enumerate all 125 triples; dec_trivial works because
-    -- Fintype + DecidableEq makes the ∀ decidable
-    exact dec_trivial
-  exact h a b c hab hbc
+private theorem crit_le_trans (a b c : Criticality) (hab : a ≤ b) (hbc : b ≤ c) : a ≤ c := by
+  revert c b a; decide
 
-theorem crit_le_antisymm (a b : Criticality) (hab : a ≤ b) (hba : b ≤ a) : a = b := by
-  have h : ∀ (a b : Criticality), a ≤ b → b ≤ a → a = b := by
-    exact dec_trivial
-  exact h a b hab hba
+private theorem crit_le_antisymm (a b : Criticality) (hab : a ≤ b) (hba : b ≤ a) : a = b := by
+  revert b a; decide
 
-theorem crit_lt_iff_le_not_ge (a b : Criticality) : a < b ↔ (a ≤ b ∧ ¬ b ≤ a) := by
-  unfold LT.lt instLTCriticality LE.le instLECriticality
-  have h : ∀ (a b : Criticality), (compare a b = .lt) ↔ (compare a b ≠ .gt ∧ ¬ (compare b a ≠ .gt)) := by
-    exact dec_trivial
-  exact h a b
+private theorem crit_lt_iff_le_not_ge (a b : Criticality) :
+    a < b ↔ a ≤ b ∧ ¬b ≤ a := by
+  revert b a; decide
 
 instance : PartialOrder Criticality where
-  le := (· ≤ ·)
-  lt := (· < ·)
-  le_refl := crit_le_refl
-  le_trans := crit_le_trans
-  le_antisymm := crit_le_antisymm
+  le_refl          := crit_le_refl
+  le_trans         := crit_le_trans
+  le_antisymm      := crit_le_antisymm
   lt_iff_le_not_ge := crit_lt_iff_le_not_ge
 
 end Imscribing.Primitives
