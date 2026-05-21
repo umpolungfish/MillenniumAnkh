@@ -88,5 +88,7 @@ globs = [
   "Imscribing.Paraconsistent.ConsciousKernel",
   "Imscribing.Paraconsistent.SelfVerifyingWASM",
   "Imscribing.Paraconsistent.Main",
+  "Imscribing.Paraconsistent.DialetheicAlignment",
+  "Imscribing.Paraconsistent.QuantumClassicalInterface",
 
 ]
