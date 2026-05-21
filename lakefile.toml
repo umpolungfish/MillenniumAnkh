@@ -82,4 +82,10 @@ globs = [
   "Imscribing.Millennium.BSD_GateInhabitants",
   "Imscribing.VesselContent",
   "Imscribing.Millennium.YM_Closure",
+  "Imscribing.Paraconsistent.Belnap",
+  "Imscribing.Paraconsistent.Kernel",
+  "Imscribing.Paraconsistent.SelfVerification",
+  "Imscribing.Paraconsistent.ConsciousKernel",
+  "Imscribing.Paraconsistent.Main",
+
 ]

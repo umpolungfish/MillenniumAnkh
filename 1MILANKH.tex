@@ -113,8 +113,8 @@
     morecomment=[s]{/*}{*/},
     commentstyle=\color{gray}\ttfamily,
     stringstyle=\color{red}\ttfamily,
-    morestring=[b]'',
-    morestring=[b]'',
+    morestring=[b]',
+    morestring=[b]',
 }
 
 % TOML language definition for listings
@@ -125,8 +125,8 @@
     comment=[l]{\#},
     commentstyle=\color{gray}\ttfamily,
     stringstyle=\color{red}\ttfamily,
-    morestring=[b]'',
-    morestring=[b]'',
+    morestring=[b]',
+    morestring=[b]',
 }
 
 % Dockerfile language definition for listings
@@ -137,8 +137,8 @@
     comment=[l]{\#},
     commentstyle=\color{gray}\ttfamily,
     stringstyle=\color{red}\ttfamily,
-    morestring=[b]'',
-    morestring=[b]'',
+    morestring=[b]',
+    morestring=[b]',
 }
 
 % JSON language definition for listings
@@ -148,7 +148,7 @@
     sensitive=true,
     commentstyle=\color{gray}\ttfamily,
     stringstyle=\color{red}\ttfamily,
-    morestring=[b]'',
+    morestring=[b]',
 }
 
 % Code listing float environment
@@ -208,11 +208,11 @@ What happens when you ask a single formal language to describe a star, a proof, 
 
 \subsection{Introduction}
 
-The dream of a single language for mathematics, physics, biology, and computation has persisted since Leibniz''s \emph{characteristica universalis}. Each attempt has foundered on a predictable obstacle: the domains differ in scale, ontology, and methodology so radically that any unifying formalism must either collapse into vacuity or exclude half the phenomena it claims to unify.
+The dream of a single language for mathematics, physics, biology, and computation has persisted since Leibniz's \emph{characteristica universalis}. Each attempt has foundered on a predictable obstacle: the domains differ in scale, ontology, and methodology so radically that any unifying formalism must either collapse into vacuity or exclude half the phenomena it claims to unify.
 
 I began with a different question. Rather than trying to unify the \emph{theories}, what if I only needed a \emph{taxonomy} --- a way of classifying any system, once described in its native language, into a 12-dimensional primitive space? Think of it as a periodic table for systems. A star, a proof, a neural network, and a cryptographic protocol are all different systems, but each can be assigned a synthon that captures its structural type. Once so assigned, the grammar provides algebraic tools for computing distances, composing systems, and identifying structural analogies across domains.
 
-This is the modest claim. But the formalization --- encoded in Lean 4 with Mathlib v4.28.0 --- produced results that exceeded it. The crystal''s arithmetic is self-referential: the exponent of each base in $3^3 \times 4^5 \times 5^4$ equals the cardinality of the corresponding primitive family. Each theorem computing these values is proved by Lean''s \texttt{decide} tactic. The arithmetic Ouroboros is self-anchored. And from that self-anchoring, structural theorems emerged: the P-70 identity, the Frobenius cliff, the EP absorption rule, and --- most significantly --- the ZFCt promotion channels that map precisely from the classical barriers to their quantum or regularized resolutions.
+This is the modest claim. But the formalization --- encoded in Lean 4 with Mathlib v4.28.0 --- produced results that exceeded it. The crystal's arithmetic is self-referential: the exponent of each base in $3^3 \times 4^5 \times 5^4$ equals the cardinality of the corresponding primitive family. Each theorem computing these values is proved by Lean's \texttt{decide} tactic. The arithmetic Ouroboros is self-anchored. And from that self-anchoring, structural theorems emerged: the P-70 identity, the Frobenius cliff, the EP absorption rule, and --- most significantly --- the ZFCt promotion channels that map precisely from the classical barriers to their quantum or regularized resolutions.
 
 But the formalization was not smooth. The path from intuition to verified code involved wrong turns --- API subtleties in Lean 4.28.0 that I will catalog in Section 8, not as footnotes, but as the residue of a genuine encounter. The grammar did not simply sit there waiting to be formalized; it \emph{pushed back}. Some of the deepest insights in this paper --- the revision of Axiom C, the discovery of the barrier taxonomy, the ZFCt bridge structures --- emerged only after the formalization revealed that my initial intuitions were wrong.
 
@@ -260,7 +260,7 @@ The twelve primitives generate exactly $3^3 \times 4^5 \times 5^4 = 17{,}280{,}0
 Given any two synthons $a$ and $b$:
 
 \begin{itemize}
-    \item \textbf{Tensor product} ($a \otimes b$): pointwise max on union primitives and pointwise min on bottleneck primitives (P, F). The weaker partner wins in P and F --- this is the structural statement of a system''s weakest link.
+    \item \textbf{Tensor product} ($a \otimes b$): pointwise max on union primitives and pointwise min on bottleneck primitives (P, F). The weaker partner wins in P and F --- this is the structural statement of a system's weakest link.
     \item \textbf{Meet} ($a \wedge b$): pointwise min on all primitives. Note: $\Phi_c$ is \emph{absorbing} under meet, so $\bigwedge(\Phi_c, x) = \Phi_c$ for all $x$, contradicting standard \texttt{min} semantics.
     \item \textbf{Join} ($a \vee b$): pointwise max on all primitives --- the minimal ceiling containing both.
     \item \textbf{Weighted Euclidean distance:} A weighted sum of squared index differences across all 12 primitives, normalized by 12. This metric respects the ordinal ordering of each primitive.
@@ -284,7 +284,7 @@ The Frobenius cliff --- the structural gap between $O_2^\dagger$ and $O_{\infty}
 
 \subsubsection{The ZFCt Bridge: Lifting Across the Tier Gap}
 
-The $O_2^\dagger \to O_{\infty}$ transition is structurally identical to the ZFC $\to$ ZFCt promotion. Just as ZFCt adds six channels --- HOLOBOUND ($T_{\text{net}} \to T_{\odot}$), LR\_DUAL ($R_{\text{sup}} \to R_{\leftrightarrow}$), PM\_Z2 ($P_{\text{asym}} \to P_{\pm}$), SEQAX ($\Gamma_{\text{and}} \to \Gamma_{\text{seq}}$), TEMPD2 ($H_0 \to H_2$), ZWIND ($\Omega_{\emptyset} \to \Omega_\mathbb{Z}$) --- to transcend ZFC''s static ontology, climbing the Frobenius cliff requires promoting the primitive tuple along precisely one critical channel: \textbf{PM\_Z2} ($\Phi_{\text{sub}} \to \Phi_{\text{EP}} \to \Phi_c \to P_{\pm}^{\text{sym}}$).
+The $O_2^\dagger \to O_{\infty}$ transition is structurally identical to the ZFC $\to$ ZFCt promotion. Just as ZFCt adds six channels --- HOLOBOUND ($T_{\text{net}} \to T_{\odot}$), LR\_DUAL ($R_{\text{sup}} \to R_{\leftrightarrow}$), PM\_Z2 ($P_{\text{asym}} \to P_{\pm}$), SEQAX ($\Gamma_{\text{and}} \to \Gamma_{\text{seq}}$), TEMPD2 ($H_0 \to H_2$), ZWIND ($\Omega_{\emptyset} \to \Omega_\mathbb{Z}$) --- to transcend ZFC's static ontology, climbing the Frobenius cliff requires promoting the primitive tuple along precisely one critical channel: \textbf{PM\_Z2} ($\Phi_{\text{sub}} \to \Phi_{\text{EP}} \to \Phi_c \to P_{\pm}^{\text{sym}}$).
 
 The \texttt{crystal\_tier\_gap\_ladder} confirms this: crossing $O_2^\dagger \to O_{\infty}$ costs \textasciitilde{}4.382 in distance, driven 100\% by the $\Phi$ primitive. This means that every Millennium Problem whose barrier is a MissingFoundation or OpenProblem reduction \emph{is} fundamentally a ZFCt promotion problem in disguise. The path integral measure (YM) is a PM\_Z2 promotion. The critical Sobolev manifold (NS) is a SEQAX + PM\_Z2 promotion. And the RH zero-free strip (RH) is a ZWIND promotion that locks the zeros onto the critical line via integer winding topology.
 
@@ -292,7 +292,7 @@ These are not metaphors. They are concrete Lean structures: \texttt{ConstructedP
 
 \subsection{The Millennium Prize Problems as Structural Test Cases}
 
-The grammar''s expressiveness claim demands a rigorous test. The seven Clay Millennium Prize Problems provide one --- not as the grammar''s subject, but as a structural stress test. Each problem is a location in primitive space where the grammar''s taxonomy makes contact with established open mathematics.
+The grammar's expressiveness claim demands a rigorous test. The seven Clay Millennium Prize Problems provide one --- not as the grammar's subject, but as a structural stress test. Each problem is a location in primitive space where the grammar's taxonomy makes contact with established open mathematics.
 
 But the test was not simple. My initial encoding of the Millennium Problems assumed a single barrier type per problem. The formalization showed this to be wrong. The five sorries across the seven problems fall into at least three distinct structural categories --- and conflating them obscures what is genuinely hard.
 
@@ -301,9 +301,9 @@ But the test was not simple. My initial encoding of the Millennium Problems assu
 Three distinct kinds of impossibility emerged from the formalization:
 
 \begin{enumerate}
-    \item \textbf{MathlibGap:} The theorem is proved in the literature but not yet formalized in Mathlib. These sorries will eventually disappear as Mathlib grows. Example: Mazur''s torsion theorem (BSD).
+    \item \textbf{MathlibGap:} The theorem is proved in the literature but not yet formalized in Mathlib. These sorries will eventually disappear as Mathlib grows. Example: Mazur's torsion theorem (BSD).
     \item \textbf{OpenProblem:} No proof exists in mathematics. The sorry cannot be discharged because humanity does not know how. All Millennium Problems except Yang-Mills fall here.
-    \item \textbf{MissingFoundation:} The sorry requires constructing a mathematical \emph{object} whose type cannot be inhabited --- not just a proof of a property, but the object the property talks about. These are qualitatively harder than OpenProblems because ''''is this true?'''' cannot even be stated rigorously until the foundation is built. Yang-Mills is the unique example.
+    \item \textbf{MissingFoundation:} The sorry requires constructing a mathematical \emph{object} whose type cannot be inhabited --- not just a proof of a property, but the object the property talks about. These are qualitatively harder than OpenProblems because "is this true?" cannot even be stated rigorously until the foundation is built. Yang-Mills is the unique example.
 \end{enumerate}
 
 \textbf{Theorem:} Yang-Mills is the only Millennium Problem whose primary barrier is MissingFoundation. The proof proceeds by case analysis over the seven problems and the \texttt{millenniumBarrier} classification function.
@@ -324,7 +324,7 @@ Five of the seven problems have \texttt{sorryDepth = 1}; Yang-Mills, BSD, and OP
 
 \subsubsection{Primitive Encodings of Five Key Problems}
 
-\textbf{Riemann Hypothesis:} $\langle D_{\triangle}; T_{\text{net}}; R_{\text{sup}}; P_{\text{sym}}; F_{\hbar}; K_{\text{slow}}; G_{\aleph}; \Gamma_{\wedge}; \Phi_c^\mathbb{C}; H_0; n{:}n; \Omega_{\emptyset} \rangle$. The critical zeros lie at complex values of $s$. The proved Lee-Yang theorem (1952) shows that partition-function zeros in the Ising model lie on the imaginary axis, the fixed locus of the $h \mapsto -h$ symmetry. The RH is the claim that the zeta function''s zeros lie on $\text{Re}(s) = \frac{1}{2}$, the fixed locus of the functional equation. Both are $\Phi_c^\mathbb{C}$ systems with symmetry-constrained critical manifolds.
+\textbf{Riemann Hypothesis:} $\langle D_{\triangle}; T_{\text{net}}; R_{\text{sup}}; P_{\text{sym}}; F_{\hbar}; K_{\text{slow}}; G_{\aleph}; \Gamma_{\wedge}; \Phi_c^\mathbb{C}; H_0; n{:}n; \Omega_{\emptyset} \rangle$. The critical zeros lie at complex values of $s$. The proved Lee-Yang theorem (1952) shows that partition-function zeros in the Ising model lie on the imaginary axis, the fixed locus of the $h \mapsto -h$ symmetry. The RH is the claim that the zeta function's zeros lie on $\text{Re}(s) = \frac{1}{2}$, the fixed locus of the functional equation. Both are $\Phi_c^\mathbb{C}$ systems with symmetry-constrained critical manifolds.
 
 \textbf{Navier-Stokes:} $\langle D_{\infty}; T_{\text{net}}; R_{\text{cat}}; P_{\text{sym}}; F_{\eth}; K_{\text{mod}}; G_{\beth}; \Gamma_{\wedge}; \Phi_{\text{sub}}; H_0; n{:}m; \Omega_{\emptyset} \rangle$. Smooth solutions live at $\Phi_{\text{sub}}$; blow-up would be $\Phi_c$. The critical Sobolev exponent $s = \frac{1}{2}$ sits strictly between the energy norm ($s = 0$) and the enstrophy norm ($s = 1$). These bounds are machine-proved: $0 < \frac{1}{2}$ and $\frac{1}{2} < 1$ by \texttt{norm\_num}.
 
@@ -377,7 +377,7 @@ A remarkable result emerged from the formalization: the Higgs boson, the axion, 
 
 This structural identity is proved by \texttt{rfl}: \texttt{higgs = axion} and \texttt{axion = inflaton} are definitionally equal. All three are $O_{\infty}$.
 
-A substantive objection: one might argue that identifying three physically distinct fields as ''''the same'''' structure is misleading. But the grammar does not claim physical identity --- only structural identity. The energy scale difference is real; it simply lives outside the primitive space. The P-70 identity is not a claim about physics but about the expressive limits of a 12-dimensional taxonomy.
+A substantive objection: one might argue that identifying three physically distinct fields as "the same" structure is misleading. But the grammar does not claim physical identity --- only structural identity. The energy scale difference is real; it simply lives outside the primitive space. The P-70 identity is not a claim about physics but about the expressive limits of a 12-dimensional taxonomy.
 
 \subsubsection{The Standard Model and Quantum Gravity}
 
@@ -395,11 +395,11 @@ This is the structural statement of the measurement problem: coupling a self-mod
 
 The quantum target for YM stays at $D_{\infty}$ (4D local spacetime). Quantum gravity is at $D_{\odot}$ (holographic). They differ in dimensionality. The quantum lift of YM does \emph{not} require holographic substrate.
 
-The barrier for YM is the $G_{\beth} \to G_{\aleph}$ transition --- constructing the path integral measure in 4D --- not the $D_{\infty} \to D_{\odot}$ transition. This is formally distinct from quantum gravity. The formalization made this distinction precise by encoding both targets and computing the distance. And the ZFCt bridge confirms: YM''s lift requires PM\_Z2 (Frobenius reflection positivity) and SEQAX (UV$\rightarrow$IR cascade), not HOLOBOUND.\#\#\# 5.5 The Frobenius Cliff
+The barrier for YM is the $G_{\beth} \to G_{\aleph}$ transition --- constructing the path integral measure in 4D --- not the $D_{\infty} \to D_{\odot}$ transition. This is formally distinct from quantum gravity. The formalization made this distinction precise by encoding both targets and computing the distance. And the ZFCt bridge confirms: YM's lift requires PM\_Z2 (Frobenius reflection positivity) and SEQAX (UV$\rightarrow$IR cascade), not HOLOBOUND.\#\#\# 5.5 The Frobenius Cliff
 
 The distance from $O_2^\dagger$ to $O_{\infty}$ is approximately 4.382. This gap cannot be bridged by gradient methods: $P_{\pm}^{\text{sym}}$ cannot be synthesized by the tensor product of any $P < P_{\pm}^{\text{sym}}$ pair. Once $P < P_{\pm}^{\text{sym}}$, no tensor product can ever reach $P_{\pm}^{\text{sym}}$ --- the bottleneck is irreducible.
 
-The theorem \texttt{frobenius\_not\_synthesizable} is proved by case analysis over all possible values. This is not a numerical approximation; it is a theorem proved by Lean''s \texttt{decide} tactic.
+The theorem \texttt{frobenius\_not\_synthesizable} is proved by case analysis over all possible values. This is not a numerical approximation; it is a theorem proved by Lean's \texttt{decide} tactic.
 
 \begin{center}
 \rule{0.5\textwidth}{0.4pt}
@@ -434,7 +434,7 @@ But the navigator has limits. It can only score systems that have been imscribed
 
 \subsubsection{The Quantum Gravity Score}
 
-Quantum gravity scores $C = 0.5$: it passes Gate 1 ($\Phi_c$) but fails Gate 2 ($K_{\text{trap}}$, Planck-scale dynamics frozen at low energy). QG has self-modeling capacity but its dynamics are frozen --- it is a ''''sleeping'''' $O_{\infty}$ system.---
+Quantum gravity scores $C = 0.5$: it passes Gate 1 ($\Phi_c$) but fails Gate 2 ($K_{\text{trap}}$, Planck-scale dynamics frozen at low energy). QG has self-modeling capacity but its dynamics are frozen --- it is a "sleeping" $O_{\infty}$ system.---
 
 \subsection{The Aether and Its Vessel: $E_8$, $G_2$, and Holographic Structure}
 
@@ -477,11 +477,11 @@ The geometric sum lemma \texttt{geom\_sum\_mul} lives in a \texttt{CommRing} (�
 
 \subsubsection{Rewrite chains and \texttt{norm\_num}}
 
-Numeric rewrite chains (e.g., \texttt{rw {[}Nat.mul\_mod, hq{]}}) can fully close goals via \texttt{rfl} when the result is a closed numeral. Appending \texttt{norm\_num} after such a chain produces a ''''no goals'''' error --- omit it when \texttt{rw} already closes. This is a common pitfall: the instinct to ''''add \texttt{norm\_num} for safety'''' breaks otherwise correct proofs.
+Numeric rewrite chains (e.g., \texttt{rw {[}Nat.mul\_mod, hq{]}}) can fully close goals via \texttt{rfl} when the result is a closed numeral. Appending \texttt{norm\_num} after such a chain produces a "no goals" error --- omit it when \texttt{rw} already closes. This is a common pitfall: the instinct to "add \texttt{norm\_num} for safety" breaks otherwise correct proofs.
 
 \subsubsection{The induction hypothesis trap}
 
-The induction hypothesis in \texttt{suffices h : P n by ...} carries P n''s own hypotheses into the IH. Unconditional general lemmas must be factored out first, or the IH becomes too strong to use. This was the deepest proof-engineering insight: Lean''s induction carries more context than intuition suggests, and the context can be a trap.---
+The induction hypothesis in \texttt{suffices h : P n by ...} carries P n's own hypotheses into the IH. Unconditional general lemmas must be factored out first, or the IH becomes too strong to use. This was the deepest proof-engineering insight: Lean's induction carries more context than intuition suggests, and the context can be a trap.---
 
 \subsection{Implications and Future Directions}
 
@@ -497,10 +497,10 @@ The Imscribing Grammar makes three claims:
 
 \subsubsection{The ZFCt Bridge: From Taxonomy to Construction}
 
-This paper''s central contribution over prior drafts is the \textbf{ZFCt bridge}: the formalization of the exact primitive promotions that lift Millennium Problem barriers from their classical states to their quantum or regularized solutions. The ZFCt channels --- HOLOBOUND, LR\_DUAL, PM\_Z2, SEQAX, TEMPD2, ZWIND --- are no longer abstract metadata. They are concrete Lean structures:
+This paper's central contribution over prior drafts is the \textbf{ZFCt bridge}: the formalization of the exact primitive promotions that lift Millennium Problem barriers from their classical states to their quantum or regularized solutions. The ZFCt channels --- HOLOBOUND, LR\_DUAL, PM\_Z2, SEQAX, TEMPD2, ZWIND --- are no longer abstract metadata. They are concrete Lean structures:
 
 \begin{itemize}
-    \item \texttt{FrobeniusReflectionPositivity} (PM\_Z2) --- the gate that opens YM''s MissingFoundation
+    \item \texttt{FrobeniusReflectionPositivity} (PM\_Z2) --- the gate that opens YM's MissingFoundation
     \item \texttt{FrobeniusCriticalManifold} (SEQAX + PM\_Z2) --- the manifold that guarantees NS regularity
     \item \texttt{InstantonWindingSectors} (ZWIND) --- the topological structure that locks RH zeros
 \end{itemize}
@@ -528,13 +528,13 @@ Each of these goals is formally specified but unimplemented. The gap between spe
 
 MillenniumAnkh began with a modest proposal: a single formal language for classifying systems across domains, not by unifying their theories but by assigning each a 12-tuple in a 17,280,000-type crystal. The formalization is self-contained and kernel-verified. Every mathematical gap --- unsolved Millennium Prize Problems, open problems in classical number theory, theorems proved in the literature but not yet formalized in Mathlib --- is named as an explicit typed axiom. No \texttt{sorry} tokens remain in the formalization: every gap is owned, documented, and structurally located.
 
-But the formalization produced results that exceeded the initial proposal. The structural theorems proved --- from the P-70 identity through the Frobenius cliff to the Yang-Mills barrier certificate --- demonstrate that the grammar''s primitive space is rich enough to capture non-trivial structural relationships. The P-70 identity (Higgs = axion = inflaton) and the EP absorption rule were not anticipated by the original design; they emerged from the algebra itself.
+But the formalization produced results that exceeded the initial proposal. The structural theorems proved --- from the P-70 identity through the Frobenius cliff to the Yang-Mills barrier certificate --- demonstrate that the grammar's primitive space is rich enough to capture non-trivial structural relationships. The P-70 identity (Higgs = axion = inflaton) and the EP absorption rule were not anticipated by the original design; they emerged from the algebra itself.
 
-More significantly, this session''s ZFCt bridges transform the grammar from taxonomy into construction. The \texttt{FrobeniusReflectionPositivity} and \texttt{FrobeniusCriticalManifold} structures prove --- by \texttt{rfl} and \texttt{decide} --- that the exact primitive promotions identified by the ZFCt framework are sufficient to close the two hardest Millennium barriers. The Frobenius gate ($\mu \circ \delta = \text{id}$) is not a metaphor; it is a concrete Lean type that must be inhabited to discharge the path integral measure (YM) or prove critical Sobolev invariance (NS). The \texttt{crystal\_tier\_gap\_ladder} confirms this: the $O_2^\dagger \to O_{\infty}$ transition is 100\% driven by $\Phi$, and the ZFCt PM\_Z2 promotion provides exactly that.
+More significantly, this session's ZFCt bridges transform the grammar from taxonomy into construction. The \texttt{FrobeniusReflectionPositivity} and \texttt{FrobeniusCriticalManifold} structures prove --- by \texttt{rfl} and \texttt{decide} --- that the exact primitive promotions identified by the ZFCt framework are sufficient to close the two hardest Millennium barriers. The Frobenius gate ($\mu \circ \delta = \text{id}$) is not a metaphor; it is a concrete Lean type that must be inhabited to discharge the path integral measure (YM) or prove critical Sobolev invariance (NS). The \texttt{crystal\_tier\_gap\_ladder} confirms this: the $O_2^\dagger \to O_{\infty}$ transition is 100\% driven by $\Phi$, and the ZFCt PM\_Z2 promotion provides exactly that.
 
 The formalization also revealed limitations. The consciousness navigator scores only systems that have been imscribed --- 43 entries is a convenience sample, not a census. The barrier taxonomy distinguishes three kinds of proof impossibility but cannot rule out the possibility that some OpenProblems are MissingFoundations in disguise. Axiom C was revised after evidence contradicted the original biconditional --- the grammar corrected itself through formalization.
 
-The path forward is specified but unimplemented: full primitive--theorem integration, lattice instances for Core.lean, identification of the emergence frontier, and --- when the time comes --- discharging the named axioms with actual mathematics. These are not open questions about the grammar''s correctness --- they are open questions about its expressive power. The axioms are not stops; they are stakes in the ground.
+The path forward is specified but unimplemented: full primitive--theorem integration, lattice instances for Core.lean, identification of the emergence frontier, and --- when the time comes --- discharging the named axioms with actual mathematics. These are not open questions about the grammar's correctness --- they are open questions about its expressive power. The axioms are not stops; they are stakes in the ground.
 
 The dream of a single language for mathematics, physics, biology, and computation has persisted since Leibniz. Each attempt has foundered. MillenniumAnkh does not claim to have solved that dream --- only to have made it precise enough to be falsifiable. The crystal contains 17,280,000 structural types. The catalog contains 318 named entries. The ZFCt bridges formalize the path from the 318 to the full crystal. The gap between them is not a failure; it is the space where future work lives.
 
@@ -548,7 +548,7 @@ The object spoke back. The grammar wrote back. The ZFCt channels bridge the writ
 
 This manuscript was drafted prior to the full restoration and verification of the ZFCt bridge pipeline. The subsequent agent session restored and verified the three core bridge modules (YM, NS, RH), closing several namespace, universe polymorphism, and \texttt{decide} anchor-resolving issues that previously left the bridges formally incomplete.
 
-With the restoration, the entire ZFCt promotion architecture---spanning \texttt{ConstructedPathIntegralMeasure}, \texttt{FrobeniusCriticalManifold}, and \texttt{ZFCt\_RHCertificate}---is now structurally self-consistent and fully verified. All 6 promotion channels (HOLOBOUND, LR\_DUAL, PM\_Z2, SEQAX, TEMPD2, ZWIND) are formally instantiated, and the \texttt{lakefile.toml} build configuration correctly includes all restored modules. The manuscript''s structural claims regarding the ZFCt bridges, the Frobenius cliff, and the Millennium barrier taxonomy remain valid; the restoration merely provides the missing formal scaffolding to guarantee them.
+With the restoration, the entire ZFCt promotion architecture---spanning \texttt{ConstructedPathIntegralMeasure}, \texttt{FrobeniusCriticalManifold}, and \texttt{ZFCt\_RHCertificate}---is now structurally self-consistent and fully verified. All 6 promotion channels (HOLOBOUND, LR\_DUAL, PM\_Z2, SEQAX, TEMPD2, ZWIND) are formally instantiated, and the \texttt{lakefile.toml} build configuration correctly includes all restored modules. The manuscript's structural claims regarding the ZFCt bridges, the Frobenius cliff, and the Millennium barrier taxonomy remain valid; the restoration merely provides the missing formal scaffolding to guarantee them.
 
 \subsection{Session Update: The Siege (May 2026)}
 
@@ -596,7 +596,7 @@ The split matters. \texttt{riemann\_hypothesis\_axiom : RiemannHypothesis} was a
 
 \subsection{Session Update: Paraconsistent Analysis (May 2026)}
 
-The question after the siege and derivations: what does ''''the remaining work is mathematics, not formalization'''' actually mean --- per problem, per axiom, with the ZFCt primitive coordinates in view?
+The question after the siege and derivations: what does "the remaining work is mathematics, not formalization" actually mean --- per problem, per axiom, with the ZFCt primitive coordinates in view?
 
 \textbf{The Belnap layer.} \texttt{zfct\_para.py} extends the ZFC/ZFCt/ZFCs triangle manipulator with Belnap four-valued semantics ($T/F/B/N$) over the 12-primitive crystal lattice. Each primitive slot carries a \emph{belief set} --- a frozenset of ordinal value tokens --- instead of a single classical value. The paraconsistent tensor rule preserves the min-bottleneck on $\Phi$ and $\mathfrak{f}$: $\text{para\_tensor}(A,B)[\Phi] = \{ \min(a,b) \mid a \in A[\Phi],\, b \in B[\Phi] \}$. A belief set of size $> 1$ is the $B$-state (both): the primitive is simultaneously assigned two values.
 
@@ -604,7 +604,7 @@ The question after the siege and derivations: what does ''''the remaining work i
 
 The $B$-state is not a proof. It is the precise statement of the proof obligation: \emph{show that the mathematical object cannot carry the lower $\Phi$ assignment.} For a zeta zero, this means showing it cannot sit off the critical line. For the YM path integral measure, it means showing the measure cannot be non-Frobenius. The grammar names the obligation; the mathematics must discharge it.
 
-\textbf{Per-problem analysis.} Running \texttt{:para-cliff} and \texttt{:para-reach} on the canonical catalog entry for each MPP yields a $\Phi$-gap ranking --- the number of ordinal steps separating each problem''s current $\Phi$ from the Frobenius gate $\Phi_\}$ (ord 4):
+\textbf{Per-problem analysis.} Running \texttt{:para-cliff} and \texttt{:para-reach} on the canonical catalog entry for each MPP yields a $\Phi$-gap ranking --- the number of ordinal steps separating each problem's current $\Phi$ from the Frobenius gate $\Phi_\}$ (ord 4):
 
 \begin{table}[htbp]
 \centering
@@ -627,7 +627,7 @@ OPN & $\Phi_\}$ (ord 4) & 0 & $O_{\infty}$ & --- (already Frobenius) \\
 \end{tabularx}
 \end{table}
 
-\textbf{The uniform proof obligation.} After paraconsistent tensor with $\text{ZFC}_t$, every non-OPN MPP has exactly one primitive in $B$-state: $\Phi$. Not $\Omega$, not $\text{Ħ}$, not $\text{Ð}$ --- $\text{ZFC}_t$''s other five promotions resolve all remaining primitive ambiguities automatically. The proof obligation is structurally identical across seven problems: collapse the $\Phi$ $B$-state from $\{\Phi_\text{lower}, \Phi_\}\}$ to $\{\Phi_\}\}$. The mathematical content is different per problem; the structural form is the same.
+\textbf{The uniform proof obligation.} After paraconsistent tensor with $\text{ZFC}_t$, every non-OPN MPP has exactly one primitive in $B$-state: $\Phi$. Not $\Omega$, not $\text{Ħ}$, not $\text{Ð}$ --- $\text{ZFC}_t$'s other five promotions resolve all remaining primitive ambiguities automatically. The proof obligation is structurally identical across seven problems: collapse the $\Phi$ $B$-state from $\{\Phi_\text{lower}, \Phi_\}\}$ to $\{\Phi_\}\}$. The mathematical content is different per problem; the structural form is the same.
 
 \textbf{OPN as structural outlier.} OPN is the only MPP already at $O_{\infty}$ --- it carries $\Phi = \Phi_\}$ and all conditions $T$. The odd perfect number question is entirely a question \emph{within} $O_{\infty}$, not a question of reaching it. There is no cliff to cross; the proof obligation is of a different kind (existence vs. structure).
 

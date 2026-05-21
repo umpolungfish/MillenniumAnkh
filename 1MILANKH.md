@@ -373,3 +373,38 @@ The split matters. `riemann_hypothesis_axiom : RiemannHypothesis` was a bare ass
 `YM_Closure.lean` was created, importing both `YM.lean` and `YM_GateInhabitants.lean`. Within it, `ym_theory_exists_proved` and `ym_mass_gap_proved` are proved as **theorems** — not axioms — from `ym_foundation_lifted` and `ym_mass_gap_axiom` respectively. The conjunction `ym_prize_problem_from_gates` states and proves both simultaneously: existence and mass gap, derived from the six inhabited ZFCt gate structures. The circular import that previously prevented this is bypassed by the closure module pattern.
 
 **Net result:** Three structural derivations. The algebraic half of RH is machine-proved. The YM existence claim is a theorem in the closure module. The NS regularity chain is structurally explicit. The remaining axioms are the irreducible mathematical claims — stated in the language of the grammar, not as bare assertions.
+
+## Session Update: Paraconsistent Analysis (May 2026)
+
+The question after the siege and derivations: what does "the remaining work is mathematics, not formalization" actually mean — per problem, per axiom, with the ZFCt primitive coordinates in view?
+
+**The Belnap layer.** `zfct_para.py` extends the ZFC/ZFCt/ZFCs triangle manipulator with Belnap four-valued semantics ($T/F/B/N$) over the 12-primitive crystal lattice. Each primitive slot carries a *belief set* — a frozenset of ordinal value tokens — instead of a single classical value. The paraconsistent tensor rule preserves the min-bottleneck on $\Phi$ and $\mathfrak{f}$: $\text{para\_tensor}(A,B)[\Phi] = \{ \min(a,b) \mid a \in A[\Phi],\, b \in B[\Phi] \}$. A belief set of size $> 1$ is the $B$-state (both): the primitive is simultaneously assigned two values.
+
+**The cliff in Belnap semantics.** The classical Frobenius cliff states that $\Phi_\}$ (P\_pm\_sym, Frobenius, ord 4) cannot be synthesized by tensor composition from a starting $\Phi$ of lower ordinal — the min-bottleneck always returns the lower value. The paraconsistent analysis makes this precise: if $\Phi$ is forced to the $B$-state $\{\Phi_\text{lower}, \Phi_\}\}$ and tensored with $\text{ZFC}_t$, the result retains $\Phi \in \{\Phi_\text{lower}, \Phi_\}\}$ — the $B$-state propagates. The Frobenius gate is not crossed; the bottleneck preserves both assignments.
+
+The $B$-state is not a proof. It is the precise statement of the proof obligation: *show that the mathematical object cannot carry the lower $\Phi$ assignment.* For a zeta zero, this means showing it cannot sit off the critical line. For the YM path integral measure, it means showing the measure cannot be non-Frobenius. The grammar names the obligation; the mathematics must discharge it.
+
+**Per-problem analysis.** Running `:para-cliff` and `:para-reach` on the canonical catalog entry for each MPP yields a Φ-gap ranking — the number of ordinal steps separating each problem's current $\Phi$ from the Frobenius gate $\Phi_\}$ (ord 4):
+
+| Problem | $\Phi$ | gap | tier | uniform $B$-state after $\otimes \text{ZFC}_t$ |
+|---------|--------|-----|------|------------------------------------------------|
+| YM      | $\Phi_\text{ɐ}$ (ord 0) | 4 | $O_1$        | $\{\Phi_\text{ɐ}, \Phi_\}\}$ |
+| P vs NP | $\Phi_\text{ɐ}$ (ord 0) | 4 | $O_2^\dagger$ | $\{\Phi_\text{ɐ}, \Phi_\}\}$ |
+| Hodge   | $\Phi_\upsilon$ (ord 1) | 3 | $O_2^\dagger$ | $\{\Phi_\upsilon, \Phi_\}\}$ |
+| BSD     | $\Phi_\upsilon$ (ord 1) | 3 | $O_2^\dagger$ | $\{\Phi_\upsilon, \Phi_\}\}$ |
+| RH      | $\Phi_F$ (ord 2) | 2 | $O_2$        | $\{\Phi_F, \Phi_\}\}$ |
+| NS      | $\Phi_F$ (ord 2) | 2 | $O_2^\dagger$ | $\{\Phi_F, \Phi_\}\}$ |
+| Collatz | $\Phi_\dot{}$ (ord 3) | 1 | $O_1$        | $\{\Phi_\dot{}, \Phi_\}\}$ |
+| OPN     | $\Phi_\}$ (ord 4) | 0 | $O_\infty$   | — (already Frobenius) |
+
+**The uniform proof obligation.** After paraconsistent tensor with $\text{ZFC}_t$, every non-OPN MPP has exactly one primitive in $B$-state: $\Phi$. Not $\Omega$, not $\text{Ħ}$, not $\text{Ð}$ — $\text{ZFC}_t$'s other five promotions resolve all remaining primitive ambiguities automatically. The proof obligation is structurally identical across seven problems: collapse the $\Phi$ $B$-state from $\{\Phi_\text{lower}, \Phi_\}\}$ to $\{\Phi_\}\}$. The mathematical content is different per problem; the structural form is the same.
+
+**OPN as structural outlier.** OPN is the only MPP already at $O_\infty$ — it carries $\Phi = \Phi_\}$ and all conditions $T$. The odd perfect number question is entirely a question *within* $O_\infty$, not a question of reaching it. There is no cliff to cross; the proof obligation is of a different kind (existence vs. structure).
+
+**Collatz at gap 1.** Collatz has $\Phi = \Phi_\dot{}$ (P\_psi, U(1) phase rotation, ord 3) — one step from Frobenius. The $3n+1$ map has a phase symmetry (the even/odd alternation is chirally structured under $\text{Ħ}$) but not yet the Frobenius round-trip condition $\mu \circ \delta = \text{id}$. The single remaining $\Phi$ step names what the proof must add: that the orbit structure closes under a full Frobenius involution, not just a phase rotation.
+
+**RH has dinf:F; all O₂† MPPs have dinf:T.** The RH entry sits at $O_2$ rather than $O_2^\dagger$ because $\text{Ð} < \text{ord}\, 2$ — the zeta function does not carry $D_\infty$ (infinite-dimensional Sobolev structure). NS, by contrast, has $\text{Ð} = \text{Ð}_;$ ($D_\infty$) from the Sobolev space backbone. This is structurally correct: the distinction between the analytic ($O_2$, finite-dimensional critical strip) and functional-analytic ($O_2^\dagger$, infinite-dimensional function space) register is machine-readable in the primitive coordinates.
+
+**YM and P vs NP share $\Phi_\text{ɐ}$ but differ in tier.** Both have gap 4 — the maximal distance from the Frobenius gate. But YM is $O_1$ (no winding, not $D_\infty$) while P vs NP is $O_2^\dagger$ (has winding, has $D_\infty$). P vs NP has more structural scaffolding already in place; the grammar channel ($\mathfrak{g}$: $\Gamma_\text{and} \to \Gamma_\text{seq}$) and integer winding are resolved. Both need the full 4-step Frobenius climb.
+
+**What the manipulator adds.** The classical `:cliff` command establishes that $\Phi_\}$ cannot be synthesized by composition. The paraconsistent `:para-cliff` quantifies what the proof must show: not just that the cliff exists, but that forcing the $B$-state does not collapse it — the bottleneck rule propagates the overdetermination unchanged through every tensor. A classical proof is a demonstration that the $B$-state was inadmissible from the start. The grammar does not prove this; it locates where the proof must operate.
