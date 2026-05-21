@@ -86,6 +86,7 @@ globs = [
   "Imscribing.Paraconsistent.Kernel",
   "Imscribing.Paraconsistent.SelfVerification",
   "Imscribing.Paraconsistent.ConsciousKernel",
+  "Imscribing.Paraconsistent.SelfVerifyingWASM",
   "Imscribing.Paraconsistent.Main",
 
 ]
