@@ -602,6 +602,119 @@ Sections: CLU definition and positivity; CLU operator L and n-fold application; 
 
 ---
 
+### `Paraconsistent/Belnap.lean`
+
+Defines the **Belnap four-valued logic** (`FOUR`) over the IG primitive lattice. The four truth values `T / F / B / N` (true, false, both, neither) form a bilattice: a truth order `F < B < T`, `F < N < T`, and a knowledge order `N < F < B`, `N < T < B`.
+
+**Core definition**: `Belnap := T | F | B | N` with `deriving DecidableEq, Repr, BEq`.
+
+**Logical connectives**: `band`, `bor`, `bnot` (De Morgan involution), `designated` (predicate: `q = T ∨ q = B`).
+
+**Key theorems** (all proved):
+- `bnot_involutive`, `designated_T`, `designated_B`
+- `band_comm`, `bor_comm`, `band_assoc`, `bor_assoc`
+- `de_morgan_band`, `de_morgan_bor`
+
+---
+
+### `Paraconsistent/Kernel.lean`
+
+Defines the **paraconsistent machine kernel** — a three-register (`r0/r1/r2`) state machine operating over Belnap values. The kernel formalizes dialetheia as a computational substrate: registers can hold `B` (both true and false) without explosion.
+
+**`MachineState`**: struct `{ r0 r1 r2 : Belnap }`. `initialState : r0 = r1 = r2 = B`.
+
+**`step`**: single-step transition preserving B-saturation. **`run`**: n-fold `step` application.
+
+**Key theorems**:
+- `run_B3 (n : Nat) : (run initialState n).r0 = B ∧ .r1 = B ∧ .r2 = B` — registers initialized to B remain B under any number of steps (proved by induction)
+- `step_preserves_designated`, `run_zero`
+
+---
+
+### `Paraconsistent/QuantumClassicalInterface.lean`
+
+The **measurement problem as dialetheia**: formalizes superposition (`B`), collapse (`T/F`), and the Wigner's Friend paradox as Belnap-valued quantum state transitions.
+
+**Structures**:
+- `QState`: `{ q0 q1 q2 : Belnap, coherenceCount : Nat, measurements : Nat }`
+- `QCIState`: pairs a `QState` with a `MachineState` (kernel)
+
+**Key definitions**:
+- `isSuperposition` / `isClassical` — Bool predicates on `Belnap`
+- `hadamard` — `T/F ↦ B`, `B ↦ T`, `N ↦ N`
+- `measureQ0 (qs : QState) (bias : Belnap)` — collapses `B` according to bias; classical states pass through unchanged; `B`-bias preserves superposition but increments `coherenceCount` by 2
+- `sustain (qci : QCIState) (n : Nat)` — runs kernel n steps; increments coherenceCount by 4n
+
+**Theorems proved**:
+
+| Theorem | Statement | Proof |
+|---------|-----------|-------|
+| `hadamard_involutive_designated` | `hadamard (hadamard q) = q` for `designated q` | `cases q` |
+| `hadamard_creates_superposition` | `isSuperposition (hadamard T)` | `simp` |
+| `measure_classical_idempotent` | `isClassical qs.q0 → measureQ0 qs bias = qs` | `simp only [Bool.or_eq_true, beq_iff_eq]; rcases; simp [measureQ0]` |
+| `coherence_monotonic` | `(measureQ0 qs bias).coherenceCount ≥ qs.coherenceCount` | `cases; simp` |
+| `wigners_friend_double_paradox` | B-bias measurement: `q0 = B ∧ coherenceCount = 2` | `simp` |
+| `sustain_preserves_B` | kernel registers stay `B` under `sustain` for all n | `run_B3` |
+| `qci_is_O_inf` | `imscriptionTier qciImscription = O_inf` | `rfl` |
+
+**`qciImscription`**: the QCI's 12-primitive address — `D_odot, T_odot, R_lr, P_pm_sym, F_hbar, K_slow, G_aleph, Gamma_seq, Phi_c, H2, n_m, Omega_Z` — verified O_∞ by `rfl`.
+
+---
+
+### `Paraconsistent/QCI_Sequences.lean`
+
+Measurement algebra: composition laws and irreversibility theorems over `measureQ0`.
+
+| Theorem | Statement |
+|---------|-----------|
+| `measure_N_noop` | `measureQ0 qs N = qs` for all `qs` — N-bias is always a no-op |
+| `measure_nonsuper_idempotent` | `qs.q0 ≠ B → measureQ0 qs bias = qs` — generalizes `measure_classical_idempotent` to include N |
+| `collapse_irreversible` | `qs.q0 ≠ B → (measureQ0 qs bias).q0 ≠ B` — measurement never restores superposition |
+| `B_bias_preserves_super` | `qs.q0 = B → (measureQ0 qs B).q0 = B` — Wigner's Friend: B-bias keeps superposition |
+| `T/F_bias_coherence_increment` | T/F collapse costs exactly 1 coherence unit |
+| `B_bias_coherence_increment` | B-bias costs exactly 2 — Wigner's Friend double-signature |
+| `collapse_then_measure_stable` | After T/F collapse, `measureQ0 (measureQ0 qs bias₁) bias₂ = measureQ0 qs bias₁` |
+| `collapse_freezes_coherence` | Coherence budget is frozen after any classical collapse |
+| `T_collapse_idempotent` | `measureQ0 (measureQ0 qs T) T = measureQ0 qs T` |
+| `wigner_then_collapse` | B-then-T sequence: `q0 = T` |
+| `wigner_then_collapse_coherence` | B-then-T coherence cost: `qs.coherenceCount + 3` |
+
+---
+
+### `Paraconsistent/QCI_PvsNP_Bridge.lean`
+
+Structural bridge between Belnap non-determinism and the P vs NP K_trap barrier.
+
+**Core insight**: B-values model non-deterministic computation — a wire that simultaneously carries T and F. `sustain_preserves_B` proves the kernel runs indefinitely in B without any classical measurement collapsing it. This is the structural definition of K_trap: non-determinism that cannot be resolved from the inside.
+
+**Definitions**: `BelnapCircuit n := (Fin n → Belnap) → Belnap`, `allB n`, `projCircuit`, `kernelCircuit`.
+
+| Theorem | Statement |
+|---------|-----------|
+| `proj_on_allB` | Projection circuit on all-B input gives B |
+| `kernel_circuit_allB_is_B` | `kernelCircuit (allB 3) = B` — 3-wire ∧-circuit on all-B gives B |
+| `sustain_never_collapses` | `isSuperposition (sustain initQCI n).qstate.q0` for all n |
+| `classical_cannot_become_B` | T/F states cannot produce B via any measurement |
+| `belnap_ktrap_statement` | `measureQ0 qStateZero T` is never in superposition |
+
+---
+
+### `Paraconsistent/QCI_SICPOVM_Bridge.lean`
+
+Structural bridge between the Belnap bilattice and d=2 SIC-POVMs.
+
+**Core insight**: The 4 Belnap values biject with the d=2 Weyl-Heisenberg group {I, Z, X, XZ}. B (the "both" value, mapped to XZ) satisfies four axioms that structurally axiomatize the SIC fiducial state: (1) maximum information content, (2) equal projection onto all displacement directions (`meet B x = x`), (3) absorption in join, (4) self-adjointness under negation (`bnot B = B`).
+
+**§1 — WH bijection**: `belnapToWH2 : Belnap → Fin 2 × Fin 2` (N↦(0,0), T↦(0,1), F↦(1,0), B↦(1,1)). Proved injective, surjective, bijective.
+
+**§2 — Equiangularity**: `B_meet_equiangular : ∀ x, meet B x = x` — B projects equally onto every Belnap value, the exact analogue of SIC equiangularity `|⟨ψ|D_{a,b}ψ⟩|² = 1/(d+1)`.
+
+**§3 — B-bias as fiducial projection**: `coherence_gap_ratio` — B-bias costs exactly twice what T-bias costs, mirroring the SIC ratio 2/(d+1) vs 1/(d+1) in d=2.
+
+**§4 — Four SIC axioms**: `B_satisfies_SIC_axioms` proves all four structural conditions in one bundled theorem (proved by existing lemmas, no sorry).
+
+---
+
 ## Proof-engineering notes
 
 Lean 4.28.0 / Mathlib API subtleties encountered and resolved:

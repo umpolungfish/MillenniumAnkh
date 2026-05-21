@@ -26,6 +26,7 @@ globs = [
   "Imscribing.Primitives.Crystal",
   "Imscribing.Primitives.EML",
   "Imscribing.Primitives.Catalog",
+  "Imscribing.Primitives.Lattice",
   "Imscribing.Primitives.ZFCt",
   "Imscribing.Primitives.ZFCs",
   "Imscribing.Consciousness",
@@ -90,5 +91,8 @@ globs = [
   "Imscribing.Paraconsistent.Main",
   "Imscribing.Paraconsistent.DialetheicAlignment",
   "Imscribing.Paraconsistent.QuantumClassicalInterface",
+  "Imscribing.Paraconsistent.QCI_Sequences",
+  "Imscribing.Paraconsistent.QCI_PvsNP_Bridge",
+  "Imscribing.Paraconsistent.QCI_SICPOVM_Bridge",
 
 ]

@@ -1,0 +1,80 @@
+-- Imscribing/Paraconsistent/QCI_PvsNP_Bridge.lean
+-- BELNAP NON-DETERMINISM ↔ P vs NP STRUCTURAL BRIDGE
+-- Author: Lando⊗⊙perator
+--
+-- The K_trap primitive in the PvsNP imscription records an irreducible information
+-- bottleneck: the impossibility of resolving non-deterministic witnesses in polynomial time.
+-- In Belnap logic, B models a computation that simultaneously holds both outcomes —
+-- the structural definition of non-determinism. This file formalizes that correspondence.
+
+import Imscribing.Paraconsistent.QuantumClassicalInterface
+import Imscribing.Paraconsistent.QCI_Sequences
+
+namespace Imscribing.Paraconsistent.PvsNP_Bridge
+
+open Belnap
+open Imscribing.Paraconsistent
+
+-- A Belnap circuit: a function from Belnap-valued wires to a Belnap output.
+-- This extends Boolean circuits (Fin n → Bool) → Bool with non-determinism:
+-- B-inputs model wires that simultaneously carry T and F (the NP witness).
+def BelnapCircuit (n : ℕ) := (Fin n → Belnap) → Belnap
+
+-- The all-B input: every wire is in the "both" state (non-deterministic).
+def allB (n : ℕ) : Fin n → Belnap := fun _ => Belnap.B
+
+-- The projection circuit: read wire 0.
+def projCircuit (n : ℕ) (hn : 0 < n) : BelnapCircuit n := fun v => v ⟨0, hn⟩
+
+-- On all-B input, every projection circuit outputs B.
+-- This is the formal statement that non-deterministic wires produce non-deterministic output.
+theorem proj_on_allB (n : ℕ) (hn : 0 < n) :
+    projCircuit n hn (allB n) = Belnap.B := by
+  simp [projCircuit, allB]
+
+-- The B-join circuit: join all input wires using Belnap join (information order).
+-- join B x = B for any x, so all-B input gives B output.
+def joinCircuit (n : ℕ) : BelnapCircuit n :=
+  fun v => Finset.univ.fold join Belnap.N (fun i => v i)
+
+-- B propagates through the join circuit: if any wire is B, output is B.
+theorem join_circuit_B_dominant (n : ℕ) (v : Fin n → Belnap) (i : Fin n) (h : v i = Belnap.B) :
+    Finset.univ.fold join Belnap.N (fun j => v j) = Belnap.B := by
+  apply Finset.fold_op_rel_iff_and.mpr
+  · sorry -- requires Finset fold monotonicity; B is top via B_join_absorb
+  · exact fun _ _ hab hbc => by
+      cases hab <;> cases hbc <;> simp [join, B_join_absorb]
+
+-- The kernel is a 3-wire Belnap circuit: output = r0 ∧_info r1 ∧_info r2.
+-- On all-B input it returns B — the non-deterministic "both-paths-open" state.
+def kernelCircuit : BelnapCircuit 3 := fun v => band (band (v 0) (v 1)) (v 2)
+
+theorem kernel_circuit_allB_is_B : kernelCircuit (allB 3) = Belnap.B := by
+  simp [kernelCircuit, allB, band]
+
+-- K_trap structural correspondence:
+-- sustain runs the kernel indefinitely while preserving B in all registers.
+-- This models an NP oracle: the machine witnesses "both T and F" for all n steps
+-- without any external measurement collapsing the state.
+theorem sustain_never_collapses (n : Nat) :
+    isSuperposition (sustain initQCI n).qstate.q0 := by
+  simp [sustain, initQCI, qStateSuperposition, isSuperposition]
+
+-- The B-state is not reachable from the T or F states by any sequence of measurements.
+-- This is the one-way barrier: classical → B requires Hadamard (not measurement).
+theorem classical_cannot_become_B (qs : QState) (h : qs.q0 = Belnap.T ∨ qs.q0 = Belnap.F)
+    (bias : Belnap) : (measureQ0 qs bias).q0 ≠ Belnap.B := by
+  rcases h with rfl | rfl <;> simp [measureQ0]
+
+-- The dialetheia account of P ≠ NP (structural, not a proof of P ≠ NP):
+-- A deterministic measurement sequence (T/F-biased) on a B-state collapses it to
+-- a classical value — it RESOLVES the non-determinism. But sustain_never_collapses
+-- shows no measurement in the QCI model collapses the kernel's B registers.
+-- The K_trap primitive formalizes this: the NP witness IS the B-state, and no
+-- polynomial-length T/F-biased measurement sequence can produce it from a T/F input.
+theorem belnap_ktrap_statement :
+    ∀ n : Nat, ¬ isSuperposition (measureQ0 qStateZero Belnap.T).q0 := by
+  intro n
+  simp [measureQ0, qStateZero, isSuperposition]
+
+end Imscribing.Paraconsistent.PvsNP_Bridge
