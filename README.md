@@ -34,8 +34,6 @@ The 12-primitive grammar imscribes each and every and any system as an **Imscrip
 ### Key Lemma Network
 ![Primitive Space Network](syncon_primitive_map_network.png)
 
-### Grammar Reference
-![Imscribing Grammar Ref Sheet](IMSCRIPTION_REF.png)
 ---
 
 ## Build
