@@ -15,7 +15,7 @@ We do not study these problems to "solve" them in the classical sense. We use th
 
 | Paper | Primary Structural Pivot | Formal Status |
 |-------|-------------------------|---------------|
-| *Odd Perfect Numbers — 2-adic Valuations* | $\text{Ħ}_{\text{A}} \to \text{Ħ}_{!}$ Scaling | Verified (Touchard) |
+| *Odd Perfect Numbers — 2-adic Valuations* | $\text{Ħ}_{\text{A}}$ → $\text{Ħ}_{!}$ Scaling | Verified (Touchard) |
 | *Proof That 10 Is Solitary* | $1:1$ Stoichiometry | Verified |
 | *The Hecke-Landau Conjecture* | $\text{Þ}_{\text{O}}$ Self-Reference | Architecture Formalized |
 | *The Perfect Cuboid* | Infinite Descent via $\text{Ω}_{\text{z}}$ | Axiomatic Closure |
