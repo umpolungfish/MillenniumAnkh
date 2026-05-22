@@ -67,6 +67,28 @@ Also defines `OuroboricityTier` (O₀/O₁/O₂/O_∞) and `ouroboricityTier : �
 
 ---
 
+### `Primitives/Lattice.lean`
+
+Lattice operations and `PartialOrder` for `Criticality`, the five-constructor primitive `Phi_sub < Phi_c < Phi_c_complex < Phi_EP < Phi_super`.
+
+**`crit_meet` (non-standard meet):** `Phi_c` is the universal absorber; for `x ≠ Phi_c`, `Phi_c_complex` absorbs next; otherwise ordinal min. This is intentionally not a `SemilatticeInf` — `meet(Phi_c, Phi_sub) = Phi_c ≠ Phi_sub`. `crit_join` is the standard ordinal max.
+
+**Absorption theorems:**
+
+| Theorem | Statement | Note |
+|---------|-----------|------|
+| `crit_meet_absorb_left` | `crit_meet Phi_c x = Phi_c` | universal, no side condition |
+| `crit_meet_absorb_right` | `crit_meet x Phi_c = Phi_c` | universal |
+| `crit_meet_absorb_complex_left` | `crit_meet Phi_c_complex x = Phi_c_complex` | requires `x ≠ Phi_c` — arm 2 fires first |
+| `crit_meet_absorb_complex_right` | `crit_meet x Phi_c_complex = Phi_c_complex` | requires `x ≠ Phi_c` |
+| `crit_meet_idempotent` | `crit_meet x x = x` | |
+| `crit_meet_comm` | `crit_meet a b = crit_meet b a` | |
+| `crit_meet_not_inf_le_right` | `¬ (crit_meet Phi_c Phi_sub ≤ Phi_sub)` | proves non-semilattice character |
+
+**`PartialOrder Criticality`:** proved using a private `Fintype Criticality` instance (requires `import Mathlib.Data.Fintype.Basic`) plus a private `instDecidableLTCriticality` instance bridging `a < b` (which is `compare a b = .lt`) to `DecidableEq Ordering`. With both in scope, all four PartialOrder fields close by `revert … ; decide` over the 5- or 5²-element enumeration.
+
+---
+
 ### `Primitives/Imscription.lean`
 
 Defines the central `Imscription` struct — a 12-field record over the primitives from `Core.lean`:
@@ -725,6 +747,9 @@ Lean 4.28.0 / Mathlib API subtleties encountered and resolved:
 - `absurd h hp3` fails when `h : 3 = p` but `hp3 : p ≠ 3` — use `omega` or `Ne.symm`
 - `Dvd.dvd.mul_left` does not exist; use `dvd_mul_of_dvd_right (dvd_pow h hn) _`
 - `norm_num` primality extension requires `import Mathlib.Tactic` (not just targeted imports)
+- `Fintype` is not pulled in by `Mathlib.Order.Lattice`; add `import Mathlib.Data.Fintype.Basic` explicitly when defining `Fintype` instances for `decide`-based proofs over finite types
+- `a < b` defined as `compare a b = .lt` is not automatically `Decidable` — add `instance instDecidableLTFoo (a b : Foo) : Decidable (a < b) := inferInstanceAs (Decidable (compare a b = .lt))` before using `decide` on goals involving `<`
+- After case-splitting a finite inductive type to concrete constructors, `decide` closes each residual `compare X Y ≠ .gt` / `= .lt` goal correctly; `simp_all` alone fails to reduce `deriving Ord` compare on such goals
 - A `rw` chain closing by `rfl` will error if you append `norm_num` — omit it when the `rw` already closes
 - `rw [pow_one]` fails inside `Finset.sum` after certain rewrites; `simp` after `Finset.sum_map` handles the residual `(pⁱ)^1 = pⁱ`
 
