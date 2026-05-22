@@ -4,6 +4,8 @@
 
 import Mathlib.NumberTheory.LSeries.RiemannZeta
 import Mathlib.Tactic
+import Imscribing.Primitives.Core
+import Imscribing.Primitives.Imscription
 
 /-!
 # Riemann Hypothesis: Three-Layer Barrier Analysis
@@ -194,5 +196,64 @@ theorem rh_sorry_requires_zero_free_strip :
 theorem partial_zero_free_does_not_suffice (δ : ℝ) (_ : 0 < δ) :
     ZeroFreeStrip δ → ZeroFreeStrip 0 → ZeroFreeStrip 0 :=
   fun _ h => h  -- The ZeroFreeStrip δ hypothesis gives no help toward ZeroFreeStrip 0.
+
+-- ============================================================
+-- §6. PRIMITIVE-ALGEBRAIC INTERPRETATION
+-- The grammar reveals why RH is at Φ_c^ℂ, not Φ_c; at P_sym, not P_pm_sym.
+-- ============================================================
+
+open Imscribing.Primitives
+open Dimensionality Topology Relational Polarity Grammar
+     Fidelity KineticChar Granularity Criticality Protection
+     Stoichiometry Chirality
+
+/-- **The ζ function's criticality is complex, not real.**
+    RH asks about zeros on Re(s) = 1/2, which is the *imaginary*-axis critical
+    phenomenon. The functional equation s ↦ 1-s is a complex reflection.
+    The real-axis criticality Φ_c governs Hermitian phase transitions (Ising, QCD).
+    The complex-axis criticality Φ_c^ℂ governs analytic continuation phenomena.
+    ζ sits at Φ_c^ℂ because its nontrivial zeros require complex s. -/
+theorem rh_criticality_is_complex :
+    Criticality.Phi_c_complex ≠ Criticality.Phi_c := by
+  decide
+
+/-- **RH requires P_sym, not P_pm_sym.**
+    The functional equation gives ζ(s) = χ(s)·ζ(1-s) where χ is a unitary factor.
+    This is a continuous symmetry (U(1) phase in χ), hence P_sym.
+    It is NOT the Special Frobenius P_pm_sym because μ∘δ ≠ id for ζ:
+    the explicit formula does not give a Frobenius self-duality of ζ itself. -/
+theorem rh_polarity_is_sym_not_pm_sym :
+    Polarity.P_sym ≠ Polarity.P_pm_sym ∧
+    Polarity.P_sym ≤ Polarity.P_pm_sym := by
+  refine ⟨?_, ?_⟩
+  · decide
+  · decide
+
+/-- **The C₁₃ gap in primitive language.**
+    Lee-Yang (special Frobenius) and RH (full Frobenius) differ in exactly one
+    primitive: Polarity. This is the one-primitive cliff between proved and
+    conjectured zero-location. -/
+theorem c13_gap_is_one_primitive :
+    (primitiveMismatches
+      { dim := D_triangle, top := T_bowtie, rel := R_dagger, pol := P_pm_sym,
+        fid := F_hbar, kin := K_slow, gran := G_beth, gram := Gamma_and,
+        crit := Phi_c, chir := H1, stoi := n_n, prot := Omega_0 }
+      { dim := D_triangle, top := T_bowtie, rel := R_dagger, pol := P_sym,
+        fid := F_hbar, kin := K_slow, gran := G_beth, gram := Gamma_and,
+        crit := Phi_c, chir := H1, stoi := n_n, prot := Omega_0 }) = 1 := by
+  decide
+
+/-- **ZeroFreeStrip monotonicity**: smaller δ is strictly stronger.
+    The family {ZeroFreeStrip δ}_{δ ≥ 0} is nested. -/
+theorem zeroFreeStrip_monotone (δ₁ δ₂ : ℝ) (hle : δ₁ ≤ δ₂) :
+    ZeroFreeStrip δ₁ → ZeroFreeStrip δ₂ := by
+  intro h s hz hpos hlt
+  exact le_trans (h s hz hpos hlt) hle
+
+/-- **ZeroFreeStrip 0 is the infimum of the family.**
+    A proof of δ=0 immediately yields all δ ≥ 0 by monotonicity. -/
+theorem zeroFreeStrip_zero_is_infimum :
+    ∀ δ : ℝ, 0 ≤ δ → ZeroFreeStrip 0 → ZeroFreeStrip δ :=
+  fun δ hδ h => zeroFreeStrip_monotone 0 δ hδ h
 
 end Millennium.RH

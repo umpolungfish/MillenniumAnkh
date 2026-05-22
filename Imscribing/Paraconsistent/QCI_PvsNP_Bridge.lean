@@ -38,10 +38,47 @@ theorem proj_on_allB (n : ℕ) (hn : 0 < n) :
 def joinCircuit (n : ℕ) : BelnapCircuit n :=
   fun v => (List.finRange n).foldl (fun acc i => join acc (v i)) Belnap.N
 
+-- Helper: once the accumulator is B, it stays B through any remaining foldl steps.
+-- Proof: B_join_absorb from Belnap.lean gives join B (v i) = B for all i.
+private lemma foldl_join_B_absorb_acc {n : ℕ} (v : Fin n → Belnap) (l : List (Fin n)) :
+    (l.foldl (fun acc i => join acc (v i)) Belnap.B) = Belnap.B := by
+  induction l with
+  | nil => rfl
+  | cons head tail ih =>
+    rw [List.foldl_cons, B_join_absorb, ih]
+
+-- Helper: if any wire in the list carries B, the foldl join over that list yields B,
+-- regardless of the starting accumulator.
+-- Proof by induction on the list: either the B-value is at the head (join acc0 B = B,
+-- then B_join_absorb sustains), or it's in the tail (recursive call with updated acc).
+private lemma foldl_join_eq_B_of_B_mem {n : ℕ} (v : Fin n → Belnap) (l : List (Fin n))
+    (acc0 : Belnap) (h : ∃ (i : Fin n), i ∈ l ∧ v i = Belnap.B) :
+    (l.foldl (fun acc i => join acc (v i)) acc0) = Belnap.B := by
+  rcases h with ⟨i, hi_mem, hi_val⟩
+  induction l generalizing acc0 with
+  | nil => simp at hi_mem
+  | cons head tail ih =>
+    have hi_cases : i = head ∨ i ∈ tail := by
+      simpa using hi_mem
+    rcases hi_cases with (rfl | hi_tail)
+    · -- i = head: v head = B, so join acc0 B = B (join absorbs B from right)
+      rw [List.foldl_cons, hi_val]
+      have hjoin_acc_B : join acc0 Belnap.B = Belnap.B := by cases acc0 <;> rfl
+      rw [hjoin_acc_B]
+      exact foldl_join_B_absorb_acc v tail
+    · -- i in tail: step once, then recurse with updated accumulator
+      rw [List.foldl_cons]
+      exact ih (join acc0 (v head)) hi_tail
+
 -- B propagates through the join circuit: if any wire is B, output is B.
 theorem join_circuit_B_dominant (n : ℕ) (v : Fin n → Belnap) (i : Fin n) (h : v i = Belnap.B) :
     joinCircuit n v = Belnap.B := by
-  sorry -- List.foldl induction over finRange; B_join_absorb closes once B appears
+  unfold joinCircuit
+  have hi_mem : i ∈ List.finRange n := by
+    have hi_val : (i : ℕ) < n := i.2
+    simp [List.mem_finRange, hi_val]
+  apply foldl_join_eq_B_of_B_mem v (List.finRange n) Belnap.N
+  exact ⟨i, hi_mem, h⟩
 
 -- The kernel is a 3-wire Belnap circuit: output = r0 ∧_info r1 ∧_info r2.
 -- On all-B input it returns B — the non-deterministic "both-paths-open" state.
@@ -73,8 +110,7 @@ theorem classical_cannot_become_B (qs : QState) (h : qs.q0 = Belnap.T ∨ qs.q0 
 -- The K_trap primitive formalizes this: the NP witness IS the B-state, and no
 -- polynomial-length T/F-biased measurement sequence can produce it from a T/F input.
 theorem belnap_ktrap_statement :
-    ∀ n : Nat, ¬ isSuperposition (measureQ0 qStateZero Belnap.T).q0 := by
-  intro n
+    ¬ isSuperposition (measureQ0 qStateZero Belnap.T).q0 := by
   simp [measureQ0, qStateZero, isSuperposition]
 
 end Imscribing.Paraconsistent.PvsNP_Bridge

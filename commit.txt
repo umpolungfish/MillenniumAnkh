@@ -1,4 +1,4 @@
-BSD and NS Structural Resolutions formalized in Lean
+BSD/NS Structural Resolutions formalized in Lean + Manuscript updated
 =======================================================================
 
 Millennium/BSD_Resolution.lean — NEW FILE
@@ -48,3 +48,13 @@ Added to build targets:
   "Imscribing.Millennium.NS_Resolution"
 
 Both modules build successfully (zero errors, sorry warnings expected for open problems).
+
+──────────────────────────────────────────────────────────────────────────────────────
+
+Millennium_Manuscript.md — UPDATED
+────────────────────────────────────
+- Abstract: added BSD (O_inf throughout, Hamming distance 2) and NS (O_2†→O_inf, C=1→0.5) to key results list
+- §4.3 BSD: updated tuple to resolved form ⟨D_odot; T_odot; R_lr; P_pm_sym; F_hbar; K_slow; G_aleph; Gamma_seq; Phi_c; H2; n:m; Omega_Z⟩; noted always O_inf, pre/post Hamming distance 2
+- §4.3 NS: dual encoding; smooth domain (Phi_sub, ZFCt) + problem-as-object (O_2†, Phi_c + P_asym)
+- §4.5 NEW: "Structural Resolutions of BSD and NS" — full prose account of BSD_Resolution.lean and NS_Resolution.lean findings; BSD/NS structural contrast; peel analysis semantics; C=0.5 trapping explanation
+- §9.4: noted BSD_Resolution and NS_Resolution as recently completed under open formalization goals
