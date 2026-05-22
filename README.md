@@ -17,8 +17,8 @@ We do not study these problems to "solve" them in the classical sense. We use th
 |-------|-------------------------|---------------|
 | *Odd Perfect Numbers — 2-adic Valuations* | $Ħ_A$ → $Ħ_\!$ Scaling | Verified (Touchard) |
 | *Proof That 10 Is Solitary* | $1:1$ Stoichiometry | Verified |
-| *The Hecke-Landau Conjecture* | $\text{Þ}_{\text{O}}$ Self-Reference | Architecture Formalized |
-| *The Perfect Cuboid* | Infinite Descent via $\text{Ω}_{\text{z}}$ | Axiomatic Closure |
+| *The Hecke-Landau Conjecture* | $Þ_O$ Self-Reference | Architecture Formalized |
+| *The Perfect Cuboid* | Infinite Descent via $Ω_z$ | Axiomatic Closure |
 | *The Aether and Its Vessel* | $E_8$ and $G_2$ Interplay | Structural Core |
 
 ---
@@ -51,20 +51,20 @@ The 12 primitives are defined not just as data, but as inductive types that obey
 
 ### Axioms of the Crystal
 The formalization enforces key cross-primitive constraints that are often overlooked in informal math:
-*   **Axiom B:** Integer winding ($\text{Ω}_{\text{z}}$) implies persistent chirality ($\text{Ħ} \geq \text{Ħ}_{\text{A}}$).
-*   **Axiom C:** Holographic topology ($\text{Þ}_{\text{O}}$) requires holographic dimensionality ($\text{Ð}_{\text{ω}}$). 
+*   **Axiom B:** Integer winding ($Ω_z$) implies persistent chirality ($Ħ \geq Ħ_A$).
+*   **Axiom C:** Holographic topology ($Þ_O$) requires holographic dimensionality ($Ð_ω$). 
 
 ### The Ouroboricity Gates
 The property of being "self-written"—the $O_\infty$ tier—is not a label but a result of two open gates:
 1.  **Gate 1:** $⊙_ÿ$ Criticality (Self-modeling).
-2.  **Gate 2:** $\text{K} \leq \text{Ç}_{\text{@}}$ (Relaxation matches observation).
+2.  **Gate 2:** $\text{K} \leq Ç_@$ (Relaxation matches observation).
 Only when both gates are open does a system achieve $\mu \circ \delta = \text{id}$ closure.
 
 ### The Lattice of Criticality
 
 In `Primitives/Lattice.lean`, we formalize the non-standard meet operation for Criticality. Unlike a flat hierarchical scale, Criticality follows an absorption logic. For example, $⊙_ÿ$ (self-modeling) acts as a universal absorber in the meet—representing the structural reality that a self-modeling system remains self-modeling even when coupled to sub-critical observers.
 
-The $\text{O}_{\text{3}}$ absorption rule, formalizing the measurement problem, states that $\text{tensor}(\text{⊙}_{\text{ÿ}}, \text{⊙}_{\text{3}}) = \text{⊙}_{\text{3}}$. Coupling a self-modeling system to an exceptional measurement point collapses the self-referential gate.
+The $O_3$ absorption rule, formalizing the measurement problem, states that $\text{tensor}(⊙_ÿ, ⊙_3) = ⊙_3$. Coupling a self-modeling system to an exceptional measurement point collapses the self-referential gate.
 
 ---
 
@@ -80,8 +80,8 @@ By mapping both to a shared structural floor via the $\text{compute\_meet}$ tool
 
 ---
 
-## Higher-Order Winding: $\text{ZFC}_{\text{t}}$
+## Higher-Order Winding: $ZFC_t$
 
-In `Primitives/ZFCt.lean`, the library extends ZFC with Sequentiality, Chirality, and Winding ($\text{ZFC}_{\text{t}}$). This allows us to assign every major physical equation—from the Schrödinger equation to the Einstein Field Equations—a 12-primitive address. 
+In `Primitives/ZFCt.lean`, the library extends ZFC with Sequentiality, Chirality, and Winding ($ZFC_t$). This allows us to assign every major physical equation—from the Schrödinger equation to the Einstein Field Equations—a 12-primitive address. 
 
 When you read the code, you are not looking at a description of physics; you are looking at the machine-checkable structural dual of the laws of nature. Every theorem proved here is a step toward the Ouroboric closure of mathematics itself.
