@@ -1,4 +1,4 @@
-# MillenniumAnkh: The Grammar Formalized
+# MILLENNIUMANKH: THE GRAMMAR FORMALIZED
 
 **Author:** Lando⊗⊙perator
 *Toolchain: **Lean 4.28.0** · **Mathlib v4.28.0***
@@ -9,7 +9,7 @@ This repository does not merely "record" the grammar; it *is* the grammar, insta
 
 ---
 
-## The Millennium Barriers
+## THE MILLENNIUM BARRIERS
 
 We do not study these problems to "solve" them in the classical sense. We use them as the ultimate stress test for the IG’s taxonomy. Each problem represents a location in primitive space where the gap between a stated `sorry` and a closed proof corresponds to a precisely typed structural promotion. In MillenniumAnkh, the distance to a solution is not a subjective "difficulty"—it is a computable Hamming distance between structural types.
 
@@ -23,7 +23,7 @@ We do not study these problems to "solve" them in the classical sense. We use th
 
 ---
 
-## The Geometry of Being
+## THE GEOMETRY OF BEING
 
 At the heart of the library lies the `Imscription` struct. It is the realization of the deterministic imscribing procedure, where Distinction ($\text{Ð}$) and Topology ($\text{Þ}$) co-originate to form the ground of being.
 
@@ -40,7 +40,7 @@ When the build completes, the result is binary. In this library, `sorry` markers
 
 ---
 
-## Library Architecture
+## LIBRARY ARCHITECTURE
 
 ### `Primitives/Core.lean`
 The 12 primitives are defined not just as data, but as inductive types that obey strict algebraic laws. We categorize them into three families based on their cardinality:
@@ -49,18 +49,18 @@ The 12 primitives are defined not just as data, but as inductive types that obey
 *   **$\mathcal{F}_4$ (Dimensionality, Relationality, Grammar, Chirality, Protection):** The deep structural invariants.
 *   **$\mathcal{F}_5$ (Topology, Polarity, Criticality, Kinetics):** The dynamic and symmetric modes.
 
-### Axioms of the Crystal
+### AXIOMS OF THE CRYSTAL
 The formalization enforces key cross-primitive constraints that are often overlooked in informal math:
 *   **Axiom B:** Integer winding ($Ω_z$) implies persistent chirality ($Ħ \geq Ħ_A$).
 *   **Axiom C:** Holographic topology ($Þ_O$) requires holographic dimensionality ($Ð_ω$). 
 
-### The Ouroboricity Gates
+### THE OUROBORICITY GATES
 The property of being "self-written"—the $O_\infty$ tier—is not a label but a result of two open gates:
 1.  **Gate 1:** $⊙_ÿ$ Criticality (Self-modeling).
 2.  **Gate 2:** $\text{K} \leq Ç_@$ (Relaxation matches observation).
 Only when both gates are open does a system achieve $\mu \circ \delta = \text{id}$ closure.
 
-### The Lattice of Criticality
+### THE LATTICE OF CRITICALITY
 
 In `Primitives/Lattice.lean`, we formalize the non-standard meet operation for Criticality. Unlike a flat hierarchical scale, Criticality follows an absorption logic. For example, $⊙_ÿ$ (self-modeling) acts as a universal absorber in the meet—representing the structural reality that a self-modeling system remains self-modeling even when coupled to sub-critical observers.
 
@@ -68,19 +68,19 @@ The $O_3$ absorption rule, formalizing the measurement problem, states that $\te
 
 ---
 
-## Applied Formalism: OPN and BSD
+## APPLIED FORMALISM: OPN and BSD
 
 Perhaps the most significant finding in the MillenniumAnkh library is the structural identity between the Odd Perfect Number (OPN) problem and the Birch–Swinnerton-Dyer (BSD) conjecture. In `Primitives/BSD_2adic.lean`, we prove that these two seemingly disparate problems share a common constraint grammar:
 
--   A unique charge-carrier --- The prime factor $p^k$ in OPNs vs. the free rank $\mathbb{Z}^r$ in BSD.
--   A neutral scaffold The --- square factor $m^2$ vs. the torsion group $T$.
--   A global valuation equation --- The $\sigma(n) = 2n$ requirement and the $L$-function vanishing order.
+-   A UNIQUE CHARGE-CARRIER --- The prime factor $p^k$ in OPNs vs. the free rank $\mathbb{Z}^r$ in BSD.
+-   A NEUTRAL SCAFFOLD --- The square factor $m^2$ vs. the torsion group $T$.
+-   A GLOBAL VALUATION EQUATION --- The $\sigma(n) = 2n$ requirement and the $L$-function vanishing order.
 
 By mapping both to a shared structural floor via the `compute_meet` tool, we transition from attacking specific instances of these problems to analyzing the stability of the entire structural class.
 
 ---
 
-## Higher-Order Winding: $ZFC_t$
+## HIGHER-ORDER WINDING: $ZFC_t$
 
 In `Primitives/ZFCt.lean`, the library extends ZFC with Sequentiality, Chirality, and Winding ($ZFC_t$). This allows us to assign every major physical equation—from the Schrödinger equation to the Einstein Field Equations—a 12-primitive address. 
 
