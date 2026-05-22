@@ -72,9 +72,9 @@ The $O_3$ absorption rule, formalizing the measurement problem, states that $\te
 
 Perhaps the most significant finding in the MillenniumAnkh library is the structural identity between the Odd Perfect Number (OPN) problem and the Birch–Swinnerton-Dyer (BSD) conjecture. In `Primitives/BSD_2adic.lean`, we prove that these two seemingly disparate problems share a common constraint grammar:
 
-*   **A unique charge-carrier:** The prime factor $p^k$ in OPNs vs. the free rank $\mathbb{Z}^r$ in BSD.
-*   **A neutral scaffold:** The square factor $m^2$ vs. the torsion group $T$.
-*   **A global valuation equation:** The $\sigma(n) = 2n$ requirement and the $L$-function vanishing order.
+-   A unique charge-carrier --- The prime factor $p^k$ in OPNs vs. the free rank $\mathbb{Z}^r$ in BSD.
+-   A neutral scaffold The --- square factor $m^2$ vs. the torsion group $T$.
+-   A global valuation equation --- The $\sigma(n) = 2n$ requirement and the $L$-function vanishing order.
 
 By mapping both to a shared structural floor via the $\text{compute\_meet}$ tool, we transition from attacking specific instances of these problems to analyzing the stability of the entire structural class.
 
