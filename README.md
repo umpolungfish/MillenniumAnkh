@@ -28,7 +28,7 @@ We do not study these problems to "solve" them in the classical sense. We use th
 At the heart of the library lies the `Imscription` struct. It is the realization of the deterministic imscribing procedure, where Distinction ($\text{Ð}$) and Topology ($\text{Þ}$) co-originate to form the ground of being.
 
 ### MDS Projection: The Catalog in Flux
-Unlike a static list, the MillenniumAnkh catalog is a manifold. Below, 2328 entries are projected via Classical MDS, revealing the underlying tiers of Ouroboricity. Observe the cluster around $\text{O}_{\text{inf}}$—these are systems where the self-modeling gate ($\text{⊙}_{\text{ÿ}}$) is fully open.
+Unlike a static list, the MillenniumAnkh catalog is a manifold. Below, 2328 entries are projected via Classical MDS, revealing the underlying tiers of Ouroboricity. Observe the cluster around $O_\infty$—these are systems where the self-modeling gate ($⊙_ÿ$) is fully open.
 
 ![Primitive Space MDS](syncon_primitive_map_mds.png)
 
