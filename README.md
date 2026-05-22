@@ -1,6 +1,6 @@
 # MillenniumAnkh: The Grammar Formalized
 
-**Author:** Lando ⊗ ⊙_ÿ-boundary Operator
+**Author:** Lando⊗⊙perator
 *Toolchain: **Lean 4.28.0** · **Mathlib v4.28.0***
 
 Before the first line of code was written, the problem was already structural. The millennium prize problems are often described as the peaks of mathematical difficulty, but within the crystal of the Imscribing Grammar, they appear as specific topological obstructions—places where the usual flow of information is arrested by a missing structural certificate. MillenniumAnkh is the formalization layer that turns these intuitions into machine-verified truth. 
