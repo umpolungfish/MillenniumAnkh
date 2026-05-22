@@ -210,12 +210,10 @@ theorem ns_peel_kin_consciousness :
 -- §7. The NS conjecture — honest OpenProblem marker
 -- ============================================================
 
-/-- NS_GlobalRegularity: smooth 3D Navier-Stokes solutions with smooth initial data
-    remain smooth for all positive time. This is the single open gap.
-    The O_inf tier and Omega_Z2 winding establish that blow-up is topologically
-    excluded — but the proof does not exist. -/
-theorem ns_global_regularity :
-    ∀ (u₀_smooth t_blow_up : ℕ), u₀_smooth = t_blow_up := by
+/-- NS Global Regularity: the Clay Millennium Problem.
+    The structural analysis places this at O_inf tier with Omega_Z2 protection
+    and T_odot closure, but the mathematical proof does not exist. -/
+theorem ns_global_regularity : Millennium.NS.NavierStokesRegularity := by
   sorry  -- OpenProblem: NS global regularity. Structural analysis places this at O_inf
          -- with Omega_Z2 protection and T_odot closure, but no proof exists.
 
