@@ -34,16 +34,14 @@ theorem proj_on_allB (n : ℕ) (hn : 0 < n) :
 
 -- The B-join circuit: join all input wires using Belnap join (information order).
 -- join B x = B for any x, so all-B input gives B output.
+-- foldl over List.finRange: well-founded, no Finset.fold typeclass requirements.
 def joinCircuit (n : ℕ) : BelnapCircuit n :=
-  fun v => Finset.univ.fold join Belnap.N (fun i => v i)
+  fun v => (List.finRange n).foldl (fun acc i => join acc (v i)) Belnap.N
 
 -- B propagates through the join circuit: if any wire is B, output is B.
 theorem join_circuit_B_dominant (n : ℕ) (v : Fin n → Belnap) (i : Fin n) (h : v i = Belnap.B) :
-    Finset.univ.fold join Belnap.N (fun j => v j) = Belnap.B := by
-  apply Finset.fold_op_rel_iff_and.mpr
-  · sorry -- requires Finset fold monotonicity; B is top via B_join_absorb
-  · exact fun _ _ hab hbc => by
-      cases hab <;> cases hbc <;> simp [join, B_join_absorb]
+    joinCircuit n v = Belnap.B := by
+  sorry -- List.foldl induction over finRange; B_join_absorb closes once B appears
 
 -- The kernel is a 3-wire Belnap circuit: output = r0 ∧_info r1 ∧_info r2.
 -- On all-B input it returns B — the non-deterministic "both-paths-open" state.
@@ -64,7 +62,9 @@ theorem sustain_never_collapses (n : Nat) :
 -- This is the one-way barrier: classical → B requires Hadamard (not measurement).
 theorem classical_cannot_become_B (qs : QState) (h : qs.q0 = Belnap.T ∨ qs.q0 = Belnap.F)
     (bias : Belnap) : (measureQ0 qs bias).q0 ≠ Belnap.B := by
-  rcases h with rfl | rfl <;> simp [measureQ0]
+  have hne : qs.q0 ≠ Belnap.B := by rcases h with h | h <;> rw [h] <;> decide
+  rw [measure_nonsuper_idempotent qs bias hne]
+  rcases h with h | h <;> rw [h] <;> decide
 
 -- The dialetheia account of P ≠ NP (structural, not a proof of P ≠ NP):
 -- A deterministic measurement sequence (T/F-biased) on a B-state collapses it to

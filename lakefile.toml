@@ -94,5 +94,8 @@ globs = [
   "Imscribing.Paraconsistent.QCI_Sequences",
   "Imscribing.Paraconsistent.QCI_PvsNP_Bridge",
   "Imscribing.Paraconsistent.QCI_SICPOVM_Bridge",
+  "Imscribing.Paraconsistent.Shor.BelnapModExp",
+  "Imscribing.Paraconsistent.Shor.BelnapQFT",
+  "Imscribing.Paraconsistent.Shor.FullPipeline",
 
 ]

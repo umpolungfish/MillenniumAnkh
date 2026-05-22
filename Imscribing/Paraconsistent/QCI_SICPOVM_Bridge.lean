@@ -11,11 +11,16 @@
 
 import Imscribing.Paraconsistent.QuantumClassicalInterface
 import Imscribing.Paraconsistent.QCI_Sequences
+import Mathlib.Data.Fintype.Basic
 
 namespace Imscribing.Paraconsistent.SICPOVM_Bridge
 
 open Belnap
 open Imscribing.Paraconsistent
+
+private instance : Fintype Belnap where
+  elems := {.N, .T, .F, .B}
+  complete x := by cases x <;> simp [Finset.mem_insert, Finset.mem_singleton]
 
 -- ============================================================
 -- §1. Belnap ↔ d=2 Weyl-Heisenberg group bijection
@@ -27,30 +32,21 @@ open Imscribing.Paraconsistent
 -- F → (1,0): shift X          — definite false, amplitude-direction
 -- B → (1,1): combined XZ      — both true and false; maximum displacement = fiducial
 def belnapToWH2 : Belnap → Fin 2 × Fin 2
-  | .N => (⟨0, by norm_num⟩, ⟨0, by norm_num⟩)
-  | .T => (⟨0, by norm_num⟩, ⟨1, by norm_num⟩)
-  | .F => (⟨1, by norm_num⟩, ⟨0, by norm_num⟩)
-  | .B => (⟨1, by norm_num⟩, ⟨1, by norm_num⟩)
+  | .N => ((0 : Fin 2), (0 : Fin 2))
+  | .T => ((0 : Fin 2), (1 : Fin 2))
+  | .F => ((1 : Fin 2), (0 : Fin 2))
+  | .B => ((1 : Fin 2), (1 : Fin 2))
 
 theorem belnapToWH2_injective : Function.Injective belnapToWH2 := by decide
 
-theorem belnap_card_eq_wh2_card :
-    Fintype.card Belnap = Fintype.card (Fin 2 × Fin 2) := by decide
-
-theorem belnapToWH2_bijective : Function.Bijective belnapToWH2 := by
-  refine ⟨belnapToWH2_injective, ?_⟩
-  intro ⟨a, b⟩
-  fin_cases a <;> fin_cases b
-  · exact ⟨.N, rfl⟩
-  · exact ⟨.T, rfl⟩
-  · exact ⟨.F, rfl⟩
-  · exact ⟨.B, rfl⟩
+theorem belnapToWH2_bijective : Function.Bijective belnapToWH2 :=
+  ⟨belnapToWH2_injective, fun ⟨a, b⟩ => by revert a b; decide⟩
 
 -- B maps to (1,1) = XZ: the maximal displacement direction.
-theorem B_is_maximal_displacement : belnapToWH2 Belnap.B = (⟨1, by norm_num⟩, ⟨1, by norm_num⟩) := rfl
+theorem B_is_maximal_displacement : belnapToWH2 Belnap.B = ((1 : Fin 2), (1 : Fin 2)) := rfl
 
 -- N maps to (0,0) = I: the identity / zero-information element.
-theorem N_is_identity : belnapToWH2 Belnap.N = (⟨0, by norm_num⟩, ⟨0, by norm_num⟩) := rfl
+theorem N_is_identity : belnapToWH2 Belnap.N = ((0 : Fin 2), (0 : Fin 2)) := rfl
 
 -- ============================================================
 -- §2. Equiangularity in the information order
@@ -80,9 +76,11 @@ theorem N_meet_absorbs : ∀ x : Belnap, meet Belnap.N x = Belnap.N := by
 -- The information-order distance between any two distinct non-B values is exactly 1
 -- (they differ at exactly one step in the N ≤ T/F ≤ B chain).
 -- This is the equidistance condition analogous to SIC-POVM frame uniformity.
+-- T and F are incomparable (neither ≤ the other), and neither descends to N.
+-- (N ≤ T and N ≤ F hold via n_bot; the non-trivial direction is T ≰ N, F ≰ N.)
 theorem belnap_nonB_equidistant :
     ¬ (Belnap.T ≤ Belnap.F) ∧ ¬ (Belnap.F ≤ Belnap.T) ∧
-    ¬ (Belnap.T ≤ Belnap.N) ∧ ¬ (Belnap.N ≤ Belnap.T) := by
+    ¬ (Belnap.T ≤ Belnap.N) ∧ ¬ (Belnap.F ≤ Belnap.N) := by
   refine ⟨?_, ?_, ?_, ?_⟩ <;> intro h <;> cases h
 
 -- ============================================================
