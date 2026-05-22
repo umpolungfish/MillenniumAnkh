@@ -1,4 +1,31 @@
-BSD/NS Structural Resolutions formalized in Lean + Manuscript updated
+Manuscript revised; NS_Seige + TupleCodec + Paraconsistent Kernel + ZFCₜ incorporated
+=======================================================================
+
+Millennium_Manuscript.md — REVISED (2026-05-22)
+────────────────────────────────────────────────
+Full manuscript update incorporating all repo additions since previous draft.
+
+New sections and additions:
+- Abstract: Paraconsistent Kernel, DAT, Shor O_1, TupleCodec, Siege Theorem added
+- §3: TupleCodec forward-referenced as operational crystal bridge
+- §4.4: PrimitiveConventionalBridge.lean — 16 axioms → 28 native_decide theorems;
+  corrected ouroboricity tiers (conventional-encoding vs IG-structural distinction clarified)
+- §4.5: NS_Resolution.lean full Lean theorem inventory: decide proofs for source O_2†,
+  resolved O_inf, parity gate; rfl proofs for C=1/C=0.5; decide proof for Hamming=8;
+  three peel theorems; 6-channel vs 8-channel reconciliation
+- §4.5: NS_Seige.lean Siege Theorem — FrobeniusRegularityOperator predicate proved by
+  decide; resolution_implies_smoothness_final sorry at exact Clay boundary
+- §5.6 NEW: ZFCₜ — 6-promotion extension of ZFC; d≈6.94; tier O_2†
+- §8 NEW: Paraconsistent Kernel — 24 modules, 0 sorrys, 16 O_inf; DAT; Belnap FOUR;
+  SIC-POVM bridge; 4 Millennium bridges under B-gate; Shor O_1 pipeline;
+  TupleCodec mixed-radix encoder/decoder with WASM ISA and Frobenius wrap
+- §9: native_decide pattern; decide for tiers; rfl for scores; Siege pattern for
+  Clay sorry boundaries
+- §10.4: Updated completed and open goals lists; Shor bottleneck and ZFCₜ Lean
+  integration added as open goals
+
+=======================================================================
+Previous entry (BSD/NS Structural Resolutions):
 =======================================================================
 
 Millennium/BSD_Resolution.lean — NEW FILE
