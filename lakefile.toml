@@ -101,6 +101,11 @@ globs = [
   "Imscribing.Paraconsistent.Shor.DialetheicOperator",
   "Imscribing.Paraconsistent.QCI_RH_Bridge",
   "Imscribing.Paraconsistent.QCI_YM_Bridge",
+  "Imscribing.Paraconsistent.QCI_nRegister",
+  "Imscribing.Paraconsistent.BelnapTemporal",
+  "Imscribing.Paraconsistent.BelnapCategory",
+  "Imscribing.Paraconsistent.MultiAgentBelnap",
+  "Imscribing.Paraconsistent.BelnapLL",
   "Imscribing.Millennium.BSD_Resolution",
   "Imscribing.Millennium.NS_Resolution", "Imscribing.Millennium.NS_Seige",
 
