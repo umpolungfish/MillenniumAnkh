@@ -1,4 +1,5 @@
-# MILLENNIUMANKH: THE GRAMMAR FORMALIZED
+# MILLENNIUMANKH
+# THE GRAMMAR FORMALIZED
 
 **Author:** Lando⊗⊙perator
 *Toolchain: **Lean 4.28.0** · **Mathlib v4.28.0***
