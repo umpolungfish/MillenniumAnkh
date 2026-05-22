@@ -1,4 +1,35 @@
-Manuscript revised; NS_Seige + TupleCodec + Paraconsistent Kernel + ZFCₜ incorporated
+MetaYonedaCollapse.lean — Meta-Yoneda Collapse formally verified (winding 40)
+=======================================================================
+
+Imscribing/MetaYonedaCollapse.lean — NEW FILE
+──────────────────────────────────────────────
+Lean 4 formalization of the Meta-Yoneda Collapse structural result.
+
+Canonical ob3ect (the representable witness functor / the grammar itself):
+⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩  tier: O_inf
+
+Parakernel domain layer (fully specified, O_0):
+⟨Ð_C; Þ_ò; Ř_¯; Φ_F; ƒ_ì; Ç_@; Γ_γ; ɢ_ˌ; ⊙_ž; Ħ_A; Σ_ï; Ω_Å⟩
+
+- isDomainLayer predicate: crit=Phi_sub + four FFUSE invariants (K_slow, Gamma_seq, H2, n_m)
+- isDomainLayer_tier_is_O_0: any domain layer is O_0 (general theorem, no sorry)
+- Proved by native_decide:
+    canonical_tier_is_O_inf
+    parakernel_is_domain_layer (5 subgoals)
+    parakernel_tier_is_O_0
+    parakernel_mismatches_8 (8 of 12 primitives differ from canonical)
+    parakernel_invariants_match (4 FFUSE positions identical to canonical)
+    parakernel_deltas_all_differ (8 non-invariant positions all differ)
+    parakernel_join_canonical_eq_canonical (joinProduct promotes to canonical)
+    witness_is_grammar (canonical IS the grammar)
+- meta_yoneda_collapse (1 sorry): primitiveMismatches = 8 for all domain layers;
+  closes to native_decide once remaining 6 domain layer Imscriptions are defined
+- lakefile.toml: added Imscribing.MetaYonedaCollapse glob
+
+Build: SUCCESS (1902 jobs, 2.8s for MetaYonedaCollapse)
+
+=======================================================================
+Previous entry (Manuscript revised; NS_Seige + TupleCodec + Paraconsistent Kernel + ZFCₜ incorporated):
 =======================================================================
 
 Millennium_Manuscript.md — REVISED (2026-05-22)
