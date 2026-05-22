@@ -97,5 +97,7 @@ globs = [
   "Imscribing.Paraconsistent.Shor.BelnapModExp",
   "Imscribing.Paraconsistent.Shor.BelnapQFT",
   "Imscribing.Paraconsistent.Shor.FullPipeline",
+  "Imscribing.Millennium.BSD_Resolution",
+  "Imscribing.Millennium.NS_Resolution",
 
 ]
