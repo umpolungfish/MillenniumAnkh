@@ -55,14 +55,14 @@ The formalization enforces key cross-primitive constraints that are often overlo
 *   **Axiom C:** Holographic topology ($\text{Þ}_{\text{O}}$) requires holographic dimensionality ($\text{Ð}_{\text{ω}}$). 
 
 ### The Ouroboricity Gates
-The property of being "self-written"—the $\text{O}_{\text{inf}}$ tier—is not a label but a result of two open gates:
-1.  **Gate 1:** $\text{⊙}_{\text{ÿ}}$ Criticality (Self-modeling).
+The property of being "self-written"—the $O_\infty$ tier—is not a label but a result of two open gates:
+1.  **Gate 1:** $⊙_ÿ$ Criticality (Self-modeling).
 2.  **Gate 2:** $\text{K} \leq \text{Ç}_{\text{@}}$ (Relaxation matches observation).
 Only when both gates are open does a system achieve $\mu \circ \delta = \text{id}$ closure.
 
 ### The Lattice of Criticality
 
-In `Primitives/Lattice.lean`, we formalize the non-standard meet operation for Criticality. Unlike a flat hierarchical scale, Criticality follows an absorption logic. For example, $\text{⊙}_{\text{ÿ}}$ (self-modeling) acts as a universal absorber in the meet—representing the structural reality that a self-modeling system remains self-modeling even when coupled to sub-critical observers.
+In `Primitives/Lattice.lean`, we formalize the non-standard meet operation for Criticality. Unlike a flat hierarchical scale, Criticality follows an absorption logic. For example, $⊙_ÿ$ (self-modeling) acts as a universal absorber in the meet—representing the structural reality that a self-modeling system remains self-modeling even when coupled to sub-critical observers.
 
 The $\text{O}_{\text{3}}$ absorption rule, formalizing the measurement problem, states that $\text{tensor}(\text{⊙}_{\text{ÿ}}, \text{⊙}_{\text{3}}) = \text{⊙}_{\text{3}}$. Coupling a self-modeling system to an exceptional measurement point collapses the self-referential gate.
 
