@@ -76,7 +76,7 @@ Perhaps the most significant finding in the MillenniumAnkh library is the struct
 -   A neutral scaffold The --- square factor $m^2$ vs. the torsion group $T$.
 -   A global valuation equation --- The $\sigma(n) = 2n$ requirement and the $L$-function vanishing order.
 
-By mapping both to a shared structural floor via the $\text{compute\_meet}$ tool, we transition from attacking specific instances of these problems to analyzing the stability of the entire structural class.
+By mapping both to a shared structural floor via the $\text{compute_meet}$ tool, we transition from attacking specific instances of these problems to analyzing the stability of the entire structural class.
 
 ---
 
