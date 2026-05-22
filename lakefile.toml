@@ -106,6 +106,8 @@ globs = [
   "Imscribing.Paraconsistent.BelnapCategory",
   "Imscribing.Paraconsistent.MultiAgentBelnap",
   "Imscribing.Paraconsistent.BelnapLL",
+  "Imscribing.Paraconsistent.ParaconsistentTopos",
+  "Imscribing.Paraconsistent.TupleCodec",
   "Imscribing.Millennium.BSD_Resolution",
   "Imscribing.Millennium.NS_Resolution", "Imscribing.Millennium.NS_Seige",
 
