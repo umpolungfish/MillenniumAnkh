@@ -98,6 +98,9 @@ globs = [
   "Imscribing.Paraconsistent.Shor.BelnapModExp",
   "Imscribing.Paraconsistent.Shor.BelnapQFT",
   "Imscribing.Paraconsistent.Shor.FullPipeline",
+  "Imscribing.Paraconsistent.Shor.DialetheicOperator",
+  "Imscribing.Paraconsistent.QCI_RH_Bridge",
+  "Imscribing.Paraconsistent.QCI_YM_Bridge",
   "Imscribing.Millennium.BSD_Resolution",
   "Imscribing.Millennium.NS_Resolution", "Imscribing.Millennium.NS_Seige",
 
