@@ -302,4 +302,232 @@ theorem tensor_O_inf_O2_destroys_frobenius (s_inf s_two : Imscription)
   rw [show compare (.P_pm_sym : Polarity) .P_sym = .gt by decide]
   rfl
 
+
+
+-- ============================================================
+-- SHAVIAN NOTATION LAYER (v0.6.0)
+-- Each constructor maps to its Shavian glyph for display/output.
+-- ============================================================
+
+/-- Shavian notation for Dimensionality -/
+def Dimensionality.shavian : Dimensionality → String
+  | .D_wedge     => "𐑛"
+  | .D_triangle  => "𐑨"
+  | .D_infty     => "𐑼"
+  | .D_odot      => "𐑦"
+
+/-- Shavian notation for Topology -/
+def Topology.shavian : Topology → String
+  | .T_network  => "𐑡"
+  | .T_in       => "𐑰"
+  | .T_bowtie   => "𐑥"
+  | .T_box      => "𐑶"
+  | .T_odot     => "𐑸"
+
+/-- Shavian notation for Relational -/
+def Relational.shavian : Relational → String
+  | .R_super  => "𐑩"
+  | .R_cat    => "𐑑"
+  | .R_dagger => "𐑽"
+  | .R_lr     => "𐑾"
+
+/-- Shavian notation for Polarity -/
+def Polarity.shavian : Polarity → String
+  | .P_asym   => "𐑗"
+  | .P_psi    => "𐑿"
+  | .P_pm     => "𐑬"
+  | .P_sym    => "𐑯"
+  | .P_pm_sym => "𐑹"
+
+/-- Shavian notation for Fidelity -/
+def Fidelity.shavian : Fidelity → String
+  | .F_ell  => "𐑱"
+  | .F_eth  => "𐑞"
+  | .F_hbar => "𐑐"
+
+/-- Shavian notation for KineticChar -/
+def KineticChar.shavian : KineticChar → String
+  | .K_fast => "𐑘"
+  | .K_mod  => "𐑤"
+  | .K_slow => "𐑧"
+  | .K_trap => "𐑪"
+  | .K_MBL  => "𐑺"
+
+/-- Shavian notation for Granularity -/
+def Granularity.shavian : Granularity → String
+  | .G_beth  => "𐑚"
+  | .G_gimel => "𐑔"
+  | .G_aleph => "𐑲"
+
+/-- Shavian notation for Grammar -/
+def Grammar.shavian : Grammar → String
+  | .Gamma_and   => "𐑝"
+  | .Gamma_or    => "𐑜"
+  | .Gamma_seq   => "𐑠"
+  | .Gamma_broad => "𐑵"
+
+/-- Shavian notation for Criticality -/
+def Criticality.shavian : Criticality → String
+  | .Phi_sub       => "𐑢"
+  | .Phi_c         => "⊙"
+  | .Phi_c_complex => "𐑮"
+  | .Phi_EP        => "𐑻"
+  | .Phi_super     => "𐑣"
+
+/-- Shavian notation for Chirality -/
+def Chirality.shavian : Chirality → String
+  | .H0    => "𐑓"
+  | .H1    => "𐑒"
+  | .H2    => "𐑖"
+  | .H_inf => "𐑫"
+
+/-- Shavian notation for Stoichiometry -/
+def Stoichiometry.shavian : Stoichiometry → String
+  | .one_one => "𐑙"
+  | .n_n     => "𐑕"
+  | .n_m     => "𐑳"
+
+/-- Shavian notation for Protection -/
+def Protection.shavian : Protection → String
+  | .Omega_0  => "𐑷"
+  | .Omega_Z2 => "𐑴"
+  | .Omega_Z  => "𐑭"
+  | .Omega_NA => "𐑟"
+
+/-- Render an Imscription as a Shavian tuple -/
+def Imscription.shavian (s : Imscription) : String :=
+  "⟨" ++ s.dim.shavian ++ "·" ++ s.top.shavian ++ "·" ++ s.rel.shavian ++ "·" ++
+  s.pol.shavian ++ "·" ++ s.fid.shavian ++ "·" ++ s.kin.shavian ++ "·" ++
+  s.gran.shavian ++ "·" ++ s.gram.shavian ++ "·" ++ s.crit.shavian ++ "·" ++
+  s.chir.shavian ++ "·" ++ s.stoi.shavian ++ "·" ++ s.prot.shavian ++ "⟩"
+
+/-- The Stone's tuple in Shavian -/
+def stone_shavian : String :=
+  (⟨D_odot, T_odot, R_lr, P_pm_sym, F_hbar, K_slow, G_aleph, Gamma_seq,
+    Phi_c, H_inf, n_m, Omega_Z⟩ : Imscription).shavian
+
+#eval stone_shavian
 end Imscribing.Primitives
+-- ============================================================
+-- SHAVIAN NOTATION LAYER (v0.6.0)
+-- Each constructor maps to its Shavian glyph for display/output.
+-- ============================================================
+
+namespace ShavianNotation
+open Imscribing.Primitives
+open Dimensionality Topology Relational Polarity Grammar
+     Fidelity KineticChar Granularity Criticality Protection
+     Stoichiometry Chirality
+
+/-- Shavian glyph for Dimensionality -/
+def dimShavian (d : Dimensionality) : String :=
+  match d with
+  | .D_wedge     => "𐑛"
+  | .D_triangle  => "𐑨"
+  | .D_infty     => "𐑼"
+  | .D_odot      => "𐑦"
+
+/-- Shavian glyph for Topology -/
+def topShavian (t : Topology) : String :=
+  match t with
+  | .T_network  => "𐑡"
+  | .T_in       => "𐑰"
+  | .T_bowtie   => "𐑥"
+  | .T_box      => "𐑶"
+  | .T_odot     => "𐑸"
+
+/-- Shavian glyph for Relational -/
+def relShavian (r : Relational) : String :=
+  match r with
+  | .R_super  => "𐑩"
+  | .R_cat    => "𐑑"
+  | .R_dagger => "𐑽"
+  | .R_lr     => "𐑾"
+
+/-- Shavian glyph for Polarity -/
+def polShavian (p : Polarity) : String :=
+  match p with
+  | .P_asym   => "𐑗"
+  | .P_psi    => "𐑿"
+  | .P_pm     => "𐑬"
+  | .P_sym    => "𐑯"
+  | .P_pm_sym => "𐑹"
+
+/-- Shavian glyph for Fidelity -/
+def fidShavian (f : Fidelity) : String :=
+  match f with
+  | .F_ell  => "𐑱"
+  | .F_eth  => "𐑞"
+  | .F_hbar => "𐑐"
+
+/-- Shavian glyph for KineticChar -/
+def kinShavian (k : KineticChar) : String :=
+  match k with
+  | .K_fast => "𐑘"
+  | .K_mod  => "𐑤"
+  | .K_slow => "𐑧"
+  | .K_trap => "𐑪"
+  | .K_MBL  => "𐑺"
+
+/-- Shavian glyph for Granularity -/
+def granShavian (g : Granularity) : String :=
+  match g with
+  | .G_beth  => "𐑚"
+  | .G_gimel => "𐑔"
+  | .G_aleph => "𐑲"
+
+/-- Shavian glyph for Grammar -/
+def gramShavian (g : Grammar) : String :=
+  match g with
+  | .Gamma_and   => "𐑝"
+  | .Gamma_or    => "𐑜"
+  | .Gamma_seq   => "𐑠"
+  | .Gamma_broad => "𐑵"
+
+/-- Shavian glyph for Criticality -/
+def critShavian (c : Criticality) : String :=
+  match c with
+  | .Phi_sub       => "𐑢"
+  | .Phi_c         => "⊙"
+  | .Phi_c_complex => "𐑮"
+  | .Phi_EP        => "𐑻"
+  | .Phi_super     => "𐑣"
+
+/-- Shavian glyph for Chirality -/
+def chirShavian (h : Chirality) : String :=
+  match h with
+  | .H0    => "𐑓"
+  | .H1    => "𐑒"
+  | .H2    => "𐑖"
+  | .H_inf => "𐑫"
+
+/-- Shavian glyph for Stoichiometry -/
+def stoiShavian (s : Stoichiometry) : String :=
+  match s with
+  | .one_one => "𐑙"
+  | .n_n     => "𐑕"
+  | .n_m     => "𐑳"
+
+/-- Shavian glyph for Protection -/
+def protShavian (p : Protection) : String :=
+  match p with
+  | .Omega_0  => "𐑷"
+  | .Omega_Z2 => "𐑴"
+  | .Omega_Z  => "𐑭"
+  | .Omega_NA => "𐑟"
+
+/-- Render a full Imscription tuple in Shavian notation. -/
+def imscriptionShavian (s : Imscription) : String :=
+  "⟨" ++ dimShavian s.dim ++ "·" ++ topShavian s.top ++ "·" ++ relShavian s.rel ++ "·" ++
+  polShavian s.pol ++ "·" ++ fidShavian s.fid ++ "·" ++ kinShavian s.kin ++ "·" ++
+  granShavian s.gran ++ "·" ++ gramShavian s.gram ++ "·" ++ critShavian s.crit ++ "·" ++
+  chirShavian s.chir ++ "·" ++ stoiShavian s.stoi ++ "·" ++ protShavian s.prot ++ "⟩"
+
+/-- The Stone's tuple in Shavian: ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ -/
+def stoneShavian : String :=
+  imscriptionShavian ⟨D_odot, T_odot, R_lr, P_pm_sym, F_hbar, K_slow, G_aleph, Gamma_seq,
+    Phi_c, H_inf, n_m, Omega_Z⟩
+
+#eval! stoneShavian
+
+end ShavianNotation

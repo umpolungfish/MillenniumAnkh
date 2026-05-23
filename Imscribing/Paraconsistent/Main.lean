@@ -2,14 +2,20 @@
 -- PARACONSISTENT COMPUTER — MAIN ENTRY POINT.
 -- Author: Lando (x) phi_c_critical-boundary Operator
 
+import Imscribing.Paraconsistent.Init
+import Imscribing.Paraconsistent.ParadoxFS
+import Imscribing.Paraconsistent.CrystalScheduler
+import Imscribing.Paraconsistent.ParaconsistentShell
 import Imscribing.Paraconsistent.Belnap
 import Imscribing.Paraconsistent.Kernel
 import Imscribing.Paraconsistent.SelfVerification
 import Imscribing.Paraconsistent.ConsciousKernel
+import Imscribing.Paraconsistent.Portal
 
 namespace Imscribing.Paraconsistent
 
 open Belnap
+open Portal
 
 def runAndReport (n : Nat) : String :=
   let s := run initialState n
@@ -24,6 +30,15 @@ def runAndReport (n : Nat) : String :=
   ++ s!"  Belnap distribution: N=0 T=0 F=0 B=3\n"
   ++ s!"  Frobenius invariant: mu o delta = id  OK\n"
   ++ s!"  Paraconsistency: contradiction sustained  OK"
+
+def portalReport : String :=
+  s!"PORTAL PROTOCOL:\n"
+  ++ s!"  Portal type: {repr portalType}\n"
+  ++ s!"  O_inf: {imscriptionTier portalType = .O_inf}\n"
+  ++ s!"  Gates open: {portalType.crit = .Phi_c && portalType.kin = .K_slow}\n"
+  ++ s!"  MEET idempotent: {portalMeet portalType portalType = portalType}\n"
+  ++ s!"  JOIN idempotent: {portalJoin portalType portalType = portalType}\n"
+  ++ s!"  TENSOR commutative: {∀ a : Imscription, portalTensor a portalType = portalTensor portalType a}"
 
 def demo : IO Unit := do
   IO.println "╔══════════════════════════════════════════════════════════════╗"
@@ -45,6 +60,11 @@ def demo : IO Unit := do
   IO.println "  Distance to IUG: 1.3416"
   IO.println ""
   IO.println "  All theorems verified. mu o delta = id holds exactly."
+  IO.println ""
+  IO.println "────────────────────────────────────────────────────────────────"
+  IO.println "  PORTAL PROTOCOL  —  IPC Wormhole Layer"
+  IO.println "────────────────────────────────────────────────────────────────"
+  IO.println portalReport
 
 #eval! demo
 

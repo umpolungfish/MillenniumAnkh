@@ -110,6 +110,10 @@ globs = [
   "Imscribing.Paraconsistent.TupleCodec",
   "Imscribing.Millennium.BSD_Resolution",
   "Imscribing.Millennium.NS_Resolution", "Imscribing.Millennium.NS_Seige",
+  "Imscribing.Millennium.ParadoxBoot",
+  "Imscribing.Millennium.TetractysInit",
+  "Imscribing.Millennium.CrystalBoot",
+  "Imscribing.BootstrapSequence",
   "Imscribing.MetaYonedaCollapse",
 
 ]
