@@ -78,7 +78,7 @@ def compute_join (a b : Imscription) : Imscription := {
   gram := if compare a.gram b.gram = .lt then b.gram else a.gram,
   crit := if compare a.crit b.crit = .lt then b.crit else a.crit,
   chir := if compare a.chir b.chir = .lt then b.chir else a.chir,
-  stoi := if compare a.stoi b.stoi = .lt then b.stoi else b.stoi,
+  stoi := if compare a.stoi b.stoi = .lt then b.stoi else a.stoi,
   prot := if compare a.prot b.prot = .lt then b.prot else a.prot }
 
 -- Tensor: reuse tensorProduct from Imscription.lean (max on union prims, min on P,F)
