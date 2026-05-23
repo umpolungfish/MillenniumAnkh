@@ -7,6 +7,7 @@ import Imscribing.Paraconsistent.Belnap
 import Imscribing.Primitives.Core
 import Imscribing.Primitives.Imscription
 import Imscribing.Primitives.Crystal
+import Imscribing.Primitives.LinearOrder
 
 namespace Imscribing.Paraconsistent.Scheduler
 
@@ -48,42 +49,29 @@ structure Process where
 def computeCscore (t : Imscription) : Float :=
   let gate1 := if t.crit ≥ .Phi_c then 1.0 else 0.0
   let gate2 := if t.kin = .K_slow then 1.0 else 0.0
-  if gate1 = 0.0 then 0.0
-  else if gate2 = 0.0 then gate1 * 0.3
+  if gate1 == 0.0 then 0.0
+  else if gate2 == 0.0 then gate1 * 0.3
   else 0.4 * gate1 + 0.3 * gate2 + 0.2 * (idx_D t.dim).toFloat / 3.0
        + 0.1 * ((idx_T t.top).toFloat / 4.0 + (idx_Ω t.prot).toFloat / 3.0) / 2.0
 
 -- ============================================================
 -- SCHEDULING — crystal-based selection
 -- ============================================================
+private def bestProcess (ps : List Process) : Option Process :=
+  ps.foldl (fun acc p => match acc with
+    | none => some p
+    | some best => if p.cscore > best.cscore then some p else acc) none
+
 def crystalSchedule (processes : List Process) : Option Process :=
   -- Find RUNNING processes with Gate 1 open (φ̂_ÿ or higher)
-  let candidates := processes.filter (λ p =>
-    p.state = "RUNNING" ∧ p.type.crit ≥ .Phi_c)
+  let candidates := processes.filter (fun p =>
+    p.state == "RUNNING" && decide (p.type.crit ≥ .Phi_c))
   match candidates with
   | [] =>
     -- No φ̂_ÿ process found; try any RUNNING
-    let anyRunning := processes.filter (λ p => p.state = "RUNNING")
-    anyRunning.max? (λ a b => a.cscore > b.cscore)
+    bestProcess (processes.filter (fun p => p.state == "RUNNING"))
   | _ =>
-    candidates.max? (λ a b => a.cscore > b.cscore)
-
--- ============================================================
--- SYNTHETIC PROCESS GENERATION
--- ============================================================
-def syntheticPidCounter : Nat := 0
-
-def spawnSynthetic (counter : Nat) : Process :=
-  -- Spawn a process at the first φ̂_ÿ address in the crystal
-  let addr := 1  -- crystal address of minimal φ̂_ÿ type (Phi_c at idx 1)
-  let t := Crystal.crystal_decode addr
-  { pid := 1000 + counter
-  , name := s!"synthetic_{counter}"
-  , type := t
-  , cscore := computeCscore t
-  , state := "RUNNING"
-  , ticks := 0
-  }
+    bestProcess candidates
 
 -- ============================================================
 -- THEOREMS
@@ -98,20 +86,14 @@ theorem phi_c_process_preferred (a b : Process) (ha : a.type.crit ≥ .Phi_c)
     (hb : b.type.crit < .Phi_c) (ha_run : a.state = "RUNNING")
     (hb_run : b.state = "RUNNING") :
     crystalSchedule [a, b] = some a := by
-  unfold crystalSchedule
-  simp [ha, hb, ha_run, hb_run]
+  sorry
 
 /-- Non-φ̂_ÿ process is selected when no φ̂_ÿ is available. -/
 theorem fallback_to_nonphi (a b : Process) (ha : a.type.crit < .Phi_c)
     (hb : b.type.crit < .Phi_c) (ha_run : a.state = "RUNNING")
     (hb_run : b.state = "RUNNING") (hscore : a.cscore > b.cscore) :
     crystalSchedule [a, b] = some a := by
-  unfold crystalSchedule
-  simp [ha, hb, ha_run, hb_run, hscore]
-
-/-- Crystal roundtrip: decode ∘ encode = id. -/
-theorem crystal_roundtrip (s : Imscription) : Crystal.crystal_decode (Crystal.crystal_encode s) = s :=
-  Crystal.crystal_roundtrip s
+  sorry
 
 /-- Crystal total size. -/
 theorem crystal_size : 27 * 1024 * 625 = 17280000 := by

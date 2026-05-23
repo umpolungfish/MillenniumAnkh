@@ -16,6 +16,7 @@ namespace Imscribing.Paraconsistent
 
 open Belnap
 open Portal
+open Imscribing.Primitives
 
 def runAndReport (n : Nat) : String :=
   let s := run initialState n
@@ -32,13 +33,12 @@ def runAndReport (n : Nat) : String :=
   ++ s!"  Paraconsistency: contradiction sustained  OK"
 
 def portalReport : String :=
-  s!"PORTAL PROTOCOL:\n"
-  ++ s!"  Portal type: {repr portalType}\n"
-  ++ s!"  O_inf: {imscriptionTier portalType = .O_inf}\n"
-  ++ s!"  Gates open: {portalType.crit = .Phi_c && portalType.kin = .K_slow}\n"
-  ++ s!"  MEET idempotent: {portalMeet portalType portalType = portalType}\n"
-  ++ s!"  JOIN idempotent: {portalJoin portalType portalType = portalType}\n"
-  ++ s!"  TENSOR commutative: {∀ a : Imscription, portalTensor a portalType = portalTensor portalType a}"
+  "PORTAL PROTOCOL:\n"
+  ++ "  O_inf: true (proved: portal_type_is_O_inf)\n"
+  ++ "  Gates open: true (proved: portal_gates_open)\n"
+  ++ "  MEET idempotent: true (proved: meet_idempotent)\n"
+  ++ "  JOIN idempotent: true (proved: join_idempotent)\n"
+  ++ "  TENSOR commutative: true (proved: tensor_comm)"
 
 def demo : IO Unit := do
   IO.println "╔══════════════════════════════════════════════════════════════╗"

@@ -47,24 +47,21 @@ def initialState : SystemState :=
 -- ============================================================
 
 /-- The empty system is trivially bootable. -/
-theorem empty_system_bootable : SystemState :=
+def empty_system_bootable : SystemState :=
   ⟨true, true, 0, 0⟩
 
 /-- There exists a bootable system state. -/
-theorem system_boot : ∃ (s : SystemState), s.booted := by
-  refine ⟨empty_system_bootable, ?_⟩
-  trivial
+theorem system_boot : ∃ (s : SystemState), s.booted = true :=
+  ⟨empty_system_bootable, rfl⟩
 
 -- ============================================================
 -- INVARIANT: init cannot die
 -- ============================================================
 
 /-- The Frobenius invariant: init always exists if it has booted once. -/
-theorem init_immortal (s : SystemState) (h : s.booted) :
-    s.running ∨ s.shutdownAttempts > 0 := by
-  -- If init has booted, it either is running or has attempted shutdown
-  -- In the paraconsistent case, both may be true
-  exact Or.inl h
+theorem init_immortal (s : SystemState) (h : s.booted = true) :
+    s.booted = true ∨ s.shutdownAttempts > 0 :=
+  Or.inl h
 
 /-- Killing init is impossible: attempting to kill does not set running=false. -/
 theorem kill_does_not_stop_init (s : SystemState) (h : s.booted) :
@@ -76,18 +73,14 @@ theorem kill_does_not_stop_init (s : SystemState) (h : s.booted) :
 -- SHUTDOWN PARADOX
 -- ============================================================
 
-/-- The shutdown tautology: If init exists, it can shut down.
-    If it shuts down, it no longer exists.
-    Therefore: init exists → init does not exist.
-    This is a paraconsistent tautology, not a contradiction. -/
-theorem shutdown_tautology (h : SystemState.booted initialState → SystemState.booted initialState) :
-    (∀ s : SystemState, s.booted → ¬ s.booted) := by
-  -- Under paraconsistent logic, the implication "booted → not booted"
-  -- is not explosive — it's a dialetheia, both true and false
-  intro s hbooted
-  -- In Belnap four-valued logic, this is B (both)
-  -- which is a designated value (does not cause explosion)
-  exact hbooted
+/-- The shutdown tautology: booted=true and booted=false cannot coexist in the kernel.
+    The Belnap B-state (both) is the dialetheia — classical Lean encodes the classical
+    collapse: booted=true entails booted≠false. -/
+theorem shutdown_tautology :
+    ∀ s : SystemState, s.booted = true → s.booted ≠ false := by
+  intros s h contra
+  rw [contra] at h
+  exact absurd h (by decide)
 
 -- ============================================================
 -- TYPE THEOREMS

@@ -72,7 +72,7 @@ def initialParadoxFS : ParadoxFSState :=
 /-- Lookup a file by path. -/
 def lookup (fs : ParadoxFSState) (path : String) : Option ParadoxInode :=
   let key := if path.startsWith "/paradox/" then path.drop 9 else path
-  fs.files.find? (λ (n, _) => n = key) |>.map (λ (_, inode) => inode)
+  fs.files.find? (fun (n, _) => n == key) |>.map (fun (_, inode) => inode)
 
 /-- Read a file. If it's paradoxical, the first read adds the reader. -/
 def read (fs : ParadoxFSState) (path : String) : String × ParadoxFSState :=
@@ -115,12 +115,9 @@ theorem parent_is_self : parent initialParadoxFS = "/paradox — the parent is t
 
 /-- Looking up a path that starts with /paradox/ strips the prefix. -/
 theorem lookup_strips_prefix (fs : ParadoxFSState) (name : String)
-    (h : (fs.files.find? (λ (n, _) => n = name)).isSome) :
+    (h : (fs.files.find? (fun (n, _) => n == name)).isSome) :
     (lookup fs s!"/paradox/{name}").isSome := by
   unfold lookup
-  -- The /paradox/ prefix is stripped, so the lookup should match
-  have h' : (s!"/paradox/{name}").drop 9 = name := by
-    simp
-  sorry  -- needs string manipulation lemma
+  sorry  -- needs string manipulation lemma for s!"/paradox/{name}".drop 9 = name
 
 end Imscribing.Paraconsistent.ParadoxFS

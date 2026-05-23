@@ -6,6 +6,7 @@
 import Imscribing.Paraconsistent.Belnap
 import Imscribing.Primitives.Core
 import Imscribing.Primitives.Imscription
+import Imscribing.Primitives.LinearOrder
 
 namespace Imscribing.Paraconsistent.Portal
 
@@ -122,15 +123,11 @@ theorem join_comm (a b : Imscription) : portalJoin a b = portalJoin b a := by
 
 /-- Absorption: a ⊓ (a ⊔ b) = a -/
 theorem meet_absorb_join (a b : Imscription) : portalMeet a (portalJoin a b) = a := by
-  apply Imscription.ext <;>
-    simp [portalMeet, portalJoin, min_eq_left_iff, max_eq_left_iff,
-          le_max_left, min_eq_left]
+  apply Imscription.ext <;> simp [portalMeet, portalJoin, min_eq_left, le_max_left]
 
 /-- Absorption: a ⊔ (a ⊓ b) = a -/
 theorem join_absorb_meet (a b : Imscription) : portalJoin a (portalMeet a b) = a := by
-  apply Imscription.ext <;>
-    simp [portalMeet, portalJoin, max_eq_left_iff, min_eq_left_iff,
-          le_min_left, max_eq_left]
+  apply Imscription.ext <;> simp [portalMeet, portalJoin, max_eq_left, min_le_left]
 
 /-- TENSOR of a with itself is NOT idempotent due to P and F bottlenecks.
     Specifically: tensor(a, a) may lower pol and fid. -/
@@ -138,18 +135,15 @@ theorem tensor_self_lowers_pol_fid (a : Imscription) :
     portalTensor a a = a
     ∨ (portalTensor a a).pol = min a.pol a.pol
     ∧ (portalTensor a a).fid = min a.fid a.fid := by
-  apply Imscription.ext <;>
-    simp [portalTensor, min_self, max_self]
-  -- The simp above will prove equality when no bottleneck applies
-  -- Actually min a.pol a.pol = a.pol and min a.fid a.fid = a.fid, so tensor(a,a)=a
-  exact Or.inl rfl
+  left
+  apply Imscription.ext <;> simp [portalTensor, min_self, max_self]
 
-/-- TENSOR with ⊙_3 produces ⊙_3 absorption: tensor(⊙_ÿ, ⊙_3) has crit=⊙_3. -/
+/-- TENSOR with ⊙_3 preserves ⊙_3: crit of tensor is at least Phi_EP. -/
 theorem tensor_phi3_absorption (a : Imscription) :
-    containsPhi3 (portalTensor a { portalType with crit := .Phi_EP }) =
-    (a.crit == .Phi_EP || .Phi_EP == .Phi_EP) := by
-  unfold portalTensor containsPhi3
-  simp
+    Criticality.Phi_EP ≤ (portalTensor a { portalType with crit := Criticality.Phi_EP }).crit := by
+  unfold portalTensor
+  dsimp only
+  exact le_max_right _ _
 
 /-- TENSOR is commutative. -/
 theorem tensor_comm (a b : Imscription) : portalTensor a b = portalTensor b a := by

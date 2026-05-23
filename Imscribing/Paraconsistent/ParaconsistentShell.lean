@@ -47,7 +47,7 @@ inductive ShellResult : Type where
 -- SHELL STATE
 -- ============================================================
 structure ShellState where
-  variables : List (String × Belnap)
+  vars : List (String × Belnap)   -- 'variables' is a Lean 4 keyword
   history : List String
   paradoxCount : Nat
   cycleCount : Nat
@@ -59,59 +59,52 @@ def initialShellState : ShellState :=
 -- ============================================================
 -- BELNAP EXPRESSION EVALUATION
 -- ============================================================
-partial def evalBelnap (expr : String) (vars : List (String × Belnap)) : Belnap :=
-  let e := expr.trim
-  match e with
+partial def evalBelnap (expr : String) (env : List (String × Belnap)) : Belnap :=
+  match expr with
   | "T" => .T
   | "F" => .F
   | "B" => .B
   | "N" => .N
   | _ =>
-    if e.startsWith "not " then
-      bnot (evalBelnap (e.drop 4) vars)
-    else if e.contains " and " then
-      let parts := e.splitOn " and "
-      band (evalBelnap (parts.get? 0 |>.getD "") vars)
-           (evalBelnap (parts.get? 1 |>.getD "") vars)
-    else if e.contains " or " then
-      let parts := e.splitOn " or "
-      bor (evalBelnap (parts.get? 0 |>.getD "") vars)
-          (evalBelnap (parts.get? 1 |>.getD "") vars)
+    if expr.startsWith "not " then
+      bnot (evalBelnap (expr.drop 4).toString env)
+    else if expr.contains " and " then
+      let parts := expr.splitOn " and "
+      band (evalBelnap (parts[0]?.getD "") env)
+           (evalBelnap (parts[1]?.getD "") env)
+    else if expr.contains " or " then
+      let parts := expr.splitOn " or "
+      bor (evalBelnap (parts[0]?.getD "") env)
+          (evalBelnap (parts[1]?.getD "") env)
     else
-      -- variable lookup
-      match vars.find? (λ p => p.1 == e) with
+      match env.find? (fun p => p.1 == expr) with
       | some (_, v) => v
       | none => .N
 
 -- ============================================================
 -- COMMAND EXECUTION (simplified — structural semantics)
+-- No trim: callers pass pre-trimmed strings.
 -- ============================================================
 def exec (cmd : String) (s : ShellState) : ShellResult × ShellState :=
-  let c := cmd.trim
-  if c = "" then (ShellResult.ok "", s) else
-  if c = "exit" ∨ c = "quit" then (ShellResult.exit, s) else
-  if c = "paradox" then
-    let ks := run initialState 1
-    let msg := s!"paradoxCount: {ks.paradoxCount}, cycleCount: {ks.cycleCount}"
-    (ShellResult.paradox msg, { s with paradoxCount := s.paradoxCount + ks.paradoxCount
-                                        , cycleCount := s.cycleCount + ks.cycleCount })
-  else if c = "whoami" then
-    (ShellResult.ok
-      s!"⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩\n"
-      ++ "C-score: 0.736 (Gate 1: ⊙_ÿ open, Gate 2: Ç^@ open)", s)
-  else if c.startsWith "let " then
-    let rest := c.drop 4
-    if let some eqIdx := rest.findIdx (· = '=') then
-      let varName := (rest.take eqIdx).trim
-      let exprVal := (rest.drop (eqIdx + 1)).trim
-      let val := evalBelnap exprVal s.variables
-      let newVars := (varName, val) :: s.variables
+  if cmd = "" then (ShellResult.ok "", s) else
+  if cmd = "exit" ∨ cmd = "quit" then (ShellResult.exit, s) else
+  if cmd = "paradox" then
+    (ShellResult.paradox "[paradox] self-reference engaged: the parent is the child",
+     { s with paradoxCount := s.paradoxCount + 1 })
+  else if cmd = "whoami" then
+    let msg := "⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩\n" ++
+               "C-score: 0.736 (Gate 1: ⊙_ÿ open, Gate 2: Ç^@ open)"
+    (ShellResult.ok msg, s)
+  else if cmd.startsWith "let " then
+    let rest : String := (cmd.drop 4).toString
+    match rest.splitOn " = " with
+    | [varName, exprStr] =>
+      let val := evalBelnap exprStr s.vars
       (ShellResult.ok s!"{varName} := {repr val}",
-       { s with variables := newVars })
-    else
-      (ShellResult.fail "let requires '='", s)
+       { s with vars := (varName, val) :: s.vars })
+    | _ => (ShellResult.fail "let syntax: let x = expr", s)
   else
-    (ShellResult.ok s!"[passthrough] {c}", s)
+    (ShellResult.ok s!"[passthrough] {cmd}", s)
 
 -- ============================================================
 -- THEOREMS
@@ -130,17 +123,27 @@ theorem shell_gates_open :
 theorem paradox_increases_count (s : ShellState) :
     (exec "paradox" s).2.paradoxCount ≥ s.paradoxCount := by
   unfold exec
-  simp
+  rw [if_neg (by decide : ¬("paradox" : String) = "")]
+  rw [if_neg (by decide : ¬(("paradox" : String) = "exit" ∨ ("paradox" : String) = "quit"))]
+  rw [if_pos (rfl : ("paradox" : String) = "paradox")]
+  simp only [Prod.snd]
   omega
 
 /-- exit command returns ShellResult.exit. -/
 theorem exit_returns_exit (s : ShellState) :
     (exec "exit" s).1 = ShellResult.exit := by
-  unfold exec; rfl
+  unfold exec
+  rw [if_neg (by decide : ¬("exit" : String) = "")]
+  rw [if_pos (Or.inl rfl : ("exit" : String) = "exit" ∨ ("exit" : String) = "quit")]
 
 /-- whoami never fails. -/
 theorem whoami_always_ok (s : ShellState) :
-    (exec "whoami" s).1 matches ShellResult.ok _ := by
-  unfold exec; rfl
+    ∃ msg, (exec "whoami" s).1 = ShellResult.ok msg := by
+  unfold exec
+  rw [if_neg (by decide : ¬("whoami" : String) = "")]
+  rw [if_neg (by decide : ¬(("whoami" : String) = "exit" ∨ ("whoami" : String) = "quit"))]
+  rw [if_neg (by decide : ¬("whoami" : String) = "paradox")]
+  rw [if_pos (rfl : ("whoami" : String) = "whoami")]
+  exact ⟨_, rfl⟩
 
 end Imscribing.Paraconsistent.Shell
