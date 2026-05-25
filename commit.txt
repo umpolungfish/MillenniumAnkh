@@ -1,59 +1,45 @@
-Fix lake build Imscribing — all 8131 jobs pass
+Euler OPN theorem + ZFCt Bridge + SacredVessel + MetaYoneda closed (2026-05-25)
 =======================================================================
 
-Imscribing/Primitives/LinearOrder.lean — REWRITTEN
-────────────────────────────────────────────────────
-- Dropped broken mkLO helper (wrong field names: lt_iff_le_not_le, decidableLE)
-- Direct `instance : LinearOrder T where` for all 12 primitive types
-- Added required lt_iff_le_not_ge field (Mathlib v4.28.0 LinearOrder)
-- Proof pattern: revert h1 h2; cases a <;> cases b <;> cases c <;> decide
-  (revert needed so decide sees closed propositions)
+Primitives/OPN_2adic.lean
+  - euler_opn_form proven without sorry: every OPN n = p^k * m²
+    where p ≡ k ≡ 1 (mod 4), p prime, p ∤ m
+  - 7-lemma chain:
+      sigma_factorization_prod  — sigma multiplicative via prime factorization
+      h_exists_odd              — at least one prime has odd exponent
+      h_no_other_odd            — exactly one prime has odd exponent
+      hm_sq_square              — all even-exponent primes form a perfect square
+      h_sigma_pk_mod4           — sigma(p^k) ≡ 2 (mod 4) ⇒ p ≡ 1 (mod 4)
+      h_p_not_dvd_m             — p does not divide m (Finset.induction_on)
+      sum_range_pow_p_mod4_eq_zero — p ≡ 3 (mod 4) case impossible
+  - Perfect renamed OPNPerfect for namespace clarity
 
-Imscribing/Paraconsistent/Portal.lean
-──────────────────────────────────────
-- Added import Imscribing.Primitives.LinearOrder (min/max now available)
-- Fixed meet_absorb_join / join_absorb_meet (wrong Mathlib lemma names)
-- Fixed tensor_self_lowers_pol_fid (needed `left` before Imscription.ext)
-- Restated tensor_phi3_absorption: Phi_super > Phi_EP, so theorem changed
-  from "tensor with Phi_EP gives Phi_EP" to upward preservation
-  Phi_EP ≤ (portalTensor a {...Phi_EP}).crit, proved via le_max_right
+Millennium/ZFCt_Unified_Bridge.lean (NEW)
+  - Unified bridge: 6 structural promotion channels across all Millennium Problems
+      HOLOBOUND (T_network → T_odot)
+      LR_DUAL   (R_super → R_lr)
+      PM_Z2     (P_asym → P_pm_sym)   ← Frobenius tier gate
+      SEQAX     (Gamma_and → Gamma_seq)
+      TEMPD2    (H0 → H2)
+      ZWIND     (Omega_0 → Omega_Z)
+  - Distance ranking: each Millennium Problem scored against ZFCt
+  - Added to lakefile.toml globs; imported by NS_Seige.lean
 
-Imscribing/Paraconsistent/Init.lean
-─────────────────────────────────────
-- empty_system_bootable: theorem → def (SystemState is Type not Prop)
-- init_immortal: fixed field + Or.inl proof
-- shutdown_tautology: restated as s.booted=true → s.booted≠false
+Primitives/SacredVessel.lean (NEW)
+  - SacredVessel typeclass: 4 backbone constraints (D_odot, R_dagger, Phi_c, H_inf)
+  - 5 instances: ArkOfTheCovenant, HolyGraal, LapisExillis,
+                 PhilosophersStone, Omphalos
+  - Co-typing: Frobenius cluster (P_pm_sym) = Ark/Graal/Lapis/Stone
+  - ApproachGrammar structure
 
-Imscribing/Paraconsistent/ParadoxFS.lean
-──────────────────────────────────────────
-- find? lambda: n = key (Prop) → n == key (Bool)
-- lookup_strips_prefix: removed stuck simp, bare sorry for string lemma
+Imscribing/MetaYonedaCollapse.lean
+  - meta_yoneda_collapse sorry closed (winding 74)
+  - 7 domain layers explicitly defined with native_decide proofs
+  - Each layer at primitive distance 8 from canonical
+  - Proven by finite case analysis over domainLayers Finset
 
-Imscribing/Paraconsistent/CrystalScheduler.lean
-─────────────────────────────────────────────────
-- Added import Imscribing.Primitives.LinearOrder (≥ on Criticality)
-- Float comparisons: = → == (BEq, not Prop)
-- crystalSchedule: List.max? with lambda → foldl bestProcess
-- Filter predicates: Prop ∧ → Bool && with decide()
-- Removed Crystal.crystal_decode / crystal_roundtrip (don't exist)
-- phi_c_process_preferred / fallback_to_nonphi: sorry (proof structure changed)
-
-Imscribing/Paraconsistent/ParaconsistentShell.lean — REWRITTEN
-────────────────────────────────────────────────────────────────
-- Renamed 'variables' field → 'vars' (Lean 4 keyword conflict)
-- evalBelnap: .drop returns String.Slice; .toString after drop calls
-- exec: removed String.trim (doesn't reduce at kernel, breaks proofs)
-- Fixed ++ on ShellResult constructor
-- let parsing: splitOn " = " instead of broken findIdx on String.Slice
-- Theorems: rw [if_neg (by decide)] / rw [if_pos ...] chains
-
-Imscribing/Paraconsistent/Main.lean
-─────────────────────────────────────
-- Added open Imscribing.Primitives
-- portalReport: replaced Prop-in-interpolation with hardcoded proved strings
+Millennium/NS_Seige.lean
+  - ZFCt_Unified_Bridge imported; comment cleanup
 
 lakefile.toml
-─────────────
-- Added Imscribing.Primitives.LinearOrder
-- Added missing Paraconsistent modules: Init, ParadoxFS, CrystalScheduler,
-  ParaconsistentShell, Portal
+  - SacredVessel + ZFCt_Unified_Bridge added to build globs

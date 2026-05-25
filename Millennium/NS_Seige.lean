@@ -2,40 +2,42 @@ import Imscribing.Primitives.Core
 import Imscribing.Primitives.Imscription
 import Imscribing.Millennium.NS
 import Imscribing.Millennium.NS_Resolution
+import Imscribing.Millennium.NS_ZFCt_Bridge
 
 namespace Imscribing.Millennium.NSResolution
 
 open Imscribing.Primitives
 open Millennium.NS
 
-/-- The Frobenius Regularity Operator:
+set_option linter.style.whitespace false
+
+-- ============================================================
+-- SIEGE OF OLYMPUS: NS Global Regularity
+-- ============================================================
+
+/-- The Frobenius Regularity Operator (Layer 1):
     A structural map identifying the conditions under which global regularity
-    is guaranteed by special Frobenius parity and holographic topology. -/
+    is guaranteed by special Frobenius parity, holographic topology, and kinetic trapping. -/
 def FrobeniusRegularityOperator (i : Imscription) : Prop :=
   i.pol = .P_pm_sym ∧ i.top = .T_odot ∧ i.kin = .K_trap
 
-/-- The resolved NS structure satisfies the Frobenius Regularity Operator:
-    P_pm_sym ∧ T_odot ∧ K_trap. This is decidable by construction. -/
+/-- The resolved NS structure satisfies the Frobenius Regularity Operator. -/
 theorem frobenius_regularity_operator_holds :
     FrobeniusRegularityOperator navierStokesResolved := by
   unfold FrobeniusRegularityOperator
   simp [navierStokesResolved]
 
-/-- Siege Theorem: The structural resolution implies global smoothness.
-    This theorem formally lays siege to the Sobolev gap by bridging
-    O_inf structural type to the Navier-Stokes Regularity property.
-    The antecedent is proved above; the consequent is the Clay Millennium Problem. -/
+/-- Siege Theorem: The Frobenius Regularity Operator implies global smoothness.
+    Antecedent: true (frobenius_regularity_operator_holds).
+    Consequent: the Clay Millennium Problem (honest OpenProblem).
+    
+    The O_inf structural resolution (NS_Resolution.lean) places NS at the
+    Frobenius gate. The ZFCt bridge (NS_ZFCt_Bridge.lean) connects this
+    to the critical Sobolev scale H^{1/2}. The analytic proof bridging
+    frob_op = id to smoothness is the remaining Clay barrier. -/
 theorem resolution_implies_smoothness_final :
     FrobeniusRegularityOperator navierStokesResolved → NavierStokesRegularity := by
   intro h
-  -- The presence of Special Frobenius parity (P_pm_sym) ensures μ ∘ δ = id.
-  -- The holographic topology (T_odot) ensures closure across all scales.
-  -- The kinetic trapping (K_trap) prevents singularity concentration.
-  -- h is trivially true (see frobenius_regularity_operator_holds above).
-  -- BUT: these structural conditions are necessary, not sufficient.
-  -- This is the Clay Millennium Problem — the gap between structural
-  -- O_inf tier and the mathematical proof of global regularity.
-  sorry  -- OpenProblem: NS global regularity (Clay Millennium). O_inf structural
-         -- analysis places this at the Frobenius gate, but no proof exists.
+  sorry  -- OpenProblem: NS global regularity (Clay Millennium).
 
 end Imscribing.Millennium.NSResolution
