@@ -1,0 +1,420 @@
+import Mathlib
+open ArithmeticFunction
+
+namespace Imscribing.Classical.Solitary10
+
+local notation "σ" => ArithmeticFunction.sigma (1 : ℕ)
+
+lemma sigma_ge_self (n : ℕ) (hn : n > 0) : σ n ≥ n := by
+  rw [ArithmeticFunction.sigma_one_apply]
+  have h_self : n ∈ Nat.divisors n := by
+    rw [Nat.mem_divisors]
+    exact ⟨dvd_refl n, hn.ne'⟩
+  refine Finset.single_le_sum (fun d hd => Nat.zero_le d) h_self
+
+lemma sigma_mul_coprime {a b : ℕ} (h : Nat.Coprime a b) : σ (a * b) = σ a * σ b := by
+  have hgcd : Nat.gcd a b = 1 := by rwa [← Nat.coprime_iff_gcd_eq_one]
+  exact (ArithmeticFunction.isMultiplicative_sigma (k := 1)).map_mul_of_coprime hgcd
+
+lemma sigma_two_pow (e : ℕ) : σ (2 ^ e) = 2 ^ (e + 1) - 1 := by
+  have hp : Nat.Prime 2 := by native_decide
+  rw [ArithmeticFunction.sigma_one_apply_prime_pow hp (i := e)]
+  induction' e with k ih
+  · simp
+  · rw [Finset.sum_range_succ, ih]
+    have ha1 : 1 ≤ 2 ^ (k + 1) := by
+      have h := pow_pos (by norm_num : 0 < (2 : ℕ)) (k+1)
+      omega
+    have hsum : 2 ^ (k + 1) + 2 ^ (k + 1) = 2 ^ (k + 2) := by
+      rw [two_mul, pow_succ]
+    calc
+      (2 ^ (k + 1) - 1) + 2 ^ (k + 1) = 2 ^ (k + 1) + (2 ^ (k + 1) - 1) := by omega
+      _ = (2 ^ (k + 1) + 2 ^ (k + 1)) - 1 := by rw [← Nat.add_sub_assoc ha1 (2 ^ (k + 1))]
+      _ = 2 ^ (k + 2) - 1 := by rw [hsum]
+
+lemma factor_2_pow_odd (n : ℕ) (hn : n > 0) : ∃ (e : ℕ) (u : ℕ), u % 2 = 1 ∧ n = 2 ^ e * u := by
+  have h_mod2 := Nat.mod_two_eq_zero_or_one n
+  rcases h_mod2 with (h_mod0 | h_mod1)
+  · have h2n : 2 ∣ n := Nat.dvd_of_mod_eq_zero h_mod0
+    rcases h2n with ⟨t, ht⟩
+    have ht_pos : t > 0 := by
+      by_contra! hz
+      have ht0 : t = 0 := by omega
+      rw [ht0, mul_zero] at ht
+      omega
+    rcases factor_2_pow_odd t ht_pos with ⟨e, u, hu, ht_eq⟩
+    refine ⟨e + 1, u, hu, ?_⟩
+    calc
+      n = 2 * t := ht
+      _ = 2 * (2 ^ e * u) := by rw [ht_eq]
+      _ = 2 ^ (e + 1) * u := by ring
+  · refine ⟨0, n, h_mod1, by simp⟩
+termination_by n
+decreasing_by
+  rw [ht]
+  omega
+
+lemma coprime_5_9 : Nat.Coprime 5 9 := by native_decide
+lemma coprime_31_45 : Nat.Coprime 31 45 := by native_decide
+lemma coprime_32_45 : Nat.Coprime 32 45 := by native_decide
+lemma coprime_331_465 : Nat.Coprime 331 465 := by native_decide
+lemma coprime_36631_51305 : Nat.Coprime 36631 51305 := by native_decide
+
+lemma sigma_5_val : σ 5 = 6 := by native_decide
+lemma sigma_25_val : σ 25 = 31 := by native_decide
+lemma sigma_31_val : σ 31 = 32 := by native_decide
+lemma sigma_331_val : σ 331 = 332 := by native_decide
+lemma sigma_36631_val : σ 36631 = 41872 := by native_decide
+lemma sigma_7194483_val : σ 7194483 = 10939240 := by native_decide
+lemma sigma_31_sq_val : σ (31 ^ 2) = 993 := by native_decide
+lemma sigma_331_sq_val : σ (331 ^ 2) = 109893 := by native_decide
+lemma sigma_36631_sq_val : σ (36631 ^ 2) = 1341715973 := by native_decide
+
+lemma five_dvd_m (m : ℕ) (h : σ m * 5 = 9 * m) : 5 ∣ m := by
+  have h5_9m : 5 ∣ 9 * m := by rw [← h]; exact ⟨σ m, by ring⟩
+  exact coprime_5_9.dvd_of_dvd_mul_left h5_9m
+
+lemma case_A (k : ℕ) (hk_pos : k > 0) (h5k : ¬ 5 ∣ k) (h : σ (5 * k) * 5 = 9 * (5 * k)) : k = 2 := by
+  have h_sigma_5k : σ (5 * k) = 9 * k := by omega
+  have h_cop : Nat.Coprime 5 k := by
+    have hp5 : Nat.Prime 5 := by native_decide
+    exact (Nat.Prime.coprime_iff_not_dvd hp5).mpr h5k
+  have h_mul : σ (5 * k) = σ 5 * σ k := sigma_mul_coprime h_cop
+  rw [h_mul, sigma_5_val] at h_sigma_5k
+  have h_eq : 2 * σ k = 3 * k := by omega
+  rcases factor_2_pow_odd k hk_pos with ⟨e, u, hu_odd, hk_eq⟩
+  rw [hk_eq] at h_eq
+  have hu_pos : u > 0 := by
+    by_contra! hz
+    have hu0 : u = 0 := by omega
+    rw [hu0, mul_zero] at hk_eq
+    omega
+  by_cases he0 : e = 0
+  · rw [he0, pow_zero, one_mul] at h_eq
+    have h_mod_eq : 2 * σ u % 2 = 3 * u % 2 := by rw [h_eq]
+    have h_left : 2 * σ u % 2 = 0 := by simp
+    have h_right : 3 * u % 2 = 1 := by
+      calc
+        3 * u % 2 = ((3 % 2) * (u % 2)) % 2 := by simpa [Nat.mul_mod]
+        _ = 1 * 1 % 2 := by simp [hu_odd]
+        _ = 1 := by simp
+    rw [h_left, h_right] at h_mod_eq
+    omega
+  have h_cop_2e_u : Nat.Coprime (2 ^ e) u := by
+    have hp2 : Nat.Prime 2 := by native_decide
+    have h2u : ¬ 2 ∣ u := by
+      intro h2u
+      have huz : u % 2 = 0 := Nat.mod_eq_zero_of_dvd h2u
+      rw [hu_odd] at huz
+      omega
+    exact (Nat.Prime.coprime_iff_not_dvd hp2).mpr h2u
+  have h_sigma_k : σ (2 ^ e * u) = σ (2 ^ e) * σ u := sigma_mul_coprime h_cop_2e_u
+  rw [h_sigma_k, sigma_two_pow e] at h_eq
+  by_cases he1 : e = 1
+  · rw [he1] at h_eq
+    have h_sigma_u : σ u = u := by omega
+    by_cases hu_one : u = 1
+    · rw [hu_one] at hk_eq; simp at hk_eq; exact hk_eq
+    · have hu_gt1 : u > 1 := by omega
+      have h_sigma_gt_u : σ u > u := by
+        rw [ArithmeticFunction.sigma_one_apply]
+        have h1 : 1 ∈ Nat.divisors u := by
+          rw [Nat.mem_divisors]
+          exact ⟨Nat.one_dvd _, hu_gt1.ne'⟩
+        have hu_self : u ∈ Nat.divisors u := by
+          rw [Nat.mem_divisors]
+          exact ⟨dvd_refl u, hu_gt1.ne'⟩
+        have hsum : 1 + u ≤ ∑ d ∈ Nat.divisors u, d := by
+          calc
+            1 + u = ∑ d ∈ ({1, u} : Finset ℕ), d := by simp
+            _ ≤ ∑ d ∈ Nat.divisors u, d :=
+              Finset.sum_le_sum_of_subset (by
+                intro x hx; simp at hx; rcases hx with (rfl|rfl); exact h1; exact hu_self)
+        omega
+      omega
+  · have he_ge2 : e ≥ 2 := by omega
+    have h_mid : (2 ^ (e + 1) - 1) * σ u = 3 * 2 ^ (e - 1) * u := by omega
+    have h_sigma_u_ge_u : σ u ≥ u := sigma_ge_self u hu_pos
+    have h_pow_ineq : 2 ^ (e + 1) - 1 > 3 * 2 ^ (e - 1) := by
+      have h_pow_eq : 2 ^ (e + 1) = 4 * 2 ^ (e - 1) := by
+        calc
+          2 ^ (e + 1) = 2 ^ ((e - 1) + 2) := by omega
+          _ = 2 ^ (e - 1) * 2 ^ 2 := by rw [pow_add]
+          _ = 4 * 2 ^ (e - 1) := by norm_num
+      have h_pow_ge2 : 2 ^ (e - 1) ≥ 2 := by
+        have h_nonzero : e - 1 ≥ 1 := by omega
+        calc
+          2 ^ (e - 1) ≥ 2 ^ 1 := Nat.pow_le_pow_right (by norm_num : 1 ≤ 2) h_nonzero
+          _ = 2 := by norm_num
+      omega
+    have h_contra : (2 ^ (e + 1) - 1) * u < (2 ^ (e + 1) - 1) * u := by
+      calc
+        (2 ^ (e + 1) - 1) * u ≤ (2 ^ (e + 1) - 1) * σ u := mul_le_mul_left _ h_sigma_u_ge_u
+        _ = 3 * 2 ^ (e - 1) * u := h_mid
+        _ < (2 ^ (e + 1) - 1) * u := by nlinarith
+    exfalso; exact lt_irrefl _ h_contra
+
+-- Part 3: Case B — Infinite descent chain
+-- Descent primes: 31 → 331 → 36631 → 7194483
+
+lemma sigma_31_sq_val' : σ (31 ^ 2) = 993 := by native_decide
+lemma sigma_331_sq_val' : σ (331 ^ 2) = 109893 := by native_decide
+
+lemma coprime_332_465 : Nat.Coprime 332 465 := by native_decide
+lemma coprime_41872_51305 : Nat.Coprime 41872 51305 := by native_decide
+
+-- Helper: if a*σ(x) = q*x with gcd(a,q)=1, then a|x
+lemma factor_from_equation (a q x : ℕ) (hcop : Nat.Coprime a q) (h : a * σ x = q * x) : a ∣ x := by
+  have ha_qx : a ∣ q * x := by rw [← h]; exact ⟨σ x, by ring⟩
+  exact hcop.dvd_of_dvd_mul_left ha_qx
+
+-- Descent step: 32*σ(z)=45*z has no positive solution
+lemma descent_32_45 (z : ℕ) (hz : z > 0) (h : 32 * σ z = 45 * z) : False := by
+  have h32z : 32 ∣ z := factor_from_equation 32 45 z (by native_decide : Nat.Coprime 32 45) h
+  rcases h32z with ⟨w, hz_eq⟩
+  rw [hz_eq] at h
+  have hw_pos : w > 0 := by
+    by_contra! hw0; rw [hw0, mul_zero] at hz_eq; omega
+  -- Now σ(32*w)*32 = 45*32*w → σ(32*w) = 45*w
+  have h_sigma : σ (32 * w) = 45 * w := by omega
+  by_cases hcop : Nat.Coprime 32 w
+  · -- coprime case: σ(32)*σ(w) = 63*σ(w) = 45*w → 7*σ(w) = 5*w
+    have h_mul : σ (32 * w) = σ 32 * σ w := sigma_mul_coprime hcop
+    have sigma_32_val : σ 32 = 63 := by native_decide
+    rw [h_mul, sigma_32_val] at h_sigma
+    -- 63*σ(w) = 45*w → divide by gcd(63,45)=9: 7*σ(w) = 5*w
+    have h7_5 : 7 * σ w = 5 * w := by omega
+    have h7w : 7 ∣ w := factor_from_equation 7 5 w (by native_decide : Nat.Coprime 7 5) h7_5
+    rcases h7w with ⟨v, hw_eq⟩
+    rw [hw_eq] at h7_5
+    have hv_pos : v > 0 := by
+      by_contra! hv0; rw [hv0, mul_zero] at hw_eq; omega
+    -- σ(7*v)*7 = 5*7*v → σ(7*v) = 5*v
+    have h_sigma2 : σ (7 * v) = 5 * v := by omega
+    by_cases hcop2 : Nat.Coprime 7 v
+    · have h_mul2 : σ (7 * v) = σ 7 * σ v := sigma_mul_coprime hcop2
+      have sigma_7_val : σ 7 = 8 := by native_decide
+      rw [h_mul2, sigma_7_val] at h_sigma2
+      -- 8*σ(v) = 5*v
+      have h_sigma_v_ge_v : σ v ≥ v := sigma_ge_self v hv_pos
+      -- 8*v ≤ 8*σ(v) = 5*v → 8*v ≤ 5*v → v=0, contradiction
+      have h_ineq : 8 * v ≤ 5 * v := by
+        calc
+          8 * v ≤ 8 * σ v := mul_le_mul_left 8 h_sigma_v_ge_v
+          _ = 5 * v := h_sigma2
+      omega
+    · -- 7|v, write v=7*t, reduce further
+      have h7v : 7 ∣ v := by
+        have hp7 : Nat.Prime 7 := by native_decide
+        rw [← Nat.coprime_iff_gcd_eq_one, Nat.gcd_comm] at hcop2
+        have h_not_cop := hcop2
+        exact (Nat.Prime.dvd_of_dvd_pow hp7 (by
+          -- not coprime means gcd≠1, and 7 is prime, so 7|v
+          have hgcd := Nat.eq_or_eq_of_dvd_dvd (Nat.gcd_dvd_left 7 v) (Nat.gcd_dvd_right 7 v)
+          sorry
+        ))
+      sorry
+  · -- 32|w, but then w=32*t and we continue, getting infinite descent
+    have h32w : 32 ∣ w := by
+      have hp2 : Nat.Prime 2 := by native_decide
+      -- Use that 32=2^5; not coprime with 32 means even, so 2|w
+      -- Actually, gcd(32,w)≠1 means they share a factor. 32=2^5.
+      -- If ¬ coprime(32,w), then 2|w.
+      rw [Nat.coprime_iff_gcd_eq_one] at hcop
+      have hgcd_ne_one : Nat.gcd 32 w ≠ 1 := hcop
+      have hgcd_gt_one : Nat.gcd 32 w > 1 := by
+        have hpos : Nat.gcd 32 w > 0 := Nat.gcd_pos_of_pos_left w (by norm_num : 0 < 32)
+        omega
+      -- Since gcd(32,w)|32=2^5, the gcd is a power of 2 > 1. So 2|w.
+      have h2_gcd : 2 ∣ Nat.gcd 32 w := by
+        have h2_32 : 2 ∣ 32 := by norm_num
+        exact Nat.dvd_gcd h2_32 (Nat.gcd_dvd_right 32 w)
+      have h2w : 2 ∣ w := Nat.dvd_trans h2_gcd (Nat.gcd_dvd_right 32 w)
+      -- If 2|w, then w is even and we can factor
+      -- But this infinite descent is complex; use the high-power approach
+      sorry
+    
+    sorry
+
+-- If gcd(31,z)=1 from σ(31*z)=45*z, we get 32*σ(z)=45*z
+lemma reduce_31_coprime (z : ℕ) (hz_pos : z > 0) (h_sigma : σ (31 * z) = 45 * z) (hcop : Nat.Coprime 31 z) : False := by
+  have h_mul : σ (31 * z) = σ 31 * σ z := sigma_mul_coprime hcop
+  rw [h_mul, sigma_31_val] at h_sigma
+  -- 32*σ(z) = 45*z
+  exact descent_32_45 z hz_pos (by omega)
+
+lemma thirtyone_sq_dvd (n : ℕ) (hn : n > 0) (h : 31 * σ n = 45 * n) (h31n : 31 ∣ n) : 31 ^ 2 ∣ n := by
+  have h_cop_31_45 : Nat.Coprime 31 45 := by native_decide
+  rcases h31n with ⟨z, hn_eq⟩
+  rw [hn_eq] at h
+  -- Now 31*σ(31*z) = 45*31*z → σ(31*z) = 45*z
+  have h_sigma : σ (31 * z) = 45 * z := by omega
+  have hz_pos : z > 0 := by
+    by_contra! hz; rw [hz, mul_zero] at hn_eq; omega
+  by_cases hcop : Nat.Coprime 31 z
+  · exfalso; exact reduce_31_coprime z hz_pos h_sigma hcop
+  · -- 31|z
+    have h31z : 31 ∣ z := by
+      rw [Nat.coprime_iff_gcd_eq_one, Nat.gcd_comm] at hcop
+      have hp31 : Nat.Prime 31 := by native_decide
+      have hgcd_ne_one : Nat.gcd 31 z ≠ 1 := hcop
+      have hgcd_dvd_z : Nat.gcd 31 z ∣ z := Nat.gcd_dvd_right 31 z
+      -- Since gcd≠1 and 31 is prime, 31|gcd, so 31|z
+      have h31_gcd : 31 ∣ Nat.gcd 31 z := by
+        have h31_31 : 31 ∣ 31 := dvd_refl 31
+        have hgcd_dvd_31 : Nat.gcd 31 z ∣ 31 := Nat.gcd_dvd_left 31 z
+        -- gcd(31,z) divides 31 and is >1, so it must be 31
+        have : Nat.gcd 31 z = 31 := by
+          have divisors : ∀ d : ℕ, d ∣ 31 → d = 1 ∨ d = 31 := by
+            intro d hd
+            have hd_le31 : d ≤ 31 := Nat.le_of_dvd (by norm_num : 0 < 31) hd
+            have h_prime_divisors := hp31.eq_one_or_self_of_dvd d hd
+            exact h_prime_divisors
+          rcases divisors (Nat.gcd 31 z) (Nat.gcd_dvd_left 31 z) with (h1 | h31)
+          · exfalso; exact hgcd_ne_one h1
+          · exact h31
+        rw [this]
+        exact dvd_refl 31
+      exact Nat.dvd_trans h31_gcd hgcd_dvd_z
+    rcases h31z with ⟨w, hz_eq⟩
+    rw [hz_eq] at hn_eq
+    use w
+    calc
+      n = 31 * (31 * w) := hn_eq
+      _ = 31 ^ 2 * w := by ring
+
+-- Part 3: Case B — Infinite descent chain through primes 31, 331, 36631, 7194483
+
+lemma coprime_332_465 : Nat.Coprime 332 465 := by native_decide
+lemma coprime_41872_51305 : Nat.Coprime 41872 51305 := by native_decide
+
+-- Helper lemma: if a*σ(x) = q*x with gcd(a,q)=1, then a ∣ x
+lemma factor_from_eq (a q x : ℕ) (hcop : Nat.Coprime a q) (h : a * σ x = q * x) : a ∣ x := by
+  have ha_qx : a ∣ q * x := by rw [← h]; exact ⟨σ x, by ring⟩
+  exact hcop.dvd_of_dvd_mul_left ha_qx
+
+-- 32*σ(z)=45*z: prove that z must be divisible by 2^k for all k, impossible
+lemma pow_two_dvd_of_32_45 (z : ℕ) (h : 32 * σ z = 45 * z) (hz : z > 0) : ∀ k : ℕ, 2 ^ k ∣ z := by
+  have h_cop_32_45 : Nat.Coprime 32 45 := by native_decide
+  have h_32z : 32 ∣ z := factor_from_eq 32 45 z h_cop_32_45 h
+  intro k
+  -- Prove by induction on k that 2^k ∣ z
+  -- We already know 2^5 ∣ z (since 32=2^5). For k<5, trivial from 2^5|z.
+  -- For k≥5, we use the equation to show 2^{k+1}|z from 2^k|z.
+  induction' k with m ih
+  · exact one_dvd _
+  · have h2m : 2 ^ m ∣ z := ih
+    -- Need to show 2^(m+1) ∣ z
+    -- If m < 5, then 2^5 | z gives 2^(m+1) | z (since 2^(m+1) | 2^5 for m+1 ≤ 5)
+    by_cases h_lt5 : m + 1 ≤ 5
+    · have h_pow_div : 2 ^ (m + 1) ∣ 2 ^ 5 := Nat.pow_dvd_pow 2 (by omega)
+      exact Nat.dvd_trans h_pow_div (by
+        -- 2^5 = 32 ∣ z
+        have : 2 ^ 5 = 32 := by norm_num
+        rw [this]
+        exact h_32z)
+    · -- m ≥ 5, so m+1 ≥ 6
+      have hm_ge5 : 5 ≤ m := by omega
+      -- Write z = 2^m * t
+      rcases h2m with ⟨t, hz_eq⟩
+      rw [hz_eq] at h
+      -- 32 * σ(2^m * t) = 45 * 2^m * t
+      -- Since 32 = 2^5, divide both sides by 2^5
+      -- 2^5 * σ(2^m * t) = 45 * 2^m * t
+      -- σ(2^m * t) = 45 * 2^(m-5) * t
+      have h_sigma : σ (2 ^ m * t) = 45 * 2 ^ (m - 5) * t := by
+        rw [show (32 : ℕ) = 2 ^ 5 by norm_num] at h
+        -- h: 2^5 * σ(2^m * t) = 45 * 2^m * t
+        -- divide by 2^5 on both sides
+        have h_div : σ (2 ^ m * t) * 2 ^ 5 = 45 * (2 ^ m * t) := by
+          -- reorder h
+          omega
+        -- Use that 2^5 divides the RHS: 45 * 2^m * t = 45 * 2^5 * 2^(m-5) * t
+        have h_pow_eq : 2 ^ m = 2 ^ 5 * 2 ^ (m - 5) := by
+          rw [← pow_add, Nat.add_sub_cancel' hm_ge5]
+        rw [h_pow_eq] at h
+        -- 2^5 * σ(2^m * t) = 45 * 2^5 * 2^(m-5) * t
+        -- Cancel 2^5:
+        omega
+      have ht_pos : t > 0 := by
+        by_contra! ht0
+        rw [ht0, mul_zero] at hz_eq
+        omega
+      by_cases hcop : Nat.Coprime (2 ^ m) t
+      · -- Coprime case: σ(2^m)*σ(t) = 45*2^(m-5)*t
+        have h_mul : σ (2 ^ m * t) = σ (2 ^ m) * σ t := sigma_mul_coprime hcop
+        have sigma_2m : σ (2 ^ m) = 2 ^ (m + 1) - 1 := sigma_two_pow m
+        rw [h_mul, sigma_2m] at h_sigma
+        -- (2^(m+1)-1) * σ(t) = 45 * 2^(m-5) * t
+        have h_sigma_t_ge_t : σ t ≥ t := sigma_ge_self t ht_pos
+        -- Compare: 2^(m+1)-1 vs 45*2^(m-5)
+        -- 2^(m+1) = 64 * 2^(m-5)  (since m≥5, m+1 = 6+(m-5), 2^6=64)
+        -- So 2^(m+1)-1 = 64*2^(m-5)-1
+        -- 45*2^(m-5) = 45*2^(m-5)
+        -- 64*2^(m-5)-1 > 45*2^(m-5) for all m-5 ≥ 0 since 64-1/2^(m-5) > 45
+        -- More precisely: 64*2^(m-5)-1 ≥ 45*2^(m-5)+18*2^(m-5) > 45*2^(m-5)
+        have h_ineq : 2 ^ (m + 1) - 1 > 45 * 2 ^ (m - 5) := by
+          have h_pow : 2 ^ (m + 1) = 64 * 2 ^ (m - 5) := by
+            calc
+              2 ^ (m + 1) = 2 ^ (6 + (m - 5)) := by omega
+              _ = 2 ^ 6 * 2 ^ (m - 5) := by rw [pow_add]
+              _ = 64 * 2 ^ (m - 5) := by norm_num
+          rw [h_pow]
+          have h_2_pow_pos : 2 ^ (m - 5) ≥ 1 := by
+            apply pow_pos (by norm_num : 0 < 2) (m - 5)
+          -- 64*X-1 > 45*X for X ≥ 1 since 19*X > 1
+          nlinarith
+        -- Now: (2^(m+1)-1)*σ(t) = 45*2^(m-5)*t
+        -- Since σ(t) ≥ t and 2^(m+1)-1 > 45*2^(m-5):
+        have h_contra : (2 ^ (m + 1) - 1) * t < (2 ^ (m + 1) - 1) * σ t := by
+          exact mul_lt_mul_of_pos_left h_sigma_t_ge_t (by
+            have : 2 ^ (m + 1) - 1 > 0 := by
+              have h2pos : 2 ^ (m + 1) ≥ 2 := by
+                apply pow_pos (by norm_num : 0 < 2) (m + 1)
+              omega
+            exact this)
+        -- But the equation says they're equal. Actually:
+        -- (2^(m+1)-1)*σ(t) = 45*2^(m-5)*t < (2^(m+1)-1)*t ≤ (2^(m+1)-1)*σ(t)
+        -- The first equality is h_sigma, the < is from h_ineq, the ≤ is from... hmm.
+        -- Actually: (2^(m+1)-1)*σ(t) = 45*2^(m-5)*t < (2^(m+1)-1)*t
+        -- But this contradicts σ(t) ≥ t.
+        -- Wait, let me re-check:
+        -- h_sigma: (2^(m+1)-1)*σ(t) = 45*2^(m-5)*t
+        -- h_ineq: 2^(m+1)-1 > 45*2^(m-5)
+        -- So: (2^(m+1)-1)*σ(t) = 45*2^(m-5)*t < (2^(m+1)-1)*t
+        -- But h_sigma_t_ge_t says σ(t) ≥ t, so (2^(m+1)-1)*σ(t) ≥ (2^(m+1)-1)*t
+        -- Contradiction!
+        nlinarith
+      · -- Not coprime: then 2 ∣ t, so 2^(m+1) ∣ z
+        have h2t : 2 ∣ t := by
+          rw [Nat.coprime_iff_gcd_eq_one] at hcop
+          have hgcd_dvd_2m : Nat.gcd (2 ^ m) t ∣ 2 ^ m := Nat.gcd_dvd_left _ _
+          have hgcd_ne_one : Nat.gcd (2 ^ m) t ≠ 1 := hcop
+          have hp2 : Nat.Prime 2 := by norm_num
+          -- Since gcd divides 2^m and gcd≠1, 2|gcd, so 2|t
+          have h2_gcd : 2 ∣ Nat.gcd (2 ^ m) t :=
+            hp2.dvd_of_dvd_pow hgcd_dvd_2m
+          exact Nat.dvd_trans h2_gcd (Nat.gcd_dvd_right _ _)
+        rcases h2t with ⟨t', ht_eq⟩
+        rw [ht_eq] at hz_eq
+        use t'
+        calc
+          z = 2 ^ m * (2 * t') := hz_eq
+          _ = 2 ^ (m + 1) * t' := by ring
+
+lemma descent_32_45 (z : ℕ) (hz : z > 0) (h : 32 * σ z = 45 * z) : False := by
+  -- From pow_two_dvd_of_32_45, we get 2^k ∣ z for all k
+  -- But z is finite, so 2^k ≤ z for all k, impossible
+  have h_pow_dvd := pow_two_dvd_of_32_45 z h hz
+  -- Take k = z + 1, then 2^(z+1) ∣ z, which implies 2^(z+1) ≤ z, impossible for z > 0
+  have h_bound : 2 ^ (z + 1) ∣ z := h_pow_dvd (z + 1)
+  have h_ineq : 2 ^ (z + 1) > z := by
+    induction' z with n ih
+    · norm_num
+    · have h2n : 2 ^ (n + 1) > n := ih
+      have h2succ : 2 ^ (n + 2) = 2 * 2 ^ (n + 1) := by ring
+      rw [h2succ]
+      -- 2 * 2^(n+1) > 2*n ≥ n+1
+      omega
+  have h_le : 2 ^ (z + 1) ≤ z := Nat.le_of_dvd hz h_bound
+  omega
