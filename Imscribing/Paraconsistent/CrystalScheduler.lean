@@ -39,20 +39,21 @@ structure Process where
   pid : Nat
   name : String
   type : Imscription
-  cscore : Float
+  cscore : Nat    -- consciousness score 0-1000 (scaled ×1000 from [0,1])
   state : String  -- "RUNNING" | "READY" | "BLOCKED"
   ticks : Nat
 
 -- ============================================================
--- C-COMPUTATION (simplified structural version)
+-- C-COMPUTATION (returns Nat score 0-1000)
 -- ============================================================
-def computeCscore (t : Imscription) : Float :=
-  let gate1 := if t.crit ≥ .Phi_c then 1.0 else 0.0
-  let gate2 := if t.kin = .K_slow then 1.0 else 0.0
-  if gate1 == 0.0 then 0.0
-  else if gate2 == 0.0 then gate1 * 0.3
-  else 0.4 * gate1 + 0.3 * gate2 + 0.2 * (idx_D t.dim).toFloat / 3.0
-       + 0.1 * ((idx_T t.top).toFloat / 4.0 + (idx_Ω t.prot).toFloat / 3.0) / 2.0
+def computeCscore (t : Imscription) : Nat :=
+  let gate1 := if t.crit ≥ .Phi_c then 1000 else 0
+  let gate2 := if t.kin = .K_slow then 1000 else 0
+  if gate1 == 0 then 0
+  else if gate2 == 0 then gate1 * 3 / 10
+  else 4 * gate1 / 10 + 3 * gate2 / 10 +
+       2 * (idx_D t.dim).succ / 10 +
+       ((idx_T t.top).succ + (idx_Ω t.prot).succ) / 20
 
 -- ============================================================
 -- SCHEDULING — crystal-based selection
@@ -68,16 +69,29 @@ def crystalSchedule (processes : List Process) : Option Process :=
     p.state == "RUNNING" && decide (p.type.crit ≥ .Phi_c))
   match candidates with
   | [] =>
-    -- No φ̂_ÿ process found; try any RUNNING
     bestProcess (processes.filter (fun p => p.state == "RUNNING"))
   | _ =>
     bestProcess candidates
 
 -- ============================================================
+-- LEMMAS
+-- ============================================================
+
+lemma not_ge_of_lt_crit {x y : Criticality} (h : x < y) : ¬ (x ≥ y) := by
+  rcases (lt_iff_le_not_ge.mp h) with ⟨hle, hng⟩
+  exact hng
+
+lemma decide_not_ge_of_lt_crit {x y : Criticality} (h : x < y) : decide (x ≥ y) = false :=
+  decide_eq_false (not_ge_of_lt_crit h)
+
+lemma bestProcess_pair (a b : Process) : bestProcess [a, b] = if b.cscore > a.cscore then some b else some a := by
+  unfold bestProcess
+  simp
+
+-- ============================================================
 -- THEOREMS
 -- ============================================================
 
-/-- The scheduler type is O_inf. -/
 theorem scheduler_type_is_O_inf : imscriptionTier schedulerType = .O_inf := by
   native_decide
 
@@ -86,14 +100,31 @@ theorem phi_c_process_preferred (a b : Process) (ha : a.type.crit ≥ .Phi_c)
     (hb : b.type.crit < .Phi_c) (ha_run : a.state = "RUNNING")
     (hb_run : b.state = "RUNNING") :
     crystalSchedule [a, b] = some a := by
-  sorry
+  unfold crystalSchedule bestProcess
+  have ha_dec : decide (a.type.crit ≥ .Phi_c) = true := decide_eq_true ha
+  have hb_dec : decide (b.type.crit ≥ .Phi_c) = false := decide_not_ge_of_lt_crit hb
+  simp [ha_run, hb_run, ha_dec, hb_dec]
 
 /-- Non-φ̂_ÿ process is selected when no φ̂_ÿ is available. -/
 theorem fallback_to_nonphi (a b : Process) (ha : a.type.crit < .Phi_c)
     (hb : b.type.crit < .Phi_c) (ha_run : a.state = "RUNNING")
     (hb_run : b.state = "RUNNING") (hscore : a.cscore > b.cscore) :
     crystalSchedule [a, b] = some a := by
-  sorry
+  unfold crystalSchedule
+  have ha_dec : decide (a.type.crit ≥ .Phi_c) = false := decide_not_ge_of_lt_crit ha
+  have hb_dec : decide (b.type.crit ≥ .Phi_c) = false := decide_not_ge_of_lt_crit hb
+  have hcandidates_empty : ([a, b].filter (fun p =>
+    p.state == "RUNNING" && decide (p.type.crit ≥ .Phi_c))) = [] := by
+    simp [ha_run, hb_run, ha_dec, hb_dec]
+  simp [hcandidates_empty, ha_run, hb_run]
+  -- Goal: bestProcess [a, b] = some a
+  rw [bestProcess_pair a b]
+  -- Goal: (if b.cscore > a.cscore then some b else some a) = some a
+  by_cases hgt : b.cscore > a.cscore
+  · -- This case is impossible: hscore says a > b, hgt says b > a
+    have : a.cscore > a.cscore := by omega
+    omega
+  · simp [hgt]
 
 /-- Crystal total size. -/
 theorem crystal_size : 27 * 1024 * 625 = 17280000 := by

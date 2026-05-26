@@ -22,7 +22,7 @@ def paradoxFSType : Imscription := {
   pol  := .P_pm_sym
   fid  := .F_hbar
   kin  := .K_slow
-  gran := .G_aleph
+  gran  := .G_aleph
   gram := .Gamma_seq
   crit := .Phi_c
   chir := .H2
@@ -66,12 +66,59 @@ def initialParadoxFS : ParadoxFSState :=
   }
 
 -- ============================================================
+-- HELPER LEMMAS
+-- ============================================================
+
+private lemma take_append_length (l1 l2 : List α) : (l1 ++ l2).take l1.length = l1 := by
+  induction l1 with
+  | nil => simp
+  | cons h t ih => simp [ih]
+
+private lemma drop_length_append (l1 l2 : List α) : (l1 ++ l2).drop l1.length = l2 := by
+  induction l1 with
+  | nil => simp
+  | cons h t ih => simp [ih]
+
+/-- toString is identity for String (definitional). -/
+private lemma toString_toList (s : String) : (toString s).toList = s.toList := rfl
+
+private lemma paradox_toList (name : String) :
+    (s!"/paradox/{name}").toList = "/paradox/".toList ++ name.toList := by
+  have h : s!"/paradox/{name}" = "/paradox/" ++ name := rfl
+  rw [h]; simp
+
+private lemma take_9_paradox (name : String) :
+    ((s!"/paradox/{name}").toList).take 9 = "/paradox/".toList := by
+  rw [paradox_toList]
+  have h_len : "/paradox/".toList.length = 9 := by native_decide
+  rw [← h_len]
+  exact take_append_length "/paradox/".toList name.toList
+
+private lemma drop_9_paradox (name : String) :
+    String.ofList ((s!"/paradox/{name}").toList.drop 9) = name := by
+  apply String.ext
+  calc
+    (String.ofList ((s!"/paradox/{name}").toList.drop 9)).toList =
+      ((s!"/paradox/{name}").toList.drop 9) := by simp
+    _ = name.toList := by
+      rw [paradox_toList]
+      have h_len : "/paradox/".toList.length = 9 := by native_decide
+      rw [← h_len]
+      exact drop_length_append "/paradox/".toList name.toList
+    _ = name.toList := rfl
+
+-- ============================================================
 -- OPERATIONS
 -- ============================================================
 
-/-- Lookup a file by path. -/
+/-- Lookup a file by path, stripping the /paradox/ prefix. -/
 def lookup (fs : ParadoxFSState) (path : String) : Option ParadoxInode :=
-  let key := if path.startsWith "/paradox/" then path.drop 9 else path
+  let pathList := path.toList
+  let prefixList := "/paradox/".toList
+  let key := if pathList.take prefixList.length = prefixList then
+    String.ofList (pathList.drop prefixList.length)
+  else
+    path
   fs.files.find? (fun (n, _) => n == key) |>.map (fun (_, inode) => inode)
 
 /-- Read a file. If it's paradoxical, the first read adds the reader. -/
@@ -86,7 +133,7 @@ def read (fs : ParadoxFSState) (path : String) : String × ParadoxFSState :=
 
 /-- List directory contents. -/
 def ls (fs : ParadoxFSState) (path : String) : List String :=
-  fs.files.filterMap (λ (n, inode) =>
+  fs.files.filterMap (fun (n, inode) =>
     if inode.kind = .directory then some n else none)
 
 /-- The parent (..) always resolves to /paradox. -/
@@ -118,6 +165,20 @@ theorem lookup_strips_prefix (fs : ParadoxFSState) (name : String)
     (h : (fs.files.find? (fun (n, _) => n == name)).isSome) :
     (lookup fs s!"/paradox/{name}").isSome := by
   unfold lookup
-  sorry  -- needs string manipulation lemma for s!"/paradox/{name}".drop 9 = name
+  -- expand let bindings
+  dsimp
+  -- resolve toString to identity
+  simp [toString_toList]
+  -- now we have: (fs.files.find? (fun (n, _) => n == if ... then ... else ...) |>.map ...).isSome
+  have h_len : "/paradox/".toList.length = 9 := by native_decide
+  have h_take : ((s!"/paradox/{name}").toList).take 9 = "/paradox/".toList := take_9_paradox name
+  have h_drop : String.ofList ((s!"/paradox/{name}").toList.drop 9) = name := drop_9_paradox name
+  -- rewrite the if condition to true and the key to name
+  rw [h_len] at *
+  -- Now the condition is: ...take 9... = "/paradox/".toList
+  -- But we have h_take for that. However, the expression in the goal may have been simplified
+  -- by the previous simp step. Let me check what's left.
+  -- Use `simpa` with the remaining lemmas
+  simpa [h_take, h_drop] using h
 
 end Imscribing.Paraconsistent.ParadoxFS
