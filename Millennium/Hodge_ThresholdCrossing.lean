@@ -171,8 +171,8 @@ structure Promotion_Phi_c_self_modeling where
 
 theorem phi_closure_triggers_chain_reaction :
     (Promotion_Phi_closure) →
-    (Promotion_R_bidirectionality × Promotion_Phi_c_self_modeling) :=
-  fun _ => (⟨trivial⟩, ⟨trivial⟩)
+    (Promotion_R_bidirectionality ∧ Promotion_Phi_c_self_modeling) :=
+  fun _ => ⟨⟨trivial⟩, ⟨trivial⟩⟩
 -- ============================================================
 -- §2. REMAINING PROMOTIONS — Structural consequences
 -- ============================================================
@@ -444,12 +444,12 @@ theorem promotion_path_is_valid : True := by
 -/
 theorem crossing_theorem
     (hP1 : Promotion_Phi_closure) :
-    Promotion_R_bidirectionality ×
-    Promotion_Phi_c_self_modeling ×
-    Promotion_F_quantum ×
-    Promotion_Gamma_sequential ×
-    Promotion_H_2step ×
-    Promotion_Sigma_unity ×
+    Promotion_R_bidirectionality ∧
+    Promotion_Phi_c_self_modeling ∧
+    Promotion_F_quantum ∧
+    Promotion_Gamma_sequential ∧
+    Promotion_H_2step ∧
+    Promotion_Sigma_unity ∧
     Promotion_T_crossing := by
   -- P1 → P2+P3 (the chain reaction)
   have hp2p3 := phi_closure_triggers_chain_reaction hP1
@@ -464,7 +464,7 @@ theorem crossing_theorem
   have hp7 : Promotion_Sigma_unity := ⟨trivial⟩
   -- P8 is structural (Frobenius creates crossing)
   have hp8 : Promotion_T_crossing := ⟨trivial⟩
-  exact ⟨hp2, hp3, hp4, hp5, hp6, hp7, hp8⟩
+  exact ⟨hp2, ⟨hp3, ⟨hp4, ⟨hp5, ⟨hp6, ⟨hp7, hp8⟩⟩⟩⟩⟩⟩
 
 /-- THE PATH IS COMPOSABLE: the promotion steps can be applied in order,
     each depending on the previous ones, and the composition is type-correct.

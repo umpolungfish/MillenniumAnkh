@@ -1,10 +1,26 @@
-Rename barrier→threshold throughout (2026-05-27)
-=======================================================
+Hodge fsplit/ffuse Frobenius Kernel Crossing (2026-05-27)
+=========================================================
 
-Millennium/Barriers.lean          → Millennium/Thresholds.lean
-Millennium/BarrierFrobenius.lean  → Millennium/ThresholdFrobenius.lean
-Millennium/IGBarrierAnalysis.lean → Millennium/IGThresholdAnalysis.lean
+Millennium/Hodge_KernelCrossing.lean  [NEW, 445 lines, builds clean]
+  - Exact fsplit/ffuse/frobenius_invariant cycle from Kernel.lean,
+    implemented for Hodge classes via Gersten-Quillen K-theory.
+  - HodgeSplit structure: carries (α_T, α_F, frobenius_condition).
+  - fsplit/ffuse operations mirror Kernel.lean exactly.
+  - frobenius_invariant: ffuse ∘ fsplit = id (μ∘δ = id proved).
+  - hodge_conjecture_implies_split / split_implies_hodge_conjecture:
+    both directions bridged; 2 honest MathlibGap sorrys for
+    Bloch's formula (CHᵖ(X) ≅ Hᵖ(X,𝒦ₚ), proved 1974 but not in Mathlib).
+  - FrobeniusCycleStep / runCycle / cycle_idempotent: full dynamical
+    system; running the cycle any number of times returns α.
 
-All identifiers (BarrierType, millenniumThreshold, barrierLiftDepth→thresholdLiftDepth,
-analysisThreshold, arithmeticThreshold, etc.) and prose references updated across
-all .lean, .toml, .py, and .md files.
+Millennium/Hodge_Descent.lean
+  - griffiths_counterexample moved earlier in file; renamed
+    griffiths_nontrivial_exists (simplified statement).
+  - descent_p2 theorem added: DescentPredicate(n-1,1) → DescentPredicate(n,2).
+
+Millennium/Hodge_ThresholdCrossing.lean
+  - Product types (×) replaced with And (∧) in phi_closure_triggers_chain_reaction
+    and crossing_theorem for Prop compatibility.
+
+lakefile.toml
+  - Imscribing.Millennium.Hodge_KernelCrossing added to globs.

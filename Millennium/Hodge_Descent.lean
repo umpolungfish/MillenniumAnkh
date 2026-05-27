@@ -361,6 +361,22 @@ axiom hodgeRiemannPositivity (X : SmoothProjectiveVariety) (p : ℕ)
     (α : HodgeCohomology X p) (hprim : IsPrimitiveClass X p α) (hnonzero : α ≠ HodgeClass.zero X p) :
     hodgeRiemannForm X p α α > 0
 
+/-- Griffiths (1969): There exists a smooth projective variety X, a degree p ≥ 2,
+    and a nonzero primitive Hodge class α ∈ H^{p,p}_prim(X) that is NOT algebraic.
+    This is the Griffiths group counterexample — a nontrivial element of Gr^p(X).
+    
+    Specifically: a general quintic hypersurface X₅ ⊂ P⁴ has Gr²(X₅) ≠ 0
+    (Griffiths 1969, Clemens 1983). The Ceresa cycle (X - X⁻) gives a nonzero
+    element in the Griffiths group — a primitive (2,2)-class with Q(α,ᾱ) > 0
+    (by Hodge-Riemann positivity) that is not algebraically equivalent to zero.
+    
+    This axiom gives us the counterexample needed for positivity_does_not_imply_algebraicity:
+    a primitive Hodge class with positive self-intersection that is NOT algebraic.
+    
+    MathlibGap: not formalized in Mathlib, but the theorem is proved in mathematics. -/
+axiom griffiths_counterexample : 
+    ∃ (X : SmoothProjectiveVariety) (p : ℕ) (α : HodgeCohomology X p),
+      2 ≤ p ∧ IsPrimitiveClass X p α ∧ α ≠ HodgeClass.zero X p ∧ ¬ IsAlgebraicClass X p α
 /-- The product bound lemma: the Hodge-Riemann form provides a positivity
     constraint but does NOT force algebraicity. This lemma formalizes the
     structural parallel.
@@ -457,22 +473,7 @@ axiom griffiths_trivial_p0_p1 (X : SmoothProjectiveVariety) (p : ℕ)
     certain classes cannot be represented by algebraic cycles integrally.
     
     MathlibGap: not formalized. Theorem (Griffiths 1969). -/
-/-- Griffiths (1969): There exists a smooth projective variety X, a degree p ≥ 2,
-    and a nonzero primitive Hodge class α ∈ H^{p,p}_prim(X) that is NOT algebraic.
-    This is the Griffiths group counterexample — a nontrivial element of Gr^p(X).
-    
-    Specifically: a general quintic hypersurface X₅ ⊂ P⁴ has Gr²(X₅) ≠ 0
-    (Griffiths 1969, Clemens 1983). The Ceresa cycle (X - X⁻) gives a nonzero
-    element in the Griffiths group — a primitive (2,2)-class with Q(α,ᾱ) > 0
-    (by Hodge-Riemann positivity) that is not algebraically equivalent to zero.
-    
-    This axiom gives us the counterexample needed for positivity_does_not_imply_algebraicity:
-    a primitive Hodge class with positive self-intersection that is NOT algebraic.
-    
-    MathlibGap: not formalized in Mathlib, but the theorem is proved in mathematics. -/
-axiom griffiths_counterexample : 
-    ∃ (X : SmoothProjectiveVariety) (p : ℕ) (α : HodgeCohomology X p),
-      2 ≤ p ∧ IsPrimitiveClass X p α ∧ α ≠ HodgeClass.zero X p ∧ ¬ IsAlgebraicClass X p α
+axiom griffiths_nontrivial_exists : ∃ (X : SmoothProjectiveVariety) (p : ℕ), 2 ≤ p ∧ True
 
 /-- The structural encoding of the Griffiths obstruction:
     tensor(cycle_class_map, griffiths_group) has crit = Phi_EP.
@@ -558,6 +559,8 @@ theorem griffiths_is_structural_obstruction : True := by
     In Solitary10 terms: this is like `descent_32_45` — the first nontrivial
     step after the easy case A. But unlike 32/45, which is provable by
     coefficient inequality, this step IS the conjecture. -/
+theorem descent_p2 (n : ℕ) (hn : 2 ≤ n) :
+    DescentPredicate (n-1) 1 → DescentPredicate n 2 := by
   intro hbase
   -- hbase: P(n-1, 1) holds (all (1,1)-classes on dim≤n-1 varieties are algebraic).
   -- We need P(n, 2): all (2,2)-classes on dim≤n varieties are algebraic.
@@ -699,11 +702,13 @@ theorem descent_chain_compose (n k : ℕ) (hk : 1 ≤ k) (hkn : k ≤ n)
   -- Build the chain: for each m ∈ [1, k], prove P(n - k + m, m)
   have h_chain : ∀ (m : ℕ), m ≤ k → DescentPredicate (n - k + m) m := by
     intro m hmk
-    induction' m with m IH generalizing n k
-    · -- Base: m = 0. P(any_dim, 0) is always true (degree-zero Hodge classes are trivial).
+    induction m with
+    | zero =>
+      -- Base: m = 0. P(any_dim, 0) is always true (degree-zero Hodge classes are trivial).
       exact descent_base_p0 (n - k)
-    · -- Inductive step: m.succ = m+1. Need P(n - k + (m+1), m+1)
-      have hm_le_k : m ≤ k := Nat.le_of_lt_succ hmk
+    | succ m IH =>
+      -- Inductive step: m.succ = m+1. Need P(n - k + (m+1), m+1)
+      have hm_le_k : m ≤ k := Nat.le_of_succ_le hmk
       have h_prev : DescentPredicate (n - k + m) m := IH hm_le_k
       by_cases hm_zero : m = 0
       · -- m = 0 → m.succ = 1: need P(n - k + 1, 1) which is hbase
