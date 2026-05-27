@@ -127,5 +127,6 @@ globs = [
   "Imscribing.Millennium.CrystalBoot",
   "Imscribing.BootstrapSequence",
   "Imscribing.MetaYonedaCollapse",
+  "Imscribing.Millennium.Hodge_ThresholdCrossing",
 
 ]
