@@ -34,7 +34,7 @@ theorem frobenius_regularity_operator_holds :
     The O_inf structural resolution (NS_Resolution.lean) places NS at the
     Frobenius gate. The ZFCt bridge (NS_ZFCt_Bridge.lean) connects this
     to the critical Sobolev scale H^{1/2}. The analytic proof bridging
-    frob_op = id to smoothness is the remaining Clay barrier. -/
+    frob_op = id to smoothness is the remaining Clay threshold. -/
 theorem resolution_implies_smoothness_final :
     FrobeniusRegularityOperator navierStokesResolved → NavierStokesRegularity := by
   intro h

@@ -75,10 +75,10 @@ theorem mass_gap_structural (qs : QState) (h : qs.q0 = Belnap.B) :
   mass_gap_positive qs h
 
 -- ============================================================
--- §4. YM barrier as Belnap N→B gap
+-- §4. YM threshold as Belnap N→B gap
 -- ============================================================
 
-theorem ym_barrier_is_N_to_B_gap :
+theorem ym_threshold_is_N_to_B_gap :
     (measureQ0 qStateSuperposition Belnap.B).coherenceCount = 2 := by
   simp [measureQ0, qStateSuperposition]
 

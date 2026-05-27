@@ -93,7 +93,7 @@ theorem eml_join_self :
     Imscribing.Primitives.compute_join eml_operator eml_operator = eml_operator := rfl
 
 -- ============================================================
--- §3. FROBENIUS BARRIER
+-- §3. FROBENIUS THRESHOLD
 -- ============================================================
 
 /-- EML ⊗ O_inf bottlenecks on P: P_pm ⊗ P_pm_sym = P_pm.

@@ -1,5 +1,5 @@
 -- Imscribing/Millennium/YM.lean
--- Yang-Mills Existence and Mass Gap — Three-Layer Barrier Analysis
+-- Yang-Mills Existence and Mass Gap — Three-Layer Threshold Analysis
 -- Every sorry is an honest marker. The key sorries are MissingFoundation, not just OpenProblem.
 
 import Mathlib.Algebra.Lie.Basic
@@ -9,7 +9,7 @@ import Mathlib.MeasureTheory.Measure.MeasureSpace
 import Mathlib.Tactic
 
 /-!
-# Yang-Mills Existence and Mass Gap: Three-Layer Barrier Analysis
+# Yang-Mills Existence and Mass Gap: Three-Layer Threshold Analysis
 
 **The problem** (Clay Millennium, 2000):
 For any compact simple gauge group G, there exists a quantum Yang-Mills theory on ℝ⁴
@@ -41,7 +41,7 @@ and has a mass gap Δ > 0 (the Hamiltonian spectrum is {0} ∪ [Δ, ∞)).
     Unlike RH (one sorry), YM has two *stacked* sorries: existence must be discharged
     before mass gap is even a meaningful mathematical statement.
 
-  Layer 3 — Barrier: the sorry requires `PathIntegralMeasure` on `ConnectionSpace 𝔤`.
+  Layer 3 — Threshold: the sorry requires `PathIntegralMeasure` on `ConnectionSpace 𝔤`.
     This is an open problem in *constructive quantum field theory* (CQFT).
     It is not a Lean/Mathlib formalization gap — it is a mathematical infrastructure gap.
     The path integral measure on gauge connections modulo gauge equivalence does not
@@ -65,7 +65,7 @@ and has a mass gap Δ > 0 (the Hamiltonian spectrum is {0} ∪ [Δ, ∞)).
 
 ---
 
-**Barrier classification**: `MissingFoundation`.
+**Threshold classification**: `MissingFoundation`.
 
   Unlike RH (where we ask "is this true?"), YM requires us to first ask
   "does this object exist?" The path integral measure ∫ 𝒟A exp(-S_YM[A]) (·) on
@@ -115,7 +115,7 @@ noncomputable def classicalYMAction {𝔤 : Type*} [LieRing 𝔤] [LieAlgebra �
   -- differential geometry + L² integration, neither formalized here.
 
 -- ============================================================
--- §2. The missing types — Layer 3 barrier
+-- §2. The missing types — Layer 3 threshold
 -- ============================================================
 
 /-- **The primary missing type**: a rigorous probability measure on
@@ -178,7 +178,7 @@ axiom massGap (𝔤 : Type*) [LieRing 𝔤] [LieAlgebra ℝ 𝔤] :
 /-- YM existence axiom.
     A quantum Yang-Mills theory for any simple gauge algebra exists as a rigorous
     mathematical object satisfying the Wightman/OS axioms.
-    BarrierType = MissingFoundation: PathIntegralMeasure 𝔤 does not exist rigorously
+    ThresholdType = MissingFoundation: PathIntegralMeasure 𝔤 does not exist rigorously
     in 4D. This axiom names the gap explicitly.
     Note: YM_GateInhabitants.lean provides `ym_theory_from_gates` — the ZFCt-promoted
     version of this axiom via six gate structures. -/
@@ -190,7 +190,7 @@ axiom ym_existence_axiom (𝔤 : Type*) [LieRing 𝔤] [LieAlgebra ℝ 𝔤]
 
 /-- YM mass gap axiom.
     The Hamiltonian of any QuantumYMTheory has a strictly positive spectral gap.
-    BarrierType = OpenProblem (conditional on existence).
+    ThresholdType = OpenProblem (conditional on existence).
     Note: YM_GateInhabitants.lean provides `ym_mass_gap_axiom` — the same claim
     in the ZFCt-promoted namespace. -/
 -- See YM_Closure.ym_theory_exists_proved / ym_mass_gap_proved for the constructive
@@ -237,13 +237,13 @@ theorem ym_sorries_are_stacked (𝔤 : Type*) [LieRing 𝔤] [LieAlgebra ℝ �
 example : ym_sorry_count = 2 := rfl
 
 -- ============================================================
--- §5. Barrier theorem — Layer 3
+-- §5. Threshold theorem — Layer 3
 -- ============================================================
 
-/-- **The barrier is at the type level, not the proof level.**
+/-- **The threshold is at the type level, not the proof level.**
 
-    In RH, the barrier is: we need a proof of a well-defined proposition (ZeroFreeStrip 0).
-    In YM, the barrier is: we need to CONSTRUCT A TYPE (QuantumYMTheory 𝔤)
+    In RH, the threshold is: we need a proof of a well-defined proposition (ZeroFreeStrip 0).
+    In YM, the threshold is: we need to CONSTRUCT A TYPE (QuantumYMTheory 𝔤)
     before we can even state the mass gap proposition.
 
     Formally: `ym_theory_exists` has a sorry of the form `Nonempty T` where T is an axiom.
@@ -262,7 +262,7 @@ example : ym_sorry_count = 2 := rfl
     The distinction between MissingFoundation and OpenProblem:
     · MissingFoundation: we need to BUILD something new (a type, a measure, a theory)
     · OpenProblem: we need to PROVE something about well-defined objects -/
-theorem ym_barrier_is_type_level : True := trivial  -- The content is in the axioms above.
+theorem ym_threshold_is_type_level : True := trivial  -- The content is in the axioms above.
 
 /-- **Comparison: 2D Yang-Mills** (where MissingFoundation IS resolved).
 

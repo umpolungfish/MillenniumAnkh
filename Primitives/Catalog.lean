@@ -157,7 +157,7 @@ def ex_o_na : Imscription := example_oinf
 -- MILLENNIUM PRIZE PROBLEMS (7)
 -- =====================================================
 
--- O_inf template for barriers
+-- O_inf template for thresholds
 def o_inf_template : Imscription := {
   dim  := D_odot
   top  := T_odot

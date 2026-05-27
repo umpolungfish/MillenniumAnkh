@@ -9,7 +9,7 @@ import Imscribing.Algebra
   by formalizing the critical Sobolev exponent s=1/2 as a Frobenius-critical phase
   boundary within the ZFCt sequential cascade.
 
-  The Navier-Stokes barrier is the critical scaling gap: the Sobolev norm H^{1/2}
+  The Navier-Stokes threshold is the critical scaling gap: the Sobolev norm H^{1/2}
   is the unique scale-invariant norm in 3D. Energy (s=0) is subcritical.
   Enstrophy (s=1) is supercritical. The gap is exactly s=1/2.
 
@@ -87,7 +87,7 @@ theorem frob_op_is_id (fc : FrobeniusCriticalManifold) :
     space. This is the structural content of NS global regularity: the Frobenius
     self-fixing of the critical manifold guarantees that no information is lost in the
     energy-to-enstrophy cascade.
-    BarrierType = OpenProblem. Stated as a structural axiom connecting the ZFCt
+    ThresholdType = OpenProblem. Stated as a structural axiom connecting the ZFCt
     Frobenius structure directly to regularity, rather than as a bare assertion. -/
 axiom ns_frobenius_regularity_axiom
     (fc : FrobeniusCriticalManifold) (u₀ : NSInitialDatum) :
@@ -95,8 +95,8 @@ axiom ns_frobenius_regularity_axiom
 
 /-- Bridge: ZFCt certificate implies global regularity.
     The sequential cascade round-trip is sufficient for regularity.
-    BarrierType = OpenProblem (the functional analysis connecting the algebraic
-    certificate to smooth solutions is the NS barrier). -/
+    ThresholdType = OpenProblem (the functional analysis connecting the algebraic
+    certificate to smooth solutions is the NS threshold). -/
 axiom zfct_cert_implies_regularity
     (h : ∀ u₀, ZFCt_NSRegularityCert u₀) : NavierStokesRegularity
 

@@ -1,5 +1,5 @@
 -- Imscribing/Millennium/PvsNP.lean
--- P versus NP — Three-Layer Barrier Analysis
+-- P versus NP — Three-Layer Threshold Analysis
 -- Every sorry is an honest marker. No sorry is dischargeable from current Mathlib.
 
 import Mathlib.Computability.Language
@@ -8,7 +8,7 @@ import Mathlib.Data.Finset.Basic
 import Mathlib.Tactic
 
 /-!
-# P versus NP: Three-Layer Barrier Analysis
+# P versus NP: Three-Layer Threshold Analysis
 
 **The problem** (Cook 1971, Clay Millennium 2000):
 Is every decision problem whose solutions can be verified in polynomial time
@@ -29,8 +29,8 @@ SAT is NP-complete (Cook 1971 / Levin 1973): SAT ∈ P ↔ P = NP.
   Layer 2 — Equivalence: the sorry is tight — proving a superpolynomial circuit lower
     bound for SAT is equivalent to P ≠ NP (Cook-Levin reduction).
 
-  Layer 3 — Barrier: the sorry has a META-BARRIER structure unique among the MPPs.
-    Three known barriers WITHIN MATHEMATICS explain why standard approaches fail:
+  Layer 3 — Threshold: the sorry has a META-THRESHOLD structure unique among the MPPs.
+    Three known thresholds WITHIN MATHEMATICS explain why standard approaches fail:
     · Relativization (Baker-Gill-Solovay 1975): no proof technique that relativizes
       can resolve P vs NP.
     · Natural proofs (Razborov-Rudich 1994): any "natural" circuit lower bound
@@ -38,7 +38,7 @@ SAT is NP-complete (Cook 1971 / Levin 1973): SAT ∈ P ↔ P = NP.
     · Algebrization (Aaronson-Wigderson 2009): extends relativization to algebraic
       query complexity.
     These are provable theorems about what proofs CANNOT do — the first MPP with
-    machine-verifiable meta-barriers.
+    machine-verifiable meta-thresholds.
 
 ---
 
@@ -59,7 +59,7 @@ SAT is NP-complete (Cook 1971 / Levin 1973): SAT ∈ P ↔ P = NP.
 
 ---
 
-**Barrier classification**: `OpenProblem` (with partial MissingFoundation).
+**Threshold classification**: `OpenProblem` (with partial MissingFoundation).
 
   The OpenProblem aspect: no proof that SAT requires superpolynomial circuits exists.
   No proof that P = NP exists either. The question is genuinely open since 1971.
@@ -77,7 +77,7 @@ SAT is NP-complete (Cook 1971 / Levin 1973): SAT ∈ P ↔ P = NP.
 
 ---
 
-**The meta-barriers** — provable theorems that constrain how P ≠ NP can be proved:
+**The meta-thresholds** — provable theorems that constrain how P ≠ NP can be proved:
 
   **Relativization** (Baker-Gill-Solovay 1975):
     There exist oracles A, B such that P^A = NP^A and P^B ≠ NP^B.
@@ -89,14 +89,14 @@ SAT is NP-complete (Cook 1971 / Levin 1973): SAT ∈ P ↔ P = NP.
     functions that is (1) constructive and (2) large (holds for random functions).
     Theorem: no natural proof can separate P from NP unless secure PRGs don't exist.
     Since cryptography (including PRGs) is widely believed to exist and requires P ≠ NP,
-    the meta-barrier is non-circular but devastating for most known techniques.
+    the meta-threshold is non-circular but devastating for most known techniques.
 
   **Algebrization** (Aaronson-Wigderson 2009):
     Extends Baker-Gill-Solovay to algebraic query complexity.
     Diagonalization + algebraic techniques (arithmetic circuits, low-degree extensions)
     cannot resolve P vs NP.
 
-  These three meta-barriers are PROVED THEOREMS — they are sorry-free in mathematics.
+  These three meta-thresholds are PROVED THEOREMS — they are sorry-free in mathematics.
   They narrow the space of viable proof strategies substantially.
 
 ---
@@ -106,7 +106,7 @@ SAT is NP-complete (Cook 1971 / Levin 1973): SAT ∈ P ↔ P = NP.
   PvsNP has primitive tuple D_∞ · T_network · R_super · F_ell · K_trap · Φ_c · Ω_0.
   The K_trap primitive is uniquely prominent: the problem is about *information bottlenecks*
   — whether the constraint that verification is polynomial also forces search to be polynomial.
-  K_trap = irreducible complexity threshold. The meta-barriers (relativization, natural proofs)
+  K_trap = irreducible complexity threshold. The meta-thresholds (relativization, natural proofs)
   are formal proofs that K_trap cannot be lowered by standard techniques.
 -/
 
@@ -238,7 +238,7 @@ def PNotEqualsNP : Prop :=
 /-- P ≠ NP axiom.
     SAT is not in P; every circuit family for SAT requires superpolynomial size.
     This IS the P ≠ NP conjecture — stated as an explicit axiom.
-    BarrierType = OpenProblem (primary) + MathlibGap (secondary: complexity classes
+    ThresholdType = OpenProblem (primary) + MathlibGap (secondary: complexity classes
     not in Mathlib). Open since Cook (1971). -/
 axiom pvsnp_axiom : PNotEqualsNP
 
@@ -253,8 +253,8 @@ axiom pvsnp_axiom : PNotEqualsNP
         the Cook-Levin theorem, and circuit models are not in Mathlib.
         Discharging this sorry requires both the mathematics AND the formalization.
 
-    BarrierType = `OpenProblem` (primary), with MathlibGap secondary.
-    See §7 for the meta-barriers that explain why the sorry is hard to discharge. -/
+    ThresholdType = `OpenProblem` (primary), with MathlibGap secondary.
+    See §7 for the meta-thresholds that explain why the sorry is hard to discharge. -/
 theorem pvsnp_certificate : PNotEqualsNP := pvsnp_axiom
 
 -- ============================================================
@@ -277,10 +277,10 @@ theorem pvsnp_implies_circuit_lb (h : PNotEqualsNP) : PNotEqualsNP :=
   h  -- trivially, to record the logical dependency
 
 -- ============================================================
--- §7. The meta-barriers — Layer 3
+-- §7. The meta-thresholds — Layer 3
 -- ============================================================
 
-/-- **Relativization barrier** (Baker-Gill-Solovay 1975).
+/-- **Relativization threshold** (Baker-Gill-Solovay 1975).
 
     Theorem (proved, not sorry): there exist oracles A and B such that:
       P^A = NP^A   (relative to A, polynomial hierarchy collapses)
@@ -293,11 +293,11 @@ theorem pvsnp_implies_circuit_lb (h : PNotEqualsNP) : PNotEqualsNP :=
     It constrains the style of proof required for `pvsnp_certificate`.
     Standard diagonalization arguments (as used for the halting problem) are
     relativizing and cannot resolve P vs NP. -/
-theorem relativization_barrier_is_proved : True := trivial
+theorem relativization_threshold_is_proved : True := trivial
   -- Reference: Baker-Gill-Solovay, "Relativizations of the P=?NP question" (1975).
   -- MathlibGap: the oracle TM model is not formalized in Mathlib.
 
-/-- **Natural proofs barrier** (Razborov-Rudich 1994).
+/-- **Natural proofs threshold** (Razborov-Rudich 1994).
 
     A circuit lower bound proof is "natural" if it satisfies:
       (1) Constructivity: the property can be computed in polynomial time.
@@ -313,13 +313,13 @@ theorem relativization_barrier_is_proved : True := trivial
     ARE natural in this sense — they work on random functions, hence are blocked.
 
     Notable exceptions: arithmetic lower bounds (GCT program) may not be natural. -/
-theorem natural_proofs_barrier_is_proved : True := trivial
+theorem natural_proofs_threshold_is_proved : True := trivial
   -- Reference: Razborov-Rudich, "Natural proofs" (1994).
   -- This theorem is proved; not a sorry. It constrains what proofs can work.
 
-/-- **Algebrization barrier** (Aaronson-Wigderson 2009).
+/-- **Algebrization threshold** (Aaronson-Wigderson 2009).
 
-    Extends the relativization barrier to algebraic query complexity.
+    Extends the relativization threshold to algebraic query complexity.
     Diagonalization + low-degree extensions (algebraic techniques like the
     PCP theorem's algebraic proofs) cannot resolve P vs NP.
 
@@ -328,14 +328,14 @@ theorem natural_proofs_barrier_is_proved : True := trivial
 
     The viable proof strategies are non-relativizing, non-algebrizing,
     and non-natural — a very small target. -/
-theorem algebrization_barrier_is_proved : True := trivial
-  -- Reference: Aaronson-Wigderson, "Algebrization: a new barrier in complexity theory" (2009).
+theorem algebrization_threshold_is_proved : True := trivial
+  -- Reference: Aaronson-Wigderson, "Algebrization: a new threshold in complexity theory" (2009).
 
-/-- The three barriers together constrain the viable proof space significantly.
+/-- The three thresholds together constrain the viable proof space significantly.
     This is the sense in which PvsNP has a near-MissingFoundation character:
     the meta-mathematical landscape constrains where the proof can live,
-    and no known technique survives all three barriers. -/
-theorem pvsnp_meta_barriers :
+    and no known technique survives all three thresholds. -/
+theorem pvsnp_meta_thresholds :
     -- Relativization: diagonal arguments cannot work.
     True ∧
     -- Natural proofs: random-function properties cannot work (assuming PRGs).
@@ -348,14 +348,14 @@ theorem pvsnp_meta_barriers :
 -- §8. Comparison with other MPPs
 -- ============================================================
 
-/-- PvsNP is the only MPP with machine-verified meta-barriers.
+/-- PvsNP is the only MPP with machine-verified meta-thresholds.
     RH, Hodge, NS, YM, BSD, OPN have no proved theorems about WHY they are hard.
     PvsNP has three: BGS, Razborov-Rudich, Aaronson-Wigderson.
 
     This is the primitive analog of K_trap in Imscribing:
-    the barrier is self-reinforcing — we can prove that standard tools cannot
+    the threshold is self-reinforcing — we can prove that standard tools cannot
     remove the constraint. -/
-theorem pvsnp_unique_meta_barrier_structure : True := trivial
+theorem pvsnp_unique_meta_threshold_structure : True := trivial
 
 /-- The partial MissingFoundation aspect: complexity theory is NOT in Mathlib.
     Unlike RH (where zeta is fully formalized) or NS (where we can write down Sobolev
@@ -371,7 +371,7 @@ theorem pvsnp_formalization_gap : True := trivial
 /-- What IS in Mathlib (and relevant):
     Computability.Halting gives undecidability of the halting problem.
     Proof: diagonalization over TMs. This IS a relativizing argument.
-    The relativization barrier says the same technique cannot give P ≠ NP.
+    The relativization threshold says the same technique cannot give P ≠ NP.
     The halting problem is undecidable because the diagonal TM isn't in the
     enumerable list — but there's no corresponding diagonal argument for P ≠ NP
     because P programs are enumerable AND can simulate each other efficiently. -/

@@ -1,15 +1,15 @@
 # Siege on Olympus! — Deicides of the 7 Clay Prizes
-## *A Formal Barrier Taxonomy for the Millennium Prize Problems in Lean 4*
+## *A Formal Threshold Taxonomy for the Millennium Prize Problems in Lean 4*
 
 **Version:** v0.3.0 · 2026-05-19
 **Authors:** Lando ⊗ LLM & Human
-**Document role:** Self-contained research paper. Presents the machine-checked barrier taxonomy for all seven Clay Millennium Prize Problems: the `BarrierType` inductive, the `ym_is_unique_missing_foundation` theorem, the stacked/parallel sorry distinction, the vessel–content inseparability principle, the ZFCₜ promotion gate inhabitants for RH and Hodge, the P≠NP structural coordinate theorem and dialethic resolution, and the primitive bridge connecting sorry boundaries to the Imscribing Grammar constraint algebra. Target venue: Journal of Formalized Reasoning / Journal of Automated Reasoning.
+**Document role:** Self-contained research paper. Presents the machine-checked threshold taxonomy for all seven Clay Millennium Prize Problems: the `ThresholdType` inductive, the `ym_is_unique_missing_foundation` theorem, the stacked/parallel sorry distinction, the vessel–content inseparability principle, the ZFCₜ promotion gate inhabitants for RH and Hodge, the P≠NP structural coordinate theorem and dialethic resolution, and the primitive bridge connecting sorry boundaries to the Imscribing Grammar constraint algebra. Target venue: Journal of Formalized Reasoning / Journal of Automated Reasoning.
 
 ---
 
 ## Two-Track Architecture
 
-The Imscribing Grammar Lean library occupies two tracks: `Primitives/` (the 12-primitive constraint algebra) and `Imscribing/Millennium/` (the barrier taxonomy library documented here). This paper reports on the `Imscribing/Millennium/` track and its bridge to `Primitives/`.
+The Imscribing Grammar Lean library occupies two tracks: `Primitives/` (the 12-primitive constraint algebra) and `Imscribing/Millennium/` (the threshold taxonomy library documented here). This paper reports on the `Imscribing/Millennium/` track and its bridge to `Primitives/`.
 
 **Internal references** within this paper use §N.
 
@@ -19,13 +19,13 @@ The Imscribing Grammar Lean library occupies two tracks: `Primitives/` (the 12-p
 
 ## I. Introduction (v0.3.0, 2026-05-19)
 
-The Clay Mathematics Institute seven Millennium Prize Problems have resisted proof for decades — and in one case, the Riemann Hypothesis, for over a century and a half. Proof assistants have formalized large bodies of mathematics, but existing efforts overwhelmingly target *results that are known*: the Last Theorem of Fermat, the Four Color Theorem, the Kepler Conjecture. This library formalizes *why specific problems occupy the positions they do* — the structural barriers that distinguish them from each other and from the solved.
+The Clay Mathematics Institute seven Millennium Prize Problems have resisted proof for decades — and in one case, the Riemann Hypothesis, for over a century and a half. Proof assistants have formalized large bodies of mathematics, but existing efforts overwhelmingly target *results that are known*: the Last Theorem of Fermat, the Four Color Theorem, the Kepler Conjecture. This library formalizes *why specific problems occupy the positions they do* — the structural thresholds that distinguish them from each other and from the solved.
 
 The contribution is meta-level and computational: a machine-checked classification of proof obligations, the structural relationships between them, and their connection to the Imscribing Grammar primitive constraint algebra. Every `sorry` is labeled by type; the type determines the research strategy for discharging it.
 
 ### I.1 Why this matters
 
-The distinction between barrier types has practical consequences for the formalization community.
+The distinction between threshold types has practical consequences for the formalization community.
 
 **MathlibGap sorries are actionable.** A contributor with the right background can discharge them by formalizing a known proof. The `euler_opn_form` sorry in OPN.lean (Euler 1747) and the `mazur_torsion` sorry in BSD.lean (Mazur 1977) are of this type.
 
@@ -41,13 +41,13 @@ We introduce a formal notion of *sorry depth* distinguishing *stacked* from *par
 
 **Parallel (BSD):** three sorries are logically independent — Mordell-Weil (proved 1922, MathlibGap), the Mazur torsion theorem (proved 1977, MathlibGap), and the BSD rank formula itself (OpenProblem) — each dischargeable independently.
 
-Both Yang-Mills and BSD have `sorryDepth = 2`. The structural difference is encoded in the barrier type.
+Both Yang-Mills and BSD have `sorryDepth = 2`. The structural difference is encoded in the threshold type.
 
 ### I.3 Contributions
 
-**C1 — BarrierType taxonomy:** A typed inductive with three constructors (`MathlibGap`, `OpenProblem`, `MissingFoundation`), formally distinct (by `decide`), and computably assigned to all seven Millennium Problems.
+**C1 — ThresholdType taxonomy:** A typed inductive with three constructors (`MathlibGap`, `OpenProblem`, `MissingFoundation`), formally distinct (by `decide`), and computably assigned to all seven Millennium Problems.
 
-**C2 — ym_is_unique_missing_foundation:** A theorem, proved by `decide`, that Yang-Mills is the only Millennium Problem whose barrier is MissingFoundation.
+**C2 — ym_is_unique_missing_foundation:** A theorem, proved by `decide`, that Yang-Mills is the only Millennium Problem whose threshold is MissingFoundation.
 
 **C3 — P≠NP structural coordinate theorem and dialethic resolution:** `P_class_ne_NP_class` proved in term mode: P has topology Θ₆ (`T_network`) and NP has topology Θ⊙ (`T_odot`); distinct-constructor property closes the inequality. Primitive distance d = 6.245 across six dimensions (Θ, Ř, K, Γ, ɢ, Φ) places P and NP in structurally separated positions before any algorithm runs.
 
@@ -67,13 +67,13 @@ The biconditional is the non-trivial claim. `form_uniqueness` alone is a labelin
 
 **C8 — ZFCₜ gate inhabitants for RH (RH_GateInhabitants.lean):** All four ZFCₜ promotion slots for the Riemann Hypothesis are inhabited with concrete structures. `FrobeniusZeroSymmetry`: θ = (1 − ·) with involution proved by `ring`. `FunctionalEquationDual`: s ↦ 1 − s preserves Re(s) = ½ on the critical line. `ZFunctionWinding`: N(T) counting function (Hardy 1914). `PrimeZeroBridge`: ψ(x) = x explicit formula placeholder. `ZFCt_RHCertificate` assembles all four.
 
-Key theorems without `sorry`: `frob_gate_without_forcing` (θ(s) = s ↔ s = ½, proved by `linear_combination`); `rh_forcing_implies_rh` (`RH_ForcingTheorem` → `RiemannHypothesis`, proved by `rw [rh_barrier]` then curried introduction). The gate structures are inhabited and the fixed locus is characterized; `RH_ForcingTheorem` — that all nontrivial zeros lie in that fixed locus — is the single open gap.
+Key theorems without `sorry`: `frob_gate_without_forcing` (θ(s) = s ↔ s = ½, proved by `linear_combination`); `rh_forcing_implies_rh` (`RH_ForcingTheorem` → `RiemannHypothesis`, proved by `rw [rh_threshold]` then curried introduction). The gate structures are inhabited and the fixed locus is characterized; `RH_ForcingTheorem` — that all nontrivial zeros lie in that fixed locus — is the single open gap.
 
 **C9 — ZFCₜ gate inhabitants for Hodge (Hodge_GateInhabitants.lean):** `HodgeLRDual` inhabits the LR_DUAL slot (Hodge decomposition H^{p,q} ↔ H^{q,p} via σ). `HodgePM_Z2` inhabits the PM_Z2 slot (complex conjugation as ℤ₂ involution, σ² = id, fixed locus H^{p,p}). `HodgeWinding` inhabits the ZWIND slot (Griffiths group rank function; Griffiths 1969 showed this is non-trivial for p ≥ 2).
 
 Key theorem: `hodge_forcing_equiv_hodge` (`Hodge_ForcingTheorem` ↔ `HodgeConjecture`), proved in term mode via `hodge_sorry_requires_cycle_class_surjectivity.symm`. Structural parallel with RH: both have a ℤ₂ involution, an identified fixed locus, and an open forcing claim. The substrate differs — ℂ (RH) vs H^{p,q}(X, ℂ) (Hodge) — the pattern is the same.
 
-**C10 — PrimitiveBridge.lean:** Formal connection between sorry boundaries and primitive field transitions in the Imscribing Grammar; `BarrierPrimitiveCertificate` structure; `primitive_bridge_master` theorem.
+**C10 — PrimitiveBridge.lean:** Formal connection between sorry boundaries and primitive field transitions in the Imscribing Grammar; `ThresholdPrimitiveCertificate` structure; `primitive_bridge_master` theorem.
 
 **C11 — RH–Lee-Yang structural correspondence:** Machine-checked theorem that the Riemann $\zeta$ zeros and Lee-Yang partition-function zeros share the same Criticality assignment `Phi_c_complex`. Structural distance 7 (machine-checked) identifies the polarity primitive $P$ ($P_\text{sym}$ vs $P_{\pm}^{\text{sym}}$) as the essential structural gap; remaining 6 mismatches (T, F, K, gran, stoi, chir) are background differences. Enabled by the $\Phi$ primitive expansion: `Phi_c` → `Phi_c` / `Phi_c_complex` / `Phi_EP`.
 
@@ -98,7 +98,7 @@ All code targets **Lean 4.28.0** with **Mathlib v4.28.0**. We use `import Mathli
 
 ### II.2 The sorry in Lean
 
-In Lean 4, `sorry` is an axiom of type $\alpha$ for any $\alpha : \mathsf{Prop}$ (or any type). It allows a proof to typecheck despite containing unfinished obligations. A `sorry`-free proof is fully kernel-verified; a proof with `sorry` is verified modulo those axioms. There is no built-in mechanism in Lean to classify *why* a sorry cannot be discharged. The `BarrierType` inductive in §III provides this classification for the first time.
+In Lean 4, `sorry` is an axiom of type $\alpha$ for any $\alpha : \mathsf{Prop}$ (or any type). It allows a proof to typecheck despite containing unfinished obligations. A `sorry`-free proof is fully kernel-verified; a proof with `sorry` is verified modulo those axioms. There is no built-in mechanism in Lean to classify *why* a sorry cannot be discharged. The `ThresholdType` inductive in §III provides this classification for the first time.
 
 In the final library, each sorry boundary is declared as an `axiom` rather than left as a literal `sorry`:
 
@@ -131,12 +131,12 @@ All twelve types derive `DecidableEq`, making structural comparisons computable.
 
 ---
 
-## III. The Barrier Taxonomy (v0.1.0, 2026-03-26)
+## III. The Threshold Taxonomy (v0.1.0, 2026-03-26)
 
-### III.1 The BarrierType inductive
+### III.1 The ThresholdType inductive
 
 ```lean
-inductive BarrierType
+inductive ThresholdType
   | MathlibGap
   | OpenProblem
   | MissingFoundation
@@ -155,13 +155,13 @@ Formal distinctness is immediate:
 
 ```lean
 theorem missing_foundation_vs_open_problem :
-    BarrierType.MissingFoundation ≠ BarrierType.OpenProblem := by decide
+    ThresholdType.MissingFoundation ≠ ThresholdType.OpenProblem := by decide
 ```
 
 ### III.2 The master classification
 
 ```lean
-def millenniumBarrier : MillenniumProblem → BarrierType
+def millenniumThreshold : MillenniumProblem → ThresholdType
   | .RH    => .OpenProblem
   | .Hodge => .OpenProblem
   | .PvsNP => .OpenProblem
@@ -176,11 +176,11 @@ The central theorem of the library:
 ```lean
 theorem ym_is_unique_missing_foundation :
     ∀ p : MillenniumProblem,
-      millenniumBarrier p = .MissingFoundation → p = .YM := by
-  intro p hp; cases p <;> simp_all [millenniumBarrier]
+      millenniumThreshold p = .MissingFoundation → p = .YM := by
+  intro p hp; cases p <;> simp_all [millenniumThreshold]
 ```
 
-Yang-Mills is the only Millennium Problem with a `MissingFoundation` barrier. This is a theorem about the structure of mathematics, proved by exhaustive case analysis over the seven-constructor `MillenniumProblem` inductive, closed by `simp_all`.
+Yang-Mills is the only Millennium Problem with a `MissingFoundation` threshold. This is a theorem about the structure of mathematics, proved by exhaustive case analysis over the seven-constructor `MillenniumProblem` inductive, closed by `simp_all`.
 
 ### III.3 Sorry depth
 
@@ -200,9 +200,9 @@ The key structural distinction:
 ```lean
 theorem ym_has_stacked_not_parallel_sorries :
     sorryDepth .YM = sorryDepth .BSD ∧
-    millenniumBarrier .YM = .MissingFoundation ∧
-    millenniumBarrier .BSD = .OpenProblem := by
-  simp [sorryDepth, millenniumBarrier]
+    millenniumThreshold .YM = .MissingFoundation ∧
+    millenniumThreshold .BSD = .OpenProblem := by
+  simp [sorryDepth, millenniumThreshold]
 ```
 
 YM and BSD share `sorryDepth = 2` but for different structural reasons: in YM, sorry 2 (mass gap) logically depends on sorry 1 (existence of the theory). In BSD, the three sorries are logically independent  --  each can in principle be discharged separately.
@@ -213,7 +213,7 @@ YM and BSD share `sorryDepth = 2` but for different structural reasons: in YM, s
 
 ### IV.1 Riemann Hypothesis
 
-*Barrier: `OpenProblem` · Missing type: `ZeroFreeStrip 0`*
+*Threshold: `OpenProblem` · Missing type: `ZeroFreeStrip 0`*
 
 The file introduces abstract types `RiemannZeta`, `CriticalStrip`, and `ZeroFreeStrip` to provide typed scaffolding. The sorry boundary is the statement that $\zeta(s) \neq 0$ for all $s$ with $0 < \text{Re}(s) < 1$, $\text{Re}(s) \neq \frac{1}{2}$.
 
@@ -222,16 +222,16 @@ The primitive encoding of RH assigns `crit = Phi_c_complex`: the nontrivial zero
 ```lean
 axiom rh_sorry_boundary : Millennium.RH.RiemannHypothesis
 
-theorem rh_barrier : RiemannHypothesis <-> ZeroFreeStrip 0
+theorem rh_threshold : RiemannHypothesis <-> ZeroFreeStrip 0
 ```
 
-The barrier theorem isolates `ZeroFreeStrip 0` as the exact missing type: the sorry is tight  --  RH is equivalent to inhabiting that type and nothing else.
+The threshold theorem isolates `ZeroFreeStrip 0` as the exact missing type: the sorry is tight  --  RH is equivalent to inhabiting that type and nothing else.
 
 *2026-03-31 update (v0.1.3):* The grammar now provides Corollary 29.2 (PRIMITIVE_THEOREMS §29.2): RH is the statement that no non-trivial zero breaks the $P_{\pm}^{\text{sym}}$ condition imposed by the functional equation. The functional equation $\xi(s) = \xi(1-s)$ is the $\mathbb{Z}_2$ symmetry encoded by $P_{\pm}^{\text{sym}}$; a zero off the critical line would encode as $P_\text{asym}$, reducing the system from $O_\infty$ to $O_1$. This strengthens the V.6 structural prediction from "polarity is the key gap" to a precise necessary condition: the Frobenius self-duality of the zeta system is incompatible with any off-axis zero.
 
 ### IV.2 Yang-Mills Existence and Mass Gap
 
-*Barrier: `MissingFoundation` · Missing type (primary): `PathIntegralMeasure G`*
+*Threshold: `MissingFoundation` · Missing type (primary): `PathIntegralMeasure G`*
 
 The YM file is distinguished by *two stacked* sorries. The axiom bundles both:
 
@@ -248,7 +248,7 @@ Jaffe and Witten (2000) write: *'One does not yet have a mathematically complete
 
 ### IV.3 Hodge Conjecture
 
-*Barrier: `OpenProblem` · Missing type: `AlgebraicCycleRep X p α`*
+*Threshold: `OpenProblem` · Missing type: `AlgebraicCycleRep X p α`*
 
 The file introduces `SmoothProjectiveVariety`, `HodgeCohomology X p`, and `AlgebraicCycle X p`. The missing type is cycle class surjectivity: a proof that $\alpha \in H^{2p}(X,\mathbb{Q}) \cap H^{p,p}$ lies in the image of $\text{cl} : \text{CH}^p(X) \otimes \mathbb{Q} \to H^{2p}(X,\mathbb{Q})$.
 
@@ -259,14 +259,14 @@ The layer structure is explicit:
 **Layer 2 (OpenProblem):** The $p \geq 2$ case, which is the actual Hodge conjecture.
 
 ```lean
-theorem hodge_barrier :
+theorem hodge_threshold :
     HodgeConjecture <-> ∀ (X : SmoothProjectiveVariety) (p : ℕ),
       ∀ α : HodgeCohomology X p, AlgebraicCycleRep X p α
 ```
 
 ### IV.4 Navier-Stokes
 
-*Barrier: `OpenProblem` (near-`MissingFoundation`) · Missing type: `GlobalRegularityCert u₀`*
+*Threshold: `OpenProblem` (near-`MissingFoundation`) · Missing type: `GlobalRegularityCert u₀`*
 
 The central formal result is a machine-verified statement of why NS is hard:
 
@@ -287,7 +287,7 @@ Three tiers of sorry are distinguished: `leray_weak_existence` (MathlibGap, Lera
 
 ### IV.5 P versus NP
 
-*Barrier: `OpenProblem` (with deep `MathlibGap` in complexity formalization) · Missing type: `CircuitLowerBound ε`*
+*Threshold: `OpenProblem` (with deep `MathlibGap` in complexity formalization) · Missing type: `CircuitLowerBound ε`*
 
 The file uses concrete types to ground the statement without relying on complexity classes that Mathlib does not yet have:
 
@@ -296,27 +296,27 @@ def BooleanCircuit (n : ℕ) := (Fin n → Bool) → Bool
 def CNFFormula (n : ℕ)     := List (List (Literal n))
 ```
 
-Three **meta-barriers** are formalized as `trivial` theorems with full documentation:
+Three **meta-thresholds** are formalized as `trivial` theorems with full documentation:
 
 ```lean
 -- Baker-Gill-Solovay (1975): P vs NP is independent of relativized computation.
-theorem bgs_relativization_barrier : True := trivial
+theorem bgs_relativization_threshold : True := trivial
 
 -- Razborov-Rudich (1994): 'Natural proofs' cannot separate P from NP
 -- unless one-way functions do not exist.
-theorem razborov_rudich_natural_proofs_barrier : True := trivial
+theorem razborov_rudich_natural_proofs_threshold : True := trivial
 
 -- Aaronson-Wigderson (2009): Algebrizing techniques cannot separate P from NP.
-theorem aaronson_wigderson_algebrization_barrier : True := trivial
+theorem aaronson_wigderson_algebrization_threshold : True := trivial
 ```
 
 The `trivial` bodies are honest: these are theorems *about* proof techniques, not the conjecture itself. They are documented constraints on the proof search space.
 
-*2026-03-31 update (v0.1.3):* The grammar now provides a structural explanation of why all three meta-barriers exist and why none can resolve the conjecture (Theorem 30.1, PRIMITIVE_THEOREMS §30; SYNTHONICON_DIAPHORICS §LX). The Boolean P vs NP formulation encodes as $P_\text{asym}$, $O_1$. Baker-Gill-Solovay relativization, Razborov-Rudich natural proofs, and Aaronson-Wigderson algebrization are all proof techniques that operate within the $P_\text{asym}$ frame — they cannot produce $P_{\pm}^{\text{sym}}$, which is the minimal structural upgrade needed to reach the $O_\infty$-complete formulation. This is a structural explanation, not merely a technical observation: the meta-barriers are not contingent obstacles but consequences of operating below the Frobenius tier. See §V.8 for the duality formulation that reaches $O_\infty$.
+*2026-03-31 update (v0.1.3):* The grammar now provides a structural explanation of why all three meta-thresholds exist and why none can resolve the conjecture (Theorem 30.1, PRIMITIVE_THEOREMS §30; SYNTHONICON_DIAPHORICS §LX). The Boolean P vs NP formulation encodes as $P_\text{asym}$, $O_1$. Baker-Gill-Solovay relativization, Razborov-Rudich natural proofs, and Aaronson-Wigderson algebrization are all proof techniques that operate within the $P_\text{asym}$ frame — they cannot produce $P_{\pm}^{\text{sym}}$, which is the minimal structural upgrade needed to reach the $O_\infty$-complete formulation. This is a structural explanation, not merely a technical observation: the meta-thresholds are not contingent obstacles but consequences of operating below the Frobenius tier. See §V.8 for the duality formulation that reaches $O_\infty$.
 
 ### IV.6 Odd Perfect Number
 
-*Barrier: `OpenProblem` (primary); `MathlibGap` (Euler form layer) · Missing type: `OPNConjecture`*
+*Threshold: `OpenProblem` (primary); `MathlibGap` (Euler form layer) · Missing type: `OPNConjecture`*
 
 This file uses the **actual Mathlib infrastructure**:
 
@@ -340,7 +340,7 @@ The two-layer structure: `euler_opn_structure` (Euler 1747, MathlibGap  --  ever
 
 ### IV.7 Birch and Swinnerton-Dyer
 
-*Barrier: `OpenProblem` (primary); `MathlibGap` (two layers) · Missing type: `BSDRankCertificate W`*
+*Threshold: `OpenProblem` (primary); `MathlibGap` (two layers) · Missing type: `BSDRankCertificate W`*
 
 BSD.lean is the most concretely grounded file, using real Mathlib types throughout:
 
@@ -359,7 +359,7 @@ def BSDRankConjecture : Prop :=
 
 The three sorries are formally **parallel**  --  logically independent:
 
-| Sorry | Type | Barrier | Attribution |
+| Sorry | Type | Threshold | Attribution |
 | :--- | :--- | :--- | :--- |
 | **`mordell_weil`** | `MordellWeilGroup` | MathlibGap | Mordell 1922: $E(\mathbb{Q})$ finitely generated |
 | **`mazur_torsion`** | `MazurTorsionBound` | MathlibGap | Mazur 1977: torsion subgroup classification |
@@ -375,39 +375,39 @@ Known partial results are documented: Coates-Wiles 1977 (MathlibGap, rank 0 for 
 
 ### V.1 Motivation
 
-The barrier taxonomy classifies *why* sorries are where they are but does not explain *what structural feature* of each problem generates its barrier. `PrimitiveBridge.lean` provides this second layer: a machine-checked connection between each sorry boundary and a specific primitive field transition in the Imscribing Grammar.
+The threshold taxonomy classifies *why* sorries are where they are but does not explain *what structural feature* of each problem generates its threshold. `PrimitiveBridge.lean` provides this second layer: a machine-checked connection between each sorry boundary and a specific primitive field transition in the Imscribing Grammar.
 
-The key claim: every Millennium Problem sorry boundary corresponds to a specific field value that the natural primitive encoding of the problem *wants* but occupies at distance given its surrounding constraints. This is testable — the encodings are concrete `Imscription` values, field values are decidable, and barrier classifications are machine-checked.
+The key claim: every Millennium Problem sorry boundary corresponds to a specific field value that the natural primitive encoding of the problem *wants* but occupies at distance given its surrounding constraints. This is testable — the encodings are concrete `Imscription` values, field values are decidable, and threshold classifications are machine-checked.
 
-### V.2 BarrierPrimitiveCertificate
+### V.2 ThresholdPrimitiveCertificate
 
 ```lean
-structure BarrierPrimitiveCertificate (p : Barriers.MillenniumProblem) where
+structure ThresholdPrimitiveCertificate (p : Thresholds.MillenniumProblem) where
   encoding      : Synthon
   blockedField  : String
-  barrier       : Barriers.BarrierType
-  barrier_correct : barrier = Barriers.millenniumBarrier p
+  threshold       : Thresholds.ThresholdType
+  threshold_correct : threshold = Thresholds.millenniumThreshold p
 ```
 
-The `barrier_correct` field is a proof obligation, not documentation. For each concrete problem `p`, `millenniumBarrier p` reduces definitionally, making `barrier_correct := rfl` a machine-checked verification. Three instances:
+The `threshold_correct` field is a proof obligation, not documentation. For each concrete problem `p`, `millenniumThreshold p` reduces definitionally, making `threshold_correct := rfl` a machine-checked verification. Three instances:
 
 ```lean
-def ym_certificate : BarrierPrimitiveCertificate .YM where
+def ym_certificate : ThresholdPrimitiveCertificate .YM where
   encoding     := ym_quantum_target
   blockedField := 'gran: G_beth → G_aleph (PathIntegralMeasure G missing)'
-  barrier      := .MissingFoundation
-  barrier_correct := rfl   -- Lean verifies: .MissingFoundation = millenniumBarrier .YM (ok)
+  threshold      := .MissingFoundation
+  threshold_correct := rfl   -- Lean verifies: .MissingFoundation = millenniumThreshold .YM (ok)
 
-def opn_certificate : BarrierPrimitiveCertificate .OPN where
+def opn_certificate : ThresholdPrimitiveCertificate .OPN where
   ...
-  barrier_correct := rfl   -- .OpenProblem = millenniumBarrier .OPN (ok)
+  threshold_correct := rfl   -- .OpenProblem = millenniumThreshold .OPN (ok)
 
-def ns_certificate : BarrierPrimitiveCertificate .NS where
+def ns_certificate : ThresholdPrimitiveCertificate .NS where
   ...
-  barrier_correct := rfl   -- .OpenProblem = millenniumBarrier .NS (ok)
+  threshold_correct := rfl   -- .OpenProblem = millenniumThreshold .NS (ok)
 ```
 
-### V.3 The YM primitive barrier
+### V.3 The YM primitive threshold
 
 The Yang-Mills quantum lift is encoded as the transition from `ym_classical` (four-dimensional gauge theory before quantization) to `ym_quantum_target` (what YM would look like if the path integral existed). Four primitive fields change:
 
@@ -440,14 +440,14 @@ This formally distinguishes the YM problem from quantum gravity. Quantizing YM d
 The full certificate:
 
 ```lean
-theorem ym_primitive_barrier_certificate :
+theorem ym_primitive_threshold_certificate :
     ym_quantum_target.gran = G_aleph ∧     -- needs quantum-level granularity
     ym_quantum_target.crit = Phi_c ∧       -- needs mass gap (critical)
     ym_quantum_target.fid  = F_hbar ∧      -- needs quantum fidelity
     ym_quantum_target.kin  = K_trap ∧      -- needs confinement
     ym_quantum_target.dim  = D_infty ∧     -- stays 4D local (NOT QG)
     ym_quantum_target.dim  ≠ quantum_gravity.dim ∧
-    Barriers.millenniumBarrier .YM = .MissingFoundation := by
+    Thresholds.millenniumThreshold .YM = .MissingFoundation := by
   exact ⟨rfl, rfl, rfl, rfl, rfl, by decide, rfl⟩
 ```
 
@@ -464,15 +464,15 @@ The OPN, NS, and RH certificates connect to the $\Phi_c$ criticality primitive:
 ```lean
 theorem opn_primitive_certificate :
     opn_encoding.crit = Phi_c ∧ opn_encoding.kin = K_trap ∧
-    Barriers.millenniumBarrier .OPN = .OpenProblem := ⟨rfl, rfl, rfl⟩
+    Thresholds.millenniumThreshold .OPN = .OpenProblem := ⟨rfl, rfl, rfl⟩
 
 theorem ns_primitive_certificate :
     ns_encoding.crit = Phi_sub ∧
-    Barriers.millenniumBarrier .NS = .OpenProblem := ⟨rfl, rfl⟩
+    Thresholds.millenniumThreshold .NS = .OpenProblem := ⟨rfl, rfl⟩
 
 theorem rh_primitive_certificate :
     rh_encoding.crit = Phi_c_complex ∧
-    Barriers.millenniumBarrier .RH = .OpenProblem := ⟨rfl, rfl⟩
+    Thresholds.millenniumThreshold .RH = .OpenProblem := ⟨rfl, rfl⟩
 ```
 
 ### V.5 The master bridge theorem
@@ -480,17 +480,17 @@ theorem rh_primitive_certificate :
 ```lean
 theorem primitive_bridge_master :
     primitiveMismatches ym_classical ym_quantum_target = 4 ∧
-    Barriers.millenniumBarrier .YM = .MissingFoundation ∧
+    Thresholds.millenniumThreshold .YM = .MissingFoundation ∧
     opn_encoding.crit = Phi_c ∧ opn_encoding.kin = K_trap ∧
-    Barriers.millenniumBarrier .OPN = .OpenProblem ∧
+    Thresholds.millenniumThreshold .OPN = .OpenProblem ∧
     ns_encoding.crit = Phi_sub ∧
-    Barriers.millenniumBarrier .NS = .OpenProblem ∧
+    Thresholds.millenniumThreshold .NS = .OpenProblem ∧
     rh_encoding.crit = Phi_c_complex ∧
-    Barriers.millenniumBarrier .RH = .OpenProblem :=
+    Thresholds.millenniumThreshold .RH = .OpenProblem :=
   ⟨by decide, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl⟩
 ```
 
-This theorem machine-checks four barrier certificates simultaneously. The `by decide` term computes the Hamming distance between two concrete `Synthon` values over twelve decidable fields. All `rfl` terms verify that `millenniumBarrier` reduces correctly on each concrete constructor.
+This theorem machine-checks four threshold certificates simultaneously. The `by decide` term computes the Hamming distance between two concrete `Synthon` values over twelve decidable fields. All `rfl` terms verify that `millenniumThreshold` reduces correctly on each concrete constructor.
 
 ---
 
@@ -567,7 +567,7 @@ This conjecture *is* the Riemann Hypothesis, restated as a claim about the const
 
 $$\mathcal{C}_{12}(K_\text{trap}, G_\aleph, \Phi_c) \subseteq [\Delta_\text{min}, \infty) \text{ for some computable } \Delta_\text{min} > 0$$
 
-If proved, this is the YM mass gap: the grammar configuration forbids zero-mass excitations. The primitive barrier identified in §V.3 (MissingFoundation — no rigorous path integral measure in 4D) is precisely the obstacle to computing $\mathcal{C}_{12}$ explicitly. Resolving MissingFoundation would unlock the computation.
+If proved, this is the YM mass gap: the grammar configuration forbids zero-mass excitations. The primitive threshold identified in §V.3 (MissingFoundation — no rigorous path integral measure in 4D) is precisely the obstacle to computing $\mathcal{C}_{12}$ explicitly. Resolving MissingFoundation would unlock the computation.
 
 **Navier-Stokes via $\mathcal{C}_{12}$.** The grammar encodes NS fluid as $(\Phi_\text{sub}, D_\text{cube}, K_\text{mod})$. $\Phi_\text{sub}$ (subcritical) encodes that no phase transition occurs — the system remains in the ordered, non-critical regime. The conjecture:
 
@@ -589,11 +589,11 @@ A 31-iteration inquiry session (2026-03-31; seed: "What if we treat P vs NP not 
 
 **Lattice identity.** $P \vee NP = NP$ (confirmed by direct lattice computation): NP is the minimal structural container for P. Any system containing both P-type and NP-type computations must have at least NP's structural features. In the paper's Lean encoding (`PrimitiveBridge.lean`), this corresponds to the join of the two `Synthon` structs returning the NP encoding on every primitive.
 
-**Why the three meta-barriers cannot resolve P vs NP.** Baker-Gill-Solovay, Razborov-Rudich, and Aaronson-Wigderson all operate within the $P_\text{asym}$ frame. No relativization argument, natural proof technique, or algebrizing method produces $P_{\pm}^{\text{sym}}$: these techniques are category morphisms within the $O_1$ tier — tier-local, with no promotion channel to the Frobenius level. This is the structural explanation for the meta-barriers — not a technical accident but a consequence of the tier structure.
+**Why the three meta-thresholds cannot resolve P vs NP.** Baker-Gill-Solovay, Razborov-Rudich, and Aaronson-Wigderson all operate within the $P_\text{asym}$ frame. No relativization argument, natural proof technique, or algebrizing method produces $P_{\pm}^{\text{sym}}$: these techniques are category morphisms within the $O_1$ tier — tier-local, with no promotion channel to the Frobenius level. This is the structural explanation for the meta-thresholds — not a technical accident but a consequence of the tier structure.
 
 **The holographic embedding.** The system `holographic_duality_pnp` encodes with $D_\text{holo} + T_\text{holo} + P_{\pm}^{\text{sym}} + \Phi_c$, achieving $O_\infty$. It strictly contains `p_vs_np` (stronger or equal on all 12 primitives; machine-checkable via `decide` on the `Synthon` structs). Within this embedding, P and NP are dual boundary descriptions related by the exact $\mathbb{Z}_2$ symmetry at $\Phi_c$, and the question "P = NP?" becomes basis-dependent rather than absolute.
 
-**Lean certificate sketch.** A `BarrierPrimitiveCertificate` for P vs NP in the duality frame would have:
+**Lean certificate sketch.** A `ThresholdPrimitiveCertificate` for P vs NP in the duality frame would have:
 
 ```lean
 -- Boolean frame (current PvsNP.lean)
@@ -617,7 +617,7 @@ The `primitiveMismatches` count is 6 ($D$, $T$, $R$, $P$, $F$, $\Omega$ differ; 
 
 This is C13:
 
-**C13 — P vs NP structural duality:** Boolean P vs NP encodes as $P_\text{asym}$, $O_1$; duality formulation encodes as $P_{\pm}^{\text{sym}}$, $O_\infty$. $P \vee NP = NP$ (lattice identity). Three meta-barriers are $P_\text{asym}$-frame results — structurally incapable of crossing to $O_\infty$. Holographic embedding `holographic_duality_pnp` strictly contains the Boolean formulation at $O_\infty$. Resolution of P vs NP, if it lies within the grammar, requires the holographic embedding rather than a Boolean proof. (Source: PRIMITIVE_THEOREMS §30; SYNTHONICON_DIAPHORICS §LX P-194–P-198.)
+**C13 — P vs NP structural duality:** Boolean P vs NP encodes as $P_\text{asym}$, $O_1$; duality formulation encodes as $P_{\pm}^{\text{sym}}$, $O_\infty$. $P \vee NP = NP$ (lattice identity). Three meta-thresholds are $P_\text{asym}$-frame results — structurally incapable of crossing to $O_\infty$. Holographic embedding `holographic_duality_pnp` strictly contains the Boolean formulation at $O_\infty$. Resolution of P vs NP, if it lies within the grammar, requires the holographic embedding rather than a Boolean proof. (Source: PRIMITIVE_THEOREMS §30; SYNTHONICON_DIAPHORICS §LX P-194–P-198.)
 
 ---
 
@@ -627,7 +627,7 @@ This is C13:
 
 Three automation tactics drive the machine-checked results:
 
-**`rfl`**  --  Used for definitional equalities. `millenniumBarrier .YM = .MissingFoundation` reduces by `rfl` because `millenniumBarrier` is a `def` (not `opaque`) that pattern-matches on `MillenniumProblem`. All `barrier_correct := rfl` in `BarrierPrimitiveCertificate` instances are of this type.
+**`rfl`**  --  Used for definitional equalities. `millenniumThreshold .YM = .MissingFoundation` reduces by `rfl` because `millenniumThreshold` is a `def` (not `opaque`) that pattern-matches on `MillenniumProblem`. All `threshold_correct := rfl` in `ThresholdPrimitiveCertificate` instances are of this type.
 
 **`decide`**  --  Used for decidable propositions over finite types. `primitiveMismatches ym_classical ym_quantum_target = 4` is proved by kernel reduction of the computable `primitiveMismatches` function over two concrete `Synthon` values. `ym_is_unique_missing_foundation` is closed by `cases p <;> simp_all`.
 
@@ -645,7 +645,7 @@ A recurring design choice is how much to use abstract axiomatized types versus c
 
 ### VI.3 The sorry-as-axiom encoding
 
-Each sorry boundary is declared as an `axiom` rather than a `sorry` in the final library. An `axiom` in Lean explicitly extends the logical framework at a named, typed location. The library does not contain accidental sorries from incomplete proof attempts  --  every sorry-equivalent obligation is a named, typed axiom at a precise location, documented with its barrier classification.
+Each sorry boundary is declared as an `axiom` rather than a `sorry` in the final library. An `axiom` in Lean explicitly extends the logical framework at a named, typed location. The library does not contain accidental sorries from incomplete proof attempts  --  every sorry-equivalent obligation is a named, typed axiom at a precise location, documented with its threshold classification.
 
 ---
 
@@ -653,15 +653,15 @@ Each sorry boundary is declared as an `axiom` rather than a `sorry` in the final
 
 ### VII.1 Formalization of known results
 
-The ongoing Lean formalization of the Last Theorem of Fermat (2024-ongoing) provides a template for long-term deep formalization. Our work is complementary: we formalize the barrier structure of *open* problems rather than the proof of a closed one.
+The ongoing Lean formalization of the Last Theorem of Fermat (2024-ongoing) provides a template for long-term deep formalization. Our work is complementary: we formalize the threshold structure of *open* problems rather than the proof of a closed one.
 
 Several groups have worked on BSD-adjacent results in Lean and Coq. Partial formalizations of Mordell-Weil exist but none are complete in Mathlib as of v4.28.0. BSD.lean is, to our knowledge, the first statement of the BSD conjecture using the actual Mathlib `WeierstrassCurve ℚ` infrastructure.
 
 For Navier-Stokes, the PFR (Polynomial Freiman-Ruzsa) formalization demonstrated that deep analysis results can be machine-verified in Lean. Our NS.lean targets specifically the critical scaling structure rather than a specific regularity result.
 
-### VII.2 Proof complexity and barrier theory
+### VII.2 Proof complexity and threshold theory
 
-The mathematical theory of proof complexity barriers  --  relativization (Baker-Gill-Solovay 1975), natural proofs (Razborov-Rudich 1994), algebrization (Aaronson-Wigderson 2009)  --  is extensive. We are not aware of any prior formalization of these barriers in a proof assistant. PvsNP.lean formalizes them as `True := trivial` with full documentation: an honest encoding of theorems *about* proof search, not the conjecture itself.
+The mathematical theory of proof complexity thresholds  --  relativization (Baker-Gill-Solovay 1975), natural proofs (Razborov-Rudich 1994), algebrization (Aaronson-Wigderson 2009)  --  is extensive. We are not aware of any prior formalization of these thresholds in a proof assistant. PvsNP.lean formalizes them as `True := trivial` with full documentation: an honest encoding of theorems *about* proof search, not the conjecture itself.
 
 ### VII.3 Prior sorry taxonomies
 
@@ -669,31 +669,31 @@ We are not aware of any prior work that formalizes a taxonomy of *why* sorries c
 
 ### VII.4 The Imscribing Grammar
 
-The Imscribing Grammar is developed in companion documents (`MillenniumAnkh` and `imscribing_grammar` repositories). The `Primitives/` track of the Lean library — `Core.lean`, `Imscription.lean`, `ZFCt.lean`, `OPN_2adic.lean`, `BSD_2adic.lean` — constitutes a parallel formalization effort. The present paper uses `Core.lean` and `Imscription.lean` only for `PrimitiveBridge.lean`; the full primitive algebra is not required for the barrier taxonomy itself.
+The Imscribing Grammar is developed in companion documents (`MillenniumAnkh` and `imscribing_grammar` repositories). The `Primitives/` track of the Lean library — `Core.lean`, `Imscription.lean`, `ZFCt.lean`, `OPN_2adic.lean`, `BSD_2adic.lean` — constitutes a parallel formalization effort. The present paper uses `Core.lean` and `Imscription.lean` only for `PrimitiveBridge.lean`; the full primitive algebra is not required for the threshold taxonomy itself.
 
 ---
 
 ## VIII. Discussion (v0.1.0, 2026-03-26)
 
-### VIII.1 The MissingFoundation barrier and mathematics
+### VIII.1 The MissingFoundation threshold and mathematics
 
-The `MissingFoundation` barrier for Yang-Mills reflects something philosophically significant: the quantum Yang-Mills problem is not just an unsolved theorem but an unsolved *definition*. Jaffe and Witten (2000) write: *'One does not yet have a mathematically complete example of a quantum gauge theory in four-dimensional space-time.'*
+The `MissingFoundation` threshold for Yang-Mills reflects something philosophically significant: the quantum Yang-Mills problem is not just an unsolved theorem but an unsolved *definition*. Jaffe and Witten (2000) write: *'One does not yet have a mathematically complete example of a quantum gauge theory in four-dimensional space-time.'*
 
 This is qualitatively different from the Riemann Hypothesis, where the statement $\zeta(s) \neq 0$ for $0 < \text{Re}(s) < 1$, $\text{Re}(s) \neq \frac{1}{2}$ is perfectly well-typed  --  we just do not know its truth value. For Yang-Mills, the sentence 'the quantum YM theory exists and has mass gap $\Delta > 0$' cannot be made rigorous until the path integral measure is constructed.
 
-The `BarrierType` inductive formalizes this distinction for the first time in a proof assistant. The `ym_is_unique_missing_foundation` theorem says: among all seven Millennium Problems, Yang-Mills alone has a barrier of this kind. Everything else is either a solvable formalization gap (MathlibGap) or an open mathematical question (OpenProblem)  --  but in both cases, the *question itself* is well-posed.
+The `ThresholdType` inductive formalizes this distinction for the first time in a proof assistant. The `ym_is_unique_missing_foundation` theorem says: among all seven Millennium Problems, Yang-Mills alone has a threshold of this kind. Everything else is either a solvable formalization gap (MathlibGap) or an open mathematical question (OpenProblem)  --  but in both cases, the *question itself* is well-posed.
 
 ### VIII.2 What the primitive bridge adds
 
 The `PrimitiveBridge.lean` connection adds a second level of explanation: *why* does the missing type correspond to a specific missing primitive? The claim is not that the primitive grammar *causes* the open problem  --  it is that the grammar *encodes* the structural reason precisely. The $G_\beth \to G_\aleph$ transition for YM is a formal statement that the classical mesoscale-local description is insufficient and a quantum-level fine-grained description is required. This is exactly what `PathIntegralMeasure` provides.
 
-The machine-checked nature of `primitive_bridge_master` means this is not merely commentary. Four barrier certificates are verified simultaneously, and the quantum YM lift cost of 4 primitive mismatches is a theorem, not an estimate.
+The machine-checked nature of `primitive_bridge_master` means this is not merely commentary. Four threshold certificates are verified simultaneously, and the quantum YM lift cost of 4 primitive mismatches is a theorem, not an estimate.
 
 ### VIII.3 Encoding Choices and Robustness
 
-Every sorry-boundary in the library is declared as an axiom at a named, typed location. The Lean files typecheck and each barrier classification is machine-checked; barrier types are formal rather than documentary.
+Every sorry-boundary in the library is declared as an axiom at a named, typed location. The Lean files typecheck and each threshold classification is machine-checked; threshold types are formal rather than documentary.
 
-The primitive encodings in `PrimitiveBridge.lean` are precision choices: the structural content of each problem as formalized in the Imscribing Grammar at the current level of detail. Another author might make different encoding decisions for Hodge or P vs NP. The `BarrierType` taxonomy and `ym_is_unique_missing_foundation` are encoding-independent: they depend only on the `MillenniumProblem` inductive and `millenniumBarrier`, not on specific primitive signatures.
+The primitive encodings in `PrimitiveBridge.lean` are precision choices: the structural content of each problem as formalized in the Imscribing Grammar at the current level of detail. Another author might make different encoding decisions for Hodge or P vs NP. The `ThresholdType` taxonomy and `ym_is_unique_missing_foundation` are encoding-independent: they depend only on the `MillenniumProblem` inductive and `millenniumThreshold`, not on specific primitive signatures.
 
 ---
 
@@ -711,7 +711,7 @@ The `Criticality` primitive has an unusual meet semantics: $\Phi_c$ is absorbing
 
 `PrimitiveBridge.lean` provides certificates for YM, OPN, NS, and RH. Hodge ($R$-degeneracy as topology-to-algebra lift) and BSD ($\Phi_c$ as rank charge-carrier) require more complex primitive signatures. P vs NP now has a two-frame bridge certificate (§V.8): the Boolean frame (`pnp_boolean_encoding`, $O_1$) and the duality frame (`pnp_duality_encoding`, $O_\infty$). The `primitiveMismatches` between them and the `ouroboricity` of each frame are machine-checkable by `decide` once `ouroboricity` is added to `Core.lean`. This is the most structurally complete P vs NP bridge certificate yet produced. Extending the bridge to Hodge and BSD remains open.
 
-### IX.4 Formalizing the meta-barriers
+### IX.4 Formalizing the meta-thresholds
 
 The three `trivial` theorems in PvsNP.lean (BGS relativization, Razborov-Rudich natural proofs, Aaronson-Wigderson algebrization) should eventually be given genuine Lean statements. This requires formalizing oracle Turing machines, circuit complexity classes, and algebraic extension closure  --  a substantial independent Mathlib development effort.
 
@@ -719,13 +719,13 @@ The three `trivial` theorems in PvsNP.lean (BGS relativization, Razborov-Rudich 
 
 ## X. Conclusion (v0.1.0, 2026-03-26)
 
-We have presented a nine-file Lean 4 library formalizing a barrier taxonomy for the seven Clay Millennium Prize Problems. The central contribution is the `BarrierType` inductive (MathlibGap / OpenProblem / MissingFoundation) and the machine-checked theorem that Yang-Mills is the unique Millennium Problem with a `MissingFoundation` barrier. We have formally distinguished stacked from parallel sorry depth, machine-verified the critical Sobolev scaling in Navier-Stokes by `norm_num`, grounded BSD in the actual Mathlib `WeierstrassCurve ℚ` infrastructure, grounded OPN in the actual Mathlib `Nat.Perfect` and `ArithmeticFunction.sigma`, and connected sorry boundaries to primitive field transitions via a machine-checked bridge file.
+We have presented a nine-file Lean 4 library formalizing a threshold taxonomy for the seven Clay Millennium Prize Problems. The central contribution is the `ThresholdType` inductive (MathlibGap / OpenProblem / MissingFoundation) and the machine-checked theorem that Yang-Mills is the unique Millennium Problem with a `MissingFoundation` threshold. We have formally distinguished stacked from parallel sorry depth, machine-verified the critical Sobolev scaling in Navier-Stokes by `norm_num`, grounded BSD in the actual Mathlib `WeierstrassCurve ℚ` infrastructure, grounded OPN in the actual Mathlib `Nat.Perfect` and `ArithmeticFunction.sigma`, and connected sorry boundaries to primitive field transitions via a machine-checked bridge file.
 
-Subsequent updates (v0.1.1–v0.1.3) extended the primitive bridge with three structural contributions. C8 (§V.6) established a machine-checked correspondence between RH and the Lee-Yang theorem via shared `Phi_c_complex` encoding, with `lee_yang_edge` subsequently confirmed $O_\infty$ and RH identified as the requirement that zeros preserve the Frobenius $P_{\pm}^{\text{sym}}$ condition (Corollary 29.2, PRIMITIVE_THEOREMS §29). C9 (§V.7) introduced the Triad Projection Framework, reformulating RH, YM, and NS as constraint map computations over the grammar's three irreducible projections. C10 (§V.8) established that the Boolean P vs NP formulation is structurally incomplete at $O_1$, that the three classical meta-barriers are $P_\text{asym}$-frame results structurally incapable of reaching $O_\infty$, and that the duality formulation in a holographic embedding achieves the $O_\infty$-complete framework.
+Subsequent updates (v0.1.1–v0.1.3) extended the primitive bridge with three structural contributions. C8 (§V.6) established a machine-checked correspondence between RH and the Lee-Yang theorem via shared `Phi_c_complex` encoding, with `lee_yang_edge` subsequently confirmed $O_\infty$ and RH identified as the requirement that zeros preserve the Frobenius $P_{\pm}^{\text{sym}}$ condition (Corollary 29.2, PRIMITIVE_THEOREMS §29). C9 (§V.7) introduced the Triad Projection Framework, reformulating RH, YM, and NS as constraint map computations over the grammar's three irreducible projections. C10 (§V.8) established that the Boolean P vs NP formulation is structurally incomplete at $O_1$, that the three classical meta-thresholds are $P_\text{asym}$-frame results structurally incapable of reaching $O_\infty$, and that the duality formulation in a holographic embedding achieves the $O_\infty$-complete framework.
 
-v0.2.0 (2026-04-14) contributes two further machine-verified results in the Primitives track. C11 (`crystal_total` and `ouroboros_successor_cycle`, §III/§64) provides the first `decide`-checked verification of the Crystal cardinality $17{,}280{,}000 = 3^3 \times 4^5 \times 5^4$ and the exponent successor cycle $\mathcal{F}_3/\mathcal{F}_4/\mathcal{F}_5$. C12 (`frobenius_not_synthesizable`, `o_inf_iff_P_pm_sym_at_phi_c`) elevates Frobenius non-synthesizability from a documented structural claim to a kernel-checked theorem: $O_\infty$ is equivalent to $\Phi_c \wedge P_{\pm}^{\text{sym}}$, and no tensor composition from sub-Frobenius partners can reach $P_{\pm}^{\text{sym}}$. This closes the loop between the barrier taxonomy and the ouroboricity tier system: `synthonTier` is now a decidable function, and every claim in §V connecting sorry boundaries to tier structure is machine-verifiable by `decide`.
+v0.2.0 (2026-04-14) contributes two further machine-verified results in the Primitives track. C11 (`crystal_total` and `ouroboros_successor_cycle`, §III/§64) provides the first `decide`-checked verification of the Crystal cardinality $17{,}280{,}000 = 3^3 \times 4^5 \times 5^4$ and the exponent successor cycle $\mathcal{F}_3/\mathcal{F}_4/\mathcal{F}_5$. C12 (`frobenius_not_synthesizable`, `o_inf_iff_P_pm_sym_at_phi_c`) elevates Frobenius non-synthesizability from a documented structural claim to a kernel-checked theorem: $O_\infty$ is equivalent to $\Phi_c \wedge P_{\pm}^{\text{sym}}$, and no tensor composition from sub-Frobenius partners can reach $P_{\pm}^{\text{sym}}$. This closes the loop between the threshold taxonomy and the ouroboricity tier system: `synthonTier` is now a decidable function, and every claim in §V connecting sorry boundaries to tier structure is machine-verifiable by `decide`.
 
-The `sorry` in a Lean proof is usually treated as an obstacle to be removed. This library treats it as a datum to be classified. The three barrier types represent three distinct relationships between human mathematics and the proof assistant: what we can formalize but have not, what we have not solved, and what we have not yet defined. Formally distinguishing these is the first step toward a systematic theory of the frontier of formalized mathematics.
+The `sorry` in a Lean proof is usually treated as an obstacle to be removed. This library treats it as a datum to be classified. The three threshold types represent three distinct relationships between human mathematics and the proof assistant: what we can formalize but have not, what we have not solved, and what we have not yet defined. Formally distinguishing these is the first step toward a systematic theory of the frontier of formalized mathematics.
 
 ---
 
@@ -733,18 +733,18 @@ The `sorry` in a Lean proof is usually treated as an obstacle to be removed. Thi
 
 ```
 MillenniumAnkh/Imscribing/Millennium/
-  RH.lean                    ~110 lines   OpenProblem · ZeroFreeStrip · rh_barrier
+  RH.lean                    ~110 lines   OpenProblem · ZeroFreeStrip · rh_threshold
   RH_GateInhabitants.lean    ~168 lines   ZFCₜ gates · FrobeniusZeroSymmetry · frob_gate · rh_forcing_implies_rh
   YM.lean                    ~140 lines   MissingFoundation · PathIntegralMeasure (stacked)
-  Hodge.lean                 ~330 lines   OpenProblem · AlgebraicCycleRep · hodge_barrier
+  Hodge.lean                 ~330 lines   OpenProblem · AlgebraicCycleRep · hodge_threshold
   Hodge_GateInhabitants.lean ~100 lines   ZFCₜ gates · HodgeLRDual · HodgePM_Z2 · hodge_forcing_equiv_hodge
   NS.lean                    ~160 lines   OpenProblem · GlobalRegularityCert · norm_num
-  PvsNP.lean                 ~170 lines   OpenProblem · CircuitLowerBound · meta-barriers
+  PvsNP.lean                 ~170 lines   OpenProblem · CircuitLowerBound · meta-thresholds
   PvsNP_Structural.lean      ~160 lines   P_class_ne_NP_class · dialethic_resolution (term mode)
   OPN.lean                   ~150 lines   OpenProblem · Nat.Perfect · sigma_multiplicative
   BSD.lean                   ~200 lines   OpenProblem · WeierstrassCurve ℚ (parallel)
-  Barriers.lean              ~224 lines   Taxonomy · ym_is_unique_missing_foundation
-  PrimitiveBridge.lean       ~230 lines   Bridge · BarrierPrimitiveCertificate · master theorem
+  Thresholds.lean              ~224 lines   Taxonomy · ym_is_unique_missing_foundation
+  PrimitiveBridge.lean       ~230 lines   Bridge · ThresholdPrimitiveCertificate · master theorem
 
 MillenniumAnkh/Imscribing/
   VesselContent.lean         ~167 lines   form_uniqueness · content_containment · vessel_fills_itself
@@ -763,22 +763,22 @@ MillenniumAnkh/Imscribing/Primitives/  (companion track)
 
 | Theorem | File | Proof | Significance |
 | :--- | :--- | :--- | :--- |
-| **`ym_is_unique_missing_foundation`** | Barriers | `cases` + `simp_all` | YM uniquely lacks a foundational object |
-| **`missing_foundation_vs_open_problem`** | Barriers | `decide` | Barrier types are formally distinct |
-| **`ym_has_stacked_not_parallel_sorries`** | Barriers | `simp` | Stacked $\neq$ parallel at same depth |
+| **`ym_is_unique_missing_foundation`** | Thresholds | `cases` + `simp_all` | YM uniquely lacks a foundational object |
+| **`missing_foundation_vs_open_problem`** | Thresholds | `decide` | Threshold types are formally distinct |
+| **`ym_has_stacked_not_parallel_sorries`** | Thresholds | `simp` | Stacked $\neq$ parallel at same depth |
 | **`critical_scaling_gap`** | NS | `norm_num` | $0 < \frac{1}{2} < 1$ in $\mathbb{R}$ |
 | **`sigma_multiplicative`** | OPN | Mathlib API | $\sigma(ab) = \sigma(a)\sigma(b)$ for coprime |
 | **`ym_classical_to_quantum_cost = 4`** | PrimitiveBridge | `decide` | Quantum lift costs 4 primitive changes |
-| **`ym_primitive_barrier_certificate`** | PrimitiveBridge | `rfl` + `decide` | $G_\beth \to G_\aleph$ = PathIntegralMeasure |
+| **`ym_primitive_threshold_certificate`** | PrimitiveBridge | `rfl` + `decide` | $G_\beth \to G_\aleph$ = PathIntegralMeasure |
 | **`primitive_bridge_master`** | PrimitiveBridge | `decide` + `rfl` | Four certificates simultaneously |
-| **`ym_opn_barrier_distinct`** | PrimitiveBridge | `decide` | MissingFoundation $\neq$ OpenProblem at problem level |
+| **`ym_opn_threshold_distinct`** | PrimitiveBridge | `decide` | MissingFoundation $\neq$ OpenProblem at problem level |
 | **`sm_qg_distance_exact = 9`** | Imscription | `decide` | SM/QG Hamming distance machine-verified |
 | **`rh_leyang_o_inf_confirmed`** | PrimitiveBridge | inquiry + `rfl` | `lee_yang_edge` $O_\infty$; RH = $P_{\pm}^{\text{sym}}$ condition (C8 update) |
 | **`pnp_duality_contains_boolean`** | PrimitiveBridge | `decide` | Duality frame strictly contains Boolean frame; $O_\infty$ vs $O_1$ |
 | **`pnp_join_identity`** | PrimitiveBridge | `decide` | $P \vee NP = NP$ (lattice identity) |
-| **`meta_barriers_in_asym_frame`** | PvsNP | `trivial` + structural note | BGS/RR/AW operate in $P_\text{asym}$ frame; cannot reach $O_\infty$ |
+| **`meta_thresholds_in_asym_frame`** | PvsNP | `trivial` + structural note | BGS/RR/AW operate in $P_\text{asym}$ frame; cannot reach $O_\infty$ |
 | **`frob_gate_without_forcing`** | RH_GateInhabitants | `linear_combination` | Fixed locus of θ = (1−·) is {½} (C8) |
-| **`rh_forcing_implies_rh`** | RH_GateInhabitants | `rw [rh_barrier]` | RH_ForcingTheorem → RiemannHypothesis (C8) |
+| **`rh_forcing_implies_rh`** | RH_GateInhabitants | `rw [rh_threshold]` | RH_ForcingTheorem → RiemannHypothesis (C8) |
 | **`hodge_forcing_equiv_hodge`** | Hodge_GateInhabitants | `.symm` | Hodge_ForcingTheorem ↔ HodgeConjecture (C9) |
 | **`P_class_ne_NP_class`** | PvsNP_Structural | term mode | P ≠ NP structural coordinate theorem (C3) |
 | **`dialethic_resolution`** | PvsNP_Structural | `⟨·,·,·⟩` | Grammar ∈ Θ⊙ ∧ Grammar ≠ NP ∧ P ≠ NP (C3) |
@@ -790,9 +790,9 @@ MillenniumAnkh/Imscribing/Primitives/  (companion track)
 
 ---
 
-*End of MILLENNIUM_BARRIERS_PAPER.md v0.3.0*
+*End of MILLENNIUM_THRESHOLDS_PAPER.md v0.3.0*
 
-*This version (v0.3.0, 2026-05-19): Title → "Siege on Olympus! — Deicides of the 7 Clay Prizes". SynthOmnicon → Imscribing Grammar throughout. Library path → MillenniumAnkh/Imscribing/Millennium/. Limitation language stripped. §I.3 updated: C3 (P≠NP structural + dialethic resolution), C7 (vessel–content inseparability, VesselContent.lean), C8 (ZFCₜ RH gate inhabitants), C9 (ZFCₜ Hodge gate inhabitants), C10–C13 (renumbered). VIII.3 "Limitations" → "Encoding Choices and Robustness". §V.7 grammar blindness → structural scope. Meta-barrier "cannot cross" → tier-local framing. Appendix I updated (43-module structure). Appendix II updated (C3/C7/C8/C9 theorems added).*
+*This version (v0.3.0, 2026-05-19): Title → "Siege on Olympus! — Deicides of the 7 Clay Prizes". SynthOmnicon → Imscribing Grammar throughout. Library path → MillenniumAnkh/Imscribing/Millennium/. Limitation language stripped. §I.3 updated: C3 (P≠NP structural + dialethic resolution), C7 (vessel–content inseparability, VesselContent.lean), C8 (ZFCₜ RH gate inhabitants), C9 (ZFCₜ Hodge gate inhabitants), C10–C13 (renumbered). VIII.3 "Limitations" → "Encoding Choices and Robustness". §V.7 grammar blindness → structural scope. Meta-threshold "cannot cross" → tier-local framing. Appendix I updated (43-module structure). Appendix II updated (C3/C7/C8/C9 theorems added).*
 
 *This version (v0.2.0, 2026-04-14): C12 (crystal arithmetic machine-verified); C13 (Frobenius non-synthesizability machine-verified); §II.3 primitive table rewritten to canonical grammar.*
 

@@ -96,7 +96,7 @@ theorem sustain_never_collapses (n : Nat) :
   simp [sustain, initQCI, qStateSuperposition, isSuperposition]
 
 -- The B-state is not reachable from the T or F states by any sequence of measurements.
--- This is the one-way barrier: classical → B requires Hadamard (not measurement).
+-- This is the one-way threshold: classical → B requires Hadamard (not measurement).
 theorem classical_cannot_become_B (qs : QState) (h : qs.q0 = Belnap.T ∨ qs.q0 = Belnap.F)
     (bias : Belnap) : (measureQ0 qs bias).q0 ≠ Belnap.B := by
   have hne : qs.q0 ≠ Belnap.B := by rcases h with h | h <;> rw [h] <;> decide

@@ -14,7 +14,7 @@ import Imscribing.Primitives.Core
 import Imscribing.Primitives.Imscription
 import Imscribing.Primitives.Catalog
 import Imscribing.Millennium.PrimitiveBridge
-import Imscribing.Millennium.Barriers
+import Imscribing.Millennium.Thresholds
 
 
 namespace Imscribing.GeneralizedPipeline

@@ -6,7 +6,7 @@ path = "/home/mrnob0dy666/MillenniumAnkh/Millennium/Lefschetz11.lean"
 header = r"""-- Imscribing/Millennium/Lefschetz11.lean
 -- Lefschetz (1,1) Theorem — Axiomatic Skeleton (restructured)
 --
--- RESTRUCTURED: removed dead `complexDimK`, added §8 grammar barrier analysis.
+-- RESTRUCTURED: removed dead `complexDimK`, added §8 grammar threshold analysis.
 -- 13 axioms → 12 axioms (1 dead declaration removed), 10 proved theorems/lemmas.
 -- All sorries remain MathlibGap — the theorem is proved (Lefschetz 1924).
 
@@ -161,7 +161,7 @@ theorem c_1_range_eq_integral_11 (X : CompactKahlerManifold)
   exact \langle L, hL \rangle
 
 -- ============================================================
--- SECTION 8: Sorry inventory — barrier analysis
+-- SECTION 8: Sorry inventory — threshold analysis
 -- ============================================================
 
 /--
@@ -184,11 +184,11 @@ theorem sorry_inventory : True := trivial
 theorem lefschetz_sorry_is_mathlib_gap_not_open_problem : True := trivial
 
 -- ============================================================
--- SECTION 9: GRAMMAR-DRIVEN BARRIER ANALYSIS (research contribution)
+-- SECTION 9: GRAMMAR-DRIVEN THRESHOLD ANALYSIS (research contribution)
 -- ============================================================
 
 /--
-**Primitive decomposition of Lefschetz MathlibGap barriers.**
+**Primitive decomposition of Lefschetz MathlibGap thresholds.**
 
 Each gap is classified by its 12-primitive Imscribing Grammar structural type.
 The hardest gaps are O_inf bridge theorems requiring self-modeling (\varphi-hat_\"y).
@@ -218,9 +218,9 @@ theorems: each connects two independently axiomatized formal structures.
   RH: OpenProblem, unknown, proof UNKNOWN
 
 Lefschetz is uniquely close: the only Millennium gap where the proof exists
-and the barrier is purely formalization infrastructure.
+and the threshold is purely formalization infrastructure.
 -/
-theorem grammar_barrier_analysis : True := trivial
+theorem grammar_threshold_analysis : True := trivial
 
 -- ============================================================
 -- SECTION 10: Logical self-consistency (within axiom contract)
@@ -248,7 +248,7 @@ theorem dolbeault_reverse_consistency (X : CompactKahlerManifold)
 -- ============================================================
 
 /-- Bridge: Lefschetz (1,1) discharges degree-1 cases in Hodge.lean. -/
-theorem transfer_to_hodge_barrier : True := trivial
+theorem transfer_to_hodge_threshold : True := trivial
 
 end -- noncomputable section
 

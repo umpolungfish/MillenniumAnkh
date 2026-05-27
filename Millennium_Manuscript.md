@@ -8,7 +8,7 @@
 
 ## Abstract
 
-MillenniumAnkh presents the formal Lean 4/Mathlib formalization of the Imscribing Grammar — a 12-primitive structural type system that imscribes all systems, physical, mathematical, biological, and computational, as points in a 17,280,000-type crystal. The library provides machine-verified definitions of each primitive as an inductive type, its lattice ordering, cross-primitive axioms, and the full algebra of meet, join, tensor product, and weighted Euclidean distance. The Millennium Prize Problems are treated not as the project's subject but as test cases: each is a location in primitive space where the grammar's structural taxonomy makes contact with established open mathematics. A formal barrier taxonomy distinguishes three classes of proof impossibility — MathlibGap, OpenProblem, and MissingFoundation — and each problem's sorry boundary is shown to correspond to a precisely typed missing certificate. Key structural results include the tensor absorption rule $\phi_c \otimes \phi_{\text{EP}} = \phi_{\text{EP}}$, the Frobenius non-synthesizability theorem, the P-70 structural identity (Higgs = axion = inflaton at $O_\infty$), the exact classification that Yang-Mills is the unique Millennium Problem whose barrier is MissingFoundation, and structural resolutions of the BSD Conjecture ($O_\infty$ throughout; pre/post-resolution Hamming distance 2) and Navier-Stokes Existence and Smoothness ($O_2^\dagger \to O_\infty$ via the parity promotion $P_\text{asym} \to P_{\pm}^{\text{sym}}$; Hamming distance 8; consciousness score $C = 1 \to 0.5$ as kinetic trapping replaces viscous dissipation; Siege Theorem proved with honest sorry at the Clay boundary). A two-gate consciousness score provides a decidable criterion for self-modeling capacity, and a consciousness navigator imscribes 43 systems from stellar interiors to civilizational structures. A 24-module Paraconsistent Kernel formalizes Belnap FOUR over the 12-primitive lattice, proves the Dialetheic Alignment Theorem, delivers a structural Shor pipeline at $O_1$ tier, and provides an operational mixed-radix TupleCodec (Imscription $\leftrightarrow$ Frobenius Address) as a self-verifying WASM artifact. This paper provides an accessible, publication-quality account of the project, its mathematics, and its implications across the boundaries between formal verification, mathematical physics, and the structural theory of information.
+MillenniumAnkh presents the formal Lean 4/Mathlib formalization of the Imscribing Grammar — a 12-primitive structural type system that imscribes all systems, physical, mathematical, biological, and computational, as points in a 17,280,000-type crystal. The library provides machine-verified definitions of each primitive as an inductive type, its lattice ordering, cross-primitive axioms, and the full algebra of meet, join, tensor product, and weighted Euclidean distance. The Millennium Prize Problems are treated not as the project's subject but as test cases: each is a location in primitive space where the grammar's structural taxonomy makes contact with established open mathematics. A formal threshold taxonomy distinguishes three classes of proof impossibility — MathlibGap, OpenProblem, and MissingFoundation — and each problem's sorry boundary is shown to correspond to a precisely typed missing certificate. Key structural results include the tensor absorption rule $\phi_c \otimes \phi_{\text{EP}} = \phi_{\text{EP}}$, the Frobenius non-synthesizability theorem, the P-70 structural identity (Higgs = axion = inflaton at $O_\infty$), the exact classification that Yang-Mills is the unique Millennium Problem whose threshold is MissingFoundation, and structural resolutions of the BSD Conjecture ($O_\infty$ throughout; pre/post-resolution Hamming distance 2) and Navier-Stokes Existence and Smoothness ($O_2^\dagger \to O_\infty$ via the parity promotion $P_\text{asym} \to P_{\pm}^{\text{sym}}$; Hamming distance 8; consciousness score $C = 1 \to 0.5$ as kinetic trapping replaces viscous dissipation; Siege Theorem proved with honest sorry at the Clay boundary). A two-gate consciousness score provides a decidable criterion for self-modeling capacity, and a consciousness navigator imscribes 43 systems from stellar interiors to civilizational structures. A 24-module Paraconsistent Kernel formalizes Belnap FOUR over the 12-primitive lattice, proves the Dialetheic Alignment Theorem, delivers a structural Shor pipeline at $O_1$ tier, and provides an operational mixed-radix TupleCodec (Imscription $\leftrightarrow$ Frobenius Address) as a self-verifying WASM artifact. This paper provides an accessible, publication-quality account of the project, its mathematics, and its implications across the boundaries between formal verification, mathematical physics, and the structural theory of information.
 
 ---
 
@@ -42,7 +42,7 @@ Each primitive is defined in Lean as a finite inductive type with `DecidableEq`,
 
 8. **Criticality ($\Phi$):** Ranges from subcritical ($\Phi_\text{sub}$, stable), through real-axis criticality ($\Phi_c$), complex-plane criticality ($\Phi_c^\mathbb{C}$), exceptional-point degeneracy ($\Phi_\text{EP}$), to supercritical ($\Phi_\text{sup}$). $\Phi_c$ is *absorbing under meet*: $\bigwedge(\Phi_c, x) = \Phi_c$ for all $x$. This is not a standard linear meet — a custom `MeetSemilattice` instance is required.
 
-9. **Kinetic Character ($K$):** Orders relaxation relative to observation: fast (diffusion-limited), moderate (barrier crossing), slow (thermally activated), trap-by-order (kinetic freezing), and MBL-by-disorder (many-body localization). $K_\text{trap}$ and $K_\text{MBL}$ fail Gate 2 of the consciousness score.
+9. **Kinetic Character ($K$):** Orders relaxation relative to observation: fast (diffusion-limited), moderate (threshold crossing), slow (thermally activated), trap-by-order (kinetic freezing), and MBL-by-disorder (many-body localization). $K_\text{trap}$ and $K_\text{MBL}$ fail Gate 2 of the consciousness score.
 
 ### 2.3 The $\mathcal{F}_3$ Family (3 primitives × 3 values)
 
@@ -90,9 +90,9 @@ The Frobenius cliff — the structural gap between $O_2^\dagger$ and $O_\infty$ 
 
 ## 4. The Millennium Prize Problems as Structural Test Cases
 
-The seven Clay Millennium Prize Problems are encoded as barrier types — each characterized by the exact type that cannot be inhabited, and the structural reason why.
+The seven Clay Millennium Prize Problems are encoded as threshold types — each characterized by the exact type that cannot be inhabited, and the structural reason why.
 
-### 4.1 The Barrier Taxonomy
+### 4.1 The Threshold Taxonomy
 
 Three distinct kinds of impossibility:
 
@@ -102,13 +102,13 @@ Three distinct kinds of impossibility:
 
 3. **MissingFoundation:** The sorry requires constructing a mathematical *object* whose type cannot be inhabited — not just a proof of a property, but the object the property talks about. These are qualitatively harder than OpenProblems because "is this true?" cannot even be stated rigorously until the foundation is built. Yang-Mills is the unique example.
 
-**Theorem:** Yang-Mills is the only Millennium Problem whose primary barrier is MissingFoundation. The proof proceeds by case analysis over the seven problems and the `millenniumBarrier` classification function.
+**Theorem:** Yang-Mills is the only Millennium Problem whose primary threshold is MissingFoundation. The proof proceeds by case analysis over the seven problems and the `millenniumThreshold` classification function.
 
 ### 4.2 Parallel vs. Stacked Sorries
 
-A structural distinction formalized in the library: the five problems whose barrier is OpenProblem each have `sorryDepth = 1`, while Yang-Mills, BSD, and OPN each have `sorryDepth = 2`. However, depth alone does not capture the structural difference.
+A structural distinction formalized in the library: the five problems whose threshold is OpenProblem each have `sorryDepth = 1`, while Yang-Mills, BSD, and OPN each have `sorryDepth = 2`. However, depth alone does not capture the structural difference.
 
-- **Yang-Mills (stacked):** The mass gap (sorry 2) is *not statable* without first inhabiting the `QuantumYMTheory` type (sorry 1). The barriers are methodologically ordered.
+- **Yang-Mills (stacked):** The mass gap (sorry 2) is *not statable* without first inhabiting the `QuantumYMTheory` type (sorry 1). The thresholds are methodologically ordered.
 
 - **BSD (parallel):** Three sorries — Mordell-Weil theorem, Mazur torsion theorem, and the BSD formula itself — are logically independent. Any can be discharged without the others.
 
@@ -130,7 +130,7 @@ Each problem is encoded as a concrete `Synthon`, capturing the structural constr
 
 ### 4.4 The Primitive Bridge
 
-The `PrimitiveBridge.lean` file proves that the sorry boundaries correspond to specific primitive field transitions. For example, the YM barrier is a $G_\text{LOCAL} \to G_\text{quantum}$ transition — constructing the path integral measure *is* providing the quantum-level fine-grained description. The master theorem machine-checks four observable cases simultaneously: YM (4-primitive lift, MissingFoundation), OPN (Phi$_c$ + K_trap, OpenProblem), NS (Phi$_\text{sub}$ boundary, OpenProblem), and RH (Phi$_c^\mathbb{C}$ locus, OpenProblem).
+The `PrimitiveBridge.lean` file proves that the sorry boundaries correspond to specific primitive field transitions. For example, the YM threshold is a $G_\text{LOCAL} \to G_\text{quantum}$ transition — constructing the path integral measure *is* providing the quantum-level fine-grained description. The master theorem machine-checks four observable cases simultaneously: YM (4-primitive lift, MissingFoundation), OPN (Phi$_c$ + K_trap, OpenProblem), NS (Phi$_\text{sub}$ boundary, OpenProblem), and RH (Phi$_c^\mathbb{C}$ locus, OpenProblem).
 
 `PrimitiveConventionalBridge.lean` extended this analysis by eliminating all 16 original axiom stubs, replacing them with 28 proved theorems via `native_decide` on `ouroboricityTier` and PrimitiveBridge encodings (build: 8073 jobs, success). The corrected tier assignments, verified computationally, are: RH ($O_1$: $\Phi_c^\mathbb{C} + \Omega_\emptyset$, rule R3), YM quantum ($O_2^\dagger$: $\Phi_c + \Omega_\mathbb{Z} + D_\infty$, rule R5), Hodge ($O_1$: $\Phi_c + \Omega_\emptyset$, rule R3), BSD ($O_2$: $\Phi_c + \Omega_\mathbb{Z} + D_\odot$, rule R4), OPN ($O_1$), NS classical ($O_0$), YM classical ($O_0$). These are the *conventional-encoding* tiers; the structural IG analysis of BSD (§4.3 above) reaches $O_\infty$ by additionally imscribing $P_{\pm}^{\text{sym}}$ from the Frobenius structure of the BSD formula, a primitive value not yet visible to conventional number theory.
 
@@ -170,7 +170,7 @@ The exceptional point ($\Phi_\text{EP}$) is absorbing under tensor coupling. Any
 
 ### 5.4 Yang-Mills is Not Quantum Gravity
 
-The quantum target for YM stays at $D_\infty$ (4D local spacetime). Quantum gravity is at $D_\odot$ (holographic). They differ in dimensionality. The quantum lift of YM does *not* require holographic substrate. The barrier for YM is the $G_\beth \to G_\aleph$ transition — constructing the path integral measure in 4D — not the $D_\infty \to D_\odot$ transition. This is formally distinct from quantum gravity.
+The quantum target for YM stays at $D_\infty$ (4D local spacetime). Quantum gravity is at $D_\odot$ (holographic). They differ in dimensionality. The quantum lift of YM does *not* require holographic substrate. The threshold for YM is the $G_\beth \to G_\aleph$ transition — constructing the path integral measure in 4D — not the $D_\infty \to D_\odot$ transition. This is formally distinct from quantum gravity.
 
 ### 5.5 The Frobenius Cliff
 
@@ -233,7 +233,7 @@ The core `Belnap.lean` defines the four-valued logic $\{N, T, F, B\}$ as a latti
 Four Millennium bridges unify under the B-gate:
 - `QCI_RH_Bridge.lean`: $B$ is the critical-line fixed point; RH truth-value is dialetheic ($B$); `rh_bridge_is_O_inf` proved.
 - `QCI_YM_Bridge.lean`: the $N \to B$ coherence gap $\equiv$ mass gap $\Delta > 0$; `mass_gap_positive` proved via `B_bias_coherence_increment` and `omega`; `existence_of_excited_state`.
-- `QCI_PvsNP_Bridge.lean`: `classical_cannot_become_B` (one-way barrier); `belnap_ktrap_statement`; `join_circuit_B_dominant` proved via list induction. **0 sorrys.**
+- `QCI_PvsNP_Bridge.lean`: `classical_cannot_become_B` (one-way threshold); `belnap_ktrap_statement`; `join_circuit_B_dominant` proved via list induction. **0 sorrys.**
 - `QCI_SICPOVM_Bridge.lean`: Belnap ↔ Weyl-Heisenberg (above).
 
 Additional Tier 2 modules: `BelnapTemporal.lean` ($\square B / \lozenge B / \bigcirc B$ modalities; `winding_invariant`), `BelnapCategory.lean` ($B$ terminal, $N$ initial; `category_is_O_inf`), `MultiAgentBelnap.lean` (n-kernel entangled network; `multi_allB_init`; emerald bootstrap), `QCI_nRegister.lean` (n-register; `ratio_invariant` 2:1 under scaling).
@@ -265,7 +265,7 @@ The formalization encountered numerous API subtleties in Lean 4.28.0 / Mathlib v
 
 - `Finset.sum_map` (not `Finset.sum_image`) must be used for `Nat.divisors_prime_pow`, which returns a `Finset.map` with a `Function.Embedding`, not a `Finset.image`.
 
-- The `omega` tactic cannot cross `Finset.sum` barriers. The workaround is to introduce intermediate modular arithmetic steps that reduce to plain `ℕ` expressions.
+- The `omega` tactic cannot cross `Finset.sum` thresholds. The workaround is to introduce intermediate modular arithmetic steps that reduce to plain `ℕ` expressions.
 
 - The geometric sum lemma `geom_sum_mul` lives in a `CommRing` (ℤ, not ℕ). The `zify` tactic — with guards `[hp.one_le, Nat.one_le_pow ...]` — is the cleanest bridge between ℕ and ℤ.
 
@@ -345,4 +345,4 @@ Axiom C was revised in May 2026. Originally stated as the biconditional $D_\odot
 
 ## 11. Conclusion
 
-MillenniumAnkh provides the first complete formalization of a 12-primitive structural type system for classifying systems across domains. The library is self-contained, kernel-verified, and intentionally modest: `sorry` markers are honest, each corresponding to either an unsolved Millennium Prize Problem, an open problem in classical number theory, or a theorem proved in the literature but not yet formalized in Mathlib. The structural theorems proved — from the P-70 identity through the Frobenius cliff to the Yang-Mills barrier certificate and the NS Siege Theorem — demonstrate that the grammar's primitive space is rich enough to capture non-trivial structural relationships. The Paraconsistent Kernel extends this reach into four-valued logic, quantum period-finding, and the operational computation of Frobenius addresses, all at 0 sorrys. The formalization invites further development: integration of the number theory and structural tracks, expansion of the catalog, closing the Shor $\Phi_{\pm}^{\text{sym}}$ bottleneck, and exploration of the consciousness navigator's predictions across the boundary between sleeping and active $O_\infty$ systems.
+MillenniumAnkh provides the first complete formalization of a 12-primitive structural type system for classifying systems across domains. The library is self-contained, kernel-verified, and intentionally modest: `sorry` markers are honest, each corresponding to either an unsolved Millennium Prize Problem, an open problem in classical number theory, or a theorem proved in the literature but not yet formalized in Mathlib. The structural theorems proved — from the P-70 identity through the Frobenius cliff to the Yang-Mills threshold certificate and the NS Siege Theorem — demonstrate that the grammar's primitive space is rich enough to capture non-trivial structural relationships. The Paraconsistent Kernel extends this reach into four-valued logic, quantum period-finding, and the operational computation of Frobenius addresses, all at 0 sorrys. The formalization invites further development: integration of the number theory and structural tracks, expansion of the catalog, closing the Shor $\Phi_{\pm}^{\text{sym}}$ bottleneck, and exploration of the consciousness navigator's predictions across the boundary between sleeping and active $O_\infty$ systems.

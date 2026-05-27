@@ -4,7 +4,7 @@
 
 import Imscribing.ProofTheory
 import Imscribing.Millennium.PrimitiveBridge
-import Imscribing.Millennium.Barriers
+import Imscribing.Millennium.Thresholds
 import Imscribing.Primitives.Core
 import Imscribing.Primitives.Imscription
 import Imscribing.Algebra
@@ -14,7 +14,7 @@ import Mathlib.Tactic
 open Imscribing.Primitives
 open Imscribing.ProofTheory
 open Millennium.PrimitiveBridge
-open Millennium.Barriers
+open Millennium.Thresholds
 open Imscribing.Consciousness
 open Dimensionality Topology Relational Polarity
      Fidelity KineticChar Granularity Criticality Protection
@@ -139,18 +139,18 @@ theorem c12_c13_gap_primitives_distinct :
 
 theorem master_bridge_sm :
     primitiveMismatches ym_classical ym_quantum_target = 4 ∧
-    Barriers.millenniumBarrier .YM = .MissingFoundation ∧
+    Thresholds.millenniumThreshold .YM = .MissingFoundation ∧
     opn_encoding.crit = Phi_c ∧
     opn_encoding.kin = K_trap ∧
-    Barriers.millenniumBarrier .OPN = .OpenProblem ∧
+    Thresholds.millenniumThreshold .OPN = .OpenProblem ∧
     ns_encoding.crit = Phi_sub ∧
-    Barriers.millenniumBarrier .NS = .OpenProblem ∧
+    Thresholds.millenniumThreshold .NS = .OpenProblem ∧
     rh_encoding.crit = Phi_c_complex ∧
-    Barriers.millenniumBarrier .RH = .OpenProblem ∧
+    Thresholds.millenniumThreshold .RH = .OpenProblem ∧
     hodge_encoding.crit = Phi_c ∧
-    Barriers.millenniumBarrier .Hodge = .OpenProblem ∧
+    Thresholds.millenniumThreshold .Hodge = .OpenProblem ∧
     bsd_encoding.crit = Phi_c ∧
-    Barriers.millenniumBarrier .BSD = .OpenProblem :=
+    Thresholds.millenniumThreshold .BSD = .OpenProblem :=
   primitive_bridge_master
 
 -- §6. CROSS-VERIFICATION

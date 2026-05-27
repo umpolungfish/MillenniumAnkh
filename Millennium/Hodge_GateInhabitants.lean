@@ -6,7 +6,7 @@ import Imscribing.Primitives.ZFCt
   # Hodge Gate Inhabitants: Constructed ZFCt Promotions for the Hodge Conjecture
 
   Populate the ZFCt promotion slots for Hodge with concrete inhabitants.
-  This advances the Hodge barrier from OpenProblem (bare) to
+  This advances the Hodge threshold from OpenProblem (bare) to
   OpenProblem (ZFCt-promoted) — the missing gate is surjectivity of the cycle class map.
 
   Key results:
@@ -127,6 +127,6 @@ theorem hodge_forcing_equiv_hodge : Hodge_ForcingTheorem ↔ HodgeConjecture :=
     and the forcing theorem is the open problem. The ZFCt structure makes the
     gap precise: it is a statement about elements of the fixed locus, not about
     the existence of the involution or the locus itself. -/
-theorem hodge_rh_barrier_parallels : True := trivial
+theorem hodge_rh_threshold_parallels : True := trivial
 
 end Millennium.Hodge_GateInhabitants

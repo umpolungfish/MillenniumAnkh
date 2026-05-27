@@ -15,5 +15,12 @@ private lemma geom_sum_mod2 (q n : ℕ) (hq : q % 2 = 1) :
   induction n with
   | zero => simp
   | succ k ih =>
-    rw [Finset.sum_range_succ, Nat.add_mod, show q ^ k % 2 = 1 from ?_, ih]
-    sorry
+    rw [Finset.sum_range_succ, Nat.add_mod]
+    have h_pow_odd : q ^ k % 2 = 1 := by
+      induction k with
+      | zero => simp
+      | succ k ih' =>
+        rw [pow_succ, Nat.mul_mod, hq, ih']
+        norm_num
+    rw [h_pow_odd, ih]
+    simp

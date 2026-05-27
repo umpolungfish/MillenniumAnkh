@@ -1,7 +1,7 @@
 # Analytical Foundations of the MillenniumAnkh Framework and ZFCₜ 
 
 ## I. Executive Summary
-The MillenniumAnkh library targets the formalization of the remaining seven Millennium Prize Problems in Lean 4. Rather than claiming proofs of open conjectures, the framework establishes a **Machine-Checked Barrier Taxonomy** that classifies the epistemic and ontological obstacles preventing their resolution. Central to this taxonomy is the distinction between `MathlibGap` (formalization deficit), `OpenProblem` (mathematical deficit), and `MissingFoundation` (ontological deficit).
+The MillenniumAnkh library targets the formalization of the remaining seven Millennium Prize Problems in Lean 4. Rather than claiming proofs of open conjectures, the framework establishes a **Machine-Checked Threshold Taxonomy** that classifies the epistemic and ontological obstacles preventing their resolution. Central to this taxonomy is the distinction between `MathlibGap` (formalization deficit), `OpenProblem` (mathematical deficit), and `MissingFoundation` (ontological deficit).
 
 ## II. The ZFCₜ Architecture
 The library introduces **ZFCₜ** (ZFC with Chirality and Winding), extending the standard Zermelo-Fraenkel axioms into a dynamic, sequential regime.
@@ -19,10 +19,10 @@ The file `Synthon.lean` verifies structural identities across disparate physical
 - **P-70 Symmetry:** Higgs, Axion, and Inflaton fields are proved structurally identical (`higgs = axion = inflaton`) under the $K_{slow}$ (slow-roll) regime.
 - **Quantum Gravity ($O_\infty$):** Formally identified as holographic Frobenius systems ($D_\odot + T_\odot$), distinct from the 4D local Yang-Mills quantum target ($D_\infty$).
 
-## III. Millennium Barrier Taxonomy
-The core of the scholarship lies in `Barriers.lean`, where the seven problems are mapped to their structural bottlenecks.
+## III. Millennium Threshold Taxonomy
+The core of the scholarship lies in `Thresholds.lean`, where the seven problems are mapped to their structural bottlenecks.
 
-| Problem | Barrier Type | Structural signature | Missing Object/Certificate |
+| Problem | Threshold Type | Structural signature | Missing Object/Certificate |
 | :--- | :--- | :--- | :--- |
 | **RH** | OpenProblem | $\Phi_c^\mathbb{C}$ | `ZeroFreeStrip 0` |
 | **YM** | MissingFoundation | $G_\aleph, H, \Phi_c$ | `PathIntegralMeasure G` |

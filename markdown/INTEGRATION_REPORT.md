@@ -98,7 +98,7 @@ focuses on a single OPN type ($1{:}1$), and has Z2 parity from valuation parity 
 - `SynthOmnicon/Primitives/OPN_2adic.lean` — Already contains the Euler/Touard formalization with
   `euler_opn_form`, `touchard_congruence`, and 2-adic/3-adic valuation lemmas. This file is the
   canonical formal bridge from odd-perfect-numbers.
-- `Millennium/OPN.lean` — Already contains the Millennium-level barrier analysis for OPN with
+- `Millennium/OPN.lean` — Already contains the Millennium-level threshold analysis for OPN with
   honest sorries (MathlibGap for Euler, OpenProblem for nonexistence).
 
 ---

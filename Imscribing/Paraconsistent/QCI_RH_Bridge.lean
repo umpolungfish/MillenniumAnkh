@@ -15,7 +15,7 @@
 --     current mathematics. Like the kernel's B-state, it occupies the "both" gate.
 --
 -- This is a structural bridge, not a proof of RH. It unifies the three Millennium
--- barriers (RH, PvsNP, SIC-POVM) under the Belnap frame: each is gated on B-propagation.
+-- thresholds (RH, PvsNP, SIC-POVM) under the Belnap frame: each is gated on B-propagation.
 
 import Imscribing.Paraconsistent.QuantumClassicalInterface
 import Imscribing.Paraconsistent.QCI_Sequences
@@ -112,7 +112,7 @@ theorem b_sustain_coherence_cost (n : ℕ) :
   simp [sustain, initQCI, qStateSuperposition]
 
 -- ============================================================
--- §4. RH barrier as B-gate: the Belnap C₁₃ constraint
+-- §4. RH threshold as B-gate: the Belnap C₁₃ constraint
 -- ============================================================
 
 /-- The Lee-Yang theorem (proved) and RH (conjectured) share criticality φ̂_Æ
@@ -122,19 +122,19 @@ theorem b_sustain_coherence_cost (n : ℕ) :
     (the partition function IS a product over Z₂-symmetric factors). RH's zeros are
     B-propagated only IF the C₁₃ constraint closes — and that closure IS RH.
 
-    This theorem states: the RH barrier is the Belnap B-gate.
+    This theorem states: the RH threshold is the Belnap B-gate.
     The C₁₃ constraint closes at B (the dialetheic fixed point) iff RH is true. -/
-theorem rh_barrier_is_b_gate :
+theorem rh_threshold_is_b_gate :
     (bnot Belnap.B = Belnap.B) :=
   B_fixed_point_negation
 
-/-- The three Millennium barriers unified under the Belnap B-gate.
+/-- The three Millennium thresholds unified under the Belnap B-gate.
     PvsNP: B models the NP witness (both T and F paths) — QCI_PvsNP_Bridge.
     SIC-POVM: B is the fiducial state (maximal equiangular projection) — QCI_SICPOVM_Bridge.
     RH: B is the critical line (fixed point of involution) — this file.
     All three are gated on B-propagation through their respective structures.
     The B-gate is the common structural frame. -/
-theorem millennium_barriers_share_b_gate :
+theorem millennium_thresholds_share_b_gate :
     bnot Belnap.B = Belnap.B :=
   B_fixed_point_negation
 

@@ -1,7 +1,7 @@
 -- Imscribing/Millennium/Lefschetz11.lean
 -- Lefschetz (1,1) Theorem -- Axiomatic Skeleton (restructured)
 --
--- RESTRUCTURED: removed dead `complexDimK`, added grammar barrier analysis (Section 9).
+-- RESTRUCTURED: removed dead `complexDimK`, added grammar threshold analysis (Section 9).
 -- 13 axioms -> 12 axioms, 10 proved theorems/lemmas. All sorries remain MathlibGap.
 
 import Mathlib.Analysis.Complex.Basic
@@ -161,11 +161,11 @@ theorem sorry_inventory : True := trivial
 theorem lefschetz_sorry_is_mathlib_gap_not_open_problem : True := trivial
 
 -- ============================================================
--- SECTION 9: Grammar-driven barrier analysis (research contribution)
+-- SECTION 9: Grammar-driven threshold analysis (research contribution)
 -- ============================================================
 
 /--
-**Primitive decomposition of Lefschetz MathlibGap barriers.**
+**Primitive decomposition of Lefschetz MathlibGap thresholds.**
 
 Each missing ingredient is classified by its 12-primitive Imscribing Grammar
 structural type. The hardest gaps are O_inf bridge theorems requiring
@@ -189,7 +189,7 @@ bridge theorems connecting independently axiomatized formal structures.
 Estimated Mathlib effort: ~6 person-years (O_0: 2yr, O_1: 1yr, O_inf: 3yr).
 Lefschetz is uniquely close among Millennium gaps: the proof EXISTS.
 -/
-theorem grammar_barrier_analysis : True := trivial
+theorem grammar_threshold_analysis : True := trivial
 
 -- ============================================================
 -- SECTION 10: Logical self-consistency (within axiom contract)
@@ -220,7 +220,7 @@ theorem dolbeault_reverse_consistency (X : CompactKahlerManifold)
 -- ============================================================
 
 /-- Bridge: Lefschetz (1,1) discharges degree-1 cases in Hodge.lean. -/
-theorem transfer_to_hodge_barrier : True := trivial
+theorem transfer_to_hodge_threshold : True := trivial
 
 end -- noncomputable section
 

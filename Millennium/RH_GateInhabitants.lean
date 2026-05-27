@@ -7,7 +7,7 @@ import Imscribing.Primitives.ZFCt
   # RH Gate Inhabitants: Constructed ZFCt Promotions for the Riemann Hypothesis
 
   Populate the ZFCt promotion slots for RH with concrete inhabitants.
-  This advances the RH barrier from OpenProblem (bare) to
+  This advances the RH threshold from OpenProblem (bare) to
   OpenProblem (ZFCt-promoted) — the missing gate is now well-defined.
 
   Key results:
@@ -21,7 +21,7 @@ import Imscribing.Primitives.ZFCt
     (5) ZFCt_RHCertificate assembled from all four gates.
     (6) frob_gate_without_forcing: theta_combined s = s ↔ s.re = 1/2 — proved.
     (7) rh_forcing_implies_rh: RH_ForcingTheorem → RiemannHypothesis — proved
-        via rh_barrier.
+        via rh_threshold.
     (8) theta_op_fixed_iff_critical: bridge to critical line formulation.
 
   The remaining gap: RH_ForcingTheorem itself — that all nontrivial zeros lie

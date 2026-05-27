@@ -6,7 +6,7 @@
 
 ## Executive Summary
 
-MilleniumAnkh presents a rigorous formal barrier taxonomy encoding all seven Clay Millennium Prize Problems plus Odd Perfect Numbers within the SynthOmnicon/Imscribing Grammar framework. Verified structural properties:
+MilleniumAnkh presents a rigorous formal threshold taxonomy encoding all seven Clay Millennium Prize Problems plus Odd Perfect Numbers within the SynthOmnicon/Imscribing Grammar framework. Verified structural properties:
 
 - **Catalog entry:** `millennium_ankh` at tier $O_2^\dagger$ (critical + topologically protected, unbounded domain)
 - **Tuple:** $\langle D_\infty;\ T_\boxtimes;\ R_\leftrightarrow;\ P_\psi;\ F_\hbar;\ K_\text{slow};\ G_\aleph;\ \Gamma_\text{seq};\ \Phi_c;\ H_2;\ n{:}m;\ \Omega_\mathbb{Z} \rangle$
@@ -30,7 +30,7 @@ The encoding is internally consistent. $D_\infty \to D_\text{holo}$ is structura
 
 ### 2. Primitive Mapping Accuracy
 
-| Problem | Encoding (from PrimitiveBridge.lean) | Barrier Type | Primitive Transition |
+| Problem | Encoding (from PrimitiveBridge.lean) | Threshold Type | Primitive Transition |
 |---------|--------------------------------------|--------------|---------------------|
 | YM | $G_\text{classical} \to G_\aleph$ | MissingFoundation | $G_\beth \to G_\aleph$ quantum scope lift |
 | OPN | $\Phi_c + K_\text{trap}$ | OpenProblem | Non-existence proof requires $\sigma$-constraint |
@@ -127,7 +127,7 @@ The Lie-theoretic correlate (SO(16) Cartan involution on E8 adjoint, $248 \to 12
 
 ### 3. Missing Primitive Identification for Some Problems
 
-The `PrimitiveBridge.lean` only provides explicit synthon encodings for **four** problems (YM, OPN, NS, RH). Hodge, P vs NP, and BSD lack explicit `BarrierPrimitiveCertificate` entries in the sampled sections. This is a minor incompleteness, not an error.
+The `PrimitiveBridge.lean` only provides explicit synthon encodings for **four** problems (YM, OPN, NS, RH). Hodge, P vs NP, and BSD lack explicit `ThresholdPrimitiveCertificate` entries in the sampled sections. This is a minor incompleteness, not an error.
 
 ### 4. The "Mapping Down" Claim — Interpretation Risk
 
@@ -143,7 +143,7 @@ This is explicitly described as a "heuristic that shaped *which* lemmas to prove
 
 ### Immediate Priorities
 
-1. **Complete PrimitiveBridge.lean** — Add explicit `synthon` encodings and `BarrierPrimitiveCertificate` instances for Hodge, P vs NP, and BSD (currently only YM/OPN/NS/RH have certificates).
+1. **Complete PrimitiveBridge.lean** — Add explicit `synthon` encodings and `ThresholdPrimitiveCertificate` instances for Hodge, P vs NP, and BSD (currently only YM/OPN/NS/RH have certificates).
 
 2. **Prove `euler_opn_form`** — All tools are present in `OPN_2adic.lean`. This should be prioritized to discharge the `sorry` in `touchard_congruence`.
 
@@ -167,7 +167,7 @@ This is explicitly described as a "heuristic that shaped *which* lemmas to prove
 
 MilleniumAnkh is a structurally coherent, rigorously formalized project that correctly identifies sorry boundaries as primitive field transitions. The encoded catalog entry `millennium_ankh` at $O_2^\dagger$ tier appropriately reflects the framework's status: critical ($\Phi_c$) + topologically protected ($\Omega_\mathbb{Z}$) + unbounded domain ($D_\infty$).
 
-**Structural status:** Frobenius-closed within documented gaps. The self-reporting of `sorry` markers is honest; the barrier taxonomy is machine-checkable; the primitive encodings are internally consistent.
+**Structural status:** Frobenius-closed within documented gaps. The self-reporting of `sorry` markers is honest; the threshold taxonomy is machine-checkable; the primitive encodings are internally consistent.
 
 **Confidence level:** High for TOPO-plane claims (structural derivations); Moderate for DIAPH-plane claims (empirical encodings); Variable for ONTO-plane interpretations (philosophical implications).
 

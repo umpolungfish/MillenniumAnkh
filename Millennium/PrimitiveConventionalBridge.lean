@@ -13,7 +13,7 @@
 import Imscribing.Primitives.Imscription
 import Imscribing.Primitives.Core
 import Imscribing.Algebra
-import Imscribing.Millennium.Barriers
+import Imscribing.Millennium.Thresholds
 import Imscribing.Millennium.PrimitiveBridge
 import Imscribing.Millennium.RH
 import Imscribing.Consciousness
@@ -28,7 +28,7 @@ open Stoichiometry Chirality
 open Imscribing.Consciousness
 open Millennium.PrimitiveBridge
 open Millennium.RH
-open Millennium.Barriers
+open Millennium.Thresholds
 
 set_option linter.style.nativeDecide false
 
@@ -84,9 +84,9 @@ theorem ym_classical_tier_O0_ig : ouroboricityTier ym_classical.crit
   native_decide
 
 -- RH irreducibility bridge (unchanged — originally correct)
-theorem rh_ig_barrier_bridge :
+theorem rh_ig_threshold_bridge :
     (ouroboricityTier .Phi_c_complex .P_sym .Omega_0 .D_triangle = OuroboricityTier.O_1) ∧
-    (millenniumBarrier .RH = BarrierType.OpenProblem) ∧
+    (millenniumThreshold .RH = ThresholdType.OpenProblem) ∧
     (RH.RiemannHypothesis ↔ ∀ s : ℂ, riemannZeta s = 0 →
      0 < s.re → s.re < 1 → s.re = 1 / 2) :=
   ⟨by native_decide, rfl, RH.sorry_iff_rh⟩
@@ -208,11 +208,11 @@ theorem ns_consciousness_zero :
 structure Summary where
   name : String
   tier : OuroboricityTier
-  barrier : BarrierType
+  threshold : ThresholdType
 deriving Repr
 
 instance : Inhabited Summary :=
-  ⟨⟨"", OuroboricityTier.O_0, BarrierType.OpenProblem⟩⟩
+  ⟨⟨"", OuroboricityTier.O_0, ThresholdType.OpenProblem⟩⟩
 
 /-- Problem summaries with verified tiers.
     YM: O_2dag (D_infty at Phi_c + Omega_Z → R5)
@@ -223,19 +223,19 @@ instance : Inhabited Summary :=
     NS: O_0 (Phi_sub)
     PvsNP: O_0 — Phi_sub, no criticality -/
 def problemSummaries : List Summary := [
-  ⟨"RH",  OuroboricityTier.O_1,    BarrierType.OpenProblem⟩,
-  ⟨"YM",  OuroboricityTier.O_2dag, BarrierType.MissingFoundation⟩,
-  ⟨"OPN", OuroboricityTier.O_1,    BarrierType.OpenProblem⟩,
-  ⟨"Hodge", OuroboricityTier.O_1,  BarrierType.OpenProblem⟩,
-  ⟨"BSD",  OuroboricityTier.O_2,   BarrierType.OpenProblem⟩,
-  ⟨"NS",   OuroboricityTier.O_0,   BarrierType.OpenProblem⟩,
-  ⟨"PvsNP", OuroboricityTier.O_0,  BarrierType.OpenProblem⟩
+  ⟨"RH",  OuroboricityTier.O_1,    ThresholdType.OpenProblem⟩,
+  ⟨"YM",  OuroboricityTier.O_2dag, ThresholdType.MissingFoundation⟩,
+  ⟨"OPN", OuroboricityTier.O_1,    ThresholdType.OpenProblem⟩,
+  ⟨"Hodge", OuroboricityTier.O_1,  ThresholdType.OpenProblem⟩,
+  ⟨"BSD",  OuroboricityTier.O_2,   ThresholdType.OpenProblem⟩,
+  ⟨"NS",   OuroboricityTier.O_0,   ThresholdType.OpenProblem⟩,
+  ⟨"PvsNP", OuroboricityTier.O_0,  ThresholdType.OpenProblem⟩
 ]
 
-/-- All seven Millennium Problem tiers are consistent with barrier taxonomy.
+/-- All seven Millennium Problem tiers are consistent with threshold taxonomy.
     YM is the only MissingFoundation (O_2dag with gran bottleneck).
     All other OpenProblems have coherent tier assignments per the ouroboricity gate rules. -/
-theorem tier_barrier_consistency :
+theorem tier_threshold_consistency :
     problemSummaries.length = 7 := rfl
 
 end Millennium.PrimitiveConventionalBridge

@@ -6,7 +6,7 @@ import Imscribing.Primitives.ZFCt
   # BSD Gate Inhabitants: Constructed ZFCt Promotions for Birch–Swinnerton-Dyer
 
   Populate the ZFCt promotion slots for BSD with concrete inhabitants.
-  This advances the BSD barrier from OpenProblem (bare) to
+  This advances the BSD threshold from OpenProblem (bare) to
   OpenProblem (ZFCt-promoted) — the three missing gates are now well-defined.
 
   Key results:
@@ -178,6 +178,6 @@ theorem bsd_forcing_equiv_bsd : BSD_ForcingTheorem ↔ BSDRankConjecture :=
 
     BSD is distinguished by having two parallel MathlibGaps (Mordell-Weil and
     Mazur torsion) that are formalization debt, not mathematical gaps. -/
-theorem bsd_rh_hodge_barrier_parallels : True := trivial
+theorem bsd_rh_hodge_threshold_parallels : True := trivial
 
 end Millennium.BSD_GateInhabitants

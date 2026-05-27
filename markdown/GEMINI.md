@@ -22,8 +22,8 @@ The project uses the seven Clay Millennium Prize Problems as test cases. Each pr
     - `Catalog.lean`: A registry of named Imscriptions (e.g., $E_8$, Magnetar, Langlands).
     - `Crystal.lean`: Mixed-radix addressing and roundtrip theorems for the 17.28M types.
 - **`Millennium/`**: Formalization of Millennium Problems.
-    - `Barriers.lean`: Taxonomy of `BarrierType` (MathlibGap, OpenProblem, MissingFoundation).
-    - `PrimitiveBridge.lean`: Maps mathematical barriers to primitive field transitions (e.g., YM blocked at G_aleph).
+    - `Thresholds.lean`: Taxonomy of `ThresholdType` (MathlibGap, OpenProblem, MissingFoundation).
+    - `PrimitiveBridge.lean`: Maps mathematical thresholds to primitive field transitions (e.g., YM blocked at G_aleph).
     - Problem-specific files: `RH.lean`, `YM.lean`, `NS.lean`, `PvsNP.lean`, etc.
 - **`Classical/`**: Stubs and partial proofs for other classical problems (e.g., Solitary 10, Hecke-Landau).
 - **`ZFCt.lean`**: Temporalized ZFC set theory ($ZFC_t$) and physics equation encodings.
@@ -77,7 +77,7 @@ The project uses the seven Clay Millennium Prize Problems as test cases. Each pr
     - **Tensor ($\otimes$)**: Max on union primitives; **Min** on bottleneck primitives (F, P).
 4. **Ouroboricity Tiers**:
     - **O_inf**: The goal. Requires **Frobenius symmetry** ($P_{\pm}Sym$) at **Criticality** ($\Phi_c$).
-5. **Barrier Classification**:
+5. **Threshold Classification**:
     - **MathlibGap**: Proved but missing from Mathlib (e.g., Touchard's congruence).
     - **OpenProblem**: Unsolved (e.g., RH, BSD).
     - **MissingFoundation**: Object not yet rigorously defined (e.g., 4D YM Path Integral).
@@ -85,6 +85,6 @@ The project uses the seven Clay Millennium Prize Problems as test cases. Each pr
 ## Key Files for Reference
 - `Primitives/Core.lean`: Inductive type definitions for all primitives.
 - `Primitives/Imscription.lean`: The central struct and Hamming distance logic.
-- `Millennium/Barriers.lean`: The definitive taxonomy of mathematical difficulty.
+- `Millennium/Thresholds.lean`: The definitive taxonomy of mathematical difficulty.
 - `Millennium/PrimitiveBridge.lean`: The formal mapping between open problems and primitive blocks.
 - `Imscribing/IGMorphism.lean`: The "Paralogical" extension to classical type theory.

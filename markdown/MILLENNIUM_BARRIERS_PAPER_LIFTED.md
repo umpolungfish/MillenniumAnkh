@@ -1,9 +1,9 @@
-# SynthOmnicon: Millennium Barriers
-## *A Formal Barrier Taxonomy for the Millennium Prize Problems in Lean 4*
+# SynthOmnicon: Millennium Thresholds
+## *A Formal Threshold Taxonomy for the Millennium Prize Problems in Lean 4*
 
 **Version:** v0.2.0 · 2026-04-14
 **Authors:** Lando⊗LLM & Human
-**Document role:** Self-contained research paper. Presents the machine-checked barrier taxonomy for all seven Clay Millennium Prize Problems, the `BarrierType` inductive, the `ym_is_unique_missing_foundation` theorem, the stacked/parallel sorry distinction, and the primitive bridge connecting sorry boundaries to the SynthOmnicon constraint grammar. Target venue: Journal of Formalized Reasoning / Journal of Automated Reasoning.
+**Document role:** Self-contained research paper. Presents the machine-checked threshold taxonomy for all seven Clay Millennium Prize Problems, the `ThresholdType` inductive, the `ym_is_unique_missing_foundation` theorem, the stacked/parallel sorry distinction, and the primitive bridge connecting sorry boundaries to the SynthOmnicon constraint grammar. Target venue: Journal of Formalized Reasoning / Journal of Automated Reasoning.
 
 *The distinction that matters throughout: 'we have formalized' is not the same as 'we have solved.' Every `sorry` at the core of this library is honest. No Millennium Problem is proved here. The contribution is the meta-level structure  --  what kind of thing each sorry is, and why.*
 
@@ -11,7 +11,7 @@
 
 ## Three-Document Architecture
 
-The SynthOmnicon Lean library occupies two tracks: `Primitives/` (the 12-primitive constraint grammar) and `Millennium/` (the barrier taxonomy library documented here). This paper reports on the `Millennium/` track and its bridge to `Primitives/`.
+The SynthOmnicon Lean library occupies two tracks: `Primitives/` (the 12-primitive constraint grammar) and `Millennium/` (the threshold taxonomy library documented here). This paper reports on the `Millennium/` track and its bridge to `Primitives/`.
 
 **Internal references** within this paper use §N.
 
@@ -21,13 +21,13 @@ The SynthOmnicon Lean library occupies two tracks: `Primitives/` (the 12-primiti
 
 ## I. Introduction (v0.1.0, 2026-03-26)
 
-The Clay Mathematics Institute seven Millennium Prize Problems have resisted proof for decades  --  and in one case, the Riemann Hypothesis, for over a century and a half. Proof assistants have formalized large bodies of mathematics, but existing efforts overwhelmingly target *results that are known*: the Last Theorem of Fermat, the Four Color Theorem, the Kepler Conjecture. Far less attention has been paid to formalizing *why specific problems are hard*  --  the structural barriers that distinguish them from merely difficult but open problems.
+The Clay Mathematics Institute seven Millennium Prize Problems have resisted proof for decades  --  and in one case, the Riemann Hypothesis, for over a century and a half. Proof assistants have formalized large bodies of mathematics, but existing efforts overwhelmingly target *results that are known*: the Last Theorem of Fermat, the Four Color Theorem, the Kepler Conjecture. Far less attention has been paid to formalizing *why specific problems are hard*  --  the structural thresholds that distinguish them from merely difficult but open problems.
 
-This paper presents a formal barrier taxonomy for all seven Millennium Problems in Lean 4. We make no claim to have solved any of them. The contribution is meta-level: a machine-checked classification of the proof obligations, the structural relationships between them, and their connection to an underlying primitive constraint algebra.
+This paper presents a formal threshold taxonomy for all seven Millennium Problems in Lean 4. We make no claim to have solved any of them. The contribution is meta-level: a machine-checked classification of the proof obligations, the structural relationships between them, and their connection to an underlying primitive constraint algebra.
 
 ### I.1 Why this matters
 
-The distinction between barrier types has practical consequences for the formalization community.The distinction between barrier types has practical consequences for the formalization community.
+The distinction between threshold types has practical consequences for the formalization community.The distinction between threshold types has practical consequences for the formalization community.
 
 **MathlibGap sorries are actionable.** A contributor with the right background can in principle discharge them by formalizing a known proof. The `euler_opn_form` sorry in OPN.lean (Euler 1747) and the `mazur_torsion` sorry in BSD.lean (Mazur 1977) are of this type.
 
@@ -43,13 +43,13 @@ We introduce a formal notion of *sorry depth* distinguishing *stacked* from *par
 
 **Parallel (BSD):** three sorries are logically independent — Mordell-Weil (proved 1922, MathlibGap), the Mazur torsion theorem (proved 1977, MathlibGap), and the BSD rank formula itself (OpenProblem) — each dischargeable independently. This parallelism became evident when we discovered that the Mordell-Weil theorem and Mazur torsion theorem had already been fully formalized in Mathlib before we even began the BSD project.
 
-Both Yang-Mills and BSD have `sorryDepth = 2`. The structural difference is encoded in the barrier type.
+Both Yang-Mills and BSD have `sorryDepth = 2`. The structural difference is encoded in the threshold type.
 
 ### I.3 Contributions
 
-**C1  --  BarrierType taxonomy:** A typed inductive with three constructors, formally distinct (by `decide`), and computably assigned to all seven Millennium Problems. The introduction of `MissingFoundation` was motivated by the need to distinguish formalization bottlenecks from unsolved mathematics — a distinction that became critical when attempting to map the Yang-Mills problem to the existing formalization framework.
+**C1  --  ThresholdType taxonomy:** A typed inductive with three constructors, formally distinct (by `decide`), and computably assigned to all seven Millennium Problems. The introduction of `MissingFoundation` was motivated by the need to distinguish formalization bottlenecks from unsolved mathematics — a distinction that became critical when attempting to map the Yang-Mills problem to the existing formalization framework.
 
-**C2  --  ym_is_unique_missing_foundation:** A theorem, proved by `decide`, that Yang-Mills is the only Millennium Problem whose barrier is MissingFoundation. This proof required navigating the intricate relationship between the `MillenniumProblem` inductive and the `BarrierType` inductive — an instance of the structural tension between classification and specification that the grammar formalizes.
+**C2  --  ym_is_unique_missing_foundation:** A theorem, proved by `decide`, that Yang-Mills is the only Millennium Problem whose threshold is MissingFoundation. This proof required navigating the intricate relationship between the `MillenniumProblem` inductive and the `ThresholdType` inductive — an instance of the structural tension between classification and specification that the grammar formalizes.
 
 **C4  --  NS critical Sobolev exponent:** Machine-verified by `norm_num` that $0 < \frac{1}{2} < 1$  --  the formal statement of why NS regularity is hard.
 
@@ -57,6 +57,6 @@ Both Yang-Mills and BSD have `sorryDepth = 2`. The structural difference is enco
 
 **C6  --  BSD in real Mathlib:** `BSDRankConjecture` stated using actual `WeierstrassCurve ℚ` and `IsElliptic`; three parallel sorries formally justified.
 
-**C7  --  PrimitiveBridge.lean:** Formal connection between sorry boundaries and primitive field transitions in the SynthOmnicon grammar; `BarrierPrimitiveCertificate` structure; `primitive_bridge_master` theorem.
+**C7  --  PrimitiveBridge.lean:** Formal connection between sorry boundaries and primitive field transitions in the SynthOmnicon grammar; `ThresholdPrimitiveCertificate` structure; `primitive_bridge_master` theorem.
 
 **C8  --  RH–Lee-Yang structural correspondence (v0.1.2):** Machine-checked theorem that the Riemann $\zeta$ zeros and Lee-Yang partition-function zeros share the same Criticality assignment `Phi_c_complex`. Structural distance 1.0 (machine-checked) identifies the polarity primitive $P$ ($P_\text{sym}$ vs $P_{\pm}^{\text{sym}}$) as the essential structural gap; remaining 0 mismatches (T, F, K, gran, stoi, chir) are background differences.

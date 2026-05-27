@@ -1,5 +1,5 @@
--- Imscribing/Millennium/Barriers.lean
--- Cross-problem barrier taxonomy for all 7 Millennium Prize Problems.
+-- Imscribing/Millennium/Thresholds.lean
+-- Cross-problem threshold taxonomy for all 7 Millennium Prize Problems.
 -- The central theorem: a formal classification of why each problem is hard.
 
 import Mathlib.Tactic
@@ -13,7 +13,7 @@ import Imscribing.Millennium.BSD
 import Imscribing.Millennium.FrobeniusStructure
 
 /-!
-# Millennium Problem Barrier Taxonomy
+# Millennium Problem Threshold Taxonomy
 
 The sorry in a Lean proof can fail to be dischargeable for three distinct reasons:
 
@@ -34,7 +34,7 @@ The sorry in a Lean proof can fail to be dischargeable for three distinct reason
 
 The seven Millennium Problems classified:
 
-  | Problem  | Barrier            | Missing object / why                                   |
+  | Problem  | Threshold            | Missing object / why                                   |
   |----------|--------------------|--------------------------------------------------------|
   | RH       | OpenProblem        | `ZeroFreeStrip 0` — no proof of zero locations         |
   | Hodge    | OpenProblem        | `AlgebraicCycleRep` — no proof Hodge classes are alg.  |
@@ -46,18 +46,18 @@ The seven Millennium Problems classified:
   |          | + OpenProblem      |   BSD itself is open                                    |
   | OPN      | OpenProblem        | `opn_nonexistence` — no proof; Euler form is MathlibGap|
 
-Note on BSD and OPN: they have layered barriers — some parts are MathlibGap
+Note on BSD and OPN: they have layered thresholds — some parts are MathlibGap
 (Mazur torsion, Euler decomposition) and the final nonexistence/rank-formula is OpenProblem.
 -/
 
-namespace Millennium.Barriers
+namespace Millennium.Thresholds
 
 -- ============================================================
--- §1. The barrier type taxonomy
+-- §1. The threshold type taxonomy
 -- ============================================================
 
 /-- Classification of why a Lean sorry cannot be discharged. -/
-inductive BarrierType
+inductive ThresholdType
   /-- The theorem is proved in mathematics but not yet formalized in Mathlib.
       These sorries will eventually go away. -/
   | MathlibGap
@@ -92,52 +92,52 @@ inductive MillenniumProblem
 
 -- Each sorry is declared as an axiom: the exact type that cannot be inhabited.
 
-/-- RH barrier: every critical zero has Re = 1/2.
+/-- RH threshold: every critical zero has Re = 1/2.
     Type: `ZeroFreeStrip 0` (see RH.lean).
-    Barrier: OpenProblem — no proof exists since 1859. -/
+    Threshold: OpenProblem — no proof exists since 1859. -/
 axiom rh_sorry_boundary : Millennium.RH.RiemannHypothesis
 
-/-- Hodge barrier: every rational Hodge class on a smooth projective variety is algebraic.
+/-- Hodge threshold: every rational Hodge class on a smooth projective variety is algebraic.
     The missing type: `AlgebraicCycleRep X p α` — a proof that α ∈ H^{2p}(X,ℚ) ∩ H^{p,p}
     lies in the image of cl : CH^p(X) ⊗ ℚ → H^{2p}(X,ℚ) ∩ H^{p,p}.
-    Barrier: OpenProblem. The p=1 case is proved (Lefschetz 1924); p ≥ 2 is open.
+    Threshold: OpenProblem. The p=1 case is proved (Lefschetz 1924); p ≥ 2 is open.
     See Hodge.lean for the full three-layer analysis. -/
 axiom hodge_sorry_boundary : Millennium.Hodge.HodgeConjecture
 
-/-- P vs NP barrier: the Boolean satisfiability problem is not in P.
+/-- P vs NP threshold: the Boolean satisfiability problem is not in P.
     The missing type: `CircuitLowerBound SAT ε` — SAT requires circuits of size ≥ 2^(εn).
-    Barrier: OpenProblem + deep MathlibGap (complexity classes P/NP not in Mathlib).
-    Three meta-barriers in mathematics: relativization (BGS 1975), natural proofs
+    Threshold: OpenProblem + deep MathlibGap (complexity classes P/NP not in Mathlib).
+    Three meta-thresholds in mathematics: relativization (BGS 1975), natural proofs
     (Razborov-Rudich 1994), algebrization (Aaronson-Wigderson 2009).
     See PvsNP.lean for the full three-layer analysis. -/
 axiom pvsnp_sorry_boundary : Millennium.PvsNP.PNotEqualsNP
 
-/-- Navier-Stokes barrier: smooth initial data gives smooth global solutions.
+/-- Navier-Stokes threshold: smooth initial data gives smooth global solutions.
     The missing type: `GlobalRegularityCert u₀` — a smooth global bounded solution
     for every smooth divergence-free initial datum.
-    Barrier: OpenProblem (near-MissingFoundation: critical Sobolev exponent s=1/2 in 3D).
+    Threshold: OpenProblem (near-MissingFoundation: critical Sobolev exponent s=1/2 in 3D).
     The critical scaling gap sits strictly between energy (s=0) and enstrophy (s=1).
     See NS.lean for the full three-layer analysis. -/
 axiom ns_sorry_boundary : Millennium.NS.NavierStokesRegularity
 
-/-- YM barrier: the quantum Yang-Mills theory exists with mass gap.
+/-- YM threshold: the quantum Yang-Mills theory exists with mass gap.
     Primary missing type: `PathIntegralMeasure 𝔤` — the path integral measure over gauge
     connections modulo gauge equivalence in 4D. This type does not exist in mathematics.
     Two stacked sorries: `ym_theory_exists` (MissingFoundation) → `ym_mass_gap` (OpenProblem).
-    Barrier: MissingFoundation. See YM.lean for the full three-layer analysis. -/
+    Threshold: MissingFoundation. See YM.lean for the full three-layer analysis. -/
 axiom ym_sorry_boundary :
     ∀ (𝔤 : Type*) [LieRing 𝔤] [LieAlgebra ℝ 𝔤] [LieAlgebra.IsSimple ℝ 𝔤],
       Nonempty (Millennium.YM.QuantumYMTheory 𝔤) ∧
       ∀ T : Millennium.YM.QuantumYMTheory 𝔤, 0 < Millennium.YM.massGap 𝔤 T
 
-/-- OPN barrier: no odd perfect number exists.
+/-- OPN threshold: no odd perfect number exists.
     Two-layer sorry: `euler_opn_structure` (MathlibGap — proved by Euler 1747, not in Mathlib)
     stacked methodologically (not logically) with `opn_nonexistence` (OpenProblem).
-    Barrier: OpenProblem (primary). Euler form layer will eventually be discharged.
+    Threshold: OpenProblem (primary). Euler form layer will eventually be discharged.
     See OPN.lean for the full analysis. -/
 axiom opn_sorry_boundary : Millennium.OPN.OPNConjecture
 
-/-- BSD barrier: the algebraic rank of E(ℚ) equals the analytic rank ord_{s=1} L(E,s).
+/-- BSD threshold: the algebraic rank of E(ℚ) equals the analytic rank ord_{s=1} L(E,s).
     Three parallel sorries: `mordell_weil` + `mazur_torsion` (both MathlibGap, proved)
     and `bsd_certificate` (OpenProblem). All logically independent — unlike YM (stacked)
     and OPN (methodologically ordered). Known for analytic rank ≤ 1 (Kolyvagin 1988).
@@ -145,11 +145,11 @@ axiom opn_sorry_boundary : Millennium.OPN.OPNConjecture
 axiom bsd_sorry_boundary : Millennium.BSD.BSDRankConjecture
 
 -- ============================================================
--- §4. The barrier classification theorem
+-- §4. The threshold classification theorem
 -- ============================================================
 
-/-- **The master classification**: the primary barrier for each Millennium Problem. -/
-def millenniumBarrier : MillenniumProblem → BarrierType
+/-- **The master classification**: the primary threshold for each Millennium Problem. -/
+def millenniumThreshold : MillenniumProblem → ThresholdType
   | .RH    => .OpenProblem
   | .Hodge => .OpenProblem
   | .PvsNP => .OpenProblem      -- secondary MissingFoundation for complexity formalization
@@ -161,16 +161,16 @@ def millenniumBarrier : MillenniumProblem → BarrierType
 /-- The unique MissingFoundation problem among the Millennium Problems. -/
 theorem ym_is_unique_missing_foundation :
     ∀ p : MillenniumProblem,
-      millenniumBarrier p = .MissingFoundation → p = .YM := by
+      millenniumThreshold p = .MissingFoundation → p = .YM := by
   intro p hp
-  cases p <;> simp_all [millenniumBarrier]
+  cases p <;> simp_all [millenniumThreshold]
 
 /-- MissingFoundation is strictly harder than OpenProblem in the following sense:
     for a MissingFoundation problem, the sorry *cannot be stated* as a proposition
     with well-defined truth value until the foundation is built.
     For an OpenProblem, the proposition is well-defined — we just don't know its truth value. -/
 theorem missing_foundation_vs_open_problem :
-    BarrierType.MissingFoundation ≠ BarrierType.OpenProblem := by
+    ThresholdType.MissingFoundation ≠ ThresholdType.OpenProblem := by
   decide
 
 -- ============================================================
@@ -194,9 +194,9 @@ def sorryDepth : MillenniumProblem → ℕ
 theorem ym_has_stacked_not_parallel_sorries :
     sorryDepth .YM = sorryDepth .BSD ∧
     -- the structural difference is not captured by depth alone:
-    millenniumBarrier .YM = .MissingFoundation ∧
-    millenniumBarrier .BSD = .OpenProblem := by
-  simp [sorryDepth, millenniumBarrier]
+    millenniumThreshold .YM = .MissingFoundation ∧
+    millenniumThreshold .BSD = .OpenProblem := by
+  simp [sorryDepth, millenniumThreshold]
 
 -- ============================================================
 -- §6. Relationship to Imscribing primitive structure
@@ -216,10 +216,10 @@ in the Imscribing constraint grammar.
   | BSD     | BSD rank formula       | Φ_c = rank charge-carrier certificate        |
   | OPN     | Nonexistence proof     | σ-constraint no solution                     |
 
-The YM barrier (G=LOCAL, no quantum lift) corresponds exactly to the G-scope
+The YM threshold (G=LOCAL, no quantum lift) corresponds exactly to the G-scope
 analysis in IMSCRIPTION.md §XVII: the quantum-gravity tensor product fails at G=LOCAL
 because the carrier type (path integral measure) cannot be constructed.
 -/
 
 
-end Millennium.Barriers
+end Millennium.Thresholds

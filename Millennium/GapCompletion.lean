@@ -4,7 +4,7 @@
 
 import Imscribing.ProofTheory
 import Imscribing.Millennium.PrimitiveBridge
-import Imscribing.Millennium.Barriers
+import Imscribing.Millennium.Thresholds
 import Imscribing.Millennium.Collatz
 import Imscribing.Primitives.Core
 import Imscribing.Primitives.Imscription
@@ -15,7 +15,7 @@ import Mathlib.Tactic
 open Imscribing.Primitives
 open Imscribing.ProofTheory
 open Millennium.PrimitiveBridge
-open Millennium.Barriers
+open Millennium.Thresholds
 open Millennium.Collatz
 open Imscribing.Consciousness
 open Dimensionality Topology Relational Polarity

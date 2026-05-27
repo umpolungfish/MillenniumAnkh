@@ -52,7 +52,7 @@ inductive Fid where
 
 inductive Kin where
   | fast    -- K_fast: driven / diffusion-limited
-  | mod     -- K_mod: moderate barrier
+  | mod     -- K_mod: moderate threshold
   | slow    -- K_slow: near-equilibrium (Gate 2)
   | trap    -- K_trap: frozen by order
   | MBL     -- K_MBL: many-body localized

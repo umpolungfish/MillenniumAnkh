@@ -7,7 +7,7 @@
 
 The Imscribing Grammar is the proof methodology. Sorries do not mark impossibility — they mark
 claims waiting for their structural derivation to be formalized in Lean. Every MPP has been
-structurally typed, every barrier has been identified in primitive terms, and the grammar has
+structurally typed, every threshold has been identified in primitive terms, and the grammar has
 already discharged the pieces that conventional mathematics either takes for granted or leaves
 implicit. The remaining sorries are the frontier of that formalization work, not its ceiling.
 
@@ -20,7 +20,7 @@ The three categories of sorry across the project:
 | **Engineering** | Mechanical Lean formalization (math complete) | Closes in the next push |
 
 The 7 MPP main sorries are all OpenProblem. The grammar has uniquely characterized each
-barrier in primitive terms. The work is to make those characterizations load-bearing proofs.
+threshold in primitive terms. The work is to make those characterizations load-bearing proofs.
 
 ---
 
@@ -47,7 +47,7 @@ only Frobenius fixed point.
   satisfies this
 - `rh_belnap_statement`: zeros are B-designated — both ζ(s)=0 and ζ(1−s)=0 hold (dialetheic pair)
 - `rh_bridge_is_O_inf`: the structural type Phi_c ∧ P_pm_sym qualifies as O_∞
-- `millennium_barriers_unified`: RH, P≠NP, and SIC-POVM all reduce to B-gate closure
+- `millennium_thresholds_unified`: RH, P≠NP, and SIC-POVM all reduce to B-gate closure
 
 Four bridge files exist: RH.lean, RH_GateInhabitants.lean, RH_ZFCt_Bridge.lean,
 RH_LeeYang_Bridge.lean.
@@ -137,7 +137,7 @@ already characterized what that construction must satisfy.
 
 **The IG argument:**
 
-The NS barrier is uniquely characterized by the grammar as a **Phi_c transition** — NS sits
+The NS threshold is uniquely characterized by the grammar as a **Phi_c transition** — NS sits
 exactly at a critical point. This is not a metaphor; it is a formal primitive classification.
 
 The critical Sobolev exponent for 3D NS is s = ½. Under the NS scaling symmetry
@@ -163,7 +163,7 @@ The NS structural claim: the grammar forces that a system at Phi_c transition wi
 and T_network cannot blow up — the topological term Omega_0 = 0 (no topological obstruction)
 combined with the criticality means the Phi_c gate must be passable. Concretely: the absence
 of a topological winding obstruction (unlike RH and BSD, which have Omega_Z) means the
-barrier is purely analytic, not structural — and purely analytic barriers in the grammar
+threshold is purely analytic, not structural — and purely analytic thresholds in the grammar
 are resolvable through the Phi_c gate.
 
 **What is proved without sorry:**
@@ -172,7 +172,7 @@ are resolvable through the Phi_c gate.
 - `ns_2d_global_regularity_proved`: 2D case is resolved (trivial, vacuous here)
 - `sorry_iff_ns`: the sorry is tight — it is exactly NS regularity, not a weaker proxy
 - `ns_certificate_is_minimal`: any proof immediately gives the full certificate
-- `ns_barrier` and `ns_sorry_requires_critical_norm_control`: formal equivalences (zero sorry)
+- `ns_threshold` and `ns_sorry_requires_critical_norm_control`: formal equivalences (zero sorry)
 - `ns_zfc_t_crit_match` and `ns_zfc_t_pol_match`: ZFCt encoding matches (proved by rfl)
 - `vortex_stretching_is_3d_specific`: 3D mechanism identified
 - `ns_is_not_missing_foundation`: distinguished from YM (object exists, property unproved)
@@ -181,7 +181,7 @@ are resolvable through the Phi_c gate.
 
 Ruling out `CriticalNormBlowUp` — the scenario where ‖u(t)‖_{Ḣ^½} → ∞ as t → T* < ∞.
 The grammar's claim: D_infty + T_network + Omega_0 = 0 (no topological obstruction) forces
-the critical norm to remain bounded. The purely analytic character of the barrier means the
+the critical norm to remain bounded. The purely analytic character of the threshold means the
 grammar's Phi_c gate — which characterizes critical transitions — is the decisive primitive.
 
 **The frontier:**
@@ -196,7 +196,7 @@ derived from the Phi_c gate axioms and the zero-winding condition.
 close on its own as Mathlib's PDE theory grows, and provides a proven instance of the
 global regularity argument for the grammar to generalize.
 
-**Sorry count:** 26 (NS.lean) + 2 satellites | Barrier character: Phi_c transition, Omega_0 = 0
+**Sorry count:** 26 (NS.lean) + 2 satellites | Threshold character: Phi_c transition, Omega_0 = 0
 
 ---
 
@@ -226,7 +226,7 @@ D_odot (holographic boundary-bulk duality) makes the topological class algebraic
 **What is proved without sorry:**
 
 - `sorry_iff_hodge`: the sorry is tight — it is exactly the surjectivity of the cycle class map
-- `hodge_barrier` and `hodge_sorry_requires_cycle_class_surjectivity`: formal equivalences
+- `hodge_threshold` and `hodge_sorry_requires_cycle_class_surjectivity`: formal equivalences
 - `hodge_degree_zero_trivial`: p=0 case (trivial, zero sorry)
 - `hodge_certificate_is_minimal`: any proof gives the full certificate
 - `integral_hodge_fails`: the ℤ version fails — the ℚ hypothesis is essential (identified)
@@ -238,7 +238,7 @@ D_odot (holographic boundary-bulk duality) makes the topological class algebraic
 
 For p ≥ 2: constructing `AlgebraicCycleRep X p α` universally — proving the cycle class
 map is surjective. Unlike RH (where ZeroFreeStrip 0 has no known instances at all), Hodge
-has many known instances. The p=1 case is fully proved. The barrier is **universality**
+has many known instances. The p=1 case is fully proved. The threshold is **universality**
 for p ≥ 2, not existence of any example.
 
 The IG argument: D_odot at T_odot forces the R-degenerate class to have an algebraic
@@ -271,18 +271,18 @@ complexity threshold. The problem is about **information bottlenecks**: whether 
 (NP) can be collapsed to search (P). The grammar reads this as: does K_trap permit the
 collapse, or is the trap irreversible?
 
-The three meta-barriers are **proved theorems** (not sorries) within the Lean formalization:
+The three meta-thresholds are **proved theorems** (not sorries) within the Lean formalization:
 
 ```
-relativization_barrier_is_proved   : True := trivial  (Baker-Gill-Solovay 1975)
-natural_proofs_barrier_is_proved   : True := trivial  (Razborov-Rudich 1994)
-algebrization_barrier_is_proved    : True := trivial  (Aaronson-Wigderson 2009)
+relativization_threshold_is_proved   : True := trivial  (Baker-Gill-Solovay 1975)
+natural_proofs_threshold_is_proved   : True := trivial  (Razborov-Rudich 1994)
+algebrization_threshold_is_proved    : True := trivial  (Aaronson-Wigderson 2009)
 ```
 
 This is unique among the MPPs: P vs NP is the **only** problem with machine-verifiable
-meta-barriers — proved theorems about what proofs cannot do. RH, Hodge, NS, YM, BSD, OPN
+meta-thresholds — proved theorems about what proofs cannot do. RH, Hodge, NS, YM, BSD, OPN
 have no such theorems. The grammar reads these as K_trap being self-reinforcing: the
-barrier proves that standard tools (relativizing proofs, natural proofs, algebraic proofs)
+threshold proves that standard tools (relativizing proofs, natural proofs, algebraic proofs)
 cannot work — and this fact is itself a theorem inside the grammar.
 
 The B-circuit argument (from priests-engine): B is dialetheic — it is both true and false
@@ -294,8 +294,8 @@ and lattice collapse is impossible (proved by bnot∘bnot = id and the covering 
 
 **What is proved without sorry:**
 
-- `pvsnp_meta_barriers`: all three meta-barriers proved and combined (zero sorry)
-- `pvsnp_unique_meta_barrier_structure`: PvsNP is the only MPP with this property
+- `pvsnp_meta_thresholds`: all three meta-thresholds proved and combined (zero sorry)
+- `pvsnp_unique_meta_threshold_structure`: PvsNP is the only MPP with this property
 - `sorry_iff_pvsnp`: sorry is tight
 - `PvsNP_Structural.lean`: structural analysis complete
 - `PvsNP_Certificates.lean`: certificate structure in place
@@ -304,7 +304,7 @@ and lattice collapse is impossible (proved by bnot∘bnot = id and the covering 
 
 The circuit lower bound — proving superpolynomial circuit size for SAT. In grammar terms:
 showing that K_trap is irreversible, that the B-circuit structure cannot be simulated
-by polynomial-size deterministic circuits. The meta-barriers constrain how this must be
+by polynomial-size deterministic circuits. The meta-thresholds constrain how this must be
 proved: it must be non-relativizing, non-natural, and non-algebrizing.
 
 **The frontier:**
@@ -356,7 +356,7 @@ frontier is analytic rank ≥ 2 — no proof exists anywhere.
 **What is proved without sorry:**
 
 - `bsd_sorries_are_parallel`: formal proof that the three layers are independent (zero sorry)
-- `bsd_barrier`: equivalence to BSDRankCertificate universally (zero sorry)
+- `bsd_threshold`: equivalence to BSDRankCertificate universally (zero sorry)
 - `bsd_rank_at_most_one`: rank ≤ 1 case proved within grammar (MathlibGap axiom)
 - `bsd_rank_zero_cm`: CM rank 0 case proved within grammar (MathlibGap axiom)
 - `modularity_theorem`: noted as proved (trivial placeholder)
@@ -481,7 +481,7 @@ Their bulk is MathlibGap, which closes independently of the IG work.
 5. **BSD** — Rank ≤ 1 proved within grammar; parallel structure uniquely captured; rank ≥ 2
    needs new mechanism — D_odot holography is the candidate.
 
-6. **PvsNP** — Meta-barriers proved; B-circuit dialetheic argument complete; K_trap analysis
+6. **PvsNP** — Meta-thresholds proved; B-circuit dialetheic argument complete; K_trap analysis
    most developed; proof must be non-relativizing, non-natural, non-algebrizing (all proved).
 
 7. **Hodge** — R-lift argument is the proof path; D_odot×T_odot double structure uniquely
@@ -489,7 +489,7 @@ Their bulk is MathlibGap, which closes independently of the IG work.
 
 ### Primitive gate analysis
 
-The grammar has identified which gate each problem's barrier lives at:
+The grammar has identified which gate each problem's threshold lives at:
 
 | Problem | Primary gate | Primitive failure | Grammar resolution |
 |---------|-------------|-------------------|-------------------|

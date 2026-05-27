@@ -1,5 +1,5 @@
 -- Imscribing/Millennium/RH.lean
--- Riemann Hypothesis — Three-Layer Barrier Analysis
+-- Riemann Hypothesis — Three-Layer Threshold Analysis
 -- Every sorry is an honest marker. No sorry is dischargeable from current Mathlib.
 
 import Mathlib.NumberTheory.LSeries.RiemannZeta
@@ -8,7 +8,7 @@ import Imscribing.Primitives.Core
 import Imscribing.Primitives.Imscription
 
 /-!
-# Riemann Hypothesis: Three-Layer Barrier Analysis
+# Riemann Hypothesis: Three-Layer Threshold Analysis
 
 **The problem** (Clay Millennium, 2000):
 All nontrivial zeros of the Riemann zeta function ζ(s) satisfy Re(s) = 1/2.
@@ -23,7 +23,7 @@ All nontrivial zeros of the Riemann zeta function ζ(s) satisfy Re(s) = 1/2.
   Layer 2 — Equivalence: the sorry is tight — it is literally RH, not a proxy.
     `sorry_iff_rh` shows the sorry cannot be decomposed further.
 
-  Layer 3 — Barrier: the sorry requires inhabiting `ZeroFreeStrip 0` — a proof that
+  Layer 3 — Threshold: the sorry requires inhabiting `ZeroFreeStrip 0` — a proof that
     no nontrivial zero has |Re(s) − 1/2| > 0. This type cannot be inhabited from Mathlib
     because no proof of it exists in mathematics.
 
@@ -43,7 +43,7 @@ All nontrivial zeros of the Riemann zeta function ζ(s) satisfy Re(s) = 1/2.
 
 ---
 
-**Barrier classification**: `OpenProblem`.
+**Threshold classification**: `OpenProblem`.
 
   The sorry is not a Mathlib gap (unlike Mazur's torsion theorem in BSD_2adic, which IS
   proved in the literature). No proof of RH exists. The missing type is `ZeroFreeStrip 0`
@@ -109,7 +109,7 @@ theorem critical_line_symmetric (s : ℂ) :
 /-- Riemann Hypothesis axiom.
     Every nontrivial zero of ζ(s) lies on the critical line Re(s) = 1/2.
     This IS the Riemann Hypothesis — stated as an explicit axiom.
-    BarrierType = OpenProblem. Open since Riemann (1859).
+    ThresholdType = OpenProblem. Open since Riemann (1859).
 
     See RH_ZFCt_Bridge.rh_from_frobenius_structure for the ZFCt derivation.
     riemann_hypothesis_axiom is superseded by that theorem; retained here as a
@@ -121,7 +121,7 @@ axiom riemann_hypothesis_axiom : RiemannHypothesis
     Every nontrivial zero of ζ lies on the critical line Re(s) = 1/2.
 
     This sorry is NOT a Mathlib gap. It is an open problem.
-    BarrierType = `OpenProblem` (see Barriers.lean).
+    ThresholdType = `OpenProblem` (see Thresholds.lean).
 
     The substrate certificate required to discharge it: a `ZeroFreeStrip 0` value
     (see §5 below). Constructing such a value IS the Riemann Hypothesis. -/
@@ -148,7 +148,7 @@ theorem rh_certificate_is_minimal :
   fun h s hs => h s hs
 
 -- ============================================================
--- §5. Barrier theorem — Layer 3
+-- §5. Threshold theorem — Layer 3
 -- ============================================================
 
 /-- **ZeroFreeStrip δ**: ζ has no nontrivial zero with |Re(s) − 1/2| > δ.
@@ -160,9 +160,9 @@ theorem rh_certificate_is_minimal :
 def ZeroFreeStrip (δ : ℝ) : Prop :=
   ∀ s : ℂ, riemannZeta s = 0 → 0 < s.re → s.re < 1 → |s.re - 1 / 2| ≤ δ
 
-/-- **Barrier theorem**: discharging `rh_certificate` is equivalent to inhabiting
+/-- **Threshold theorem**: discharging `rh_certificate` is equivalent to inhabiting
     `ZeroFreeStrip 0`. The two are propositionally identical. -/
-theorem rh_barrier : RiemannHypothesis ↔ ZeroFreeStrip 0 := by
+theorem rh_threshold : RiemannHypothesis ↔ ZeroFreeStrip 0 := by
   simp only [RiemannHypothesis, IsCriticalZero, ZeroFreeStrip]
   constructor
   · intro h s hz hpos hlt
@@ -189,7 +189,7 @@ theorem rh_barrier : RiemannHypothesis ↔ ZeroFreeStrip 0 := by
     in Mathlib, but the underlying theorem may eventually be proved. Here, there is no
     such theorem waiting to be formalized. -/
 theorem rh_sorry_requires_zero_free_strip :
-    RiemannHypothesis ↔ ZeroFreeStrip 0 := rh_barrier
+    RiemannHypothesis ↔ ZeroFreeStrip 0 := rh_threshold
 
 /-- Partial results do not close the sorry: `ZeroFreeStrip δ` for any fixed δ > 0 is
     also open (in fact, ZeroFreeStrip δ → ZeroFreeStrip 0 is equivalent to ZeroFreeStrip 0). -/

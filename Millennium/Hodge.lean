@@ -1,5 +1,5 @@
 -- Imscribing/Millennium/Hodge.lean
--- Hodge Conjecture — Three-Layer Barrier Analysis
+-- Hodge Conjecture — Three-Layer Threshold Analysis
 -- Every sorry is an honest marker. No sorry is dischargeable from current Mathlib.
 
 import Mathlib.Analysis.Complex.Basic
@@ -7,7 +7,7 @@ import Mathlib.Topology.Basic
 import Mathlib.Tactic
 
 /-!
-# Hodge Conjecture: Three-Layer Barrier Analysis
+# Hodge Conjecture: Three-Layer Threshold Analysis
 
 **The problem** (Clay Millennium, 2000):
 On a smooth projective complex algebraic variety X, every rational Hodge class
@@ -28,7 +28,7 @@ is surjective for every p.
   Layer 2 — Equivalence: the sorry is tight — it is literally the Hodge conjecture.
     `sorry_iff_hodge` shows the sorry cannot be decomposed further.
 
-  Layer 3 — Barrier: the sorry requires inhabiting `AlgebraicCycleRep X p α` — a pair
+  Layer 3 — Threshold: the sorry requires inhabiting `AlgebraicCycleRep X p α` — a pair
     consisting of an algebraic cycle Z of codimension p and a proof that its class equals α.
     This type cannot be inhabited from Mathlib because no proof exists that all
     rational (p,p)-classes arise from algebraic cycles.
@@ -51,7 +51,7 @@ is surjective for every p.
 
 ---
 
-**Barrier classification**: `OpenProblem`.
+**Threshold classification**: `OpenProblem`.
 
   Unlike YM (where `PathIntegralMeasure` doesn't exist as a rigorous type),
   the Hodge conjecture is about well-defined objects:
@@ -79,7 +79,7 @@ is surjective for every p.
   The double-holomorphic structure (complex variety + Hodge decomposition) is the
   primitive signature of the problem.
 
-  The barrier is an R-degeneracy issue: the Hodge class lives at the intersection
+  The threshold is an R-degeneracy issue: the Hodge class lives at the intersection
   of topology (H^{2p}(X, ℚ)) and complex analysis (H^{p,p}(X, ℂ)).
   It exists at both levels simultaneously. The conjecture asks whether this
   R-degenerate class can be "lifted" to algebra — to CH^p(X).
@@ -167,7 +167,7 @@ def HodgeConjecture : Prop :=
 /-- Hodge conjecture axiom.
     Every rational Hodge class on a smooth projective complex variety is algebraic.
     This IS the Hodge conjecture — stated as an explicit axiom.
-    BarrierType = OpenProblem. No proof exists. -/
+    ThresholdType = OpenProblem. No proof exists. -/
 axiom hodge_conjecture_axiom : HodgeConjecture
 
 /-- Lefschetz (1,1) theorem (MathlibGap).
@@ -198,7 +198,7 @@ axiom hodge_degree_zero_axiom
     is not about formalizing that infrastructure.
 
     The sorry IS the conjecture itself.
-    BarrierType = `OpenProblem` (see Barriers.lean).
+    ThresholdType = `OpenProblem` (see Thresholds.lean).
 
     The type required to discharge it: `AlgebraicCycleRep X p α`
     (see §5 below). Constructing such a value for all X, p, α IS the Hodge conjecture. -/
@@ -233,7 +233,7 @@ theorem hodge_degree_zero_trivial (X : SmoothProjectiveVariety) (α : HodgeCohom
   hodge_degree_zero_axiom X α
 
 -- ============================================================
--- §5. Barrier theorem — Layer 3
+-- §5. Threshold theorem — Layer 3
 -- ============================================================
 
 /-- **AlgebraicCycleRep X p α**: a witness that the Hodge class α is algebraic.
@@ -258,16 +258,16 @@ theorem hodge_degree_zero_trivial (X : SmoothProjectiveVariety) (α : HodgeCohom
 def AlgebraicCycleRep (X : SmoothProjectiveVariety) (p : ℕ) (α : HodgeCohomology X p) : Prop :=
   IsAlgebraicClass X p α
 
-/-- **Barrier theorem**: discharging `hodge_certificate` is equivalent to showing
+/-- **Threshold theorem**: discharging `hodge_certificate` is equivalent to showing
     `AlgebraicCycleRep X p α` holds for all X, p, α. -/
-theorem hodge_barrier :
+theorem hodge_threshold :
     HodgeConjecture ↔
     ∀ (X : SmoothProjectiveVariety) (p : ℕ) (α : HodgeCohomology X p),
       AlgebraicCycleRep X p α := by
   simp only [HodgeConjecture, AlgebraicCycleRep, IsAlgebraicClass]
 
 /-- The sorry in `hodge_certificate` is equivalent to universal surjectivity of
-    the cycle class map. This is the formal statement of the barrier. -/
+    the cycle class map. This is the formal statement of the threshold. -/
 theorem hodge_sorry_requires_cycle_class_surjectivity :
     HodgeConjecture ↔
     (∀ (X : SmoothProjectiveVariety) (p : ℕ),
@@ -296,12 +296,12 @@ theorem hodge_sorry_requires_cycle_class_surjectivity :
 
     Contrast with RH: ZeroFreeStrip 0 has no known instances; partial results give only
     ZeroFreeStrip δ(t) for shrinking δ. Here, partial results DO give instances —
-    the barrier is universality, not existence of any example. -/
+    the threshold is universality, not existence of any example. -/
 theorem hodge_sorry_requires_algebraic_cycle_rep :
     HodgeConjecture ↔
     ∀ (X : SmoothProjectiveVariety) (p : ℕ) (α : HodgeCohomology X p),
       AlgebraicCycleRep X p α :=
-  hodge_barrier
+  hodge_threshold
 
 -- ============================================================
 -- §6. Structural comparison with other MPPs

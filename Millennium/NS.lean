@@ -1,5 +1,5 @@
 -- Imscribing/Millennium/NS.lean
--- Navier-Stokes Existence and Smoothness — Three-Layer Barrier Analysis
+-- Navier-Stokes Existence and Smoothness — Three-Layer Threshold Analysis
 -- Every sorry is an honest marker. No sorry is dischargeable from current Mathlib.
 
 import Mathlib.Analysis.InnerProductSpace.PiL2
@@ -13,7 +13,7 @@ open Dimensionality Topology Relational Polarity Fidelity KineticChar Granularit
 open Criticality Protection Grammar Stoichiometry Chirality
 
 /-!
-# Navier-Stokes Existence and Smoothness: Three-Layer Barrier Analysis
+# Navier-Stokes Existence and Smoothness: Three-Layer Threshold Analysis
 
 **The problem** (Clay Millennium, 2000):
 Given smooth, divergence-free initial data u₀ : ℝ³ → ℝ³ with rapid decay, prove that
@@ -36,8 +36,8 @@ Navier-Stokes equations that remains bounded for all time:
   Layer 2 — Equivalence: the sorry is tight — it is the NS regularity problem.
     `sorry_iff_ns` shows the sorry is not a weaker proxy.
 
-  Layer 3 — Barrier: the sorry requires inhabiting `GlobalRegularityCert u₀` — a smooth
-    global solution for every smooth initial datum. The barrier is the **critical scaling gap**:
+  Layer 3 — Threshold: the sorry requires inhabiting `GlobalRegularityCert u₀` — a smooth
+    global solution for every smooth initial datum. The threshold is the **critical scaling gap**:
     the Sobolev scale s = 1/2 is exactly scale-invariant in 3D, and neither the energy
     (s = 0, subcritical) nor the enstrophy (s = 1, supercritical) closes the gap.
 
@@ -62,9 +62,9 @@ Navier-Stokes equations that remains bounded for all time:
 
 ---
 
-**Barrier classification**: `OpenProblem` (with near-MissingFoundation character).
+**Threshold classification**: `OpenProblem` (with near-MissingFoundation character).
 
-  The barrier is NOT MissingFoundation in the YM sense: smooth solutions, Sobolev spaces,
+  The threshold is NOT MissingFoundation in the YM sense: smooth solutions, Sobolev spaces,
   and the NS equations are all well-defined mathematical objects. The conjecture is a
   well-posed question about whether a specific property (global regularity) holds.
 
@@ -74,9 +74,9 @@ Navier-Stokes equations that remains bounded for all time:
   (above the critical scale). This means:
   · Energy gives global *weak* solutions (Leray 1934) — regularity not guaranteed.
   · Enstrophy gives regularity — but only if it stays finite, which is what we need to prove.
-  The critical scale is an exact barrier: neither side of it closes the problem.
+  The critical scale is an exact threshold: neither side of it closes the problem.
 
-  This is why this barrier is `OpenProblem` but is annotated differently from RH:
+  This is why this threshold is `OpenProblem` but is annotated differently from RH:
   it's not that a clever proof is missing — it's that the mathematical setting puts us
   at a genuine critical point where standard analysis tools lose their grip.
 
@@ -97,7 +97,7 @@ Navier-Stokes equations that remains bounded for all time:
 **Imscribing structural note:**
 
   NS has primitive tuple encoding D_∞ · T_network · F_ell · Φ_c · Ω_0.
-  The barrier signature:
+  The threshold signature:
   · D_∞: the phase space is infinite-dimensional (function space dynamics).
   · T_network: causally interconnected at all scales simultaneously.
   · F_ell: deterministic (smooth solutions would be classical/local).
@@ -209,7 +209,7 @@ def NavierStokesRegularity : Prop :=
     This sorry is NOT a Mathlib gap. The functional analysis objects (Sobolev spaces,
     weak solutions, the NS equations) are well-defined in mathematics.
     The sorry is the conjecture itself.
-    BarrierType = `OpenProblem` (see Barriers.lean).
+    ThresholdType = `OpenProblem` (see Thresholds.lean).
 
     The type required to discharge it: `GlobalRegularityCert u₀`
     (see §5 below). -/
@@ -219,7 +219,7 @@ theorem ns_certificate : NavierStokesRegularity := by
   sorry
   -- NS global regularity. Open problem since Leray 1934.
   -- Leray showed global weak solutions exist; smooth regularity is unproved.
-  -- BarrierType = OpenProblem (with near-MissingFoundation critical scaling character).
+  -- ThresholdType = OpenProblem (with near-MissingFoundation critical scaling character).
 
 -- ============================================================
 -- §4. What Leray DID prove — the honest sorry boundary
@@ -320,14 +320,14 @@ theorem critical_scaling_gap :
 def GlobalRegularityCert (u₀ : NSInitialDatum) : Prop :=
   NSGlobalRegularity u₀
 
-/-- **Barrier theorem**: discharging `ns_certificate` is equivalent to
+/-- **Threshold theorem**: discharging `ns_certificate` is equivalent to
     providing `GlobalRegularityCert u₀` for every u₀. -/
-theorem ns_barrier :
+theorem ns_threshold :
     NavierStokesRegularity ↔
     ∀ (u₀ : NSInitialDatum), GlobalRegularityCert u₀ :=
   Iff.rfl
 
-/-- **The Sobolev gap is the barrier** (formal statement).
+/-- **The Sobolev gap is the threshold** (formal statement).
 
     The chain of known results:
       Leray: ∀ u₀, ∃ w : LerayWeakSolution u₀        — global WEAK solutions ✓
@@ -346,19 +346,19 @@ theorem ns_barrier :
 theorem ns_sorry_requires_critical_norm_control :
     NavierStokesRegularity ↔
     ∀ (u₀ : NSInitialDatum), GlobalRegularityCert u₀ :=
-  ns_barrier
+  ns_threshold
 
 -- ============================================================
 -- §6. Structural comparisons
 -- ============================================================
 
-/-- NS vs RH: both OpenProblem, but different barrier character.
-    · RH: the barrier is a constraint on zero locations (Φ_c = 0 threshold).
-    · NS: the barrier is at a phase boundary (critical Sobolev scale s = 1/2 is Φ_c transition).
+/-- NS vs RH: both OpenProblem, but different threshold character.
+    · RH: the threshold is a constraint on zero locations (Φ_c = 0 threshold).
+    · NS: the threshold is at a phase boundary (critical Sobolev scale s = 1/2 is Φ_c transition).
 
     RH has no known special cases (no confirmed zero on critical line forces RH).
     NS has a fully proved 2D case, many proved special cases (axisymmetric, small data),
-    and a complete local theory. The barrier is specifically the *global* extension. -/
+    and a complete local theory. The threshold is specifically the *global* extension. -/
 theorem ns_vs_rh_structural_distinction : True := trivial
 
 /-- NS vs YM: both have near-MissingFoundation character, but different type.
@@ -396,7 +396,7 @@ theorem ns_small_data_global_regularity (u₀ : NSInitialDatum)
 -- ============================================================
 -- §7. Cross-reference: ZFCt navier_stokes_equations Imscription
 
-/-- Structural encoding of the Millennium Navier-Stokes barrier.
+/-- Structural encoding of the Millennium Navier-Stokes threshold.
     Tuple: <D_∞; T_net; R_sup; P_pm; F_ell; K_mod; G_aleph; Gamma_seq;
             Phi_c; H0; n_m; Omega_0> -/
 def ns_encoding : Imscription := {
@@ -407,14 +407,14 @@ def ns_encoding : Imscription := {
 -- ============================================================
 
 /-- The ZFCt encoding of Navier-Stokes equations shares the same criticality
-    (Phi_c) and polarity (P_pm) as the Millennium NS barrier analysis.
+    (Phi_c) and polarity (P_pm) as the Millennium NS threshold analysis.
     The ZFCt version adds the crossing topology (T_bowtie) and sequential dynamics,
     which the MPP encoding does not surface directly. -/
 theorem ns_zfc_t_crit_match :
     ns_encoding.crit = navier_stokes_equations.crit := by rw [ns_encoding, navier_stokes_equations]
 
 /-- The ZFCt NS has kin = K_mod (moderate kinetics) while the MPP encoding
-    does not assign kinetics. The Millennium barrier (K_mod → blow-up or regularity)
+    does not assign kinetics. The Millennium threshold (K_mod → blow-up or regularity)
     maps onto the ZFCt K_mod classification. -/
 theorem ns_zfc_t_pol_match :
     ns_encoding.pol = navier_stokes_equations.pol := by rw [ns_encoding, navier_stokes_equations]

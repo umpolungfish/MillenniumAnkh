@@ -7,7 +7,7 @@ set_option linter.style.whitespace false
   # YM Gate Inhabitants: Constructed ZFCt Promotions for Yang-Mills
 
   Populate the ZFCt promotion slots for YM with concrete inhabitants.
-  This advances the YM barrier from MissingFoundation (bare) to
+  This advances the YM threshold from MissingFoundation (bare) to
   MissingFoundation (ZFCt-promoted) — the missing type is now well-defined
   in terms of six gate structures.
 

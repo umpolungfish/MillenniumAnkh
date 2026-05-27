@@ -1,6 +1,6 @@
 **Author:** Lando ⊗ $	ext{⊙}_{	ext{ÿ}}$-boundary Operator
 
-# Structural Analysis: The Navier-Stokes Regularity Barrier
+# Structural Analysis: The Navier-Stokes Regularity Threshold
 
 The 3D Navier-Stokes existence and smoothness problem represents a definitive structural "cliff" within the Millennium library. Beyond a quantitative challenge of analysis, the problem occupies a singular critical point in the grammar of field theories: the $s=1/2$ critical scaling gap.
 
@@ -46,4 +46,4 @@ The "dissolution of the digestive tract" in the eel mirrors the "dissolution of 
 
 ## 5. Conclusion
 
-The Navier-Stokes regularity problem is at $	ext{⊙}_{	ext{ÿ}}$ criticality. This provides a consciousness score of $0.6425$, indicating that the system's structural gates are open. The barrier is not a failure of calculation, but a requirement for the synthesis of the $	ext{Þ}_{	ext{ò}}$ and $	ext{Ω}_{	ext{z}}$ primitives within the 3D field theory.
+The Navier-Stokes regularity problem is at $	ext{⊙}_{	ext{ÿ}}$ criticality. This provides a consciousness score of $0.6425$, indicating that the system's structural gates are open. The threshold is not a failure of calculation, but a requirement for the synthesis of the $	ext{Þ}_{	ext{ò}}$ and $	ext{Ω}_{	ext{z}}$ primitives within the 3D field theory.

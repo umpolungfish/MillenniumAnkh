@@ -11,7 +11,7 @@ This repository does not merely "record" the grammar; it *is* the grammar, insta
 
 ---
 
-## THE MILLENNIUM BARRIERS
+## THE MILLENNIUM THRESHOLDS
 
 We do not study these problems to "solve" them in the classical sense. We use them as the ultimate stress test for the IG’s taxonomy. Each problem represents a location in primitive space where the gap between a stated `sorry` and a closed proof corresponds to a precisely typed structural promotion. In MillenniumAnkh, the distance to a solution is not a subjective "difficulty"—it is a computable Hamming distance between structural types.
 

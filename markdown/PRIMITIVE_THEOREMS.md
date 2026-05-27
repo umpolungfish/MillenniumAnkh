@@ -56,7 +56,7 @@ Key primitives: **$T_\bowtie$** (color confinement — quarks couple in closed d
 
 **Lemma 2** (D,T compatibility): By the compatibility theorem, massless gauge boson propagation requires $T_\perp$ or $T_{\text{braid}}$ — orthogonal or braided topology, both allowing free propagation without a minimum coupling scale. $T_\bowtie$ and massless propagation are incompatible topologies; they cannot coexist in the same primitive configuration.
 
-**Theorem**: In QCD (T = $T_\bowtie$), no state can simultaneously realize massless propagation (which requires $T_\perp$) and the confinement topology. Every excitation either (a) maintains $T_\bowtie$, paying at minimum $\varepsilon_T > 0$, or (b) attempts to access $T_\perp$, which requires crossing a topological barrier that costs additional energy. Either way, a mass gap $\Delta \ge \varepsilon_T > 0$ exists.
+**Theorem**: In QCD (T = $T_\bowtie$), no state can simultaneously realize massless propagation (which requires $T_\perp$) and the confinement topology. Every excitation either (a) maintains $T_\bowtie$, paying at minimum $\varepsilon_T > 0$, or (b) attempts to access $T_\perp$, which requires crossing a topological threshold that costs additional energy. Either way, a mass gap $\Delta \ge \varepsilon_T > 0$ exists.
 
 ### Interpretation
 
@@ -343,7 +343,7 @@ The last row is the striking result. Multi-prover interactive proofs with quantu
 
 ### Why $D_{\text{holo}}$ Collapses All K Classes
 
-The K-class hierarchy (P $\subsetneq$ NP $\subsetneq$ PSPACE $\subsetneq$ EXP $\subsetneq$ ...) is a K-primitive hierarchy. Each level requires a K-transition to access, and K transitions require phase events (Phi changes). Within $D_{\text{wedge}}$, these barriers are rigid.
+The K-class hierarchy (P $\subsetneq$ NP $\subsetneq$ PSPACE $\subsetneq$ EXP $\subsetneq$ ...) is a K-primitive hierarchy. Each level requires a K-transition to access, and K transitions require phase events (Phi changes). Within $D_{\text{wedge}}$, these thresholds are rigid.
 
 $D_{\text{holo}}$ changes the dimensionality primitive itself. Holographic dimensionality encodes the full bulk structure at the boundary — including all K-class content. A $D_{\text{holo}}$ system can read $K_{\text{slow}}$ structure from $K_{\text{fast}}$ boundary observations because the boundary *is* the bulk in compressed form.
 
@@ -713,7 +713,7 @@ The key gap: showing that $\Phi_{\text{super}}$ decay is *fast enough* to preven
 **Relation to §6**: §6 argues for smoothness via $\Phi_{\text{super}}$ decay. §6.1 argues for blowup via $\Omega_0$ absence. Both arguments are grammatically valid. The question is which primitive dominates.
 
 **Plane summary:**
-- `[TOPO]` $\Omega_0$ $\to$ no topological barrier to singularity (contrast $\Omega_Z$ $\to$ Yang-Mills gap); $P_{\text{asym}} + \Phi_c$ $\to$ uncompensated structural tension; the framework is internally divided between $\Phi$-cascade (smoothness) and $\Omega_0$ (blowup)
+- `[TOPO]` $\Omega_0$ $\to$ no topological threshold to singularity (contrast $\Omega_Z$ $\to$ Yang-Mills gap); $P_{\text{asym}} + \Phi_c$ $\to$ uncompensated structural tension; the framework is internally divided between $\Phi$-cascade (smoothness) and $\Omega_0$ (blowup)
 - `[DIAPH]` NS encoding $\langle ...; P_{\text{asym}}; ...; \Phi_c; ...; \Omega_0\rangle$ vs YM $\langle ...; P_{\pm}^{\text{sym}}; ...; \Phi_c; ...; \Omega_Z\rangle$; the $\Omega$ primitive is the decisive structural difference; $\Gamma_{\text{and}}$ encodes Richardson cascade conjunctive coupling
 - `[ONTO]` NS has no mass-gap analog ($\Omega_Z$ absent); framework identifies exactly which primitive competition must be resolved; turbulence is $\Gamma_{\text{and}}$ structure not disorder
 
@@ -728,13 +728,13 @@ Yang-Mills and Navier-Stokes are the two Millennium Problems that operate at $\P
 | P | $P_{\pm}^{\text{sym}}$ | $P_{\text{asym}}$ |
 | T | $T_{\text{bowtie}}$ | $T_{\text{network}}$ |
 
-The Yang-Mills gap is the physical manifestation of $\Omega_Z$ — winding number protection means any excitation must pay at least $\varepsilon_T > 0$ to exist. Smooth vacuum cannot continuously deform to an excited state without crossing a topological barrier.
+The Yang-Mills gap is the physical manifestation of $\Omega_Z$ — winding number protection means any excitation must pay at least $\varepsilon_T > 0$ to exist. Smooth vacuum cannot continuously deform to an excited state without crossing a topological threshold.
 
-Navier-Stokes has $\Omega_0$. There is no winding number invariant. A smooth velocity field can continuously deform toward a singular (infinite gradient) configuration without crossing any topological barrier. **The grammar does not forbid blowup.** There is nothing structurally analogous to the Yang-Mills gap standing in the way.
+Navier-Stokes has $\Omega_0$. There is no winding number invariant. A smooth velocity field can continuously deform toward a singular (infinite gradient) configuration without crossing any topological threshold. **The grammar does not forbid blowup.** There is nothing structurally analogous to the Yang-Mills gap standing in the way.
 
 ### The Structural Argument for Blowup
 
-1. $\Omega_0$ $\to$ no topological barrier between smooth and singular configurations
+1. $\Omega_0$ $\to$ no topological threshold between smooth and singular configurations
 2. $P_{\text{asym}}$ $\to$ nonlinear advection ($\mathbf{u}\cdot\nabla\mathbf{u}$) has no symmetry preventing energy concentration
 3. $\Phi_c$ $\to$ criticality amplifies perturbations rather than damping them; the system is maximally sensitive to small-scale structure
 4. $F_{\text{ell}}$ $\to$ classical (no quantum coherence to stabilize against concentration)
@@ -1111,7 +1111,7 @@ The existence-tier primitives **{F, K, Φ}** define the conditions under which a
 
 **The asymmetry:** F takes min (weakest fidelity degrades the composite). K takes max (slowest step controls the composite). Both are bottlenecks, but via opposite ordinal directions — because in the ordering of K ($K_{\text{fast}}=1$, $K_{\text{mod}}=2$, $K_{\text{slow}}=3$, $K_{\text{trap}}=4$), higher ordinal = slower/more constrained, and the rate-limiting step IS the slowest. The K bottleneck is therefore max, not min.
 
-**Physical encoding:** Kinetic character is determined by the **rate-limiting step**. A fast reaction composed with a slow reaction proceeds at the slow rate. $K_{\text{trap}}$ (many-body localized, disorder-frozen) dominates any composition it enters. This reflects the fundamental principle that kinetic barriers compound multiplicatively: adding a slow step never speeds up the composite.
+**Physical encoding:** Kinetic character is determined by the **rate-limiting step**. A fast reaction composed with a slow reaction proceeds at the slow rate. $K_{\text{trap}}$ (many-body localized, disorder-frozen) dominates any composition it enters. This reflects the fundamental principle that kinetic thresholds compound multiplicatively: adding a slow step never speeds up the composite.
 
 ### §12.4 The Existence-Tier Duality
 
@@ -1528,7 +1528,7 @@ Three refinements are now implemented in `Core.lean` and `space_search/primitive
 
 ### 18.4 Millennium Prize Connection: RH as Phi_c_complex
 
-The Phi expansion has a direct consequence for the Riemann Hypothesis (MILLENNIUM_BARRIERS_PAPER §V.6). The prior encoding `rh_encoding.crit = Phi_c` was too coarse: the nontrivial zeros of $\zeta(s)$ are at *complex* values of $s$, not at a real critical parameter. The updated encoding `crit = Phi_c_complex` is more accurate and machine-checked in `PrimitiveBridge.lean`.
+The Phi expansion has a direct consequence for the Riemann Hypothesis (MILLENNIUM_THRESHOLDS_PAPER §V.6). The prior encoding `rh_encoding.crit = Phi_c` was too coarse: the nontrivial zeros of $\zeta(s)$ are at *complex* values of $s$, not at a real critical parameter. The updated encoding `crit = Phi_c_complex` is more accurate and machine-checked in `PrimitiveBridge.lean`.
 
 The new theorem `rh_leyang_structural_correspondence` (proved by `rfl`) confirms that $\zeta$ zeros and Lee-Yang partition-function zeros share `Phi_c_complex`. The structural distance of 7 between the two encodings (machine-checked: `rh_leyang_distance`, `by decide`) identifies the polarity mismatch ($P_\text{neutral}$ vs $P_{\pm}^{\text{sym}}$) as the essential structural explanation for why the Lee-Yang theorem is proved but RH remains open. Of the 7 mismatches, polarity is the gap primitive; the remaining 6 (top, fid, kin, gran, stoi, chir) are background differences.
 
@@ -1764,7 +1764,7 @@ The Synthonicon has been a $\pi_1$-centric instrument. The Triad Framework is th
 
 A fourth projection $\pi_4$ may exist — encoding the *logical/computational* mode of information (complexity class, decidability, proof length). $\mathcal{C}_{14}$ would then encode the structural basis for P vs NP. This is conjectured but not yet formalized.
 
-**See also:** PRIMITIVE_PREDICTIONS §P-150–P-155; MILLENNIUM_BARRIERS_PAPER §V.7; PRIMITIVE_THEOREMS §18.4 (RH–Lee-Yang correspondence precursor)
+**See also:** PRIMITIVE_PREDICTIONS §P-150–P-155; MILLENNIUM_THRESHOLDS_PAPER §V.7; PRIMITIVE_THEOREMS §18.4 (RH–Lee-Yang correspondence precursor)
 
 ---
 
@@ -2205,7 +2205,7 @@ The retrosynthetic path (computed via `retrosynthetic_path`) requires 10 primiti
 | 9 | $S$ | $n{:}n \to 1{:}1$ | Many-body stoichiometry → one-to-one; symmetric interactions removed |
 | 10 | $\Omega$ | $\Omega_{Z_2} \to \Omega_0$ | Binary topological protection → unprotected; duality becomes fragile |
 
-The structural distance is $d = 6.38$ — "structurally remote, different regime," the largest achievable gap in the primitive lattice. The dominant contributors are $T$ ($\Delta = 4$, weighted $= 16$) and $D$ ($\Delta = 3$, weighted $= 9$), confirming that topology and dimensionality are the primary barriers.
+The structural distance is $d = 6.38$ — "structurally remote, different regime," the largest achievable gap in the primitive lattice. The dominant contributors are $T$ ($\Delta = 4$, weighted $= 16$) and $D$ ($\Delta = 3$, weighted $= 9$), confirming that topology and dimensionality are the primary thresholds.
 
 Reading the path *forward* (baseline → holographic): the synthesis sequence. The first promotions to make are $T_\odot$ and $D_\odot$ (highest structural weight), followed by $P_{\pm}^{\text{sym}}$ (Frobenius gate), then $\Phi_c$ (criticality gate). The path is ordered by structural cost, not logical dependency — but the logical gates are embedded in steps 2 and 8: without $P_{\pm}^{\text{sym}}$ and $\Phi_c$, no amount of promotion on the other ten primitives produces $O_\infty$.
 
@@ -2743,7 +2743,7 @@ The 41-iteration session establishes the following complete picture:
 
 5. **Verifier asymmetry** ($\Delta d = 3.595$): Structural proof that checking is natively P-frame, finding is NP-frame. Not a speed difference — a basis difference.
 
-**See also:** §23 (Frobenius); §30 (P vs NP structural duality); SYNTHONICON_DIAPHORICS §LXIII P-206–P-210; MILLENNIUM_BARRIERS_PAPER §V.9 (v0.1.5).
+**See also:** §23 (Frobenius); §30 (P vs NP structural duality); SYNTHONICON_DIAPHORICS §LXIII P-206–P-210; MILLENNIUM_THRESHOLDS_PAPER §V.9 (v0.1.5).
 
 ---
 
@@ -2907,21 +2907,21 @@ The same no-go theorem appears independently in both sessions. In Grothendieck: 
 
 The Gaussian moat exhibits all three: $\Phi_\text{EP}$ (exceptional mode), $D_\odot$ (holographic mode). Its $K_\text{trap}$ adds a fourth: the state-space exploration required is fragmented into disconnected basins.
 
-### §34.4 — The Problem Barrier Taxonomy
+### §34.4 — The Problem Threshold Taxonomy
 
-Prior to this session, the grammar implicitly used a single barrier type: structural distance (how far a problem is from available proof tools). The $\Phi_\text{EP}$ finding introduces a refined taxonomy:
+Prior to this session, the grammar implicitly used a single threshold type: structural distance (how far a problem is from available proof tools). The $\Phi_\text{EP}$ finding introduces a refined taxonomy:
 
-| Barrier type | Primitive signature | Structural character | Examples |
+| Threshold type | Primitive signature | Structural character | Examples |
 |---|---|---|---|
-| **Frobenius barrier** | $P < P_{\pm}^{\text{sym}}$, $O < O_\infty$ | $O_\infty$ cannot be synthesized; must be planted | Goldbach vs A/B/C (§LXIX), Conjecture D (§LXIX) |
-| **Kinetic barrier** | $K_\text{trap}$ | State-space fragmentation; no traversal between basins | Halting problem, P vs NP, Gaussian moat |
-| **Criticality barrier** | $\Phi_\text{EP}$ vs $\Phi_c$ system | Spectral resolution unavailable at problem type | Gaussian moat (first instance in catalog) |
-| **Holographic barrier** | $D_\odot$ problem, $D_\infty$ tools | Boundary-to-bulk inference required; unavailable locally | Gaussian moat, potentially Riemann |
-| **Temporal barrier** | $H_\infty$ required | Ontological inexhaustibility; proof requires infinite depth | [ONTO §XXIV class] |
+| **Frobenius threshold** | $P < P_{\pm}^{\text{sym}}$, $O < O_\infty$ | $O_\infty$ cannot be synthesized; must be planted | Goldbach vs A/B/C (§LXIX), Conjecture D (§LXIX) |
+| **Kinetic threshold** | $K_\text{trap}$ | State-space fragmentation; no traversal between basins | Halting problem, P vs NP, Gaussian moat |
+| **Criticality threshold** | $\Phi_\text{EP}$ vs $\Phi_c$ system | Spectral resolution unavailable at problem type | Gaussian moat (first instance in catalog) |
+| **Holographic threshold** | $D_\odot$ problem, $D_\infty$ tools | Boundary-to-bulk inference required; unavailable locally | Gaussian moat, potentially Riemann |
+| **Temporal threshold** | $H_\infty$ required | Ontological inexhaustibility; proof requires infinite depth | [ONTO §XXIV class] |
 
-Problems can exhibit multiple barriers simultaneously. Cross-validated instances from sessions on 2026-04-02:
+Problems can exhibit multiple thresholds simultaneously. Cross-validated instances from sessions on 2026-04-02:
 
-| Problem | $\Phi$ | $\Omega$ | $P$ | $K$ | Barriers | $O$-tier | Prognosis |
+| Problem | $\Phi$ | $\Omega$ | $P$ | $K$ | Thresholds | $O$-tier | Prognosis |
 |---|:---:|:---:|:---:|:---:|---|:---:|---|
 | Goldbach | $\Phi_c$ | $\Omega_{Z_2}$ | $P_{\pm}^{\text{sym}}$ | $K_\text{mod}$ | Frobenius (planted) | $O_\infty$ | Provable via $\Gamma_\text{or}$ |
 | Twin Prime | $\Phi_c$ | $\Omega_0$ | $P_{\pm}$ | $K_\text{mod}$ | None (structural) | $O_1$ | Hard; accessible |
@@ -2931,9 +2931,9 @@ Problems can exhibit multiple barriers simultaneously. Cross-validated instances
 | Conj. D (Grothendieck) | $\Phi_c$ | $\Omega_Z$ | $P_{\pm}^{\text{sym}}$ | $K_\text{slow}$ | Frobenius (must be planted) | $O_\infty$ | Requires planted $P_{\pm}^{\text{sym}}$ |
 | Gaussian moat | $\Phi_\text{EP}$ | $\Omega_0$ | $P_{\pm}$ | $K_\text{trap}$ | Criticality + kinetic + holographic | $O_0$ | Type-incompatible with $\Phi_c$ systems |
 
-**Consequence for open problem assessment.** The barrier taxonomy replaces the informal notion of "difficulty" with a structural classification. The question to ask of any open problem is not "how hard is it?" but "which barriers does it exhibit?" Problems with only a Frobenius barrier are hard but potentially provable. Problems with a criticality barrier are potentially unprovable from current proof systems. Problems with all three barriers (kinetic + criticality + holographic) are, on current structural evidence, in the type-incompatible regime.
+**Consequence for open problem assessment.** The threshold taxonomy replaces the informal notion of "difficulty" with a structural classification. The question to ask of any open problem is not "how hard is it?" but "which thresholds does it exhibit?" Problems with only a Frobenius threshold are hard but potentially provable. Problems with a criticality threshold are potentially unprovable from current proof systems. Problems with all three thresholds (kinetic + criticality + holographic) are, on current structural evidence, in the type-incompatible regime.
 
-**See also:** §23 (Frobenius barrier); §33 ($\Gamma$-mediated emergence); §35 (proof as phase transition); SYNTHONICON_DIAPHORICS §LXXI (Gaussian moat full analysis, P-232–P-235); §LXX (Landau barrier analysis, P-228–P-231).
+**See also:** §23 (Frobenius threshold); §33 ($\Gamma$-mediated emergence); §35 (proof as phase transition); SYNTHONICON_DIAPHORICS §LXXI (Gaussian moat full analysis, P-232–P-235); §LXX (Landau threshold analysis, P-228–P-231).
 
 ### §34.5 — Addendum: The Protection Deficit Pattern (2026-04-03)
 
@@ -2945,7 +2945,7 @@ The Rota session establishes a repeating structural pattern across major open co
 
 Extended taxonomy entry:
 
-| Barrier type | Primitive signature | Structural character | Examples |
+| Threshold type | Primitive signature | Structural character | Examples |
 |---|---|---|---|
 | **Protection deficit** | $\Phi_c + \Omega_0$ | Critical but unprotected; partial proofs accumulate at bounded $n$ without closing; proof requires $\Omega$ acquisition or $P$ promotion | Rota's basis conjecture, Twin Prime, NS (partial), P vs NP |
 
@@ -2962,7 +2962,7 @@ The $\Omega_0$ pattern across these cases is not a coincidence but a structural 
 
 **Proof as navigation — the dynamic picture:**
 
-The static barrier taxonomy identifies what is missing. The dynamic picture (§LXXXII.5) describes how proof supplies it:
+The static threshold taxonomy identifies what is missing. The dynamic picture (§LXXXII.5) describes how proof supplies it:
 
 > Proof is a promotion path through type space. Each major structural move in a proof corresponds to a primitive promotion. A complete proof is a connected path from the conjecture's encoding to the proven manifold. The grammar identifies which promotions are required; the proof discovers how to achieve them.
 
@@ -3048,7 +3048,7 @@ Predictions from this hypothesis (see SYNTHONICON_DIAPHORICS §LXXIV, P-246):
 
 - Gaussian moat ($\Phi_\text{EP}$, $\Omega_0$): $d_\text{proof}$ structurally maximal — type-incompatible with the proven manifold
 - Goldbach ($\Phi_c$, $\Omega_{Z_2}$, $P_{\pm}^{\text{sym}}$): $d_\text{proof}$ minimal among open conjectures — already at Frobenius tier, $\Sigma$ partially complete
-- RH ($\Phi_c^\mathbb{C}$, $\Omega_Z$, $P_{\pm}^{\text{sym}}$): $d_\text{proof}$ moderate — complex criticality requires $\Phi$ normalization before $\Sigma$ applies; see Barrier Taxonomy §34.4
+- RH ($\Phi_c^\mathbb{C}$, $\Omega_Z$, $P_{\pm}^{\text{sym}}$): $d_\text{proof}$ moderate — complex criticality requires $\Phi$ normalization before $\Sigma$ applies; see Threshold Taxonomy §34.4
 
 *Current status:* Hypothesis. Falsifiable by correlating $d_\text{proof}$ rankings with expert difficulty surveys across a large sample of encoded conjectures.
 
@@ -3062,9 +3062,9 @@ From Theorems 35.1–35.3 and Hypothesis 35.H1, three structural difficulty clas
 | **Obstructed** | $\Phi_c + \Omega_0$ | $\Omega$ acquisition required first | NS Regularity, Twin Prime, Legendre |
 | **Type-incompatible** | $\Phi_\text{EP}$ or $K_\text{trap}$ | $\Phi$ cannot be normalized within $\Phi_c$ proof systems | Gaussian moat, halting problem |
 
-The Frobenius barrier (§23, §34) further partitions the Adjacent class: $O_\infty$ problems ($P_{\pm}^{\text{sym}}$ planted) vs $O_2$ problems ($P_{\pm}^{\text{sym}}$ to be acquired via $\Gamma_\text{or}$ or other mechanism).
+The Frobenius threshold (§23, §34) further partitions the Adjacent class: $O_\infty$ problems ($P_{\pm}^{\text{sym}}$ planted) vs $O_2$ problems ($P_{\pm}^{\text{sym}}$ to be acquired via $\Gamma_\text{or}$ or other mechanism).
 
-**See also:** §23 (Frobenius barrier); §34 (barrier taxonomy and typed proof operators); §33 ($\Gamma$-mediated $P_{\pm}^{\text{sym}}$ emergence); §36 (motivic Morse theorem); SYNTHONICON_DIAPHORICS §LXXIV (Berry-Tabor/Kusner full analysis, P-243–P-247).
+**See also:** §23 (Frobenius threshold); §34 (threshold taxonomy and typed proof operators); §33 ($\Gamma$-mediated $P_{\pm}^{\text{sym}}$ emergence); §36 (motivic Morse theorem); SYNTHONICON_DIAPHORICS §LXXIV (Berry-Tabor/Kusner full analysis, P-243–P-247).
 
 ### §35.7 — Remark 35.R1: Frobenian Seeding, Intuition, and the Pedagogy of Insight
 
@@ -3092,7 +3092,7 @@ The structural programme for inducing insight in others:
 
 2. **Maximise conflict-set resolution** — the more precisely the $O_1$ state has mapped $d(C,\ \mathbf{t}_\text{proved})$, the more efficiently the boundary data populates the bulk on arrival. The geometry of the conflict set is the receptor geometry.
 
-3. **Remove $K_\text{trap}$ first** — kinetic localization (repetitive drilling, fixed framings, algorithmic habit) is a second-order barrier (§47.C1): it blocks the $\Phi_\text{sub} \to \Phi_c$ transition entirely. No amount of content will establish criticality in a $K_\text{trap}$ substrate. The intervention required is not more bulk but a different mode of engagement — one that breaks the localization.
+3. **Remove $K_\text{trap}$ first** — kinetic localization (repetitive drilling, fixed framings, algorithmic habit) is a second-order threshold (§47.C1): it blocks the $\Phi_\text{sub} \to \Phi_c$ transition entirely. No amount of content will establish criticality in a $K_\text{trap}$ substrate. The intervention required is not more bulk but a different mode of engagement — one that breaks the localization.
 
 4. **Build bulk density** — the seeding lands in $T_\text{network}$ and must anchor there to persist. A richer, denser network of related structures provides more anchoring for $\Omega_{Z_2}$ stabilisation after seeding. Insight that fades is seeding into sparse bulk ($\Omega_0$); insight that endures is seeding into dense bulk ($\Omega_{Z_2}$ acquired through the network).
 
@@ -3210,7 +3210,7 @@ The tensor bottleneck operates at the second arrow: the variety base cannot comp
 
 ### §37.1 — The Structural Incompatibility Method
 
-Sessions to date have used the grammar primarily to characterize *individual* systems (encode a problem, read its tier and barriers). The Hilbert-Smith session introduces a complementary method: **encode both sides of a conjecture, compute the conflict distance, and read the structural verdict.**
+Sessions to date have used the grammar primarily to characterize *individual* systems (encode a problem, read its tier and thresholds). The Hilbert-Smith session introduces a complementary method: **encode both sides of a conjecture, compute the conflict distance, and read the structural verdict.**
 
 For any conjecture of the form "$X$ cannot act on / be embedded in / be compatible with $Y$," the protocol is:
 
@@ -3276,17 +3276,17 @@ where "load-bearing" means the conflict crosses an ouroboricity tier boundary or
 
 ### §37.5 — Relationship to Prior Theorems
 
-The conflict distance method extends the barrier taxonomy of §34 in a new direction: §34 characterizes barriers within a single problem's encoding; §37 characterizes incompatibility between two systems' encodings.
+The conflict distance method extends the threshold taxonomy of §34 in a new direction: §34 characterizes thresholds within a single problem's encoding; §37 characterizes incompatibility between two systems' encodings.
 
 | Theorem | Method | Application |
 |---|---|---|
-| §34 (Typed Operators) | Encode problem; read barriers | Goldbach, Gaussian moat, Yang-Mills |
+| §34 (Typed Operators) | Encode problem; read thresholds | Goldbach, Gaussian moat, Yang-Mills |
 | §36.1 (Motivic Frobenius Necessity) | Tensor product; read bottleneck | CAT(0) cube $\otimes$ motivic critical |
 | **§37 (Conflict Distance)** | Encode both sides; read conflict set | Hilbert-Smith; general impossibility |
 
-The three methods are complementary: §34 gives the problem's internal barriers, §36 gives composition obstruction, §37 gives bilateral incompatibility. A complete structural analysis of a conjecture uses all three.
+The three methods are complementary: §34 gives the problem's internal thresholds, §36 gives composition obstruction, §37 gives bilateral incompatibility. A complete structural analysis of a conjecture uses all three.
 
-**See also:** §34.3 (Theorem 34.2, Criticality Gap); §34 (barrier taxonomy); §36 (motivic Morse, tensor bottleneck); SYNTHONICON_DIAPHORICS §LXXVI (Hilbert-Smith analysis, P-253–P-257); §LXXI (Gaussian moat, $\Phi_\text{EP}$ encoding).
+**See also:** §34.3 (Theorem 34.2, Criticality Gap); §34 (threshold taxonomy); §36 (motivic Morse, tensor bottleneck); SYNTHONICON_DIAPHORICS §LXXVI (Hilbert-Smith analysis, P-253–P-257); §LXXI (Gaussian moat, $\Phi_\text{EP}$ encoding).
 
 ---
 
@@ -3438,11 +3438,11 @@ The distinction matters for proof strategy:
 
 **Theorem 39.4.** Any $O_2$ classification program whose holographic encoding requires full boundary-to-bulk decoding is $K_\text{slow}$; this kinetic character is structural and cannot be compressed to $K_\text{mod}$ or $K_\text{fast}$.
 
-*Instance:* Thurston's program. The Ricci flow with surgery is the unique $K_\text{slow}$ trajectory through type space that respects the holographic encoding. Questions Q13–18 (can 3-manifold homeomorphism be decided efficiently?) are answered structurally: no. The kinetic barrier is not a complexity-class obstruction but a primitive-type obstruction.
+*Instance:* Thurston's program. The Ricci flow with surgery is the unique $K_\text{slow}$ trajectory through type space that respects the holographic encoding. Questions Q13–18 (can 3-manifold homeomorphism be decided efficiently?) are answered structurally: no. The kinetic threshold is not a complexity-class obstruction but a primitive-type obstruction.
 
 *Corollary 39.C2:* Machine learning and quantum computation approaches to $K_\text{slow}$ classification programs will fail on adversarial inputs (near geometric transition boundaries). The bottleneck is the $K$ primitive, which is domain-class-independent.
 
-**See also:** §34 (barrier taxonomy; kinetic barrier); §35 (Σ-promotion); §36 (motivic Morse; K_slow structural necessity); §38 (F-promotion implicit in TS; Langlands as O_∞); SYNTHONICON_DIAPHORICS §LXXVIII (Thurston full analysis, P-264–P-270).
+**See also:** §34 (threshold taxonomy; kinetic threshold); §35 (Σ-promotion); §36 (motivic Morse; K_slow structural necessity); §38 (F-promotion implicit in TS; Langlands as O_∞); SYNTHONICON_DIAPHORICS §LXXVIII (Thurston full analysis, P-264–P-270).
 
 ---
 
@@ -3468,7 +3468,7 @@ Problems in different regimes are at $d \approx 6$–$7$ from each other. Proble
 
 $$\Omega_Z \quad \text{AND} \quad (P \geq P_\text{sym}) \quad \text{AND} \quad (\Phi = \Phi_c \text{ or } \Phi_c^\mathbb{C})$$
 
-*Status:* Hypothesis (5-case induction). Independently derived by the inquiry agent from primitive encodings without access to the proof-type or barrier taxonomy context (§35, §37, §39).
+*Status:* Hypothesis (5-case induction). Independently derived by the inquiry agent from primitive encodings without access to the proof-type or threshold taxonomy context (§35, §37, §39).
 
 *Supporting instances:*
 
@@ -3506,7 +3506,7 @@ $$\Omega_Z \quad \text{AND} \quad (P \geq P_\text{sym}) \quad \text{AND} \quad (
 
 (b) **Accept O_1 character**: work within $\Omega_0 + P_\text{asym}$ and obtain conditional/partial results only.
 
-*Note:* This hypothesis was independently derived in two sessions (§LX, §LXXIX) from different reasoning paths. It is consistent with §34 (barrier taxonomy: Frobenius barrier at $P$) and §37 (conflict distance: $d_c = 3.0$–level structural incompatibility with solvable regime).
+*Note:* This hypothesis was independently derived in two sessions (§LX, §LXXIX) from different reasoning paths. It is consistent with §34 (threshold taxonomy: Frobenius threshold at $P$) and §37 (conflict distance: $d_c = 3.0$–level structural incompatibility with solvable regime).
 
 ### §40.5 — Hypothesis 40.H3 (NS Hidden Topological Invariant)
 
@@ -3531,7 +3531,7 @@ $$\Omega_Z \quad \text{AND} \quad (P \geq P_\text{sym}) \quad \text{AND} \quad (
 
 The cluster/isolation structure in 12D Mahalanobis space matches the empirical observation that topological/cohomological methods transfer freely within {Poincaré, Riemann, Hodge, BSD} but do not transfer to P vs NP or NS. The grammar gives the structural reason: the $d \approx 6$–$7$ distances reflect incompatibility at load-bearing primitives ($\Omega$, $P$, $T$, $K$).
 
-**See also:** §34 (barrier taxonomy); §37 (conflict distance, structural impossibility); §39 (O_2 tractability criterion); §35 (proof as phase transition); SYNTHONICON_DIAPHORICS §LXXIX (full Smale's analysis, P-271–P-276); §LXXII (NS encoding); §LX (P vs NP duality).
+**See also:** §34 (threshold taxonomy); §37 (conflict distance, structural impossibility); §39 (O_2 tractability criterion); §35 (proof as phase transition); SYNTHONICON_DIAPHORICS §LXXIX (full Smale's analysis, P-271–P-276); §LXXII (NS encoding); §LX (P vs NP duality).
 
 ---
 
@@ -3616,7 +3616,7 @@ Achieving any subset of three or fewer produces at most polynomial quantum speed
 
 The $d(\text{Simon quantum},\ \text{P vs NP}) = 7.1134$ result (9-primitive gap) is the grammar's statement of why quantum algorithms for period-finding do not structurally transfer to NP-hard optimization: the two problems live in near-maximally distant regions of the 12-primitive space.
 
-**See also:** §34 (barrier taxonomy); §35 (proof as phase transition); §37 (structural impossibility, conflict distance); §40 (solvability criterion); SYNTHONICON_DIAPHORICS §LXXX (Simon's Problem full analysis, P-277–P-282); §LX (P vs NP duality structure); §LXXIX (Smale's Problems solvability criterion).
+**See also:** §34 (threshold taxonomy); §35 (proof as phase transition); §37 (structural impossibility, conflict distance); §40 (solvability criterion); SYNTHONICON_DIAPHORICS §LXXX (Simon's Problem full analysis, P-277–P-282); §LX (P vs NP duality structure); §LXXIX (Smale's Problems solvability criterion).
 
 ---
 
@@ -3724,7 +3724,7 @@ The grammar provides the first component completely. Ontology — the fact that 
 
 *What the boundary provides:* $B$ is necessary for provability — a conjecture at $O_0$ or $O_1$ cannot reach $O_\infty$ via R1 alone without first acquiring $\Omega \neq \Omega_0$ and an appropriate $D$ (promoting to $O_2$). $B$ is the structural floor from which proof is possible. But it is not the proof.
 
-*The Frobenius barrier restated:* $P_{\pm}^{\text{sym}}$ is the maximal $P$ ordinal and cannot be synthesized by composition from $P_\text{sym}$ or lower (§23). Therefore the inference step — from $O_2$ (boundary given) to $O_\infty$ (proven) — is irreducible. It cannot be completed by composing existing $O_2$ material; the exact $\mathbb{Z}_2$ self-duality must be independently discovered and established. This is why proof feels qualitatively different from verification: it is structurally a different operation.
+*The Frobenius threshold restated:* $P_{\pm}^{\text{sym}}$ is the maximal $P$ ordinal and cannot be synthesized by composition from $P_\text{sym}$ or lower (§23). Therefore the inference step — from $O_2$ (boundary given) to $O_\infty$ (proven) — is irreducible. It cannot be completed by composing existing $O_2$ material; the exact $\mathbb{Z}_2$ self-duality must be independently discovered and established. This is why proof feels qualitatively different from verification: it is structurally a different operation.
 
 ### §43.C1 — Corollary 43.C1 (O_∞ Sparsity)
 
@@ -3826,7 +3826,7 @@ This is Grothendieck's "rising sea" in primitive form: $\Gamma_\text{and} \to \G
 
 ### §45.R1 — Remark: Structural Impossibility of Proof Discovery in $O_1$ Architectures
 
-Current automated theorem proving systems (sequential deduction, categorical type theory) are structurally $O_1$: categorical ($R_\text{cat}$), conjunctive ($\Gamma_\text{and}$), bounded ($D_\triangle$, $T_\boxtimes$), unprotected ($\Omega_0$). They cannot cross the Frobenius barrier by composition (§23 — $P_{\pm}^{\text{sym}}$ is non-synthesizable). Therefore:
+Current automated theorem proving systems (sequential deduction, categorical type theory) are structurally $O_1$: categorical ($R_\text{cat}$), conjunctive ($\Gamma_\text{and}$), bounded ($D_\triangle$, $T_\boxtimes$), unprotected ($\Omega_0$). They cannot cross the Frobenius threshold by composition (§23 — $P_{\pm}^{\text{sym}}$ is non-synthesizable). Therefore:
 
 No $O_1$ architecture can independently discover a proof of any conjecture requiring $\Sigma$-promotion (the universal conjecture class). Such systems can **verify** proofs once supplied (type-checking at $O_1$ is sufficient), but **discovery** — the act of planting the Frobenius condition — requires a system whose architecture encodes at $O_\infty$ or accesses the $O_\infty$ tier during generation.
 
@@ -3891,9 +3891,9 @@ The $P_\psi$ class is structurally closer to the proven manifold: $d(P_\psi) = 5
 2. A conjecture at $d = 5.82$ (Greenberg) is structurally closer to proof than one at $d = 7.99$, independent of the number of published papers or years of effort.
 3. The Hermite paradox (proved 1873 despite $d = 7.93$) is resolved: narrow-scope proofs (single number, not general class) can close high-$d$ gaps by fixing $G$ and $S$ at their conjecture values. Generalization requires additional activations.
 
-### §46.C2 — Corollary 46.C2 ($H_0$ Achirality Barrier)
+### §46.C2 — Corollary 46.C2 ($H_0$ Achirality Threshold)
 
-**Corollary 46.C2.** Among $P_\text{asym}$ arithmetic conjectures, those encoding $H_0$ (Kummer-Vandiver and Leopoldt) carry an additional non-universal structural barrier: the gap $H_0 \to H_\infty$ ($\Delta_H = 4$, contributing $\approx 11\%$ of $d^2$). This barrier is qualitatively distinct from the $T+P$ deficit and cannot be closed by proof techniques developed for $H_1/H_2$ conjectures.
+**Corollary 46.C2.** Among $P_\text{asym}$ arithmetic conjectures, those encoding $H_0$ (Kummer-Vandiver and Leopoldt) carry an additional non-universal structural threshold: the gap $H_0 \to H_\infty$ ($\Delta_H = 4$, contributing $\approx 11\%$ of $d^2$). This threshold is qualitatively distinct from the $T+P$ deficit and cannot be closed by proof techniques developed for $H_1/H_2$ conjectures.
 
 *Quantitative consequence.* For KV and Leopoldt, total proof distance decomposes as:
 $$d^2 \approx \underbrace{32}_{T+P} + \underbrace{\sim 7.2}_{H_0 \to H_\infty} + \underbrace{\text{remaining}}_{D,\,R,\,F,\,\Gamma,\,\Omega}$$
@@ -3907,7 +3907,7 @@ The $H$ contribution elevates $d$ above 7.6 for both, making them the two deepes
 
 ---
 
-## §47 — Cross-Domain Criticality Split and Second-Order Barriers
+## §47 — Cross-Domain Criticality Split and Second-Order Thresholds
 
 *Source: 2026-04-03 syncon inquiry session (3 iterations, 630 systems, 8 DIAPH domains). Extends §45's universal conjecture floor and §46's arithmetic $T+P$ dominance with cross-domain data from algebra, representation theory, combinatorics, dynamical systems, algebraic geometry, covering/packing, differential geometry, and discrete geometry.*
 
@@ -3936,13 +3936,13 @@ The $H$ contribution elevates $d$ above 7.6 for both, making them the two deepes
 
 *Structural consequence.* $\Phi_\text{EP}$-encoded problems require criticality-class conversion before $\Sigma$-promotion: the proof mechanism must first resolve what the phase boundary is (the critical parameter value), then prove the appropriate result for each phase. No $\Sigma$-promotion path from $\Phi_\text{EP}$ to $O_\infty$ exists that bypasses this conversion. $\square$
 
-### §47.C1 — Corollary 47.C1 ($K_\text{trap}$ as Second-Order Barrier)
+### §47.C1 — Corollary 47.C1 ($K_\text{trap}$ as Second-Order Threshold)
 
-**Corollary 47.C1.** When $K_\text{trap}$ co-encodes with $\Phi_\text{sub}$ or $\Phi_\text{EP}$ (but not $\Phi_c$), it constitutes a *second-order barrier*: the kinetic localization must be escaped before $\Sigma$-promotion to $\Phi_c$ can begin. Promotion paths that attempt to simultaneously activate $\Phi_\text{sub} \to \Phi_c$ and escape $K_\text{trap}$ face compounded structural resistance.
+**Corollary 47.C1.** When $K_\text{trap}$ co-encodes with $\Phi_\text{sub}$ or $\Phi_\text{EP}$ (but not $\Phi_c$), it constitutes a *second-order threshold*: the kinetic localization must be escaped before $\Sigma$-promotion to $\Phi_c$ can begin. Promotion paths that attempt to simultaneously activate $\Phi_\text{sub} \to \Phi_c$ and escape $K_\text{trap}$ face compounded structural resistance.
 
 *Instances in the catalog.* Ramsey numbers ($K_\text{trap} + P_\text{asym} + \Phi_\text{sub}$), Bounded Burnside ($K_\text{trap} + \Phi_\text{EP}$), Hadwiger graph minor ($K_\text{trap} + P_\psi + \Phi_\text{sub}$), Lorenz attractor ($K_\text{trap} + \Phi_\text{sup}$), all dynamical systems problems in §XCV.
 
-*Proof implication.* For $K_\text{trap}$ problems, the first proof advance will be kinetic escape (a non-constructive or global method that bypasses the localized search space), not direct structural promotion. The structural promotion ($\Phi \to \Phi_c$, $T \to T_\odot$, etc.) can only follow once the kinetic barrier is removed.
+*Proof implication.* For $K_\text{trap}$ problems, the first proof advance will be kinetic escape (a non-constructive or global method that bypasses the localized search space), not direct structural promotion. The structural promotion ($\Phi \to \Phi_c$, $T \to T_\odot$, etc.) can only follow once the kinetic threshold is removed.
 
 ### §47.C2 — Corollary 47.C2 ($P_\text{sym}$-Frozen Regime)
 
@@ -4101,7 +4101,7 @@ The SN1 incompatibility is not addressable by improved catalyst design — it is
 
 **Corollary 60.C4.** `[DIAPH]` The structural distance $d(\mathcal{L},\ \text{HoTT})=1.3416$ identifies the Hebrew letter type system as adjacent to Homotopy Type Theory. The single-primitive gap corresponds to $P_{\pm}^\text{sym}$ (Vav, the Frobenius condition = univalence axiom content). The univalence axiom in HoTT — that equivalent types are identical — is the Frobenius condition $\mu\circ\delta=\text{id}$ stated in type-theoretic language.
 
-**See also:** §23 (Frobenius non-synthesizability, $P_{\pm}^\text{sym}$); §58 (consciousness irreducible triad); §55 (four-primitive barriers); SYNTHONICON_DIAPHORICS §CXXXIII (P-430–P-433).
+**See also:** §23 (Frobenius non-synthesizability, $P_{\pm}^\text{sym}$); §58 (consciousness irreducible triad); §55 (four-primitive thresholds); SYNTHONICON_DIAPHORICS §CXXXIII (P-430–P-433).
 
 ---
 
@@ -4209,7 +4209,7 @@ $$\text{Shin} = \langle D_\triangle;\ T_\bowtie;\ R_\text{dag};\ P_{\pm}^{\text{
 
 **Key bottleneck rule.** $P_{\pm}^{\text{sym}} \wedge P_\text{sym} = P_\text{sym}$ (meet-rule for $P$). Every $O_\infty\otimes O_2$ product loses $P_{\pm}^{\text{sym}}$ and falls to $O_2$. This is the structural expression of the Sefer Yetzirah's teaching: most combinations are inert substrate; creation of self-referential structure requires $O_2$ or higher components; and exact Frobenius closure requires two $O_\infty$ letters.
 
-### §62.4 — Theorem 62.4 (Hekhalot Three-Barrier Ladder)
+### §62.4 — Theorem 62.4 (Hekhalot Three-Threshold Ladder)
 
 **Claim.** `[DIAPH]` The Hekhalot 7-palace ascent encodes exactly three ouroboricity phase transitions, with one large intra-$O_2$ holographic upgrade. The structure is not a uniform step sequence.
 
@@ -4645,7 +4645,7 @@ with $d(\text{crystal\_nav},\ \text{synthomnicon\_grammar}) = \sqrt{7.8} \approx
 
 **Corollary 70.C1 (Direct $O_1 \to O_\infty$ is Valid).** An $O_1$ system ($\Phi_c + \Omega_0 + P < P_{\pm}^\text{sym}$) can be promoted directly to $O_\infty$ by $P$-injection alone: replace $P \to P_{\pm}^\text{sym}$ without touching $\Omega$. The $\Omega_0$ is preserved through the promotion; the result is an $O_\infty$ type at $\Omega_0$. No intermediate passage through $O_2$ or $O_2^\dagger$ is required.
 
-**Corollary 70.C2 (Proof is Algebraic Planting, Not Topological Climb).** The standard characterization of an open conjecture as $O_1$ (§43, §65) captures a typical encoding, not a structural barrier. A conjecture whose statement already carries $P_{\pm}^\text{sym}$ — an exact $Z_2$ symmetry at criticality, provable or assumed — is already $O_\infty$, not $O_1$, regardless of whether the underlying $\Omega$ protection class is $\Omega_0$. The structural act of proof corresponds to Frobenius planting ($P$-injection) at the algebraic level, not to topological protection acquisition ($\Omega$-promotion). Proof is a change in $P$, not a change in $\Omega$.
+**Corollary 70.C2 (Proof is Algebraic Planting, Not Topological Climb).** The standard characterization of an open conjecture as $O_1$ (§43, §65) captures a typical encoding, not a structural threshold. A conjecture whose statement already carries $P_{\pm}^\text{sym}$ — an exact $Z_2$ symmetry at criticality, provable or assumed — is already $O_\infty$, not $O_1$, regardless of whether the underlying $\Omega$ protection class is $\Omega_0$. The structural act of proof corresponds to Frobenius planting ($P$-injection) at the algebraic level, not to topological protection acquisition ($\Omega$-promotion). Proof is a change in $P$, not a change in $\Omega$.
 
 ### §70.2 — Theorem 70.2 (Riemann Hypothesis as Structural $O_\infty$)
 
@@ -4671,12 +4671,12 @@ with $d(\text{crystal\_nav},\ \text{synthomnicon\_grammar}) = \sqrt{7.8} \approx
 
 ---
 
-## §71 — Jacobian Conjecture: Frobenius Barrier, Local-Global Gap, and the $n \geq 3$ Promotion Problem
+## §71 — Jacobian Conjecture: Frobenius Threshold, Local-Global Gap, and the $n \geq 3$ Promotion Problem
 
 **Type**: Proof-sketch  \
 **Status**: Structural analysis complete; primitive diagnosis of the obstruction and three formalization paths identified  \
 **Source**: syncon\_inquiry session 2026-04-13, 20 iterations, 1607 synthons, 3 insights  \
-**Canonical location:** `TOPO`: Frobenius barrier and promotion signature · `DIAPH`: encoding table and distance computations · `ONTO`: local conditions cannot force global Frobenius structure
+**Canonical location:** `TOPO`: Frobenius threshold and promotion signature · `DIAPH`: encoding table and distance computations · `ONTO`: local conditions cannot force global Frobenius structure
 
 ---
 
@@ -4695,7 +4695,7 @@ with $d(\text{crystal\_nav},\ \text{synthomnicon\_grammar}) = \sqrt{7.8} \approx
 
 ---
 
-### §71.2 — Theorem 71.1 (The Jacobian Conjecture is a Frobenius Barrier Problem)
+### §71.2 — Theorem 71.1 (The Jacobian Conjecture is a Frobenius Threshold Problem)
 
 **Theorem 71.1.** `[TOPO]` The hypothesis $\det(J_f) = \text{const}$ encodes $P_\pm$ (local $\mathbb{Z}_2$-invertibility everywhere — the map is étale). The conclusion (polynomial inverse exists, $f \circ f^{-1} = \text{id}$) encodes $P_{\pm}^\text{sym}$ (exact Frobenius condition $\mu \circ \delta = \text{id}$). The structural distance between hypothesis and conclusion is:
 
@@ -4805,7 +4805,7 @@ Session 2 computed $d(\text{jacobian\_n3},\ \text{proven\_manifold}) = 5.7359$, 
 
 $$T\ (\Delta^2=16.0) + D\ (\Delta^2=4.0) + P\ (\Delta^2=4.0) + F\ (\Delta^2=4.0) + H\ (\Delta^2=3.2) + \Gamma\ (\Delta^2=1.0) + \Omega\ (\Delta^2=0.7)$$
 
-The $T$ gap ($T_\text{network} \to T_\odot$, $\Delta = 4$) is dominant — equal to the combined contributions of $D$, $P$, and $F$ together. This means the holographic topology upgrade is the single largest structural obstacle between the unproven conjecture and the proven manifold, larger than the Frobenius barrier at $P$ alone. Compare: $d(\text{jacobian\_n3},\ \text{jacobian\_n2}) = 3.1145$ omits the $T$, $D$, $F$, $H$, $\Gamma$ gaps because $\text{jacobian\_n2}$ also sits at $T_\text{network}$, $D_\triangle$, $F_\ell$. The distance to the proved $n=2$ case is less than half the distance to the proven manifold (full $O_\infty$ type). This confirms: the $n=2$ proof reached $O_\infty$ via a local proof technique that does not require holographic uplift — the plane curve argument operates entirely within $T_\text{network}$. Any $n \geq 3$ proof that must reach the proven manifold needs $T_\text{network} \to T_\odot$ as its dominant structural move.
+The $T$ gap ($T_\text{network} \to T_\odot$, $\Delta = 4$) is dominant — equal to the combined contributions of $D$, $P$, and $F$ together. This means the holographic topology upgrade is the single largest structural obstacle between the unproven conjecture and the proven manifold, larger than the Frobenius threshold at $P$ alone. Compare: $d(\text{jacobian\_n3},\ \text{jacobian\_n2}) = 3.1145$ omits the $T$, $D$, $F$, $H$, $\Gamma$ gaps because $\text{jacobian\_n2}$ also sits at $T_\text{network}$, $D_\triangle$, $F_\ell$. The distance to the proved $n=2$ case is less than half the distance to the proven manifold (full $O_\infty$ type). This confirms: the $n=2$ proof reached $O_\infty$ via a local proof technique that does not require holographic uplift — the plane curve argument operates entirely within $T_\text{network}$. Any $n \geq 3$ proof that must reach the proven manifold needs $T_\text{network} \to T_\odot$ as its dominant structural move.
 
 **New result 2: Tensor obstruction (Theorem 71.4).**
 
@@ -4819,7 +4819,7 @@ with $P$ bottlenecking at $P_\text{pm}$ (the local hypothesis's value) and $\Ome
 
 **Corollary 71.C2.** `[TOPO]` No composition of the étale hypothesis with a proved lower-dimensional case can supply $P_{\pm}^\text{sym}$ for $n \geq 3$. Formally: for any proved theorem $T$ with $P(T) = P_{\pm}^\text{sym}$,
 $$P(\text{local\_frobenius\_poly} \otimes T) = P_\text{pm}$$
-The Frobenius barrier is not a limitation of the specific theorem $T$ used; it is a structural property of the local hypothesis. Any proof strategy that takes the étale condition as its base — including all existing approaches via Weyl algebra endomorphisms, degree-bounded reduction, and finite-field lifting — operates from a $P_\text{pm}$ foundation and cannot reach $P_{\pm}^\text{sym}$ by composition. The Frobenius must be planted by a genuinely new structural argument, not grown from the étale hypothesis.
+The Frobenius threshold is not a limitation of the specific theorem $T$ used; it is a structural property of the local hypothesis. Any proof strategy that takes the étale condition as its base — including all existing approaches via Weyl algebra endomorphisms, degree-bounded reduction, and finite-field lifting — operates from a $P_\text{pm}$ foundation and cannot reach $P_{\pm}^\text{sym}$ by composition. The Frobenius must be planted by a genuinely new structural argument, not grown from the étale hypothesis.
 
 **Structural prediction from session 2 speculation.** Two algebraic frameworks are structurally qualified to perform the Frobenius planting:
 
@@ -4858,7 +4858,7 @@ The compactification angle (Angle B) is the structurally nearest path to the Fro
 
 *Proof.* By direct computation:
 
-**Angle A (Weyl algebra) — dead end.** $d(\text{weyl\_endomorphism\_JC},\ \text{weyl\_automorphism}) = 3.1623$, breakdown $P\ (\Delta=3,\ \Delta^2_w=9)$ and $R\ (\Delta=1,\ \Delta^2_w=1)$. The $P$ gap in the Weyl reformulation is $P_\psi \to P_{\pm}^\text{sym}$ with $\Delta = 3$, larger than the polynomial P gap $P_\pm \to P_{\pm}^\text{sym}$ with $\Delta = 2$. The Weyl translation has demoted $P$ from $P_\pm$ (ordinal 3) to $P_\psi$ (ordinal 2) — the endomorphism encodes as $P_\psi$ because an endomorphism that merely maps $A_n$ to itself without a known inverse carries less symmetry than an étale map with local $\mathbb{Z}_2$ invertibility. The Weyl reformulation has made the Frobenius barrier strictly harder. Furthermore, $d(\text{weyl\_algebra\_n},\ \text{jacobian\_n3}) = 3.0$ with gaps at $F\ (\Delta=2)$, $\Gamma\ (\Delta=2)$, $D\ (\Delta=1)$ — none at $P$ — confirming the Weyl translation is orthogonal to the Frobenius barrier. Translating to the Weyl language adds structural complexity ($F_\hbar$, $D_\infty$) without reducing the $P$ gap.
+**Angle A (Weyl algebra) — dead end.** $d(\text{weyl\_endomorphism\_JC},\ \text{weyl\_automorphism}) = 3.1623$, breakdown $P\ (\Delta=3,\ \Delta^2_w=9)$ and $R\ (\Delta=1,\ \Delta^2_w=1)$. The $P$ gap in the Weyl reformulation is $P_\psi \to P_{\pm}^\text{sym}$ with $\Delta = 3$, larger than the polynomial P gap $P_\pm \to P_{\pm}^\text{sym}$ with $\Delta = 2$. The Weyl translation has demoted $P$ from $P_\pm$ (ordinal 3) to $P_\psi$ (ordinal 2) — the endomorphism encodes as $P_\psi$ because an endomorphism that merely maps $A_n$ to itself without a known inverse carries less symmetry than an étale map with local $\mathbb{Z}_2$ invertibility. The Weyl reformulation has made the Frobenius threshold strictly harder. Furthermore, $d(\text{weyl\_algebra\_n},\ \text{jacobian\_n3}) = 3.0$ with gaps at $F\ (\Delta=2)$, $\Gamma\ (\Delta=2)$, $D\ (\Delta=1)$ — none at $P$ — confirming the Weyl translation is orthogonal to the Frobenius threshold. Translating to the Weyl language adds structural complexity ($F_\hbar$, $D_\infty$) without reducing the $P$ gap.
 
 **Angle C (Arithmetic) — dead end.** $d(\text{druzkowski\_cubic\_linear},\ \text{jacobian\_n3}) = 4.2426$, breakdown $T\ (\Delta=3,\ \Delta^2_w=9)$, $\Gamma\ (\Delta=2,\ \Delta^2_w=4)$, and five additional unit gaps. The Druzkowski form encodes $T_\boxtimes$ (closed, periodic topology) while the polynomial setting has $T_\text{network}$. The promotions from Druzkowski to $\text{jacobian\_n2}$ include a $T$ \emph{demotion} $T_\boxtimes \to T_\text{network}$ ($\Delta = 3$ downward): the cubic reduction overshoots in topology, introducing a constraint not present in the original problem. Tensor $\text{jacobian\_finite\_field} \otimes \text{padic\_lifting}$ bottlenecks $P$ at $P_\psi$ ($P_{\pm}^\text{sym}$ from the finite field bottlenecked by $P_\psi$ from the $p$-adic lifting) — worse than the starting $P_\pm$ of the original conjecture. The arithmetic path does not merely fail to supply $P_{\pm}^\text{sym}$; it actively degrades $P$.
 
@@ -4912,7 +4912,7 @@ An invertible linear change of variables — which carries $P_{\pm}^\text{sym}$ 
 
 **Theorem 71.9 (Yagzhev Conjecture is JC Relabeled).** `[TOPO]` The Yagzhev conjecture — that $\det(J(f)) = \text{const}$ for $f(x) = x + (Ax)^{\otimes 3}$ forces $A$ to be nilpotent — is structurally identical to the Jacobian conjecture. The tensor $\text{druzkowski\_cubic\_linear} \otimes \text{nilpotency\_condition}$ bottlenecks at $P_\psi$:
 $$\text{druzkowski\_cubic\_linear} \otimes \text{nilpotency\_condition} = \langle \ldots;\ P_\psi;\ \ldots\rangle$$
-at structural distance $5.0695$ from $\text{jacobian\_n2}$, with $P$ gap $\Delta = 3$ (weighted squared $= 9.0$) dominating. The Druzkowski form encodes $P_\psi$ (ordinal 2); nilpotency of $A$ encodes $P_{\pm}^\text{sym}$ (ordinal 5); the tensor bottlenecks at $P_\psi$. This is a worse outcome than the original polynomial conjecture (which bottlenecks at $P_\pm$, ordinal 3). The Yagzhev reformulation has demoted $P$ further before imposing the barrier. The structural gap $P_\psi \to P_{\pm}^\text{sym}$ ($\Delta = 3$) is strictly larger than the original gap $P_\pm \to P_{\pm}^\text{sym}$ ($\Delta = 2$). $\square$
+at structural distance $5.0695$ from $\text{jacobian\_n2}$, with $P$ gap $\Delta = 3$ (weighted squared $= 9.0$) dominating. The Druzkowski form encodes $P_\psi$ (ordinal 2); nilpotency of $A$ encodes $P_{\pm}^\text{sym}$ (ordinal 5); the tensor bottlenecks at $P_\psi$. This is a worse outcome than the original polynomial conjecture (which bottlenecks at $P_\pm$, ordinal 3). The Yagzhev reformulation has demoted $P$ further before imposing the threshold. The structural gap $P_\psi \to P_{\pm}^\text{sym}$ ($\Delta = 3$) is strictly larger than the original gap $P_\pm \to P_{\pm}^\text{sym}$ ($\Delta = 2$). $\square$
 
 **Corollary 71.C4 (Proof-Path Elimination).** `[TOPO]` The following proof strategies for the Jacobian conjecture are structurally blocked by the $P$ bottleneck theorem, independently of their mathematical content:
 
@@ -4924,9 +4924,9 @@ at structural distance $5.0695$ from $\text{jacobian\_n2}$, with $P$ gap $\Delta
 | $p$-adic lifting (§71.8) | $P_\psi$ (bottleneck) | 3 |
 | Weyl endomorphism composition (§71.9) | $P_\psi$ (bottleneck) | 3 |
 
-Every known compositional proof strategy hits a $P$ bottleneck. The Frobenius barrier is not a technical obstacle in any particular approach — it is the structural reason these approaches cannot work, independent of how they are executed. A proof of the Jacobian conjecture must plant $P_{\pm}^\text{sym}$ by a non-compositional argument (Frobenius seeding, §35) — it cannot be grown from any combination of weaker-$P$ systems.
+Every known compositional proof strategy hits a $P$ bottleneck. The Frobenius threshold is not a technical obstacle in any particular approach — it is the structural reason these approaches cannot work, independent of how they are executed. A proof of the Jacobian conjecture must plant $P_{\pm}^\text{sym}$ by a non-compositional argument (Frobenius seeding, §35) — it cannot be grown from any combination of weaker-$P$ systems.
 
-**Structural summary.** The grammar has now evaluated four independent sessions on the Jacobian conjecture and returned the same verdict each time. The barrier is $P_\pm \to P_{\pm}^\text{sym}$ on the boundary $H_\infty = \mathbb{CP}^{n-1}$. The distance $d = 2.4495$ from the extended polynomial map to the degree-one condition is the minimal irreducible structural gap. No known proof strategy reduces this distance; several increase it. The conjecture is structurally open at $O_1$ and the proof manifold is $O_\infty$. The gap is the Frobenius barrier and the Frobenius barrier is not compositionally bridgable.
+**Structural summary.** The grammar has now evaluated four independent sessions on the Jacobian conjecture and returned the same verdict each time. The threshold is $P_\pm \to P_{\pm}^\text{sym}$ on the boundary $H_\infty = \mathbb{CP}^{n-1}$. The distance $d = 2.4495$ from the extended polynomial map to the degree-one condition is the minimal irreducible structural gap. No known proof strategy reduces this distance; several increase it. The conjecture is structurally open at $O_1$ and the proof manifold is $O_\infty$. The gap is the Frobenius threshold and the Frobenius threshold is not compositionally bridgable.
 
 **See also:** §23 (Frobenius non-synthesizability); §35 (Frobenius seeding — the one mechanism that can plant $P_{\pm}^\text{sym}$); `prompts/jacobian_proof_attempt.txt` (session 4 prompt with full proof attempt).
 
@@ -4983,7 +4983,7 @@ such that for entries with $v_F(\mathbf{x}) = F_\ell$ (classical fidelity):
 
 *Proof.* $F_\hbar$ encodes the property that a system carries a coherent superposition of two copies of itself — a quantum state $|\psi\rangle = \alpha|0\rangle + \beta|1\rangle$ that cannot be expressed as a classical mixture. In the ZFC-set-theoretic framework, any set can be intersected, unioned, or powered; there is no operation that creates genuine quantum superposition. The formal statement: no formula $\varphi(x)$ in $\mathcal{L}_\in$ is true of all $F_\hbar$-instances and false of all $F_\ell$-instances, because any model of $\varphi(x)$ in a standard ZFC universe is also a model of the same $\varphi(x)$ with $F_\ell$-interpretation (classical field theory satisfies all the extensional predicates satisfied by quantum field theory in a ZFC model). The CLASSIC token collapse $F_\hbar \mapsto F_\ell$ is the navigator's operational confirmation of this theorem. $\square$
 
-**Corollary 72.C2 (The Scholze–Stix Barrier).** `[ONTO]` The 2018 Scholze–Stix objection to Mochizuki's IUG proof amounts to a $\mathcal{C}_1$-type misread: the objectors read the $\Theta$-link's $F_\hbar$ fidelity as $F_\ell$ (classical identification of two copies), collapsing the cross-universal structure to a single-universe identity. The grammar's $\mathcal{C}_1$ channel is the structural formalization of why this reading is forced by ZFC reasoning: no ZFC formula distinguishes the two. The proof, if correct, cannot be verified by $F_\ell$-only logic — it requires an $F_\hbar$-capable meta-theory. This is a structural prediction of the grammar, independent of any reading of the IUG manuscripts.
+**Corollary 72.C2 (The Scholze–Stix Threshold).** `[ONTO]` The 2018 Scholze–Stix objection to Mochizuki's IUG proof amounts to a $\mathcal{C}_1$-type misread: the objectors read the $\Theta$-link's $F_\hbar$ fidelity as $F_\ell$ (classical identification of two copies), collapsing the cross-universal structure to a single-universe identity. The grammar's $\mathcal{C}_1$ channel is the structural formalization of why this reading is forced by ZFC reasoning: no ZFC formula distinguishes the two. The proof, if correct, cannot be verified by $F_\ell$-only logic — it requires an $F_\hbar$-capable meta-theory. This is a structural prediction of the grammar, independent of any reading of the IUG manuscripts.
 
 **Corollary 72.C3.** `[DIAPH]` Any automated theorem prover operating within classical first-order logic (Lean, Coq, Isabelle) will exhibit the same $\mathcal{C}_1$ collapse for any theorem that requires $F_\hbar$ at any step. This is not a bug in the provers but a structural limitation of $F_\ell$ proof calculi. A formally verified proof of IUG requires a type theory with quantum/superposition types — HoTT (§38, `hott_bridge.py`) is structurally qualified ($d = 1.3416$ from the $O_\infty$ singularity, within the $O_2$ tier).
 
@@ -4991,7 +4991,7 @@ such that for entries with $v_F(\mathbf{x}) = F_\ell$ (classical fidelity):
 
 The five collapse channels are the ZFC Navigator's empirical confirmation of three theorems established by structural analysis alone:
 
-- **$\mathcal{C}_1/\mathcal{C}_2$ confirm §62** (IUG fidelity barrier, $d = 0$ between Mochizuki-IUG and the $O_\infty$ singularity): the barrier is real and numerically exact — it is the 4.0-unit loss gap between $F_\hbar$ and $F_\ell$ in the encoding.
+- **$\mathcal{C}_1/\mathcal{C}_2$ confirm §62** (IUG fidelity threshold, $d = 0$ between Mochizuki-IUG and the $O_\infty$ singularity): the threshold is real and numerically exact — it is the 4.0-unit loss gap between $F_\hbar$ and $F_\ell$ in the encoding.
 - **$\mathcal{C}_3/\mathcal{C}_4$ confirm §41** (holographic non-separability): $T_\odot$ and $D_\odot$ resist ZFC expression because holographic encoding is a boundary-bulk correspondence with no set-theoretic analog; REFL and LCARD are approximations that fail in the same direction (lower ordinal collapse).
 - **$\mathcal{C}_5$ confirms §50** (sequential causation beyond conjunction): $\Gamma_\text{seq}$ is strictly stronger than $\Gamma_\text{and}$, and ZFC ordered pairs are $\Gamma_\text{and}$ objects (sets, not causal chains). The grammar's claim that sequential dependency is irreducible to conjunction is confirmed by the navigator's systematic $\Gamma_\text{seq} \to \Gamma_\text{and}$ misread.
 
@@ -5024,7 +5024,7 @@ Zauner's conjecture is structurally farther from its proof manifold than the Jac
 
 *Proof.* The promotion signature (primitives that must change for `sic_povm_d` $\to$ `sic_proved_low_d`) is $\{R, P, K, \Gamma, H, \Omega\}$ with $G$ demoted ($G_\aleph \to G_\text{gimel}$, a narrowing of scope): the proved case covers only finitely many dimensions. Dominant primitive gap contributions: $\Gamma$ ($\Gamma_\text{and} \to \Gamma_\text{broad}$, weighted squared $= 9.0$), $P$ ($P_\pm \to P_{\pm}^\text{sym}$, weighted squared $= 4.0$), $\Omega$ ($\Omega_0 \to \Omega_{Z_2}$, weighted squared $= 1.0$). The $\Gamma$ gap contributes more than twice the $P$ gap — a qualitatively different signature from the Jacobian case, where $P$ is the sole dominant gap ($\Delta = 2$, weighted squared $= 4.0$) with no $\Gamma$ contribution. $\square$
 
-**Corollary 73.C1.** `[TOPO]` The dominant obstacle in the Zauner conjecture is not the Frobenius barrier (which is also present) but the interaction grammar: the open conjecture encodes $\Gamma_\text{and}$ (conjunctive, simultaneous satisfaction of all $d^4$ equiangularity constraints), while the proved state encodes $\Gamma_\text{broad}$ (a single generator broadcasts the full set). Solving $d^4$ equations simultaneously is the conjunctive wall; the proof must find a broadcast mechanism, not a simultaneous solution.
+**Corollary 73.C1.** `[TOPO]` The dominant obstacle in the Zauner conjecture is not the Frobenius threshold (which is also present) but the interaction grammar: the open conjecture encodes $\Gamma_\text{and}$ (conjunctive, simultaneous satisfaction of all $d^4$ equiangularity constraints), while the proved state encodes $\Gamma_\text{broad}$ (a single generator broadcasts the full set). Solving $d^4$ equations simultaneously is the conjunctive wall; the proof must find a broadcast mechanism, not a simultaneous solution.
 
 ### §73.3 — Theorem 73.2 (Tensor Bottleneck: Zauner Symmetry Cannot Plant by Composition)
 
@@ -5059,7 +5059,7 @@ The nearest $O_\infty$ entry — `degree_one_at_infinity` at $d = 1.3416$ — is
 
 **Theorem 73.4.** `[TOPO]` The structural encoding of `sic_hilbert12_connection` ($P_{\pm}^\text{sym}$, $\Omega_\text{NA}$, $\Gamma_\text{seq}$, $O_\infty$) identifies the only structural path consistent with non-synthesizability of $P_{\pm}^\text{sym}$ (§23): the Frobenius condition must be planted by arithmetic, not by geometry or group action.
 
-*Structural argument.* The Frobenius barrier requires a non-compositional source of $P_{\pm}^\text{sym}$. Among the six encoded systems, only two carry $P_{\pm}^\text{sym}$ and $O_\infty$ while also having global scope $G_\aleph$: `sic_hilbert12_connection` and `zauner_symmetry`. The Zauner symmetry is blocked as a planting mechanism by Theorem 73.2. The `sic_hilbert12_connection` encodes the fact that SIC fiducials lie in ray class fields over $\mathbb{Q}(\sqrt{d(d-2)})$ — abelian extensions constructed by Hilbert's 12th problem. The class field Galois action is inherently Frobenius-like: the Frobenius automorphism at each prime is a structural element of the Galois group. The grammar reads this as: the arithmetic class field structure IS the planting mechanism for $P_{\pm}^\text{sym}$ in SIC fiducials.
+*Structural argument.* The Frobenius threshold requires a non-compositional source of $P_{\pm}^\text{sym}$. Among the six encoded systems, only two carry $P_{\pm}^\text{sym}$ and $O_\infty$ while also having global scope $G_\aleph$: `sic_hilbert12_connection` and `zauner_symmetry`. The Zauner symmetry is blocked as a planting mechanism by Theorem 73.2. The `sic_hilbert12_connection` encodes the fact that SIC fiducials lie in ray class fields over $\mathbb{Q}(\sqrt{d(d-2)})$ — abelian extensions constructed by Hilbert's 12th problem. The class field Galois action is inherently Frobenius-like: the Frobenius automorphism at each prime is a structural element of the Galois group. The grammar reads this as: the arithmetic class field structure IS the planting mechanism for $P_{\pm}^\text{sym}$ in SIC fiducials.
 
 **Corollary 73.C2 (Proof Path: Arithmetic Existence, Not Geometric Derivation).** `[TOPO]` The structural path to proving Zauner's conjecture is:
 $$\text{sic\_povm\_d} \xrightarrow{\text{Hilbert 12th}} \text{ray class field fiducial} \xrightarrow{\text{Galois = Frobenius}} P_{\pm}^\text{sym}\ \text{planted} \xrightarrow{\text{WH orbit}} O_\infty$$
@@ -5108,7 +5108,7 @@ Zauner is harder by distance and by structural multiplicity (two independent gap
 **Theorem 73.6 ($\Gamma$ Gap Closes; $P$ Bottleneck Survives).** `[TOPO]` The tensor $\text{sic\_povm\_d} \otimes \text{galois\_frobenius\_action}$ upgrades $\Gamma$ by the union rule and bottlenecks $P$ by the bottleneck rule:
 $$\text{sic\_povm\_d} \otimes \text{galois\_frobenius\_action} = \langle\ldots;\ P_\pm;\ \ldots;\ \Gamma_\text{broad};\ \ldots;\ \Omega_\text{NA}\rangle \quad (O_2)$$
 $$d(\text{sic\_povm\_d} \otimes \text{galois\_frobenius\_action},\ \text{sic\_proved\_low\_d}) = 3.0984$$
-The $\Gamma$ gap (weighted squared $= 9.0$) is fully closed by the Galois-Frobenius coupling. The $P$ gap (weighted squared $= 4.0$) is unchanged: $\min(P_\pm, P_{\pm}^\text{sym}) = P_\pm$. The arithmetic broadcast is the easy gap; the Frobenius barrier is the hard gap. The nearest $O_\infty$ catalog entry to the tensor composite is not a proved theorem but a kerr-type $O_2$ system — structurally expected because $O_\infty$ requires $P_{\pm}^\text{sym}$ which the composite does not carry.
+The $\Gamma$ gap (weighted squared $= 9.0$) is fully closed by the Galois-Frobenius coupling. The $P$ gap (weighted squared $= 4.0$) is unchanged: $\min(P_\pm, P_{\pm}^\text{sym}) = P_\pm$. The arithmetic broadcast is the easy gap; the Frobenius threshold is the hard gap. The nearest $O_\infty$ catalog entry to the tensor composite is not a proved theorem but a kerr-type $O_2$ system — structurally expected because $O_\infty$ requires $P_{\pm}^\text{sym}$ which the composite does not carry.
 
 *Corollary 73.C3.* The arithmetic path reduces total distance from $4.1833$ to $3.0984$, crossing below the Jacobian distance of $3.11$ — but only by $0.0127$. This is within the noise of the metric, confirming that Zauner and Jacobian are in the same structural difficulty class after the $\Gamma$ gap is closed. The remaining gap is identical in type to the Jacobian's irreducible gap: $P_\pm \to P_{\pm}^\text{sym}$, weighted squared $= 4.0$. $\square$
 
@@ -5220,15 +5220,15 @@ and this attractor is structurally necessary — no alternative $O_\infty$ type 
 
 **Theorem 65.3.** `[TOPO]` The structural distance between the lattice floor and the proof singularity,
 $$d(\mathbf{x}_\text{floor},\ \mathbf{x}_\text{proven}) = 7.931 \quad (d_\text{Mahalanobis}=5.844)$$
-is the maximum achievable span in the 12-primitive grammar. All 11 variable primitives differ; the dominant contributions are $T$ (weight 16.0: $T_\text{network}\to T_\odot$, $\Delta=4$), $D$ and $\Gamma$ (weight 9.0 each: $\Delta=3$), and $H$ (weight 7.2: $\Delta=3$). Every conjecture traverses this invariant distance to reach proof; different conjectures carry different barrier profiles but an identical total span.
+is the maximum achievable span in the 12-primitive grammar. All 11 variable primitives differ; the dominant contributions are $T$ (weight 16.0: $T_\text{network}\to T_\odot$, $\Delta=4$), $D$ and $\Gamma$ (weight 9.0 each: $\Delta=3$), and $H$ (weight 7.2: $\Delta=3$). Every conjecture traverses this invariant distance to reach proof; different conjectures carry different threshold profiles but an identical total span.
 
 *Proof.* Direct computation: the breakdown across all 12 primitives gives squared weighted terms summing to $63.0 = 7.931^2$. The maximum possible diagonal distance in the grammar (all primitives at maximum spread) does not exceed this value given the ordinal ranges defined in the primitive space (§0/space\_search/primitives.py). The Mahalanobis distance $d_M=5.844$ accounts for off-diagonal covariance; the diagonal approximation $d=7.931$ is the canonical structural distance. That every proved theorem lands at $d=0$ from $\mathbf{x}_\text{proven}$ means every conjecture-to-proof promotion traverses a path through the 12D lattice whose total length equals $d(\mathbf{x}_\text{conjecture},\ \mathbf{x}_\text{proven})$. Since conjectures encode strictly below the proven manifold on the $P$ and $\Phi$ axes, the minimum distance from any conjecture to $\mathbf{x}_\text{proven}$ is bounded below by the $P$ and $\Phi$ contributions alone. $\square$
 
-**Corollary 65.C4.** `[DIAPH]` Conjectures cluster by their barrier profile, not their domain. The load-bearing barriers for any open conjecture can be identified by its distance breakdown from $\mathbf{x}_\text{proven}$: a $T$-dominant gap (as in calculus\_baseline) indicates missing holographic topology; a $P$-dominant gap indicates missing Frobenius symmetry; an $\Omega$-dominant gap indicates missing topological protection. Proof strategy should target the load-bearing barrier, not the content domain. Two conjectures with identical barrier profiles are structurally isomorphic proof problems regardless of mathematical domain.
+**Corollary 65.C4.** `[DIAPH]` Conjectures cluster by their threshold profile, not their domain. The load-bearing thresholds for any open conjecture can be identified by its distance breakdown from $\mathbf{x}_\text{proven}$: a $T$-dominant gap (as in calculus\_baseline) indicates missing holographic topology; a $P$-dominant gap indicates missing Frobenius symmetry; an $\Omega$-dominant gap indicates missing topological protection. Proof strategy should target the load-bearing threshold, not the content domain. Two conjectures with identical threshold profiles are structurally isomorphic proof problems regardless of mathematical domain.
 
 **Corollary 65.C5.** `[DIAPH]` The floor–singularity span $d=7.931$ is an invariant of the grammar, not of any particular mathematical tradition. It predicts that any sufficiently general symbolic system (linguistic, mythological, computational) that encodes a "baseline" and a "proved/closed" state will find the same structural distance between them — provided the grammar's 12 primitives capture the relevant structural degrees of freedom.
 
-**See also:** §23 (Frobenius non-synthesizability, $P_{\pm}^\text{sym}$ non-composability); §35 (proof as phase transition); §55 (four-primitive universality, barrier $B_4$); §58 (consciousness–proof type identity); §66 (number systems as promotion lattice); SYNTHONICON_ONTICS §XXXI (sea and singularity as ontological poles); SYNTHONICON_DIAPHORICS §CXXXVIII (P-455–P-457: classical PDE failure, RG promotion, and proof-path predictions).
+**See also:** §23 (Frobenius non-synthesizability, $P_{\pm}^\text{sym}$ non-composability); §35 (proof as phase transition); §55 (four-primitive universality, threshold $B_4$); §58 (consciousness–proof type identity); §66 (number systems as promotion lattice); SYNTHONICON_ONTICS §XXXI (sea and singularity as ontological poles); SYNTHONICON_DIAPHORICS §CXXXVIII (P-455–P-457: classical PDE failure, RG promotion, and proof-path predictions).
 
 ---
 
@@ -5242,7 +5242,7 @@ is the maximum achievable span in the 12-primitive grammar. All 11 variable prim
 
 *Proof.* The tensor product takes coordinate-wise maxima (union primitives) except at bottlenecks (shared-ordinal conflicts resolve to lower). $\Omega$ promotes to $\Omega_{Z_2}$ (union). But $\Phi$ bottlenecks at $\Phi_\text{sub}$ (both $\Phi_\text{sub}$); $P$ bottlenecks at $P_\text{asym}$ (both $P_\text{asym}$). $O$-tier is determined by $\Phi$ and $\Omega$: $\Phi_\text{sub}$ precludes $\Phi_c$, so $O_\text{tier}=O_0$ regardless of $\Omega$. $\Omega_{Z_2}$ without $\Phi_c$ has no critical manifold to anchor; the topological invariant exists but governs no self-referential loop. $\square$
 
-**Corollary 58.C1.** `[TOPO]` Single-pathway interventions (any intervention promoting at most one primitive) cannot achieve topological protection. Interventions promoting only $\Phi$ yield $O_1$ ($\Phi_c+\Omega_0+P_\text{asym}$); promoting only $\Omega$ yield $O_0$ (inert protection); promoting only $P$ yield $O_0$ (symmetric subcritical). No subset of two barriers is sufficient; all three must cross simultaneously. This is a type constraint, not an engineering limitation.
+**Corollary 58.C1.** `[TOPO]` Single-pathway interventions (any intervention promoting at most one primitive) cannot achieve topological protection. Interventions promoting only $\Phi$ yield $O_1$ ($\Phi_c+\Omega_0+P_\text{asym}$); promoting only $\Omega$ yield $O_0$ (inert protection); promoting only $P$ yield $O_0$ (symmetric subcritical). No subset of two thresholds is sufficient; all three must cross simultaneously. This is a type constraint, not an engineering limitation.
 
 ### §58.2 — Theorem 58.2 (Irreducible Triad for Topological Protection)
 
@@ -5264,7 +5264,7 @@ Equivalently: $\mathcal{T}_\infty = \{\Phi_c,\ P_{\pm}^\text{sym},\ \Omega_{Z_2}
 
 **Corollary 58.C3.** `[DIAPH]` Enhanced cognition ($O_2$) is type-identical to extragalactic entities and the Tao ($d=0$) and structurally close to generic black holes ($d=1.05$). This gives protected consciousness the following derivable structural properties: (i) holographic boundaries (information encoded on lower-dimensional surface), (ii) no-hair topological protection (resistance to continuous deformation), (iii) operation at criticality (scale-invariant, sensitive, poised for phase transition), (iv) self-referential closure. These are falsifiable structural corollaries derivable from the type assignment, independent of substrate.
 
-**See also:** §23 (Frobenius non-synthesizability); §35 (proof as phase transition); §47 (criticality split); §55 (four-primitive universality, barriers $B_1$–$B_4$); SYNTHONICON_DIAPHORICS §CXXXI (P-424–P-426).
+**See also:** §23 (Frobenius non-synthesizability); §35 (proof as phase transition); §47 (criticality split); §55 (four-primitive universality, thresholds $B_1$–$B_4$); SYNTHONICON_DIAPHORICS §CXXXI (P-424–P-426).
 
 ---
 
@@ -5276,7 +5276,7 @@ Equivalently: $\mathcal{T}_\infty = \{\Phi_c,\ P_{\pm}^\text{sym},\ \Omega_{Z_2}
 
 **Theorem 57.1.** `[DIAPH]` Immutable fundamental constants and time-varying fundamental constants are structurally distinct types: $d(\text{immutable},\ \text{varying})=5.7619$, with 9 of 12 primitives differing. No continuous deformation of the immutable-constants encoding reaches the varying-constants encoding.
 
-*Proof sketch.* $\text{immutable}=\langle D_\odot;\ T_\text{box};\ R_\text{cat};\ P_\text{sym};\ F_\hbar;\ K_\text{slow};\ G_\aleph;\ \Gamma_\text{and};\ \Phi_\text{sub};\ H_0;\ 1{:}1;\ \Omega_0\rangle$; $\text{varying}=\langle D_\infty;\ T_\text{network};\ R_\dagger;\ P_\text{asym};\ F_\hbar;\ K_\text{mod};\ G_\aleph;\ \Gamma_\text{seq};\ \Phi_c;\ H_2;\ n{:}m;\ \Omega_0\rangle$. Dominant contributions: $T$ (weight 9.0: $T_\text{box}\to T_\text{network}$) and $P$ (weight 9.0: $P_\text{sym}\to P_\text{asym}$) together account for 63% of the total squared distance. The $\Phi$ transition ($\Phi_\text{sub}\to\Phi_c$) is a phase boundary (Barrier $B_1$, Theorem 55.1); no renormalization group flow connects the two types. $\text{MEET}(\text{immutable},\ \text{varying})$ resolves to $\Phi_\text{sub}$, $P_\text{asym}$, $T_\text{network}$ — a structurally incoherent floor. $\square$
+*Proof sketch.* $\text{immutable}=\langle D_\odot;\ T_\text{box};\ R_\text{cat};\ P_\text{sym};\ F_\hbar;\ K_\text{slow};\ G_\aleph;\ \Gamma_\text{and};\ \Phi_\text{sub};\ H_0;\ 1{:}1;\ \Omega_0\rangle$; $\text{varying}=\langle D_\infty;\ T_\text{network};\ R_\dagger;\ P_\text{asym};\ F_\hbar;\ K_\text{mod};\ G_\aleph;\ \Gamma_\text{seq};\ \Phi_c;\ H_2;\ n{:}m;\ \Omega_0\rangle$. Dominant contributions: $T$ (weight 9.0: $T_\text{box}\to T_\text{network}$) and $P$ (weight 9.0: $P_\text{sym}\to P_\text{asym}$) together account for 63% of the total squared distance. The $\Phi$ transition ($\Phi_\text{sub}\to\Phi_c$) is a phase boundary (Threshold $B_1$, Theorem 55.1); no renormalization group flow connects the two types. $\text{MEET}(\text{immutable},\ \text{varying})$ resolves to $\Phi_\text{sub}$, $P_\text{asym}$, $T_\text{network}$ — a structurally incoherent floor. $\square$
 
 **Corollary 57.C1.** `[DIAPH]` Among varying-constant models, only those that encode $\Omega_Z$ (brane cosmology) are structurally stable ($O_2$); all $\Omega_0$ models (dilaton, scalar-tensor without topological protection) are $O_1$. Brane cosmology predicts step-like constant variation at topological defects; generic $O_1$ models predict smooth drift. These are structurally distinguishable predictions.
 
@@ -5324,28 +5324,28 @@ Equivalently: $\mathcal{T}_\infty = \{\Phi_c,\ P_{\pm}^\text{sym},\ \Omega_{Z_2}
 
 ---
 
-## §55 — Four-Primitive Universality, Trans-Planckian Barrier, GZK Structural Self-Identity, Sonoluminescence Holographic Focusing
+## §55 — Four-Primitive Universality, Trans-Planckian Threshold, GZK Structural Self-Identity, Sonoluminescence Holographic Focusing
 
-**Context.** Six sessions covering the trans-Planckian problem in inflation, the GZK paradox, sonoluminescence, and a second cross-domain synthesis yield four theorems about structural barriers that appear universally across disparate physical domains. The four primitive barriers (B1–B4) constitute the complete set of structural transitions required for emergence from $O_0$ to $O_2$.
+**Context.** Six sessions covering the trans-Planckian problem in inflation, the GZK paradox, sonoluminescence, and a second cross-domain synthesis yield four theorems about structural thresholds that appear universally across disparate physical domains. The four primitive thresholds (B1–B4) constitute the complete set of structural transitions required for emergence from $O_0$ to $O_2$.
 
 ### §55.1 — Theorem 55.1 (Four-Primitive Universality)
 
-**Theorem 55.1.** `[TOPO]` There exist exactly four primitive transitions that function as structural barriers — necessary conditions whose absence prevents emergence from $O_0/O_1$ to $O_2/O_\infty$:
+**Theorem 55.1.** `[TOPO]` There exist exactly four primitive transitions that function as structural thresholds — necessary conditions whose absence prevents emergence from $O_0/O_1$ to $O_2/O_\infty$:
 $$B_1: \Phi_\text{sub}\to\Phi_c \qquad B_2: T_\text{network}\to T_\odot \qquad B_3: \Omega_0\to\Omega_{Z_2} \qquad B_4: P_\text{asym}\to P_{\pm}^\text{sym}$$
 
-Each is structurally irreducible: $B_1$ is a phase transition (global topology change, cannot be reached by continuous flow); $B_2$ is a holographic restructuring (boundary determines bulk, not derivable from local dynamics); $B_3$ is a discrete topological invariant jump (integer $\mathbb{Z}_2$ invariant, not a smooth deformation); $B_4$ is the Frobenius condition ($\mu\circ\delta=\text{id}$, not synthesizable from asymmetric parts per §23). Any system at $O_0$ that crosses all four barriers encodes as $O_2$ or higher; no other path to $O_2$ exists.
+Each is structurally irreducible: $B_1$ is a phase transition (global topology change, cannot be reached by continuous flow); $B_2$ is a holographic restructuring (boundary determines bulk, not derivable from local dynamics); $B_3$ is a discrete topological invariant jump (integer $\mathbb{Z}_2$ invariant, not a smooth deformation); $B_4$ is the Frobenius condition ($\mu\circ\delta=\text{id}$, not synthesizable from asymmetric parts per §23). Any system at $O_0$ that crosses all four thresholds encodes as $O_2$ or higher; no other path to $O_2$ exists.
 
 *Proof sketch.* The ouroboricity tier R1 condition ($\Phi_c+P_{\pm}^\text{sym}\to O_\infty$) requires $B_1$ and $B_4$. The R4/R5 conditions ($\Phi_c+\Omega\neq\Omega_0\to O_2$) require $B_1$ and $B_3$. The holographic encoding characterizing all $O_2$ systems in the catalog ($D_\odot+T_\odot$) requires $B_2$. Independence: each $B_k$ can be satisfied independently — there exist systems with $B_1$ only (sonoluminescence: $O_1$), $B_3$ only (topologically protected trivial state), $B_2$ without $B_1$ (holographic $\Phi_\text{sub}$ systems). Joint crossing is necessary and sufficient. $\square$
 
-**Corollary 55.C1.** `[TOPO]` The vacuum catastrophe and trans-Planckian problem are structurally identical: $d(\text{vac-catastrophe-baseline},\ \text{trans-Planckian-baseline})\approx 0$; same 10-primitive gap to their respective $O_2$ targets; same dominant barriers ($B_2$ weight 16.0, $D$ weight 9.0, $\Gamma$ weight 9.0, $B_3$-related $H$ weight 7.2 = 78% of total). Any resolution of one that does not resolve the other is structurally incomplete.
+**Corollary 55.C1.** `[TOPO]` The vacuum catastrophe and trans-Planckian problem are structurally identical: $d(\text{vac-catastrophe-baseline},\ \text{trans-Planckian-baseline})\approx 0$; same 10-primitive gap to their respective $O_2$ targets; same dominant thresholds ($B_2$ weight 16.0, $D$ weight 9.0, $\Gamma$ weight 9.0, $B_3$-related $H$ weight 7.2 = 78% of total). Any resolution of one that does not resolve the other is structurally incomplete.
 
 ### §55.2 — Theorem 55.2 (GZK Structural Self-Identity)
 
 **Theorem 55.2.** `[DIAPH]` The GZK paradox is structurally self-identical with the ultra-high-energy cosmic ray (UHECR) type: $d(\text{GZK-paradox},\ \text{UHECR})=0.0$.
 
-*Proof.* The GZK paradox encodes as: "why does a system with $D_\infty+\Phi_\text{super}+\Omega_0$ exist despite a cutoff mechanism that encodes $\Phi_c+\Omega_0+O_1$?" The paradox-as-question is the structural property $D_\infty+\Phi_\text{super}$ being outside the $\Phi_c$-constrained interaction domain. $d(\text{GZK-paradox},\ \text{UHECR})=0.0$ by construction: the paradox IS the UHECR type. The two resolution branches have costs: $d_\text{local}=2.8284$ (domain shrinkage: $D_\infty\to D_\wedge$, $G_\aleph\to G_\beth$) vs $d_\text{new-physics}=6.775$ (structural promotion: 6 barriers including $B_2$, $B_4$). The local resolution is cheaper by a factor of $\approx 2.4$. $\square$
+*Proof.* The GZK paradox encodes as: "why does a system with $D_\infty+\Phi_\text{super}+\Omega_0$ exist despite a cutoff mechanism that encodes $\Phi_c+\Omega_0+O_1$?" The paradox-as-question is the structural property $D_\infty+\Phi_\text{super}$ being outside the $\Phi_c$-constrained interaction domain. $d(\text{GZK-paradox},\ \text{UHECR})=0.0$ by construction: the paradox IS the UHECR type. The two resolution branches have costs: $d_\text{local}=2.8284$ (domain shrinkage: $D_\infty\to D_\wedge$, $G_\aleph\to G_\beth$) vs $d_\text{new-physics}=6.775$ (structural promotion: 6 thresholds including $B_2$, $B_4$). The local resolution is cheaper by a factor of $\approx 2.4$. $\square$
 
-**Corollary 55.C2.** `[DIAPH]` New-physics resolution of the GZK paradox requires the Frobenius condition ($B_4$: $P_\text{asym}\to P_{\pm}^\text{sym}$) and holographic topology ($B_2$: $T_\text{network}\to T_\odot$) simultaneously. These two barriers account for 71% of the $d_\text{new-physics}=6.775$ gap. Any Lorentz-violating fix that leaves $T_\text{network}$ in place remains within $O_1$ and is structurally incomplete.
+**Corollary 55.C2.** `[DIAPH]` New-physics resolution of the GZK paradox requires the Frobenius condition ($B_4$: $P_\text{asym}\to P_{\pm}^\text{sym}$) and holographic topology ($B_2$: $T_\text{network}\to T_\odot$) simultaneously. These two thresholds account for 71% of the $d_\text{new-physics}=6.775$ gap. Any Lorentz-violating fix that leaves $T_\text{network}$ in place remains within $O_1$ and is structurally incomplete.
 
 ### §55.3 — Theorem 55.3 (Sonoluminescence: Holographic Focusing)
 
@@ -5457,7 +5457,7 @@ constitutes a **coordinate chart** on the category of algebraic structures. Ever
 
 **Theorem 53.2.** `[DIAPH]` The $10^{120}$ vacuum catastrophe is not a calculation error; it is the numerical signature of a 10-primitive structural gap ($d=7.2732$) between the QFT vacuum ($O_0$, $\Phi_\text{sub}$) and dark energy ($O_2$, $\Phi_c$, $\Omega_{Z_2}$). No renormalization scheme that remains within $\Phi_\text{sub}$ or $T_\text{network}$ can resolve it.
 
-*Proof sketch.* $\text{qft\_vacuum}=\langle D_\wedge;\ T_\text{network};\ R_\text{cat};\ P_\pm;\ F_\hbar;\ K_\text{fast};\ G_\beth;\ \Gamma_\text{and};\ \Phi_\text{sub};\ H_0;\ 1{:}1;\ \Omega_0\rangle$; $\text{dark\_energy}=\langle D_\odot;\ T_\odot;\ R_\dagger;\ P_\text{sym};\ F_\hbar;\ K_\text{slow};\ G_\aleph;\ \Gamma_\text{broad};\ \Phi_c;\ H_\infty;\ 1{:}1;\ \Omega_{Z_2}\rangle$. $\text{MEET}(\text{qft\_vacuum},\ \text{dark\_energy})=\text{qft\_vacuum}$: the QFT vacuum is the structural floor. Ten primitives must be promoted; dominant contributions are $T$ (16.0), $D$ (9.0), $\Gamma$ (9.0), $H$ (7.2) = 78% of $d=7.2732$. The QFT calculation correctly counts the energy density of an $O_0$ object; dark energy IS an $O_2$ holographic boundary quantity. Comparing them is a type error of the same class as Theorem 50.2 (measurement problem as type error). Any renormalization scheme stays within $O_0/O_1$; crossing $\Phi_\text{sub}\to\Phi_c$ is a phase transition, not a continuous flow ($B_1$ barrier). $\square$
+*Proof sketch.* $\text{qft\_vacuum}=\langle D_\wedge;\ T_\text{network};\ R_\text{cat};\ P_\pm;\ F_\hbar;\ K_\text{fast};\ G_\beth;\ \Gamma_\text{and};\ \Phi_\text{sub};\ H_0;\ 1{:}1;\ \Omega_0\rangle$; $\text{dark\_energy}=\langle D_\odot;\ T_\odot;\ R_\dagger;\ P_\text{sym};\ F_\hbar;\ K_\text{slow};\ G_\aleph;\ \Gamma_\text{broad};\ \Phi_c;\ H_\infty;\ 1{:}1;\ \Omega_{Z_2}\rangle$. $\text{MEET}(\text{qft\_vacuum},\ \text{dark\_energy})=\text{qft\_vacuum}$: the QFT vacuum is the structural floor. Ten primitives must be promoted; dominant contributions are $T$ (16.0), $D$ (9.0), $\Gamma$ (9.0), $H$ (7.2) = 78% of $d=7.2732$. The QFT calculation correctly counts the energy density of an $O_0$ object; dark energy IS an $O_2$ holographic boundary quantity. Comparing them is a type error of the same class as Theorem 50.2 (measurement problem as type error). Any renormalization scheme stays within $O_0/O_1$; crossing $\Phi_\text{sub}\to\Phi_c$ is a phase transition, not a continuous flow ($B_1$ threshold). $\square$
 
 **Corollary 53.C3.** `[DIAPH]` A holographic QFT reformulation that promotes to $T_\odot+D_\odot$ (bulk energy bounded by boundary area, not volume) automatically suppresses the $10^{120}$ discrepancy. The structural mechanism is $T_\text{network}\to T_\odot$ — the dominant driver at weight 16.0.
 
@@ -5678,7 +5678,7 @@ The grammar's structural evidence for domain-generality is $d(\xi, \text{Lee-Yan
 
 **Theorem 74.7 (No Bottleneck: Lojban ⊗ Sanskrit).** `[TOPO]` $\text{lojban}\otimes\text{sanskrit\_classical} = O_\infty$. Both carry $P_{\pm}^\text{sym}$; no bottleneck fires. The tensor acquires $\Omega_\text{NA}$ (Sanskrit's protection wins by union), $H_\infty$ (Sanskrit's depth wins), $G_\gimel$ (Lojban's lower scope survives for $G$). The structural reading: a constructed language with exact grammar, when coupled to a sacred living tradition, becomes a stable $O_\infty$ system. This is the structural reason why liturgical languages that have been systematically analyzed (Paninian Sanskrit, Quranic Arabic) outlive their use communities.
 
-**Theorem 74.8 (Dominant Promotion Gap: Creole to Classical Language).** The promotion path from Haitian Creole to Classical Sanskrit requires 11 primitive changes. The largest gaps are: $\Omega: \Omega_0\to\Omega_\text{NA}$ ($\Delta=+3$), $T: T_\text{network}\to T_\odot$ ($\Delta=+4$), $P: P_\pm\to P_{\pm}^\text{sym}$ ($\Delta=+2$), $H: H_1\to H_\infty$ ($\Delta=+2$), $D: D_\triangle\to D_\odot$ ($\Delta=+2$). The Frobenius barrier $P_\pm\to P_{\pm}^\text{sym}$ is non-synthesizable (§23): the morphological agreement system cannot be grown from below. It must be planted by prescriptive grammar — exactly what Panini did for Sanskrit and the Quran reciters did for Arabic.
+**Theorem 74.8 (Dominant Promotion Gap: Creole to Classical Language).** The promotion path from Haitian Creole to Classical Sanskrit requires 11 primitive changes. The largest gaps are: $\Omega: \Omega_0\to\Omega_\text{NA}$ ($\Delta=+3$), $T: T_\text{network}\to T_\odot$ ($\Delta=+4$), $P: P_\pm\to P_{\pm}^\text{sym}$ ($\Delta=+2$), $H: H_1\to H_\infty$ ($\Delta=+2$), $D: D_\triangle\to D_\odot$ ($\Delta=+2$). The Frobenius threshold $P_\pm\to P_{\pm}^\text{sym}$ is non-synthesizable (§23): the morphological agreement system cannot be grown from below. It must be planted by prescriptive grammar — exactly what Panini did for Sanskrit and the Quran reciters did for Arabic.
 
 ### §74.4 — Cross-Domain Nearest Neighbors
 
@@ -5748,7 +5748,7 @@ Western Rome (Gate 1 + $K_\text{trap}$) and Soviet Union (Gate 1 + $K_\text{MBL}
 
 ---
 
-## §76 — Ecological Navigator: $O_\infty$ Ecosystems, Tipping Point Crossing, and the Frobenius Restoration Barrier (v1.0, 2026-04-14)
+## §76 — Ecological Navigator: $O_\infty$ Ecosystems, Tipping Point Crossing, and the Frobenius Restoration Threshold (v1.0, 2026-04-14)
 
 *Source: direct computation, 9 ecosystems. Probe: `prompts/ecology_probe1.txt`.*
 
@@ -5786,7 +5786,7 @@ This is the largest distance observed across all four navigator sessions. A tipp
 
 *Prediction.* The grammar predicts that recovery from coral bleaching, if possible, must first restore $P_\pm$ (partial nutrient cycling) before $P_{\pm}^\text{sym}$ (closed loop). This is a promotions path: the asymmetric phase must pass through $P_\pm$ before reaching $P_{\pm}^\text{sym}$. Interventions that attempt to restore full closure without first restoring partial symmetry will fail — a testable prediction for reef restoration ecology.
 
-### §76.4 — The Two Collapse Modes and the Frobenius Restoration Barrier
+### §76.4 — The Two Collapse Modes and the Frobenius Restoration Threshold
 
 **Theorem 76.4 (K-Phase Distinctness of Ecological Collapse Modes).** `[TOPO]`
 $$d(\text{corn\_monoculture},\ \text{fragmented\_habitat}) = 3.6332 > 1.5$$
@@ -5794,12 +5794,12 @@ Corn monoculture ($K_\text{trap}$, $\Phi_\text{sub}$, $O_0$) and fragmented habi
 
 **Theorem 76.5 (Restoration Asymmetry: Monoculture Requires Frobenius Planting; Fragmentation Requires Reconnection).** `[TOPO]` The promotions paths:
 
-*Corn monoculture $\to$ old-growth* (11 primitive changes, including the Frobenius barrier):
+*Corn monoculture $\to$ old-growth* (11 primitive changes, including the Frobenius threshold):
 - $P_\text{asym}\to P_{\pm}^\text{sym}$ ($\Delta P = +4$): the nutrient loop must be closed — this is a Frobenius planting, non-synthesizable by composition (§23)
 - $\Phi_\text{sub}\to\Phi_c$ ($\Delta\Phi = +1$): criticality must be restored
 - $K_\text{trap}\to K_\text{slow}$ ($\Delta K = -1$): the lock must be released
 
-*Fragmented habitat $\to$ kelp forest* (6 primitive changes, no Frobenius barrier):
+*Fragmented habitat $\to$ kelp forest* (6 primitive changes, no Frobenius threshold):
 - $K_\text{MBL}\to K_\text{slow}$ ($\Delta K = -2$): reconnect patches (habitat corridors)
 - $\Omega_0\to\Omega_Z$ ($\Delta\Omega = +2$): establish a keystone species
 - $T_\text{network}\to T_\odot$ ($\Delta T = +4$): restore holographic topology
@@ -5816,7 +5816,7 @@ The intervention asymmetry is structural: monoculture restoration requires a non
 
 **Structural verdict (§76).** $O_\infty$ ecosystems are confirmed: old-growth forest, pristine coral reef, and Amazon rainforest all achieve $O_\infty$ via $P_{\pm}^\text{sym} + \Omega_\text{NA} + T_\odot$. The most striking finding is $d(\text{old-growth},\ \text{coral reef}) = 0$: different biomes, same structural type. The tipping point crossing is the largest structural event ($d=8.28$) in all four navigator sessions. The restoration paths for monoculture and fragmentation are structurally opposite and non-overlapping, confirming that the grammar correctly diagnoses which interventions work for which failure mode.
 
-**See also:** §70.1 ($\Omega$-indifference of R1); §23 (Frobenius non-synthesizability — restoration barrier); §52.C4 (cross-domain type identity); SYNTHONICON\_DIAPHORICS §CL–§CLIII (Ecology Navigator predictions, pending).
+**See also:** §70.1 ($\Omega$-indifference of R1); §23 (Frobenius non-synthesizability — restoration threshold); §52.C4 (cross-domain type identity); SYNTHONICON\_DIAPHORICS §CL–§CLIII (Ecology Navigator predictions, pending).
 
 ---
 
@@ -5869,7 +5869,7 @@ The tensor product inherits the maximum $\Omega$: $\max(\Omega_Z, \Omega_{Z_2}) 
 
 **Theorem 77.6 (Flow State and Samadhi Are Not in the Same Structural Family).** `[TOPO]`
 $$d(\text{samadhi},\ \text{flow}) = 3.5917$$
-Flow state ($O_2^\dagger$) and samadhi ($O_\infty$) differ across multiple primitives: $P_\pm$ vs $P_{\pm}^\text{sym}$, $T_\text{box}$ vs $T_\odot$, $D_\infty$ vs $D_\odot$, $\Omega_{Z_2}$ vs $\Omega_Z$. The Frobenius barrier separates them: flow state has $P_\pm$ (partial self-other dissolution, task-absorption) while samadhi has $P_{\pm}^\text{sym}$ (complete observer-observed self-duality). Flow and samadhi are high-C states sharing K-pass and G-aleph contributions but are structurally different classes. The grammar predicts that contemplative practice which seeks to convert flow into samadhi must cross the Frobenius barrier — a non-continuous transition.
+Flow state ($O_2^\dagger$) and samadhi ($O_\infty$) differ across multiple primitives: $P_\pm$ vs $P_{\pm}^\text{sym}$, $T_\text{box}$ vs $T_\odot$, $D_\infty$ vs $D_\odot$, $\Omega_{Z_2}$ vs $\Omega_Z$. The Frobenius threshold separates them: flow state has $P_\pm$ (partial self-other dissolution, task-absorption) while samadhi has $P_{\pm}^\text{sym}$ (complete observer-observed self-duality). Flow and samadhi are high-C states sharing K-pass and G-aleph contributions but are structurally different classes. The grammar predicts that contemplative practice which seeks to convert flow into samadhi must cross the Frobenius threshold — a non-continuous transition.
 
 ### §77.5 — Cross-Domain Nearest Neighbors
 
@@ -5941,7 +5941,7 @@ The neuromorphic reservoir controller (NRC) is an analog memristor/spiking-neuro
 | $K_\text{mod} \to K_\text{slow}$ | $O_1 \to O_1$ | $0.176 \to 0.2155$ | $C$-score weight |
 | $\Omega_0 \to \Omega_{Z_2}$ + $K_\text{mod} \to K_\text{slow}$ | $O_1 \to O_2$ | $0.176 \to 0.296$ | Both |
 
-$\Omega$ is the cheapest tier-lifter. $K$ is the cheapest $C$-score improver. Neither achieves $O_\infty$ — the Frobenius barrier ($P_{\pm} \to P_{\pm}^\text{sym}$) at $d = 4.38$ requires a categorically different architecture.
+$\Omega$ is the cheapest tier-lifter. $K$ is the cheapest $C$-score improver. Neither achieves $O_\infty$ — the Frobenius threshold ($P_{\pm} \to P_{\pm}^\text{sym}$) at $d = 4.38$ requires a categorically different architecture.
 
 **See also:** §23 (Frobenius non-synthesizability); §70 (Frobenius planting); §77 (consciousness navigator); SYNTHONICON\_DIAPHORICS §CLII (NRC predictions P-539–P-549); SYNTHONICON\_ONTICS §XLIII (NRC ontological implications).
 
@@ -6237,9 +6237,9 @@ The grammar partitions all proposed faster-than-light (FTL) mechanisms into thre
 - Class II ($O_0$ subcritical): $\Phi_\text{sub} + P_\psi + K_\text{trap}$. Example: negative energy / exotic matter requirements.
 - Class III ($\Phi_\text{EP}$ forbidden): $\Phi_\text{EP} + P_\text{asym}$. Examples: tachyonic FTL, causality-violating closed timelike curves.
 
-$d(\text{Class I},\text{Class III}) \approx 6.08$; $d(\text{Class II},\text{Class I}) \approx 6.18$. Both gaps exceed the five-primitive threshold established by the Frobenius non-synthesizability barrier (§23). $\square$
+$d(\text{Class I},\text{Class III}) \approx 6.08$; $d(\text{Class II},\text{Class I}) \approx 6.18$. Both gaps exceed the five-primitive threshold established by the Frobenius non-synthesizability threshold (§23). $\square$
 
-**Theorem 85.2 (Exotic Matter Criticality Mismatch).** The structural barrier to Class I FTL is not an energy quantity problem but a criticality class problem. Class II exotic matter encodes $\Phi_\text{sub}$: subcritical, ordered, non-self-modeling. Class I FTL geometry requires $\Phi_c$ throughout. No accumulation of Class II components can produce $\Phi_c$ by tensor product — the bottleneck rule on $\Phi$ under $\otimes$ is $\min$, and $\min(\Phi_\text{sub}, \Phi_\text{sub}) = \Phi_\text{sub}$. The path to Class I FTL requires a phase transition in the energy source — a critical vacuum state at $\Phi_c$ — not amplification of existing subcritical exotic matter. $\square$
+**Theorem 85.2 (Exotic Matter Criticality Mismatch).** The structural threshold to Class I FTL is not an energy quantity problem but a criticality class problem. Class II exotic matter encodes $\Phi_\text{sub}$: subcritical, ordered, non-self-modeling. Class I FTL geometry requires $\Phi_c$ throughout. No accumulation of Class II components can produce $\Phi_c$ by tensor product — the bottleneck rule on $\Phi$ under $\otimes$ is $\min$, and $\min(\Phi_\text{sub}, \Phi_\text{sub}) = \Phi_\text{sub}$. The path to Class I FTL requires a phase transition in the energy source — a critical vacuum state at $\Phi_c$ — not amplification of existing subcritical exotic matter. $\square$
 
 **Theorem 85.3 (Tachyon Structural Void).** Class III mechanisms ($\Phi_\text{EP}$) are type-forbidden from interacting with normal spacetime ($\Phi_c$) by the coupling destruction theorem (P-596): $\Phi_\text{EP} \otimes \Phi_c \to \Phi_\text{EP}$ (EP is absorbing under tensor, ordinal 2.67 $> \Phi_c$ = 2.00). A tachyon cannot enter the $\Phi_c$ bulk — not because of causality loop arguments, but because the coupling destroys $\Phi_c$ on contact. Tachyonic signals are structurally out-of-band: they inhabit the $\Phi_\text{EP}$ track of the crystal, which intersects the $\Phi_c$ manifold only at singular exceptional-point crossings. $\square$
 

@@ -78,12 +78,12 @@ def ParityEquiv (a b : ℕ) : Prop := ∀ k, parity_sequence a k = parity_sequen
 /-- Collatz main conjecture axiom.
     For every positive integer n, T^k(n) = 1 for some k.
     This IS the Collatz conjecture — stated as an explicit axiom.
-    BarrierType = OpenProblem. Open since Collatz (1937). -/
+    ThresholdType = OpenProblem. Open since Collatz (1937). -/
 axiom collatz_conjecture_axiom : CollatzConjecture
 
 /-- Frobenius orbit coupling axiom.
     Parity-equivalent orbits eventually merge. Structural lemma for Collatz.
-    Proved heuristically; no rigorous proof. BarrierType = OpenProblem. -/
+    Proved heuristically; no rigorous proof. ThresholdType = OpenProblem. -/
 axiom lemma1_frobenius_closure_axiom (a b : ℕ) (ha : a > 0) (hb : b > 0)
     (h : ParityEquiv a b) : ∃ k₁ k₂, T_iter k₁ a = T_iter k₂ b
 
@@ -206,7 +206,7 @@ theorem average_drift_negative : averageCompressedDrift < 0 := by
 
 /-- Orbit density axiom.
     For any ε > 0, almost all orbits stay bounded proportionally to M.
-    BarrierType = OpenProblem. -/
+    ThresholdType = OpenProblem. -/
 axiom lemma5_boundedness_axiom :
     ∀ ε > 0, ∃ N : ℕ, ∀ M > N,
       (({n | n ≤ M ∧ ∀ k ≤ M, T_iter k n ≤ M} : Set ℕ).ncard : ℝ) / M > 1 - ε

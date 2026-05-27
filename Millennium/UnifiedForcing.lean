@@ -29,7 +29,7 @@ import Imscribing.Millennium.RH
 import Imscribing.Millennium.Hodge
 import Imscribing.Millennium.BSD
 import Imscribing.Millennium.FrobeniusStructure
-import Imscribing.Millennium.BarrierFrobenius
+import Imscribing.Millennium.ThresholdFrobenius
 
 namespace Millennium.UnifiedForcing
 
@@ -202,12 +202,12 @@ theorem forcing_promotes_full_to_special :
     the involution-forcing pattern are all at .full, and proving any of their
     forcing theorems would promote them to .special. -/
 theorem forcing_summary :
-    (Millennium.BarrierFrobenius.problemFrobenius .RH = .full) ∧
-    (Millennium.BarrierFrobenius.problemFrobenius .Hodge = .full) ∧
-    (Millennium.BarrierFrobenius.problemFrobenius .NS = .full) ∧
-    (Millennium.BarrierFrobenius.problemFrobenius .PvsNP = .algebraOnly) ∧
-    (Millennium.BarrierFrobenius.problemFrobenius .BSD = .algebraOnly) ∧
-    (Millennium.BarrierFrobenius.problemFrobenius .OPN = .algebraOnly) := by
-  simp [Millennium.BarrierFrobenius.problemFrobenius]
+    (Millennium.ThresholdFrobenius.problemFrobenius .RH = .full) ∧
+    (Millennium.ThresholdFrobenius.problemFrobenius .Hodge = .full) ∧
+    (Millennium.ThresholdFrobenius.problemFrobenius .NS = .full) ∧
+    (Millennium.ThresholdFrobenius.problemFrobenius .PvsNP = .algebraOnly) ∧
+    (Millennium.ThresholdFrobenius.problemFrobenius .BSD = .algebraOnly) ∧
+    (Millennium.ThresholdFrobenius.problemFrobenius .OPN = .algebraOnly) := by
+  simp [Millennium.ThresholdFrobenius.problemFrobenius]
 
 end Millennium.UnifiedForcing

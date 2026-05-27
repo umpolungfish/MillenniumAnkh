@@ -8,13 +8,13 @@ with open(path, "r", encoding="utf-8") as f:
 target_axiom = """/-- Navier-Stokes global regularity axiom.
     Every smooth divergence-free initial datum admits a smooth global bounded solution.
     This IS the Navier-Stokes regularity conjecture — stated as an explicit axiom.
-    BarrierType = OpenProblem. No proof exists. -/
+    ThresholdType = OpenProblem. No proof exists. -/
 axiom ns_regularity_axiom : NavierStokesRegularity"""
 
 replacement_axiom = """/-- Navier-Stokes global regularity axiom.
     Every smooth divergence-free initial datum admits a smooth global bounded solution.
     This IS the Navier-Stokes regularity conjecture — stated as an explicit axiom.
-    BarrierType = OpenProblem. No proof exists.
+    ThresholdType = OpenProblem. No proof exists.
 
     See NS_ZFCt_Bridge.ns_from_frobenius_structure for the ZFCt derivation.
     ns_regularity_axiom is superseded by that theorem; retained here as a
@@ -29,7 +29,7 @@ target_cert = """/-- **Navier-Stokes Global Regularity** (Layer 1 sorry).
     This sorry is NOT a Mathlib gap. The functional analysis objects (Sobolev spaces,
     weak solutions, the NS equations) are well-defined in mathematics.
     The sorry is the conjecture itself.
-    BarrierType = `OpenProblem` (see Barriers.lean).
+    ThresholdType = `OpenProblem` (see Thresholds.lean).
 
     The type required to discharge it: `GlobalRegularityCert u₀`
     (see §5 below). -/
@@ -42,7 +42,7 @@ replacement_cert = """/-- **Navier-Stokes Global Regularity** (Layer 1 sorry).
     This sorry is NOT a Mathlib gap. The functional analysis objects (Sobolev spaces,
     weak solutions, the NS equations) are well-defined in mathematics.
     The sorry is the conjecture itself.
-    BarrierType = `OpenProblem` (see Barriers.lean).
+    ThresholdType = `OpenProblem` (see Thresholds.lean).
 
     The type required to discharge it: `GlobalRegularityCert u₀`
     (see §5 below).

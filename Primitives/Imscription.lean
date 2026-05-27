@@ -253,8 +253,8 @@ def yang_mills_quantum_target : Imscription := {
   prot := Omega_Z
 }
 
-/-- The YM barrier is exactly 4 primitive mismatches. -/
-theorem ym_barrier_4_primitives :
+/-- The YM threshold is exactly 4 primitive mismatches. -/
+theorem ym_threshold_4_primitives :
     primitiveMismatches yang_mills_classical yang_mills_quantum_target = 4 := by decide
 
 -- ── SM ↔ QG distance ────────────────────────────────────────

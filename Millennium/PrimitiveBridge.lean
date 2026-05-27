@@ -5,7 +5,7 @@
 -- Each Millennium Problem's sorry corresponds to a specific primitive field
 -- transition that cannot be completed. This file:
 --   (1) Encodes each problem as a concrete Imscription in primitive space
---   (2) Defines BarrierPrimitiveCertificate connecting problems to missing fields
+--   (2) Defines ThresholdPrimitiveCertificate connecting problems to missing fields
 --   (3) Proves the YM case: G_beth → G_aleph is the primitive certificate
 --       of the missing PathIntegralMeasure
 --   (4) Proves the master bridge theorem connecting all four observable cases
@@ -13,7 +13,7 @@
 -- This is the formal content connecting Millennium/ and Primitives/.
 
 import Imscribing.Primitives.Imscription
-import Imscribing.Millennium.Barriers
+import Imscribing.Millennium.Thresholds
 import Imscribing.Primitives.ZFCt
 import Imscribing.Consciousness
 import Imscribing.Millennium.RH
@@ -216,44 +216,44 @@ def bsd_encoding : Imscription := {
   chir := H0 }
 
 -- ============================================================
--- §2. The BarrierPrimitiveCertificate type
+-- §2. The ThresholdPrimitiveCertificate type
 -- ============================================================
 
 /-- A formal certificate that a Millennium Problem's sorry boundary
     corresponds to a specific blocked primitive field.
     - `encoding`: the problem encoded as a Imscription
     - `blockedField`: human-readable name of the missing field transition
-    - `barrier`: the barrier type (MathlibGap / OpenProblem / MissingFoundation)
-    - `barrier_correct`: machine-checked proof that this matches the taxonomy -/
-structure BarrierPrimitiveCertificate (p : Barriers.MillenniumProblem) where
+    - `threshold`: the threshold type (MathlibGap / OpenProblem / MissingFoundation)
+    - `threshold_correct`: machine-checked proof that this matches the taxonomy -/
+structure ThresholdPrimitiveCertificate (p : Thresholds.MillenniumProblem) where
   encoding : Imscription
   blockedField  : String
-  barrier       : Barriers.BarrierType
-  barrier_correct : barrier = Barriers.millenniumBarrier p
+  threshold       : Thresholds.ThresholdType
+  threshold_correct : threshold = Thresholds.millenniumThreshold p
 
 -- Concrete certificates for three key problems
 
 /-- YM certificate: the blocked field is gran (G_beth → G_aleph),
     the primitive certificate of the missing PathIntegralMeasure. -/
-def ym_certificate : BarrierPrimitiveCertificate .YM where
+def ym_certificate : ThresholdPrimitiveCertificate .YM where
   encoding     := ym_quantum_target
   blockedField := "gran: G_beth → G_aleph (PathIntegralMeasure 𝔤 missing)"
-  barrier      := .MissingFoundation
-  barrier_correct := rfl
+  threshold      := .MissingFoundation
+  threshold_correct := rfl
 
 /-- OPN certificate: the blocked field is crit (Phi_c with K_trap overdetermination). -/
-def opn_certificate : BarrierPrimitiveCertificate .OPN where
+def opn_certificate : ThresholdPrimitiveCertificate .OPN where
   encoding     := opn_encoding
   blockedField := "crit: Phi_c + K_trap (σ-constraint overdetermination has no solution)"
-  barrier      := .OpenProblem
-  barrier_correct := rfl
+  threshold      := .OpenProblem
+  threshold_correct := rfl
 
 /-- NS certificate: the blocked field is crit (Phi_sub → Phi_c boundary). -/
-def ns_certificate : BarrierPrimitiveCertificate .NS where
+def ns_certificate : ThresholdPrimitiveCertificate .NS where
   encoding     := ns_encoding
   blockedField := "crit: Phi_sub boundary (GlobalRegularityCert = proof solutions stay Phi_sub)"
-  barrier      := .OpenProblem
-  barrier_correct := rfl
+  threshold      := .OpenProblem
+  threshold_correct := rfl
 
 /-- Hodge certificate: the blocked field is pol (P_sym → P_pm_sym needed for
   cycle class surjectivity).
@@ -261,26 +261,26 @@ def ns_certificate : BarrierPrimitiveCertificate .NS where
     rational (p,p)-class. This is blocked at pol = P_sym: complex conjugation symmetry exists
     but does not Frobenius-force algebraic representability (which would require P_pm_sym).
     Unique feature: Hodge is the only MPP with D_odot ∧ T_odot (double-holographic structure). -/
-def hodge_certificate : BarrierPrimitiveCertificate .Hodge where
+def hodge_certificate : ThresholdPrimitiveCertificate .Hodge where
   encoding     := hodge_encoding
   blockedField := "pol: P_sym (complex conjugation) cannot force R-lift (cycle class surjectivity)"
-  barrier      := .OpenProblem
-  barrier_correct := rfl
+  threshold      := .OpenProblem
+  threshold_correct := rfl
 
 /-- BSD certificate: the blocked field is parallel triple (Mordell-Weil + Mazur + BSD formula).
     Primary block: crit = Phi_c with the BSD formula (rank = analytic rank) unproved.
     Secondary blocks: Mordell-Weil theorem (MathlibGap) + Mazur torsion theorem (MathlibGap)
     are logically parallel, not prerequisites. This is the only MPP with
   parallel sorry structure. -/
-def bsd_certificate : BarrierPrimitiveCertificate .BSD where
+def bsd_certificate : ThresholdPrimitiveCertificate .BSD where
   encoding     := bsd_encoding
   blockedField := "crit: Phi_c rank certificate (parallel: Mordell-Weil + Mazur
   MathlibGaps + BSD OpenProblem)"
-  barrier      := .OpenProblem
-  barrier_correct := rfl
+  threshold      := .OpenProblem
+  threshold_correct := rfl
 
 -- ============================================================
--- §3. The YM primitive barrier theorems
+-- §3. The YM primitive threshold theorems
 -- ============================================================
 
 /-- The classical-to-quantum YM lift costs exactly 4 primitive changes:
@@ -292,7 +292,7 @@ theorem ym_classical_to_quantum_cost :
 /-- The granularity transition is the primitive certificate of the missing
     path integral measure. Classical YM sits at G_beth (mesoscale local);
     the quantum target requires G_aleph (quantum fine-grained). -/
-theorem ym_gran_barrier :
+theorem ym_gran_threshold :
     ym_classical.gran = G_beth ∧
     ym_quantum_target.gran = G_aleph ∧
     ym_classical.gran ≠ ym_quantum_target.gran := by decide
@@ -314,7 +314,7 @@ theorem ym_quantum_target_is_local :
 theorem ym_qg_dim_differ :
     ym_quantum_target.dim ≠ quantum_gravity.dim := by decide
 
-/-- **The YM primitive barrier certificate** (machine-checked).
+/-- **The YM primitive threshold certificate** (machine-checked).
     The sorry in YM.lean — the inability to construct PathIntegralMeasure 𝔤 —
     corresponds to the blocked G_beth → G_aleph transition in primitive space:
     · The quantum target needs G_aleph (quantum fine-grained description)
@@ -322,16 +322,16 @@ theorem ym_qg_dim_differ :
     · Constructing the path integral measure IS providing G_aleph description
     · The target stays at D_infty (not QG): this is a 4D QFT problem, not a
       holography problem
-    · The barrier is MissingFoundation (not OpenProblem): the object doesn't
+    · The threshold is MissingFoundation (not OpenProblem): the object doesn't
       exist yet, not merely unproven -/
-theorem ym_primitive_barrier_certificate :
+theorem ym_primitive_threshold_certificate :
     ym_quantum_target.gran = G_aleph ∧     -- needs quantum-level granularity
     ym_quantum_target.crit = Phi_c ∧       -- needs mass gap (critical)
     ym_quantum_target.fid  = F_hbar ∧      -- needs quantum fidelity
     ym_quantum_target.kin  = K_trap ∧      -- needs confinement
     ym_quantum_target.dim  = D_infty ∧     -- stays 4D local (NOT QG)
     ym_quantum_target.dim  ≠ quantum_gravity.dim ∧  -- distinct from QG
-    Barriers.millenniumBarrier .YM = .MissingFoundation := by
+    Thresholds.millenniumThreshold .YM = .MissingFoundation := by
   exact ⟨rfl, rfl, rfl, rfl, rfl, by decide, rfl⟩
 
 -- ============================================================
@@ -344,32 +344,32 @@ theorem ym_primitive_barrier_certificate :
 theorem opn_primitive_certificate :
     opn_encoding.crit = Phi_c ∧
     opn_encoding.kin  = K_trap ∧
-    Barriers.millenniumBarrier .OPN = .OpenProblem :=
+    Thresholds.millenniumThreshold .OPN = .OpenProblem :=
   ⟨rfl, rfl, rfl⟩
 
 -- ============================================================
 -- §5. NS primitive certificate
 -- ============================================================
 
-/-- The NS barrier sits at the Phi_sub / Phi_c boundary.
+/-- The NS threshold sits at the Phi_sub / Phi_c boundary.
     Smooth solutions live at Phi_sub; blow-up would be Phi_c.
     GlobalRegularityCert = a proof that solutions never cross to Phi_c. -/
 theorem ns_primitive_certificate :
     ns_encoding.crit = Phi_sub ∧
-    Barriers.millenniumBarrier .NS = .OpenProblem :=
+    Thresholds.millenniumThreshold .NS = .OpenProblem :=
   ⟨rfl, rfl⟩
 
 -- ============================================================
 -- §6. RH primitive certificate and Lee-Yang structural correspondence
 -- ============================================================
 
-/-- The RH barrier is at crit = Phi_c_complex: the nontrivial zeros of ζ
+/-- The RH threshold is at crit = Phi_c_complex: the nontrivial zeros of ζ
     are located at COMPLEX values of s. The sorry (ZeroFreeStrip 0) is the
     claim that all such zeros lie on the symmetry axis Re(s) = 1/2 of the
     functional equation s ↦ 1−s. -/
 theorem rh_primitive_certificate :
     rh_encoding.crit = Phi_c_complex ∧
-    Barriers.millenniumBarrier .RH = .OpenProblem :=
+    Thresholds.millenniumThreshold .RH = .OpenProblem :=
   ⟨rfl, rfl⟩
 
 /-- Lee-Yang structural certificate: the edge singularity is at crit = Phi_c_complex.
@@ -427,13 +427,13 @@ theorem rh_leyang_distance :
 -- ============================================================
 
 /-- **Master bridge theorem** (all seven problems):
-    The primitive encoding of each problem witnesses its barrier type
+    The primitive encoding of each problem witnesses its threshold type
     through a specific field value.
 
     YM is unique: it is the only problem where the quantum lift
-    (G_beth → G_aleph) corresponds to a MissingFoundation barrier.
+    (G_beth → G_aleph) corresponds to a MissingFoundation threshold.
 
-    All other problems have OpenProblem barriers.
+    All other problems have OpenProblem thresholds.
 
     Hodge is unique in a different sense: it is the only MPP with
     D_odot ∧ T_odot (double-holographic structure).
@@ -442,32 +442,32 @@ theorem rh_leyang_distance :
     parallel sorry structure — Mordell-Weil, Mazur torsion, and the
     BSD formula itself are logically independent (not stacked). -/
 theorem primitive_bridge_master :
-    -- YM: 4-primitive lift required; barrier is MissingFoundation
+    -- YM: 4-primitive lift required; threshold is MissingFoundation
     primitiveMismatches ym_classical ym_quantum_target = 4 ∧
-    Barriers.millenniumBarrier .YM = .MissingFoundation ∧
-    -- OPN: Phi_c criticality + K_trap overdetermination; barrier is OpenProblem
+    Thresholds.millenniumThreshold .YM = .MissingFoundation ∧
+    -- OPN: Phi_c criticality + K_trap overdetermination; threshold is OpenProblem
     opn_encoding.crit = Phi_c ∧
     opn_encoding.kin  = K_trap ∧
-    Barriers.millenniumBarrier .OPN = .OpenProblem ∧
-    -- NS: Phi_sub boundary (smooth solutions); barrier is OpenProblem
+    Thresholds.millenniumThreshold .OPN = .OpenProblem ∧
+    -- NS: Phi_sub boundary (smooth solutions); threshold is OpenProblem
     ns_encoding.crit = Phi_sub ∧
-    Barriers.millenniumBarrier .NS = .OpenProblem ∧
-    -- RH: Phi_c_complex locus (zeros at complex s values); barrier is OpenProblem
+    Thresholds.millenniumThreshold .NS = .OpenProblem ∧
+    -- RH: Phi_c_complex locus (zeros at complex s values); threshold is OpenProblem
     rh_encoding.crit = Phi_c_complex ∧
-    Barriers.millenniumBarrier .RH = .OpenProblem ∧
-    -- Hodge: Phi_c criticality (cycle class surjectivity); barrier is OpenProblem
+    Thresholds.millenniumThreshold .RH = .OpenProblem ∧
+    -- Hodge: Phi_c criticality (cycle class surjectivity); threshold is OpenProblem
     hodge_encoding.crit = Phi_c ∧
-    Barriers.millenniumBarrier .Hodge = .OpenProblem ∧
-    -- BSD: Phi_c criticality (rank = analytic rank); barrier is OpenProblem
+    Thresholds.millenniumThreshold .Hodge = .OpenProblem ∧
+    -- BSD: Phi_c criticality (rank = analytic rank); threshold is OpenProblem
     bsd_encoding.crit = Phi_c ∧
-    Barriers.millenniumBarrier .BSD = .OpenProblem :=
+    Thresholds.millenniumThreshold .BSD = .OpenProblem :=
   ⟨by decide, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl⟩
 
-/-- Corollary: the YM and OPN barriers are qualitatively distinct
+/-- Corollary: the YM and OPN thresholds are qualitatively distinct
     at the primitive level — YM is the only problem where the
     encoding's blocked field is a MissingFoundation. -/
-theorem ym_opn_barrier_distinct :
-    Barriers.millenniumBarrier .YM ≠ Barriers.millenniumBarrier .OPN := by decide
+theorem ym_opn_threshold_distinct :
+    Thresholds.millenniumThreshold .YM ≠ Thresholds.millenniumThreshold .OPN := by decide
 
 -- ============================================================
 -- §8. Triad Projection Framework — Constraint Map Formalization
@@ -768,13 +768,13 @@ theorem witten_vs_ym_criticality_gap :
     · Unique structural signature: D_odot ∧ T_odot — the only MPP with this doubly
       holographic topology (complex variety encodes boundary cohomology via Hodge
       decomposition; topology further encodes algebraic cycles)
-    · Barrier: .OpenProblem (no proof that all Hodge classes are algebraic) -/
+    · Threshold: .OpenProblem (no proof that all Hodge classes are algebraic) -/
 theorem hodge_primitive_certificate :
     hodge_encoding.crit = Phi_c ∧
     hodge_encoding.pol  = P_sym ∧
     hodge_encoding.dim  = D_odot ∧
     hodge_encoding.top  = T_odot ∧
-    Barriers.millenniumBarrier .Hodge = .OpenProblem :=
+    Thresholds.millenniumThreshold .Hodge = .OpenProblem :=
   ⟨rfl, rfl, rfl, rfl, rfl⟩
 
 /-- **BSD primitive certificate** (machine-checked).
@@ -786,13 +786,13 @@ theorem hodge_primitive_certificate :
     · top = T_bowtie: functional equation L(E,s) ↔ L(E,2−s) (bowtie: two L-planes at s=1)
     · Unique structural feature: parallel sorry structure (Mordell-Weil MathlibGap ∥
       Mazur torsion MathlibGap ∥ BSD formula OpenProblem) — logically independent
-    · Barrier: .OpenProblem (primary); MathlibGap secondary (Mordell-Weil, Mazur not in Mathlib) -/
+    · Threshold: .OpenProblem (primary); MathlibGap secondary (Mordell-Weil, Mazur not in Mathlib) -/
 theorem bsd_primitive_certificate :
     bsd_encoding.crit = Phi_c ∧
     bsd_encoding.prot = Omega_Z ∧
     bsd_encoding.dim  = D_odot ∧
     bsd_encoding.top  = T_bowtie ∧
-    Barriers.millenniumBarrier .BSD = .OpenProblem :=
+    Thresholds.millenniumThreshold .BSD = .OpenProblem :=
   ⟨rfl, rfl, rfl, rfl, rfl⟩
 
 /-- **Hodge is the only MPP with double-holographic structure** (machine-checked).

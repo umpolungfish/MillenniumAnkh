@@ -131,7 +131,7 @@ inductive Criticality : Type where
 -- K_MBL → ergodicity restoration. See §75–§77 for civilizational/consciousness examples.
 inductive KineticChar : Type where
   | K_fast   -- diffusion-limited, untrapped
-  | K_mod    -- moderate barrier
+  | K_mod    -- moderate threshold
   | K_slow   -- slow / thermally activated (Gate 2 of C-score: K ≤ K_slow passes)
   | K_trap   -- kinetically trapped by order
   | K_MBL    -- many-body localized: frozen by disorder

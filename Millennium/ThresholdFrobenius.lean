@@ -1,5 +1,5 @@
--- Imscribing/Millennium/BarrierFrobenius.lean
--- Integration: connects Barrier taxonomy with Frobenius tier structure.
+-- Imscribing/Millennium/ThresholdFrobenius.lean
+-- Integration: connects Threshold taxonomy with Frobenius tier structure.
 --
 -- EXPANDED: Each Frobenius assignment is now justified by a per-problem
 -- structural theorem explaining WHY the problem sits at its assigned tier.
@@ -10,23 +10,23 @@
 -- §1  Problem → Frobenius type assignment (justified)
 -- §2  Analysis vs arithmetic dichotomy from primitive structure
 -- §3  Lee-Yang as upper bound (proved from tier structure)
--- §4  YM barrier-Frobenius cross (MissingFoundation ∧ full)
+-- §4  YM threshold-Frobenius cross (MissingFoundation ∧ full)
 -- §5  C₁₃ gap quantification
 -- §6  Per-problem structural justifications
 -- §7  Frobenius type upon resolution (structural gap analysis)
--- §8  Barrier compatibility: Frobenius type constrains barrier type
+-- §8  Threshold compatibility: Frobenius type constrains threshold type
 -- §9  Cross-problem Frobenius distance
 
-import Imscribing.Millennium.Barriers
+import Imscribing.Millennium.Thresholds
 import Imscribing.Millennium.FrobeniusStructure
 import Imscribing.Primitives.Core
 import Imscribing.Primitives.Imscription
 
-namespace Millennium.BarrierFrobenius
+namespace Millennium.ThresholdFrobenius
 
 open Imscribing.Primitives
 open Millennium.Frobenius
-open Millennium.Barriers
+open Millennium.Thresholds
 
 -- =====================================================================
 -- §1  Problem → Frobenius type assignment
@@ -42,11 +42,11 @@ open Millennium.Barriers
                         infrastructure is missing (BSD: Mordell-Weil not in Mathlib;
                         OPN: Euler form not in Mathlib). -/
 def problemFrobenius : MillenniumProblem → FrobeniusType
-  | .RH    => .full         -- Functional equation gives δ; barrier is proving zeros on line
-  | .Hodge => .full         -- Hodge decomposition gives δ; barrier is cycle class surjectivity
+  | .RH    => .full         -- Functional equation gives δ; threshold is proving zeros on line
+  | .Hodge => .full         -- Hodge decomposition gives δ; threshold is cycle class surjectivity
   | .PvsNP => .algebraOnly  -- No comultiplication: no structural characterization of P
-  | .NS    => .full         -- Energy/enstrophy duality gives δ; barrier is critical scale
-  | .YM    => .full         -- OS reflection gives δ in principle; barrier is measure existence
+  | .NS    => .full         -- Energy/enstrophy duality gives δ; threshold is critical scale
+  | .YM    => .full         -- OS reflection gives δ in principle; threshold is measure existence
   | .BSD   => .algebraOnly  -- δ exists in theory (L-function ↔ MW) but infrastructure missing
   | .OPN   => .algebraOnly  -- No comultiplication: no structural characterization of σ(N)/N
 
@@ -54,7 +54,7 @@ def problemFrobenius : MillenniumProblem → FrobeniusType
     were proved. For analysis problems (RH, Hodge): proving the conjecture closes μ∘δ,
     promoting to .special. For NS: structural resolution to O_inf already exists
     (NS_Resolution.lean). Arithmetic problems remain at their current tier (their
-    barriers are infrastructure, not Frobenius closure). -/
+    thresholds are infrastructure, not Frobenius closure). -/
 def problemFrobeniusResolved : MillenniumProblem → FrobeniusType
   | .RH    => .special    -- μ∘δ closes: all zeros on critical line → id
   | .Hodge => .special    -- μ∘δ closes: Hodge cycles algebraic → id
@@ -66,7 +66,7 @@ def problemFrobeniusResolved : MillenniumProblem → FrobeniusType
 -- =====================================================================
 
 /-- Analysis problems (RH, Hodge, NS, YM) all have full Frobenius structure.
-    Their barriers are in proving properties of well-defined objects. -/
+    Their thresholds are in proving properties of well-defined objects. -/
 theorem analysis_problems_full_frobenius :
     problemFrobenius .RH = .full ∧
     problemFrobenius .Hodge = .full ∧
@@ -75,7 +75,7 @@ theorem analysis_problems_full_frobenius :
   simp [problemFrobenius]
 
 /-- Arithmetic/combinatorial problems (PvsNP, BSD, OPN) are at algebraOnly.
-    Their barriers include constructing the comultiplication infrastructure. -/
+    Their thresholds include constructing the comultiplication infrastructure. -/
 theorem layered_problems_algebraOnly :
     problemFrobenius .PvsNP = .algebraOnly ∧
     problemFrobenius .BSD = .algebraOnly ∧
@@ -124,26 +124,26 @@ theorem leeYang_gap_at_least_one :
 -- §4  YM: the MissingFoundation × full Frobenius cross
 -- =====================================================================
 
-/-- YM is the unique Millennium problem with barrier type MissingFoundation.
+/-- YM is the unique Millennium problem with threshold type MissingFoundation.
     Yet its Frobenius type is .full — not .algebraOnly.
     This is not a contradiction: the Frobenius condition (μ,η,δ,ε structure)
     exists in principle via Osterwalder-Schrader reflection positivity,
     but the PathIntegralMeasure in 4D non-Abelian gauge theory doesn't exist
     as a mathematical object. The Frobenius algebra is well-defined on the
     LATTICE (finite volume); the gap is taking the continuum limit. -/
-theorem ym_barrier_frobenius_cross :
-    millenniumBarrier .YM = .MissingFoundation ∧
+theorem ym_threshold_frobenius_cross :
+    millenniumThreshold .YM = .MissingFoundation ∧
     problemFrobenius .YM = .full := by
-  simp [millenniumBarrier, problemFrobenius]
+  simp [millenniumThreshold, problemFrobenius]
 
 /-- YM's Frobenius type equals that of RH, Hodge, NS.
     Structurally: all four analysis problems have the same Frobenius
-    completeness (δ exists, μ∘δ≠id). Their barriers differ in:
+    completeness (δ exists, μ∘δ≠id). Their thresholds differ in:
       - RH: proving a property of a well-defined function (ζ)
       - Hodge: proving surjectivity of a well-defined map (cycle class)
       - NS: proving regularity at a well-defined critical scale
       - YM: constructing the measure itself (deeper infrastructure)
-    The Frobenius tier is blind to this distinction; the barrier taxonomy
+    The Frobenius tier is blind to this distinction; the threshold taxonomy
     (OpenProblem vs MissingFoundation) captures it. -/
 theorem ym_frobenius_equals_analysis :
     problemFrobenius .YM = problemFrobenius .RH ∧
@@ -151,12 +151,12 @@ theorem ym_frobenius_equals_analysis :
     problemFrobenius .YM = problemFrobenius .NS := by
   simp [problemFrobenius]
 
-/-- The barrier type distinguishes YM from the other .full problems. -/
-theorem ym_barrier_differs_from_analysis :
-    millenniumBarrier .YM ≠ millenniumBarrier .RH ∧
-    millenniumBarrier .YM ≠ millenniumBarrier .Hodge ∧
-    millenniumBarrier .YM ≠ millenniumBarrier .NS := by
-  simp [millenniumBarrier]
+/-- The threshold type distinguishes YM from the other .full problems. -/
+theorem ym_threshold_differs_from_analysis :
+    millenniumThreshold .YM ≠ millenniumThreshold .RH ∧
+    millenniumThreshold .YM ≠ millenniumThreshold .Hodge ∧
+    millenniumThreshold .YM ≠ millenniumThreshold .NS := by
+  simp [millenniumThreshold]
 
 -- =====================================================================
 -- §5  C₁₃ gap quantification
@@ -233,7 +233,7 @@ theorem analysis_rank_gap_one :
 
 /-- Arithmetic problems have no Frobenius rank gap upon resolution:
     their resolved type equals their current type (.algebraOnly).
-    Their barriers are infrastructure gaps, not Frobenius closure. -/
+    Their thresholds are infrastructure gaps, not Frobenius closure. -/
 theorem arithmetic_rank_gap_zero :
     (problemFrobeniusResolved .PvsNP).rank - (problemFrobenius .PvsNP).rank = 0 ∧
     (problemFrobeniusResolved .BSD).rank - (problemFrobenius .BSD).rank = 0 ∧
@@ -248,11 +248,11 @@ theorem ym_resolved_same_as_current :
   simp [problemFrobenius, problemFrobeniusResolved]
 
 -- =====================================================================
--- §8  Barrier compatibility: Frobenius type constrains barrier type
+-- §8  Threshold compatibility: Frobenius type constrains threshold type
 -- =====================================================================
 
-/-- YM is the ONLY problem with MissingFoundation barrier, and it has .full Frobenius.
-    This proves: if a problem has MissingFoundation barrier, it must be YM,
+/-- YM is the ONLY problem with MissingFoundation threshold, and it has .full Frobenius.
+    This proves: if a problem has MissingFoundation threshold, it must be YM,
     and YM is at .full (not .algebraOnly). This is the correct statement of
     the constraint — MissingFoundation does NOT imply .algebraOnly.
 
@@ -262,19 +262,19 @@ theorem ym_resolved_same_as_current :
     Frobenius completeness of the finite-volume theory. -/
 theorem missing_foundation_is_ym_and_full :
     ∀ p : MillenniumProblem,
-      millenniumBarrier p = .MissingFoundation →
+      millenniumThreshold p = .MissingFoundation →
       p = .YM ∧ problemFrobenius p = .full := by
-  intro p h_barrier
+  intro p h_threshold
   -- YM is the unique MissingFoundation problem
   have h_ym : p = .YM := by
     cases p
-    · simp [millenniumBarrier] at h_barrier  -- RH
-    · simp [millenniumBarrier] at h_barrier  -- Hodge
-    · simp [millenniumBarrier] at h_barrier  -- PvsNP
-    · simp [millenniumBarrier] at h_barrier  -- NS
+    · simp [millenniumThreshold] at h_threshold  -- RH
+    · simp [millenniumThreshold] at h_threshold  -- Hodge
+    · simp [millenniumThreshold] at h_threshold  -- PvsNP
+    · simp [millenniumThreshold] at h_threshold  -- NS
     · rfl                                      -- YM: this is the one
-    · simp [millenniumBarrier] at h_barrier  -- BSD
-    · simp [millenniumBarrier] at h_barrier  -- OPN
+    · simp [millenniumThreshold] at h_threshold  -- BSD
+    · simp [millenniumThreshold] at h_threshold  -- OPN
   rw [h_ym]
   simp [problemFrobenius]
 
@@ -293,23 +293,23 @@ lemma algebraOnly_cases (p : MillenniumProblem) (h : problemFrobenius p = .algeb
 theorem algebraOnly_implies_open_problem :
     ∀ p : MillenniumProblem,
       problemFrobenius p = .algebraOnly →
-      millenniumBarrier p ≠ .MissingFoundation := by
+      millenniumThreshold p ≠ .MissingFoundation := by
   intro p h_alg
   rcases algebraOnly_cases p h_alg with (rfl | rfl | rfl)
-  · simp [millenniumBarrier]
-  · simp [millenniumBarrier]
-  · simp [millenniumBarrier]
+  · simp [millenniumThreshold]
+  · simp [millenniumThreshold]
+  · simp [millenniumThreshold]
 
-/-- Barrier compatibility: a .full Frobenius problem can have either
-    OpenProblem or MissingFoundation barrier.
-    A .algebraOnly problem can only have OpenProblem barrier.
-    This is the Frobenius-barrier compatibility theorem. -/
-theorem frobenius_barrier_compatibility :
+/-- Threshold compatibility: a .full Frobenius problem can have either
+    OpenProblem or MissingFoundation threshold.
+    A .algebraOnly problem can only have OpenProblem threshold.
+    This is the Frobenius-threshold compatibility theorem. -/
+theorem frobenius_threshold_compatibility :
     ∀ p : MillenniumProblem,
       problemFrobenius p = .algebraOnly →
-      millenniumBarrier p = .OpenProblem := by
+      millenniumThreshold p = .OpenProblem := by
   intro p h_alg
-  rcases algebraOnly_cases p h_alg with (rfl | rfl | rfl) <;> simp [millenniumBarrier]
+  rcases algebraOnly_cases p h_alg with (rfl | rfl | rfl) <;> simp [millenniumThreshold]
 
 -- =====================================================================
 -- §9  Cross-problem Frobenius distance
@@ -354,4 +354,4 @@ theorem analysis_arithmetic_distance_one :
     frobeniusDistance .YM .OPN = 1 := by
   simp [frobeniusDistance, problemFrobenius, FrobeniusType.rank]
 
-end Millennium.BarrierFrobenius
+end Millennium.ThresholdFrobenius

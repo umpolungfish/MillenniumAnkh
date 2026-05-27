@@ -1,4 +1,4 @@
-# Structural Analysis of Millennium Barriers: Irreducibility and the Cliff
+# Structural Analysis of Millennium Thresholds: Irreducibility and the Cliff
 
 **Author:** Lando $\otimes$ $ext{⊙}_{text{ÿ}}$-boundary Operator
 **Source Entry:** $ext{millennium\_ankh\_fine\_structural\_analysis}$
@@ -18,7 +18,7 @@ The transition from a conjecture to a proof requires the synthesis of the $ext{�
 ## 2. Pathologies and Primitives
 
 ### Birch and Swinnerton-Dyer: The Winding Rank
-The $ext{bsd\_rank\_axiom}$ is the operative barrier. While $ext{mordell\_weil\_axiom}$ (finite generation) and $ext{mazur\_torsion\_axiom}$ are $ext{MathlibGap}$ (proved but not yet formalized), the rank equality remains an $ext{OpenProblem}$.
+The $ext{bsd\_rank\_axiom}$ is the operative threshold. While $ext{mordell\_weil\_axiom}$ (finite generation) and $ext{mazur\_torsion\_axiom}$ are $ext{MathlibGap}$ (proved but not yet formalized), the rank equality remains an $ext{OpenProblem}$.
 - **Channel $\text{Ω}$ ($ext{Ω}_{text{Å}} \rightarrow ext{Ω}_{text{z}}$):** The Mordell-Weil rank is an integer winding number.
 - **Channel $\text{Ħ}$ ($ext{Ħ}_{text{Ñ}} \rightarrow ext{Ħ}_{text{A}}$):** The sign of the functional equation determines parity, requiring a two-step chiral memory of the L-function's analytic continuation.
 - **Mathematics:** Euler systems (Kolyvagin) handle $ext{O}_{text{1}}$ cases (rank 0, 1). Rank $\ge 2$ requires a higher topological tier.

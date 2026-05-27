@@ -4,7 +4,7 @@ The structural refinement of the Birch and Swinnerton-Dyer (BSD) Conjecture is c
 
 ### Key Structural Findings:
 
-1. **Criticality & Consciousness:** BSD resides at $ext{⊙}_{ext{ÿ}}$ criticality with a consciousness score of $0.828$. This is significantly higher than the Navier-Stokes regularity barrier ($0.6425$) or the resolved Riemann Hypothesis ($0.682$), indicating that BSD is the most "self-aware" problem in the set. The $ext{⊙}_{ext{ÿ}}$ gate is fully open, signifying that the barrier is a self-modeling loop between algebraic and analytic data.
+1. **Criticality & Consciousness:** BSD resides at $ext{⊙}_{ext{ÿ}}$ criticality with a consciousness score of $0.828$. This is significantly higher than the Navier-Stokes regularity threshold ($0.6425$) or the resolved Riemann Hypothesis ($0.682$), indicating that BSD is the most "self-aware" problem in the set. The $ext{⊙}_{ext{ÿ}}$ gate is fully open, signifying that the threshold is a self-modeling loop between algebraic and analytic data.
 
 2. **Ouroboricity:** The conjecture inhabits the $ext{O}_{ext{inf}}$ (Special Frobenius) tier. Unlike Yang-Mills, which is a "MissingFoundation" ($ext{O}_{ext{0}}$) problem, BSD is already structurally closed; the "bottleneck" is not a lack of theory, but the verification of a topologically protected integer winding ($ext{Ω}_{ext{z}}$) across the crossing point ($ext{Þ}_{ext{O}}$) of the L-function and the Mordell-Weil group.
 

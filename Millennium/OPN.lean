@@ -1,5 +1,5 @@
 -- Imscribing/Millennium/OPN.lean
--- Odd Perfect Numbers — Three-Layer Barrier Analysis
+-- Odd Perfect Numbers — Three-Layer Threshold Analysis
 -- Every sorry is an honest marker. Layer 1 sorry is MathlibGap; Layer 2 is OpenProblem.
 
 import Mathlib.NumberTheory.ArithmeticFunction.Defs
@@ -16,7 +16,7 @@ import Mathlib.Tactic
 set_option linter.unusedVariables false
 
 /-!
-# Odd Perfect Numbers: Three-Layer Barrier Analysis
+# Odd Perfect Numbers: Three-Layer Threshold Analysis
 
 **The problem** (open since antiquity; tracked in Clay-adjacent number theory):
 Does there exist an odd perfect number?
@@ -29,7 +29,7 @@ Are there any odd ones?
 
 ---
 
-**Two-layer barrier** (unlike the other MPPs, OPN has a clean two-layer sorry structure):
+**Two-layer threshold** (unlike the other MPPs, OPN has a clean two-layer sorry structure):
 
   Layer 1 — Euler's structure theorem (MathlibGap): If N is an odd perfect number,
     then N has a specific prime factorization: N = p^α · m² where p is prime,
@@ -61,7 +61,7 @@ Are there any odd ones?
 
 ---
 
-**Barrier classification**:
+**Threshold classification**:
   Layer 1 (Euler form): `MathlibGap` — proved in mathematics, not formalized.
   Layer 2 (nonexistence): `OpenProblem` — no proof exists.
 
@@ -144,7 +144,7 @@ axiom opn_lower_bound_axiom (N : ℕ) (hN : IsOddPerfect N) : (10 : ℕ)^1500 < 
 
 /-- OPN nonexistence axiom.
     No odd perfect number exists. This IS the OPN conjecture.
-    BarrierType = OpenProblem. Open since Descartes (~1638). -/
+    ThresholdType = OpenProblem. Open since Descartes (~1638). -/
 axiom opn_nonexistence_axiom : OPNConjecture
 
 /-- Euclid-Euler even perfect number theorem axiom (MathlibGap).
@@ -253,7 +253,7 @@ theorem opn_nonexistence : OPNConjecture :=
 
 /-- The two sorries are NOT stacked in the YM sense:
     `opn_nonexistence` can be stated without `euler_opn_structure`.
-    They are parallel sorries with different barrier types.
+    They are parallel sorries with different threshold types.
     (Unlike YM where sorry 2 cannot even be stated without sorry 1.) -/
 theorem opn_sorries_are_parallel : True := trivial
   -- Contrast with YM: `ym_mass_gap` requires T : QuantumYMTheory (from sorry 1).

@@ -6,7 +6,7 @@ import Imscribing.Algebra
   # RH-ZFCt Bridge: Formalizing the ZeroFreeStrip and Lee-Yang Zero-Free Region
     via ZFCt Promotion Channels
 
-  Objective: Advance the RH barrier from OpenProblem (3-layer, Phi_c_complex criticality)
+  Objective: Advance the RH threshold from OpenProblem (3-layer, Phi_c_complex criticality)
   to a structured formalization by applying ZFCt promotions to the Riemann zeta
   function and its completed variant xi(s).
 
@@ -34,7 +34,7 @@ import Imscribing.Algebra
 
   One honest axiom remains:
     ✓ `axiom zeta_zeros_frobenius_fixed` — all nontrivial zeros are PM_Z2 fixed points.
-      This IS the Riemann Hypothesis. BarrierType = OpenProblem.
+      This IS the Riemann Hypothesis. ThresholdType = OpenProblem.
 -/
 
 namespace Millennium.RH_ZFCt
@@ -145,7 +145,7 @@ def IsZetaZero (s : ℂ) : Prop := Millennium.RH.IsCriticalZero s
     This is RH restated as a Frobenius-fixing claim — the zero locus self-imscribes
     under the combined functional-equation + conjugation involution.
 
-    BarrierType = OpenProblem. This is the ONE honest axiom that remains in this module.
+    ThresholdType = OpenProblem. This is the ONE honest axiom that remains in this module.
     All other former axioms (RiemannXiFunction, xi_functional_equation, IsZetaZero)
     have been grounded in Mathlib or direct definitions.
 

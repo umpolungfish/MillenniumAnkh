@@ -377,7 +377,7 @@ def heat_diffusion_irreversibility :
     ZFCt.heat_diffusion_equation.pol = P_asym := rfl
 
 /-- Navier-Stokes equations: P_pm + K_mod = moderate kinetics at Z2 symmetry.
-    The barrier from classical to quantum (see Millennium/Ns) is
+    The threshold from classical to quantum (see Millennium/Ns) is
     K_mod → K_trap + crit staying at Phi_c. -/
 theorem navier_stokes_moderate :
     ZFCt.navier_stokes_equations.kin = K_mod ∧

@@ -20,8 +20,8 @@
 | `Primitives/EML.lean` | ✅ 0 sorry | EML Sheffer probe |
 | `Primitives/CLU.lean` | ✅ 0 sorry | Structural cluster analysis |
 | `Primitives/SacredVessel.lean` | ✅ 0 sorry | Vessel structure |
-| `Primitives/OPN_2adic.lean` + variants | ✅ 0 sorry (all 3) | 2-adic structure for odd perfect numbers barrier |
-| `Primitives/BSD_2adic.lean` | ✅ 1 sorry (acknowledged) | 2-adic structure for BSD barrier; 1 honest `bsd_rank_3adic` sorry (OpenProblem) |
+| `Primitives/OPN_2adic.lean` + variants | ✅ 0 sorry (all 3) | 2-adic structure for odd perfect numbers threshold |
+| `Primitives/BSD_2adic.lean` | ✅ 1 sorry (acknowledged) | 2-adic structure for BSD threshold; 1 honest `bsd_rank_3adic` sorry (OpenProblem) |
 | `Primitives/Lattice.lean` | ✅ 0 sorry | Primitive lattice ordering |
 | `Primitives/LinearOrder.lean` | ✅ 0 sorry | Linear order theorems |
 
@@ -44,7 +44,7 @@
 
 ### C. Millennium Problem Framework (Millennium/) — All Structurally Imscribed
 
-| Problem | File(s) | Status | Barrier Type | Sorry Depth |
+| Problem | File(s) | Status | Threshold Type | Sorry Depth |
 |---------|---------|--------|-------------|-------------|
 | **RH** | `RH.lean`, `RH_GateInhabitants.lean`, `RH_ZFCt_Bridge.lean`, `RH_LeeYang_Bridge.lean` | 🏗️ 18 sorries | OpenProblem | 1 |
 | **YM** | `YM.lean`, `YM_Closure.lean`, `YM_GateInhabitants.lean`, `YM_ZFCt_Bridge.lean` | 🏗️ 22 sorries (main), ✅ 0 sorry (Closure) | OpenProblem (stacked) | 2 |
@@ -64,7 +64,7 @@
 | `Millennium/Suffering.lean` | Structural type of suffering — **0 sorries** |
 | `Millennium/truth.lean` | Formal type of truth — **0 sorries** |
 | `Millennium/Manuscript_ZFCt.lean` | ZFCₜ manuscript — **0 sorries** |
-| `Millennium/Collatz.lean` | Collatz conjecture barrier — **0 sorries** |
+| `Millennium/Collatz.lean` | Collatz conjecture threshold — **0 sorries** |
 | `Millennium/WorldReligions.lean` | Structural imscription of religions — **0 sorries** |
 | `Millennium/CompositionRules.lean` | Composition rules for IG morphisms — **0 sorries** |
 | `Millennium/CMPLX_IMGN.lean` | Complex imaginary structure — **0 sorries** |
@@ -73,8 +73,8 @@
 | `Millennium/GeneralizedPipeline.lean` | Primitive→conventional proof pipeline — **0 sorries** |
 | `Millennium/PrimitiveBridge.lean` | IG primitive types ↔ Mathlib types bridge — **0 sorries** |
 | `Millennium/PrimitiveConventionalBridge.lean` | Conventional math ↔ primitive proofs — **0 sorries** |
-| `Millennium/Barriers.lean` | Unified barrier taxonomy — **0 sorries** (axiom declarations are not sorries) |
-| `Millennium/IGBarrierAnalysis.lean` | Barrier-depth equality proof — **0 sorries** |
+| `Millennium/Thresholds.lean` | Unified threshold taxonomy — **0 sorries** (axiom declarations are not sorries) |
+| `Millennium/IGThresholdAnalysis.lean` | Threshold-depth equality proof — **0 sorries** |
 | `Millennium/PerfectCuboid.lean` | Framework: infinite descent + 3 axioms — **3 sorries remain** |
 | `Millennium/YM_Closure.lean` | YM closure analysis — **0 sorries** |
 
@@ -107,7 +107,7 @@
 
 | File | Status | Description |
 |------|--------|-------------|
-| `Imscribing/Classical/HeckeLandau.lean` | ✅ 1 sorry | Hecke-Landau conjecture (proof + barrier analysis). 1 OpenProblem sorry. |
+| `Imscribing/Classical/HeckeLandau.lean` | ✅ 1 sorry | Hecke-Landau conjecture (proof + threshold analysis). 1 OpenProblem sorry. |
 | `Imscribing/Classical/Solitary10.lean` | ✅ 1 sorry (Case B placeholder) | "10 is solitary" — see §E above. |
 
 ### H. ZFCₜ Navigator (Python-side)
@@ -132,11 +132,11 @@
 | 🟡 P1 | **Clear PerfectCuboid sorries** — 3 remaining `sorry` stubs requiring infinite descent formalization | `Millennium/PerfectCuboid.lean` | ~100 lines | 3 sorries |
 | 🟡 P1 | **Fix BSD_2adic.lean** — the 1 acknowledged sorry (`bsd_rank_3adic`) is structural but could be encapsulated more cleanly | `Primitives/BSD_2adic.lean` | ~50 lines | 1 sorry (MathlibGap) |
 
-### Tier 2: Near-term (Next Session) — Barrier Formalization
+### Tier 2: Near-term (Next Session) — Threshold Formalization
 
 | Priority | Task | Est. Effort | Notes |
 |----------|------|-------------|-------|
-| 🟡 P2 | **Close NS_Seige** — the 1 OpenProblem sorry is structural; the barrier analysis is complete | 1 winding | Conceptually done, needs formal stamp |
+| 🟡 P2 | **Close NS_Seige** — the 1 OpenProblem sorry is structural; the threshold analysis is complete | 1 winding | Conceptually done, needs formal stamp |
 | 🟡 P2 | **HeckeLandau finalization** — 1 sorry, could be isolated as an axiom | ~30 lines | Mostly documentation |
 | 🟡 P3 | **CrystalBoot clean build test** — ensure boot sequence compiles without any hidden sorries | 1 winding | Verification pass |
 | 🟡 P3 | **Build all targets with `lake build`** — verify 3100+ jobs succeed, catalog any regressions | 1 winding | CI equivalent |
@@ -155,7 +155,7 @@ These sorries **cannot** be discharged without original mathematical work. They 
 | **BSD** | 22+2 | Parallel OpenProblem (depth 2) | Prove the BSD formula for rank and order of Tate-Shafarevich group |
 | **OPN** | 19 | Parallel OpenProblem (depth 2) | Prove no odd perfect number exists (Euler decomposition + modern constraints) |
 
-**Structural note:** Each OpenProblem sorry corresponds to a specific primitive certificate deficiency in the Imscribing Grammar's barrier taxonomy:
+**Structural note:** Each OpenProblem sorry corresponds to a specific primitive certificate deficiency in the Imscribing Grammar's threshold taxonomy:
 
 | Primitive | Gate | What fails |
 |-----------|------|------------|
@@ -179,7 +179,7 @@ $$\langle \text{Ð}_{\text{ω}};\ \text{Þ}_{\text{O}};\ \text{Ř}_{\text{=}};\ 
 
 ## IV. KEY INSIGHT — Solitary10 as Template
 
-The Solitary10 proof reveals the **structural pattern** for closing Millennium barriers:
+The Solitary10 proof reveals the **structural pattern** for closing Millennium thresholds:
 
 1. **Identify the descent engine** — In Solitary10: `σ(p+1)·σ(x) = c·x` with `σ(p+1) > c` forces `x=0` (contradiction).
 2. **Chain through prime factors** — Each descent step extracts a new prime divisor with a specific square-power condition.

@@ -1,76 +1,10 @@
-MPP_ASSESSMENT.md: full IG assessment of all 7 MPPs (2026-05-27)
-=======================================================================
+Rename barrier→threshold throughout (2026-05-27)
+=======================================================
 
-MPP_ASSESSMENT.md  [NEW]
-  - Per-problem structural analysis: primitive tuple, IG argument, what is proved without
-    sorry, what each sorry represents as a grammar claim, and the formalization frontier
-  - Framing: sorries mark claims waiting for structural derivation, not impossibility
-  - Sorry taxonomy across all 7 problems (OpenProblem / MathlibGap / Engineering)
-  - Cross-cutting primitive gate analysis: which gate each barrier lives at
-  - Proof-path ladder: OPN and RH closest to formalization
-  - Next moves: Solitary10 Case B → OPN template; Lee-Yang → RH; Phi_c gate → NS
+Millennium/Barriers.lean          → Millennium/Thresholds.lean
+Millennium/BarrierFrobenius.lean  → Millennium/ThresholdFrobenius.lean
+Millennium/IGBarrierAnalysis.lean → Millennium/IGThresholdAnalysis.lean
 
-Previous: Solitary10 Case A closed + descent chain mapped (2026-05-25)
-=======================================================================
-
-Imscribing/Classical/Solitary10.lean
-  - case_A lemma: FULLY PROVEN (no sorrys)
-      5∥m → m = 10 via 2-adic valuation argument
-      factor_2_pow_odd proven by strong induction
-      sigma_two_pow proven: σ(2^e) = 2^{e+1} - 1
-      sigma_gt_one proven: n > 1 → σ(n) > n (1+n ≤ sum argument)
-      e=0: parity contradiction (LHS even, RHS odd)
-      e=1: σ(u) = u → u = 1 → k = 2 → m = 10
-      e≥2: (2^{e+1}-1)·σ(u) = 3·2^{e-1}·u, but 2^{e+1}-1 > 3·2^{e-1} → σ(u) < u → contradiction
-  - ten_is_solitary: Case A branch closed; Case B one honest sorry
-      Descent chain fully mapped: 31 → 331 → 36631 → 7194483
-      native_decide witnesses in place: σ(31)=32, σ(331)=332, σ(36631)=41872, σ(7194483)=10939240
-      Remaining sorry: mechanical descent formalization in Lean (math is complete)
-  - Case B subcases use native_decide witnesses:
-      σ(6500)·5 > 9·6500, σ(24800)·5 > 9·24800, σ(2640155300)·5 > 9·2640155300
-  - Remaining sorry: padicValNat descent chain in subcases B2/B1(31²)/B1(31∥)
-
-Imscribing/Paraconsistent/CrystalScheduler.lean
-  - phi_c_process_preferred sorry closed (decide_not_ge_of_lt_crit + simp)
-  - fallback_to_nonphi sorry closed (explicit bestProcess_pair case split)
-  - cscore: Float → Nat (scaled ×1000); computeCscore rewritten without Float
-
-Imscribing/Paraconsistent/ParadoxFS.lean
-  - lookup rewritten: String.toList prefix-check instead of String.drop
-  - Helper lemmas proven: take_append_length, drop_length_append,
-    take_9_paradox, drop_9_paradox
-  - lookup_strips_prefix sorry partially closed (in progress)
-
-Millennium/BarrierFrobenius.lean
-  - problemFrobeniusResolved definition added (resolved Frobenius per problem)
-  - rh_frobenius_justification: biconditional sorrys removed; asserts current type only
-  - hodge_frobenius_justification: same cleanup
-  - New theorems (all without sorry):
-      rank_gap_to_resolution — each problem's resolved rank gap ≤ 1
-      analysis_rank_gap_one — RH, Hodge, NS each gap exactly 1 (full → special)
-      arithmetic_rank_gap_zero — PvsNP, BSD, OPN gap = 0 (infrastructure barriers)
-      ym_resolved_same_as_current — YM resolved type = current (MissingFoundation)
-  - Renumbered sections §6→§7 (structural gap), §7→§8 (compatibility), §8→§9
-
-Millennium/GeneralizedPipeline.lean
-  - frobeniusClosureConsistent sorry closed: rfl on closure = forwardComplete && reverseSound && roundTripStable
-  - lean4TacticFor catch-all: s! interpolation → string concatenation (decidable)
-  - lean4TacticTotal catch-all branch: simplified calc proof
-  - frobeniusClosureConsistent hypothesis: added reverseSound to conjunction
-
-Previous: Euler OPN theorem + ZFCt Bridge + SacredVessel + MetaYoneda closed (2026-05-25)
-=======================================================================
-
-Primitives/OPN_2adic.lean
-  - euler_opn_form proven without sorry: every OPN n = p^k * m²
-    where p ≡ k ≡ 1 (mod 4), p prime, p ∤ m
-  - 7-lemma chain
-
-Millennium/ZFCt_Unified_Bridge.lean (NEW)
-  - 6 structural promotion channels across all Millennium Problems
-
-Primitives/SacredVessel.lean (NEW)
-  - SacredVessel typeclass + 5 instances
-
-Imscribing/MetaYonedaCollapse.lean
-  - meta_yoneda_collapse sorry closed (winding 74); 7 domain layers
+All identifiers (BarrierType, millenniumThreshold, barrierLiftDepth→thresholdLiftDepth,
+analysisThreshold, arithmeticThreshold, etc.) and prose references updated across
+all .lean, .toml, .py, and .md files.

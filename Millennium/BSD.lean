@@ -1,5 +1,5 @@
 -- Imscribing/Millennium/BSD.lean
--- Birch and Swinnerton-Dyer Conjecture — Three-Layer Barrier Analysis
+-- Birch and Swinnerton-Dyer Conjecture — Three-Layer Threshold Analysis
 -- Every sorry is an honest marker. Two layers are MathlibGap; one is OpenProblem.
 
 import Mathlib.AlgebraicGeometry.EllipticCurve.Weierstrass
@@ -10,7 +10,7 @@ import Mathlib.Tactic
 set_option linter.unusedVariables false
 
 /-!
-# Birch and Swinnerton-Dyer Conjecture: Three-Layer Barrier Analysis
+# Birch and Swinnerton-Dyer Conjecture: Three-Layer Threshold Analysis
 
 **The problem** (Clay Millennium, 2000):
 For an elliptic curve E over ℚ, the algebraic rank of E(ℚ) equals
@@ -69,7 +69,7 @@ Tate-Shafarevich group Ш(E/ℚ), Tamagawa numbers c_v, and torsion:
 
 ---
 
-**Barrier classification**:
+**Threshold classification**:
   Primary: `OpenProblem` (BSD itself — rank = analytic rank for all E/ℚ)
   Secondary: `MathlibGap` × 2 (Mordell-Weil + Mazur torsion — both proved, neither in Mathlib)
 
@@ -264,7 +264,7 @@ theorem mazur_torsion (W : WeierstrassCurve ℚ) [W.IsElliptic] :
     This sorry IS NOT a Mathlib gap. The objects are well-defined
     (via the modularity theorem, L(E,s) is entire and well-defined for all s ∈ ℂ).
     The sorry is the conjecture itself.
-    BarrierType = `OpenProblem`.
+    ThresholdType = `OpenProblem`.
 
     The sorry is logically PARALLEL to `mordell_weil` and `mazur_torsion`:
     · BSD can be stated (and this sorry written) without discharging Layer 1a/1b.
@@ -278,7 +278,7 @@ theorem mazur_torsion (W : WeierstrassCurve ℚ) [W.IsElliptic] :
 /-- BSD rank conjecture axiom.
     rank E(ℚ) = ord_{s=1} L(E,s) for every elliptic curve E/ℚ.
     This IS the BSD conjecture — stated as an explicit axiom.
-    BarrierType = OpenProblem. Open since Birch-Swinnerton-Dyer (1965). -/
+    ThresholdType = OpenProblem. Open since Birch-Swinnerton-Dyer (1965). -/
 axiom bsd_rank_axiom : BSDRankConjecture
 
 theorem bsd_certificate : BSDRankConjecture :=
@@ -327,9 +327,9 @@ theorem bsd_has_max_parallel_sorries : True := trivial
 def BSDRankCertificate (W : WeierstrassCurve ℚ) [W.IsElliptic] : Prop :=
   ellipticRank W = analyticRank W
 
-/-- BSD barrier: discharging `bsd_certificate` is equivalent to providing
+/-- BSD threshold: discharging `bsd_certificate` is equivalent to providing
     `BSDRankCertificate W` for every elliptic curve W. -/
-theorem bsd_barrier : BSDRankConjecture ↔
+theorem bsd_threshold : BSDRankConjecture ↔
     ∀ (W : WeierstrassCurve ℚ) [W.IsElliptic], BSDRankCertificate W := by
   simp [BSDRankConjecture, BSDRankCertificate]
 
@@ -394,9 +394,9 @@ theorem modularity_theorem (W : WeierstrassCurve ℚ) [W.IsElliptic] : True := t
 -- §10. Structural comparison
 -- ============================================================
 
-/-- BSD vs RH: Both OpenProblem. Different barrier character.
-    · RH: barrier is a constraint (ZeroFreeStrip 0 — no zeros off axis).
-    · BSD: barrier is an equality (BSDRankCertificate — algebraic = analytic rank).
+/-- BSD vs RH: Both OpenProblem. Different threshold character.
+    · RH: threshold is a constraint (ZeroFreeStrip 0 — no zeros off axis).
+    · BSD: threshold is an equality (BSDRankCertificate — algebraic = analytic rank).
     RH has no proved instances beyond trivial cases.
     BSD has a large proved partial result: analytic rank ≤ 1 fully handled. -/
 theorem bsd_vs_rh_structural_distinction : True := trivial

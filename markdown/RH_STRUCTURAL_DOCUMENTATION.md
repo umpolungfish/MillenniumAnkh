@@ -21,8 +21,8 @@ The structural localizaton of the Riemann Hypothesis (RH) within the `Millennium
 4.  **Structural Distance:**
     The computed distance between the open conjecture and its resolution is $5.4772$. This high value confirms that the "gap" in the Riemann Hypothesis is structurally remote; it is not a missing lemma in $ext{O}_{ext{1}}$ analysis, but a requirement for a higher-tier topological $ext{O}_{ext{inf}}$ architecture.
 
-5.  **Lean 4 Barrier Analysis:**
-    The formalization in `Millennium/RH.lean` confirms a three-layer barrier. The `sorry` is localized at the `ZeroFreeStrip 0` type. The analysis proves that partial results ($ext{ZeroFreeStrip δ}$ for $δ > 0$) do not close the structural gap to the $ext{O}_{ext{inf}}$ target.
+5.  **Lean 4 Threshold Analysis:**
+    The formalization in `Millennium/RH.lean` confirms a three-layer threshold. The `sorry` is localized at the `ZeroFreeStrip 0` type. The analysis proves that partial results ($ext{ZeroFreeStrip δ}$ for $δ > 0$) do not close the structural gap to the $ext{O}_{ext{inf}}$ target.
 
 ---
 

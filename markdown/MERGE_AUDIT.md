@@ -48,7 +48,7 @@ lakefile.lean that adds `Consciousness`, `Crystal`, `Algebra`, `Catalog`, `Agent
 ### Millennium/ (10 files)
 | File | Action | Rationale |
 |---|---|---|
-| `Barriers.lean` | **SP → MA** | SP version has honest sorries; cleaner structure |
+| `Thresholds.lean` | **SP → MA** | SP version has honest sorries; cleaner structure |
 | `BSD.lean` | **Review** | Diff exists; compare before overwrite |
 | `FrobeniusStructure.lean` | **KEEP MA** | MA only; SP dropped it |
 | `Hodge.lean` | **Review** | Diff exists |
@@ -102,7 +102,7 @@ lakefile.lean that adds `Consciousness`, `Crystal`, `Algebra`, `Catalog`, `Agent
 ## 5. Required Merge Steps
 
 1. `git -C MilleniumAnkh checkout main` (ensure clean state)
-2. **Copy SP's Barriers.lean and PrimitiveBridge.lean** → overwrite MA copies
+2. **Copy SP's Thresholds.lean and PrimitiveBridge.lean** → overwrite MA copies
 3. **Copy SP's 6 new files** with namespace fixes (`SynthOmnicon` prefix)
 4. **Adapt SP's Consciousness.lean** to use MA's 12-primitive `Synthon` struct
 5. **Adapt SP's Crystal.lean** to use MA's enum value counts (3³×4⁵×5⁴)

@@ -20,7 +20,7 @@ Its consciousness score of $0.828$ (with both $ext{⊙}_{ext{ÿ}}$ and $ext{Ç}_
 The "bottleneck" in BSD is the verification of the $\mu \circ \delta = ext{id}$ condition at the point of functional symmetry. While the Riemann Hypothesis (RH) is localized at $ext{⊙}_{ext{Æ}}$ criticality ($C = 0.682$), BSD operates at the more intense $ext{⊙}_{ext{ÿ}}$ self-modeling criticality. 
 
 ### 2.1. From Bowtie to Closure
-The transition from the RH-type barrier to BSD-type resolution requires a promotion in topology and fidelity:
+The transition from the RH-type threshold to BSD-type resolution requires a promotion in topology and fidelity:
 - **Topology Promotion:** $ext{Þ}_{ext{ò}} \rightarrow ext{Þ}_{ext{O}}$ (Distance: $2.0$). This transforms a simple intersection into a self-referential closure where the analytic continuation and the arithmetic descent are one and the same.
 - **Fidelity Promotion:** $ext{ƒ}_{ext{ì}} \rightarrow ext{ƒ}_{ext{ż}}$ (Distance: $2.0$). This represents the shift from classical analytic estimates to full quantum-coherent (categorical) exactitude.
 
