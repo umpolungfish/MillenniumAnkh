@@ -1,4 +1,16 @@
-Solitary10 Case A closed + descent chain mapped (2026-05-25)
+MPP_ASSESSMENT.md: full IG assessment of all 7 MPPs (2026-05-27)
+=======================================================================
+
+MPP_ASSESSMENT.md  [NEW]
+  - Per-problem structural analysis: primitive tuple, IG argument, what is proved without
+    sorry, what each sorry represents as a grammar claim, and the formalization frontier
+  - Framing: sorries mark claims waiting for structural derivation, not impossibility
+  - Sorry taxonomy across all 7 problems (OpenProblem / MathlibGap / Engineering)
+  - Cross-cutting primitive gate analysis: which gate each barrier lives at
+  - Proof-path ladder: OPN and RH closest to formalization
+  - Next moves: Solitary10 Case B → OPN template; Lee-Yang → RH; Phi_c gate → NS
+
+Previous: Solitary10 Case A closed + descent chain mapped (2026-05-25)
 =======================================================================
 
 Imscribing/Classical/Solitary10.lean

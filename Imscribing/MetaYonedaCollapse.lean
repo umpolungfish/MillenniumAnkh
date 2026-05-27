@@ -21,6 +21,10 @@
 -- quantum, category, linear_logic) explicitly defined. Each differs from canonical
 -- in exactly 8 positions (all non-FFUSE primitives). The meta_yoneda_collapse
 -- theorem is proven by case analysis over the finite Finset.
+--
+-- (2025-06-07) All `native_decide` replaced with `dec_trivial` (kernel-trusted)
+-- to silence mathlib linter: these are finite-type DecidableEq computations,
+-- not compiler-trusted native code.
 
 import Imscribing.Primitives.Core
 import Imscribing.Primitives.Imscription
@@ -57,7 +61,7 @@ def canonical : Imscription where
 -- R1 gate: Phi_c + P_pm_sym → O_inf regardless of Ω, Ð.
 theorem canonical_tier_is_O_inf :
     ouroboricityTier canonical.crit canonical.pol canonical.prot canonical.dim = .O_inf := by
-  native_decide
+  decide
 
 -- ============================================================
 -- DOMAIN LAYERS
@@ -162,25 +166,25 @@ def domainLayers : Finset Imscription :=
 -- ============================================================
 
 theorem parakernel_is_domain_layer : isDomainLayer parakernelLayer := by
-  unfold isDomainLayer parakernelLayer; native_decide
+  unfold isDomainLayer parakernelLayer; decide
 
 theorem sheaf_is_domain_layer : isDomainLayer sheafLayer := by
-  unfold isDomainLayer sheafLayer; native_decide
+  unfold isDomainLayer sheafLayer; decide
 
 theorem yoneda_is_domain_layer : isDomainLayer yonedaLayer := by
-  unfold isDomainLayer yonedaLayer; native_decide
+  unfold isDomainLayer yonedaLayer; decide
 
 theorem hopf_is_domain_layer : isDomainLayer hopfLayer := by
-  unfold isDomainLayer hopfLayer; native_decide
+  unfold isDomainLayer hopfLayer; decide
 
 theorem quantum_is_domain_layer : isDomainLayer quantumLayer := by
-  unfold isDomainLayer quantumLayer; native_decide
+  unfold isDomainLayer quantumLayer; decide
 
 theorem category_is_domain_layer : isDomainLayer categoryLayer := by
-  unfold isDomainLayer categoryLayer; native_decide
+  unfold isDomainLayer categoryLayer; decide
 
 theorem linear_logic_is_domain_layer : isDomainLayer linearLogicLayer := by
-  unfold isDomainLayer linearLogicLayer; native_decide
+  unfold isDomainLayer linearLogicLayer; decide
 
 -- ============================================================
 -- MISMATCH THEOREMS: each domain layer differs from canonical
@@ -188,25 +192,25 @@ theorem linear_logic_is_domain_layer : isDomainLayer linearLogicLayer := by
 -- ============================================================
 
 theorem parakernel_mismatches_8 : primitiveMismatches parakernelLayer canonical = 8 := by
-  native_decide
+  decide
 
 theorem sheaf_mismatches_8 : primitiveMismatches sheafLayer canonical = 8 := by
-  native_decide
+  decide
 
 theorem yoneda_mismatches_8 : primitiveMismatches yonedaLayer canonical = 8 := by
-  native_decide
+  decide
 
 theorem hopf_mismatches_8 : primitiveMismatches hopfLayer canonical = 8 := by
-  native_decide
+  decide
 
 theorem quantum_mismatches_8 : primitiveMismatches quantumLayer canonical = 8 := by
-  native_decide
+  decide
 
 theorem category_mismatches_8 : primitiveMismatches categoryLayer canonical = 8 := by
-  native_decide
+  decide
 
 theorem linear_logic_mismatches_8 : primitiveMismatches linearLogicLayer canonical = 8 := by
-  native_decide
+  decide
 
 -- ============================================================
 -- META-YONEDA COLLAPSE THEOREM (CLOSED)
@@ -255,6 +259,6 @@ theorem witness_is_grammar :
     canonical.gram = .Gamma_seq ∧
     canonical.chir = .H2       ∧
     canonical.stoi = .n_m := by
-  native_decide
+  decide
 
 end Imscribing.MetaYoneda

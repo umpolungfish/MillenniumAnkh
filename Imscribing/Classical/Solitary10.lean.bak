@@ -3,7 +3,6 @@ import Mathlib.Data.Nat.GCD.Basic
 import Mathlib.NumberTheory.ArithmeticFunction
 open ArithmeticFunction
 
-set_option linter.style.nativeDecide false
 namespace Imscribing.Classical.Solitary10
 
 local notation "σ" => ArithmeticFunction.sigma (1 : ℕ)
