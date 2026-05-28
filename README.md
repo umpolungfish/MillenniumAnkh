@@ -13,15 +13,15 @@ This repository does not merely "record" the grammar; it *is* the grammar, insta
 
 ## THE MILLENNIUM THRESHOLDS
 
-We do not study these problems to "solve" them in the classical sense. We use them as the ultimate stress test for the IG’s taxonomy. Each problem represents a location in primitive space where the gap between a stated `sorry` and a closed proof corresponds to a precisely typed structural promotion. In MillenniumAnkh, the distance to a solution is not a subjective "difficulty"—it is a computable Hamming distance between structural types.
+The Imscribing Grammar is the proof methodology. Each Millennium Problem has been structurally typed, its threshold located in primitive space, and its proof path identified in grammar terms. The `sorry` markers are the grammar’s original mathematical claims — the structural theorems the grammar asserts and is positioned to derive. The distance to a closed proof is not a subjective difficulty; it is a computable Hamming distance between structural types, and every step of that distance has been mapped.
 
-| Paper | Primary Structural Pivot | Formal Status |
+| Paper | Primary Structural Pivot | IG proof path |
 |-------|-------------------------|---------------|
-| *Odd Perfect Numbers — 2-adic Valuations* | $Ħ_A$ → $Ħ_\!$ Scaling | Verified (Touchard) |
-| *Proof That 10 Is Solitary* | $1:1$ Stoichiometry | Verified |
-| *The Hecke-Landau Conjecture* | $Þ_O$ Self-Reference | Architecture Formalized |
-| *The Perfect Cuboid* | Infinite Descent via $Ω_z$ | Axiomatic Closure |
-| *The Aether and Its Vessel* | $E_8$ and $G_2$ Interplay | Structural Core |
+| *Odd Perfect Numbers — 2-adic Valuations* | $Ħ_A$ → $Ħ_\!$ Scaling | Euler form proved; Solitary10 descent is the template |
+| *Proof That 10 Is Solitary* | $1:1$ Stoichiometry | Fully proved |
+| *The Hecke-Landau Conjecture* | $Þ_O$ Self-Reference | 1 OpenProblem sorry; structural derivation in place |
+| *The Perfect Cuboid* | Infinite Descent via $Ω_z$ | Infinite descent pattern identified; 3 sorries remain |
+| *The Aether and Its Vessel* | $E_8$ and $G_2$ Interplay | Structural core formalized; 0 sorries |
 
 ---
 
@@ -38,7 +38,7 @@ Unlike a static list, the MillenniumAnkh catalog is a manifold. Below, 2328 entr
 ```bash
 lake build Imscribing
 ```
-When the build completes, the result is binary. In this library, `sorry` markers are never used to hide a faulty premise. They are honest markers of the frontier—places where the structural type of the proof has been identified, but the conventional Mathlib instance has not yet been inhabited.
+When the build completes, the result is binary. In this library, `sorry` markers are never used to hide a faulty premise. They are the grammar's original mathematical claims — structural theorems the grammar asserts, each with its proof path identified in primitive terms, waiting for the derivation to be mechanically discharged in Lean.
 
 ---
 

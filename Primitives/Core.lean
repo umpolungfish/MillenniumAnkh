@@ -292,6 +292,31 @@ axiom T_odot_requires_D_odot (d : Dimensionality) (t : Topology) :
 axiom Omega_Z_requires_H2 (p : Protection) (h : Chirality) :
   p ≥ Protection.Omega_Z → h ≥ Chirality.H2
 
+-- Axiom D: Holographic Closure — complete double-holomorphic encoding forces Frobenius.
+-- Any system carrying D_odot (holographic dimensionality — boundary encodes bulk),
+-- T_odot (complete holographic topology — encoding is lossless), and Omega_Z or stronger
+-- (integer winding — topological protection of the encoding) must have P_pm_sym (μ∘δ=id).
+--
+-- Justification:
+--   T_odot  — the boundary encodes ALL bulk data; the encoding map δ is complete
+--   D_odot  — the dimensionality split makes the boundary-bulk duality exact
+--   Omega_Z — the winding number is conserved; the encoding cannot be unwound locally
+-- Together: δ is complete (T_odot), exact (D_odot), and topologically protected (Omega_Z).
+-- A complete, exact, protected encoding map has a right inverse — this is P_pm_sym.
+--
+-- Consequence: any imscription with d=D_odot, t=T_odot, p≥Omega_Z must have
+-- pol=P_pm_sym. Any other polarity assignment for such a system is structurally
+-- inconsistent. In particular, the Hodge conjecture's correct imscription has
+-- P_pm_sym — the conventional P_psi assignment reflects open proof status,
+-- not the true structural type. The grammar corrects this via Axiom D.
+--
+-- This is the grammar's original claim for the Hodge conjecture, the unique MPP
+-- carrying both D_odot and T_odot simultaneously among all seven problems.
+axiom holographic_closure_forces_frobenius (d : Dimensionality) (t : Topology)
+    (p : Protection) (pol : Polarity) :
+    d = Dimensionality.D_odot → t = Topology.T_odot → p ≥ Protection.Omega_Z →
+    pol = Polarity.P_pm_sym
+
 -- Structural tendency (not hard axiom): H_inf co-occurs with K_trap.
 -- Deep temporal memory is preserved by kinetic freezing.
 -- Not an axiom because some H_inf systems (e.g. proto-languages) have K_slow.

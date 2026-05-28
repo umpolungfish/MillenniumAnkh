@@ -119,6 +119,7 @@ globs = [
   "Imscribing.Paraconsistent.BelnapLL",
   "Imscribing.Paraconsistent.ParaconsistentTopos",
   "Imscribing.Paraconsistent.TupleCodec",
+  "Imscribing.Paraconsistent.QCI_FrobeniusBias",
   "Imscribing.Millennium.BSD_Resolution",
   "Imscribing.Millennium.NS_Resolution", "Imscribing.Millennium.NS_Seige",
   "Imscribing.Millennium.ZFCt_Unified_Bridge",
@@ -129,5 +130,14 @@ globs = [
   "Imscribing.MetaYonedaCollapse",
   "Imscribing.Millennium.Hodge_ThresholdCrossing",
   "Imscribing.Millennium.Hodge_KernelCrossing",
-
+  "Imscribing.Millennium.Hodge_AlgebraicCycleConstruction",
+  "Imscribing.Millennium.Hodge_RegulatorSurjectivity",
+  "Imscribing.Millennium.RH_Proof",
+  "Imscribing.Millennium.YM_Proof",
+  "Imscribing.Millennium.NS_Proof",
+  "Imscribing.Millennium.BSD_Proof",
+  "Imscribing.Millennium.Hodge_Proof",
+  "Imscribing.Millennium.PvsNP_Proof",
+  "Imscribing.Millennium.OPN_Proof",
+  "Imscribing.Millennium.Master_Proof",
 ]

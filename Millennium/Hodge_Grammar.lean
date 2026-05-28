@@ -106,7 +106,9 @@ def hod_griffiths_group : Imscription := {
 def hod_degree_zero : Imscription := {
   dim := D_odot, top := T_in, rel := R_super, pol := P_asym,
   fid := F_ell, kin := K_fast, gran := G_beth, gram := Gamma_and,
-  crit := Phi_sub, chir := H0, stoi := one_one, prot := Omega_0 }-- ============================================================
+  crit := Phi_sub, chir := H0, stoi := one_one, prot := Omega_0 }
+
+-- ============================================================
 -- §2. VERIFIED LATTICE THEOREMS
 -- ============================================================
 
@@ -376,10 +378,8 @@ theorem algebraic_cycles_is_O_0 :
     imscriptionTier hod_algebraic_cycles = OuroboricityTier.O_0 := by
   native_decide
 
-/-- Rational Hodge classes are O_inf.
-    P_pm + Phi_c + Omega_Z + D_odot: pol=P_pm ≠ P_pm_sym,
-    prot=Omega_Z, dim=D_odot → O_2.
-    Actually let's verify by native_decide. -/
+/-- Rational Hodge classes are O_2.
+    pol=P_pm ≠ P_pm_sym; prot=Omega_Z; dim=D_odot → O_2. Verified by native_decide. -/
 theorem rational_hodge_classes_tier :
     imscriptionTier hod_rational_hodge_classes = OuroboricityTier.O_2 := by
   native_decide

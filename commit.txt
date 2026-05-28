@@ -1,26 +1,51 @@
-Hodge fsplit/ffuse Frobenius Kernel Crossing (2026-05-27)
-=========================================================
+QCI_FrobeniusBias.lean: measurement bias is Frobenius dual of coupling context (2026-05-28)
+=========================================================================
 
-Millennium/Hodge_KernelCrossing.lean  [NEW, 445 lines, builds clean]
-  - Exact fsplit/ffuse/frobenius_invariant cycle from Kernel.lean,
-    implemented for Hodge classes via Gersten-Quillen K-theory.
-  - HodgeSplit structure: carries (α_T, α_F, frobenius_condition).
-  - fsplit/ffuse operations mirror Kernel.lean exactly.
-  - frobenius_invariant: ffuse ∘ fsplit = id (μ∘δ = id proved).
-  - hodge_conjecture_implies_split / split_implies_hodge_conjecture:
-    both directions bridged; 2 honest MathlibGap sorrys for
-    Bloch's formula (CHᵖ(X) ≅ Hᵖ(X,𝒦ₚ), proved 1974 but not in Mathlib).
-  - FrobeniusCycleStep / runCycle / cycle_idempotent: full dynamical
-    system; running the cycle any number of times returns α.
+Imscribing/Paraconsistent/QCI_FrobeniusBias.lean (NEW)
+  Closes the gap admitted in QuantumClassicalInterface.lean: `measureQ0`'s
+  `bias` parameter was a free external input. This file proves it is fully
+  determined by the Frobenius algebra duality.
 
-Millennium/Hodge_Descent.lean
-  - griffiths_counterexample moved earlier in file; renamed
-    griffiths_nontrivial_exists (simplified statement).
-  - descent_p2 theorem added: DescentPredicate(n-1,1) → DescentPredicate(n,2).
+  CouplingMode inductive (meet / tensor):
+    meet  = δ-side: apparatus reads the system's Frobenius eigenvalue
+    tensor = μ-side: apparatus injects its own Belnap state as bias
 
-Millennium/Hodge_ThresholdCrossing.lean
-  - Product types (×) replaced with And (∧) in phi_closure_triggers_chain_reaction
-    and crossing_theorem for Prop compatibility.
+  frobeniusBias (mode apparatus system : Belnap) : Belnap
+    Eliminates the free parameter; bias is computable from coupling context.
 
-lakefile.toml
-  - Imscribing.Millennium.Hodge_KernelCrossing added to globs.
+  Theorems (all 0 sorrys, discharged by rfl / decide / simp+cases):
+    meet_at_exceptional_point         — meet at B reads B regardless of apparatus
+    tensor_classical_yields_classical — classical apparatus cannot preserve B
+    modes_agree_at_double_exceptional — both modes agree at apparatus=B, system=B
+    modes_are_distinct                — T-apparatus distinguishes meet from tensor
+    bias_fully_determined             — ∃! bias for every (mode, apparatus, system)
+    all_biases_determined             — exhaustive 8-case table
+    meet_path_is_wigners_friend       — meet path = measureQ0 with bias=B universally
+    tensor_B_is_wigners_friend        — B-apparatus tensor path = Wigner's friend
+    tensor_T_collapses / tensor_F_collapses — classical apparatus collapses B-register
+    meet_path_coherence_cost          — coherenceCount +2 on meet path at q0=B
+    tensor_T_coherence_cost           — coherenceCount +1 on T-apparatus collapse
+    gap_closed (definitional)         — measureDetermined = measureQ0 ∘ frobeniusBias
+
+lakefile.toml: added "Imscribing.Paraconsistent.QCI_FrobeniusBias" to globs
+
+Previous: Axiom D: Holographic Closure cross-primitive axiom + HCP derivation structure (2026-05-27)
+
+Primitives/Core.lean
+  - Axiom D added (holographic_closure_forces_frobenius): any system with
+    D_odot + T_odot + p≥Omega_Z must have P_pm_sym (μ∘δ=id)
+  - Same level as Axiom B (Omega_Z→H2) and Axiom C (T_odot→D_odot)
+  - Consequence documented: Hodge catalog entry must use P_pm_sym, not P_psi;
+    any D_odot+T_odot+Omega_Z imscription with P_psi is structurally inconsistent
+
+Millennium/Hodge_KernelCrossing.lean §6 — restructured around the three-step chain:
+  - hodge_polarity_forced_pm_sym (theorem, 0 sorries): applies Axiom D to the
+    Hodge primitive signature (D_odot, T_odot, Omega_Z) → P_pm_sym; purely
+    at the primitive type level, no mathematical objects, discharged by decide
+  - hodge_pm_sym_instantiates_to_split (axiom): the one remaining step —
+    semantic bridge from P_pm_sym to HodgeSplit; labeled explicitly as the
+    gap for PrimitiveBridge.lean formalization
+  - holographic_consistency_principle now a THEOREM (not axiom), derived
+    from Axiom D via hodge_polarity_forced_pm_sym + bridge
+  - Full chain documented: D_odot+T_odot+Omega_Z →(AxD) P_pm_sym →(bridge)
+    HodgeSplit → regulator_surjective → HodgeConjecture (1 MathlibGap: Bloch)

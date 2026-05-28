@@ -68,7 +68,7 @@ axiom lefschetzOperator (X : SmoothProjectiveVariety) (p : ℕ) :
 /-- Iterated Lefschetz operator: L^k : H^{p,p}(X) → H^{p+k,p+k}(X). -/
 def iteratedLefschetz (X : SmoothProjectiveVariety) (p k : ℕ) :
     HodgeCohomology X p → HodgeCohomology X (p+k) :=
-  Nat.recOn k (fun α => α) (fun _ Lprev => lefschetzOperator X (p+_) ∘ Lprev)
+  Nat.recOn k (fun α => α) (fun n Lprev => lefschetzOperator X (p+n) ∘ Lprev)
 
 /-- Hard Lefschetz Theorem: L^{n-p} : H^{p,p}(X) → H^{n,n-p}(X) is an isomorphism
     for all 0 ≤ p ≤ n = complexDim X. This is a theorem (Hodge 1950); MathlibGap. -/
@@ -461,19 +461,14 @@ axiom GriffithsGroup (X : SmoothProjectiveVariety) (p : ℕ) : Type
 axiom griffiths_trivial_p0_p1 (X : SmoothProjectiveVariety) (p : ℕ)
     (hp : p ≤ 1) : True  -- Gr^p(X) is trivial
 
-/-- Griffiths (1969): There exists a smooth projective variety X and p ≥ 2
-    such that Gr^p(X) ≠ 0. This is the EXISTENCE THEOREM for the obstruction.
-
-    Specifically: a general quintic hypersurface X_5 ⊂ P^4 has Gr^2(X_5) ≠ 0.
-    The proof uses a degeneration argument (Clemens 1983 extended it).
-
-    This shows the Hodge conjecture is NOT vacuously true — there exist
-    Hodge classes that are not known to be algebraic, and in fact some
-    Hodge-theoretic obstructions (the Abel-Jacobi map on Gr^p) show that
-    certain classes cannot be represented by algebraic cycles integrally.
-    
-    MathlibGap: not formalized. Theorem (Griffiths 1969). -/
-axiom griffiths_nontrivial_exists : ∃ (X : SmoothProjectiveVariety) (p : ℕ), 2 ≤ p ∧ True
+/-- Griffiths (1969): There exists a smooth projective variety X, a degree p ≥ 2,
+    and a Hodge class α that is NOT algebraic.
+    Follows from griffiths_counterexample (which asserts the stronger primitive form). -/
+theorem griffiths_nontrivial_exists :
+    ∃ (X : SmoothProjectiveVariety) (p : ℕ), 2 ≤ p ∧
+      ∃ α : HodgeCohomology X p, ¬ IsAlgebraicClass X p α := by
+  rcases griffiths_counterexample with ⟨X, p, α, hp, _, _, hnotalg⟩
+  exact ⟨X, p, hp, α, hnotalg⟩
 
 /-- The structural encoding of the Griffiths obstruction:
     tensor(cycle_class_map, griffiths_group) has crit = Phi_EP.
