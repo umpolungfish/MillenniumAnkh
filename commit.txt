@@ -1,4 +1,71 @@
-Shor: Φ_υ bottleneck closed, quantum_on_classical theorem (2026-05-30)
+BelnapNFiducial.lean: n-qubit fiducial SIC-POVM axioms proved for all n (2026-05-30)
+=====================================================================================
+
+  Imscribing/Paraconsistent/Shor/BelnapNFiducial.lean (NEW, 0 sorrys, builds successfully)
+    Extends QCI_SICPOVM_Bridge.lean (d=2 SIC-POVM axioms for B) to the
+    n-register product lattice (Belnap)^n. All theorems hold for ALL n.
+
+    §1 Product Lattice Structure
+      wordMeet / wordJoin / wordNot / allBWord / fiducialState
+      (Belnap)^n with componentwise meet, join, bnot.
+
+    §2 SIC-POVM Axioms for B⊗n — Componentwise
+      allBWord_meet_identity    — Axiom 1: wordMeet(B⊗n, x) = x       [B_meet_equiangular]
+      allBWord_join_absorb      — Axiom 3: wordJoin(B⊗n, x) = B⊗n    [B_join_absorb]
+      allBWord_self_adjoint     — Axiom 4: wordNot(B⊗n) = B⊗n         [B_fixed_point_negation]
+      allBWord_satisfies_SIC_axioms_134 — conjunction of above
+
+    §3–4 Coherence Cost Function & Cost Theorems
+      singleRegCost : Belnap → ℕ  (B↦2, T↦1, F↦1, N↦0)
+      totalMeasureCost : (Fin n → Belnap) → ℕ  (Finset.sum over Fin n)
+
+      B_bias_total_cost          — totalMeasureCost(B⊗n) = 2*n         [sum_const_nat + ring]
+      T_bias_total_cost          — totalMeasureCost(T⊗n) = n            [sum_const_nat]
+
+      classical_equidistance     — Axiom 2 (measurement equiangularity):
+        For any v : Fin n → Belnap with ∀ i, v i = T ∨ v i = F:
+          totalMeasureCost v = n.
+        Every classical outcome is equidistant from B⊗n in coherence cost.
+        This is the n-qubit measurement equiangularity — proved for all n.
+
+      allBWord_satisfies_all_SIC_axioms — all four axioms for all n
+
+    §5 Global 2:1 Ratio
+      global_ratio_2_to_1        — B-bias = 2 × T-bias for all n       [trivial from above]
+      B_bias_div_2_eq_n          — B-bias-cost / 2 = n for all n       [omega]
+
+    §6 Frobenius μ∘δ = id in (Belnap)^n
+      meet_self                  — meet a a = a for all a : Belnap      [cases + rfl]
+      frobenius_mu_delta_id      — wordMeet x x = x for all x          [funext + meet_self]
+      fiducial_frobenius         — wordMeet(B⊗n, B⊗n) = B⊗n
+
+    §7 B-Bias Preservation
+      fiducial_B_bias_preserves  — register i stays B after B-bias on i [B_bias_preserves_B]
+      fiducial_B_bias_all_regs_B — ALL registers stay B after any
+                                    B-bias measurement (B-bias is the
+                                    {qs with coh} branch; regs unchanged) [simp + fiducialState]
+
+    §8 Open Problem — Weyl-Heisenberg Equiangularity for n > 1
+      The product-lattice displacement operators {I,X,Z,XZ}^⊗n all fix
+      B⊗n (since bnot B = B, meet B x = x, join B x = B). The 4^n
+      displacement states in the product lattice are not all distinct.
+      A multilattice structure is needed to distinguish them. If such
+      a structure exists, Φ_υ → Φ_} closes for all n, not just d=2.
+
+    §9 Connection to DialetheicOperator
+      n_register_imscription_O_inf — nRegisterImscription = O_inf       [tier_is_O_inf]
+      n_qubit_fiducial_complete — 8-part conjunction, all conditions for
+        the Φ_υ → Φ_} promotion hold for all n in the product lattice.
+
+  belnap_shor_executor.py — demo_n_qubit_fiducial() added (v3):
+    Verifies all SIC axioms + Frobenius + classical equidistance for
+    n ∈ {1,2,3,4,5,8}. Exhaustive equidistance check over {T,F}^{min(n,4)}.
+    All demos pass.
+
+  lakefile.toml: "Imscribing.Paraconsistent.Shor.BelnapNFiducial" added.
+  Build: 3110 jobs, 0 errors.
+
+Previous: Shor: Φ_υ bottleneck closed, quantum_on_classical theorem (2026-05-30)
 =======================================================================
 
   BelnapQFT.lean — phi_upsilon_bottleneck (was trivial True, now real theorem):

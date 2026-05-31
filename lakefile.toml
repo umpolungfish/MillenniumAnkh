@@ -112,6 +112,7 @@ globs = [
   "Imscribing.Paraconsistent.Shor.BelnapQFT",
   "Imscribing.Paraconsistent.Shor.FullPipeline",
   "Imscribing.Paraconsistent.Shor.DialetheicOperator",
+  "Imscribing.Paraconsistent.Shor.BelnapNFiducial",
   "Imscribing.Paraconsistent.QCI_RH_Bridge",
   "Imscribing.Paraconsistent.QCI_YM_Bridge",
   "Imscribing.Paraconsistent.QCI_nRegister",
@@ -151,4 +152,5 @@ globs = [
   "Imscribing.Millennium.Master_Proof",
   "Imscribing.Millennium.ZFC_FrobeniusExact",
   "Imscribing.Millennium.PerfectCuboid.Bootstrap",
+  "Imscribing.Millennium.UniverseRulesets",
 ]
