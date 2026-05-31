@@ -1,3 +1,23 @@
+Solitary10.lean: build fix + descent deepened (7 sorrys → 4, file now compiles)
+================================================================================
+
+  Imscribing/Classical/Solitary10.lean:
+    Fixed from previous session (file was uncompilable):
+      - coeff_ineq_pow: inline calc syntax (semicolons → newlines)
+      - descent_generic: simp [ht0] bug; broken inline calc _ = ...; _ = ...
+      - sigma_31cube_val: wrong value 31784 → 30784
+      - All simp [X] at Y; omega → omega (simp was closing goal, omega had nothing)
+      - 331³ arithmetic bug: 153915*331=50945865 not 50946765
+      - absurd wrappers: descent_* returns False in ten_is_solitary goal m=10
+    Fixed OOM (native_decide on billion-scale σ):
+      - sigma_331sq_val, sigma_331cube_val: sigma_one_apply_prime_pow + norm_num
+      - Removed unused sigma_1341866793_val
+    Proof improvements:
+      - h5_n Case B2: 2-sorry broken proof → clean by_contra
+      - case_A e≥2: rewrote hpow/hmid/hineq avoiding norm_num metavar issues
+      - descent_331_chain 331³ coprime: descent_generic(36374584,50945865) closes it
+    Remaining sorrys (4): ¬Coprime 36631 u, 331⁴|w, 31⁴|n, 5⁴|m
+
 BELNAP_BORN_RULE_QM.md + MZIMesh.lean: MZI mesh Lean formalization + paper update (2026-05-30)
 ==========================================================================================
 
