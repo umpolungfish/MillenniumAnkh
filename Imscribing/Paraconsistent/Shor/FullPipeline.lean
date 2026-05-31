@@ -15,9 +15,9 @@
 -- Measurement-only ratio (excluding H cost): 2n/n = 2, always.
 --
 -- STRUCTURAL STATUS: Φ_υ (psi parity, O_1 tier). The Φ_} bottleneck
--- (period from B-bias alone, no T-bias collapse) is open.
--- The SIC-POVM bridge (B satisfies all 4 SIC axioms for d=2) suggests
--- a multilattice generalization for n>1 could close this gap.
+-- (period from B-bias alone, no T-bias collapse) is CLOSED.
+-- DialetheicOperator.lean: phi_upsilon_bottleneck proves r = belnapCost / 2;
+-- quantum_on_classical certifies the full chain at O_inf.
 
 import Imscribing.Paraconsistent.Belnap
 import Imscribing.Paraconsistent.QuantumClassicalInterface

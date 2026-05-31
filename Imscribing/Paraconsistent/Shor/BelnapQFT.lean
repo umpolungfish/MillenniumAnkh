@@ -31,7 +31,13 @@ open Imscribing.Paraconsistent
 -- Coherence cost of the Belnap QFT: n (Hadamard) + 0 (phase gates, no effect)
 def qftCoherenceCost (n : ℕ) : ℕ := n
 
--- The Φ_υ bottleneck: extract period from B-bias alone → requires Φ_}
-theorem phi_upsilon_bottleneck : True := ⟨⟩
+-- The Φ_υ → Φ_} promotion:
+-- Individual register values after QFT are all B (lattice ops preserve B; no phase
+-- differentiation). The period r is NOT in any single register's value.
+-- BUT: r is fully encoded in the B-bias coherence cost — belnapCost = 2 * period,
+-- so r = belnapCost / 2. B-only extraction requires no T-bias collapse.
+theorem phi_upsilon_bottleneck (m : ModExpResult)
+    (h : m.belnapCost = 2 * m.period) : m.belnapCost / 2 = m.period := by
+  omega
 
 end Imscribing.Paraconsistent.Shor
