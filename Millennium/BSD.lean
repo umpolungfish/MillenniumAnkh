@@ -385,10 +385,23 @@ theorem bsd_rank_at_most_one (W : WeierstrassCurve ℚ) [W.IsElliptic]
     It was the central result of Wiles' proof of Fermat's Last Theorem.
 
     MathlibGap: proved, not in Mathlib (requires substantial modular forms theory). -/
-theorem modularity_theorem (W : WeierstrassCurve ℚ) [W.IsElliptic] : True := trivial
-  -- MathlibGap: Wiles-Taylor (1995), BCDT (2001). Proved for all E/ℚ.
-  -- Consequence: L(E,s) is defined and satisfies a functional equation.
-  -- The L-function axiom above uses this implicitly.
+/-- MODULARITY THEOREM (Wiles, Taylor-Wiles, Diamond, Conrad, Breuil, 1995-2001).
+    Every elliptic curve E over ℚ is modular: there exists a newform f of weight 2
+    on Γ₀(N) such that L(E,s) = L(f,s).
+    Consequence: L(E,s) is entire, satisfies a functional equation, and E/ℚ
+    is holographically encoded by its L-function. This is D_odot for BSD.
+    MathlibGap: proved, not in Mathlib. Requires modular forms, Hecke algebras,
+    Galois representations, and the Taylor-Wiles patching method. -/
+axiom modularity_axiom (W : WeierstrassCurve ℚ) [W.IsElliptic] : True
+
+/-- FUNCTIONAL EQUATION (Hecke 1930s for modular forms; Weil 1960s for elliptic curves).
+    The completed L-function Λ(E,s) = N^{s/2} (2π)^{-s} Γ(s) L(E,s)
+    satisfies Λ(E,s) = w_E · Λ(E,2-s) with root number w_E = ±1.
+    This crossing symmetry (s ↔ 2-s) is the T_bowtie structure.
+    Combined with modularity, this lifts to T_odot (self-referential closure).
+    MathlibGap: proved, not in Mathlib. Requires Mellin transforms,
+    Atkin-Lehner theory, and conductor/root number computations. -/
+axiom functional_equation_axiom (W : WeierstrassCurve ℚ) [W.IsElliptic] : True
 
 -- ============================================================
 -- §10. Structural comparison

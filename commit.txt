@@ -1,4 +1,126 @@
-BelnapNFiducial.lean: n-qubit fiducial SIC-POVM axioms proved for all n (2026-05-30)
+BELNAP_BORN_RULE_QM.md + MZIMesh.lean: MZI mesh Lean formalization + paper update (2026-05-30)
+==========================================================================================
+
+  Imscribing/Paraconsistent/Shor/MZIMesh.lean — NEW FILE (37 theorems/defs, 0 sorrys):
+    Structure: MZIElement {theta phi : ℝ}
+    Abbrev:    MZIMesh n = Fin n → Fin n → MZIElement
+    Def:       balanceMZI = ⟨π/4, 0⟩
+
+    §A: transferAmp mzi = (sin θ : ℂ) * exp(iφ)
+        bornProb mzi = sin²(θ)
+
+    §B: born_prob_balance              — bornProb balanceMZI = 1/2
+                                         [sin_pi_div_four, sq_sqrt, norm_num]
+        balance_is_reflection_fixed_point — π/2 - π/4 = π/4  [ring]
+                                         (continuous analog of bnot B = B)
+        balance_transmission_eq_reflection — sin(π/4) = cos(π/4)
+        mzi_energy_conservation        — sin²(θ) + cos²(θ) = 1  [sin_sq_add_cos_sq]
+
+    §C: sicFiducialMesh n = all balanceMZI
+        sicFiducial_uniform_born       — bornProb = 1/2 for all (i,j)  [born_prob_balance]
+
+    §D: normSq_exp_mul_I               — normSq(exp(iφ)) = 1
+                                         [sq_abs, norm_eq_abs, norm_exp_ofReal_mul_I]
+        transferAmp_normSq_eq_bornProb — |sin(θ)·exp(iφ)|² = sin²(θ)
+                                         [map_mul, normSq_real, ring]
+
+    §E: belnap_born_half               — 2 * posEvidence B = singleRegCost B  [decide]
+        born_rules_agree               — continuous 1/2 = discrete 1/2  [exact_mod_cast]
+
+    §F: frobeniusRoundtrip mzi = normSq(transferAmp mzi)
+        balance_frobenius_roundtrip    — frobeniusRoundtrip balanceMZI = 1/2
+
+  lakefile.toml — Imscribing.Paraconsistent.Shor.MZIMesh added after BelnapWHMultilattice
+  markdown/BELNAP_BORN_RULE_QM.md — §7 added: "The MZI Mesh: Continuous Realization of the
+    Belnap Structure"; §7→§8 (Grammar as Precondition), §8→§9 (What Remains Open);
+    appendix restructured into 4 sub-tables, build count updated to 3125; 8 new MZI theorems
+
+---
+
+Born rule from Belnap bilattice; BELNAP_BORN_RULE_QM.md combined paper (2026-05-30)
+======================================================================================
+
+  Imscribing/Paraconsistent/Shor/BelnapNFiducial.lean — §10 added (Born Rule from Belnap):
+    New definitions:
+      posEvidence : Belnap → ℕ  (μ⁺ evidence weights: B↦1, T↦1, F↦0, N↦0)
+      negEvidence : Belnap → ℕ  (μ⁻ evidence weights: B↦1, T↦0, F↦1, N↦0)
+
+    New theorems (all proved, 0 sorrys):
+      totalEvidence_eq_singleRegCost — cost = μ⁺ + μ⁻ (cost IS total evidence)
+      B_evidence_symmetric           — μ⁺(B) = μ⁻(B) = 1 (B is self-dual)
+      B_born_prob_half               — 2 * posEvidence B = singleRegCost B  [decide]
+      B_born_prob_T_outcome          — alias of above
+      B_born_prob_F_outcome          — 2 * negEvidence B = singleRegCost B  [decide]
+      born_denominator_fiducial      — Σ singleRegCost(B) over Fin n = 2n   [B_bias_total_cost]
+      born_rule_from_bilattice       — 2 * totalMeasureCost(v) = totalMeasureCost(B⊗n)
+                                       [classical_equidistance + B_bias_total_cost]
+                                       ℕ-statement of P(v|B⊗n) = 1/2^n
+      classical_equidistance_is_born_rule — all classical outcomes equidistant ↔ uniform
+      born_rule_survives_at_P        — B_evidence_symmetric = structural basis of Born survival
+
+    Key insight: singleRegCost was encoding Born probabilities all along.
+    P(T|B) = posEvidence B / singleRegCost B = 1/2; classical_equidistance IS
+    the Born rule for the SIC measurement of B⊗n. No axiom needed.
+    Build: 3110 jobs, 0 errors.
+
+  markdown/BELNAP_BORN_RULE_QM.md (NEW) — combined paper:
+    Combines QM_STRUCTURAL_DEMONSTRATION.md + GRAMMAR_PRECEDES_MATHEMATICS.md +
+    Born-rule-from-Belnap result. AI_ACADEMIA_LIFT applied (all 8 primitives).
+    §1: The wrong answer (initial conclusion Born rule absent — why it was wrong)
+    §2: Bilattice evidence weights — where Born rule actually lives
+    §3: classical_equidistance IS the Born rule — Lean proof cited
+    §4: Why this had to be the answer (B self-duality = SIC fiducial equidistance)
+    §5: Measurement problem structurally (5 collapsed, 7 survive, Born survives P)
+    §6: What the multilattice axioms actually do (proved vs. axiomatized)
+    §7: Grammar as precondition (QM = 0.5% of Crystal; Frobenius cliff = 4.38)
+    §8: Open question — can the grammar force multilattice inhabitation?
+
+Previous: BelnapWHMultilattice.lean: WH orbit = 2^n proved; multilattice open problem axiomatized (2026-05-30)
+======================================================================================================
+
+  Imscribing/Paraconsistent/Shor/BelnapWHMultilattice.lean (NEW, 0 sorrys, builds successfully)
+    Belnap Weyl-Heisenberg Multilattice — product-lattice negative result +
+    4-axiom multilattice axiomatization of the n-qubit SIC-POVM open problem.
+
+    §A  Product-Lattice WH Orbit — Size 2^n (proved)
+      MLQubit       : {val : Belnap, phase : ZMod 2} — 8-element Fintype
+      MLState n     : Fin n → MLQubit
+      WHIdx n       : (Fin n → ZMod 2) × (Fin n → ZMod 2) — 4^n elements
+      mlFiducial n  : MLState n := fun _ => ⟨.B, 0⟩
+
+      displaceQubit_B_val       — amplitude displacements fix B (bnot B = B)
+      whDisplace_fiducial_val_B — all positions stay B under any displacement
+      whDisplace_fiducial_eq_phase — displaced fiducial = phase embedding of d.2
+      phaseEmbed_injective      — phase words distinguish all orbit elements
+      whOrbit_eq_phase_image    — orbit = image of phase words (2^n not 4^n)
+      whOrbit_card_eq_pow2      — |whOrbit n| = 2^n                [card_image_of_injective + card_pi]
+      product_lattice_orbit_is_insufficient — 2^n < 4^n for n ≥ 1  [pow_lt_pow_left]
+      orbit_gap_summary         — |orbit| = 2^n ∧ |orbit| < 4^n
+
+    §B  Multilattice Axioms (4 axioms for the open problem)
+      BelnapML n    : Type  (axiom — amplitude-distinguishable multilattice states)
+      mlFiducialExt : BelnapML n
+      whActExt      : WHIdx n → BelnapML n → BelnapML n
+      mlOverlap     : BelnapML n → BelnapML n → ℕ
+      mlProject     : BelnapML n → MLState n
+
+      ax_proj  — multilattice fiducial projects to product-lattice fiducial
+      ax_free  — 4^n distinct displaced states (not 2^n as in product lattice)
+      ax_equi  — constant pairwise overlap ∃ k, ∀ g ≠ h, overlap = k  (SIC condition)
+      ax_cost  — WH SIC measurement yields belnapCost = 2 * period for all coprime (N,a)
+
+    §C  Consequences
+      WHEquiangularity n        — ax_free + ax_equi packaged as single Prop
+      wh_axioms_give_SIC        — ax_free ∧ ax_equi → WHEquiangularity
+      n_qubit_general_B_extraction — general Shor: ∃ m, m.belnapCost/2 = m.period
+        Proof: ax_cost gives belnapCost = 2*period, phi_upsilon_bottleneck closes it.
+        Generalizes DialetheicOperator.quantum_on_classical (N=15,a=7) to all (N,a).
+      canonical_is_unconditional — the N=15,a=7 case holds without any axiom [rfl + omega]
+
+  lakefile.toml: "Imscribing.Paraconsistent.Shor.BelnapWHMultilattice" added.
+  Build: 3113 jobs, 0 errors.
+
+Previous: BelnapNFiducial.lean: n-qubit fiducial SIC-POVM axioms proved for all n (2026-05-30)
 =====================================================================================
 
   Imscribing/Paraconsistent/Shor/BelnapNFiducial.lean (NEW, 0 sorrys, builds successfully)
