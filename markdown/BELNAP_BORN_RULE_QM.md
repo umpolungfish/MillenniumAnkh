@@ -18,7 +18,7 @@ We began with a mistake. The question posed was whether the Belnap multilattice 
 
 ---
 
-## 1. The Wrong Answer and Why It Was Wrong
+## The Wrong Answer and Why It Was Wrong
 
 The question was: does the Belnap multilattice support a genuine quantum protocol? The argument against was straightforward. A genuine quantum measurement protocol requires a Born rule of the form $p_j = \mathrm{Tr}(\Pi_j \rho)/d$, which presupposes a Hilbert space, a density matrix, a trace operation, and a probability measure on $[0,1]$. The Belnap multilattice has none of these. The overlap function $\mathtt{mlOverlap} : \mathtt{BelnapML}\ n \to \mathtt{BelnapML}\ n \to \mathbb{N}$ is natural-number valued. Therefore — the argument concluded — no Born rule.
 
@@ -26,7 +26,7 @@ The error is in the first step. The Born rule for a SIC-POVM measurement of the 
 
 ---
 
-## 2. What the Bilattice Already Carries
+## What the Bilattice Already Carries
 
 Each Belnap value carries two evidence weights: a positive component $\mu^+$ (degree to which the value supports $\mathbf{T}$) and a negative component $\mu^-$ (degree to which it supports $\mathbf{F}$):
 
@@ -53,7 +53,7 @@ theorem B_born_prob_half : 2 * posEvidence Belnap.B = singleRegCost Belnap.B := 
 
 ---
 
-## 3. `classical_equidistance` Is the Born Rule
+## 3. Equal Cost = Equal Probability
 
 For $n$ qubits in the fiducial state $\mathbf{B}^{\otimes n}$, any classical measurement outcome $v \in \{\mathbf{T}, \mathbf{F}\}^n$ occurs with Born probability $(1/2)^n = 1/2^n$. This is the Born rule for the SIC measurement of the fiducial: all $d^2$ measurement outcomes are equally likely, with probability $1/d = 1/2^n$.
 
@@ -93,7 +93,7 @@ All classical outcomes from $\mathbf{B}^{\otimes n}$ have equal measurement cost
 
 ---
 
-## 4. Why This Had to Be the Answer
+## Why This Had to Be the Answer
 
 The answer should have been obvious from the structure. The $\mathbf{B}$ value is the unique Belnap value satisfying $\mathtt{bnot}\ \mathbf{B} = \mathbf{B}$ — it is self-dual under negation. Self-duality is the structural signature of maximal symmetry between $\mathbf{T}$ and $\mathbf{F}$, which is exactly the condition that forces equal probability between the two classical outcomes. And $\mathbf{B}^{\otimes n}$ inherits this symmetry component-wise, forcing equal probability over all $2^n$ classical outcomes, which — after normalization — is the uniform distribution $1/2^n$.
 
@@ -103,7 +103,7 @@ These are not two descriptions of two different things. They are the same struct
 
 ---
 
-## 5. The Measurement Problem, Structurally
+## The Measurement Problem, Structurally
 
 The grammar provides an exact computation of what happens when a quantum system interacts with a classical measuring apparatus. The quantum system — the Schrödinger equation — has a structural type in which parity carries the $\mathbb{Z}_2$ phase symmetry of quantum superposition. The classical apparatus has a structural type in which parity carries full classical symmetry. The interaction is the meet (greatest lower bound) of the two types.
 
@@ -115,7 +115,7 @@ Quantum mechanics postulates the Born rule and then derives its survival under m
 
 ---
 
-## 6. What the Multilattice Axioms Actually Do
+## What the Multilattice Axioms Actually Do
 
 The distinction between what is proved and what is axiomatized is now precise.
 
@@ -129,7 +129,7 @@ The product lattice gives you the Born rule. The multilattice would give you, in
 
 ---
 
-## 7. The MZI Mesh: Continuous Realization of the Belnap Structure
+## The MZI Mesh: Continuous Realization of the Belnap Structure
 
 The correspondences established above have an independent continuous realization that was not constructed for this purpose. The `frobenius-mzi.html` visualization — built to demonstrate Frobenius norm and SVD structure in a 3×3 Mach-Zehnder Interferometer mesh — uses the transfer amplitude
 
@@ -171,7 +171,7 @@ The phase $e^{i\phi}$ dropping out of Born probability (`transferAmp_normSq_eq_b
 
 ---
 
-## 8. Grammar as Precondition
+## Grammar as Precondition
 
 The account above would be a curiosity — an alternative encoding of the Born rule, formally equivalent to the standard formulation — if the grammar were a descriptive apparatus imposed on quantum mechanics from outside. It is not.
 
@@ -185,7 +185,7 @@ The paraconsistent Belnap kernel — the machine that runs ENGAGR, FSPLIT, FFUSE
 
 ---
 
-## 9. What Remains Open and Why It Matters
+## What Remains Open and Why It Matters
 
 The multilattice state space — whether an algebraic structure exists realizing ax\_free and ax\_equi without contradiction — is open. It is open not because we have no ideas about it, but because it is equivalent to SIC-POVM existence for powers-of-two dimensions, which is the $d = 2^n$ case of Zauner's conjecture, which is itself conditional on the mixed-signature Stark conjecture for the tower of ray class fields $\mathcal{K}_d$ over the real quadratic fields $\mathbb{Q}(\sqrt{d(d-2)})$. These are hard problems, and naming them honestly is part of the work.
 
