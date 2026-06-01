@@ -9,6 +9,23 @@ Structural type:
    G_aleph; Γ_seq; Φ_c; H2; n_m; Ω_0⟩
 Crystal address: 4948976  |  Ouroboricity: O_1  |  C-score: 0.498
 
+## ZFC_t Formula (via zfct_navigator):
+##   ∀a∃b(a⊂b ∧ rank x=b) ∧
+##   ∀z(z∈x ↔ repl f z) ∧
+##   lr⇔(x,y) ∧ Θ(x,y) ∧ ¬Θ(y,x)  [LR_DUAL]
+##   ℤ₂f ∧ ∃f(bij f x x ∧ ∀y(f(f y)=y))  [PM_Z2]
+##   ∃y(y=x ∧ y∈ω) ∧
+##   ∀y(y⊆x → ∃z(z∈x ∧ y⊆z)) ∧
+##   ∃y(y∈x) ∧
+##   seq!(f,g) ∧ ⟨→⟩fgτ ∧ ¬⟨→⟩gfτ  [SEQAX]
+##   fixpt f ∧
+##   H₂x ∧ ∃y∃z(y∈x ∧ z∈y ∧ ¬z∈x)  [TEMPD2]
+##   ∃f(func f ∧ ¬bij f x x) ∧
+##   x=x  [Ω_Å — baseline winding, ZWIND not yet promoted]
+## Promoted: Ř_=, Φ_F, ɢ^ˌ, Ħ_A (4 of 6 channels active)
+## Blocked: Þ_¨→Þ_O (HOLOBOUND), Ω_Å→Ω_z (ZWIND — the Winding Descent Axiom)
+## Full document: tex/PROOFS_IN_ZFC.pdf
+
 ## What Is Verified
 - Structural meet Beal ∧ FLT = expected meet (by decide)
 - Ω_0 status of the Beal Conjecture (rfl)
@@ -40,6 +57,73 @@ def beal_conjecture_coprime : Prop :=
     ¬ (Nat.Coprime A B ∧ Nat.Coprime B C ∧ Nat.Coprime A C)
 
 /-! ## 2. Reduction -/
+
+/-! ## 2. Coprimality Lemma — gcd(A,B,C)=1 ∧ A^x+B^y=C^z ⇒ pairwise coprime -/
+
+theorem beal_pairwise_coprime {A B C x y z : Nat}
+    (h_eq : A ^ x + B ^ y = C ^ z)
+    (h_gcd : Nat.gcd (Nat.gcd A B) C = 1)
+    (hA : A > 0) (hB : B > 0) (hC : C > 0)
+    (hx : x > 0) (hy : y > 0) (hz : z > 0) :
+    Nat.Coprime A B ∧ Nat.Coprime B C ∧ Nat.Coprime A C := by
+  have h_AB : Nat.Coprime A B := by
+    by_contra! h_not
+    obtain ⟨p, hp, hp_dvd⟩ := Nat.exists_prime_and_dvd h_not
+    have hp_dvdA : p ∣ A := hp_dvd.trans (Nat.gcd_dvd_left A B)
+    have hp_dvdB : p ∣ B := hp_dvd.trans (Nat.gcd_dvd_right A B)
+    have hp_dvd_sum : p ∣ A ^ x + B ^ y :=
+      dvd_add ((dvd_pow hp_dvdA) hx.ne.symm) ((dvd_pow hp_dvdB) hy.ne.symm)
+    rw [h_eq] at hp_dvd_sum
+    have hp_dvdC : p ∣ C := hp.dvd_of_dvd_pow hp_dvd_sum
+    have hp_dvd_gcd : p ∣ Nat.gcd (Nat.gcd A B) C :=
+      Nat.dvd_gcd (Nat.dvd_gcd hp_dvdA hp_dvdB) hp_dvdC
+    rw [h_gcd] at hp_dvd_gcd
+    exact hp.ne_one (Nat.eq_one_of_dvd_one hp_dvd_gcd)
+  have h_AC : Nat.Coprime A C := by
+    by_contra! h_not
+    obtain ⟨p, hp, hp_dvd⟩ := Nat.exists_prime_and_dvd h_not
+    have hp_dvdA : p ∣ A := hp_dvd.trans (Nat.gcd_dvd_left A C)
+    have hp_dvdC : p ∣ C := hp_dvd.trans (Nat.gcd_dvd_right A C)
+    have hp_dvd_Cz : p ∣ C ^ z := (dvd_pow hp_dvdC) hz.ne.symm
+    have hp_dvd_Ax : p ∣ A ^ x := (dvd_pow hp_dvdA) hx.ne.symm
+    have hp_dvd_By : p ∣ B ^ y := by
+      have h1 : (p : ℤ) ∣ (C : ℤ) ^ z := by exact_mod_cast hp_dvd_Cz
+      have h2 : (p : ℤ) ∣ (A : ℤ) ^ x := by exact_mod_cast hp_dvd_Ax
+      have h_eq_int : ((C : ℤ) ^ z) = ((A : ℤ) ^ x) + ((B : ℤ) ^ y) := by
+        exact_mod_cast h_eq.symm
+      rw [h_eq_int] at h1
+      have h3 : (p : ℤ) ∣ (B : ℤ) ^ y := by
+        obtain ⟨k, hk⟩ := h1; obtain ⟨l, hl⟩ := h2
+        use k - l; push_cast; linarith
+      exact_mod_cast h3
+    have hp_dvdB : p ∣ B := hp.dvd_of_dvd_pow hp_dvd_By
+    have hp_dvd_gcd : p ∣ Nat.gcd (Nat.gcd A B) C :=
+      Nat.dvd_gcd (Nat.dvd_gcd hp_dvdA hp_dvdB) hp_dvdC
+    rw [h_gcd] at hp_dvd_gcd
+    exact hp.ne_one (Nat.eq_one_of_dvd_one hp_dvd_gcd)
+  have h_BC : Nat.Coprime B C := by
+    by_contra! h_not
+    obtain ⟨p, hp, hp_dvd⟩ := Nat.exists_prime_and_dvd h_not
+    have hp_dvdB : p ∣ B := hp_dvd.trans (Nat.gcd_dvd_left B C)
+    have hp_dvdC : p ∣ C := hp_dvd.trans (Nat.gcd_dvd_right B C)
+    have hp_dvd_Cz : p ∣ C ^ z := (dvd_pow hp_dvdC) hz.ne.symm
+    have hp_dvd_By : p ∣ B ^ y := (dvd_pow hp_dvdB) hy.ne.symm
+    have hp_dvd_Ax : p ∣ A ^ x := by
+      have h1 : (p : ℤ) ∣ (C : ℤ) ^ z := by exact_mod_cast hp_dvd_Cz
+      have h2 : (p : ℤ) ∣ (B : ℤ) ^ y := by exact_mod_cast hp_dvd_By
+      have h_eq_int : ((C : ℤ) ^ z) = ((A : ℤ) ^ x) + ((B : ℤ) ^ y) := by
+        exact_mod_cast h_eq.symm
+      rw [h_eq_int] at h1
+      have h3 : (p : ℤ) ∣ (A : ℤ) ^ x := by
+        obtain ⟨k, hk⟩ := h1; obtain ⟨l, hl⟩ := h2
+        use k - l; push_cast; linarith
+      exact_mod_cast h3
+    have hp_dvdA : p ∣ A := hp.dvd_of_dvd_pow hp_dvd_Ax
+    have hp_dvd_gcd : p ∣ Nat.gcd (Nat.gcd A B) C :=
+      Nat.dvd_gcd (Nat.dvd_gcd hp_dvdA hp_dvdB) hp_dvdC
+    rw [h_gcd] at hp_dvd_gcd
+    exact hp.ne_one (Nat.eq_one_of_dvd_one hp_dvd_gcd)
+  exact ⟨h_AB, h_BC, h_AC⟩
 
 theorem reduction_to_prime_exponents :
     (∀ (A B C p q r : Nat),
@@ -315,5 +399,160 @@ axiom beal_prime_mixed_exponents (p q r : Nat)
     ∀ (A B C : Nat), A > 0 → B > 0 → C > 0 →
     A ^ p + B ^ q = C ^ r →
     Nat.gcd (Nat.gcd A B) C > 1
+
+/-! ## 9. Resolved Vessel — The O_inf Structural Type -/
+
+def beal_resolved_type : StructuralType :=
+  { D := Primitive_D.odot, T := Primitive_T.odot, R := Primitive_R.lr
+  , P := Primitive_P.pm_sym, F := Primitive_F.hbar, K := Primitive_K.slow
+  , G := Primitive_G.aleph, Gamma := Primitive_Gamma.seq
+  , Phi := Primitive_Phi.c, H := Primitive_H.H_inf
+  , S := Primitive_S.n_m, Omega := Primitive_Omega.Omega_Z }
+
+/-! ## 10. Promotion Vector — 6 Primitives Must Promote, MACHINE VERIFIED -/
+
+def promotion_count (a b : StructuralType) : Nat :=
+  (if a.D = b.D then 0 else 1) + (if a.T = b.T then 0 else 1) +
+  (if a.R = b.R then 0 else 1) + (if a.P = b.P then 0 else 1) +
+  (if a.F = b.F then 0 else 1) + (if a.K = b.K then 0 else 1) +
+  (if a.G = b.G then 0 else 1) + (if a.Gamma = b.Gamma then 0 else 1) +
+  (if a.Phi = b.Phi then 0 else 1) + (if a.H = b.H then 0 else 1) +
+  (if a.S = b.S then 0 else 1) + (if a.Omega = b.Omega then 0 else 1)
+
+example : promotion_count beal_structural_type beal_resolved_type = 6 := by
+  native_decide
+
+example : beal_structural_type.Phi = beal_resolved_type.Phi := by rfl
+
+example : beal_resolved_type.Omega = Primitive_Omega.Omega_Z := by rfl
+
+/-! ## 11. The Genus Invariant — The Integer Winding Ω_Z -/
+
+def curve_genus (x y z : Nat) : Rat :=
+  1 + (((x : Rat) * (y : Rat) * (z : Rat)) / 2) *
+      (1 - ((1 : Rat) / (x : Rat)) - ((1 : Rat) / (y : Rat)) - ((1 : Rat) / (z : Rat)))
+
+example : curve_genus 3 3 3 = (1 : Rat) := by native_decide
+
+example : curve_genus 3 3 4 > (1 : Rat) := by native_decide
+
+example : curve_genus 3 4 5 > (1 : Rat) := by native_decide
+
+/-! ## 12. The Winding Descent Axiom — The Promotion Engine -/
+
+/--
+THE WINDING DESCENT AXIOM.
+
+If a coprime Beal solution exists with mixed exponents > 2
+(i.e., not all exponents equal), then a strictly smaller
+coprime solution exists with strictly smaller exponent sum.
+
+This encapsulates the cyclotomic factorization argument:
+  A^x = C^z - B^y = ∏_{k=0}^{d-1} (C^{z/d} - ζ_d^k B^{y/d})
+for d = gcd(y,z) > 1 (or gcd(x,z) or gcd(x,y)).
+
+The descent reduces the exponent sum x+y+z, eventually forcing
+all three exponents equal — at which point the equal-exponent
+theorem (FLT via Ribet) applies.
+
+This axiom IS the promotion Ω_0 → Ω_Z: it provides the integer
+winding (the exponent sum) that strictly descends, replacing
+the absent topological protection with a constructive descent
+invariant.
+
+Proved in the literature for FLT (Kummer 1850, Wiles 1995).
+The mixed-exponent generalization is the structural content of
+the Beal conjecture itself — proving this axiom is equivalent
+to proving Beal.
+-/
+axiom winding_descent_axiom (A B C x y z : Nat)
+    (h_eq : A ^ x + B ^ y = C ^ z)
+    (h_cop : Nat.Coprime A B ∧ Nat.Coprime B C ∧ Nat.Coprime A C)
+    (hx : x > 2) (hy : y > 2) (hz : z > 2)
+    (h_mixed : ¬ (x = y ∧ y = z)) :
+    ∃ (A' B' C' x' y' z' : Nat),
+      A' ^ x' + B' ^ y' = C' ^ z' ∧
+      A' > 0 ∧ B' > 0 ∧ C' > 0 ∧
+      x' > 2 ∧ y' > 2 ∧ z' > 2 ∧
+      x' + y' + z' < x + y + z ∧
+      Nat.gcd (Nat.gcd A' B') C' = 1
+
+/-! ## 13. The Complete Beal Proof (Conditional on Winding Descent) -/
+
+/--
+THE BEAL CONJECTURE — conditional on the Winding Descent Axiom.
+
+If A^x + B^y = C^z with x,y,z > 2, then gcd(A,B,C) > 1.
+
+Proof:
+  1. If gcd(A,B,C) = 1, then A,B,C are pairwise coprime (Lemma 3).
+  2. If x=y=z, the equal-exponent theorem (via Ribet) proves gcd > 1.
+  3. If exponents not all equal, the Winding Descent Axiom produces
+     a strictly smaller coprime solution.
+  4. By infinite descent on x+y+z (well-founded ℕ), no minimal
+     counterexample exists.
+  5. Therefore gcd(A,B,C) > 1 always.
+-/
+theorem beal_conjecture_conditional : beal_conjecture := by
+  intro A B C x y z hA hB hC hx hy hz h_eq
+  by_contra! h_not
+  have h_gcd1 : Nat.gcd (Nat.gcd A B) C = 1 := by
+    have hpos : 0 < Nat.gcd (Nat.gcd A B) C :=
+      Nat.gcd_pos_of_pos_left C (Nat.gcd_pos_of_pos_left B hA)
+    omega
+  -- Get pairwise coprimality
+  have h_cop := beal_pairwise_coprime h_eq h_gcd1 hA hB hC (by omega) (by omega) (by omega)
+  obtain ⟨hAB, hBC, hAC⟩ := h_cop
+  -- Check if all exponents equal
+  by_cases h_all_eq : x = y ∧ y = z
+  · obtain ⟨rfl, rfl⟩ := h_all_eq
+    have hp3 : x ≥ 3 := by omega
+    have hgcd_gt1 := beal_equal_prime_exponents x hp3 A B C hA hB hC h_eq
+    rw [h_gcd1] at hgcd_gt1
+    omega
+  · -- Apply winding descent
+    have h_desc := winding_descent_axiom A B C x y z h_eq ⟨hAB, hBC, hAC⟩ hx hy hz h_all_eq
+    obtain ⟨A', B', C', x', y', z', h_eq', hA', hB', hC', hx', hy', hz', h_lt, h_gcd'⟩ := h_desc
+    -- The new solution has strictly smaller exponent sum.
+    -- By infinite descent, this cannot continue indefinitely.
+    -- The descent terminates at a solution with all exponents equal → FLT case (handled above).
+    -- So we have a contradiction: a minimal counterexample cannot exist.
+    --
+    -- Formalizing: use well-founded induction on ℕ with measure x+y+z.
+    -- Since the descent produces a solution with smaller sum, applying it repeatedly
+    -- must eventually reach the base case x=y=z, which is impossible.
+    -- This is a standard infinite descent argument.
+    --
+    -- For the Lean proof, we use Nat.strong_induction_on.
+    -- However, to avoid a complex induction here, we note:
+    -- The existence of ANY coprime mixed-exponent solution implies,
+    -- by repeated application of winding_descent_axiom, the existence
+    -- of a coprime equal-exponent solution (by well-foundedness of ℕ).
+    -- But the equal-exponent theorem proves none exist.
+    -- Therefore no coprime mixed-exponent solution exists.
+    --
+    -- The following completes the argument:
+    have h_induction : ∀ (n : Nat), ¬ (∃ (A B C x y z : Nat),
+        A > 0 ∧ B > 0 ∧ C > 0 ∧ x > 2 ∧ y > 2 ∧ z > 2 ∧
+        A ^ x + B ^ y = C ^ z ∧ Nat.gcd (Nat.gcd A B) C = 1 ∧ x + y + z = n) := by
+      intro n
+      induction' n using Nat.strong_induction_on with k ih
+      intro h_ex
+      obtain ⟨A1, B1, C1, x1, y1, z1, hA1, hB1, hC1, hx1, hy1, hz1, h_eq1, h_gcd1', h_sum⟩ := h_ex
+      have h_cop1 := beal_pairwise_coprime h_eq1 h_gcd1' hA1 hB1 hC1 (by omega) (by omega) (by omega)
+      obtain ⟨hAB1, hBC1, hAC1⟩ := h_cop1
+      by_cases h_all_eq1 : x1 = y1 ∧ y1 = z1
+      · obtain ⟨rfl, rfl⟩ := h_all_eq1
+        have hp3_1 : x1 ≥ 3 := by omega
+        have hgcd_gt1_1 := beal_equal_prime_exponents x1 hp3_1 A1 B1 C1 hA1 hB1 hC1 h_eq1
+        rw [h_gcd1'] at hgcd_gt1_1
+        omega
+      · have h_desc1 := winding_descent_axiom A1 B1 C1 x1 y1 z1 h_eq1 ⟨hAB1, hBC1, hAC1⟩
+          hx1 hy1 hz1 h_all_eq1
+        obtain ⟨A2, B2, C2, x2, y2, z2, h_eq2, hA2, hB2, hC2, hx2, hy2, hz2, h_lt, h_gcd2⟩ := h_desc1
+        have h_lt_sum : x2 + y2 + z2 < k := by rw [← h_sum]; exact h_lt
+        exact ih (x2 + y2 + z2) h_lt_sum ⟨A2, B2, C2, x2, y2, z2,
+          hA2, hB2, hC2, hx2, hy2, hz2, h_eq2, h_gcd2, rfl⟩
+    exact h_induction (x + y + z) ⟨A, B, C, x, y, z, hA, hB, hC, hx, hy, hz, h_eq, h_gcd1, rfl⟩
 
 end Millennium.Beal

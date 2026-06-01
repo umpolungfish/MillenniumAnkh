@@ -156,5 +156,13 @@ globs = [
   "Imscribing.Millennium.PerfectCuboid.Bootstrap",
   "Imscribing.Millennium.UniverseRulesets",
   "Imscribing.Millennium.BSD_Complete_Proof",
+  "Imscribing.Millennium.GrammarBridge",
   "Imscribing.Millennium.BSD_MathBridge",
+  "Imscribing.Millennium.BanachMeasure",
+  "Imscribing.Millennium.Dixmier",
+  "Imscribing.Millennium.TwinPrime",
+  "Imscribing.Millennium.LonelyRunner",
+  "Imscribing.Millennium.Goldbach",
+  "Imscribing.Millennium.HadwigerNelson",
+  "Imscribing.Millennium.Cramer",
 ]
